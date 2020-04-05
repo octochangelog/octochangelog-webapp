@@ -25,7 +25,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier": "prettier --ignore-path .gitignore \"./**/*.{js,ts}\"",
+    "prettier": "prettier --ignore-path .gitignore \"./**/*.{js,jsx,ts,tsx}\"",
     "format": "yarn prettier --write",
     "format:check": "yarn prettier --check"
   },
