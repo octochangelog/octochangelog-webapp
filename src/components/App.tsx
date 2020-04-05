@@ -1,8 +1,7 @@
 import React from 'react';
-import { Box, CSSReset, ThemeProvider } from '@chakra-ui/core';
+import { Box, Flex, CSSReset, ThemeProvider } from '@chakra-ui/core';
 import Header from './Header';
 import Footer from './Footer';
-import { Flex } from '@chakra-ui/core/dist';
 import { Global } from '@emotion/core';
 import { globalStyles } from '../global';
 
