@@ -1,11 +1,12 @@
 import React from 'react';
-import { Box, Link, Flex, Heading } from '@chakra-ui/core';
+import { Box, BoxProps, Link, Flex, Heading } from '@chakra-ui/core/dist';
 import { DiGithubBadge } from 'react-icons/di';
 import Container from './Container';
 
-const Header = () => {
+const Header = (props: BoxProps) => {
   return (
-    <Box as="header" bg="gray.700" color="white">
+    /* FIXME: set zIndex to "banner" */
+    <Box as="header" bg="gray.700" color="white" zIndex={1200} {...props}>
       <Container py={5}>
         <Flex justify="space-between">
           <Heading fontSize={{ xs: 'md', md: '4xl' }}>

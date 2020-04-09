@@ -19,8 +19,8 @@ function App() {
       <CSSReset />
       <Global styles={globalStyles} />
       <Flex height="100%" direction="column">
-        <Header />
-        <Container my={4} flex="1 0 auto">
+        <Header position="fixed" top="0" left="0" right="0" />
+        <Container mb={4} mt={{ base: 20, md: 32 }} flex="1 0 auto">
           <ApolloProvider client={client}>
             <MainContent />
           </ApolloProvider>
