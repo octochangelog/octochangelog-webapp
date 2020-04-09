@@ -2,12 +2,12 @@ import React from 'react';
 import { Flex, CSSReset, ThemeProvider } from '@chakra-ui/core';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
-import Header from './Header';
-import Footer from './Footer';
 import { Global } from '@emotion/core';
-import { globalStyles } from '../global';
-import Container from './Container';
-import MainContent from './MainContent';
+import { globalStyles } from 'global';
+import Header from 'components/Header';
+import Container from 'components/Container';
+import MainContent from 'components/MainContent';
+import Footer from 'components/Footer';
 
 const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',
