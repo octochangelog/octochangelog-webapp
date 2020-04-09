@@ -6,8 +6,8 @@ import { Global } from '@emotion/core';
 import { globalStyles } from 'global';
 import Header from 'components/Header';
 import Container from 'components/Container';
-import MainContent from 'components/MainContent';
 import Footer from 'components/Footer';
+import MainContent from 'components/MainContent';
 
 const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',
