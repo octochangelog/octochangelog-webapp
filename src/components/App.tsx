@@ -10,7 +10,10 @@ import Container from './Container';
 import MainContent from './MainContent';
 
 const client = new ApolloClient({
-  uri: 'https://48p1r2roz4.sse.codesandbox.io',
+  uri: 'https://api.github.com/graphql',
+  headers: {
+    authorization: `Bearer ${process.env.REACT_APP_GITHUB_OAUTH_TOKEN}`,
+  },
 });
 
 function App() {

@@ -1,27 +1,18 @@
 import React from 'react';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
-import {
-  Alert,
-  AlertIcon,
-  Spinner,
-  Stack,
-  Stat,
-  StatLabel,
-  StatNumber,
-} from '@chakra-ui/core';
+import { Alert, AlertIcon, Code, Spinner } from '@chakra-ui/core';
 
-const EXCHANGE_RATES = gql`
-  {
-    rates(currency: "USD") {
-      currency
-      rate
+const QUERY = gql`
+  query {
+    viewer {
+      login
     }
   }
 `;
 
 const MainContent = () => {
-  const { loading, error, data } = useQuery(EXCHANGE_RATES);
+  const { loading, error, data } = useQuery(QUERY);
 
   if (loading) {
     return <Spinner size="xl" />;
@@ -36,18 +27,7 @@ const MainContent = () => {
     );
   }
 
-  return (
-    <Stack>
-      {data.rates.map(
-        ({ currency, rate }: { currency: string; rate: number }) => (
-          <Stat key={currency}>
-            <StatLabel>{currency}</StatLabel>
-            <StatNumber>{rate}</StatNumber>
-          </Stat>
-        )
-      )}
-    </Stack>
-  );
+  return <Code>{JSON.stringify(data, null, 2)}</Code>;
 };
 
 export default MainContent;
