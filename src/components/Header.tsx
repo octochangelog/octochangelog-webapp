@@ -5,7 +5,7 @@ import Container from './Container';
 
 const Header = (props: BoxProps) => {
   return (
-    /* FIXME: set zIndex to "banner" */
+    /* FIXME: set zIndex to "banner" when chakra-ui fixes types here */
     <Box as="header" bg="gray.700" color="white" zIndex={1200} {...props}>
       <Container py={5}>
         <Flex justify="space-between">
