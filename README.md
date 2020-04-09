@@ -1,3 +1,11 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/326eb771-b2ab-415d-9c05-f9ee4417b359/deploy-status)](https://app.netlify.com/sites/github-compare-releases/deploys)
+
+# 🧶 Compare changes between GitHub releases
+
+https://github-compare-releases.netlify.com/
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
