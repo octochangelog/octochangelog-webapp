@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Link } from '@chakra-ui/core/dist';
+import { Box, Flex, Link } from '@chakra-ui/core';
 import Container from './Container';
 
 const Footer = () => {

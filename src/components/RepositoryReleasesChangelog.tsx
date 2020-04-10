@@ -1,16 +1,17 @@
 import React from 'react';
 import { Code, Heading, Link, Stack, Tag } from '@chakra-ui/core';
-import { Release, Repository } from 'types';
+import { RepositoryReleases } from 'types';
 
 type PropTypes = {
-  repository?: Repository;
-  releases?: Release[];
+  repository: RepositoryReleases | null;
 };
 
-const ReleasesResults: React.FC<PropTypes> = ({ repository, releases }) => {
-  if (!repository || !releases) {
+const RepositoryReleasesChangelog: React.FC<PropTypes> = ({ repository }) => {
+  if (!repository) {
     return null;
   }
+
+  const { nodes } = repository.releases;
 
   return (
     <>
@@ -23,16 +24,16 @@ const ReleasesResults: React.FC<PropTypes> = ({ repository, releases }) => {
       <Heading fontSize="sm" mb={4}>
         Comparing releases from{' '}
         <Tag size="sm" variantColor="orange">
-          {releases[0].name}
+          {nodes[0].name}
         </Tag>{' '}
         to{' '}
         <Tag size="sm" variantColor="orange">
-          {releases[releases.length - 1].name}
+          {nodes[nodes.length - 1].name}
         </Tag>
       </Heading>
 
       <Stack spacing={4}>
-        {releases.map((release) => (
+        {nodes.map((release) => (
           <Code key={release.id}>{release.description}</Code>
         ))}
       </Stack>
@@ -40,4 +41,4 @@ const ReleasesResults: React.FC<PropTypes> = ({ repository, releases }) => {
   );
 };
 
-export default ReleasesResults;
+export default RepositoryReleasesChangelog;
