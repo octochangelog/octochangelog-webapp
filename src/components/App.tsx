@@ -7,7 +7,7 @@ import { globalStyles } from 'global';
 import Header from 'components/Header';
 import Container from 'components/Container';
 import Footer from 'components/Footer';
-import MainContent from 'components/MainContent';
+import ReleaseComparator from 'components/ReleaseComparator';
 
 const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',
@@ -25,7 +25,7 @@ function App() {
         <Header position="fixed" top="0" left="0" right="0" />
         <Container mb={4} mt={{ base: 20, md: 32 }} flex="1 0 auto">
           <ApolloProvider client={client}>
-            <MainContent />
+            <ReleaseComparator />
           </ApolloProvider>
         </Container>
         <Footer />
