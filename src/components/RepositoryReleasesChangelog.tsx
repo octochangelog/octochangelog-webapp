@@ -34,7 +34,7 @@ const RepositoryReleasesChangelog: React.FC<PropTypes> = ({ repository }) => {
         </Heading>
       ) : (
         <Text as="i" color="gray.500">
-          Releases not selected to compare
+          No releases to compare
         </Text>
       )}
 

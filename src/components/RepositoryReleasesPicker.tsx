@@ -6,6 +6,7 @@ import { GitHubRepositoryData, Release, RepositoryReleases } from 'types';
 import RepositoryUrlInput from 'components/RepositoryUrlInput';
 import ReleaseVersionSelect from 'components/ReleaseVersionSelect';
 import useWindowWidth from 'hooks/useWindowWidth';
+import { filterReleasesNodes } from 'utils';
 
 const INLINE_BREAKPOINT = 768; // desktop
 
@@ -77,10 +78,31 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
   );
 
   React.useEffect(
-    function filterReleasesNodes() {
-      console.log(versionRage);
+    function handleRepositoryReleasesFilter() {
+      const [fromVersion, toVersion]: [string, string] = versionRage;
+
+      if (data && fromVersion && toVersion) {
+        // TODO: check range is valid
+        const { releases, ...repository } = data.repository;
+        const releasesNodes = [...(releases?.nodes ?? [])].reverse();
+
+        const filteredReleasesNodes = filterReleasesNodes({
+          nodes: releasesNodes,
+          from: fromVersion,
+          to: toVersion,
+        });
+
+        const filteredRepositoryReleases = {
+          ...repository,
+          releases: {
+            nodes: filteredReleasesNodes,
+          },
+        };
+
+        onChange(filteredRepositoryReleases);
+      }
     },
-    [versionRage]
+    [data, onChange, versionRage]
   );
 
   React.useEffect(
