@@ -9,15 +9,14 @@ import useWindowWidth from 'hooks/useWindowWidth';
 
 const INLINE_BREAKPOINT = 768; // desktop
 
+const EMPTY_VERSION_RANGE: [string, string] = ['', ''];
+
 export const RELEASES_QUERY = gql`
   query Repository($name: String!, $owner: String!) {
     repository(name: $name, owner: $owner) {
       name
       url
-      releases(orderBy: { field: CREATED_AT, direction: ASC }, first: 100) {
-        pageInfo {
-          hasNextPage
-        }
+      releases(orderBy: { field: CREATED_AT, direction: DESC }, last: 100) {
         nodes {
           description
           id
@@ -52,6 +51,10 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
     setRepositoryData,
   ] = React.useState<GitHubRepositoryData | null>(null);
 
+  const [versionRage, setVersionRange] = React.useState<[string, string]>(
+    EMPTY_VERSION_RANGE
+  );
+
   const windowWidth = useWindowWidth();
 
   const toast = useToast();
@@ -61,29 +64,58 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
     GitHubRepositoryData | null
   >(RELEASES_QUERY, { variables: repositoryData, skip: !repositoryData });
 
-  React.useEffect(() => {
-    if (data) {
-      const { releases, ...repository } = data.repository;
-      onChange(repository);
-    } else {
-      onChange(null);
-    }
-  }, [data, onChange]);
+  React.useEffect(
+    function handleDataChange() {
+      if (data) {
+        const { releases, ...repository } = data.repository;
+        onChange(repository);
+      } else {
+        onChange(null);
+      }
+    },
+    [data, onChange]
+  );
 
-  React.useEffect(() => {
-    if (error) {
-      toast({
-        title: 'An error occurred.',
-        description: 'Unable to retrieve repository releases',
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-      });
-    }
-  }, [error, toast]);
+  React.useEffect(
+    function filterReleasesNodes() {
+      console.log(versionRage);
+    },
+    [versionRage]
+  );
+
+  React.useEffect(
+    function handleErrorChange() {
+      if (error) {
+        toast({
+          title: 'An error occurred.',
+          description: 'Unable to retrieve repository releases',
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        });
+
+        // clear versions
+        setVersionRange(EMPTY_VERSION_RANGE);
+      }
+    },
+    [error, toast]
+  );
 
   const handleRepositoryChange = (newRepoData: GitHubRepositoryData | null) => {
     setRepositoryData(newRepoData);
+
+    // clear versions
+    setVersionRange(EMPTY_VERSION_RANGE);
+  };
+
+  const handleFromVersionChange = (fromVersion: string) => {
+    const [, toVersion] = versionRage;
+    setVersionRange([fromVersion, toVersion]);
+  };
+
+  const handleToVersionChange = (toVersion: string) => {
+    const [fromVersion] = versionRage;
+    setVersionRange([fromVersion, toVersion]);
   };
 
   const releasesOptions = renderOptionsFromReleases(
@@ -94,6 +126,8 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
     Array.isArray(releasesOptions) && releasesOptions.length === 0
       ? 'Versions not found'
       : 'Select version';
+
+  const [fromVersion, toVersion] = versionRage;
 
   return (
     <Stack
@@ -110,6 +144,8 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
         width={{ base: 'full', md: '30%' }}
         isDisabled={!releasesOptions}
         placeholder={selectPlaceholder}
+        onVersionChange={handleFromVersionChange}
+        value={fromVersion}
       >
         {releasesOptions}
       </ReleaseVersionSelect>
@@ -119,6 +155,8 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
         width={{ base: 'full', md: '30%' }}
         isDisabled={!releasesOptions}
         placeholder={selectPlaceholder}
+        onVersionChange={handleToVersionChange}
+        value={toVersion}
       >
         {releasesOptions}
       </ReleaseVersionSelect>
