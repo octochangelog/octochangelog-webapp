@@ -75,8 +75,6 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
   // show stack inline only on desktop
   const isInlineStack = windowWidth >= INLINE_BREAKPOINT;
 
-  console.log('window width updated');
-
   return (
     <Stack spacing={4} isInline={isInlineStack}>
       <RepositoryUrlInput
