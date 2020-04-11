@@ -2,7 +2,7 @@ import React from 'react';
 import { Stack, useToast } from '@chakra-ui/core';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
-import { GitHubRepositoryData, RepositoryReleases } from 'types';
+import { GitHubRepositoryData, Release, RepositoryReleases } from 'types';
 import RepositoryUrlInput from 'components/RepositoryUrlInput';
 import ReleaseVersionSelect from 'components/ReleaseVersionSelect';
 import useWindowWidth from 'hooks/useWindowWidth';
@@ -27,6 +27,20 @@ export const RELEASES_QUERY = gql`
     }
   }
 `;
+
+const renderOptionsFromReleases = (
+  releases?: Array<Release>
+): Array<React.ReactNode> | null => {
+  if (releases) {
+    return releases.map((release) => (
+      <option key={release.name} value={release.name}>
+        {release.name}
+      </option>
+    ));
+  }
+
+  return null;
+};
 
 type PropTypes = {
   onChange(repository: RepositoryReleases | null): void;
@@ -72,11 +86,20 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
     setRepositoryData(newRepoData);
   };
 
-  // show stack inline only on desktop
-  const isInlineStack = windowWidth >= INLINE_BREAKPOINT;
+  const releasesOptions = renderOptionsFromReleases(
+    data?.repository.releases?.nodes
+  );
+
+  const selectPlaceholder =
+    Array.isArray(releasesOptions) && releasesOptions.length === 0
+      ? 'Versions not found'
+      : 'Select version';
 
   return (
-    <Stack spacing={4} isInline={isInlineStack}>
+    <Stack
+      spacing={{ base: 2, md: 6 }}
+      isInline={windowWidth >= INLINE_BREAKPOINT}
+    >
       <RepositoryUrlInput
         isLoading={loading}
         onRepositoryChange={handleRepositoryChange}
@@ -84,18 +107,20 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
       <ReleaseVersionSelect
         label="From release"
         id="from-release"
-        width={{ base: 'full', md: '50%' }}
+        width={{ base: 'full', md: '30%' }}
+        isDisabled={!releasesOptions}
+        placeholder={selectPlaceholder}
       >
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
+        {releasesOptions}
       </ReleaseVersionSelect>
       <ReleaseVersionSelect
         label="To release"
         id="to-release"
-        width={{ base: 'full', md: '50%' }}
+        width={{ base: 'full', md: '30%' }}
+        isDisabled={!releasesOptions}
+        placeholder={selectPlaceholder}
       >
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
+        {releasesOptions}
       </ReleaseVersionSelect>
     </Stack>
   );

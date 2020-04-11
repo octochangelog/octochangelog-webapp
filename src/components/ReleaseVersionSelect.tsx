@@ -8,6 +8,7 @@ import {
 
 type CustomProps = {
   label: string;
+  placeholder?: string;
 };
 
 type PropTypes = FormControlProps & CustomProps;
@@ -16,12 +17,13 @@ const ReleaseVersionSelect: React.FC<PropTypes> = ({
   children,
   label,
   id,
+  placeholder = 'Select version',
   ...rest
 }) => {
   return (
     <FormControl isRequired width="full" {...rest}>
       <FormLabel htmlFor={id}>{label}</FormLabel>
-      <Select id={id} placeholder="Select version">
+      <Select id={id} placeholder={placeholder}>
         {children}
       </Select>
     </FormControl>
