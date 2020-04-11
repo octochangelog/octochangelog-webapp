@@ -1,6 +1,6 @@
 import { GitHubRepositoryData } from 'types';
 
-const gitHubRepoRegExp = /((git@|http(s)?:\/\/)(www)?([\w.@]+)([/:]))([\w,\-_]+)\/([\w,\-_]+)(.git)?((\/)?)/;
+const gitHubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,\-_]+)\/([\w,\-_]+)(.git)?((\/)?)/;
 
 export function getRepositoryDataFromUrl(
   url: string

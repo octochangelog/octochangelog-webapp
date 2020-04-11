@@ -29,6 +29,7 @@ describe('getRepositoryDataFromUrl function', () => {
 
   it.each([
     'https://mario.dev',
+    'https://mario.dev/some_repo-owner/some-repo_name',
     'github.com/some_repo-owner/some-repo_name',
     'www.github.com/some_repo-owner/some-repo_name',
     'asd',
