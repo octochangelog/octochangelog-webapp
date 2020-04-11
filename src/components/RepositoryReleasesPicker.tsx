@@ -33,14 +33,21 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
     repositoryData,
     setRepositoryData,
   ] = React.useState<GitHubRepositoryData | null>(null);
+
   const { loading, error, data } = useQuery<
     { repository: RepositoryReleases },
     GitHubRepositoryData | null
-  >(RELEASES_QUERY, { variables: repositoryData });
+  >(RELEASES_QUERY, { variables: repositoryData, skip: !repositoryData });
+
   const toast = useToast();
 
   React.useEffect(() => {
-    onChange(data?.repository ?? null);
+    if (data) {
+      const { releases, ...repository } = data.repository;
+      onChange(repository);
+    } else {
+      onChange(null);
+    }
   }, [data, onChange]);
 
   React.useEffect(() => {
@@ -62,8 +69,8 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
   return (
     <Flex>
       <RepositoryUrlInput
-        isDisabled={loading}
-        onRepositoryChange={handleRepositoryChange}
+        isLoading={loading}
+        onRepositorySelect={handleRepositoryChange}
       />
     </Flex>
   );

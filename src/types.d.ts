@@ -16,5 +16,5 @@ type ReleasesNodes = {
 export type RepositoryReleases = {
   name: string;
   url: string;
-  releases: ReleasesNodes;
+  releases?: ReleasesNodes;
 };

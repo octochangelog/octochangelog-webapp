@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  FormErrorMessage,
   FormControl,
   FormControlProps,
   FormLabel,
@@ -11,41 +12,73 @@ import { getRepositoryDataFromUrl } from 'utils';
 import { GitHubRepositoryData } from 'types';
 
 type CustomProps = {
-  onRepositoryChange(repoData: GitHubRepositoryData | null): void;
+  isLoading?: boolean;
+  onRepositorySelect(repoData: GitHubRepositoryData | null): void;
 };
 
 type PropTypes = FormControlProps & CustomProps;
 
 const RepositoryUrlInput: React.FC<PropTypes> = ({
-  onRepositoryChange,
+  onRepositorySelect,
+  // TODO: add onRepositoryClear callback
+  isLoading = false,
   ...rest
 }) => {
   const [repoUrl, setRepoUrl] = React.useState<string>('');
+  const [error, setError] = React.useState<string>('');
 
   const handleGetRepositoryData = () => {
     const repoData = getRepositoryDataFromUrl(repoUrl);
+    onRepositorySelect(repoData);
 
-    onRepositoryChange(repoData);
+    if (repoData) {
+      setError('');
+      // TODO: when onRepositoryClear available, call onRepositorySelect here
+    } else {
+      setError('Please fill valid GitHub repository url');
+      // TODO: when onRepositoryClear available, call onRepositoryClear here
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setError('');
+    setRepoUrl(e.target.value);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleGetRepositoryData();
+    }
   };
 
   return (
-    <FormControl isRequired {...rest}>
+    <FormControl
+      isRequired
+      width="full"
+      isDisabled={isLoading}
+      isInvalid={!!error}
+      {...rest}
+    >
       <FormLabel htmlFor="repo-url">Repository url</FormLabel>
       <Stack isInline>
         <Input
           type="text"
           id="repo-url"
-          placeholder="Start typing here..."
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setRepoUrl(e.target.value)
-          }
+          placeholder="Paste the repo url and press enter or click search button"
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
         />
         <IconButton
           aria-label="Search database"
+          variantColor="orange"
           icon="search"
+          isLoading={isLoading}
           onClick={handleGetRepositoryData}
         />
       </Stack>
+      <FormErrorMessage>
+        Please fill valid GitHub repository url
+      </FormErrorMessage>
     </FormControl>
   );
 };
