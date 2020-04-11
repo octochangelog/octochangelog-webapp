@@ -13,13 +13,13 @@ import { GitHubRepositoryData } from 'types';
 
 type CustomProps = {
   isLoading?: boolean;
-  onRepositorySelect(repoData: GitHubRepositoryData | null): void;
+  onRepositoryChange(repoData: GitHubRepositoryData | null): void;
 };
 
 type PropTypes = FormControlProps & CustomProps;
 
 const RepositoryUrlInput: React.FC<PropTypes> = ({
-  onRepositorySelect,
+  onRepositoryChange,
   // TODO: add onRepositoryClear callback
   isLoading = false,
   ...rest
@@ -29,11 +29,11 @@ const RepositoryUrlInput: React.FC<PropTypes> = ({
 
   const handleGetRepositoryData = () => {
     const repoData = getRepositoryDataFromUrl(repoUrl);
-    onRepositorySelect(repoData);
+    onRepositoryChange(repoData);
 
     if (repoData) {
       setError('');
-      // TODO: when onRepositoryClear available, call onRepositorySelect here
+      // TODO: when onRepositoryClear available, call onRepositoryChange here
     } else {
       setError('Please fill valid GitHub repository url');
       // TODO: when onRepositoryClear available, call onRepositoryClear here

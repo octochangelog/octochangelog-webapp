@@ -1,9 +1,13 @@
 import React from 'react';
-import { Flex, useToast } from '@chakra-ui/core';
+import { Stack, useToast } from '@chakra-ui/core';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import { GitHubRepositoryData, RepositoryReleases } from 'types';
 import RepositoryUrlInput from 'components/RepositoryUrlInput';
+import ReleaseVersionSelect from 'components/ReleaseVersionSelect';
+import useWindowWidth from 'hooks/useWindowWidth';
+
+const INLINE_BREAKPOINT = 768; // desktop
 
 export const RELEASES_QUERY = gql`
   query Repository($name: String!, $owner: String!) {
@@ -34,12 +38,14 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
     setRepositoryData,
   ] = React.useState<GitHubRepositoryData | null>(null);
 
+  const windowWidth = useWindowWidth();
+
+  const toast = useToast();
+
   const { loading, error, data } = useQuery<
     { repository: RepositoryReleases },
     GitHubRepositoryData | null
   >(RELEASES_QUERY, { variables: repositoryData, skip: !repositoryData });
-
-  const toast = useToast();
 
   React.useEffect(() => {
     if (data) {
@@ -66,13 +72,34 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
     setRepositoryData(newRepoData);
   };
 
+  // show stack inline only on desktop
+  const isInlineStack = windowWidth >= INLINE_BREAKPOINT;
+
+  console.log('window width updated');
+
   return (
-    <Flex>
+    <Stack spacing={4} isInline={isInlineStack}>
       <RepositoryUrlInput
         isLoading={loading}
-        onRepositorySelect={handleRepositoryChange}
+        onRepositoryChange={handleRepositoryChange}
       />
-    </Flex>
+      <ReleaseVersionSelect
+        label="From release"
+        id="from-release"
+        width={{ base: 'full', md: '50%' }}
+      >
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </ReleaseVersionSelect>
+      <ReleaseVersionSelect
+        label="To release"
+        id="to-release"
+        width={{ base: 'full', md: '50%' }}
+      >
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </ReleaseVersionSelect>
+    </Stack>
   );
 };
 
