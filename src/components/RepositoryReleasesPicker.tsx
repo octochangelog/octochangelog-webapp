@@ -3,7 +3,7 @@ import { Stack, useToast } from '@chakra-ui/core';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import {
-  GitHubRepositoryData,
+  GitHubRepositoryQueryVars,
   Release,
   RepositoryReleases,
   VersionRange,
@@ -61,7 +61,7 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
   const [
     repositoryQueryData,
     setRepositoryQueryData,
-  ] = React.useState<GitHubRepositoryData | null>(null);
+  ] = React.useState<GitHubRepositoryQueryVars | null>(null);
 
   const [versionRage, setVersionRange] = React.useState<VersionRange>(
     EMPTY_VERSION_RANGE
@@ -73,7 +73,7 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
 
   const { loading, error, data } = useQuery<
     { repository: RepositoryReleases },
-    GitHubRepositoryData | null
+    GitHubRepositoryQueryVars | null
   >(RELEASES_QUERY, {
     variables: repositoryQueryData,
     skip: !repositoryQueryData,
@@ -112,7 +112,9 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
     [error, toast]
   );
 
-  const handleRepositoryChange = (newRepoData: GitHubRepositoryData | null) => {
+  const handleRepositoryChange = (
+    newRepoData: GitHubRepositoryQueryVars | null
+  ) => {
     setRepositoryQueryData(newRepoData);
 
     // clear versions

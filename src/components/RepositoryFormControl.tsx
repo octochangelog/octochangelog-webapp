@@ -9,11 +9,11 @@ import {
   Stack,
 } from '@chakra-ui/core';
 import { getRepositoryDataFromUrl } from 'utils';
-import { GitHubRepositoryData } from 'types';
+import { GitHubRepositoryQueryVars } from 'types';
 
 type CustomProps = {
   isLoading?: boolean;
-  onChange(repoData: GitHubRepositoryData | null): void;
+  onChange(repoData: GitHubRepositoryQueryVars | null): void;
 };
 
 type PropTypes = Omit<FormControlProps, 'onChange'> & CustomProps;
