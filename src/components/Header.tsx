@@ -8,7 +8,7 @@ const Header = (props: BoxProps) => {
     /* FIXME: set zIndex to "banner" when chakra-ui fixes types here */
     <Box as="header" bg="gray.700" color="white" zIndex={1200} {...props}>
       <Container py={5}>
-        <Flex justify="space-between">
+        <Flex justify="space-between" alignItems="center">
           <Heading fontSize={{ xs: 'md', md: '4xl' }}>
             <span role="img" aria-label="Wool">
               🧶
