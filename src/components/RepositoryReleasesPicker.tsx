@@ -85,34 +85,6 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
     [data, onReleaseChange]
   );
 
-  // React.useEffect(
-  //   function handleRepositoryReleasesFilter() {
-  //     const [fromVersion, toVersion]: [string, string] = versionRage;
-  //
-  //     if (data && fromVersion && toVersion) {
-  //       // TODO: check range is valid
-  //       const { releases, ...repository } = data.repository;
-  //       const releasesNodes = [...(releases?.nodes ?? [])].reverse();
-  //
-  //       const filteredReleasesNodes = filterReleasesByVersionRange({
-  //         nodes: releasesNodes,
-  //         from: fromVersion,
-  //         to: toVersion,
-  //       });
-  //
-  //       const filteredRepositoryReleases = {
-  //         ...repository,
-  //         releases: {
-  //           nodes: filteredReleasesNodes,
-  //         },
-  //       };
-  //
-  //       onReleaseChange(filteredRepositoryReleases);
-  //     }
-  //   },
-  //   [data, onReleaseChange, versionRage]
-  // );
-
   React.useEffect(function handleVersionRangeEffect() {
     onVersionRangeChange(versionRage);
   });
