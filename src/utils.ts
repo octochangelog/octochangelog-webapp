@@ -20,15 +20,19 @@ export function getRepositoryDataFromUrl(
 }
 
 type FilterReleasesNodes = {
-  nodes: Array<Release>;
+  releases: Array<Release>;
   from: string;
   to: string;
 };
 
-export function filterReleasesNodes(args: FilterReleasesNodes): Array<Release> {
-  const { nodes, from, to } = args;
+export function filterReleasesByVersionRange(
+  args: FilterReleasesNodes
+): Array<Release> {
+  const { releases, from, to } = args;
 
-  return nodes.filter(
-    (node) => semver.gte(node.name, from) && semver.lte(node.name, to)
+  // filter version range as (from, to]
+  return releases.filter(
+    (release) =>
+      semver.gt(release.tagName, from) && semver.lte(release.tagName, to)
   );
 }

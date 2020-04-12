@@ -1,17 +1,45 @@
 import React from 'react';
 import { Code, Heading, Link, Stack, Tag, Text } from '@chakra-ui/core';
-import { RepositoryReleases } from 'types';
+import { Release, RepositoryReleases } from 'types';
+import { filterReleasesByVersionRange } from 'utils';
 
 type PropTypes = {
   repository: RepositoryReleases | null;
+  fromVersion: string;
+  toVersion: string;
 };
 
-const RepositoryReleasesChangelog: React.FC<PropTypes> = ({ repository }) => {
+const RepositoryReleasesChangelog: React.FC<PropTypes> = ({
+  repository,
+  fromVersion,
+  toVersion,
+}) => {
+  const [filteredReleases, setFilteredReleases] = React.useState<Array<
+    Release
+  > | null>(null);
+
+  const releases = repository?.releases.nodes;
+
+  React.useEffect(
+    function () {
+      if (releases && fromVersion && toVersion) {
+        setFilteredReleases(
+          filterReleasesByVersionRange({
+            releases,
+            from: fromVersion,
+            to: toVersion,
+          })
+        );
+      } else {
+        setFilteredReleases(null);
+      }
+    },
+    [fromVersion, releases, toVersion]
+  );
+
   if (!repository) {
     return null;
   }
-
-  const nodes = repository?.releases?.nodes;
 
   return (
     <>
@@ -21,26 +49,26 @@ const RepositoryReleasesChangelog: React.FC<PropTypes> = ({ repository }) => {
         </Link>
       </Heading>
 
-      {nodes ? (
+      {fromVersion && toVersion ? (
         <Heading fontSize="sm" mb={4}>
           Comparing releases from{' '}
           <Tag size="sm" variantColor="orange">
-            {nodes[0].tagName}
+            {fromVersion}
           </Tag>{' '}
           to{' '}
           <Tag size="sm" variantColor="orange">
-            {nodes[nodes.length - 1].tagName}
+            {toVersion}
           </Tag>
         </Heading>
       ) : (
         <Text as="i" color="gray.500">
-          No releases to compare
+          No releases selected to compare
         </Text>
       )}
 
-      {nodes && (
+      {filteredReleases && (
         <Stack spacing={4}>
-          {nodes.map((release) => (
+          {filteredReleases.map((release) => (
             <Code key={release.tagName}>{release.description}</Code>
           ))}
         </Stack>

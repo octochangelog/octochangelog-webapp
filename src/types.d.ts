@@ -7,6 +7,9 @@ export type Release = {
   id: string;
   name: string;
   description: string;
+  tagName: string;
+  isDraft: boolean;
+  isPrerelease: boolean;
 };
 
 type ReleasesNodes = {
@@ -16,5 +19,7 @@ type ReleasesNodes = {
 export type RepositoryReleases = {
   name: string;
   url: string;
-  releases?: ReleasesNodes;
+  releases: ReleasesNodes;
 };
+
+export type VersionRange = [string, string];

@@ -9,6 +9,7 @@ https://github-compare-releases.netlify.com/
 ### TODO Features:
 
 - [ ] Autocomplete repo url input
-- [ ] Filter release selects on typing
-- [ ] Show other releases versioning properly
+- [ ] Search versions on typing
+- [ ] Group other releases versioning than Semantic Release properly
 - [ ] Retrieve more releases when repo has more than 100 available (pagination)
+- [ ] Options to filter by pre-releases and drafts

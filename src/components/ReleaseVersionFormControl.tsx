@@ -9,23 +9,23 @@ import {
 type CustomProps = {
   label: string;
   placeholder?: string;
-  onSuccess(version: string): void;
+  onChange(version: string): void;
   value?: string;
 };
 
-type PropTypes = FormControlProps & CustomProps;
+type PropTypes = Omit<FormControlProps, 'onChange'> & CustomProps;
 
 const ReleaseVersionFormControl: React.FC<PropTypes> = ({
   children,
   label,
   id,
   placeholder = 'Select version',
-  onSuccess,
+  onChange,
   value,
   ...rest
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onSuccess(e.target.value);
+    onChange(e.target.value);
   };
 
   return (

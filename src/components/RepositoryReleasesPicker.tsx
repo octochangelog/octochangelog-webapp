@@ -2,22 +2,26 @@ import React from 'react';
 import { Stack, useToast } from '@chakra-ui/core';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
-import { GitHubRepositoryData, Release, RepositoryReleases } from 'types';
-import RepositoryUrlFormControl from 'components/RepositoryUrlFormControl';
+import {
+  GitHubRepositoryData,
+  Release,
+  RepositoryReleases,
+  VersionRange,
+} from 'types';
+import RepositoryFormControl from 'components/RepositoryFormControl';
 import ReleaseVersionFormControl from 'components/ReleaseVersionFormControl';
 import useWindowWidth from 'hooks/useWindowWidth';
-import { filterReleasesNodes } from 'utils';
 
 const INLINE_BREAKPOINT = 768; // desktop
 
-const EMPTY_VERSION_RANGE: [string, string] = ['', ''];
+const EMPTY_VERSION_RANGE: VersionRange = ['', ''];
 
 export const RELEASES_QUERY = gql`
   query Repository($name: String!, $owner: String!) {
     repository(name: $name, owner: $owner) {
       name
       url
-      releases(orderBy: { field: CREATED_AT, direction: DESC }, last: 100) {
+      releases(orderBy: { field: CREATED_AT, direction: ASC }, last: 100) {
         nodes {
           description
           id
@@ -44,16 +48,20 @@ const renderOptionsFromReleases = (
 };
 
 type PropTypes = {
-  onChange(repository: RepositoryReleases | null): void;
+  onReleaseChange(repository: RepositoryReleases | null): void;
+  onVersionRangeChange(versionRange: VersionRange): void;
 };
 
-const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
+const RepositoryReleasesPicker: React.FC<PropTypes> = ({
+  onReleaseChange,
+  onVersionRangeChange,
+}) => {
   const [
     repositoryData,
     setRepositoryData,
   ] = React.useState<GitHubRepositoryData | null>(null);
 
-  const [versionRage, setVersionRange] = React.useState<[string, string]>(
+  const [versionRage, setVersionRange] = React.useState<VersionRange>(
     EMPTY_VERSION_RANGE
   );
 
@@ -67,43 +75,47 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
   >(RELEASES_QUERY, { variables: repositoryData, skip: !repositoryData });
 
   React.useEffect(
-    function handleDataChange() {
+    function handleQueryDataChange() {
       if (data) {
-        onChange(data.repository);
+        onReleaseChange(data.repository);
       } else {
-        onChange(null);
+        onReleaseChange(null);
       }
     },
-    [data, onChange]
+    [data, onReleaseChange]
   );
 
-  React.useEffect(
-    function handleRepositoryReleasesFilter() {
-      const [fromVersion, toVersion]: [string, string] = versionRage;
+  // React.useEffect(
+  //   function handleRepositoryReleasesFilter() {
+  //     const [fromVersion, toVersion]: [string, string] = versionRage;
+  //
+  //     if (data && fromVersion && toVersion) {
+  //       // TODO: check range is valid
+  //       const { releases, ...repository } = data.repository;
+  //       const releasesNodes = [...(releases?.nodes ?? [])].reverse();
+  //
+  //       const filteredReleasesNodes = filterReleasesByVersionRange({
+  //         nodes: releasesNodes,
+  //         from: fromVersion,
+  //         to: toVersion,
+  //       });
+  //
+  //       const filteredRepositoryReleases = {
+  //         ...repository,
+  //         releases: {
+  //           nodes: filteredReleasesNodes,
+  //         },
+  //       };
+  //
+  //       onReleaseChange(filteredRepositoryReleases);
+  //     }
+  //   },
+  //   [data, onReleaseChange, versionRage]
+  // );
 
-      if (data && fromVersion && toVersion) {
-        // TODO: check range is valid
-        const { releases, ...repository } = data.repository;
-        const releasesNodes = [...(releases?.nodes ?? [])].reverse();
-
-        const filteredReleasesNodes = filterReleasesNodes({
-          nodes: releasesNodes,
-          from: fromVersion,
-          to: toVersion,
-        });
-
-        const filteredRepositoryReleases = {
-          ...repository,
-          releases: {
-            nodes: filteredReleasesNodes,
-          },
-        };
-
-        onChange(filteredRepositoryReleases);
-      }
-    },
-    [data, onChange, versionRage]
-  );
+  React.useEffect(function handleVersionRangeEffect() {
+    onVersionRangeChange(versionRage);
+  });
 
   React.useEffect(
     function handleErrorChange() {
@@ -141,7 +153,7 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
   };
 
   const releasesOptions = renderOptionsFromReleases(
-    data?.repository.releases?.nodes
+    data?.repository.releases.nodes
   );
 
   const selectPlaceholder =
@@ -156,9 +168,9 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
       spacing={{ base: 2, md: 6 }}
       isInline={windowWidth >= INLINE_BREAKPOINT}
     >
-      <RepositoryUrlFormControl
+      <RepositoryFormControl
         isLoading={loading}
-        onSuccess={handleRepositoryChange}
+        onChange={handleRepositoryChange}
       />
       <ReleaseVersionFormControl
         label="From release"
@@ -166,7 +178,7 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
         width={{ base: 'full', md: '30%' }}
         isDisabled={!releasesOptions}
         placeholder={selectPlaceholder}
-        onSuccess={handleFromVersionChange}
+        onChange={handleFromVersionChange}
         value={fromVersion}
       >
         {releasesOptions}
@@ -177,7 +189,7 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
         width={{ base: 'full', md: '30%' }}
         isDisabled={!releasesOptions}
         placeholder={selectPlaceholder}
-        onSuccess={handleToVersionChange}
+        onChange={handleToVersionChange}
         value={toVersion}
       >
         {releasesOptions}
