@@ -5,7 +5,6 @@ export type GitHubRepositoryData = {
 
 export type Release = {
   id: string;
-  name: string;
   description: string;
   tagName: string;
   isDraft: boolean;

@@ -37,11 +37,13 @@ const renderOptionsFromReleases = (
   releases?: Array<Release>
 ): Array<React.ReactNode> | null => {
   if (releases) {
-    return releases.map((release) => (
-      <option key={release.id} value={release.name}>
-        {release.name}
-      </option>
-    ));
+    return releases
+      .filter(({ isDraft, isPrerelease }) => !isDraft && !isPrerelease)
+      .map((release) => (
+        <option key={release.id} value={release.tagName}>
+          {release.tagName}
+        </option>
+      ));
   }
 
   return null;
@@ -57,8 +59,8 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
   onVersionRangeChange,
 }) => {
   const [
-    repositoryData,
-    setRepositoryData,
+    repositoryQueryData,
+    setRepositoryQueryData,
   ] = React.useState<GitHubRepositoryData | null>(null);
 
   const [versionRage, setVersionRange] = React.useState<VersionRange>(
@@ -72,7 +74,10 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
   const { loading, error, data } = useQuery<
     { repository: RepositoryReleases },
     GitHubRepositoryData | null
-  >(RELEASES_QUERY, { variables: repositoryData, skip: !repositoryData });
+  >(RELEASES_QUERY, {
+    variables: repositoryQueryData,
+    skip: !repositoryQueryData,
+  });
 
   React.useEffect(
     function handleQueryDataChange() {
@@ -108,7 +113,7 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
   );
 
   const handleRepositoryChange = (newRepoData: GitHubRepositoryData | null) => {
-    setRepositoryData(newRepoData);
+    setRepositoryQueryData(newRepoData);
 
     // clear versions
     setVersionRange(EMPTY_VERSION_RANGE);
