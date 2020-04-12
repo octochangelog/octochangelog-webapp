@@ -25,11 +25,11 @@ const RepositoryReleasesChangelog: React.FC<PropTypes> = ({ repository }) => {
         <Heading fontSize="sm" mb={4}>
           Comparing releases from{' '}
           <Tag size="sm" variantColor="orange">
-            {nodes[0].name}
+            {nodes[0].tagName}
           </Tag>{' '}
           to{' '}
           <Tag size="sm" variantColor="orange">
-            {nodes[nodes.length - 1].name}
+            {nodes[nodes.length - 1].tagName}
           </Tag>
         </Heading>
       ) : (
@@ -41,7 +41,7 @@ const RepositoryReleasesChangelog: React.FC<PropTypes> = ({ repository }) => {
       {nodes && (
         <Stack spacing={4}>
           {nodes.map((release) => (
-            <Code key={release.id}>{release.description}</Code>
+            <Code key={release.tagName}>{release.description}</Code>
           ))}
         </Stack>
       )}

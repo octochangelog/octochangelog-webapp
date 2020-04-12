@@ -9,23 +9,23 @@ import {
 type CustomProps = {
   label: string;
   placeholder?: string;
-  onVersionChange(version: string): void;
+  onSuccess(version: string): void;
   value?: string;
 };
 
 type PropTypes = FormControlProps & CustomProps;
 
-const ReleaseVersionSelect: React.FC<PropTypes> = ({
+const ReleaseVersionFormControl: React.FC<PropTypes> = ({
   children,
   label,
   id,
   placeholder = 'Select version',
-  onVersionChange,
+  onSuccess,
   value,
   ...rest
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onVersionChange(e.target.value);
+    onSuccess(e.target.value);
   };
 
   return (
@@ -43,4 +43,4 @@ const ReleaseVersionSelect: React.FC<PropTypes> = ({
   );
 };
 
-export default ReleaseVersionSelect;
+export default ReleaseVersionFormControl;

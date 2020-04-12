@@ -3,8 +3,8 @@ import { Stack, useToast } from '@chakra-ui/core';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import { GitHubRepositoryData, Release, RepositoryReleases } from 'types';
-import RepositoryUrlInput from 'components/RepositoryUrlInput';
-import ReleaseVersionSelect from 'components/ReleaseVersionSelect';
+import RepositoryUrlFormControl from 'components/RepositoryUrlFormControl';
+import ReleaseVersionFormControl from 'components/ReleaseVersionFormControl';
 import useWindowWidth from 'hooks/useWindowWidth';
 import { filterReleasesNodes } from 'utils';
 
@@ -22,6 +22,7 @@ export const RELEASES_QUERY = gql`
           description
           id
           name
+          tagName
         }
       }
     }
@@ -33,7 +34,7 @@ const renderOptionsFromReleases = (
 ): Array<React.ReactNode> | null => {
   if (releases) {
     return releases.map((release) => (
-      <option key={release.name} value={release.name}>
+      <option key={release.id} value={release.name}>
         {release.name}
       </option>
     ));
@@ -68,8 +69,7 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
   React.useEffect(
     function handleDataChange() {
       if (data) {
-        const { releases, ...repository } = data.repository;
-        onChange(repository);
+        onChange(data.repository);
       } else {
         onChange(null);
       }
@@ -156,32 +156,32 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({ onChange }) => {
       spacing={{ base: 2, md: 6 }}
       isInline={windowWidth >= INLINE_BREAKPOINT}
     >
-      <RepositoryUrlInput
+      <RepositoryUrlFormControl
         isLoading={loading}
-        onRepositoryChange={handleRepositoryChange}
+        onSuccess={handleRepositoryChange}
       />
-      <ReleaseVersionSelect
+      <ReleaseVersionFormControl
         label="From release"
         id="from-release"
         width={{ base: 'full', md: '30%' }}
         isDisabled={!releasesOptions}
         placeholder={selectPlaceholder}
-        onVersionChange={handleFromVersionChange}
+        onSuccess={handleFromVersionChange}
         value={fromVersion}
       >
         {releasesOptions}
-      </ReleaseVersionSelect>
-      <ReleaseVersionSelect
+      </ReleaseVersionFormControl>
+      <ReleaseVersionFormControl
         label="To release"
         id="to-release"
         width={{ base: 'full', md: '30%' }}
         isDisabled={!releasesOptions}
         placeholder={selectPlaceholder}
-        onVersionChange={handleToVersionChange}
+        onSuccess={handleToVersionChange}
         value={toVersion}
       >
         {releasesOptions}
-      </ReleaseVersionSelect>
+      </ReleaseVersionFormControl>
     </Stack>
   );
 };

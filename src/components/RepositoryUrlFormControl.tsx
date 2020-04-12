@@ -13,14 +13,14 @@ import { GitHubRepositoryData } from 'types';
 
 type CustomProps = {
   isLoading?: boolean;
-  onRepositoryChange(repoData: GitHubRepositoryData | null): void;
+  onSuccess(repoData: GitHubRepositoryData | null): void;
 };
 
 type PropTypes = FormControlProps & CustomProps;
 
-const RepositoryUrlInput: React.FC<PropTypes> = ({
-  onRepositoryChange,
-  // TODO: add onRepositoryClear callback
+const RepositoryUrlFormControl: React.FC<PropTypes> = ({
+  onSuccess,
+  // TODO: add onClear callback
   isLoading = false,
   ...rest
 }) => {
@@ -29,14 +29,14 @@ const RepositoryUrlInput: React.FC<PropTypes> = ({
 
   const handleGetRepositoryData = () => {
     const repoData = getRepositoryDataFromUrl(repoUrl);
-    onRepositoryChange(repoData);
+    onSuccess(repoData);
 
     if (repoData) {
       setError('');
-      // TODO: when onRepositoryClear available, call onRepositoryChange here
+      // TODO: when onClear available, call onSuccess here
     } else {
       setError('Please fill valid GitHub repository url');
-      // TODO: when onRepositoryClear available, call onRepositoryClear here
+      // TODO: when onClear available, call it here
     }
   };
 
@@ -83,4 +83,4 @@ const RepositoryUrlInput: React.FC<PropTypes> = ({
   );
 };
 
-export default RepositoryUrlInput;
+export default RepositoryUrlFormControl;
