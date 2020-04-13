@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box, BoxProps, Link, Flex, Heading } from '@chakra-ui/core';
 import { DiGithubBadge } from 'react-icons/di';
-import Container from './Container';
+import Container from 'components/Container';
+import { REPO_URL } from 'global';
 
 const Header = (props: BoxProps) => {
   return (
@@ -15,10 +16,7 @@ const Header = (props: BoxProps) => {
             </span>{' '}
             GitHub Compare Releases
           </Heading>
-          <Link
-            href="https://github.com/Belco90/github-compare-releases"
-            title="GitHub repo link"
-          >
+          <Link href={REPO_URL} title="GitHub repo link">
             <Box as={DiGithubBadge} size={{ xs: '6', md: '12' }} />
           </Link>
         </Flex>

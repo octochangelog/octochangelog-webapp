@@ -1,4 +1,4 @@
-export type GitHubRepositoryQueryVars = {
+export type RepositoryQueryVars = {
   name: string;
   owner: string;
 };

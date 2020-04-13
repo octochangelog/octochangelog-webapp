@@ -3,12 +3,12 @@ import { Stack, useToast } from '@chakra-ui/core';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import {
-  GitHubRepositoryQueryVars,
+  RepositoryQueryVars,
   Release,
   Repository,
   RepositoryResponse,
   VersionRange,
-} from 'global-types';
+} from 'models';
 import RepositoryFormControl from 'components/RepositoryFormControl';
 import ReleaseVersionFormControl from 'components/ReleaseVersionFormControl';
 import useWindowWidth from 'hooks/useWindowWidth';
@@ -40,13 +40,11 @@ const renderOptionsFromReleases = (
   releases?: Release[]
 ): React.ReactNode[] | null => {
   if (releases) {
-    return releases
-      .filter(({ isDraft, isPrerelease }) => !isDraft && !isPrerelease)
-      .map((release) => (
-        <option key={release.id} value={release.tagName}>
-          {release.tagName}
-        </option>
-      ));
+    return releases.map((release) => (
+      <option key={release.id} value={release.tagName}>
+        {release.tagName}
+      </option>
+    ));
   }
 
   return null;
@@ -69,7 +67,7 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
   const [
     repositoryQueryData,
     setRepositoryQueryData,
-  ] = React.useState<GitHubRepositoryQueryVars | null>(null);
+  ] = React.useState<RepositoryQueryVars | null>(null);
 
   const [versionRage, setVersionRange] = React.useState<VersionRange>(
     EMPTY_VERSION_RANGE
@@ -81,7 +79,7 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
 
   const { loading, error, data } = useQuery<
     { repository: RepositoryResponse },
-    GitHubRepositoryQueryVars | null
+    RepositoryQueryVars | null
   >(RELEASES_QUERY, {
     variables: repositoryQueryData,
     skip: !repositoryQueryData,
@@ -130,9 +128,7 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
     [error, toast]
   );
 
-  const handleRepositoryChange = (
-    newRepoData: GitHubRepositoryQueryVars | null
-  ) => {
+  const handleRepositoryChange = (newRepoData: RepositoryQueryVars | null) => {
     setRepositoryQueryData(newRepoData);
 
     // clear versions
@@ -149,12 +145,16 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
     setVersionRange([fromVersion, toVersion]);
   };
 
-  const releasesOptions = renderOptionsFromReleases(mappedRepository?.releases);
+  const releasesOptions = renderOptionsFromReleases(
+    mappedRepository?.releases.filter(
+      ({ isDraft, isPrerelease }) => !isDraft && !isPrerelease
+    )
+  );
 
   const selectPlaceholder =
     Array.isArray(releasesOptions) && releasesOptions.length === 0
       ? 'Versions not found'
-      : 'Select version';
+      : 'Pick one version';
 
   const [fromVersion, toVersion] = versionRage;
 
@@ -168,8 +168,8 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
         onChange={handleRepositoryChange}
       />
       <ReleaseVersionFormControl
-        label="From release"
-        id="from-release"
+        label="From version"
+        id="from-version"
         width={{ base: 'full', md: '30%' }}
         isDisabled={!releasesOptions}
         placeholder={selectPlaceholder}
@@ -179,8 +179,8 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
         {releasesOptions}
       </ReleaseVersionFormControl>
       <ReleaseVersionFormControl
-        label="To release"
-        id="to-release"
+        label="To version"
+        id="to-version"
         width={{ base: 'full', md: '30%' }}
         isDisabled={!releasesOptions}
         placeholder={selectPlaceholder}

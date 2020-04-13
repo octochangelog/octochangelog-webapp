@@ -1,13 +1,15 @@
 import React from 'react';
 import { Box, Flex, Link } from '@chakra-ui/core';
-import Container from './Container';
+import GitHubButton from 'react-github-btn';
+import Container from 'components/Container';
+import { REPO_URL } from 'global';
 
 const Footer = () => {
   return (
     <Box as="footer" bg="gray.50" flexShrink={0}>
       <Container py={5}>
-        <Flex justify="space-between">
-          <Box>
+        <Flex justify="space-between" alignItems="center">
+          <Box fontSize={{ base: 'md', md: 'lg' }}>
             Created with{' '}
             <span role="img" aria-label="Love">
               🧡
@@ -17,17 +19,16 @@ const Footer = () => {
               Mario
             </Link>
           </Box>
-          <Box>
-            <Link
-              className="github-button"
-              href="https://github.com/Belco90/github-compare-releases"
+          <Box mb="-8px">
+            <GitHubButton
+              href={REPO_URL}
               data-icon="octicon-star"
               data-size="large"
-              data-show-count="true"
+              data-show-count
               aria-label="Star Belco90/github-compare-releases on GitHub"
             >
               Star
-            </Link>
+            </GitHubButton>
           </Box>
         </Flex>
       </Container>

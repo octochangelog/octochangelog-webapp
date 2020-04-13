@@ -9,11 +9,11 @@ import {
   Stack,
 } from '@chakra-ui/core';
 import { getRepositoryDataFromUrl } from 'utils';
-import { GitHubRepositoryQueryVars } from 'global-types';
+import { RepositoryQueryVars } from 'models';
 
 type CustomProps = {
   isLoading?: boolean;
-  onChange(repoData: GitHubRepositoryQueryVars | null): void;
+  onChange(repoData: RepositoryQueryVars | null): void;
 };
 
 type PropTypes = Omit<FormControlProps, 'onChange'> & CustomProps;
@@ -64,12 +64,12 @@ const RepositoryFormControl: React.FC<PropTypes> = ({
         <Input
           type="text"
           id="repo-url"
-          placeholder="Paste the repo url and press enter or click search button"
+          placeholder="Fill this and press enter or click search button"
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
         />
         <IconButton
-          aria-label="Search database"
+          aria-label="Search repository"
           variantColor="orange"
           icon="search"
           isLoading={isLoading}

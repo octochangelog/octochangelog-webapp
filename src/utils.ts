@@ -1,11 +1,11 @@
 import semver from 'semver';
-import { GitHubRepositoryQueryVars, Release } from 'global-types';
+import { RepositoryQueryVars, Release } from 'models';
 
 const gitHubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,\-_]+)\/([\w,\-_]+)(.git)?((\/)?)/;
 
 export function getRepositoryDataFromUrl(
   url: string
-): GitHubRepositoryQueryVars | null {
+): RepositoryQueryVars | null {
   const matchGroups = url.match(gitHubRepoRegExp);
   const owner = matchGroups?.[7];
   const name = matchGroups?.[8];

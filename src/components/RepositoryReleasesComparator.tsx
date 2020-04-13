@@ -2,7 +2,7 @@ import React from 'react';
 import { Divider } from '@chakra-ui/core';
 import RepositoryReleasesPicker from 'components/RepositoryReleasesPicker';
 import RepositoryReleasesChangelog from 'components/RepositoryReleasesChangelog';
-import { Repository, VersionRange } from 'global-types';
+import { Repository, VersionRange } from 'models';
 
 const RepositoryReleasesComparator = () => {
   const [

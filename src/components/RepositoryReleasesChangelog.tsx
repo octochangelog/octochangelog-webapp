@@ -1,6 +1,6 @@
 import React from 'react';
 import { Code, Heading, Link, Stack, Tag, Text } from '@chakra-ui/core';
-import { Release, Repository } from 'global-types';
+import { Release, Repository } from 'models';
 import { filterReleasesByVersionRange } from 'utils';
 
 type PropTypes = {
