@@ -11,19 +11,20 @@ import {
 import { getRepositoryDataFromUrl } from 'utils';
 import { RepositoryQueryVars } from 'models';
 
-type CustomProps = {
+interface CustomProps {
   isLoading?: boolean;
   onChange(repoData: RepositoryQueryVars | null): void;
-};
+}
 
-type PropTypes = Omit<FormControlProps, 'onChange'> & CustomProps;
+type RepositoryFormControlProps = Omit<FormControlProps, 'onChange'> &
+  CustomProps;
 
-const RepositoryFormControl: React.FC<PropTypes> = ({
+const RepositoryFormControl = ({
   onChange,
   // TODO: add onClear callback
   isLoading = false,
   ...rest
-}) => {
+}: RepositoryFormControlProps) => {
   const [repoUrl, setRepoUrl] = React.useState<string>('');
   const [error, setError] = React.useState<string>('');
 

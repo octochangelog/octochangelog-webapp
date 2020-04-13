@@ -6,16 +6,17 @@ import {
   Select,
 } from '@chakra-ui/core';
 
-type CustomProps = {
+interface CustomProps {
   label: string;
   placeholder?: string;
   onChange(version: string): void;
   value?: string;
-};
+}
 
-type PropTypes = Omit<FormControlProps, 'onChange'> & CustomProps;
+type ReleaseVersionFormControlProps = Omit<FormControlProps, 'onChange'> &
+  CustomProps;
 
-const ReleaseVersionFormControl: React.FC<PropTypes> = ({
+const ReleaseVersionFormControl = ({
   children,
   label,
   id,
@@ -23,7 +24,7 @@ const ReleaseVersionFormControl: React.FC<PropTypes> = ({
   onChange,
   value,
   ...rest
-}) => {
+}: ReleaseVersionFormControlProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     onChange(e.target.value);
   };

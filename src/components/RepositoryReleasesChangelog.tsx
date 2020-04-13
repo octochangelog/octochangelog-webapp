@@ -3,17 +3,17 @@ import { Code, Heading, Link, Stack, Tag, Text } from '@chakra-ui/core';
 import { Release, Repository } from 'models';
 import { filterReleasesByVersionRange } from 'utils';
 
-type PropTypes = {
+interface RepositoryReleasesChangelogProps {
   repository: Repository | null;
   fromVersion: string;
   toVersion: string;
-};
+}
 
-const RepositoryReleasesChangelog: React.FC<PropTypes> = ({
+const RepositoryReleasesChangelog = ({
   repository,
   fromVersion,
   toVersion,
-}) => {
+}: RepositoryReleasesChangelogProps) => {
   const [filteredReleases, setFilteredReleases] = React.useState<
     Release[] | null
   >(null);

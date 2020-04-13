@@ -50,15 +50,15 @@ const renderOptionsFromReleases = (
   return null;
 };
 
-type PropTypes = {
+interface RepositoryReleasesPickerProps {
   onRepositoryChange(repository: Repository | null): void;
   onVersionRangeChange(versionRange: VersionRange): void;
-};
+}
 
-const RepositoryReleasesPicker: React.FC<PropTypes> = ({
+const RepositoryReleasesPicker = ({
   onRepositoryChange,
   onVersionRangeChange,
-}) => {
+}: RepositoryReleasesPickerProps) => {
   const [
     mappedRepository,
     setMappedRepository,
