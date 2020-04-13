@@ -1,5 +1,5 @@
 import semver from 'semver';
-import { GitHubRepositoryQueryVars, Release } from 'types';
+import { GitHubRepositoryQueryVars, Release } from 'global-types';
 
 const gitHubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,\-_]+)\/([\w,\-_]+)(.git)?((\/)?)/;
 
@@ -20,14 +20,14 @@ export function getRepositoryDataFromUrl(
 }
 
 type FilterReleasesNodes = {
-  releases: Array<Release>;
+  releases: Release[];
   from: string;
   to: string;
 };
 
 export function filterReleasesByVersionRange(
   args: FilterReleasesNodes
-): Array<Release> {
+): Release[] {
   const { releases, from, to } = args;
 
   // filter version range as (from, to]

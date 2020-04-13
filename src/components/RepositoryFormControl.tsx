@@ -9,7 +9,7 @@ import {
   Stack,
 } from '@chakra-ui/core';
 import { getRepositoryDataFromUrl } from 'utils';
-import { GitHubRepositoryQueryVars } from 'types';
+import { GitHubRepositoryQueryVars } from 'global-types';
 
 type CustomProps = {
   isLoading?: boolean;

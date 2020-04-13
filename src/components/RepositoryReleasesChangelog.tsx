@@ -1,10 +1,10 @@
 import React from 'react';
 import { Code, Heading, Link, Stack, Tag, Text } from '@chakra-ui/core';
-import { Release, RepositoryReleases } from 'types';
+import { Release, Repository } from 'global-types';
 import { filterReleasesByVersionRange } from 'utils';
 
 type PropTypes = {
-  repository: RepositoryReleases | null;
+  repository: Repository | null;
   fromVersion: string;
   toVersion: string;
 };
@@ -14,11 +14,11 @@ const RepositoryReleasesChangelog: React.FC<PropTypes> = ({
   fromVersion,
   toVersion,
 }) => {
-  const [filteredReleases, setFilteredReleases] = React.useState<Array<
-    Release
-  > | null>(null);
+  const [filteredReleases, setFilteredReleases] = React.useState<
+    Release[] | null
+  >(null);
 
-  const releases = repository?.releases.nodes;
+  const releases = repository?.releases;
 
   React.useEffect(
     function () {

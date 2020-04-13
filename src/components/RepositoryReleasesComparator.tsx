@@ -2,17 +2,17 @@ import React from 'react';
 import { Divider } from '@chakra-ui/core';
 import RepositoryReleasesPicker from 'components/RepositoryReleasesPicker';
 import RepositoryReleasesChangelog from 'components/RepositoryReleasesChangelog';
-import { RepositoryReleases, VersionRange } from 'types';
+import { Repository, VersionRange } from 'global-types';
 
 const RepositoryReleasesComparator = () => {
   const [
     repositorySelected,
     setRepositorySelected,
-  ] = React.useState<RepositoryReleases | null>(null);
+  ] = React.useState<Repository | null>(null);
 
   const [versionRage, setVersionRange] = React.useState<VersionRange>(['', '']);
 
-  const handleReleasesChange = React.useCallback(
+  const handleRepositoryChange = React.useCallback(
     (repository) => {
       setRepositorySelected(repository);
     },
@@ -29,7 +29,7 @@ const RepositoryReleasesComparator = () => {
   return (
     <>
       <RepositoryReleasesPicker
-        onReleaseChange={handleReleasesChange}
+        onRepositoryChange={handleRepositoryChange}
         onVersionRangeChange={handleVersionRangeChange}
       />
       <Divider my={4} />

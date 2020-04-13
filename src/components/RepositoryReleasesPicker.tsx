@@ -5,9 +5,10 @@ import { useQuery } from '@apollo/react-hooks';
 import {
   GitHubRepositoryQueryVars,
   Release,
-  RepositoryReleases,
+  Repository,
+  RepositoryResponse,
   VersionRange,
-} from 'types';
+} from 'global-types';
 import RepositoryFormControl from 'components/RepositoryFormControl';
 import ReleaseVersionFormControl from 'components/ReleaseVersionFormControl';
 import useWindowWidth from 'hooks/useWindowWidth';
@@ -17,16 +18,18 @@ const INLINE_BREAKPOINT = 768; // desktop
 const EMPTY_VERSION_RANGE: VersionRange = ['', ''];
 
 export const RELEASES_QUERY = gql`
-  query Repository($name: String!, $owner: String!) {
+  query RepositoryReleases($name: String!, $owner: String!) {
     repository(name: $name, owner: $owner) {
       name
       url
       releases(orderBy: { field: CREATED_AT, direction: ASC }, last: 100) {
-        nodes {
-          description
-          id
-          name
-          tagName
+        edges {
+          node {
+            description
+            id
+            name
+            tagName
+          }
         }
       }
     }
@@ -34,8 +37,8 @@ export const RELEASES_QUERY = gql`
 `;
 
 const renderOptionsFromReleases = (
-  releases?: Array<Release>
-): Array<React.ReactNode> | null => {
+  releases?: Release[]
+): React.ReactNode[] | null => {
   if (releases) {
     return releases
       .filter(({ isDraft, isPrerelease }) => !isDraft && !isPrerelease)
@@ -50,14 +53,19 @@ const renderOptionsFromReleases = (
 };
 
 type PropTypes = {
-  onReleaseChange(repository: RepositoryReleases | null): void;
+  onRepositoryChange(repository: Repository | null): void;
   onVersionRangeChange(versionRange: VersionRange): void;
 };
 
 const RepositoryReleasesPicker: React.FC<PropTypes> = ({
-  onReleaseChange,
+  onRepositoryChange,
   onVersionRangeChange,
 }) => {
+  const [
+    mappedRepository,
+    setMappedRepository,
+  ] = React.useState<Repository | null>(null);
+
   const [
     repositoryQueryData,
     setRepositoryQueryData,
@@ -72,7 +80,7 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
   const toast = useToast();
 
   const { loading, error, data } = useQuery<
-    { repository: RepositoryReleases },
+    { repository: RepositoryResponse },
     GitHubRepositoryQueryVars | null
   >(RELEASES_QUERY, {
     variables: repositoryQueryData,
@@ -80,14 +88,24 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
   });
 
   React.useEffect(
-    function handleQueryDataChange() {
+    function mapQueryData() {
+      let newMappedRepository = null;
       if (data) {
-        onReleaseChange(data.repository);
-      } else {
-        onReleaseChange(null);
+        newMappedRepository = {
+          ...data.repository,
+          releases: data.repository.releases.edges.map(({ node }) => node),
+        };
       }
+      setMappedRepository(newMappedRepository);
     },
-    [data, onReleaseChange]
+    [data, onRepositoryChange]
+  );
+
+  React.useEffect(
+    function handleMappedRepositoryChange() {
+      onRepositoryChange(mappedRepository);
+    },
+    [onRepositoryChange, mappedRepository]
   );
 
   React.useEffect(function handleVersionRangeEffect() {
@@ -95,7 +113,7 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
   });
 
   React.useEffect(
-    function handleErrorChange() {
+    function displayErrors() {
       if (error) {
         toast({
           title: 'An error occurred.',
@@ -131,9 +149,7 @@ const RepositoryReleasesPicker: React.FC<PropTypes> = ({
     setVersionRange([fromVersion, toVersion]);
   };
 
-  const releasesOptions = renderOptionsFromReleases(
-    data?.repository.releases.nodes
-  );
+  const releasesOptions = renderOptionsFromReleases(mappedRepository?.releases);
 
   const selectPlaceholder =
     Array.isArray(releasesOptions) && releasesOptions.length === 0
