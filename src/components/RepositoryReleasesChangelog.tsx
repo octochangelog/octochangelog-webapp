@@ -1,7 +1,10 @@
 import React from 'react';
 import { Code, Heading, Link, Stack, Tag, Text } from '@chakra-ui/core';
+import Converter from 'md-to-bemjson';
 import { Release, Repository } from 'models';
 import { filterReleasesByVersionRange } from 'utils';
+
+const md2Bemjson = new Converter();
 
 interface RepositoryReleasesChangelogProps {
   repository: Repository | null;
@@ -69,7 +72,13 @@ const RepositoryReleasesChangelog = ({
       {filteredReleases && (
         <Stack spacing={4}>
           {filteredReleases.map((release) => (
-            <Code key={release.tagName}>{release.description}</Code>
+            <Code key={release.tagName}>
+              {JSON.stringify(
+                md2Bemjson.convertSync(release.description),
+                null,
+                2
+              )}
+            </Code>
           ))}
         </Stack>
       )}
