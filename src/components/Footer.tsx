@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box, Flex, Link } from '@chakra-ui/core';
+import { Box, Flex } from '@chakra-ui/core';
 import GitHubButton from 'react-github-btn';
 import Container from 'components/Container';
 import { REPO_URL } from 'global';
+import Link from 'components/Link';
 
 const Footer = () => {
   return (
@@ -15,7 +16,7 @@ const Footer = () => {
               🧡
             </span>{' '}
             by{' '}
-            <Link href="https://mario.dev/" color="orange.500" isExternal>
+            <Link href="https://mario.dev/" isExternal>
               Mario
             </Link>
           </Box>

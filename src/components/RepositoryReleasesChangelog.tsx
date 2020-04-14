@@ -1,10 +1,29 @@
 import React from 'react';
-import { Code, Heading, Link, Stack, Tag, Text } from '@chakra-ui/core';
-import Converter from 'md-to-bemjson';
+import {
+  Box,
+  Code,
+  Heading,
+  List,
+  ListItem,
+  Stack,
+  Tag,
+  Text,
+} from '@chakra-ui/core';
+import unified from 'unified';
+import parse from 'remark-parse';
+import remark2react from 'remark-react';
 import { Release, Repository } from 'models';
 import { filterReleasesByVersionRange } from 'utils';
+import Link from 'components/Link';
 
-const md2Bemjson = new Converter();
+const remarkReactComponents = {
+  a: Link,
+  ul: (props: any) => <List styleType="disc" {...props} />,
+  li: ListItem,
+  h3: Heading,
+  code: Code,
+  p: Text,
+};
 
 interface RepositoryReleasesChangelogProps {
   repository: Repository | null;
@@ -47,7 +66,7 @@ const RepositoryReleasesChangelog = ({
   return (
     <>
       <Heading mb={4}>
-        <Link href={repository.url} color="orange.500" isExternal>
+        <Link href={repository.url} isExternal>
           {repository.name}
         </Link>
       </Heading>
@@ -72,13 +91,15 @@ const RepositoryReleasesChangelog = ({
       {filteredReleases && (
         <Stack spacing={4}>
           {filteredReleases.map((release) => (
-            <Code key={release.tagName}>
-              {JSON.stringify(
-                md2Bemjson.convertSync(release.description),
-                null,
-                2
-              )}
-            </Code>
+            <Box key={release.tagName}>
+              {
+                unified()
+                  .use(parse)
+                  .use(remark2react, { remarkReactComponents })
+                  // @ts-ignore
+                  .processSync(release.description).result
+              }
+            </Box>
           ))}
         </Stack>
       )}
