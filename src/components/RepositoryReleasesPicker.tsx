@@ -1,7 +1,7 @@
 import React from 'react';
 import { Stack, useToast } from '@chakra-ui/core';
 import { gql } from 'apollo-boost';
-import { useQuery } from '@apollo/react-hooks';
+import { useLazyQuery } from '@apollo/react-hooks';
 import {
   RepositoryQueryVars,
   Release,
@@ -64,11 +64,6 @@ const RepositoryReleasesPicker = ({
     setMappedRepository,
   ] = React.useState<Repository | null>(null);
 
-  const [
-    repositoryQueryData,
-    setRepositoryQueryData,
-  ] = React.useState<RepositoryQueryVars | null>(null);
-
   const [versionRage, setVersionRange] = React.useState<VersionRange>(
     EMPTY_VERSION_RANGE
   );
@@ -77,13 +72,10 @@ const RepositoryReleasesPicker = ({
 
   const toast = useToast();
 
-  const { loading, error, data } = useQuery<
+  const [retrieveReleases, { loading, data, error }] = useLazyQuery<
     { repository: RepositoryResponse },
     RepositoryQueryVars | null
-  >(RELEASES_QUERY, {
-    variables: repositoryQueryData,
-    skip: !repositoryQueryData,
-  });
+  >(RELEASES_QUERY);
 
   React.useEffect(
     function mapQueryData() {
@@ -115,7 +107,7 @@ const RepositoryReleasesPicker = ({
       if (error) {
         toast({
           title: 'An error occurred.',
-          description: 'Unable to retrieve repository releases',
+          description: 'Unable to retrieve releases for that repository',
           status: 'error',
           duration: 5000,
           isClosable: true,
@@ -128,12 +120,15 @@ const RepositoryReleasesPicker = ({
     [error, toast]
   );
 
-  const handleRepositoryChange = (newRepoData: RepositoryQueryVars | null) => {
-    setRepositoryQueryData(newRepoData);
+  const handleRepositorySearch = React.useCallback(
+    (newRepoData: RepositoryQueryVars | null) => {
+      retrieveReleases({ variables: newRepoData });
 
-    // clear versions
-    setVersionRange(EMPTY_VERSION_RANGE);
-  };
+      // clear versions
+      setVersionRange(EMPTY_VERSION_RANGE);
+    },
+    [retrieveReleases]
+  );
 
   const handleFromVersionChange = (fromVersion: string) => {
     const [, toVersion] = versionRage;
@@ -165,7 +160,7 @@ const RepositoryReleasesPicker = ({
     >
       <RepositoryFormControl
         isLoading={loading}
-        onChange={handleRepositoryChange}
+        onSearch={handleRepositorySearch}
       />
       <ReleaseVersionFormControl
         label="From version"

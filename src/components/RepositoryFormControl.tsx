@@ -13,43 +13,48 @@ import { RepositoryQueryVars } from 'models';
 
 interface CustomProps {
   isLoading?: boolean;
-  onChange(repoData: RepositoryQueryVars | null): void;
+  onSearch(repoData: RepositoryQueryVars | null): void;
 }
 
-type RepositoryFormControlProps = Omit<FormControlProps, 'onChange'> &
-  CustomProps;
+type RepositoryFormControlProps = FormControlProps & CustomProps;
 
 const RepositoryFormControl = ({
   onChange,
-  // TODO: add onClear callback
+  onSearch,
   isLoading = false,
   ...rest
 }: RepositoryFormControlProps) => {
   const [repoUrl, setRepoUrl] = React.useState<string>('');
   const [error, setError] = React.useState<string>('');
 
-  const handleGetRepositoryData = () => {
-    const repoData = getRepositoryDataFromUrl(repoUrl);
-    onChange(repoData);
+  const triggerSearch = (url: string) => {
+    const repoData = getRepositoryDataFromUrl(url);
+    onSearch(repoData);
 
     if (repoData) {
       setError('');
-      // TODO: when onClear available, call onChange here
-    } else {
+    } else if (repoUrl) {
       setError('Please fill valid GitHub repository url');
-      // TODO: when onClear available, call it here
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setError('');
-    setRepoUrl(e.target.value);
+    setRepoUrl(event.target.value);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      handleGetRepositoryData();
+      triggerSearch(repoUrl);
     }
+  };
+
+  const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
+    setError('');
+
+    const pastedText = event.clipboardData.getData('Text');
+    setRepoUrl(pastedText);
+    triggerSearch(pastedText);
   };
 
   return (
@@ -65,16 +70,19 @@ const RepositoryFormControl = ({
         <Input
           type="text"
           id="repo-url"
-          placeholder="Fill this and press enter or click search button"
+          placeholder="Paste, press enter or click button to search"
+          autoFocus
+          value={repoUrl}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
+          onPaste={handlePaste}
         />
         <IconButton
           aria-label="Search repository"
           variantColor="orange"
           icon="search"
           isLoading={isLoading}
-          onClick={handleGetRepositoryData}
+          onClick={() => triggerSearch(repoUrl)}
         />
       </Stack>
       <FormErrorMessage>
