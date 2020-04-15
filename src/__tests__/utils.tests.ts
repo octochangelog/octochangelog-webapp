@@ -15,6 +15,10 @@ describe('getRepositoryDataFromUrl function', () => {
     ${'https://github.com/Belco90/github-compare-releases.git'} | ${'Belco90'}         | ${'github-compare-releases'}
     ${'http://github.com/Belco90/github-compare-releases.git'}  | ${'Belco90'}         | ${'github-compare-releases'}
     ${'git@github.com:Belco90/github-compare-releases.git'}     | ${'Belco90'}         | ${'github-compare-releases'}
+    ${'https://github.com/zeit/next.js'}                        | ${'zeit'}            | ${'next.js'}
+    ${'https://github.com/zeit/next.js'}                        | ${'zeit'}            | ${'next.js'}
+    ${'https://github.com/zeit/next.js.git'}                    | ${'zeit'}            | ${'next.js'}
+    ${'git@github.com:zeit/next.js.git'}                        | ${'zeit'}            | ${'next.js'}
   `(
     'should return data from valid url "$url"',
     ({ url, expectedName, expectedOwner }) => {

@@ -1,22 +1,29 @@
 import semver from 'semver';
 import { RepositoryQueryVars, Release } from 'models';
 
-const gitHubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,\-_]+)\/([\w,\-_]+)(.git)?((\/)?)/;
+const gitHubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,\-_.]+)\/([\w,\-_.]+)(.git)?((\/)?)/;
 
 export function getRepositoryDataFromUrl(
   url: string
 ): RepositoryQueryVars | null {
-  const matchGroups = url.match(gitHubRepoRegExp);
-  const owner = matchGroups?.[7];
-  const name = matchGroups?.[8];
+  let repoObj = null;
 
-  if (owner && name) {
-    return {
-      name,
-      owner,
-    };
+  try {
+    const matchGroups = url.match(gitHubRepoRegExp);
+    const owner = matchGroups?.[7];
+    const name = matchGroups?.[8]?.replace('.git', ''); // remove .git suffix for repo names like next.js
+
+    if (owner && name) {
+      repoObj = {
+        name,
+        owner,
+      };
+    }
+  } catch (e) {
+    // do nothing
   }
-  return null;
+
+  return repoObj;
 }
 
 type FilterReleasesNodes = {
