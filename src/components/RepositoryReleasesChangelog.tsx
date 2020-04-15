@@ -1,8 +1,10 @@
 import React from 'react';
 import {
   Box,
+  BoxProps,
   Code,
   Heading,
+  HeadingProps,
   List,
   ListItem,
   Stack,
@@ -18,11 +20,16 @@ import Link from 'components/Link';
 
 const remarkReactComponents = {
   a: Link,
-  ul: (props: any) => <List styleType="disc" {...props} />,
+  ul: (props: any) => <List styleType="disc" mb="4" {...props} />,
   li: ListItem,
-  h3: Heading,
-  code: Code,
-  p: Text,
+  h1: (props: HeadingProps) => <Heading as="h1" size="2xl" mb="4" {...props} />,
+  h2: (props: HeadingProps) => <Heading as="h2" size="xl" mb="4" {...props} />,
+  h3: (props: HeadingProps) => <Heading as="h3" size="lg" mb="4" {...props} />,
+  h4: (props: HeadingProps) => <Heading as="h4" size="md" mb="4" {...props} />,
+  h5: (props: HeadingProps) => <Heading as="h5" size="sm" mb="4" {...props} />,
+  h6: (props: HeadingProps) => <Heading as="h6" size="xs" mb="4" {...props} />,
+  code: (props: BoxProps) => <Code mb="4" px="2" {...props} />,
+  p: (props: BoxProps) => <Text mb="4" {...props} />,
 };
 
 interface RepositoryReleasesChangelogProps {
@@ -65,7 +72,7 @@ const RepositoryReleasesChangelog = ({
 
   return (
     <>
-      <Heading mb={4}>
+      <Heading as="h1" size="2xl" mb={4}>
         <Link href={repository.url} isExternal>
           {repository.name}
         </Link>
@@ -89,7 +96,7 @@ const RepositoryReleasesChangelog = ({
       )}
 
       {filteredReleases && (
-        <Stack spacing={4}>
+        <Stack spacing={6}>
           {filteredReleases.map((release) => (
             <Box key={release.tagName}>
               {
