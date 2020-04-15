@@ -4,6 +4,7 @@ describe('getRepositoryDataFromUrl function', () => {
   it.each`
     url                                                         | expectedOwner        | expectedName
     ${'https://github.com/some_repo-owner/some-repo_name'}      | ${'some_repo-owner'} | ${'some-repo_name'}
+    ${'Https://github.com/Some_repo-owner/some-Repo_name'}      | ${'Some_repo-owner'} | ${'some-Repo_name'}
     ${'http://github.com/some_repo-owner/some-repo_name'}       | ${'some_repo-owner'} | ${'some-repo_name'}
     ${'http://www.github.com/some_repo-owner/some-repo_name'}   | ${'some_repo-owner'} | ${'some-repo_name'}
     ${'https://github.com/some_repo-owner/some-repo_name.git'}  | ${'some_repo-owner'} | ${'some-repo_name'}

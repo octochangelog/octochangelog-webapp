@@ -1,7 +1,7 @@
 import semver from 'semver';
 import { RepositoryQueryVars, Release } from 'models';
 
-const gitHubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,\-_.]+)\/([\w,\-_.]+)(.git)?((\/)?)/;
+const gitHubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,\-_.]+)\/([\w,\-_.]+)(.git)?((\/)?)/i;
 
 export function getRepositoryDataFromUrl(
   url: string
