@@ -72,6 +72,7 @@ const RepositoryFormControl = ({
           id="repo-url"
           placeholder="Paste, press enter or click button to search"
           autoFocus
+          autoCapitalize="off"
           value={repoUrl}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
