@@ -88,7 +88,8 @@ const RepositoryReleasesPicker = ({
             .map(({ node }) => node)
             .filter(
               // exclude pre-releases
-              ({ tagName }) => !semver.prerelease(tagName)
+              ({ tagName }) =>
+                semver.valid(tagName) && !semver.prerelease(tagName)
             ),
         };
       }
