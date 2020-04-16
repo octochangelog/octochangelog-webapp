@@ -39,9 +39,6 @@ export function filterReleasesByVersionRange(
 
   // filter version range as (from, to]
   return releases.filter(
-    ({ tagName }) =>
-      semver.valid(tagName) &&
-      semver.gt(tagName, from) &&
-      semver.lte(tagName, to)
+    ({ tagName }) => semver.gt(tagName, from) && semver.lte(tagName, to)
   );
 }

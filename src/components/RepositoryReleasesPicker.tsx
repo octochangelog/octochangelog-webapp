@@ -2,6 +2,7 @@ import React from 'react';
 import { Stack, useToast } from '@chakra-ui/core';
 import { gql } from 'apollo-boost';
 import { useLazyQuery } from '@apollo/react-hooks';
+import semver from 'semver';
 import {
   RepositoryQueryVars,
   Release,
@@ -83,7 +84,12 @@ const RepositoryReleasesPicker = ({
       if (data) {
         newMappedRepository = {
           ...data.repository,
-          releases: data.repository.releases.edges.map(({ node }) => node),
+          releases: data.repository.releases.edges
+            .map(({ node }) => node)
+            .filter(
+              // exclude pre-releases
+              ({ tagName }) => !semver.prerelease(tagName)
+            ),
         };
       }
       setMappedRepository(newMappedRepository);
