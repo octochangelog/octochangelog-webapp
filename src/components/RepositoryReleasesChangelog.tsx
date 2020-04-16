@@ -28,7 +28,7 @@ const remarkReactComponents = {
   h4: (props: HeadingProps) => <Heading as="h4" size="md" mb="4" {...props} />,
   h5: (props: HeadingProps) => <Heading as="h5" size="sm" mb="4" {...props} />,
   h6: (props: HeadingProps) => <Heading as="h6" size="xs" mb="4" {...props} />,
-  code: (props: BoxProps) => <Code mb="4" px="2" {...props} />,
+  code: (props: BoxProps) => <Code px="2" {...props} />,
   p: (props: BoxProps) => <Text mb="4" {...props} />,
 };
 
