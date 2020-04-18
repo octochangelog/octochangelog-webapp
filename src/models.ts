@@ -30,3 +30,8 @@ export type Release = {
 };
 
 export type VersionRange = [string, string];
+
+// FIXME: generate proper types for processed release
+export type ProcessedReleasesCollection = any;
+
+export type ProcessedRelease = any;

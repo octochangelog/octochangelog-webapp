@@ -1,5 +1,5 @@
 import React from 'react';
-import throttle from 'lodash.throttle';
+import { throttle } from 'lodash';
 
 function useWindowWidth(): number {
   const [width, setSize] = React.useState<number>(0);

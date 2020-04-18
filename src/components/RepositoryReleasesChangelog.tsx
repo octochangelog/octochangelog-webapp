@@ -17,17 +17,18 @@ import remark2react from 'remark-react';
 import { Release, Repository } from 'models';
 import { filterReleasesByVersionRange } from 'utils';
 import Link from 'components/Link';
+import useProcessReleases from 'hooks/useProcessReleases';
 
 const remarkReactComponents = {
   a: Link,
   ul: (props: any) => <List styleType="disc" mb="4" {...props} />,
   li: ListItem,
-  h1: (props: HeadingProps) => <Heading as="h1" size="2xl" mb="4" {...props} />,
-  h2: (props: HeadingProps) => <Heading as="h2" size="xl" mb="4" {...props} />,
-  h3: (props: HeadingProps) => <Heading as="h3" size="lg" mb="4" {...props} />,
-  h4: (props: HeadingProps) => <Heading as="h4" size="md" mb="4" {...props} />,
-  h5: (props: HeadingProps) => <Heading as="h5" size="sm" mb="4" {...props} />,
-  h6: (props: HeadingProps) => <Heading as="h6" size="xs" mb="4" {...props} />,
+  h1: (props: HeadingProps) => <Heading as="h2" size="xl" mb="4" {...props} />,
+  h2: (props: HeadingProps) => <Heading as="h3" size="lg" mb="4" {...props} />,
+  h3: (props: HeadingProps) => <Heading as="h4" size="md" mb="4" {...props} />,
+  h4: (props: HeadingProps) => <Heading as="h5" size="sm" mb="4" {...props} />,
+  h5: (props: HeadingProps) => <Heading as="h6" size="xs" mb="2" {...props} />,
+  h6: (props: HeadingProps) => <Heading as="h6" size="xs" mb="2" {...props} />,
   code: (props: BoxProps) => <Code px="2" {...props} />,
   p: (props: BoxProps) => <Text mb="4" {...props} />,
 };
@@ -47,10 +48,12 @@ const RepositoryReleasesChangelog = ({
     Release[] | null
   >(null);
 
+  const processedReleases = useProcessReleases(filteredReleases);
+
   const releases = repository?.releases;
 
   React.useEffect(
-    function () {
+    function filterReleases() {
       if (releases && fromVersion && toVersion) {
         setFilteredReleases(
           filterReleasesByVersionRange({
@@ -63,7 +66,7 @@ const RepositoryReleasesChangelog = ({
         setFilteredReleases(null);
       }
     },
-    [fromVersion, releases, toVersion]
+    [releases, fromVersion, toVersion]
   );
 
   if (!repository) {
@@ -95,20 +98,23 @@ const RepositoryReleasesChangelog = ({
         </Text>
       )}
 
-      {filteredReleases && (
+      {processedReleases ? (
         <Stack spacing={6}>
-          {filteredReleases.map((release) => (
-            <Box key={release.tagName}>
-              {
-                unified()
-                  .use(parse)
-                  .use(remark2react, { remarkReactComponents })
-                  // @ts-ignore
-                  .processSync(release.description).result
-              }
+          {Object.keys(processedReleases).map((changeType: string) => (
+            <Box key={changeType}>
+              <Heading as="h2" size="xl">
+                {changeType}
+              </Heading>
+              <Code>
+                {JSON.stringify(processedReleases[changeType], null, 2)}
+              </Code>
             </Box>
           ))}
         </Stack>
+      ) : (
+        <Text as="i" color="gray.500">
+          No processed releases to show
+        </Text>
       )}
     </>
   );
