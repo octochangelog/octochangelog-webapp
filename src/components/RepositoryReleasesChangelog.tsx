@@ -13,7 +13,11 @@ import {
 } from '@chakra-ui/core';
 import unified from 'unified';
 import parse from 'remark-parse';
-import remark2react from 'remark-react';
+import markdown from 'remark-stringify';
+import github from 'remark-github';
+import remark2rehype from 'remark-rehype';
+import highlight from 'rehype-highlight';
+import rehype2react from 'rehype-react';
 import { Release, Repository } from 'models';
 import { filterReleasesByVersionRange } from 'utils';
 import Link from 'components/Link';
@@ -73,6 +77,16 @@ const RepositoryReleasesChangelog = ({
     return null;
   }
 
+  const processor = unified()
+    .use(parse)
+    .use(github, { repository: repository.url })
+    .use(remark2rehype)
+    .use(highlight)
+    .use(rehype2react, {
+      createElement: React.createElement,
+      components: remarkReactComponents,
+    });
+
   return (
     <>
       <Heading as="h1" size="2xl" mb={4}>
@@ -105,9 +119,20 @@ const RepositoryReleasesChangelog = ({
               <Heading as="h2" size="xl">
                 {changeType}
               </Heading>
-              <Code>
-                {JSON.stringify(processedReleases[changeType], null, 2)}
-              </Code>
+              <Box mb={4}>
+                {processedReleases[changeType].map(
+                  ({ descriptionMdast }: any, idx: number) => (
+                    <Box key={idx}>
+                      {
+                        processor.processSync(
+                          unified().use(markdown).stringify(descriptionMdast)
+                          // @ts-ignore
+                        ).result
+                      }
+                    </Box>
+                  )
+                )}
+              </Box>
             </Box>
           ))}
         </Stack>

@@ -15,6 +15,8 @@ function insertReleaseInGroup(newProcessedRelease: any, groupedReleases: any) {
   }
 }
 
+const processor = unified().use(markdown);
+
 function useProcessReleases(
   releases: Release[] | null
 ): ProcessedReleasesCollection {
@@ -30,13 +32,15 @@ function useProcessReleases(
         releases.forEach((rel) => {
           const { description, ...remainingRel } = rel;
 
-          const mdastDescription: any = unified()
-            .use(markdown)
-            .parse(description);
+          const mdastDescription: any = processor.parse(description);
 
           let newProcessedRelease: any;
           mdastDescription.children.forEach((mdastNode: any) => {
-            if (mdastNode.type === 'heading') {
+            if (
+              mdastNode.type === 'heading' &&
+              [1, 2, 3].includes(mdastNode.depth)
+            ) {
+              console.log(mdastNode);
               // check if prev release available, and save it if so...
               if (newProcessedRelease) {
                 insertReleaseInGroup(
