@@ -11,16 +11,10 @@ import {
 } from '@chakra-ui/core/';
 import { ProcessedReleaseChange, RepositoryInfo } from 'models';
 import Link from 'components/Link';
-import unified from 'unified';
-import parse from 'remark-parse';
-import github from 'remark-github';
-import remark2rehype from 'remark-rehype';
-import highlight from 'rehype-highlight';
-import rehype2react from 'rehype-react';
-import markdown from 'remark-stringify';
 import BlockQuote from 'components/BlockQuote';
 
 import 'highlight.styles.github.min.css';
+import useProcessDescriptionMdast from 'hooks/useProcessDescriptionMdast';
 
 const remarkReactComponents = {
   h1: (props: HeadingProps) => <Heading as="h2" size="xl" mb="4" {...props} />,
@@ -48,35 +42,11 @@ const ProcessedReleaseChangeDescription = ({
   repository,
   ...rest
 }: ProcessedReleaseChangeProps) => {
-  const [
-    processedDescription,
-    setProcessedDescription,
-  ] = React.useState<React.ReactNode | null>(null);
-
-  React.useEffect(
-    function processDescriptionMdast() {
-      const processor = unified()
-        .use(parse)
-        .use(github, { repository: repository.url })
-        .use(remark2rehype)
-        .use(highlight, { ignoreMissing: true })
-        .use(rehype2react, {
-          createElement: React.createElement,
-          components: remarkReactComponents,
-        });
-
-      processor.process(
-        unified()
-          .use(markdown)
-          .stringify(processedReleaseChange.descriptionMdast),
-        (err, file: any) => {
-          // TODO: do something if err
-          setProcessedDescription(file.result);
-        }
-      );
-    },
-    [processedReleaseChange.descriptionMdast, repository.url]
-  );
+  const processedDescription = useProcessDescriptionMdast({
+    repository,
+    description: processedReleaseChange.descriptionMdast,
+    componentsMapping: remarkReactComponents,
+  });
 
   return (
     <Box {...rest}>
