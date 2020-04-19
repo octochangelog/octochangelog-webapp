@@ -10,7 +10,8 @@ _TODO: add demo gif here_
 ### Main Features:
 
 - Group several releases for comparing them at once with ease
-- Highlight different levels of changes for Semantic Versioning
+- Highlight syntax for code blocks
+- Sort by different level of changes for Semantic Versioning
 - Spot original version where specific changes were introduced
 
 ### TODO:

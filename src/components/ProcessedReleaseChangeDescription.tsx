@@ -20,18 +20,18 @@ import rehype2react from 'rehype-react';
 import markdown from 'remark-stringify';
 
 const remarkReactComponents = {
-  a: Link,
-  ul: (props: any) => <List styleType="disc" mb="4" {...props} />,
-  li: ListItem,
   h1: (props: HeadingProps) => <Heading as="h2" size="xl" mb="4" {...props} />,
   h2: (props: HeadingProps) => <Heading as="h3" size="lg" mb="4" {...props} />,
   h3: (props: HeadingProps) => <Heading as="h4" size="md" mb="4" {...props} />,
   h4: (props: HeadingProps) => <Heading as="h5" size="sm" mb="4" {...props} />,
   h5: (props: HeadingProps) => <Heading as="h6" size="xs" mb="2" {...props} />,
   h6: (props: HeadingProps) => <Heading as="h6" size="xs" mb="2" {...props} />,
-  // FIXME: pre?
+  p: (props: BoxProps) => <Text mb="2" {...props} />,
+  a: Link,
+  ul: (props: any) => <List styleType="disc" mb="4" {...props} />,
+  li: ListItem,
+  pre: (props: BoxProps) => <Box as="pre" mb="4" {...props} />,
   code: (props: BoxProps) => <Code px="2" {...props} />,
-  p: (props: BoxProps) => <Text mb="4" {...props} />,
 };
 
 interface ProcessedReleaseChangeProps extends BoxProps {
