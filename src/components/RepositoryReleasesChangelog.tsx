@@ -4,7 +4,9 @@ import { ProcessedReleaseChange, Release, Repository } from 'models';
 import { filterReleasesByVersionRange } from 'utils';
 import Link from 'components/Link';
 import useProcessReleases from 'hooks/useProcessReleases';
-import ProcessedReleaseChangeDescription from 'components/ProcessedReleaseChangeDescription';
+const ProcessedReleaseChangeDescription = React.lazy(() =>
+  import('components/ProcessedReleaseChangeDescription')
+);
 
 interface RepositoryReleasesChangelogProps {
   repository: Repository | null;
@@ -81,11 +83,15 @@ const RepositoryReleasesChangelog = ({
               <Box mb={4}>
                 {processedReleases[title].map(
                   (processedReleaseChange: ProcessedReleaseChange) => (
-                    <ProcessedReleaseChangeDescription
+                    <React.Suspense
+                      fallback={<div>Loading...</div>}
                       key={processedReleaseChange.id}
-                      repository={repository}
-                      processedReleaseChange={processedReleaseChange}
-                    />
+                    >
+                      <ProcessedReleaseChangeDescription
+                        repository={repository}
+                        processedReleaseChange={processedReleaseChange}
+                      />
+                    </React.Suspense>
                   )
                 )}
               </Box>
