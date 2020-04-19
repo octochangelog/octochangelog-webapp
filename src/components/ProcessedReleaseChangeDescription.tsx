@@ -18,6 +18,7 @@ import remark2rehype from 'remark-rehype';
 import highlight from 'rehype-highlight';
 import rehype2react from 'rehype-react';
 import markdown from 'remark-stringify';
+import BlockQuote from 'components/BlockQuote';
 
 const remarkReactComponents = {
   h1: (props: HeadingProps) => <Heading as="h2" size="xl" mb="4" {...props} />,
@@ -30,8 +31,9 @@ const remarkReactComponents = {
   a: Link,
   ul: (props: any) => <List styleType="disc" mb="4" {...props} />,
   li: ListItem,
-  pre: (props: BoxProps) => <Box as="pre" mb="4" {...props} />,
-  code: (props: BoxProps) => <Code px="2" {...props} />,
+  pre: (props: BoxProps) => <Code as="pre" mb="4" p="3" {...props} />,
+  code: (props: BoxProps) => <Code {...props} />,
+  blockquote: (props: BoxProps) => <BlockQuote mb="2" {...props} />,
 };
 
 interface ProcessedReleaseChangeProps extends BoxProps {
