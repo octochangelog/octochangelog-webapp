@@ -44,26 +44,39 @@ const ProcessedReleaseChangeDescription = ({
   repository,
   ...rest
 }: ProcessedReleaseChangeProps) => {
-  const processor = unified()
-    .use(parse)
-    .use(github, { repository: repository.url })
-    .use(remark2rehype)
-    .use(highlight)
-    .use(rehype2react, {
-      createElement: React.createElement,
-      components: remarkReactComponents,
-    });
+  const [
+    processedDescription,
+    setProcessedDescription,
+  ] = React.useState<React.ReactNode | null>(null);
+
+  React.useEffect(
+    function processDescriptionMdast() {
+      const processor = unified()
+        .use(parse)
+        .use(github, { repository: repository.url })
+        .use(remark2rehype)
+        .use(highlight)
+        .use(rehype2react, {
+          createElement: React.createElement,
+          components: remarkReactComponents,
+        });
+
+      processor.process(
+        unified()
+          .use(markdown)
+          .stringify(processedReleaseChange.descriptionMdast),
+        (err, file: any) => {
+          // TODO: do something if err
+          setProcessedDescription(file.result);
+        }
+      );
+    },
+    [processedReleaseChange.descriptionMdast, repository.url]
+  );
 
   return (
     <Box {...rest}>
-      {
-        processor.processSync(
-          unified()
-            .use(markdown)
-            .stringify(processedReleaseChange.descriptionMdast)
-          // @ts-ignore
-        ).result
-      }
+      {processedDescription ? processedDescription : 'PROCESSING...'}
     </Box>
   );
 };

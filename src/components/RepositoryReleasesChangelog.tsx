@@ -75,7 +75,7 @@ const RepositoryReleasesChangelog = ({
         <Stack spacing={6}>
           {Object.keys(processedReleases).map((title: string) => (
             <Box key={title}>
-              <Heading as="h2" size="xl">
+              <Heading as="h2" size="xl" mb={4}>
                 {title}
               </Heading>
               <Box mb={4}>

@@ -42,6 +42,6 @@ export type ProcessedReleasesCollection = any;
 export interface ProcessedReleaseChange extends Omit<Release, 'description'> {
   title: string;
   originalTitle: string;
-  // repository: RepositoryInfo;
+  // level: enumerate with error, warning, info or unknown
   descriptionMdast: Parent;
 }
