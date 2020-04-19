@@ -17,6 +17,7 @@ import github from 'remark-github';
 import remark2rehype from 'remark-rehype';
 import highlight from 'rehype-highlight';
 import rehype2react from 'rehype-react';
+import sanitize from 'rehype-sanitize';
 import markdown from 'remark-stringify';
 
 const remarkReactComponents = {
@@ -55,6 +56,7 @@ const ProcessedReleaseChangeDescription = ({
         .use(parse)
         .use(github, { repository: repository.url })
         .use(remark2rehype)
+        .use(sanitize)
         .use(highlight)
         .use(rehype2react, {
           createElement: React.createElement,
