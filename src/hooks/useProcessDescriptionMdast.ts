@@ -9,10 +9,15 @@ import highlight from 'rehype-highlight';
 import rehype2react from 'rehype-react';
 import markdown from 'remark-stringify';
 
-interface Args {
+interface HookArgs {
   repository: RepositoryInfo;
   description: Parent;
   componentsMapping: object;
+}
+
+interface HookReturnedValue {
+  processedDescription: React.ReactNode;
+  isProcessing: boolean;
 }
 
 async function processDescription(
@@ -48,13 +53,16 @@ function useProcessDescriptionMdast({
   repository,
   description,
   componentsMapping,
-}: Args): React.ReactNode {
+}: HookArgs): HookReturnedValue {
   const [
     processedDescription,
     setProcessedDescription,
   ] = React.useState<React.ReactNode | null>(null);
 
+  const [isProcessing, setIsProcessing] = React.useState<boolean>(false);
+
   React.useEffect(() => {
+    setIsProcessing(true);
     const handleProcessDescription = async () => {
       const result = await processDescription(
         description,
@@ -62,12 +70,21 @@ function useProcessDescriptionMdast({
         componentsMapping
       );
 
+      setIsProcessing(false);
       setProcessedDescription(result);
     };
     handleProcessDescription();
   }, [componentsMapping, description, repository.url]);
 
-  return processedDescription;
+  const result = React.useMemo(
+    () => ({
+      processedDescription,
+      isProcessing,
+    }),
+    [isProcessing, processedDescription]
+  );
+
+  return result;
 }
 
 export default useProcessDescriptionMdast;

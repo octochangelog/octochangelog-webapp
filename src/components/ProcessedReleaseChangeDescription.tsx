@@ -42,16 +42,14 @@ const ProcessedReleaseChangeDescription = ({
   repository,
   ...rest
 }: ProcessedReleaseChangeProps) => {
-  const processedDescription = useProcessDescriptionMdast({
+  const { processedDescription, isProcessing } = useProcessDescriptionMdast({
     repository,
     description: processedReleaseChange.descriptionMdast,
     componentsMapping: remarkReactComponents,
   });
 
   return (
-    <Box {...rest}>
-      {processedDescription ? processedDescription : 'PROCESSING...'}
-    </Box>
+    <Box {...rest}>{isProcessing ? 'PROCESSING...' : processedDescription}</Box>
   );
 };
 
