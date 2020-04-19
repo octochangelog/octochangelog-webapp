@@ -1,41 +1,10 @@
 import React from 'react';
-import {
-  Box,
-  BoxProps,
-  Code,
-  Heading,
-  HeadingProps,
-  List,
-  ListItem,
-  Stack,
-  Tag,
-  Text,
-} from '@chakra-ui/core';
-import unified from 'unified';
-import parse from 'remark-parse';
-import markdown from 'remark-stringify';
-import github from 'remark-github';
-import remark2rehype from 'remark-rehype';
-import highlight from 'rehype-highlight';
-import rehype2react from 'rehype-react';
-import { Release, Repository } from 'models';
+import { Box, Heading, Stack, Tag, Text } from '@chakra-ui/core';
+import { ProcessedReleaseChange, Release, Repository } from 'models';
 import { filterReleasesByVersionRange } from 'utils';
 import Link from 'components/Link';
 import useProcessReleases from 'hooks/useProcessReleases';
-
-const remarkReactComponents = {
-  a: Link,
-  ul: (props: any) => <List styleType="disc" mb="4" {...props} />,
-  li: ListItem,
-  h1: (props: HeadingProps) => <Heading as="h2" size="xl" mb="4" {...props} />,
-  h2: (props: HeadingProps) => <Heading as="h3" size="lg" mb="4" {...props} />,
-  h3: (props: HeadingProps) => <Heading as="h4" size="md" mb="4" {...props} />,
-  h4: (props: HeadingProps) => <Heading as="h5" size="sm" mb="4" {...props} />,
-  h5: (props: HeadingProps) => <Heading as="h6" size="xs" mb="2" {...props} />,
-  h6: (props: HeadingProps) => <Heading as="h6" size="xs" mb="2" {...props} />,
-  code: (props: BoxProps) => <Code px="2" {...props} />,
-  p: (props: BoxProps) => <Text mb="4" {...props} />,
-};
+import ProcessedReleaseChangeDescription from 'components/ProcessedReleaseChangeDescription';
 
 interface RepositoryReleasesChangelogProps {
   repository: Repository | null;
@@ -77,16 +46,6 @@ const RepositoryReleasesChangelog = ({
     return null;
   }
 
-  const processor = unified()
-    .use(parse)
-    .use(github, { repository: repository.url })
-    .use(remark2rehype)
-    .use(highlight)
-    .use(rehype2react, {
-      createElement: React.createElement,
-      components: remarkReactComponents,
-    });
-
   return (
     <>
       <Heading as="h1" size="2xl" mb={4}>
@@ -114,22 +73,19 @@ const RepositoryReleasesChangelog = ({
 
       {processedReleases ? (
         <Stack spacing={6}>
-          {Object.keys(processedReleases).map((changeType: string) => (
-            <Box key={changeType}>
+          {Object.keys(processedReleases).map((title: string) => (
+            <Box key={title}>
               <Heading as="h2" size="xl">
-                {changeType}
+                {title}
               </Heading>
               <Box mb={4}>
-                {processedReleases[changeType].map(
-                  ({ descriptionMdast }: any, idx: number) => (
-                    <Box key={idx}>
-                      {
-                        processor.processSync(
-                          unified().use(markdown).stringify(descriptionMdast)
-                          // @ts-ignore
-                        ).result
-                      }
-                    </Box>
+                {processedReleases[title].map(
+                  (processedReleaseChange: ProcessedReleaseChange) => (
+                    <ProcessedReleaseChangeDescription
+                      key={processedReleaseChange.id}
+                      repository={repository}
+                      processedReleaseChange={processedReleaseChange}
+                    />
                   )
                 )}
               </Box>

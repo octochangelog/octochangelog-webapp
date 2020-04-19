@@ -1,21 +1,21 @@
 import React from 'react';
 import unified from 'unified';
-import markdown from 'remark-parse';
+import parse from 'remark-parse';
 import { lowerCase } from 'lodash';
 import { ProcessedReleasesCollection, Release } from 'models';
 
 function insertReleaseInGroup(newProcessedRelease: any, groupedReleases: any) {
-  const { changeType } = newProcessedRelease;
-  if (groupedReleases[changeType]) {
+  const { title } = newProcessedRelease;
+  if (groupedReleases[title]) {
     // group already exists, then append new changes of same type
-    groupedReleases[changeType].push(newProcessedRelease);
+    groupedReleases[title].push(newProcessedRelease);
   } else {
     // group doesn't exist yet, then create it and init with new changes
-    groupedReleases[changeType] = [newProcessedRelease];
+    groupedReleases[title] = [newProcessedRelease];
   }
 }
 
-const processor = unified().use(markdown);
+const processor = unified().use(parse);
 
 function useProcessReleases(
   releases: Release[] | null
@@ -40,7 +40,6 @@ function useProcessReleases(
               mdastNode.type === 'heading' &&
               [1, 2, 3].includes(mdastNode.depth)
             ) {
-              console.log(mdastNode);
               // check if prev release available, and save it if so...
               if (newProcessedRelease) {
                 insertReleaseInGroup(
@@ -50,10 +49,11 @@ function useProcessReleases(
               }
 
               // ... and create new release if proper header found
-              const groupType = lowerCase(mdastNode.children[0].value);
-              if (groupType) {
+              const title = lowerCase(mdastNode.children[0].value);
+              if (title) {
                 newProcessedRelease = {
-                  changeType: groupType,
+                  title,
+                  originalTitle: mdastNode.children[0].value,
                   descriptionMdast: {
                     type: 'root',
                     children: [],
