@@ -20,6 +20,8 @@ import rehype2react from 'rehype-react';
 import markdown from 'remark-stringify';
 import BlockQuote from 'components/BlockQuote';
 
+import 'highlight.styles.github.min.css';
+
 const remarkReactComponents = {
   h1: (props: HeadingProps) => <Heading as="h2" size="xl" mb="4" {...props} />,
   h2: (props: HeadingProps) => <Heading as="h3" size="lg" mb="4" {...props} />,
@@ -57,7 +59,7 @@ const ProcessedReleaseChangeDescription = ({
         .use(parse)
         .use(github, { repository: repository.url })
         .use(remark2rehype)
-        .use(highlight)
+        .use(highlight, { ignoreMissing: true })
         .use(rehype2react, {
           createElement: React.createElement,
           components: remarkReactComponents,
