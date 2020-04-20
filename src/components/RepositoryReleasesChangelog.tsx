@@ -1,5 +1,13 @@
 import React from 'react';
-import { Box, Heading, Stack, Tag, Text } from '@chakra-ui/core';
+import {
+  Alert,
+  AlertIcon,
+  Box,
+  Heading,
+  Stack,
+  Tag,
+  Text,
+} from '@chakra-ui/core';
 import { ProcessedReleaseChange, Release, Repository } from 'models';
 import { filterReleasesByVersionRange, getRepositoryNameDisplay } from 'utils';
 import Link from 'components/Link';
@@ -67,7 +75,7 @@ const RepositoryReleasesChangelog = ({
         </Text>
       )}
 
-      {processedReleases ? (
+      {processedReleases && (
         <Stack spacing={6}>
           {Object.keys(processedReleases).map((title: string) => (
             <Box key={title}>
@@ -88,10 +96,13 @@ const RepositoryReleasesChangelog = ({
             </Box>
           ))}
         </Stack>
-      ) : (
-        <Text as="i" color="gray.500">
+      )}
+
+      {fromVersion && toVersion && !processedReleases && (
+        <Alert status="error">
+          <AlertIcon />
           No processed releases to show
-        </Text>
+        </Alert>
       )}
     </>
   );

@@ -24,7 +24,7 @@ function useProcessReleases(
 
   React.useEffect(
     function processReleases() {
-      if (!releases) {
+      if (!releases || releases.length === 0) {
         setProcessedReleases(null);
       } else {
         const processedReleasesCollection = {};
