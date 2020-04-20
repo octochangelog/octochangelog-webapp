@@ -42,3 +42,7 @@ export function filterReleasesByVersionRange(
     ({ tagName }) => semver.gt(tagName, from) && semver.lte(tagName, to)
   );
 }
+
+export function getRepositoryNameDisplay(repoName: string): string {
+  return repoName.replace(/[_-]/g, ' ');
+}

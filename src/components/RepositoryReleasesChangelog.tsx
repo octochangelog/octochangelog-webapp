@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Heading, Stack, Tag, Text } from '@chakra-ui/core';
 import { ProcessedReleaseChange, Release, Repository } from 'models';
-import { filterReleasesByVersionRange } from 'utils';
+import { filterReleasesByVersionRange, getRepositoryNameDisplay } from 'utils';
 import Link from 'components/Link';
 import useProcessReleases from 'hooks/useProcessReleases';
 const ProcessedReleaseChangeDescription = React.lazy(() =>
@@ -50,9 +50,9 @@ const RepositoryReleasesChangelog = ({
 
   return (
     <>
-      <Heading as="h1" size="2xl" mb={4}>
+      <Heading as="h1" size="2xl" mb={4} textTransform="capitalize">
         <Link href={repository.url} isExternal>
-          {repository.name}
+          {getRepositoryNameDisplay(repository.name)}
         </Link>
       </Heading>
 
