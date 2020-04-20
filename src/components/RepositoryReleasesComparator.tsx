@@ -1,8 +1,10 @@
 import React from 'react';
 import { Divider } from '@chakra-ui/core';
 import RepositoryReleasesPicker from 'components/RepositoryReleasesPicker';
-import RepositoryReleasesChangelog from 'components/RepositoryReleasesChangelog';
 import { Repository, VersionRange } from 'models';
+const RepositoryReleasesChangelog = React.lazy(() =>
+  import('components/RepositoryReleasesChangelog')
+);
 
 const RepositoryReleasesComparator = () => {
   const [
@@ -33,11 +35,15 @@ const RepositoryReleasesComparator = () => {
         onVersionRangeChange={handleVersionRangeChange}
       />
       <Divider my={4} />
-      <RepositoryReleasesChangelog
-        repository={repositorySelected}
-        fromVersion={versionRage[0]}
-        toVersion={versionRage[1]}
-      />
+      {repositorySelected && (
+        <React.Suspense fallback={<div>Lazy loading...</div>}>
+          <RepositoryReleasesChangelog
+            repository={repositorySelected}
+            fromVersion={versionRage[0]}
+            toVersion={versionRage[1]}
+          />
+        </React.Suspense>
+      )}
     </>
   );
 };

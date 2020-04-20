@@ -4,12 +4,10 @@ import { ProcessedReleaseChange, Release, Repository } from 'models';
 import { filterReleasesByVersionRange, getRepositoryNameDisplay } from 'utils';
 import Link from 'components/Link';
 import useProcessReleases from 'hooks/useProcessReleases';
-const ProcessedReleaseChangeDescription = React.lazy(() =>
-  import('components/ProcessedReleaseChangeDescription')
-);
+import ProcessedReleaseChangeDescription from 'components/ProcessedReleaseChangeDescription';
 
 interface RepositoryReleasesChangelogProps {
-  repository: Repository | null;
+  repository: Repository;
   fromVersion: string;
   toVersion: string;
 }
@@ -25,7 +23,7 @@ const RepositoryReleasesChangelog = ({
 
   const processedReleases = useProcessReleases(filteredReleases);
 
-  const releases = repository?.releases;
+  const { releases, ...repoInfo } = repository;
 
   React.useEffect(
     function filterReleases() {
@@ -43,10 +41,6 @@ const RepositoryReleasesChangelog = ({
     },
     [releases, fromVersion, toVersion]
   );
-
-  if (!repository) {
-    return null;
-  }
 
   return (
     <>
@@ -83,15 +77,11 @@ const RepositoryReleasesChangelog = ({
               <Box mb={4}>
                 {processedReleases[title].map(
                   (processedReleaseChange: ProcessedReleaseChange) => (
-                    <React.Suspense
-                      fallback={<div>Loading...</div>}
+                    <ProcessedReleaseChangeDescription
                       key={processedReleaseChange.id}
-                    >
-                      <ProcessedReleaseChangeDescription
-                        repository={repository}
-                        processedReleaseChange={processedReleaseChange}
-                      />
-                    </React.Suspense>
+                      repository={repoInfo}
+                      processedReleaseChange={processedReleaseChange}
+                    />
                   )
                 )}
               </Box>
