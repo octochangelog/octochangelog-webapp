@@ -27,7 +27,9 @@ const remarkReactComponents = {
   a: Link,
   ul: (props: any) => <List styleType="disc" mb="4" {...props} />,
   li: ListItem,
-  pre: (props: BoxProps) => <Code as="pre" mb="4" p="3" {...props} />,
+  pre: (props: BoxProps) => (
+    <Code as="pre" display="block" mb="4" p="3" {...props} />
+  ),
   code: (props: BoxProps) => <Code {...props} />,
   blockquote: (props: BoxProps) => <BlockQuote mb="2" {...props} />,
 };
