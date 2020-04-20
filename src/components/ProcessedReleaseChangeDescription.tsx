@@ -12,9 +12,9 @@ import {
 import { ProcessedReleaseChange, RepositoryInfo } from 'models';
 import Link from 'components/Link';
 import BlockQuote from 'components/BlockQuote';
-
-import 'highlight.styles.github.min.css';
 import useProcessDescriptionMdast from 'hooks/useProcessDescriptionMdast';
+import { textLoadingSkeleton } from './helpers';
+import 'highlight.styles.github.min.css';
 
 const remarkReactComponents = {
   h1: (props: HeadingProps) => <Heading as="h2" size="xl" mb="4" {...props} />,
@@ -51,7 +51,9 @@ const ProcessedReleaseChangeDescription = ({
   });
 
   return (
-    <Box {...rest}>{isProcessing ? 'PROCESSING...' : processedDescription}</Box>
+    <Box {...rest}>
+      {isProcessing ? textLoadingSkeleton : processedDescription}
+    </Box>
   );
 };
 

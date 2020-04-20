@@ -1,9 +1,16 @@
 import React from 'react';
-import { Divider } from '@chakra-ui/core';
+import { Divider, Skeleton } from '@chakra-ui/core';
 import RepositoryReleasesPicker from 'components/RepositoryReleasesPicker';
 import { Repository, VersionRange } from 'models';
 const RepositoryReleasesChangelog = React.lazy(() =>
   import('components/RepositoryReleasesChangelog')
+);
+
+const fallbackSkeleton: React.ReactNode = (
+  <div>
+    <Skeleton height="50px" mb={4} width="50%" />
+    <Skeleton height="25px" width="25%" />
+  </div>
 );
 
 const RepositoryReleasesComparator = () => {
@@ -36,7 +43,7 @@ const RepositoryReleasesComparator = () => {
       />
       <Divider my={4} />
       {repositorySelected && (
-        <React.Suspense fallback={<div>Lazy loading...</div>}>
+        <React.Suspense fallback={fallbackSkeleton}>
           <RepositoryReleasesChangelog
             repository={repositorySelected}
             fromVersion={versionRage[0]}

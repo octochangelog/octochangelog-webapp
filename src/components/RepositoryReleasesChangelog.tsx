@@ -89,6 +89,7 @@ const RepositoryReleasesChangelog = ({
                       key={processedReleaseChange.id}
                       repository={repoInfo}
                       processedReleaseChange={processedReleaseChange}
+                      mb={8}
                     />
                   )
                 )}
