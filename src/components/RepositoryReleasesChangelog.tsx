@@ -52,14 +52,14 @@ const RepositoryReleasesChangelog = ({
 
   return (
     <>
-      <Heading as="h1" size="2xl" mb={4} textTransform="capitalize">
+      <Heading as="h1" size="2xl" mb={2} textTransform="capitalize">
         <Link href={repository.url} isExternal>
           {getRepositoryNameDisplay(repository.name)}
         </Link>
       </Heading>
 
       {fromVersion && toVersion ? (
-        <Heading fontSize="sm" mb={4}>
+        <Heading fontSize="sm" mb={8}>
           Comparing releases from{' '}
           <Tag size="sm" variantColor="orange">
             {fromVersion}
