@@ -23,6 +23,7 @@
     "remark-rehype": "^6.0.0",
     "remark-stringify": "^8.0.0",
     "semver": "^7.2.2",
+    "title": "^3.4.2",
     "unified": "^9.0.0"
   },
   "devDependencies": {

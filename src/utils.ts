@@ -1,5 +1,6 @@
 import semver from 'semver';
 import { RepositoryQueryVars, Release } from 'models';
+import title from 'title';
 
 const gitHubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,\-_.]+)\/([\w,\-_.]+)(.git)?((\/)?)/i;
 
@@ -43,6 +44,10 @@ export function filterReleasesByVersionRange(
   );
 }
 
+const customTitleSpecials: string[] = ['DOM'];
+
 export function getRepositoryNameDisplay(repoName: string): string {
-  return repoName.replace(/[_-]/g, ' ');
+  return title(repoName.replace(/[_-]/g, ' '), {
+    special: customTitleSpecials,
+  });
 }
