@@ -12,8 +12,8 @@ import {
 import { ProcessedReleaseChange, RepositoryInfo } from 'models';
 import Link from 'components/Link';
 import BlockQuote from 'components/BlockQuote';
+import TextSkeleton from 'components/TextSkeleton';
 import useProcessDescriptionMdast from 'hooks/useProcessDescriptionMdast';
-import { textLoadingSkeleton } from './helpers';
 import 'highlight.styles.github.min.css';
 
 const remarkReactComponents = {
@@ -52,7 +52,7 @@ const ProcessedReleaseChangeDescription = ({
 
   return (
     <Box {...rest}>
-      {processedDescription ? processedDescription : textLoadingSkeleton}
+      {processedDescription ? processedDescription : <TextSkeleton />}
     </Box>
   );
 };

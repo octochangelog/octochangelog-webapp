@@ -4,6 +4,7 @@ import {
   AlertIcon,
   Box,
   Heading,
+  Skeleton,
   Stack,
   Tag,
   Text,
@@ -13,6 +14,7 @@ import { filterReleasesByVersionRange, getRepositoryNameDisplay } from 'utils';
 import Link from 'components/Link';
 import useProcessReleases from 'hooks/useProcessReleases';
 import ProcessedReleaseChangeDescription from 'components/ProcessedReleaseChangeDescription';
+import TextSkeleton from 'components/TextSkeleton';
 
 interface RepositoryReleasesChangelogProps {
   repository: Repository;
@@ -52,6 +54,7 @@ const RepositoryReleasesChangelog = ({
     [releases, fromVersion, toVersion]
   );
 
+  // TODO: simplify conditional renders with state machine
   return (
     <>
       <Heading as="h1" size="2xl" mb={2} textTransform="capitalize">
@@ -77,7 +80,12 @@ const RepositoryReleasesChangelog = ({
         </Text>
       )}
 
-      {isProcessing && 'IS PROCESSING'}
+      {isProcessing && (
+        <>
+          <Skeleton width="20%" height={8} mb={4} />
+          <TextSkeleton />
+        </>
+      )}
 
       {!isProcessing && processedReleases && (
         <Stack spacing={6}>
@@ -103,7 +111,7 @@ const RepositoryReleasesChangelog = ({
         </Stack>
       )}
 
-      {fromVersion && toVersion && !processedReleases && (
+      {fromVersion && toVersion && !processedReleases && !isProcessing && (
         <Alert status="error">
           <AlertIcon />
           No processed releases to show
