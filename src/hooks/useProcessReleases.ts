@@ -17,70 +17,93 @@ function insertReleaseInGroup(newProcessedRelease: any, groupedReleases: any) {
 
 const processor = unified().use(parse);
 
-function useProcessReleases(
-  releases: Release[] | null
-): ProcessedReleasesCollection {
-  const [processedReleases, setProcessedReleases] = React.useState<any>(null);
+async function processReleasesAsync(releases: Release[]) {
+  // TODO: reject on error
+  return new Promise((resolve) => {
+    const processedReleasesCollection = {};
 
-  React.useEffect(
-    function processReleases() {
-      if (!releases || releases.length === 0) {
-        setProcessedReleases(null);
-      } else {
-        const processedReleasesCollection = {};
+    releases.forEach((rel) => {
+      const { description, ...remainingRel } = rel;
 
-        releases.forEach((rel) => {
-          const { description, ...remainingRel } = rel;
+      const mdastDescription: any = processor.parse(description);
 
-          const mdastDescription: any = processor.parse(description);
-
-          let newProcessedRelease: any;
-          mdastDescription.children.forEach((mdastNode: any) => {
-            if (
-              mdastNode.type === 'heading' &&
-              [1, 2, 3].includes(mdastNode.depth)
-            ) {
-              // check if prev release available, and save it if so...
-              if (newProcessedRelease) {
-                insertReleaseInGroup(
-                  newProcessedRelease,
-                  processedReleasesCollection
-                );
-              }
-
-              // ... and create new release if proper header found
-              const title = lowerCase(mdastNode.children[0].value);
-              if (title) {
-                newProcessedRelease = {
-                  title,
-                  originalTitle: mdastNode.children[0].value,
-                  descriptionMdast: {
-                    type: 'root',
-                    children: [],
-                  },
-                  ...remainingRel,
-                };
-              }
-            } else {
-              // append content to current release
-              newProcessedRelease.descriptionMdast.children.push(mdastNode);
-            }
-          });
-          // insert final release in group
+      let newProcessedRelease: any;
+      mdastDescription.children.forEach((mdastNode: any) => {
+        if (
+          mdastNode.type === 'heading' &&
+          [1, 2, 3].includes(mdastNode.depth)
+        ) {
+          // check if prev release available, and save it if so...
           if (newProcessedRelease) {
             insertReleaseInGroup(
               newProcessedRelease,
               processedReleasesCollection
             );
           }
-          setProcessedReleases(processedReleasesCollection as any);
-        });
+
+          // ... and create new release if proper header found
+          const title = lowerCase(mdastNode.children[0].value);
+          if (title) {
+            newProcessedRelease = {
+              title,
+              originalTitle: mdastNode.children[0].value,
+              descriptionMdast: {
+                type: 'root',
+                children: [],
+              },
+              ...remainingRel,
+            };
+          }
+        } else {
+          // append content to current release
+          newProcessedRelease.descriptionMdast.children.push(mdastNode);
+        }
+      });
+      // insert final release in group
+      if (newProcessedRelease) {
+        insertReleaseInGroup(newProcessedRelease, processedReleasesCollection);
       }
+    });
+    resolve(processedReleasesCollection as any);
+  });
+}
+
+interface UseProcessReleasesReturn {
+  processedReleases: ProcessedReleasesCollection;
+  isProcessing: boolean;
+}
+
+function useProcessReleases(
+  releases: Release[] | null
+): UseProcessReleasesReturn {
+  const [processedReleases, setProcessedReleases] = React.useState<any>(null);
+  const [isProcessing, setIsProcessing] = React.useState<boolean>(false);
+
+  React.useEffect(
+    function processReleasesEffect() {
+      setIsProcessing(true);
+
+      const handleProcessReleases = async () => {
+        if (!releases || releases.length === 0) {
+          setProcessedReleases(null);
+          setIsProcessing(false);
+        } else {
+          const result = await processReleasesAsync(releases);
+          setProcessedReleases(result as any);
+        }
+        setIsProcessing(false);
+      };
+
+      handleProcessReleases();
     },
     [releases]
   );
 
-  return processedReleases;
+  const data = React.useMemo(() => ({ processedReleases, isProcessing }), [
+    isProcessing,
+    processedReleases,
+  ]);
+  return data;
 }
 
 export default useProcessReleases;

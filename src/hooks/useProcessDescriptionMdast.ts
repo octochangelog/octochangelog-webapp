@@ -20,7 +20,7 @@ interface HookReturnedValue {
   isProcessing: boolean;
 }
 
-async function processDescription(
+async function processDescriptionAsync(
   description: Parent,
   repositoryUrl: string,
   components: object
@@ -61,22 +61,25 @@ function useProcessDescriptionMdast({
 
   const [isProcessing, setIsProcessing] = React.useState<boolean>(false);
 
-  React.useEffect(() => {
-    setIsProcessing(true);
-    const handleProcessDescription = async () => {
-      const result = await processDescription(
-        description,
-        repository.url,
-        componentsMapping
-      );
+  React.useEffect(
+    function processDescriptionMdastEffect() {
+      setIsProcessing(true);
+      const handleProcessDescription = async () => {
+        const result = await processDescriptionAsync(
+          description,
+          repository.url,
+          componentsMapping
+        );
 
-      setIsProcessing(false);
-      setProcessedDescription(result);
-    };
-    handleProcessDescription();
-  }, [componentsMapping, description, repository.url]);
+        setProcessedDescription(result);
+        setIsProcessing(false);
+      };
+      handleProcessDescription();
+    },
+    [componentsMapping, description, repository.url]
+  );
 
-  const result = React.useMemo(
+  const data = React.useMemo(
     () => ({
       processedDescription,
       isProcessing,
@@ -84,7 +87,7 @@ function useProcessDescriptionMdast({
     [isProcessing, processedDescription]
   );
 
-  return result;
+  return data;
 }
 
 export default useProcessDescriptionMdast;

@@ -44,7 +44,7 @@ const ProcessedReleaseChangeDescription = ({
   repository,
   ...rest
 }: ProcessedReleaseChangeProps) => {
-  const { processedDescription, isProcessing } = useProcessDescriptionMdast({
+  const { processedDescription } = useProcessDescriptionMdast({
     repository,
     description: processedReleaseChange.descriptionMdast,
     componentsMapping: remarkReactComponents,
@@ -52,7 +52,7 @@ const ProcessedReleaseChangeDescription = ({
 
   return (
     <Box {...rest}>
-      {isProcessing ? textLoadingSkeleton : processedDescription}
+      {processedDescription ? processedDescription : textLoadingSkeleton}
     </Box>
   );
 };

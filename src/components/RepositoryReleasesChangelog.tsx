@@ -29,7 +29,9 @@ const RepositoryReleasesChangelog = ({
     Release[] | null
   >(null);
 
-  const processedReleases = useProcessReleases(filteredReleases);
+  const { processedReleases, isProcessing } = useProcessReleases(
+    filteredReleases
+  );
 
   const { releases, ...repoInfo } = repository;
 
@@ -75,7 +77,9 @@ const RepositoryReleasesChangelog = ({
         </Text>
       )}
 
-      {processedReleases && (
+      {isProcessing && 'IS PROCESSING'}
+
+      {!isProcessing && processedReleases && (
         <Stack spacing={6}>
           {Object.keys(processedReleases).map((title: string) => (
             <Box key={title}>
