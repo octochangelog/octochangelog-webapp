@@ -11,7 +11,7 @@ _TODO: add demo gif here_
 
 - Group several releases by same type of changes for comparing them at once with ease
 - Highlight syntax for code blocks
-- Sort by different level of changes for Semantic Versioning
+- Sort by different level of changes for [Semantic Versioning](https://semver.org/), specially those using [semantic-release](https://semantic-release.gitbook.io/semantic-release/)
 - Spot original version where specific changes were introduced
 
 ### TODO:
