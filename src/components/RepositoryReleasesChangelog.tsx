@@ -65,7 +65,7 @@ const RepositoryReleasesChangelog = ({
 
       {fromVersion && toVersion ? (
         <Heading fontSize="sm" mb={8}>
-          Comparing releases from{' '}
+          Comparing changes from{' '}
           <Tag size="sm" variantColor="brand">
             {fromVersion}
           </Tag>{' '}

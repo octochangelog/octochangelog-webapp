@@ -20,7 +20,7 @@ const ReleaseVersionFormControl = ({
   children,
   label,
   id,
-  placeholder = 'Select version',
+  placeholder = 'Choose a version',
   onChange,
   value,
   ...rest

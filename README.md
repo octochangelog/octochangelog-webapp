@@ -3,9 +3,9 @@ _TODO: include more badges_
 
 # 🔮 GitHub Clairvoyance
 
-GUI to group releases for comparing changelogs with ease on GitHub repositories
+**GUI to group releases for comparing changelogs with ease on GitHub repositories**
 
-https://github-clairvoyance.netlify.com/
+🔗 https://github-clairvoyance.netlify.com/
 
 _TODO: add demo gif here_
 

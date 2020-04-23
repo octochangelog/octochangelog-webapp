@@ -37,11 +37,24 @@ export const RELEASES_QUERY = gql`
   }
 `;
 
+const releasesComparator = (a: Release, b: Release): number => {
+  const { tagName: verA } = a;
+  const { tagName: verB } = b;
+
+  if (semver.gt(verA, verB)) {
+    return -1;
+  } else if (semver.lt(verA, verB)) {
+    return 1;
+  }
+
+  return 0;
+};
+
 const renderOptionsFromReleases = (
   releases?: Release[]
 ): React.ReactNode[] | null => {
   if (releases) {
-    return releases.map((release) => (
+    return releases.sort(releasesComparator).map((release) => (
       <option key={release.id} value={release.tagName}>
         {release.tagName}
       </option>
@@ -156,7 +169,7 @@ const RepositoryReleasesPicker = ({
   const selectPlaceholder =
     Array.isArray(releasesOptions) && releasesOptions.length === 0
       ? 'Versions not found'
-      : 'Pick one version';
+      : 'Choose a version';
 
   const [fromVersion, toVersion] = versionRage;
 
