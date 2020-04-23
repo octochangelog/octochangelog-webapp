@@ -5,4 +5,4 @@ export const globalStyles = {
 };
 
 export const REPO_URL: string =
-  'https://github.com/Belco90/github-compare-releases';
+  'https://github.com/Belco90/github-clairvoyance';

@@ -1,9 +1,11 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/326eb771-b2ab-415d-9c05-f9ee4417b359/deploy-status)](https://app.netlify.com/sites/github-compare-releases/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/326eb771-b2ab-415d-9c05-f9ee4417b359/deploy-status)](https://app.netlify.com/sites/github-clairvoyance/deploys)
 _TODO: include more badges_
 
-# 🧶 GUI to group releases for comparing changes with ease on GitHub repositories
+# 🔮 GitHub Clairvoyance
 
-https://github-compare-releases.netlify.com/
+GUI to group releases for comparing changelogs with ease on GitHub repositories
+
+https://github-clairvoyance.netlify.com/
 
 _TODO: add demo gif here_
 

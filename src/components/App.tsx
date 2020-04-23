@@ -8,6 +8,7 @@ import Header from 'components/Header';
 import Container from 'components/Container';
 import Footer from 'components/Footer';
 import RepositoryReleasesComparator from 'components/RepositoryReleasesComparator';
+import customTheme from 'customTheme';
 
 const client = new ApolloClient({
   uri: 'https://api.github.com/graphql',
@@ -18,7 +19,7 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={customTheme}>
       <CSSReset />
       <Global styles={globalStyles} />
       <Flex height="100%" direction="column">

@@ -13,7 +13,7 @@ const Footer = () => {
           <Box fontSize={{ base: 'md', md: 'lg' }}>
             Created with{' '}
             <span role="img" aria-label="Love">
-              🧡
+              💜
             </span>{' '}
             by{' '}
             <Link href="https://mario.dev/" isExternal>
@@ -26,7 +26,7 @@ const Footer = () => {
               data-icon="octicon-star"
               data-size="large"
               data-show-count
-              aria-label="Star Belco90/github-compare-releases on GitHub"
+              aria-label="Star Belco90/github-clairvoyance on GitHub"
             >
               Star
             </GitHubButton>

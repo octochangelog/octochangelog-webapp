@@ -11,10 +11,10 @@ const Header = (props: BoxProps) => {
       <Container py={5}>
         <Flex justify="space-between" alignItems="center">
           <Heading fontSize={{ xs: 'md', md: '4xl' }}>
-            <span role="img" aria-label="Wool">
-              🧶
+            <span role="img" aria-label="Crystal ball">
+              🔮
             </span>{' '}
-            GitHub Compare Releases
+            GitHub Clairvoyance
           </Heading>
           <Link href={REPO_URL} title="GitHub repo link">
             <Box as={DiGithubBadge} size={{ xs: '6', md: '12' }} />
