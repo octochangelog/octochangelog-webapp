@@ -1,7 +1,7 @@
 <div align="center">
   <h1>🔮 Octoclairvoyant</h1>
-  <p>Group and compare releases changelog with ease for GitHub repositories</p>
-  <p>🔗 https://octoclairvoyant.netlify.com/</p>
+  <h3>Group and compare releases changelog with ease for GitHub repositories</h3>
+  <p>👉 https://octoclairvoyant.netlify.com/</p>
 </div>
 
 _TODO: add demo gif here_
