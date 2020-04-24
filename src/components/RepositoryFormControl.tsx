@@ -50,6 +50,7 @@ const RepositoryFormControl = ({
   };
 
   const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
+    event.preventDefault(); // prevent event so handleInputChange is not triggered
     setError('');
 
     const pastedText = event.clipboardData.getData('Text');
