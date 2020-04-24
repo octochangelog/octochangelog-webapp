@@ -4,5 +4,4 @@ export const globalStyles = {
   '#root': { height: '100%' },
 };
 
-export const REPO_URL: string =
-  'https://github.com/Belco90/github-clairvoyance';
+export const REPO_URL: string = 'https://github.com/Belco90/octoclairvoyant';

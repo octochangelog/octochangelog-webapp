@@ -1,13 +1,14 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/326eb771-b2ab-415d-9c05-f9ee4417b359/deploy-status)](https://app.netlify.com/sites/github-clairvoyance/deploys)
-_TODO: include more badges_
-
-# 🔮 GitHub Clairvoyance
-
-**GUI to group releases for comparing changelogs with ease on GitHub repositories**
-
-🔗 https://github-clairvoyance.netlify.com/
+<div align="center">
+  <h1>🔮 Octoclairvoyant</h1>
+  <p>Group and compare releases changelog with ease for GitHub repositories</p>
+  <p>🔗 https://octoclairvoyant.netlify.com/</p>
+</div>
 
 _TODO: add demo gif here_
+
+<hr>
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/326eb771-b2ab-415d-9c05-f9ee4417b359/deploy-status)](https://app.netlify.com/sites/github-clairvoyance/deploys)
 
 ### Main Features:
 

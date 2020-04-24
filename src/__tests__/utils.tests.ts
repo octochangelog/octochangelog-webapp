@@ -10,12 +10,12 @@ describe('getRepositoryDataFromUrl function', () => {
     ${'https://github.com/some_repo-owner/some-repo_name.git'} | ${'some_repo-owner'} | ${'some-repo_name'}
     ${'http://github.com/some_repo-owner/some-repo_name.git'}  | ${'some_repo-owner'} | ${'some-repo_name'}
     ${'git@github.com:some_repo-owner/some-repo_name.git'}     | ${'some_repo-owner'} | ${'some-repo_name'}
-    ${'https://github.com/Belco90/github-clairvoyance'}        | ${'Belco90'}         | ${'github-clairvoyance'}
-    ${'http://github.com/Belco90/github-clairvoyance'}         | ${'Belco90'}         | ${'github-clairvoyance'}
-    ${'http://www.github.com/Belco90/github-clairvoyance'}     | ${'Belco90'}         | ${'github-clairvoyance'}
-    ${'https://github.com/Belco90/github-clairvoyance.git'}    | ${'Belco90'}         | ${'github-clairvoyance'}
-    ${'http://github.com/Belco90/github-clairvoyance.git'}     | ${'Belco90'}         | ${'github-clairvoyance'}
-    ${'git@github.com:Belco90/github-clairvoyance.git'}        | ${'Belco90'}         | ${'github-clairvoyance'}
+    ${'https://github.com/Belco90/octoclairvoyant'}            | ${'Belco90'}         | ${'octoclairvoyant'}
+    ${'http://github.com/Belco90/octoclairvoyant'}             | ${'Belco90'}         | ${'octoclairvoyant'}
+    ${'http://www.github.com/Belco90/octoclairvoyant'}         | ${'Belco90'}         | ${'octoclairvoyant'}
+    ${'https://github.com/Belco90/octoclairvoyant.git'}        | ${'Belco90'}         | ${'octoclairvoyant'}
+    ${'http://github.com/Belco90/octoclairvoyant.git'}         | ${'Belco90'}         | ${'octoclairvoyant'}
+    ${'git@github.com:Belco90/octoclairvoyant.git'}            | ${'Belco90'}         | ${'octoclairvoyant'}
     ${'https://github.com/zeit/next.js'}                       | ${'zeit'}            | ${'next.js'}
     ${'https://github.com/zeit/next.js'}                       | ${'zeit'}            | ${'next.js'}
     ${'https://github.com/zeit/next.js.git'}                   | ${'zeit'}            | ${'next.js'}

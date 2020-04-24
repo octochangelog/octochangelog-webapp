@@ -14,7 +14,7 @@ const Header = (props: BoxProps) => {
             <span role="img" aria-label="Crystal ball">
               🔮
             </span>{' '}
-            GitHub Clairvoyance
+            Octoclairvoyant
           </Heading>
           <Link href={REPO_URL} title="GitHub repo link">
             <Box as={DiGithubBadge} size={{ xs: '6', md: '12' }} />

@@ -26,7 +26,7 @@ const Footer = () => {
               data-icon="octicon-star"
               data-size="large"
               data-show-count
-              aria-label="Star Belco90/github-clairvoyance on GitHub"
+              aria-label="Star Belco90/octoclairvoyant on GitHub"
             >
               Star
             </GitHubButton>
