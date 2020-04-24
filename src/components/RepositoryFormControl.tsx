@@ -53,6 +53,7 @@ const RepositoryFormControl = ({
     setError('');
 
     const pastedText = event.clipboardData.getData('Text');
+    setRepoUrl(pastedText);
     triggerSearch(pastedText);
   };
 
