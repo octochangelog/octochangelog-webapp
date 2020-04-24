@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Badge,
   Box,
   BoxProps,
   Code,
@@ -51,8 +52,15 @@ const ProcessedReleaseChangeDescription = ({
   });
 
   return (
-    <Box {...rest}>
-      {processedDescription ? processedDescription : <TextSkeleton />}
+    <Box {...rest} mb={4}>
+      {processedDescription ? (
+        <>
+          <Badge mb={2}>{processedReleaseChange.tagName}</Badge>
+          {processedDescription}
+        </>
+      ) : (
+        <TextSkeleton />
+      )}
     </Box>
   );
 };
