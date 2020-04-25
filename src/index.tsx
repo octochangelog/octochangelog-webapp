@@ -1,11 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { CSSReset, ThemeProvider } from '@chakra-ui/core';
+import { Global } from '@emotion/core';
 import App from 'components/App';
 import * as serviceWorker from './serviceWorker';
+import customTheme from './customTheme';
+import { globalStyles } from './global';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={customTheme}>
+      <CSSReset />
+      <Global styles={globalStyles} />
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

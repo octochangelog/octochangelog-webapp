@@ -1,5 +1,7 @@
 import React from 'react';
 import { Divider, Skeleton } from '@chakra-ui/core';
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-boost';
 import RepositoryReleasesPicker from 'components/RepositoryReleasesPicker';
 import { Repository, VersionRange } from 'models';
 const RepositoryReleasesChangelog = React.lazy(() =>
@@ -13,7 +15,20 @@ const fallbackSkeleton: React.ReactNode = (
   </div>
 );
 
-const RepositoryReleasesComparator = () => {
+interface Props {
+  githubOauthToken: string;
+}
+
+const RepositoryReleasesComparator = ({ githubOauthToken }: Props) => {
+  const { current: client } = React.useRef(
+    new ApolloClient({
+      uri: 'https://api.github.com/graphql',
+      headers: {
+        authorization: `Bearer ${githubOauthToken}`,
+      },
+    })
+  );
+
   const [
     repositorySelected,
     setRepositorySelected,
@@ -36,7 +51,7 @@ const RepositoryReleasesComparator = () => {
   );
 
   return (
-    <>
+    <ApolloProvider client={client}>
       <RepositoryReleasesPicker
         onRepositoryChange={handleRepositoryChange}
         onVersionRangeChange={handleVersionRangeChange}
@@ -51,7 +66,7 @@ const RepositoryReleasesComparator = () => {
           />
         </React.Suspense>
       )}
-    </>
+    </ApolloProvider>
   );
 };
 
