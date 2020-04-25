@@ -7,38 +7,60 @@ import Container from 'components/Container';
 import Footer from 'components/Footer';
 import RepositoryReleasesComparator from 'components/RepositoryReleasesComparator';
 import Login from 'components/Login';
-import { useAuth } from 'auth';
+import { useAuth0 } from 'react-auth0-spa';
 
 function App() {
   const [client, setClient] = React.useState<ApolloClient<unknown> | null>(
     null
   );
-  const [token] = useAuth();
+  const [token, setToken] = React.useState<string>('');
+  const { isAuthenticated, isLoading, getTokenSilently }: any = useAuth0();
 
-  React.useEffect(() => {
-    let newClient = null;
-    if (token) {
-      newClient = new ApolloClient({
-        uri: 'https://api.github.com/graphql',
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
-    }
+  React.useEffect(
+    function getAccessToken() {
+      const getTokenSilentlyHandler = async () => {
+        if (isAuthenticated && getTokenSilently) {
+          const authToken = await getTokenSilently();
+          setToken(authToken);
+        } else {
+          setToken('');
+        }
+      };
 
-    setClient(newClient);
-  }, [token]);
+      getTokenSilentlyHandler();
+    },
+    [getTokenSilently, isAuthenticated]
+  );
 
-  const isAuth = !!token;
+  React.useEffect(
+    function initApolloClientEffect() {
+      let newClient = null;
+      if (token) {
+        newClient = new ApolloClient({
+          uri: 'https://api.github.com/graphql',
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+      }
+
+      setClient(newClient);
+    },
+    [token]
+  );
+
+  const shouldLogin = !isLoading && !isAuthenticated;
+  const isReady = !shouldLogin && client;
 
   return (
     <Flex height="100%" direction="column">
       <Header position="fixed" top="0" left="0" right="0" />
       <Container mb={4} mt={{ base: 20, md: 32 }} flex="1 0 auto">
-        {!isAuth && <Login />}
+        {isLoading && 'LOADING...'}
+        {shouldLogin && <Login />}
 
-        {isAuth && client && (
-          <ApolloProvider client={client}>
+        {isReady && (
+          <ApolloProvider client={client!}>
             {/* lazy load this one */}
             <RepositoryReleasesComparator />
           </ApolloProvider>

@@ -1,10 +1,11 @@
 import React from 'react';
-import { useAuth } from 'auth';
-import { Button } from '@chakra-ui/core/dist';
+import { Button } from '@chakra-ui/core';
+import { useAuth0 } from 'react-auth0-spa';
 
 const Login = () => {
-  const [, setToken] = useAuth();
-  return <Button onClick={() => setToken('123')}>Auth GitHub</Button>;
+  const { loginWithRedirect }: any = useAuth0();
+
+  return <Button onClick={() => loginWithRedirect({})}>Auth GitHub</Button>;
 };
 
 export default Login;

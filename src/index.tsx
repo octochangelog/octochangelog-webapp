@@ -6,16 +6,20 @@ import App from 'components/App';
 import * as serviceWorker from 'serviceWorker';
 import customTheme from 'customTheme';
 import { globalStyles } from 'global';
-import { AuthProvider } from 'auth';
+import { Auth0Provider } from 'react-auth0-spa';
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={customTheme}>
       <CSSReset />
       <Global styles={globalStyles} />
-      <AuthProvider>
+      <Auth0Provider
+        domain={process.env.REACT_APP_AUTH0_DOMAIN || 'unknown'}
+        client_id={process.env.REACT_APP_AUTH0_CLIENT_ID || 'unknown'}
+        redirect_uri={window.location.origin}
+      >
         <App />
-      </AuthProvider>
+      </Auth0Provider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')

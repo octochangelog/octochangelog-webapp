@@ -25,7 +25,6 @@ const Footer = () => {
               href={REPO_URL}
               data-icon="octicon-star"
               data-size="large"
-              data-show-count
               aria-label="Star Belco90/octoclairvoyant on GitHub"
             >
               Star
