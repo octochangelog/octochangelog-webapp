@@ -1,4 +1,7 @@
 import { Parent } from 'unist';
+import React from 'react';
+
+export type HookReturnValue<T> = [T, React.Dispatch<T>];
 
 export interface RepositoryInfo {
   name: string;
