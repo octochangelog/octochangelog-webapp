@@ -6,7 +6,7 @@ import App from 'components/App';
 import * as serviceWorker from 'serviceWorker';
 import customTheme from 'customTheme';
 import { globalStyles } from 'global';
-import { Auth0Provider } from 'react-auth0-spa';
+import { Auth0Provider } from 'auth';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,6 +17,8 @@ ReactDOM.render(
         domain={process.env.REACT_APP_AUTH0_DOMAIN || 'unknown'}
         client_id={process.env.REACT_APP_AUTH0_CLIENT_ID || 'unknown'}
         redirect_uri={window.location.origin}
+        useRefreshTokens
+        cacheLocation="localstorage"
       >
         <App />
       </Auth0Provider>

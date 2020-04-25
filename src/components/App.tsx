@@ -3,7 +3,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import RepositoryReleasesComparator from 'components/RepositoryReleasesComparator';
 import Login from 'components/Login';
-import { useAuth0 } from 'react-auth0-spa';
+import { useAuth0 } from 'auth';
 import Layout from 'components/Layout';
 
 function App() {
@@ -19,7 +19,9 @@ function App() {
         if (isAuthenticated && getTokenSilently) {
           const authToken = await getTokenSilently();
           setToken(authToken);
+          console.log('authToken', authToken);
         } else {
+          console.log('authToken', 'delete');
           setToken('');
         }
       };

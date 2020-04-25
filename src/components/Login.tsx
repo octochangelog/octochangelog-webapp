@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@chakra-ui/core';
-import { useAuth0 } from 'react-auth0-spa';
+import { useAuth0 } from 'auth';
 
 const Login = () => {
   const { loginWithRedirect }: any = useAuth0();
