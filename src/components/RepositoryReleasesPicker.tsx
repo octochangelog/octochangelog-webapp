@@ -125,9 +125,13 @@ const RepositoryReleasesPicker = ({
   React.useEffect(
     function displayErrors() {
       if (error) {
+        const errorMsg =
+          // @ts-ignore
+          error?.networkError?.result?.message ??
+          'Unable to retrieve repository releases';
         toast({
           title: 'An error occurred.',
-          description: 'Unable to retrieve releases for that repository',
+          description: errorMsg,
           status: 'error',
           duration: 5000,
           isClosable: true,

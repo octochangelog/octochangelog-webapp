@@ -5,8 +5,9 @@ import { Global } from '@emotion/core';
 import App from 'components/App';
 import * as serviceWorker from 'serviceWorker';
 import customTheme from 'customTheme';
-import { globalStyles } from 'global';
+import { GITHUB_SCOPE, globalStyles } from 'global';
 import { Auth0Provider } from 'auth';
+import { codeChallenge } from 'utils';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,6 +20,10 @@ ReactDOM.render(
         redirect_uri={window.location.origin}
         cacheLocation="localstorage"
         useRefreshTokens
+        connection="github"
+        connection_scope={GITHUB_SCOPE}
+        code_challenge={codeChallenge}
+        code_challenge_method="S256"
       >
         <App />
       </Auth0Provider>
