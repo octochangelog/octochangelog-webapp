@@ -1,7 +1,6 @@
 import semver from 'semver';
 import { RepositoryQueryVars, Release } from 'models';
 import title from 'title';
-import { createHash, randomBytes } from 'crypto';
 
 const gitHubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,\-_.]+)\/([\w,\-_.]+)(.git)?((\/)?)/i;
 
@@ -52,24 +51,3 @@ export function getRepositoryNameDisplay(repoName: string): string {
     special: customTitleSpecials,
   });
 }
-
-/**
- * Helper for auth0 code verifier.
- */
-function base64UrlEncode(buffer: Buffer): string {
-  return buffer
-    .toString('base64')
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-    .replace(/=/g, '');
-}
-
-/**
- * Helper for auth0 code challenge
- */
-function sha256(str: string): Buffer {
-  return createHash('sha256').update(str).digest();
-}
-
-export const codeVerifier = base64UrlEncode(randomBytes(32));
-export const codeChallenge = base64UrlEncode(sha256(codeVerifier));

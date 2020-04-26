@@ -3,31 +3,13 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import RepositoryReleasesComparator from 'components/RepositoryReleasesComparator';
 import Login from 'components/Login';
-import { useAuth0 } from 'auth';
 import Layout from 'components/Layout';
 
 function App() {
   const [client, setClient] = React.useState<ApolloClient<unknown> | null>(
     null
   );
-  const [token, setToken] = React.useState<string>('');
-  const { isAuthenticated, isLoading, getTokenSilently }: any = useAuth0();
-
-  React.useEffect(
-    function getAccessToken() {
-      const getTokenSilentlyHandler = async () => {
-        if (isAuthenticated && getTokenSilently) {
-          const authToken = await getTokenSilently();
-          setToken(authToken);
-        } else {
-          setToken('');
-        }
-      };
-
-      getTokenSilentlyHandler();
-    },
-    [getTokenSilently, isAuthenticated]
-  );
+  const [token] = React.useState<string>('');
 
   React.useEffect(
     function initApolloClientEffect() {
@@ -46,7 +28,8 @@ function App() {
     [token]
   );
 
-  const shouldLogin = !isLoading && !isAuthenticated;
+  const isLoading = false;
+  const shouldLogin = true;
   const isReady = !shouldLogin && client;
 
   return (

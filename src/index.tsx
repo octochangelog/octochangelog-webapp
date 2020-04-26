@@ -5,28 +5,14 @@ import { Global } from '@emotion/core';
 import App from 'components/App';
 import * as serviceWorker from 'serviceWorker';
 import customTheme from 'customTheme';
-import { GITHUB_SCOPE, globalStyles } from 'global';
-import { Auth0Provider } from 'auth';
-import { codeChallenge } from 'utils';
+import { globalStyles } from 'global';
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={customTheme}>
       <CSSReset />
       <Global styles={globalStyles} />
-      <Auth0Provider
-        domain={process.env.REACT_APP_AUTH0_DOMAIN || 'unknown'}
-        client_id={process.env.REACT_APP_AUTH0_CLIENT_ID || 'unknown'}
-        redirect_uri={window.location.origin}
-        cacheLocation="localstorage"
-        useRefreshTokens
-        connection="github"
-        connection_scope={GITHUB_SCOPE}
-        code_challenge={codeChallenge}
-        code_challenge_method="S256"
-      >
-        <App />
-      </Auth0Provider>
+      <App />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
