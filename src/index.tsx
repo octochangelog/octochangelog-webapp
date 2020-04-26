@@ -17,8 +17,8 @@ ReactDOM.render(
         domain={process.env.REACT_APP_AUTH0_DOMAIN || 'unknown'}
         client_id={process.env.REACT_APP_AUTH0_CLIENT_ID || 'unknown'}
         redirect_uri={window.location.origin}
-        useRefreshTokens
         cacheLocation="localstorage"
+        useRefreshTokens
       >
         <App />
       </Auth0Provider>

@@ -19,9 +19,7 @@ function App() {
         if (isAuthenticated && getTokenSilently) {
           const authToken = await getTokenSilently();
           setToken(authToken);
-          console.log('authToken', authToken);
         } else {
-          console.log('authToken', 'delete');
           setToken('');
         }
       };
