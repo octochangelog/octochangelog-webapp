@@ -5,7 +5,7 @@ import RepositoryReleasesComparator from 'components/RepositoryReleasesComparato
 import Login from 'components/Login';
 import Layout from 'components/Layout';
 
-function App() {
+function IndexPage() {
   const [client, setClient] = React.useState<ApolloClient<unknown> | null>(
     null
   );
@@ -29,7 +29,7 @@ function App() {
   );
 
   const isLoading = false;
-  const shouldLogin = true;
+  const shouldLogin = false;
   const isReady = !shouldLogin && client;
 
   return (
@@ -47,4 +47,4 @@ function App() {
   );
 }
 
-export default App;
+export default IndexPage;

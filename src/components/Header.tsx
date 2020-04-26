@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, BoxProps, Link, Flex, Heading } from '@chakra-ui/core';
 import { DiGithubBadge } from 'react-icons/di';
 import Container from 'components/Container';

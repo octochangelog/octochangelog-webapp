@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, BoxProps } from '@chakra-ui/core';
 
 const Container = (props: BoxProps) => (

@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Badge,
   Box,
@@ -15,7 +14,6 @@ import Link from 'components/Link';
 import BlockQuote from 'components/BlockQuote';
 import TextSkeleton from 'components/TextSkeleton';
 import useProcessDescriptionMdast from 'hooks/useProcessDescriptionMdast';
-import 'highlight.styles.github.min.css';
 
 const remarkReactComponents = {
   h1: (props: HeadingProps) => <Heading as="h2" size="xl" mb="4" {...props} />,
