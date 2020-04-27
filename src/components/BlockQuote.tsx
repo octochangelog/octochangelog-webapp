@@ -1,3 +1,4 @@
+import React from 'react';
 import { Text, BoxProps } from '@chakra-ui/core';
 
 const BlockQuote = (props: BoxProps) => {
