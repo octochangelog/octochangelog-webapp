@@ -44,7 +44,7 @@ export function filterReleasesByVersionRange(
   );
 }
 
-const customTitleSpecials: string[] = ['DOM'];
+const customTitleSpecials: string[] = ['DOM', 'ESLint'];
 
 export function getRepositoryNameDisplay(repoName: string): string {
   return title(repoName.replace(/[_-]/g, ' '), {

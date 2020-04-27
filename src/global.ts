@@ -5,3 +5,5 @@ export const globalStyles = {
 };
 
 export const REPO_URL: string = 'https://github.com/Belco90/octoclairvoyant';
+
+export const GITHUB_COOKIE_KEY = 'gh-access-token';
