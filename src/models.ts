@@ -1,6 +1,12 @@
 import React from 'react';
 import { Parent } from 'unist';
 
+declare global {
+  interface Window {
+    gtag: Function;
+  }
+}
+
 export type HookReturnValue<T> = [T, React.Dispatch<T>];
 
 export interface RepositoryInfo {
