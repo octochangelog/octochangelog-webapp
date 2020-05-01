@@ -1,10 +1,11 @@
 import { Alert, AlertIcon } from '@chakra-ui/core';
-import Layout from 'components/Layout';
 import { GITHUB_COOKIE_KEY } from 'global';
 import fetch from 'isomorphic-unfetch';
 import { GetServerSideProps } from 'next';
 import { setCookie, destroyCookie } from 'nookies';
 import React from 'react';
+
+import Layout from '~/components/Layout';
 
 interface Props {
   errorMessage?: string;

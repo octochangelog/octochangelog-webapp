@@ -9,11 +9,12 @@ import {
   ListItem,
   Text,
 } from '@chakra-ui/core/';
-import BlockQuote from 'components/BlockQuote';
-import Link from 'components/Link';
-import TextSkeleton from 'components/TextSkeleton';
 import useProcessDescriptionMdast from 'hooks/useProcessDescriptionMdast';
 import { ProcessedReleaseChange, RepositoryInfo } from 'models';
+
+import BlockQuote from '~/components/BlockQuote';
+import Link from '~/components/Link';
+import TextSkeleton from '~/components/TextSkeleton';
 
 const remarkReactComponents = {
   h1: (props: HeadingProps) => <Heading as="h2" size="xl" mb="4" {...props} />,

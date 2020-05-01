@@ -1,10 +1,11 @@
 import { Divider, Skeleton } from '@chakra-ui/core';
-import RepositoryReleasesPicker from 'components/RepositoryReleasesPicker';
 import { Repository, VersionRange } from 'models';
 import React from 'react';
 
+import RepositoryReleasesPicker from '~/components/RepositoryReleasesPicker';
+
 const RepositoryReleasesChangelog = React.lazy(() =>
-  import('components/RepositoryReleasesChangelog')
+  import('~/components/RepositoryReleasesChangelog')
 );
 
 const fallbackSkeleton: React.ReactNode = (

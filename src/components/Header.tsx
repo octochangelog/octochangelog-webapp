@@ -1,8 +1,9 @@
 import { Box, BoxProps, Link, Flex, Heading } from '@chakra-ui/core';
-import Container from 'components/Container';
 import { REPO_URL } from 'global';
 import React from 'react';
 import { DiGithubBadge } from 'react-icons/di';
+
+import Container from '~/components/Container';
 
 const Header = (props: BoxProps) => {
   // TODO: implement logout if necessary

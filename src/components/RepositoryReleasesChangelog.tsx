@@ -8,13 +8,14 @@ import {
   Tag,
   Text,
 } from '@chakra-ui/core';
-import Link from 'components/Link';
-import ProcessedReleaseChangeDescription from 'components/ProcessedReleaseChangeDescription';
-import TextSkeleton from 'components/TextSkeleton';
 import useProcessReleases from 'hooks/useProcessReleases';
 import { ProcessedReleaseChange, Release, Repository } from 'models';
 import React from 'react';
 import { filterReleasesByVersionRange, getRepositoryNameDisplay } from 'utils';
+
+import Link from '~/components/Link';
+import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChangeDescription';
+import TextSkeleton from '~/components/TextSkeleton';
 
 interface RepositoryReleasesChangelogProps {
   repository: Repository;

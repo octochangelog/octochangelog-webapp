@@ -1,8 +1,6 @@
 import { useLazyQuery } from '@apollo/react-hooks';
 import { Stack, useToast } from '@chakra-ui/core';
 import { gql } from 'apollo-boost';
-import ReleaseVersionFormControl from 'components/ReleaseVersionFormControl';
-import RepositoryFormControl from 'components/RepositoryFormControl';
 import useWindowWidth from 'hooks/useWindowWidth';
 import {
   RepositoryQueryVars,
@@ -13,6 +11,9 @@ import {
 } from 'models';
 import React from 'react';
 import semver from 'semver';
+
+import ReleaseVersionFormControl from '~/components/ReleaseVersionFormControl';
+import RepositoryFormControl from '~/components/RepositoryFormControl';
 
 const INLINE_BREAKPOINT = 768; // desktop
 
