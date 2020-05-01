@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Alert,
   AlertIcon,
@@ -9,12 +8,13 @@ import {
   Tag,
   Text,
 } from '@chakra-ui/core';
-import { ProcessedReleaseChange, Release, Repository } from 'models';
-import { filterReleasesByVersionRange, getRepositoryNameDisplay } from 'utils';
 import Link from 'components/Link';
-import useProcessReleases from 'hooks/useProcessReleases';
 import ProcessedReleaseChangeDescription from 'components/ProcessedReleaseChangeDescription';
 import TextSkeleton from 'components/TextSkeleton';
+import useProcessReleases from 'hooks/useProcessReleases';
+import { ProcessedReleaseChange, Release, Repository } from 'models';
+import React from 'react';
+import { filterReleasesByVersionRange, getRepositoryNameDisplay } from 'utils';
 
 interface RepositoryReleasesChangelogProps {
   repository: Repository;

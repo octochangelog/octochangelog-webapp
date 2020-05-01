@@ -1,5 +1,5 @@
-import semver from 'semver';
 import { RepositoryQueryVars, Release } from 'models';
+import semver from 'semver';
 import title from 'title';
 
 const gitHubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,\-_.]+)\/([\w,\-_.]+)(.git)?((\/)?)/i;

@@ -1,5 +1,5 @@
-import React from 'react';
 import { throttle } from 'lodash';
+import React from 'react';
 
 /**
  * Inspired by `useWindowSize` from useHooks

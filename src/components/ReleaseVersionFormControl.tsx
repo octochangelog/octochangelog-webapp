@@ -1,10 +1,10 @@
-import React from 'react';
 import {
   FormControl,
   FormControlProps,
   FormLabel,
   Select,
 } from '@chakra-ui/core';
+import React from 'react';
 
 interface CustomProps {
   label: string;

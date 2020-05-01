@@ -1,9 +1,9 @@
-import { GetServerSideProps } from 'next';
-import fetch from 'isomorphic-unfetch';
 import { Alert, AlertIcon } from '@chakra-ui/core';
-import { setCookie, destroyCookie } from 'nookies';
-import { GITHUB_COOKIE_KEY } from 'global';
 import Layout from 'components/Layout';
+import { GITHUB_COOKIE_KEY } from 'global';
+import fetch from 'isomorphic-unfetch';
+import { GetServerSideProps } from 'next';
+import { setCookie, destroyCookie } from 'nookies';
 import React from 'react';
 
 interface Props {

@@ -1,11 +1,11 @@
-import React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
-import { parseCookies } from 'nookies';
-import RepositoryReleasesComparator from 'components/RepositoryReleasesComparator';
 import GitHubLoginLink from 'components/GitHubLoginLink';
 import Layout from 'components/Layout';
+import RepositoryReleasesComparator from 'components/RepositoryReleasesComparator';
 import { GITHUB_COOKIE_KEY } from 'global';
+import { parseCookies } from 'nookies';
+import React from 'react';
 
 const IndexPage = () => {
   const [isLoading, setIsLoading] = React.useState<boolean>(true);

@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   FormErrorMessage,
   FormControl,
@@ -8,8 +7,9 @@ import {
   Input,
   Stack,
 } from '@chakra-ui/core';
-import { getRepositoryDataFromUrl } from 'utils';
 import { RepositoryQueryVars } from 'models';
+import React from 'react';
+import { getRepositoryDataFromUrl } from 'utils';
 
 interface CustomProps {
   isLoading?: boolean;

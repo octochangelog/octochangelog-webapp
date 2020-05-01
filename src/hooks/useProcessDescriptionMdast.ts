@@ -1,13 +1,13 @@
-import React from 'react';
 import { RepositoryInfo } from 'models';
-import { Parent } from 'unist';
-import unified from 'unified';
-import parse from 'remark-parse';
-import github from 'remark-github';
-import remark2rehype from 'remark-rehype';
+import React from 'react';
 import highlight from 'rehype-highlight';
 import rehype2react from 'rehype-react';
+import github from 'remark-github';
+import parse from 'remark-parse';
+import remark2rehype from 'remark-rehype';
 import markdown from 'remark-stringify';
+import unified from 'unified';
+import { Parent } from 'unist';
 
 interface HookArgs {
   repository: RepositoryInfo;

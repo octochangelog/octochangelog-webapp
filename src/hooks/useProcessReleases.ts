@@ -1,8 +1,8 @@
-import React from 'react';
-import unified from 'unified';
-import parse from 'remark-parse';
 import { lowerCase } from 'lodash';
 import { ProcessedReleasesCollection, Release } from 'models';
+import React from 'react';
+import parse from 'remark-parse';
+import unified from 'unified';
 
 function insertReleaseInGroup(newProcessedRelease: any, groupedReleases: any) {
   const { title } = newProcessedRelease;

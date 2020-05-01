@@ -1,7 +1,7 @@
-import React from 'react';
 import { Box, Flex } from '@chakra-ui/core';
 import Container from 'components/Container';
 import Link from 'components/Link';
+import React from 'react';
 
 const Footer = () => {
   return (

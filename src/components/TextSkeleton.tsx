@@ -1,5 +1,5 @@
-import React from 'react';
 import { Skeleton, Stack } from '@chakra-ui/core/';
+import React from 'react';
 
 const TextSkeleton = () => (
   <Stack spacing={3}>

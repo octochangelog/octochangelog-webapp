@@ -1,0 +1,6 @@
+node_modules
+/coverage
+.next
+.now
+.env*
+*.config*

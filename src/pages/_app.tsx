@@ -1,8 +1,8 @@
-import { AppProps } from 'next/app';
 import { CSSReset, ThemeProvider } from '@chakra-ui/core';
 import { Global } from '@emotion/core';
 import customTheme from 'customTheme';
 import { globalStyles } from 'global';
+import { AppProps } from 'next/app';
 
 import 'highlight.styles.github.min.css';
 

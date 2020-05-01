@@ -1,7 +1,7 @@
-import React from 'react';
 import { Divider, Skeleton } from '@chakra-ui/core';
 import RepositoryReleasesPicker from 'components/RepositoryReleasesPicker';
 import { Repository, VersionRange } from 'models';
+import React from 'react';
 
 const RepositoryReleasesChangelog = React.lazy(() =>
   import('components/RepositoryReleasesChangelog')
