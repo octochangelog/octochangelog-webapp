@@ -89,15 +89,16 @@ class MyDocument extends Document {
             content="Group and compare releases changelog with ease for GitHub repositories"
           />
           <meta name="keywords" content="GitHub Release Repository Changelog" />
-          <meta property="og:title" content="🔮 Octoclairvoyant" />
+          <meta property="og:title" content="Octoclairvoyant" />
           <meta
             property="og:description"
             content="Group and compare releases changelog with ease for GitHub repositories"
           />
           <meta property="og:type" content="website" />
           <meta name="twitter:card" content="summary" />
+          <meta name="twitter:title" content="Octoclairvoyant" />
+          <meta name="twitter:image" content="/logo.png" />
           <meta name="twitter:creator" content="@belcoDev" />
-          <meta name="twitter:title" content="🔮 Octoclairvoyant" />
           <meta
             name="twitter:description"
             content="Group and compare releases changelog with ease for GitHub repositories"
