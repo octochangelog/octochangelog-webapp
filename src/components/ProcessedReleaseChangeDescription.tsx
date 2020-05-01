@@ -25,7 +25,19 @@ const remarkReactComponents = {
   h6: (props: HeadingProps) => <Heading as="h6" size="xs" mb="2" {...props} />,
   p: (props: BoxProps) => <Text mb="2" {...props} />,
   a: Link,
-  ul: (props: any) => <List styleType="disc" mb="4" {...props} />,
+  ul: (props: any) => (
+    <List styleType="disc" mb="4" ml="4" stylePos="outside" {...props} />
+  ),
+  ol: (props: any) => (
+    <List
+      as="ol"
+      styleType="decimal"
+      mb="4"
+      ml="4"
+      stylePos="outside"
+      {...props}
+    />
+  ),
   li: ListItem,
   pre: (props: BoxProps) => (
     <Code as="pre" display="block" mb="4" p="3" {...props} />

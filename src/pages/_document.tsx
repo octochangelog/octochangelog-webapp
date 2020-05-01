@@ -97,7 +97,10 @@ class MyDocument extends Document {
           <meta property="og:type" content="website" />
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:title" content="Octoclairvoyant" />
-          <meta name="twitter:image" content="/logo.png" />
+          <meta
+            name="twitter:image"
+            content="https://octoclairvoyant.now.sh/logo.png"
+          />
           <meta name="twitter:creator" content="@belcoDev" />
           <meta
             name="twitter:description"
