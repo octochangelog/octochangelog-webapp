@@ -6,6 +6,7 @@
     "start": "yarn dev",
     "dev": "next",
     "build": "next build",
+    "preserver": "yarn build",
     "server": "next start",
     "type-check": "tsc",
     "test": "jest",
