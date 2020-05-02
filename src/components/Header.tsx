@@ -1,12 +1,12 @@
 import {
   Box,
   BoxProps,
+  Button,
   Drawer,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
   DrawerBody,
-  IconButton,
   Link,
   Flex,
   Heading,
@@ -17,6 +17,7 @@ import {
 import { REPO_URL } from 'global';
 import React from 'react';
 import { DiGithubBadge } from 'react-icons/di';
+import { FaBars } from 'react-icons/fa';
 
 import Container from '~/components/Container';
 import RouteLink from '~/components/RouteLink';
@@ -68,13 +69,15 @@ const Header = (props: BoxProps) => {
             linksInner
           ) : (
             <>
-              <IconButton
+              <Button
                 aria-label="Toggle menu"
-                icon="copy"
                 variant="ghost"
+                variantColor="white"
                 size="sm"
                 onClick={onToggle}
-              />
+              >
+                <Box as={FaBars} />
+              </Button>
               <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
                 <DrawerOverlay />
                 <DrawerContent>
