@@ -5,7 +5,7 @@ import { DiGithubBadge } from 'react-icons/di';
 
 import Container from '~/components/Container';
 
-const LOGO_SIZES = ['25px', '50px'];
+const LOGO_SIZES = { base: '25px', md: '30px', lg: '50px' };
 
 const Header = (props: BoxProps) => {
   // TODO: implement logout if necessary
@@ -19,7 +19,7 @@ const Header = (props: BoxProps) => {
               <source srcSet="/logo.webp" type="image/webp" />
               <img src="/logo.png" alt="Crystal ball" />
             </Image>
-            <Heading fontSize={{ xs: 'md', md: '4xl' }}>
+            <Heading fontSize={{ xs: 'md', md: 'xl', lg: '4xl' }}>
               Octoclairvoyant
             </Heading>
           </Flex>
