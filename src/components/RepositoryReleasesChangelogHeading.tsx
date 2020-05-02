@@ -4,7 +4,7 @@ import React from 'react';
 import { getRepositoryNameDisplay } from 'utils';
 
 import Link from '~/components/Link';
-import { containerSpace } from '~/customTheme';
+import customTheme, { containerSpace } from '~/customTheme';
 import useIsStick from '~/hooks/useIsStick';
 import { Repository } from '~/models';
 
@@ -14,6 +14,8 @@ const StickyBox = styled(Box)(({ isStick }: { isStick: boolean }) => ({
   marginRight: isStick ? `-${containerSpace}` : 'none',
   paddingLeft: isStick ? containerSpace : 'none',
   paddingRight: isStick ? containerSpace : 'none',
+  transition:
+    'background-color 100ms ease-out, color 200ms ease-out, width 200ms ease-out',
 }));
 
 interface Props {
@@ -30,18 +32,29 @@ const RepositoryReleasesChangelogHeading = ({
   const stickyEl = React.useRef({ offsetTop: 0 });
   const isHeadingStick = useIsStick(stickyEl);
 
+  const bgColor = isHeadingStick ? customTheme.colors.brand[500] : 'white';
+  const color = isHeadingStick
+    ? customTheme.colors.gray[50]
+    : customTheme.colors.gray[800];
+  const badgeColor = isHeadingStick ? 'yellow' : 'brand';
+
   return (
     <StickyBox
       position="sticky"
       top="0"
       width="auto"
-      bg="white"
+      color={color}
+      bg={bgColor}
       py={1}
       ref={stickyEl}
       isStick={isHeadingStick}
     >
       <Heading as="h1" size="2xl" mb={2} textTransform="capitalize">
-        <Link href={repository.url} isExternal>
+        <Link
+          href={repository.url}
+          isExternal
+          color={isHeadingStick ? 'yellow.300' : 'brand.500'}
+        >
           {getRepositoryNameDisplay(repository.name)}
         </Link>
       </Heading>
@@ -49,11 +62,11 @@ const RepositoryReleasesChangelogHeading = ({
       {fromVersion && toVersion ? (
         <Heading fontSize="md" mb={2}>
           Comparing changes from{' '}
-          <Badge variant="outline" variantColor="brand">
+          <Badge variant="solid" variantColor={badgeColor}>
             {fromVersion}
           </Badge>{' '}
           to{' '}
-          <Badge variant="outline" variantColor="brand">
+          <Badge variant="solid" variantColor={badgeColor}>
             {toVersion}
           </Badge>
         </Heading>
