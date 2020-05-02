@@ -5,16 +5,14 @@ import {
   Heading,
   Skeleton,
   Stack,
-  Badge,
-  Text,
 } from '@chakra-ui/core';
 import useProcessReleases from 'hooks/useProcessReleases';
 import { ProcessedReleaseChange, Release, Repository } from 'models';
 import React from 'react';
-import { filterReleasesByVersionRange, getRepositoryNameDisplay } from 'utils';
+import { filterReleasesByVersionRange } from 'utils';
 
-import Link from '~/components/Link';
 import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChangeDescription';
+import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesChangelogHeading';
 import TextSkeleton from '~/components/TextSkeleton';
 
 interface RepositoryReleasesChangelogProps {
@@ -58,28 +56,11 @@ const RepositoryReleasesChangelog = ({
   // TODO: simplify conditional renders with state machine
   return (
     <>
-      <Heading as="h1" size="2xl" mb={2} textTransform="capitalize">
-        <Link href={repository.url} isExternal>
-          {getRepositoryNameDisplay(repository.name)}
-        </Link>
-      </Heading>
-
-      {fromVersion && toVersion ? (
-        <Heading fontSize="md" mb={8}>
-          Comparing changes from{' '}
-          <Badge variant="outline" variantColor="brand">
-            {fromVersion}
-          </Badge>{' '}
-          to{' '}
-          <Badge variant="outline" variantColor="brand">
-            {toVersion}
-          </Badge>
-        </Heading>
-      ) : (
-        <Text as="i" color="gray.500">
-          No releases selected to compare
-        </Text>
-      )}
+      <RepositoryReleasesChangelogHeading
+        repository={repository}
+        fromVersion={fromVersion}
+        toVersion={toVersion}
+      />
 
       {isProcessing && (
         <>
