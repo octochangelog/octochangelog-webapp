@@ -1,9 +1,9 @@
 import { Box, BoxProps, Link, Flex, Heading, Image } from '@chakra-ui/core';
 import { REPO_URL } from 'global';
-import React from 'react';
 import { DiGithubBadge } from 'react-icons/di';
 
 import Container from '~/components/Container';
+import RouteLink from '~/components/RouteLink';
 
 const LOGO_SIZES = { base: '25px', md: '30px', lg: '50px' };
 
@@ -20,7 +20,9 @@ const Header = (props: BoxProps) => {
               <img src="/logo.png" alt="Crystal ball" />
             </Image>
             <Heading fontSize={{ xs: 'md', md: 'xl', lg: '4xl' }}>
-              Octoclairvoyant
+              <RouteLink href="/" color="white">
+                Octoclairvoyant
+              </RouteLink>
             </Heading>
           </Flex>
           <Link href={REPO_URL} title="GitHub repo link">

@@ -53,7 +53,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           maxAge: 31536000, // 1 year
           path: '/',
         });
-        context.res.writeHead(302, { Location: '/' });
+        context.res.writeHead(302, { Location: '/comparator' });
         context.res.end();
       } else {
         errorMessage = 'Something went wrong obtaining access token';
