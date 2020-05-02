@@ -5,7 +5,7 @@ import {
   Heading,
   Skeleton,
   Stack,
-  Tag,
+  Badge,
   Text,
 } from '@chakra-ui/core';
 import useProcessReleases from 'hooks/useProcessReleases';
@@ -65,15 +65,15 @@ const RepositoryReleasesChangelog = ({
       </Heading>
 
       {fromVersion && toVersion ? (
-        <Heading fontSize="sm" mb={8}>
+        <Heading fontSize="md" mb={8}>
           Comparing changes from{' '}
-          <Tag size="sm" variantColor="brand">
+          <Badge variant="outline" variantColor="brand">
             {fromVersion}
-          </Tag>{' '}
+          </Badge>{' '}
           to{' '}
-          <Tag size="sm" variantColor="brand">
+          <Badge variant="outline" variantColor="brand">
             {toVersion}
-          </Tag>
+          </Badge>
         </Heading>
       ) : (
         <Text as="i" color="gray.500">

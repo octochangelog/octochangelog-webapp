@@ -1,5 +1,4 @@
 import {
-  Badge,
   Box,
   BoxProps,
   Code,
@@ -7,10 +6,12 @@ import {
   HeadingProps,
   List,
   ListItem,
+  Tag,
   Text,
 } from '@chakra-ui/core/';
 import useProcessDescriptionMdast from 'hooks/useProcessDescriptionMdast';
 import { ProcessedReleaseChange, RepositoryInfo } from 'models';
+import React from 'react';
 
 import BlockQuote from '~/components/BlockQuote';
 import Link from '~/components/Link';
@@ -63,11 +64,13 @@ const ProcessedReleaseChangeDescription = ({
   });
 
   return (
-    <Box {...rest} mb={4}>
+    <Box {...rest} mb={6}>
       {processedDescription ? (
         <>
-          <Badge mb={2}>{processedReleaseChange.tagName}</Badge>
-          {processedDescription}
+          <Tag size="sm" variantColor="brand" mb={2}>
+            {processedReleaseChange.tagName}
+          </Tag>
+          <Box ml={4}>{processedDescription}</Box>
         </>
       ) : (
         <TextSkeleton />
