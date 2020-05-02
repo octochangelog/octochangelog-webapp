@@ -4,16 +4,16 @@ import React from 'react';
 import { getRepositoryNameDisplay } from 'utils';
 
 import Link from '~/components/Link';
-import customTheme from '~/customTheme';
+import { containerSpace } from '~/customTheme';
 import useIsStick from '~/hooks/useIsStick';
 import { Repository } from '~/models';
 
 const StickyBox = styled(Box)(({ isStick }: { isStick: boolean }) => ({
   boxShadow: isStick ? '0 0.0625rem 0.375rem 0 rgba(0, 0, 0, 0.3)' : 'none',
-  marginLeft: isStick ? `-${customTheme.space[6]}` : 'none',
-  marginRight: isStick ? `-${customTheme.space[6]}` : 'none',
-  paddingLeft: isStick ? customTheme.space[6] : 'none',
-  paddingRight: isStick ? customTheme.space[6] : 'none',
+  marginLeft: isStick ? `-${containerSpace}` : 'none',
+  marginRight: isStick ? `-${containerSpace}` : 'none',
+  paddingLeft: isStick ? containerSpace : 'none',
+  paddingRight: isStick ? containerSpace : 'none',
 }));
 
 interface Props {

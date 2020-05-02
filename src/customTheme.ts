@@ -12,4 +12,6 @@ const customTheme: ICustomTheme = {
   },
 };
 
+export const containerSpace = customTheme.space[6];
+
 export default customTheme;
