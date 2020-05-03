@@ -32,11 +32,11 @@ const RepositoryReleasesChangelogHeading = ({
   const stickyEl = React.useRef({ offsetTop: 0 });
   const isHeadingStick = useIsStick(stickyEl);
 
-  const bgColor = isHeadingStick ? customTheme.colors.brand[500] : 'white';
+  const bgColor = isHeadingStick ? customTheme.colors.primary[500] : 'white';
   const color = isHeadingStick
     ? customTheme.colors.gray[50]
     : customTheme.colors.gray[800];
-  const badgeColor = isHeadingStick ? 'yellow' : 'brand';
+  const badgeColor = isHeadingStick ? 'secondary' : 'primary';
 
   return (
     <StickyBox
@@ -53,7 +53,7 @@ const RepositoryReleasesChangelogHeading = ({
         <Link
           href={repository.url}
           isExternal
-          color={isHeadingStick ? 'yellow.300' : 'brand.500'}
+          color={isHeadingStick ? 'secondary.300' : 'primary.500'}
         >
           {getRepositoryNameDisplay(repository.name)}
         </Link>
@@ -62,11 +62,17 @@ const RepositoryReleasesChangelogHeading = ({
       {fromVersion && toVersion ? (
         <Heading fontSize="md" mb={2}>
           Comparing changes from{' '}
-          <Badge variant="solid" variantColor={badgeColor}>
+          <Badge
+            variant={isHeadingStick ? 'subtle' : 'solid'}
+            variantColor={badgeColor}
+          >
             {fromVersion}
           </Badge>{' '}
           to{' '}
-          <Badge variant="solid" variantColor={badgeColor}>
+          <Badge
+            variant={isHeadingStick ? 'subtle' : 'solid'}
+            variantColor={badgeColor}
+          >
             {toVersion}
           </Badge>
         </Heading>

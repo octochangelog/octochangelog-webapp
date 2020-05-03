@@ -67,7 +67,7 @@ const ProcessedReleaseChangeDescription = ({
     <Box {...rest} mb={6}>
       {processedDescription ? (
         <>
-          <Tag size="sm" variantColor="brand" mb={2}>
+          <Tag size="sm" variantColor="primary" mb={2}>
             {processedReleaseChange.tagName}
           </Tag>
           <Box ml={4}>{processedDescription}</Box>

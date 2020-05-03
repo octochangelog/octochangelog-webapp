@@ -81,7 +81,7 @@ const RepositoryFormControl = ({
         />
         <IconButton
           aria-label="Search repository"
-          variantColor="brand"
+          variantColor="primary"
           icon="search"
           isLoading={isLoading}
           onClick={() => triggerSearch(repoUrl)}
