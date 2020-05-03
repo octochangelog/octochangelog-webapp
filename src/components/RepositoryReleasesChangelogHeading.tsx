@@ -41,7 +41,7 @@ const RepositoryReleasesChangelogHeading = ({
   return (
     <StickyBox
       position="sticky"
-      top="0"
+      top="-2px"
       width="auto"
       color={color}
       bg={bgColor}
@@ -49,7 +49,12 @@ const RepositoryReleasesChangelogHeading = ({
       ref={stickyEl}
       isStick={isHeadingStick}
     >
-      <Heading as="h1" size="2xl" mb={2} textTransform="capitalize">
+      <Heading
+        as="h1"
+        size={isHeadingStick ? 'xl' : '2xl'}
+        mb={2}
+        textTransform="capitalize"
+      >
         <Link
           href={repository.url}
           isExternal
@@ -60,7 +65,7 @@ const RepositoryReleasesChangelogHeading = ({
       </Heading>
 
       {fromVersion && toVersion ? (
-        <Heading fontSize="md" mb={2}>
+        <Heading fontSize={isHeadingStick ? 'sm' : 'md'} mb={2}>
           Comparing changes from{' '}
           <Badge
             variant={isHeadingStick ? 'subtle' : 'solid'}
