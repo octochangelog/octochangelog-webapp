@@ -67,13 +67,49 @@ const LinksStack: React.FC<{ isDesktop: boolean }> = ({ isDesktop }) => (
   </Stack>
 );
 
-const Header = (props: BoxProps) => {
-  const { isOpen, onToggle, onClose } = useDisclosure();
-
+const HeaderLinks: React.FC = () => {
   // TODO: extract into useDesktopSize
   const windowWidth = useWindowWidth();
+  const { isOpen, onToggle, onClose } = useDisclosure();
+
   const isDesktop = windowWidth > INLINE_BREAKPOINT;
   const linksInner = <LinksStack isDesktop={isDesktop} />;
+
+  return isDesktop ? (
+    linksInner
+  ) : (
+    <>
+      <Button
+        aria-label="Toggle menu"
+        variant="ghost"
+        variantColor="gray"
+        size="sm"
+        onClick={onToggle}
+        _hover={{ backgroundColor: 'none' }}
+        _active={{ backgroundColor: 'none' }}
+      >
+        <Box as={FaBars} />
+      </Button>
+      <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
+        <DrawerOverlay />
+        <DrawerContent py={2}>
+          <DrawerCloseButton />
+          <DrawerBody>{linksInner}</DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </>
+  );
+};
+
+const Header = (props: BoxProps) => {
+  const [shouldShowLinks, setShouldShowLinks] = React.useState(false);
+
+  React.useEffect(function renderLinksOnClientSideHydrationEffect() {
+    // As header links depend on device since to render different variants,
+    // we only render HeaderLinks when on Client Side
+    // https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
+    setShouldShowLinks(true);
+  }, []);
 
   return (
     /* FIXME: set zIndex to "banner" when chakra-ui fixes types here */
@@ -89,28 +125,7 @@ const Header = (props: BoxProps) => {
               <RouteLink href="/">Octoclairvoyant</RouteLink>
             </Heading>
           </Flex>
-          {isDesktop ? (
-            linksInner
-          ) : (
-            <>
-              <Button
-                aria-label="Toggle menu"
-                variant="ghost"
-                variantColor="gray"
-                size="sm"
-                onClick={onToggle}
-              >
-                <Box as={FaBars} />
-              </Button>
-              <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
-                <DrawerOverlay />
-                <DrawerContent py={2}>
-                  <DrawerCloseButton />
-                  <DrawerBody>{linksInner}</DrawerBody>
-                </DrawerContent>
-              </Drawer>
-            </>
-          )}
+          {shouldShowLinks && <HeaderLinks />}
         </Flex>
       </Container>
     </Box>

@@ -12,7 +12,7 @@ function useWindowWidth(): number {
     setSize(window.innerWidth);
   };
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     const throttleUpdateSize = throttle(updateSize, 500);
     window.addEventListener('resize', throttleUpdateSize);
 
