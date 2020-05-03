@@ -83,8 +83,6 @@ const RepositoryFormControl = ({
           aria-label="Search repository"
           variantColor="primary"
           icon="search"
-          // @ts-ignore
-          enterKeyEnter="search"
           isLoading={isLoading}
           onClick={() => triggerSearch(repoUrl)}
         />
