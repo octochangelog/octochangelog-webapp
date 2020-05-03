@@ -52,8 +52,6 @@ const MenuLink: React.FC<{ href: string; isDesktop: boolean }> = ({
 };
 
 const LinksStack: React.FC<{ isDesktop: boolean }> = ({ isDesktop }) => (
-  // FIXME: warning about useLayoutEffect (option 2)
-  //  https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
   <Stack
     isInline={isDesktop}
     spacing={4}
