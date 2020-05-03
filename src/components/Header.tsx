@@ -13,6 +13,7 @@ import {
   Stack,
   useDisclosure,
 } from '@chakra-ui/core';
+import { useRouter } from 'next/router';
 import React from 'react';
 import { FaBars } from 'react-icons/fa';
 
@@ -23,14 +24,45 @@ import useWindowWidth from '~/hooks/useWindowWidth';
 const LOGO_SIZES = { base: '25px', md: '30px', lg: '50px' };
 const INLINE_BREAKPOINT = 768; // desktop
 
-const LinksStack = ({ isDesktop }: { isDesktop: boolean }) => (
-  <Stack isInline={isDesktop} align="center" spacing={4}>
-    <RouteLink href="/" color={isDesktop ? 'white' : 'gray.800'}>
+const MenuLink: React.FC<{ href: string; isDesktop: boolean }> = ({
+  href,
+  isDesktop,
+  children,
+  ...rest
+}) => {
+  const router = useRouter();
+  const isActive = router?.pathname === href;
+
+  return (
+    <RouteLink
+      href={href}
+      color={isDesktop ? 'white' : 'gray.800'}
+      borderBottomWidth={isActive ? '4px' : 'none'}
+      borderColor={isActive ? 'primary.500' : 'none'}
+      _hover={{
+        textDecoration: 'none',
+        color: isActive ? 'none' : 'primary.300',
+      }}
+      width={isDesktop ? 'auto' : 'min-content'}
+      {...rest}
+    >
+      {children}
+    </RouteLink>
+  );
+};
+
+const LinksStack: React.FC<{ isDesktop: boolean }> = ({ isDesktop }) => (
+  <Stack
+    isInline={isDesktop}
+    spacing={4}
+    align={isDesktop ? undefined : 'center'}
+  >
+    <MenuLink href="/" isDesktop={isDesktop}>
       Home
-    </RouteLink>
-    <RouteLink href="/comparator" color={isDesktop ? 'white' : 'gray.800'}>
+    </MenuLink>
+    <MenuLink href="/comparator" isDesktop={isDesktop}>
       Comparator
-    </RouteLink>
+    </MenuLink>
     {/* TODO: implement logout if necessary */}
   </Stack>
 );
