@@ -3,20 +3,17 @@ import {
   BoxProps,
   Button,
   Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
   DrawerBody,
-  Link,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerOverlay,
   Flex,
   Heading,
   Image,
   Stack,
   useDisclosure,
 } from '@chakra-ui/core';
-import { REPO_URL } from 'global';
 import React from 'react';
-import { DiGithubBadge } from 'react-icons/di';
 import { FaBars } from 'react-icons/fa';
 
 import Container from '~/components/Container';
@@ -34,10 +31,7 @@ const LinksStack = ({ isDesktop }: { isDesktop: boolean }) => (
     <RouteLink href="/comparator" color={isDesktop ? 'white' : 'gray.800'}>
       Comparator
     </RouteLink>
-    <Link href={REPO_URL} title="GitHub repo link">
-      <Box as={DiGithubBadge} size={{ xs: '6', md: '12' }} />
-    </Link>
-    {/*  TODO: implement logout if necessary*/}
+    {/* TODO: implement logout if necessary */}
   </Stack>
 );
 
@@ -60,9 +54,7 @@ const Header = (props: BoxProps) => {
               <img src="/logo.png" alt="Crystal ball" />
             </Image>
             <Heading fontSize={{ xs: 'md', md: 'xl', lg: '4xl' }}>
-              <RouteLink href="/" color="white">
-                Octoclairvoyant
-              </RouteLink>
+              <RouteLink href="/">Octoclairvoyant</RouteLink>
             </Heading>
           </Flex>
           {isDesktop ? (
@@ -72,7 +64,7 @@ const Header = (props: BoxProps) => {
               <Button
                 aria-label="Toggle menu"
                 variant="ghost"
-                variantColor="white"
+                variantColor="gray"
                 size="sm"
                 onClick={onToggle}
               >
@@ -80,7 +72,7 @@ const Header = (props: BoxProps) => {
               </Button>
               <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
                 <DrawerOverlay />
-                <DrawerContent>
+                <DrawerContent py={2}>
                   <DrawerCloseButton />
                   <DrawerBody>{linksInner}</DrawerBody>
                 </DrawerContent>
