@@ -2,6 +2,8 @@ import { Divider, Skeleton } from '@chakra-ui/core';
 import { Repository, VersionRange } from 'models';
 import React from 'react';
 
+import Container from '~/components/Container';
+import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesChangelogHeading';
 import RepositoryReleasesPicker from '~/components/RepositoryReleasesPicker';
 
 const RepositoryReleasesChangelog = React.lazy(() =>
@@ -39,19 +41,30 @@ const RepositoryReleasesComparator = () => {
 
   return (
     <>
-      <RepositoryReleasesPicker
-        onRepositoryChange={handleRepositoryChange}
-        onVersionRangeChange={handleVersionRangeChange}
-      />
+      <Container>
+        <RepositoryReleasesPicker
+          onRepositoryChange={handleRepositoryChange}
+          onVersionRangeChange={handleVersionRangeChange}
+        />
+      </Container>
       <Divider my={4} />
       {repositorySelected && (
-        <React.Suspense fallback={fallbackSkeleton}>
-          <RepositoryReleasesChangelog
+        <>
+          <RepositoryReleasesChangelogHeading
             repository={repositorySelected}
             fromVersion={versionRage[0]}
             toVersion={versionRage[1]}
           />
-        </React.Suspense>
+          <Container>
+            <React.Suspense fallback={fallbackSkeleton}>
+              <RepositoryReleasesChangelog
+                repository={repositorySelected}
+                fromVersion={versionRage[0]}
+                toVersion={versionRage[1]}
+              />
+            </React.Suspense>
+          </Container>
+        </>
       )}
     </>
   );

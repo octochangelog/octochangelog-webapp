@@ -81,12 +81,10 @@ const HeaderLinks: React.FC = () => {
     <>
       <Button
         aria-label="Toggle menu"
-        variant="ghost"
-        variantColor="gray"
+        variant="link"
+        variantColor="white"
         size="sm"
         onClick={onToggle}
-        _hover={{ backgroundColor: 'none' }}
-        _active={{ backgroundColor: 'none' }}
       >
         <Box as={FaBars} />
       </Button>

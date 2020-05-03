@@ -12,7 +12,6 @@ import React from 'react';
 import { filterReleasesByVersionRange } from 'utils';
 
 import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChangeDescription';
-import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesChangelogHeading';
 import TextSkeleton from '~/components/TextSkeleton';
 
 interface RepositoryReleasesChangelogProps {
@@ -56,12 +55,6 @@ const RepositoryReleasesChangelog = ({
   // TODO: simplify conditional renders with state machine
   return (
     <>
-      <RepositoryReleasesChangelogHeading
-        repository={repository}
-        fromVersion={fromVersion}
-        toVersion={toVersion}
-      />
-
       {isProcessing && (
         <>
           <Skeleton width="20%" height={8} mb={4} />

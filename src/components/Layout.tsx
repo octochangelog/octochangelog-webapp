@@ -1,8 +1,7 @@
-import { Flex, BoxProps } from '@chakra-ui/core';
+import { Flex, Box, BoxProps } from '@chakra-ui/core';
 import Head from 'next/head';
 import React from 'react';
 
-import Container from '~/components/Container';
 import Footer from '~/components/Footer';
 import Header from '~/components/Header';
 
@@ -19,10 +18,10 @@ const getHeaderProps = (isFixed: boolean): BoxProps => {
   return {};
 };
 
-const getContainerProps = (isHeaderFixed: boolean): BoxProps => {
+const getChildWrapper = (isHeaderFixed: boolean): BoxProps => {
   if (isHeaderFixed) {
     return {
-      mt: { base: 20, md: 32 },
+      mt: { base: 20, md: 24 },
     };
   }
 
@@ -40,7 +39,7 @@ const Layout: React.FC<Props> = ({
   isHeaderFixed = false,
 }) => {
   const headerProps = getHeaderProps(isHeaderFixed);
-  const containerProps = getContainerProps(isHeaderFixed);
+  const childrenWrapperProps = getChildWrapper(isHeaderFixed);
 
   return (
     <>
@@ -49,9 +48,9 @@ const Layout: React.FC<Props> = ({
       </Head>
       <Flex height="100%" direction="column">
         <Header {...headerProps} />
-        <Container {...containerProps} mb={4} flex="1 0 auto">
+        <Box {...childrenWrapperProps} mb={4} flex="1 0 auto">
           {children}
-        </Container>
+        </Box>
         <Footer />
       </Flex>
     </>
