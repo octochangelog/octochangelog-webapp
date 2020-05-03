@@ -81,9 +81,9 @@ class MyDocument extends Document {
             href="/favicon-16x16.png"
           />
           <link rel="manifest" href="/manifest.json" />
-          <meta name="msapplication-TileColor" content="#805ad5" />
+          <meta name="msapplication-TileColor" content="#ac35b0" />
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-          <meta name="theme-color" content="#805ad5" />
+          <meta name="theme-color" content="#ac35b0" />
           <meta
             name="description"
             content="Group and compare releases changelog with ease for GitHub repositories"
