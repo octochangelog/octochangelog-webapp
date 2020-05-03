@@ -107,6 +107,8 @@ class MyDocument extends Document {
             content="Group and compare releases changelog with ease for GitHub repositories"
           />
 
+          <link rel="stylesheet" type="text/css" href="/nprogress.css" />
+
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async

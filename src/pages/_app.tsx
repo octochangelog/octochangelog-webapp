@@ -5,10 +5,20 @@ import { globalStyles } from 'global';
 import * as gtag from 'gtag';
 import { AppProps } from 'next/app';
 import { Router } from 'next/router';
+import NProgress from 'nprogress';
 
 import 'highlight.styles.github.min.css';
 
-Router.events.on('routeChangeComplete', (url) => gtag.pageView(url));
+Router.events.on('routeChangeStart', () => {
+  NProgress.start();
+});
+Router.events.on('routeChangeError', () => {
+  NProgress.done();
+});
+Router.events.on('routeChangeComplete', (url) => {
+  gtag.pageView(url);
+  NProgress.done();
+});
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <ThemeProvider theme={customTheme}>
