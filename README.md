@@ -1,6 +1,6 @@
 <div align="center">
   <h1>🔮 Octoclairvoyant</h1>
-  <h3>Group and compare releases changelog with ease for GitHub repositories</h3>
+  <h3>Filter and group GitHub repository releases to compare changes with ease</h3>
   <p>👉 https://octoclairvoyant.netlify.com/</p>
 </div>
 

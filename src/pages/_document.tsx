@@ -1,6 +1,8 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import React from 'react';
 
+import { APP_MOTTO } from '~/global';
+
 class MyDocument extends Document {
   render() {
     return (
@@ -84,16 +86,10 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#ac35b0" />
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
           <meta name="theme-color" content="#ac35b0" />
-          <meta
-            name="description"
-            content="Group and compare releases changelog with ease for GitHub repositories"
-          />
+          <meta name="description" content={APP_MOTTO} />
           <meta name="keywords" content="GitHub Release Repository Changelog" />
           <meta property="og:title" content="Octoclairvoyant" />
-          <meta
-            property="og:description"
-            content="Group and compare releases changelog with ease for GitHub repositories"
-          />
+          <meta property="og:description" content={APP_MOTTO} />
           <meta property="og:type" content="website" />
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:title" content="Octoclairvoyant" />
@@ -102,10 +98,7 @@ class MyDocument extends Document {
             content="https://octoclairvoyant.now.sh/logo.png"
           />
           <meta name="twitter:creator" content="@belcoDev" />
-          <meta
-            name="twitter:description"
-            content="Group and compare releases changelog with ease for GitHub repositories"
-          />
+          <meta name="twitter:description" content={APP_MOTTO} />
 
           <link rel="stylesheet" type="text/css" href="/nprogress.css" />
 
