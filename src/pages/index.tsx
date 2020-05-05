@@ -1,5 +1,4 @@
 import { Box, Heading, Image, SimpleGrid, Stack } from '@chakra-ui/core';
-import styled from '@emotion/styled';
 import React from 'react';
 
 import Container from '~/components/Container';
@@ -7,10 +6,6 @@ import GitHubLoginLink from '~/components/GitHubLoginLink';
 import Layout from '~/components/Layout';
 import customTheme from '~/customTheme';
 import { APP_MOTTO } from '~/global';
-
-const RotatedImage = styled(Image)`
-  rotate: 3deg;
-`;
 
 const IndexPage = () => (
   <Layout isHeaderFixed>
@@ -45,10 +40,13 @@ const IndexPage = () => (
             <GitHubLoginLink />
           </Stack>
           <Box>
-            <RotatedImage
+            <Image
               src="https://via.placeholder.com/840x526.png"
               alt="App comparator screenshot"
               rounded={10}
+              transform="rotate(3deg)"
+              height="full"
+              width="auto"
             />
           </Box>
         </SimpleGrid>
