@@ -9,4 +9,4 @@ export const REPO_URL = 'https://github.com/Belco90/octoclairvoyant';
 export const GITHUB_COOKIE_KEY = 'gh-access-token';
 
 export const APP_MOTTO =
-  'Filter and group GitHub repository releases to compare changes with ease';
+  'Filter and group GitHub repositories releases to compare changes with ease';

@@ -15,6 +15,7 @@ const Footer = () => {
           alignItems="center"
           justifyContent="center"
           fontSize={{ base: 'md', md: 'lg' }}
+          shouldWrapChildren
         >
           <Box>
             Created with{' '}
@@ -26,12 +27,10 @@ const Footer = () => {
               Mario
             </Link>
           </Box>
-          <Box>-</Box>
-          <Box>
-            <Link href={REPO_URL} title="GitHub repo link">
-              GitHub
-            </Link>
-          </Box>
+          <Box as="span">-</Box>
+          <Link href={REPO_URL} title="GitHub repo link">
+            GitHub
+          </Link>
         </Stack>
       </Container>
     </Box>

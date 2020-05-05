@@ -100,6 +100,11 @@ class MyDocument extends Document {
           <meta name="twitter:creator" content="@belcoDev" />
           <meta name="twitter:description" content={APP_MOTTO} />
 
+          <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap"
+            rel="stylesheet"
+          />
+
           <link rel="stylesheet" type="text/css" href="/nprogress.css" />
 
           {/* Global Site Tag (gtag.js) - Google Analytics */}

@@ -40,8 +40,10 @@ const customTheme: ICustomTheme = {
     primary: primaryColor,
     secondary: secondaryColor,
   },
+  fonts: {
+    ...theme.fonts,
+    heading: 'Open Sans, sans-serif;',
+  },
 };
-
-export const containerSpace = customTheme.space[6];
 
 export default customTheme;
