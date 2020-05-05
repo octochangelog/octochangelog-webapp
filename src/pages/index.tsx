@@ -45,8 +45,6 @@ const IndexPage = () => (
               alt="App comparator screenshot"
               rounded={10}
               transform="rotate(3deg)"
-              height="full"
-              width="auto"
             />
           </Box>
         </SimpleGrid>
