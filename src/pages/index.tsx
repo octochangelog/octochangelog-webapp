@@ -12,11 +12,9 @@ const IndexPage = () => (
     <Box
       position="relative"
       mt={-8}
-      py={{ base: 8, md: 16 }}
-      height={{ base: '80vh', md: '60vh' }}
-      bgImage={`linear-gradient(0deg, ${customTheme.colors.primary[200]} 0%, ${customTheme.colors.primary[600]} 100%)`}
-      borderBottomLeftRadius="50% 20%"
-      borderBottomRightRadius="50% 20%"
+      pt={{ base: 8, md: 16 }}
+      height={'100vh'}
+      bgImage={`linear-gradient(180deg, ${customTheme.colors.primary[700]} 0%, ${customTheme.colors.gray[50]} 100%)`}
     >
       <Container>
         <SimpleGrid
@@ -41,10 +39,8 @@ const IndexPage = () => (
           </Stack>
           <Box>
             <Image
-              src="https://via.placeholder.com/840x526.png"
-              alt="App comparator screenshot"
-              rounded={10}
-              transform="rotate(3deg)"
+              src="/logo.png"
+              alt="Octoclairvoyant reading a crystal ball"
             />
           </Box>
         </SimpleGrid>

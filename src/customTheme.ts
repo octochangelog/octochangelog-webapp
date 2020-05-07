@@ -20,25 +20,26 @@ const primaryColor: ColorHues = {
   900: '#180319',
 };
 
-const secondaryColor: ColorHues = {
-  50: '#fdf8df',
-  100: '#f5eaba',
-  200: '#ecdb91',
-  300: '#e5cd67',
-  400: '#ddbf3d',
-  500: '#c4a524',
-  600: '#98811a',
-  700: '#6d5c11',
-  800: '#413706',
-  900: '#191200',
+const blueColor: ColorHues = {
+  50: '#def8ff',
+  100: '#b8e6f7',
+  200: '#90d4ee',
+  300: '#66c3e5',
+  400: '#3fb2dd',
+  500: '#2898c4',
+  600: '#1a7699',
+  700: '#0c556e',
+  800: '#003445',
+  900: '#00131b',
 };
 
 const customTheme: ICustomTheme = {
   ...theme,
   colors: {
     ...theme.colors,
+    blue: blueColor,
     primary: primaryColor,
-    secondary: secondaryColor,
+    secondary: blueColor,
   },
   fonts: {
     ...theme.fonts,

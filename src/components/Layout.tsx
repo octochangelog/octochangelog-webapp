@@ -48,7 +48,7 @@ const Layout: React.FC<Props> = ({
       </Head>
       <Flex height="100%" direction="column">
         <Header {...headerProps} />
-        <Box {...childrenWrapperProps} mb={4} flex="1 0 auto">
+        <Box {...childrenWrapperProps} flex="1 0 auto">
           {children}
         </Box>
         <Footer />

@@ -7,11 +7,13 @@ import {
   List,
   ListItem,
   Tag,
+  TagLabel,
   Text,
 } from '@chakra-ui/core/';
 import useProcessDescriptionMdast from 'hooks/useProcessDescriptionMdast';
 import { ProcessedReleaseChange, RepositoryInfo } from 'models';
 import React from 'react';
+import { GoTag } from 'react-icons/go';
 
 import BlockQuote from '~/components/BlockQuote';
 import Link from '~/components/Link';
@@ -64,11 +66,12 @@ const ProcessedReleaseChangeDescription = ({
   });
 
   return (
-    <Box {...rest} mb={6}>
+    <Box {...rest} mb={8}>
       {processedDescription ? (
         <>
-          <Tag size="sm" variantColor="primary" mb={2}>
-            {processedReleaseChange.tagName}
+          <Tag size="md" mb={2} rounded="full" variantColor="primary">
+            <Box as={GoTag} size="4" mr={1} />
+            <TagLabel>{processedReleaseChange.tagName}</TagLabel>
           </Tag>
           <Box ml={4}>{processedDescription}</Box>
         </>

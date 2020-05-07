@@ -115,12 +115,21 @@ const Header = (props: BoxProps) => {
       <Container py={5}>
         <Flex justify="space-between" alignItems="center">
           <Flex alignItems="center">
-            <Image as="picture" h={LOGO_SIZES} w={LOGO_SIZES} mr={2}>
+            <Image
+              as="picture"
+              h={LOGO_SIZES}
+              w={LOGO_SIZES}
+              mr={2}
+              alt="Octoclairvoyant reading a crystal ball"
+            >
               <source srcSet="/logo.webp" type="image/webp" />
-              <img src="/logo.png" alt="Crystal ball" />
+              <img
+                src="/logo.png"
+                alt="Octoclairvoyant reading a crystal ball"
+              />
             </Image>
             <Heading fontSize={{ xs: 'md', md: 'xl', lg: '4xl' }}>
-              <RouteLink href="/">Octoclairvoyant</RouteLink>
+              Octoclairvoyant
             </Heading>
           </Flex>
           {shouldShowLinks && <HeaderLinks />}

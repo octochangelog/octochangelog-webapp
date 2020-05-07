@@ -1,4 +1,4 @@
-import { Badge, Box, Heading, Text } from '@chakra-ui/core';
+import { Badge, Box, Heading, Icon, Text } from '@chakra-ui/core';
 import styled from '@emotion/styled';
 import React from 'react';
 import { getRepositoryNameDisplay } from 'utils';
@@ -28,9 +28,9 @@ const RepositoryReleasesChangelogHeading = ({
   const stickyEl = React.useRef({ offsetTop: 0 });
   const isHeadingStick = useIsStick(stickyEl);
 
-  const bgColor = isHeadingStick ? customTheme.colors.primary[500] : 'white';
+  const bgColor = isHeadingStick ? customTheme.colors.gray[700] : 'white';
   const color = isHeadingStick
-    ? customTheme.colors.gray[50]
+    ? customTheme.colors.secondary[200]
     : customTheme.colors.gray[800];
   const badgeColor = isHeadingStick ? 'secondary' : 'primary';
 
@@ -48,33 +48,28 @@ const RepositoryReleasesChangelogHeading = ({
       <Container>
         <Heading
           as="h1"
-          size={isHeadingStick ? 'xl' : '2xl'}
+          size={isHeadingStick ? 'lg' : '2xl'}
           mb={2}
           textTransform="capitalize"
         >
           <Link
             href={repository.url}
             isExternal
-            color={isHeadingStick ? 'secondary.300' : 'primary.500'}
+            color={isHeadingStick ? 'gray.50' : 'primary.500'}
           >
-            {getRepositoryNameDisplay(repository.name)}
+            {getRepositoryNameDisplay(repository.name)}{' '}
+            <Icon name="external-link" />
           </Link>
         </Heading>
 
         {fromVersion && toVersion ? (
-          <Heading fontSize={isHeadingStick ? 'sm' : 'md'} mb={2}>
+          <Heading fontSize={isHeadingStick ? 'xs' : 'md'} mb={2}>
             Comparing changes from{' '}
-            <Badge
-              variant={isHeadingStick ? 'subtle' : 'solid'}
-              variantColor={badgeColor}
-            >
+            <Badge variant="solid" variantColor={badgeColor}>
               {fromVersion}
             </Badge>{' '}
             to{' '}
-            <Badge
-              variant={isHeadingStick ? 'subtle' : 'solid'}
-              variantColor={badgeColor}
-            >
+            <Badge variant="solid" variantColor={badgeColor}>
               {toVersion}
             </Badge>
           </Heading>
