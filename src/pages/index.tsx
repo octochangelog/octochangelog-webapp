@@ -63,7 +63,7 @@ const IndexPage = () => (
         </Heading>
         <SimpleGrid
           columns={{ base: 1, md: 2 }}
-          spacing={{ base: 8, md: 4 }}
+          spacing={{ base: 4, md: 8 }}
           alignItems="start"
         >
           <List spacing={{ base: 4, md: 8 }}>
