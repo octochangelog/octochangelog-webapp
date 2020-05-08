@@ -56,34 +56,35 @@ const IndexPage = () => (
       </Container>
     </Box>
 
-    <Box my={24}>
+    <Box my={{ base: 12, md: 24 }}>
       <Container>
-        <SimpleGrid
-          columns={{ base: 1, md: 2 }}
-          spacing={{ base: 4, md: 8 }}
-          alignItems="start"
-        >
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} alignItems="start">
           <Image
             src="https://via.placeholder.com/840x526.png"
             alt="App comparator screenshot"
-            rounded={10}
+            rounded={8}
           />
           <Box>
-            <Heading as="h2" fontSize="3xl" mb={8}>
+            <Heading
+              as="h2"
+              fontSize="3xl"
+              mb={{ base: 4, md: 8 }}
+              color="primary.500"
+            >
               Main Features
             </Heading>
             <List spacing={{ base: 4, md: 8 }}>
               <ListItem>
-                <ListIcon icon="check-circle" color="primary.500" />
+                <ListIcon icon="check-circle" color="secondary.500" />
                 Filter and group several releases by same type of changes for
                 comparing them at once with ease
               </ListItem>
               <ListItem>
-                <ListIcon icon="check-circle" color="primary.500" />
+                <ListIcon icon="check-circle" color="secondary.500" />
                 Highlight syntax for code blocks
               </ListItem>
               <ListItem>
-                <ListIcon icon="check-circle" color="primary.500" />
+                <ListIcon icon="check-circle" color="secondary.500" />
                 Sort by different level of changes for{' '}
                 <Link href="https://semver.org/">Semantic Versioning</Link>,
                 specially those using{' '}
@@ -92,7 +93,7 @@ const IndexPage = () => (
                 </Link>
               </ListItem>
               <ListItem>
-                <ListIcon icon="check-circle" color="primary.500" />
+                <ListIcon icon="check-circle" color="secondary.500" />
                 Spot original version where specific changes were introduced
               </ListItem>
             </List>

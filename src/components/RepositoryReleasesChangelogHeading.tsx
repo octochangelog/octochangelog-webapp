@@ -1,11 +1,10 @@
-import { Badge, Box, Heading, Icon, Text } from '@chakra-ui/core';
+import { Badge, Box, Heading, Text } from '@chakra-ui/core';
 import styled from '@emotion/styled';
 import React from 'react';
 import { getRepositoryNameDisplay } from 'utils';
 
 import Container from '~/components/Container';
 import Link from '~/components/Link';
-import customTheme from '~/customTheme';
 import useIsStick from '~/hooks/useIsStick';
 import { Repository } from '~/models';
 
@@ -28,48 +27,36 @@ const RepositoryReleasesChangelogHeading = ({
   const stickyEl = React.useRef({ offsetTop: 0 });
   const isHeadingStick = useIsStick(stickyEl);
 
-  const bgColor = isHeadingStick ? customTheme.colors.gray[700] : 'white';
-  const color = isHeadingStick
-    ? customTheme.colors.secondary[200]
-    : customTheme.colors.gray[800];
-  const badgeColor = isHeadingStick ? 'secondary' : 'primary';
-
   return (
     <StickyBox
       position="sticky"
-      top="-2px"
+      top="-1px"
       width="full"
-      color={color}
-      bg={bgColor}
+      bg="white"
       py={1}
       ref={stickyEl}
       isStick={isHeadingStick}
+      mb={isHeadingStick ? 0 : { base: 4, md: 8 }}
     >
       <Container>
-        <Heading
-          as="h1"
-          size={isHeadingStick ? 'lg' : '2xl'}
-          mb={2}
-          textTransform="capitalize"
-        >
-          <Link
-            href={repository.url}
-            isExternal
-            color={isHeadingStick ? 'gray.50' : 'primary.500'}
-          >
-            {getRepositoryNameDisplay(repository.name)}{' '}
-            <Icon name="external-link" />
+        <Heading as="h1" size={isHeadingStick ? 'lg' : '2xl'} mb={2}>
+          <Link href={repository.url} isExternal color="primary.500">
+            {getRepositoryNameDisplay(repository.name)}
           </Link>
         </Heading>
 
         {fromVersion && toVersion ? (
-          <Heading fontSize={isHeadingStick ? 'xs' : 'md'} mb={2}>
+          <Heading
+            fontSize={isHeadingStick ? 'xs' : 'md'}
+            mb={2}
+            color="secondary.500"
+          >
             Comparing changes from{' '}
-            <Badge variant="solid" variantColor={badgeColor}>
+            <Badge variant="solid" variantColor="secondary">
               {fromVersion}
             </Badge>{' '}
             to{' '}
-            <Badge variant="solid" variantColor={badgeColor}>
+            <Badge variant="solid" variantColor="secondary">
               {toVersion}
             </Badge>
           </Heading>
