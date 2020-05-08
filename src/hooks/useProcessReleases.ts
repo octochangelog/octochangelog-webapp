@@ -4,7 +4,10 @@ import React from 'react';
 import parse from 'remark-parse';
 import unified from 'unified';
 
-function insertReleaseInGroup(newProcessedRelease: any, groupedReleases: any) {
+function insertReleaseInGroup(
+  newProcessedRelease: any,
+  groupedReleases: any
+): void {
   const { title } = newProcessedRelease;
   if (groupedReleases[title]) {
     // group already exists, then append new changes of same type
@@ -13,6 +16,10 @@ function insertReleaseInGroup(newProcessedRelease: any, groupedReleases: any) {
     // group doesn't exist yet, then create it and init with new changes
     groupedReleases[title] = [newProcessedRelease];
   }
+}
+
+function processedReleaseIsEmpty(processedRelease: any): boolean {
+  return processedRelease.descriptionMdast.children.length === 0;
 }
 
 const processor = unified().use(parse);
@@ -35,7 +42,10 @@ async function processReleasesAsync(releases: Release[]) {
             [1, 2, 3].includes(mdastNode.depth)
           ) {
             // check if prev release available, and save it if so...
-            if (newProcessedRelease) {
+            if (
+              newProcessedRelease &&
+              !processedReleaseIsEmpty(newProcessedRelease)
+            ) {
               insertReleaseInGroup(
                 newProcessedRelease,
                 processedReleasesCollection
@@ -61,7 +71,10 @@ async function processReleasesAsync(releases: Release[]) {
           }
         });
         // insert final release in group
-        if (newProcessedRelease) {
+        if (
+          newProcessedRelease &&
+          !processedReleaseIsEmpty(newProcessedRelease)
+        ) {
           insertReleaseInGroup(
             newProcessedRelease,
             processedReleasesCollection
