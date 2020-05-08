@@ -65,6 +65,17 @@ async function processReleasesAsync(releases: Release[]) {
                 ...remainingRel,
               };
             }
+          } else if (!newProcessedRelease) {
+            // standalone or non-groupable release found
+            newProcessedRelease = {
+              title: 'unknown',
+              originalTitle: mdastNode.children[0].value,
+              descriptionMdast: {
+                type: 'root',
+                children: [mdastNode],
+              },
+              ...remainingRel,
+            };
           } else {
             // append content to current release
             newProcessedRelease.descriptionMdast.children.push(mdastNode);
