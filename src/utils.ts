@@ -59,15 +59,17 @@ export function getReleaseGroupTitle(
 ): SemVerGroupTitles | string {
   const mdastTitle = lowerCase(mdastNode.children[0].value);
 
-  if (mdastTitle.match(/^.*breaking.*change.*$/i)) {
-    return SemVerGroupTitles.breakingChanges;
-  }
-
-  if (mdastTitle.match(/^.*feature.*$/i)) {
+  // check features before than breaking changes to group here "Major Features"
+  // and avoid grouping them under breaking changes group
+  if (mdastTitle.match(/^.*(feature|minor).*$/i)) {
     return SemVerGroupTitles.features;
   }
 
-  if (mdastTitle.match(/^.*bug.*fix.*$/i)) {
+  if (mdastTitle.match(/^.*(breaking.*change|major).*$/i)) {
+    return SemVerGroupTitles.breakingChanges;
+  }
+
+  if (mdastTitle.match(/^.*(bug.*fix|patch).*$/i)) {
     return SemVerGroupTitles.bugFixes;
   }
 
