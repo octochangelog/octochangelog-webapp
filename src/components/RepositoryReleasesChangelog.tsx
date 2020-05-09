@@ -7,7 +7,12 @@ import {
   Stack,
 } from '@chakra-ui/core';
 import useProcessReleases from 'hooks/useProcessReleases';
-import { ProcessedReleaseChange, Release, Repository } from 'models';
+import {
+  ProcessedReleaseChange,
+  Release,
+  Repository,
+  SemVerGroupTitles,
+} from 'models';
 import React from 'react';
 import { filterReleasesByVersionRange } from 'utils';
 
@@ -42,7 +47,10 @@ const RepositoryReleasesChangelog = ({
 
     const groupsTitles = Object.keys(processedReleases);
 
-    return groupsTitles.length > 1 || !groupsTitles.includes('unknown');
+    return (
+      groupsTitles.length > 1 ||
+      !groupsTitles.includes(SemVerGroupTitles.unknown)
+    );
   };
 
   React.useEffect(

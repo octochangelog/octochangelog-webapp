@@ -54,3 +54,10 @@ export interface ProcessedReleaseChange extends Omit<Release, 'description'> {
   // level: enumerate with error, warning, info or unknown
   descriptionMdast: Parent;
 }
+
+export enum SemVerGroupTitles {
+  breakingChanges = 'breaking changes',
+  features = 'features',
+  bugFixes = 'bug fixes',
+  unknown = 'others',
+}

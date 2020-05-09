@@ -1,4 +1,5 @@
-import { RepositoryQueryVars, Release } from 'models';
+import { lowerCase } from 'lodash';
+import { RepositoryQueryVars, Release, SemVerGroupTitles } from 'models';
 import semver from 'semver';
 import title from 'title';
 
@@ -50,4 +51,25 @@ export function getRepositoryNameDisplay(repoName: string): string {
   return title(repoName.replace(/[_-]/g, ' '), {
     special: customTitleSpecials,
   });
+}
+
+// TODO: add tests for all variants
+export function getReleaseGroupTitle(
+  mdastNode: any
+): SemVerGroupTitles | string {
+  const mdastTitle = lowerCase(mdastNode.children[0].value);
+
+  if (mdastTitle.match(/^.*breaking.*change.*$/i)) {
+    return SemVerGroupTitles.breakingChanges;
+  }
+
+  if (mdastTitle.match(/^.*feature.*$/i)) {
+    return SemVerGroupTitles.features;
+  }
+
+  if (mdastTitle.match(/^.*bug.*fix.*$/i)) {
+    return SemVerGroupTitles.bugFixes;
+  }
+
+  return mdastTitle;
 }

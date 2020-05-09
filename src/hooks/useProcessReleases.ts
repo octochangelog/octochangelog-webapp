@@ -1,8 +1,13 @@
-import { lowerCase } from 'lodash';
-import { ProcessedReleasesCollection, Release } from 'models';
+import {
+  ProcessedReleasesCollection,
+  Release,
+  SemVerGroupTitles,
+} from 'models';
 import React from 'react';
 import parse from 'remark-parse';
 import unified from 'unified';
+
+import { getReleaseGroupTitle } from '~/utils';
 
 function insertReleaseInGroup(
   newProcessedRelease: any,
@@ -53,7 +58,7 @@ async function processReleasesAsync(releases: Release[]) {
             }
 
             // ... and create new release if proper header found
-            const title = lowerCase(mdastNode.children[0].value);
+            const title = getReleaseGroupTitle(mdastNode);
             if (title) {
               newProcessedRelease = {
                 title,
@@ -68,7 +73,7 @@ async function processReleasesAsync(releases: Release[]) {
           } else if (!newProcessedRelease) {
             // standalone or non-groupable release found
             newProcessedRelease = {
-              title: 'unknown',
+              title: SemVerGroupTitles.unknown,
               originalTitle: mdastNode.children[0].value,
               descriptionMdast: {
                 type: 'root',
