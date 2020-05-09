@@ -23,7 +23,7 @@ const IndexPage = () => (
       position="relative"
       mt={-8}
       pt={{ base: 8, md: 16 }}
-      height={'100vh'}
+      minHeight="100vh"
       bgImage={`linear-gradient(180deg, ${customTheme.colors.primary[700]} 0%, ${customTheme.colors.white} 100%)`}
     >
       <Container>
