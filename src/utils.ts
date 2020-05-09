@@ -79,7 +79,7 @@ export function getReleaseGroupTitle(
     return SemVerGroupTitles.breakingChanges;
   }
 
-  if (mdastTitle.match(/^.*(bug.*fix|patch).*$/i)) {
+  if (mdastTitle.match(/^.*(bug|fix|patch).*$/i)) {
     return SemVerGroupTitles.bugFixes;
   }
 
