@@ -32,9 +32,9 @@ const ComparatorPage = () => {
   const shouldLogin = !isLoading && !apolloClient.current;
   const isReady = !shouldLogin && apolloClient.current;
 
+  // TODO: show spinner while isLoading
   return (
     <Layout extraTitle="Comparator">
-      {isLoading && 'LOADING...'}
       {shouldLogin && <GitHubLoginLink />}
 
       {isReady && (

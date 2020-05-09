@@ -59,5 +59,11 @@ export enum SemVerGroupTitles {
   breakingChanges = 'breaking changes',
   features = 'features',
   bugFixes = 'bug fixes',
+}
+
+export enum MiscGroupTitles {
   unknown = 'others',
+  artifacts = 'artifacts',
+  thanks = 'thanks',
+  credits = 'credits',
 }

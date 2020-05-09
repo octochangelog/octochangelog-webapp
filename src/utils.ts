@@ -1,7 +1,17 @@
 import { lowerCase } from 'lodash';
-import { RepositoryQueryVars, Release, SemVerGroupTitles } from 'models';
+import {
+  MiscGroupTitles,
+  Release,
+  RepositoryQueryVars,
+  SemVerGroupTitles,
+} from 'models';
 import semver from 'semver';
 import title from 'title';
+
+import {
+  HIGH_PRIORITY_GROUP_TITLES,
+  LOW_PRIORITY_GROUP_TITLES,
+} from '~/global';
 
 const gitHubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,\-_.]+)\/([\w,\-_.]+)(.git)?((\/)?)/i;
 
@@ -56,7 +66,7 @@ export function getRepositoryNameDisplay(repoName: string): string {
 // TODO: add tests for all variants
 export function getReleaseGroupTitle(
   mdastNode: any
-): SemVerGroupTitles | string {
+): SemVerGroupTitles | MiscGroupTitles | string {
   const mdastTitle = lowerCase(mdastNode.children[0].value);
 
   // check features before than breaking changes to group here "Major Features"
@@ -73,5 +83,64 @@ export function getReleaseGroupTitle(
     return SemVerGroupTitles.bugFixes;
   }
 
+  if (mdastTitle.match(/^.*thank.*$/)) {
+    return MiscGroupTitles.thanks;
+  }
+
+  if (mdastTitle.match(/^.*artifact.*$/)) {
+    return MiscGroupTitles.artifacts;
+  }
+
+  if (mdastTitle.match(/^.*credit.*$/)) {
+    return MiscGroupTitles.credits;
+  }
+
   return mdastTitle;
+}
+
+const getTitlePriorityGroup = (title: string): -1 | 1 | 0 => {
+  if (HIGH_PRIORITY_GROUP_TITLES.includes(title)) {
+    return -1;
+  }
+
+  if (LOW_PRIORITY_GROUP_TITLES.includes(title)) {
+    return 1;
+  }
+
+  return 0;
+};
+
+// TODO: add tests for all variants
+export function compareReleaseGroupTitlesSort(a: string, b: string): number {
+  const aPriority = getTitlePriorityGroup(a);
+  const bPriority = getTitlePriorityGroup(b);
+
+  // they belong to different priorities group, sort by highest one
+  if (aPriority !== bPriority) {
+    return aPriority - bPriority;
+  }
+
+  // they belong to neutral priority group, maintain sort unchanged
+  if (aPriority === 0) {
+    return 0;
+  }
+
+  // they belong to high or low priority group,
+  // sort by most important one within their group
+  const priorityGroupReference =
+    aPriority === -1 ? HIGH_PRIORITY_GROUP_TITLES : LOW_PRIORITY_GROUP_TITLES;
+
+  const indexOfA = priorityGroupReference.indexOf(a);
+  const indexOfB = priorityGroupReference.indexOf(b);
+
+  if (indexOfA < indexOfB) {
+    return -1;
+  }
+
+  if (indexOfA > indexOfB) {
+    return 1;
+  }
+
+  // maintain sort unchanged just in case
+  return 0;
 }

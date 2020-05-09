@@ -8,13 +8,16 @@ import {
 } from '@chakra-ui/core';
 import useProcessReleases from 'hooks/useProcessReleases';
 import {
+  MiscGroupTitles,
   ProcessedReleaseChange,
   Release,
   Repository,
-  SemVerGroupTitles,
 } from 'models';
 import React from 'react';
-import { filterReleasesByVersionRange } from 'utils';
+import {
+  compareReleaseGroupTitlesSort,
+  filterReleasesByVersionRange,
+} from 'utils';
 
 import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChangeDescription';
 import TextSkeleton from '~/components/TextSkeleton';
@@ -48,8 +51,7 @@ const RepositoryReleasesChangelog = ({
     const groupsTitles = Object.keys(processedReleases);
 
     return (
-      groupsTitles.length > 1 ||
-      !groupsTitles.includes(SemVerGroupTitles.unknown)
+      groupsTitles.length > 1 || !groupsTitles.includes(MiscGroupTitles.unknown)
     );
   };
 
@@ -82,31 +84,33 @@ const RepositoryReleasesChangelog = ({
 
       {!isProcessing && processedReleases && (
         <Stack spacing={6}>
-          {Object.keys(processedReleases).map((title: string) => {
-            // TODO: update `release` type to ProcessedReleaseGroup when available
-            const processedRelease = processedReleases[title];
-            return (
-              <Box key={title}>
-                {shouldShowProcessedReleaseTitle() && (
-                  <Heading as="h2" size="xl" mb={4}>
-                    {title}
-                  </Heading>
-                )}
-                <Box mb={4}>
-                  {processedRelease.map(
-                    (processedReleaseChange: ProcessedReleaseChange) => (
-                      <ProcessedReleaseChangeDescription
-                        key={processedReleaseChange.id}
-                        repository={repoInfo}
-                        processedReleaseChange={processedReleaseChange}
-                        mb={8}
-                      />
-                    )
+          {Object.keys(processedReleases)
+            .sort(compareReleaseGroupTitlesSort)
+            .map((title: string) => {
+              // TODO: update `release` type to ProcessedReleaseGroup when available
+              const processedRelease = processedReleases[title];
+              return (
+                <Box key={title}>
+                  {shouldShowProcessedReleaseTitle() && (
+                    <Heading as="h2" size="xl" mb={4}>
+                      {title}
+                    </Heading>
                   )}
+                  <Box mb={4}>
+                    {processedRelease.map(
+                      (processedReleaseChange: ProcessedReleaseChange) => (
+                        <ProcessedReleaseChangeDescription
+                          key={processedReleaseChange.id}
+                          repository={repoInfo}
+                          processedReleaseChange={processedReleaseChange}
+                          mb={8}
+                        />
+                      )
+                    )}
+                  </Box>
                 </Box>
-              </Box>
-            );
-          })}
+              );
+            })}
         </Stack>
       )}
 

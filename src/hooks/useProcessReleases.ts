@@ -1,8 +1,4 @@
-import {
-  ProcessedReleasesCollection,
-  Release,
-  SemVerGroupTitles,
-} from 'models';
+import { MiscGroupTitles, ProcessedReleasesCollection, Release } from 'models';
 import React from 'react';
 import parse from 'remark-parse';
 import unified from 'unified';
@@ -73,7 +69,7 @@ async function processReleasesAsync(releases: Release[]) {
           } else if (!newProcessedRelease) {
             // standalone or non-groupable release found
             newProcessedRelease = {
-              title: SemVerGroupTitles.unknown,
+              title: MiscGroupTitles.unknown,
               originalTitle: mdastNode.children[0].value,
               descriptionMdast: {
                 type: 'root',
