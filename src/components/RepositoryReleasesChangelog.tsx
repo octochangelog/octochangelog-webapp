@@ -12,6 +12,7 @@ import {
   ProcessedReleaseChange,
   Release,
   Repository,
+  SemVerGroupTitles,
 } from 'models';
 import React from 'react';
 import {
@@ -89,10 +90,19 @@ const RepositoryReleasesChangelog = ({
             .map((title: string) => {
               // TODO: update `release` type to ProcessedReleaseGroup when available
               const processedRelease = processedReleases[title];
+              const textTransform =
+                title === SemVerGroupTitles.breakingChanges
+                  ? 'uppercase'
+                  : 'capitalize';
               return (
                 <Box key={title}>
                   {shouldShowProcessedReleaseTitle() && (
-                    <Heading as="h2" size="xl" mb={4}>
+                    <Heading
+                      as="h2"
+                      size="xl"
+                      mb={4}
+                      textTransform={textTransform}
+                    >
                       {title}
                     </Heading>
                   )}
