@@ -13,9 +13,9 @@ _TODO: add demo gif here_
 ### Main Features:
 
 - Filter by range of versions
-- Group changes by same category for comparing them at once with ease
+- Group changes by normalized categories (e.g. put "bug fixes" and "minor" under the same group)
+- Sort and prioritize by different level of changes for [Semantic Versioning](https://semver.org/)
 - Highlight code blocks syntax and GitHub references
-- Sort by different level of changes for [Semantic Versioning](https://semver.org/), specially those using [semantic-release](https://semantic-release.gitbook.io/semantic-release/)
 - Spot original version where specific changes were introduced
 
 ### TODO:

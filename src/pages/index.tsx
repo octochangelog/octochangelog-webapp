@@ -14,6 +14,7 @@ import Container from '~/components/Container';
 import GitHubLoginLink from '~/components/GitHubLoginLink';
 import Layout from '~/components/Layout';
 import Link from '~/components/Link';
+import MainLogo from '~/components/MainLogo';
 import customTheme from '~/customTheme';
 import { APP_MOTTO } from '~/global';
 
@@ -47,10 +48,7 @@ const IndexPage = () => (
             <GitHubLoginLink />
           </Stack>
           <Box>
-            <Image
-              src="/logo.png"
-              alt="Octoclairvoyant reading a crystal ball"
-            />
+            <MainLogo />
           </Box>
         </SimpleGrid>
       </Container>
@@ -80,21 +78,17 @@ const IndexPage = () => (
               </ListItem>
               <ListItem>
                 <ListIcon icon="check-circle" color="secondary.500" />
-                Group changes by same category for comparing them at once with
-                ease
+                Group changes by normalized categories (e.g. put "bug fixes" and
+                "minor" under the same group)
+              </ListItem>
+              <ListItem>
+                <ListIcon icon="check-circle" color="secondary.500" />
+                Sort and prioritize by different level of changes for{' '}
+                <Link href="https://semver.org/">Semantic Versioning</Link>
               </ListItem>
               <ListItem>
                 <ListIcon icon="check-circle" color="secondary.500" />
                 Highlight code blocks syntax and GitHub references
-              </ListItem>
-              <ListItem>
-                <ListIcon icon="check-circle" color="secondary.500" />
-                Sort by different level of changes for{' '}
-                <Link href="https://semver.org/">Semantic Versioning</Link>,
-                specially those using{' '}
-                <Link href="https://semantic-release.gitbook.io/semantic-release/">
-                  semantic-release
-                </Link>
               </ListItem>
               <ListItem>
                 <ListIcon icon="check-circle" color="secondary.500" />
