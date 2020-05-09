@@ -35,6 +35,16 @@ const RepositoryReleasesChangelog = ({
 
   const { releases, ...repoInfo } = repository;
 
+  const shouldShowProcessedReleaseTitle = () => {
+    if (!processedReleases) {
+      return false;
+    }
+
+    const groupsTitles = Object.keys(processedReleases);
+
+    return groupsTitles.length > 1 || !groupsTitles.includes('unknown');
+  };
+
   React.useEffect(
     function filterReleases() {
       if (releases && fromVersion && toVersion) {
@@ -64,25 +74,31 @@ const RepositoryReleasesChangelog = ({
 
       {!isProcessing && processedReleases && (
         <Stack spacing={6}>
-          {Object.keys(processedReleases).map((title: string) => (
-            <Box key={title}>
-              <Heading as="h2" size="xl" mb={4}>
-                {title}
-              </Heading>
-              <Box mb={4}>
-                {processedReleases[title].map(
-                  (processedReleaseChange: ProcessedReleaseChange) => (
-                    <ProcessedReleaseChangeDescription
-                      key={processedReleaseChange.id}
-                      repository={repoInfo}
-                      processedReleaseChange={processedReleaseChange}
-                      mb={8}
-                    />
-                  )
+          {Object.keys(processedReleases).map((title: string) => {
+            // TODO: update `release` type to ProcessedReleaseGroup when available
+            const processedRelease = processedReleases[title];
+            return (
+              <Box key={title}>
+                {shouldShowProcessedReleaseTitle() && (
+                  <Heading as="h2" size="xl" mb={4}>
+                    {title}
+                  </Heading>
                 )}
+                <Box mb={4}>
+                  {processedRelease.map(
+                    (processedReleaseChange: ProcessedReleaseChange) => (
+                      <ProcessedReleaseChangeDescription
+                        key={processedReleaseChange.id}
+                        repository={repoInfo}
+                        processedReleaseChange={processedReleaseChange}
+                        mb={8}
+                      />
+                    )
+                  )}
+                </Box>
               </Box>
-            </Box>
-          ))}
+            );
+          })}
         </Stack>
       )}
 
