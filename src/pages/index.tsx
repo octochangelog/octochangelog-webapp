@@ -76,12 +76,16 @@ const IndexPage = () => (
             <List spacing={{ base: 4, md: 8 }}>
               <ListItem>
                 <ListIcon icon="check-circle" color="secondary.500" />
-                Filter and group several releases by same type of changes for
-                comparing them at once with ease
+                Filter by range of versions
               </ListItem>
               <ListItem>
                 <ListIcon icon="check-circle" color="secondary.500" />
-                Highlight syntax for code blocks
+                Group changes by same category for comparing them at once with
+                ease
+              </ListItem>
+              <ListItem>
+                <ListIcon icon="check-circle" color="secondary.500" />
+                Highlight code blocks syntax and GitHub references
               </ListItem>
               <ListItem>
                 <ListIcon icon="check-circle" color="secondary.500" />
