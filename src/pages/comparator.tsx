@@ -1,4 +1,5 @@
 import { ApolloProvider } from '@apollo/react-hooks';
+import { Flex, Heading } from '@chakra-ui/core';
 import ApolloClient from 'apollo-boost';
 import { GITHUB_COOKIE_KEY } from 'global';
 import { parseCookies } from 'nookies';
@@ -35,7 +36,25 @@ const ComparatorPage = () => {
   // TODO: show spinner while isLoading
   return (
     <Layout extraTitle="Comparator">
-      {shouldLogin && <GitHubLoginLink />}
+      {shouldLogin && (
+        <Flex justify="center">
+          <Flex
+            p={5}
+            shadow={{ base: 'none', md: 'md' }}
+            borderWidth={{ base: 'none', md: '1px' }}
+            width={{ base: 'full', md: 600 }}
+            direction="column"
+            justify="center"
+          >
+            <Heading fontSize="l" textAlign="center" mb={4}>
+              You need to authorize GitHub before using the comparator
+            </Heading>
+            <Flex justify="center">
+              <GitHubLoginLink />
+            </Flex>
+          </Flex>
+        </Flex>
+      )}
 
       {isReady && (
         <ApolloProvider client={apolloClient.current!}>
