@@ -49,7 +49,7 @@ const remarkReactComponents = {
   ),
   li: ListItem,
   pre: (props: BoxProps) => (
-    <Code as="pre" display="block" mb="4" p="3" {...props} />
+    <Code as="pre" display="block" mb="4" p="3" overflowX="auto" {...props} />
   ),
   code: (props: BoxProps) => <Code color="inherit" {...props} />,
   blockquote: (props: BoxProps) => <BlockQuote mb="2" {...props} />,
