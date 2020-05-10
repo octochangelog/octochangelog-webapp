@@ -73,12 +73,12 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "husky": "^4.2.5",
     "imagemin-optipng": "^7.1.0",
-    "jimp": "^0.10.3",
     "lint-staged": "^10.2.2",
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.6.0",
     "prettier": "2.0.5",
     "responsive-loader": "^1.2.0",
+    "sharp": "^0.25.2",
     "typescript": "^3.8.3",
     "webp-loader": "^0.6.0"
   }
