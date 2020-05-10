@@ -3,7 +3,9 @@ import {
   BoxProps,
   Code,
   Heading,
+  Icon,
   HeadingProps,
+  LinkProps,
   List,
   ListItem,
   Tag,
@@ -27,7 +29,11 @@ const remarkReactComponents = {
   h5: (props: HeadingProps) => <Heading as="h6" size="xs" mb="2" {...props} />,
   h6: (props: HeadingProps) => <Heading as="h6" size="xs" mb="2" {...props} />,
   p: (props: BoxProps) => <Text mb="2" {...props} />,
-  a: Link,
+  a: ({ href, children, ...rest }: LinkProps) => (
+    <Link href={href} isExternal {...rest}>
+      {children} <Icon name="external-link" mx="2px" />
+    </Link>
+  ),
   ul: (props: any) => (
     <List styleType="disc" mb="4" ml="4" stylePos="outside" {...props} />
   ),
@@ -45,7 +51,7 @@ const remarkReactComponents = {
   pre: (props: BoxProps) => (
     <Code as="pre" display="block" mb="4" p="3" {...props} />
   ),
-  code: (props: BoxProps) => <Code {...props} />,
+  code: (props: BoxProps) => <Code color="inherit" {...props} />,
   blockquote: (props: BoxProps) => <BlockQuote mb="2" {...props} />,
 };
 
