@@ -9,7 +9,6 @@ import {
   DrawerOverlay,
   Flex,
   Heading,
-  Image,
   Stack,
   useDisclosure,
 } from '@chakra-ui/core';
@@ -21,7 +20,7 @@ import Container from '~/components/Container';
 import RouteLink from '~/components/RouteLink';
 import useWindowWidth from '~/hooks/useWindowWidth';
 
-const LOGO_SIZES = { base: '25px', md: '30px', lg: '50px' };
+// const LOGO_SIZES = { base: '25px', md: '30px', lg: '50px' };
 const INLINE_BREAKPOINT = 768; // desktop
 
 const MenuLink: React.FC<{ href: string; isDesktop: boolean }> = ({
@@ -115,19 +114,6 @@ const Header = (props: BoxProps) => {
       <Container py={5}>
         <Flex justify="space-between" alignItems="center">
           <Flex alignItems="center">
-            <Image
-              as="picture"
-              h={LOGO_SIZES}
-              w={LOGO_SIZES}
-              mr={2}
-              alt="Octoclairvoyant reading a crystal ball"
-            >
-              <source srcSet="/logo.webp" type="image/webp" />
-              <img
-                src="/logo.png"
-                alt="Octoclairvoyant reading a crystal ball"
-              />
-            </Image>
             <Heading fontSize={{ xs: 'md', md: 'xl', lg: '4xl' }}>
               Octoclairvoyant
             </Heading>
