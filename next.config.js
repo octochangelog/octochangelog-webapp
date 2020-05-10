@@ -12,8 +12,8 @@ module.exports = withPlugins(
           preset: 'picture',
           quality: 90,
           resize: {
-            width: 800,
-            height: 800,
+            width: 600,
+            height: 600,
           },
         },
       },
