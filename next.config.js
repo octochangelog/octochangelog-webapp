@@ -8,6 +8,10 @@ module.exports = withPlugins(
       optimizedImages,
       {
         optimizeImagesInDev: true,
+        responsive: {
+          min: 50,
+          max: 600,
+        },
         webp: {
           preset: 'picture',
           quality: 90,

@@ -23,7 +23,7 @@ import useWindowWidth from '~/hooks/useWindowWidth';
 
 /* eslint-disable import/order */
 // @ts-ignore
-import Icon from '../../public/mascot-icon.png?resize&sizes[]=200&sizes[]=500&sizes[]=800';
+import Icon from '../../public/mascot-icon.png?resize';
 // @ts-ignore
 import WebpIcon from '../../public/mascot-icon.png?webp';
 /* eslint-enable import/order */

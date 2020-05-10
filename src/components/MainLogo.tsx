@@ -4,7 +4,7 @@ import React from 'react';
 
 /* eslint-disable import/order */
 // @ts-ignore
-import Logo from '../../public/mascot-logo.png?resize&sizes[]=300&sizes[]=500&sizes[]=800';
+import Logo from '../../public/mascot-logo.png?resize';
 // @ts-ignore
 import WebpLogo from '../../public/mascot-logo.png?webp';
 /* eslint-enable import/order */
