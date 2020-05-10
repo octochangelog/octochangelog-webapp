@@ -131,7 +131,6 @@ const Header = (props: BoxProps) => {
               />
             </Box>
             <Heading fontSize={{ xs: 'md', md: 'xl', lg: '4xl' }}>
-              <RouteLink href="/">Octoclairvoyant</RouteLink>
               Octoclairvoyant
             </Heading>
           </Flex>
