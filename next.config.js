@@ -12,14 +12,6 @@ module.exports = withPlugins(
           min: 50,
           max: 600,
         },
-        webp: {
-          preset: 'picture',
-          quality: 90,
-          resize: {
-            width: 600,
-            height: 600,
-          },
-        },
       },
     ],
   ],

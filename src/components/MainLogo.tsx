@@ -5,14 +5,15 @@ import React from 'react';
 /* eslint-disable import/order */
 // @ts-ignore
 import Logo from '../../public/mascot-logo.png?resize';
-// @ts-ignore
-import WebpLogo from '../../public/mascot-logo.png?webp';
 /* eslint-enable import/order */
 
 const MainLogo = () => {
   return (
     <Box as="picture">
-      <source srcSet={WebpLogo} type="image/webp" />
+      <source
+        srcSet="/mascot-logo-xs.webp 100w,/mascot-logo-sm.webp 250w,/mascot-logo-md.webp 500w,/mascot-logo-lg.webp 900w"
+        type="image/webp"
+      />
       <source srcSet={Logo.srcSet} type="image/png" />
       <Image src={Logo.src} alt="Octoclairvoyant reading a crystal ball" />
     </Box>

@@ -21,13 +21,6 @@ import Container from '~/components/Container';
 import RouteLink from '~/components/RouteLink';
 import useWindowWidth from '~/hooks/useWindowWidth';
 
-/* eslint-disable import/order */
-// @ts-ignore
-import Icon from '../../public/mascot-icon.png?resize';
-// @ts-ignore
-import WebpIcon from '../../public/mascot-icon.png?webp';
-/* eslint-enable import/order */
-
 const LOGO_SIZES = { base: '25px', md: '30px', lg: '50px' };
 const INLINE_BREAKPOINT = 768; // desktop
 
@@ -123,10 +116,10 @@ const Header = (props: BoxProps) => {
         <Flex justify="space-between" alignItems="center">
           <Flex alignItems="center">
             <Box as="picture" h={LOGO_SIZES} w={LOGO_SIZES} mr={2}>
-              <source srcSet={WebpIcon} type="image/webp" />
-              <source srcSet={Icon.srcSet} type="image/png" />
+              <source srcSet="/mascot-icon.webp" type="image/webp" />
+              <source src="/mascot-icon.png" type="image/png" />
               <Image
-                src={Icon.src}
+                src="/mascot-icon.png"
                 alt="Octoclairvoyant reading a crystal ball"
               />
             </Box>
