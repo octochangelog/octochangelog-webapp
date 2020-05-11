@@ -98,7 +98,7 @@ class MyDocument extends Document {
           <meta name="twitter:title" content="Octoclairvoyant" />
           <meta
             name="twitter:image"
-            content="https://octoclairvoyant.now.sh/mascot-icon.png"
+            content="https://raw.githubusercontent.com/belco90/octoclairvoyant/master/public/mascot-logo.png"
           />
           <meta name="twitter:creator" content="@belcoDev" />
           <meta name="twitter:description" content={APP_MOTTO} />
