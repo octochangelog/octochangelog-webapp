@@ -22,9 +22,47 @@ import useWindowWidth from '~/hooks/useWindowWidth';
 
 const DESKTOP_BREAKPOINT = 992;
 
-const IndexPage = () => {
+const MainSection: React.FC = () => {
   const windowWidth = useWindowWidth();
   const isDesktop = windowWidth >= DESKTOP_BREAKPOINT;
+
+  return (
+    <Flex alignItems="center" direction={isDesktop ? 'row' : 'column-reverse'}>
+      <Stack
+        alignItems={{ base: 'center', lg: 'start' }}
+        spacing={{ base: 4, lg: 8 }}
+        flexGrow={1}
+        flexBasis={0}
+        shouldWrapChildren
+      >
+        <Heading
+          as="h1"
+          color={isDesktop ? 'gray.50' : 'gray.700'}
+          fontSize="4xl"
+          textAlign={{ base: 'center', lg: 'left' }}
+        >
+          {APP_MOTTO}
+        </Heading>
+        <GitHubLoginButton />
+      </Stack>
+      <Box flexGrow={1} flexBasis={0} maxWidth={600} maxHeight="auto">
+        <MainLogo />
+      </Box>
+    </Flex>
+  );
+};
+
+const IndexPage = () => {
+  const [shouldShowMainSection, setShouldShowMainSection] = React.useState(
+    false
+  );
+
+  React.useEffect(function renderMainSectionOnClientSideHydrationEffect() {
+    // As this element depends on device since to render different variants,
+    // we only render HeaderLinks when on Client Side
+    // https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
+    setShouldShowMainSection(true);
+  }, []);
 
   return (
     <Layout isHeaderFixed>
@@ -34,37 +72,14 @@ const IndexPage = () => {
         minHeight="100vh"
         bgImage={`linear-gradient(180deg, ${customTheme.colors.primary[700]} 0%, ${customTheme.colors.white} 100%)`}
       >
-        <Container>
-          <Flex
-            opacity={!!windowWidth ? 1 : 0} // avoid shifting layout while getting window width
-            alignItems="center"
-            direction={isDesktop ? 'row' : 'column-reverse'}
-          >
-            <Stack
-              alignItems={{ base: 'center', lg: 'start' }}
-              spacing={{ base: 4, lg: 8 }}
-              flexGrow={1}
-              flexBasis={0}
-            >
-              <Heading
-                as="h1"
-                color={isDesktop ? 'gray.50' : 'gray.700'}
-                fontSize="4xl"
-                textAlign={{ base: 'center', lg: 'left' }}
-              >
-                {APP_MOTTO}
-              </Heading>
-              <GitHubLoginButton />
-            </Stack>
-            <Box flexGrow={1} flexBasis={0} maxWidth={600} maxHeight="auto">
-              <MainLogo />
-            </Box>
-          </Flex>
-        </Container>
+        <Container>{shouldShowMainSection && <MainSection />}</Container>
       </Box>
 
       <Box>
-        <Container>
+        <Container
+          transition="opacity 500ms linear"
+          opacity={shouldShowMainSection ? 1 : 0}
+        >
           <SimpleGrid
             columns={{ base: 1, lg: 2 }}
             spacing={8}
