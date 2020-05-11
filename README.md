@@ -2,8 +2,8 @@
   <h1>Octoclairvoyant</h1>
   <img
     src="https://raw.githubusercontent.com/belco90/octoclairvoyant/master/public/mascot-logo.png"
-    height="200"
-    width="200"
+    height="400"
+    width="400"
     alt="Octoclairvoyant reading a crystal ball"
   >
   <h3>Filter and group GitHub repositories releases to compare changes with ease</h3>
