@@ -2,11 +2,9 @@ import {
   Box,
   Flex,
   Heading,
-  Image,
   List,
   ListIcon,
   ListItem,
-  SimpleGrid,
   Stack,
 } from '@chakra-ui/core';
 import React from 'react';
@@ -80,17 +78,12 @@ const IndexPage = () => {
           transition="opacity 500ms linear"
           opacity={shouldShowMainSection ? 1 : 0}
         >
-          <SimpleGrid
-            columns={{ base: 1, lg: 2 }}
+          <Stack
             spacing={8}
-            alignItems="start"
+            alignItems="center"
             py={{ base: 8, lg: 16 }}
+            direction="column"
           >
-            <Image
-              src="https://via.placeholder.com/840x526.png"
-              alt="App comparator screenshot"
-              rounded={8}
-            />
             <Box>
               <Heading
                 as="h2"
@@ -125,7 +118,21 @@ const IndexPage = () => {
                 </ListItem>
               </List>
             </Box>
-          </SimpleGrid>
+            <Box px={{ base: 0, lg: 16 }}>
+              <Box shadow="lg">
+                <video autoPlay loop muted playsInline>
+                  <source
+                    src="/octoclairvoyant-preview.webm"
+                    type="video/webm"
+                  />
+                  <source
+                    src="https://i.imgur.com/kVBlLCL.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+              </Box>
+            </Box>
+          </Stack>
         </Container>
       </Box>
     </Layout>
