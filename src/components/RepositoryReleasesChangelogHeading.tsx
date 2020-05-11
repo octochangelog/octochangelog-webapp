@@ -1,5 +1,4 @@
 import { Badge, Box, Heading, Text } from '@chakra-ui/core';
-import styled from '@emotion/styled';
 import React from 'react';
 import { getRepositoryNameDisplay } from 'utils';
 
@@ -7,11 +6,6 @@ import Container from '~/components/Container';
 import Link from '~/components/Link';
 import useIsStick from '~/hooks/useIsStick';
 import { Repository } from '~/models';
-
-const StickyBox = styled(Box)(({ isStick }: { isStick: boolean }) => ({
-  boxShadow: isStick ? '0 0.0625rem 0.375rem 0 rgba(0, 0, 0, 0.3)' : 'none',
-  transition: 'all 50ms linear',
-}));
 
 interface Props {
   repository: Repository;
@@ -28,7 +22,7 @@ const RepositoryReleasesChangelogHeading = ({
   const isHeadingStick = useIsStick(stickyEl);
 
   return (
-    <StickyBox
+    <Box
       position="sticky"
       top="-1px"
       width="full"
@@ -37,6 +31,10 @@ const RepositoryReleasesChangelogHeading = ({
       ref={stickyEl}
       isStick={isHeadingStick}
       mb={isHeadingStick ? 0 : { base: 4, md: 8 }}
+      shadow={isHeadingStick ? 'md' : 'none'}
+      transition="height 50ms linear, font-size 500ms linear"
+      // @ts-ignore (chakra doesn't expose proper types for this)
+      zIndex="banner"
     >
       <Container>
         <Heading as="h1" size={isHeadingStick ? 'lg' : '2xl'} mb={2}>
@@ -74,7 +72,7 @@ const RepositoryReleasesChangelogHeading = ({
           </Text>
         )}
       </Container>
-    </StickyBox>
+    </Box>
   );
 };
 
