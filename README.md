@@ -1,14 +1,22 @@
 <div align="center">
-  <h1>TODO: LOGO HERE</h1>
+  <h1>Octoclairvoyant</h1>
+  <img
+    src="https://raw.githubusercontent.com/belco90/octoclairvoyant/master/public/mascot-logo.png"
+    height="200"
+    width="200"
+    alt="Octoclairvoyant reading a crystal ball"
+  >
   <h3>Filter and group GitHub repositories releases to compare changes with ease</h3>
-  <p>👉 https://octoclairvoyant.now.sh</p>
+  <p>
+    <span role="img" aria-label="Crystall ball">🔮</span> https://octoclairvoyant.now.sh
+  </p>
+  
+  <img src="https://media.giphy.com/media/ife87VTSQNohM62tOH/giphy.gif" alt="App preview" >
 </div>
 
-_TODO: add demo gif here_
 
 <hr>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/326eb771-b2ab-415d-9c05-f9ee4417b359/deploy-status)](https://app.netlify.com/sites/github-clairvoyance/deploys)
 
 ### Main Features:
 
@@ -18,7 +26,10 @@ _TODO: add demo gif here_
 - Highlight code blocks syntax and GitHub references
 - Spot original version where specific changes were introduced
 
-### TODO:
+### Motivation
+TODO
+
+### Future Features:
 
 - [ ] Autocomplete repo url input
 - [ ] Search versions when typing on selects
