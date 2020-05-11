@@ -5,7 +5,7 @@ import { GITHUB_COOKIE_KEY } from 'global';
 import { parseCookies } from 'nookies';
 import React from 'react';
 
-import GitHubLoginLink from '~/components/GitHubLoginLink';
+import GitHubLoginButton from '~/components/GitHubLoginButton';
 import Layout from '~/components/Layout';
 import RepositoryReleasesComparator from '~/components/RepositoryReleasesComparator';
 
@@ -50,7 +50,7 @@ const ComparatorPage = () => {
               You need to authorize GitHub before using the comparator
             </Heading>
             <Flex justify="center">
-              <GitHubLoginLink />
+              <GitHubLoginButton />
             </Flex>
           </Flex>
         </Flex>

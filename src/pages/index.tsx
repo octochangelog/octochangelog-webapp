@@ -12,7 +12,7 @@ import {
 import React from 'react';
 
 import Container from '~/components/Container';
-import GitHubLoginLink from '~/components/GitHubLoginLink';
+import GitHubLoginButton from '~/components/GitHubLoginButton';
 import Layout from '~/components/Layout';
 import Link from '~/components/Link';
 import MainLogo from '~/components/MainLogo';
@@ -30,7 +30,7 @@ const IndexPage = () => {
     <Layout isHeaderFixed>
       <Box
         mt={-8}
-        pt={{ base: 8, lg: 16 }}
+        py={{ base: 8, lg: 16 }}
         minHeight="100vh"
         bgImage={`linear-gradient(180deg, ${customTheme.colors.primary[700]} 0%, ${customTheme.colors.white} 100%)`}
       >
@@ -56,7 +56,7 @@ const IndexPage = () => {
                 >
                   {APP_MOTTO}
                 </Heading>
-                <GitHubLoginLink />
+                <GitHubLoginButton />
               </Stack>
               <Box flexGrow={1} flexBasis={0} maxWidth={600} maxHeight="auto">
                 <MainLogo />
@@ -66,12 +66,13 @@ const IndexPage = () => {
         </Container>
       </Box>
 
-      <Box my={{ base: 12, lg: 24 }}>
+      <Box my={{ base: 4, lg: 8 }}>
         <Container>
           <SimpleGrid
             columns={{ base: 1, lg: 2 }}
             spacing={8}
             alignItems="start"
+            py={{ base: 4, lg: 8 }}
           >
             <Image
               src="https://via.placeholder.com/840x526.png"
