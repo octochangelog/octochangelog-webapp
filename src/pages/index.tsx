@@ -35,44 +35,41 @@ const IndexPage = () => {
         bgImage={`linear-gradient(180deg, ${customTheme.colors.primary[700]} 0%, ${customTheme.colors.white} 100%)`}
       >
         <Container>
-          {
-            <Flex
-              opacity={!!windowWidth ? 1 : 0} // avoid shifting layout while getting window width
-              alignItems="center"
-              direction={isDesktop ? 'row' : 'column-reverse'}
-              transition="opacity 500ms ease-in-out"
+          <Flex
+            opacity={!!windowWidth ? 1 : 0} // avoid shifting layout while getting window width
+            alignItems="center"
+            direction={isDesktop ? 'row' : 'column-reverse'}
+          >
+            <Stack
+              alignItems={{ base: 'center', lg: 'start' }}
+              spacing={{ base: 4, lg: 8 }}
+              flexGrow={1}
+              flexBasis={0}
             >
-              <Stack
-                alignItems={{ base: 'center', lg: 'start' }}
-                spacing={{ base: 4, lg: 8 }}
-                flexGrow={1}
-                flexBasis={0}
+              <Heading
+                as="h1"
+                color={isDesktop ? 'gray.50' : 'gray.700'}
+                fontSize="4xl"
+                textAlign={{ base: 'center', lg: 'left' }}
               >
-                <Heading
-                  as="h1"
-                  color={isDesktop ? 'gray.50' : 'gray.700'}
-                  fontSize="4xl"
-                  textAlign={{ base: 'center', lg: 'left' }}
-                >
-                  {APP_MOTTO}
-                </Heading>
-                <GitHubLoginButton />
-              </Stack>
-              <Box flexGrow={1} flexBasis={0} maxWidth={600} maxHeight="auto">
-                <MainLogo />
-              </Box>
-            </Flex>
-          }
+                {APP_MOTTO}
+              </Heading>
+              <GitHubLoginButton />
+            </Stack>
+            <Box flexGrow={1} flexBasis={0} maxWidth={600} maxHeight="auto">
+              <MainLogo />
+            </Box>
+          </Flex>
         </Container>
       </Box>
 
-      <Box my={{ base: 4, lg: 8 }}>
+      <Box>
         <Container>
           <SimpleGrid
             columns={{ base: 1, lg: 2 }}
             spacing={8}
             alignItems="start"
-            py={{ base: 4, lg: 8 }}
+            py={{ base: 8, lg: 16 }}
           >
             <Image
               src="https://via.placeholder.com/840x526.png"
