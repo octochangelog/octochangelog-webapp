@@ -88,9 +88,9 @@ const HeaderLinks: React.FC = () => {
       >
         <Box as={FaBars} />
       </Button>
-      <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
+      <Drawer placement="right" onClose={onClose} isOpen={isOpen} size="full">
         <DrawerOverlay />
-        <DrawerContent py={2}>
+        <DrawerContent py={8}>
           <DrawerCloseButton />
           <DrawerBody>{linksInner}</DrawerBody>
         </DrawerContent>
