@@ -3,7 +3,7 @@ import qs from 'qs';
 import { DiGithubBadge } from 'react-icons/di';
 
 const AUTH_PARAMS = {
-  client_id: process.env.GITHUB_APP_CLIENT_ID,
+  client_id: process.env.NEXT_PUBLIC_GITHUB_APP_CLIENT_ID,
   scope: '',
 };
 const AUTH_CALLBACK = 'https://github.com/login/oauth/authorize';

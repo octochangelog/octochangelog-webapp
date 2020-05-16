@@ -1,6 +1,5 @@
 import { Alert, AlertIcon } from '@chakra-ui/core';
 import { GITHUB_COOKIE_KEY } from 'global';
-import fetch from 'isomorphic-unfetch';
 import { GetServerSideProps } from 'next';
 import { setCookie, destroyCookie } from 'nookies';
 import React from 'react';
@@ -39,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             Accept: 'application/json',
           },
           body: JSON.stringify({
-            client_id: process.env.GITHUB_APP_CLIENT_ID,
+            client_id: process.env.NEXT_PUBLIC_GITHUB_APP_CLIENT_ID,
             client_secret: process.env.GITHUB_APP_CLIENT_SECRET,
             code,
           }),
