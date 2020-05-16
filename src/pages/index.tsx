@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Flex,
   Heading,
   List,
@@ -7,10 +8,11 @@ import {
   ListItem,
   Stack,
 } from '@chakra-ui/core';
+import styled from '@emotion/styled';
+import NextLink from 'next/link';
 import React from 'react';
 
 import Container from '~/components/Container';
-import GitHubLoginButton from '~/components/GitHubLoginButton';
 import Layout from '~/components/Layout';
 import Link from '~/components/Link';
 import MainLogo from '~/components/MainLogo';
@@ -19,6 +21,10 @@ import { APP_MOTTO } from '~/global';
 import useWindowWidth from '~/hooks/useWindowWidth';
 
 const DESKTOP_BREAKPOINT = 992;
+
+const FeaturesHeading = styled(Heading)`
+  scroll-margin-top: 6rem;
+`;
 
 const MainSection: React.FC = () => {
   const windowWidth = useWindowWidth();
@@ -41,7 +47,16 @@ const MainSection: React.FC = () => {
         >
           {APP_MOTTO}
         </Heading>
-        <GitHubLoginButton />
+        <Flex justify="center" align="center">
+          <NextLink href="/comparator">
+            <Button bg="gray.700" color="white" _hover={{ bg: 'gray.900' }}>
+              Check it out!
+            </Button>
+          </NextLink>
+          <Link href="#features" ml={4} color="gray.700">
+            Read more
+          </Link>
+        </Flex>
       </Stack>
       <Box flexGrow={1} flexBasis={0} maxWidth={600} maxHeight="auto">
         <MainLogo />
@@ -85,14 +100,15 @@ const IndexPage = () => {
             direction="column"
           >
             <Box>
-              <Heading
+              <FeaturesHeading
                 as="h2"
                 fontSize="3xl"
                 mb={{ base: 4, lg: 8 }}
                 color="primary.500"
+                id="features"
               >
                 Main Features
-              </Heading>
+              </FeaturesHeading>
               <List spacing={{ base: 4, lg: 8 }}>
                 <ListItem>
                   <ListIcon icon="check-circle" color="secondary.500" />
