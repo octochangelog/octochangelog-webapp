@@ -6,6 +6,7 @@ import * as gtag from 'gtag';
 import { AppProps } from 'next/app';
 import { Router } from 'next/router';
 import NProgress from 'nprogress';
+import { ReactQueryDevtools } from 'react-query-devtools';
 
 import 'highlight.styles.github.min.css';
 
@@ -21,11 +22,14 @@ Router.events.on('routeChangeComplete', (url) => {
 });
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
-  <ThemeProvider theme={customTheme}>
-    <CSSReset />
-    <Global styles={globalStyles} />
-    <Component {...pageProps} />
-  </ThemeProvider>
+  <>
+    <ThemeProvider theme={customTheme}>
+      <CSSReset />
+      <Global styles={globalStyles} />
+      <Component {...pageProps} />
+    </ThemeProvider>
+    <ReactQueryDevtools initialIsOpen={false} />
+  </>
 );
 
 export default MyApp;

@@ -31,7 +31,7 @@ const ComparatorPage = () => {
   const { data: repository, isFetching: isRepoFetching, refetch } = useQuery(
     ['repository', requestPayload],
     (_, payload) => api.readRepo(payload!),
-    { manual: true }
+    { manual: true, refetchOnWindowFocus: false }
   );
 
   const {
