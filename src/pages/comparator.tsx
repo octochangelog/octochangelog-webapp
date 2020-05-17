@@ -11,6 +11,9 @@ import { EMPTY_VERSION_RANGE } from '~/global';
 import { Release, RepositoryQueryPayload, VersionRange } from '~/models';
 
 const ComparatorPage = () => {
+  // TODO:
+  //  - show auth prompt on rate limit error
+  //  - deal with access token properly on Api class
   const [shouldShowAuth] = React.useState(false);
   const [versionRange, setVersionRange] = React.useState<VersionRange>(
     EMPTY_VERSION_RANGE
