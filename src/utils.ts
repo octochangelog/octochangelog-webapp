@@ -2,7 +2,7 @@ import { lowerCase } from 'lodash';
 import {
   MiscGroupTitles,
   Release,
-  RepositoryQueryVars,
+  RepositoryQueryPayload,
   SemVerGroupTitles,
 } from 'models';
 import semver from 'semver';
@@ -17,7 +17,7 @@ const gitHubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,
 
 export function getRepositoryDataFromUrl(
   url: string
-): RepositoryQueryVars | null {
+): RepositoryQueryPayload | null {
   let repoObj = null;
 
   try {
@@ -51,7 +51,7 @@ export function filterReleasesByVersionRange(
 
   // filter version range as (from, to]
   return releases.filter(
-    ({ tagName }) => semver.gt(tagName, from) && semver.lte(tagName, to)
+    ({ tag_name }) => semver.gt(tag_name, from) && semver.lte(tag_name, to)
   );
 }
 
@@ -144,3 +144,20 @@ export function compareReleaseGroupTitlesSort(a: string, b: string): number {
   // maintain sort unchanged just in case
   return 0;
 }
+
+export const releasesComparator = (
+  a: Release,
+  b: Release,
+  order: 'asc' | 'desc' = 'desc'
+): number => {
+  const { tag_name: verA } = a;
+  const { tag_name: verB } = b;
+
+  if (semver.gt(verA, verB)) {
+    return order === 'desc' ? -1 : 1;
+  } else if (semver.lt(verA, verB)) {
+    return order === 'desc' ? 1 : -1;
+  }
+
+  return 0;
+};

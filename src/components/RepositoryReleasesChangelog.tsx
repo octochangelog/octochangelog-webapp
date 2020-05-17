@@ -18,6 +18,7 @@ import React from 'react';
 import {
   compareReleaseGroupTitlesSort,
   filterReleasesByVersionRange,
+  releasesComparator,
 } from 'utils';
 
 import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChangeDescription';
@@ -25,12 +26,14 @@ import TextSkeleton from '~/components/TextSkeleton';
 
 interface RepositoryReleasesChangelogProps {
   repository: Repository;
+  releases?: Release[];
   fromVersion: string;
   toVersion: string;
 }
 
 const RepositoryReleasesChangelog = ({
   repository,
+  releases,
   fromVersion,
   toVersion,
 }: RepositoryReleasesChangelogProps) => {
@@ -41,8 +44,6 @@ const RepositoryReleasesChangelog = ({
   const { processedReleases, isProcessing } = useProcessReleases(
     filteredReleases
   );
-
-  const { releases, ...repoInfo } = repository;
 
   const shouldShowProcessedReleaseTitle = () => {
     if (!processedReleases) {
@@ -59,13 +60,12 @@ const RepositoryReleasesChangelog = ({
   React.useEffect(
     function filterReleases() {
       if (releases && fromVersion && toVersion) {
-        setFilteredReleases(
-          filterReleasesByVersionRange({
-            releases,
-            from: fromVersion,
-            to: toVersion,
-          })
-        );
+        const filteredReleases = filterReleasesByVersionRange({
+          releases,
+          from: fromVersion,
+          to: toVersion,
+        }).sort((a, b) => releasesComparator(a, b, 'asc'));
+        setFilteredReleases(filteredReleases);
       } else {
         setFilteredReleases(null);
       }
@@ -111,7 +111,7 @@ const RepositoryReleasesChangelog = ({
                       (processedReleaseChange: ProcessedReleaseChange) => (
                         <ProcessedReleaseChangeDescription
                           key={processedReleaseChange.id}
-                          repository={repoInfo}
+                          repository={repository}
                           processedReleaseChange={processedReleaseChange}
                           mb={8}
                         />

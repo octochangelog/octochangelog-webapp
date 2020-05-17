@@ -1,42 +1,64 @@
-import { ApolloProvider } from '@apollo/react-hooks';
 import { Flex, Heading } from '@chakra-ui/core';
-import ApolloClient from 'apollo-boost';
-import { GITHUB_COOKIE_KEY } from 'global';
-import { parseCookies } from 'nookies';
+import api from 'api';
 import React from 'react';
+import { useQuery } from 'react-query';
+import semver from 'semver';
 
 import GitHubLoginButton from '~/components/GitHubLoginButton';
 import Layout from '~/components/Layout';
 import RepositoryReleasesComparator from '~/components/RepositoryReleasesComparator';
+import { EMPTY_VERSION_RANGE } from '~/global';
+import { Release, RepositoryQueryPayload, VersionRange } from '~/models';
 
 const ComparatorPage = () => {
-  const [isLoading, setIsLoading] = React.useState<boolean>(true);
-  const apolloClient = React.useRef<ApolloClient<unknown> | null>(null);
+  const [shouldShowAuth] = React.useState(false);
+  const [versionRange, setVersionRange] = React.useState<VersionRange>(
+    EMPTY_VERSION_RANGE
+  );
 
-  // TODO: move this to hook
-  React.useEffect(function initApolloClientEffect() {
-    const cookies = parseCookies(null, { path: '/' });
-    const token = cookies[GITHUB_COOKIE_KEY];
+  const [refinedReleases, setRefinedReleases] = React.useState<
+    Release[] | undefined
+  >(undefined);
 
-    if (token) {
-      apolloClient.current = new ApolloClient({
-        uri: 'https://api.github.com/graphql',
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
-    }
+  const [
+    requestPayload,
+    setRequestPayload,
+  ] = React.useState<RepositoryQueryPayload | null>(null);
 
-    setIsLoading(false);
-  }, []);
+  const { data: repository } = useQuery(
+    ['repository', requestPayload],
+    (_, payload) => api.readRepo(payload!)
+  );
 
-  const shouldLogin = !isLoading && !apolloClient.current;
-  const isReady = !shouldLogin && apolloClient.current;
+  const { data: releases } = useQuery(
+    repository && ['releases', requestPayload],
+    (_, payload) => api.readRepoReleases(payload!)
+  );
 
-  // TODO: show spinner while isLoading
+  React.useEffect(
+    function refineReleasesEffect() {
+      let newReleases;
+      if (releases) {
+        newReleases = releases.filter(
+          // exclude pre-releases
+          ({ tag_name }) =>
+            semver.valid(tag_name) && !semver.prerelease(tag_name)
+        );
+      }
+
+      setRefinedReleases(newReleases);
+    },
+    [releases]
+  );
+
+  const handleRepositoryPayloadChange = (payload: RepositoryQueryPayload) => {
+    setRequestPayload(payload);
+    setVersionRange(EMPTY_VERSION_RANGE); // clean versions
+  };
+
   return (
     <Layout extraTitle="Comparator">
-      {shouldLogin && (
+      {shouldShowAuth && (
         <Flex justify="center">
           <Flex
             p={5}
@@ -56,12 +78,13 @@ const ComparatorPage = () => {
         </Flex>
       )}
 
-      {isReady && (
-        <ApolloProvider client={apolloClient.current!}>
-          {/* lazy load this one */}
-          <RepositoryReleasesComparator />
-        </ApolloProvider>
-      )}
+      <RepositoryReleasesComparator
+        repository={repository}
+        releases={refinedReleases}
+        versionRange={versionRange}
+        onRepositoryChange={handleRepositoryPayloadChange}
+        onVersionRangeChange={setVersionRange}
+      />
     </Layout>
   );
 };

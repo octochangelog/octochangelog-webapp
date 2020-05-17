@@ -7,13 +7,13 @@ import {
   Input,
   Stack,
 } from '@chakra-ui/core';
-import { RepositoryQueryVars } from 'models';
+import { RepositoryQueryPayload } from 'models';
 import React from 'react';
 import { getRepositoryDataFromUrl } from 'utils';
 
 interface CustomProps {
   isLoading?: boolean;
-  onSearch(repoData: RepositoryQueryVars | null): void;
+  onSearch(repoData: RepositoryQueryPayload | null): void;
 }
 
 type RepositoryFormControlProps = FormControlProps & CustomProps;

@@ -9,38 +9,26 @@ declare global {
 
 export type HookReturnValue<T> = [T, React.Dispatch<T>];
 
-export interface RepositoryInfo {
+export interface Repository {
   name: string;
   url: string;
 }
 
-export type RepositoryQueryVars = {
+export type RepositoryQueryPayload = {
   name: string;
   owner: string;
-};
-
-export interface RepositoryResponse extends RepositoryInfo {
-  releases: ReleasesConnection;
-}
-
-export type ReleasesConnection = {
-  edges: ReleaseEdge[];
 };
 
 export type ReleaseEdge = {
   node: Release;
 };
 
-export interface Repository extends RepositoryInfo {
-  releases: Release[];
-}
-
 export interface Release {
   id: string;
-  description: string;
-  tagName: string;
-  isDraft: boolean;
-  isPrerelease: boolean;
+  body: string;
+  tag_name: string;
+  draft: boolean;
+  prerelease: boolean;
 }
 
 export type VersionRange = [string, string];

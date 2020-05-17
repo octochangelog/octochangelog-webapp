@@ -13,7 +13,7 @@ import {
   Text,
 } from '@chakra-ui/core/';
 import useProcessDescriptionMdast from 'hooks/useProcessDescriptionMdast';
-import { ProcessedReleaseChange, RepositoryInfo } from 'models';
+import { ProcessedReleaseChange, Repository } from 'models';
 import React from 'react';
 import { GoTag } from 'react-icons/go';
 
@@ -56,7 +56,7 @@ const remarkReactComponents = {
 };
 
 interface ProcessedReleaseChangeProps extends BoxProps {
-  repository: RepositoryInfo;
+  repository: Repository;
   processedReleaseChange: ProcessedReleaseChange;
 }
 
@@ -77,7 +77,7 @@ const ProcessedReleaseChangeDescription = ({
         <>
           <Tag size="md" mb={2} rounded="full" variantColor="primary">
             <Box as={GoTag} size="4" mr={1} />
-            <TagLabel>{processedReleaseChange.tagName}</TagLabel>
+            <TagLabel>{processedReleaseChange.tag_name}</TagLabel>
           </Tag>
           <Box ml={4}>{processedDescription}</Box>
         </>

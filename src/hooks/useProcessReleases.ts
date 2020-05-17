@@ -32,9 +32,9 @@ async function processReleasesAsync(releases: Release[]) {
       const processedReleasesCollection = {};
 
       releases.forEach((rel) => {
-        const { description, ...remainingRel } = rel;
+        const { body, ...remainingRel } = rel;
 
-        const mdastDescription: any = processor.parse(description);
+        const mdastDescription: any = processor.parse(body);
 
         let newProcessedRelease: any;
         mdastDescription.children.forEach((mdastNode: any) => {

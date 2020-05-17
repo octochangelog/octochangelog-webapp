@@ -1,5 +1,10 @@
 import { Divider, Skeleton } from '@chakra-ui/core';
-import { Repository, VersionRange } from 'models';
+import {
+  Repository,
+  RepositoryQueryPayload,
+  VersionRange,
+  Release,
+} from 'models';
 import React from 'react';
 
 import Container from '~/components/Container';
@@ -17,50 +22,46 @@ const fallbackSkeleton: React.ReactNode = (
   </div>
 );
 
-const RepositoryReleasesComparator = () => {
-  const [
-    repositorySelected,
-    setRepositorySelected,
-  ] = React.useState<Repository | null>(null);
+interface Props {
+  repository?: Repository;
+  releases?: Release[];
+  versionRange: VersionRange;
+  onRepositoryChange(repository: RepositoryQueryPayload | null): void;
+  onVersionRangeChange(range: VersionRange): void;
+}
 
-  const [versionRage, setVersionRange] = React.useState<VersionRange>(['', '']);
-
-  const handleRepositoryChange = React.useCallback(
-    (repository) => {
-      setRepositorySelected(repository);
-    },
-    [setRepositorySelected]
-  );
-
-  const handleVersionRangeChange = React.useCallback(
-    (newVersionRange) => {
-      setVersionRange(newVersionRange);
-    },
-    [setVersionRange]
-  );
-
+const RepositoryReleasesComparator: React.FC<Props> = ({
+  repository,
+  releases,
+  versionRange,
+  onRepositoryChange,
+  onVersionRangeChange,
+}) => {
   return (
     <>
       <Container>
         <RepositoryReleasesPicker
-          onRepositoryChange={handleRepositoryChange}
-          onVersionRangeChange={handleVersionRangeChange}
+          releases={releases}
+          versionRange={versionRange}
+          onRepositoryChange={onRepositoryChange}
+          onVersionRangeChange={onVersionRangeChange}
         />
       </Container>
       <Divider my={4} />
-      {repositorySelected && (
+      {repository && (
         <>
           <RepositoryReleasesChangelogHeading
-            repository={repositorySelected}
-            fromVersion={versionRage[0]}
-            toVersion={versionRage[1]}
+            repository={repository}
+            fromVersion={versionRange[0]}
+            toVersion={versionRange[1]}
           />
           <Container>
             <React.Suspense fallback={fallbackSkeleton}>
               <RepositoryReleasesChangelog
-                repository={repositorySelected}
-                fromVersion={versionRage[0]}
-                toVersion={versionRage[1]}
+                repository={repository}
+                releases={releases}
+                fromVersion={versionRange[0]}
+                toVersion={versionRange[1]}
               />
             </React.Suspense>
           </Container>
