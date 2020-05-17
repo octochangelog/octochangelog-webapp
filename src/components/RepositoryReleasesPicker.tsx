@@ -22,6 +22,7 @@ const renderOptionsFromReleases = (
 interface Props {
   releases?: Release[];
   versionRange: VersionRange;
+  isFetching?: boolean;
   onRepositoryChange(repository: RepositoryQueryPayload | null): void;
   onVersionRangeChange(range: VersionRange): void;
 }
@@ -29,6 +30,7 @@ interface Props {
 const RepositoryReleasesPicker: React.FC<Props> = ({
   releases,
   versionRange,
+  isFetching = false,
   onRepositoryChange,
   onVersionRangeChange,
 }) => {
@@ -89,14 +91,14 @@ const RepositoryReleasesPicker: React.FC<Props> = ({
       isInline={windowWidth >= INLINE_BREAKPOINT}
     >
       <RepositoryFormControl
-        isLoading={false}
+        isLoading={isFetching}
         onSearch={handleRepoReleasesSearch}
       />
       <ReleaseVersionFormControl
         label="From version"
         id="from-version"
         width={{ base: 'full', md: '30%' }}
-        isDisabled={!releasesOptions}
+        isDisabled={!releasesOptions || isFetching}
         placeholder={selectPlaceholder}
         onChange={handleFromVersionChange}
         value={fromVersion}
@@ -107,7 +109,7 @@ const RepositoryReleasesPicker: React.FC<Props> = ({
         label="To version"
         id="to-version"
         width={{ base: 'full', md: '30%' }}
-        isDisabled={!releasesOptions}
+        isDisabled={!releasesOptions || isFetching}
         placeholder={selectPlaceholder}
         onChange={handleToVersionChange}
         value={toVersion}

@@ -26,6 +26,7 @@ interface Props {
   repository?: Repository;
   releases?: Release[];
   versionRange: VersionRange;
+  isFetching?: boolean;
   onRepositoryChange(repository: RepositoryQueryPayload | null): void;
   onVersionRangeChange(range: VersionRange): void;
 }
@@ -34,6 +35,7 @@ const RepositoryReleasesComparator: React.FC<Props> = ({
   repository,
   releases,
   versionRange,
+  isFetching = false,
   onRepositoryChange,
   onVersionRangeChange,
 }) => {
@@ -43,6 +45,7 @@ const RepositoryReleasesComparator: React.FC<Props> = ({
         <RepositoryReleasesPicker
           releases={releases}
           versionRange={versionRange}
+          isFetching={isFetching}
           onRepositoryChange={onRepositoryChange}
           onVersionRangeChange={onVersionRangeChange}
         />

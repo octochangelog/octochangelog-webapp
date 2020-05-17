@@ -28,14 +28,26 @@ const ComparatorPage = () => {
     setRequestPayload,
   ] = React.useState<RepositoryQueryPayload | null>(null);
 
-  const { data: repository } = useQuery(
+  const { data: repository, isFetching: isRepoFetching, refetch } = useQuery(
     ['repository', requestPayload],
-    (_, payload) => api.readRepo(payload!)
+    (_, payload) => api.readRepo(payload!),
+    { manual: true }
   );
 
-  const { data: releases } = useQuery(
-    repository && ['releases', requestPayload],
-    (_, payload) => api.readRepoReleases(payload!)
+  const {
+    data: releases,
+    isFetching: isReleasesFetching,
+  } = useQuery(repository && ['releases', requestPayload], (_, payload) =>
+    api.readRepoReleases(payload!)
+  );
+
+  React.useEffect(
+    function fetchRepoEffect() {
+      if (requestPayload) {
+        refetch({ throwOnError: true });
+      }
+    },
+    [refetch, requestPayload]
   );
 
   React.useEffect(
@@ -87,6 +99,7 @@ const ComparatorPage = () => {
         versionRange={versionRange}
         onRepositoryChange={handleRepositoryPayloadChange}
         onVersionRangeChange={setVersionRange}
+        isFetching={isRepoFetching || isReleasesFetching}
       />
     </Layout>
   );
