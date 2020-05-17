@@ -69,7 +69,7 @@ const RepositoryFormControl = ({
       <FormLabel htmlFor="repo-url">Repository url</FormLabel>
       <Stack isInline>
         <Input
-          type="text"
+          type="search"
           id="repo-url"
           placeholder="Paste, press enter or click button to search"
           autoFocus
