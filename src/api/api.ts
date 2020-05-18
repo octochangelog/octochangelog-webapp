@@ -1,4 +1,7 @@
+import { destroyCookie, parseCookies, setCookie } from 'nookies';
+
 import {
+  GITHUB_COOKIE_KEY,
   GITHUB_RATE_LIMIT_EXCEEDED_ERROR,
   GITHUB_UNKNOWN_ERROR,
 } from '~/global';
@@ -22,15 +25,45 @@ function parseHeadersRateLimit(headers: Headers): GitHubRateLimit {
 }
 
 export class Api {
-  _accessToken?: string;
-  _rateLimit?: GitHubRateLimit;
+  #accessToken?: string;
+  #rateLimit?: GitHubRateLimit;
+
+  constructor() {
+    this.initToken();
+  }
+
+  private initToken() {
+    const cookies = parseCookies(null, { path: '/' });
+    const token = cookies[GITHUB_COOKIE_KEY];
+
+    if (token) {
+      this.#accessToken = token;
+    }
+  }
+
+  get accessToken(): string | undefined {
+    return this.#accessToken;
+  }
+
+  set accessToken(newToken) {
+    this.#accessToken = newToken;
+
+    if (newToken) {
+      setCookie(null, GITHUB_COOKIE_KEY, newToken, {
+        maxAge: 31536000, // 1 year
+        path: '/',
+      });
+    } else {
+      destroyCookie(null, GITHUB_COOKIE_KEY);
+    }
+  }
 
   get rateLimitRemaining(): number {
-    return this._rateLimit?.remaining ?? -1;
+    return this.#rateLimit?.remaining ?? -1;
   }
 
   get rateLimitWaitingMinutes(): number | undefined {
-    const reset = this._rateLimit?.reset;
+    const reset = this.#rateLimit?.reset;
 
     if (!reset) {
       return undefined;
@@ -47,7 +80,7 @@ export class Api {
   }
 
   get isAuth(): boolean {
-    return !!this._accessToken;
+    return !!this.#accessToken;
   }
 
   async request(uri: string, init?: RequestInit): Promise<any> {
@@ -70,13 +103,13 @@ export class Api {
       response = await fetch(`https://api.github.com/${uri}`, finalInit);
     } catch (e) {
       // This is the best way I found to check if rate limit wasn't exceeded
-      if (this._rateLimit && this._rateLimit.remaining > 1) {
+      if (this.#rateLimit && this.#rateLimit.remaining > 1) {
         throw e;
       }
       throw new Error(GITHUB_RATE_LIMIT_EXCEEDED_ERROR);
     }
 
-    this._rateLimit = parseHeadersRateLimit(response.headers);
+    this.#rateLimit = parseHeadersRateLimit(response.headers);
 
     if (response.status >= 200 && response.status < 300) {
       return await response.json();

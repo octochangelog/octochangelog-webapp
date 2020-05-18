@@ -1,16 +1,14 @@
 import { Alert, AlertIcon } from '@chakra-ui/core';
-import { GITHUB_COOKIE_KEY } from 'global';
 import { GetServerSideProps } from 'next';
-import { setCookie, destroyCookie } from 'nookies';
 import React from 'react';
 
+import api from '~/api';
 import Layout from '~/components/Layout';
 
 interface Props {
   errorMessage?: string;
 }
 
-// TODO: button to go back homepage
 const AuthCallbackPage = ({ errorMessage = 'Something went wrong' }: Props) => (
   <Layout>
     <Alert status="error">
@@ -27,8 +25,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const { code } = context.query;
 
     if (code) {
-      destroyCookie(context, GITHUB_COOKIE_KEY);
-
       const response = await fetch(
         'https://github.com/login/oauth/access_token',
         {
@@ -48,10 +44,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       if (response.ok) {
         const responseJson = await response.json();
         // save token and redirect to app
-        setCookie(context, GITHUB_COOKIE_KEY, responseJson.access_token, {
-          maxAge: 31536000, // 1 year
-          path: '/',
-        });
+        api.accessToken = responseJson.access_token;
         context.res.writeHead(302, { Location: '/comparator' });
         context.res.end();
       } else {
@@ -64,6 +57,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     errorMessage = e.toString();
   }
 
+  // if this code is executed, something went wrong in the auth process,
+  // so we need to delete the access token
+  api.accessToken = undefined;
   return { props: { errorMessage } };
 };
 
