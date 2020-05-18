@@ -85,6 +85,7 @@ const ComparatorPage = () => {
           status: 'error',
           duration: 5000,
           isClosable: true,
+          position: 'bottom-left',
         });
 
         if (err.message === GITHUB_RATE_LIMIT_EXCEEDED_ERROR) {

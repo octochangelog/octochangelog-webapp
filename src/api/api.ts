@@ -1,3 +1,4 @@
+import { NextPageContext } from 'next';
 import { destroyCookie, parseCookies, setCookie } from 'nookies';
 
 import {
@@ -47,14 +48,18 @@ export class Api {
 
   set accessToken(newToken) {
     this.#accessToken = newToken;
+  }
+
+  saveAccessToken(newToken?: string, ctx?: NextPageContext) {
+    this.accessToken = newToken;
 
     if (newToken) {
-      setCookie(null, GITHUB_COOKIE_KEY, newToken, {
+      setCookie(ctx, GITHUB_COOKIE_KEY, newToken, {
         maxAge: 31536000, // 1 year
         path: '/',
       });
     } else {
-      destroyCookie(null, GITHUB_COOKIE_KEY);
+      destroyCookie(ctx, GITHUB_COOKIE_KEY);
     }
   }
 
@@ -84,20 +89,26 @@ export class Api {
   }
 
   async request(uri: string, init?: RequestInit): Promise<any> {
-    const finalInit = Object.assign(
-      {
-        headers: {
-          Accept: 'application/vnd.github.v3+json',
-          'User-Agent':
-            process.env.NODE_ENV === 'production'
-              ? 'Octoclairvoyant'
-              : 'Test Octoclairvoyant',
-          // Authentication: 'token ${token}'
-        },
+    const defaultRequestConfig: RequestInit = {
+      headers: {
+        Accept: 'application/vnd.github.v3+json',
+        'User-Agent':
+          process.env.NODE_ENV === 'production'
+            ? 'Octoclairvoyant'
+            : 'Test Octoclairvoyant',
       },
-      init
-    );
+    };
 
+    if (this.isAuth) {
+      // @ts-ignore - I don't know why TS complains here
+      defaultRequestConfig.headers['Authorization'] = `token ${
+        this.#accessToken
+      }`;
+    }
+
+    const finalInit = Object.assign(defaultRequestConfig, init);
+
+    console.log('finalInit', finalInit);
     let response;
     try {
       response = await fetch(`https://api.github.com/${uri}`, finalInit);

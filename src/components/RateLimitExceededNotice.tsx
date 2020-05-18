@@ -28,14 +28,15 @@ const RateLimitExceededNotice: React.FC<Props> = ({
           GitHub API hourly limit
         </Link>{' '}
         for {isAuth ? 'authenticated' : 'unauthenticated'} requests. You need to
-        wait {waitingMinutes || 'some'} minutes
-        {!isAuth && ' or create a token for extending this limit'}.
+        wait {waitingMinutes || 'some'} minutes or{' '}
+        {isAuth
+          ? 'renew your existing token'
+          : 'create a token for extending this limit'}
+        .
       </Heading>
-      {!isAuth && (
-        <Flex justify="center">
-          <GitHubLoginButton children="Auth with GitHub" />
-        </Flex>
-      )}
+      <Flex justify="center">
+        <GitHubLoginButton children="Auth with GitHub" />
+      </Flex>
     </Flex>
   </Flex>
 );
