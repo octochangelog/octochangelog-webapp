@@ -43,7 +43,7 @@ export class Api {
     }
 
     const waitingSec = waitingMs / 1000;
-    return waitingSec / 60;
+    return Math.round(waitingSec / 60);
   }
 
   get isAuth(): boolean {
