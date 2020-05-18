@@ -70,14 +70,12 @@ export class Api {
       response = await fetch(`https://api.github.com/${uri}`, finalInit);
     } catch (e) {
       // This is the best way I found to check if rate limit wasn't exceeded
-      console.log('catch:', e);
       if (this._rateLimit && this._rateLimit.remaining > 1) {
         throw e;
       }
       throw new Error(GITHUB_RATE_LIMIT_EXCEEDED_ERROR);
     }
 
-    console.log('response:', response);
     this._rateLimit = parseHeadersRateLimit(response.headers);
 
     if (response.status >= 200 && response.status < 300) {
