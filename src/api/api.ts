@@ -50,7 +50,7 @@ export class Api {
     return !!this._accessToken;
   }
 
-  async doFetch(uri: string, init?: RequestInit): Promise<any> {
+  async request(uri: string, init?: RequestInit): Promise<any> {
     const finalInit = Object.assign(
       {
         headers: {
@@ -70,12 +70,14 @@ export class Api {
       response = await fetch(`https://api.github.com/${uri}`, finalInit);
     } catch (e) {
       // This is the best way I found to check if rate limit wasn't exceeded
+      console.log('catch:', e);
       if (this._rateLimit && this._rateLimit.remaining > 1) {
         throw e;
       }
       throw new Error(GITHUB_RATE_LIMIT_EXCEEDED_ERROR);
     }
 
+    console.log('response:', response);
     this._rateLimit = parseHeadersRateLimit(response.headers);
 
     if (response.status >= 200 && response.status < 300) {
@@ -86,14 +88,14 @@ export class Api {
   }
 
   readRepo({ owner, name }: RepositoryQueryPayload): Promise<Repository> {
-    return this.doFetch(`repos/${owner}/${name}`, { method: 'GET' });
+    return this.request(`repos/${owner}/${name}`, { method: 'GET' });
   }
 
   readRepoReleases({
     owner,
     name,
   }: RepositoryQueryPayload): Promise<Release[]> {
-    return this.doFetch(`repos/${owner}/${name}/releases?page=1&per_page=100`, {
+    return this.request(`repos/${owner}/${name}/releases?page=1&per_page=100`, {
       method: 'GET',
     });
   }
