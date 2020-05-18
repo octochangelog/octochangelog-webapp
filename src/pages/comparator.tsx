@@ -1,20 +1,22 @@
-import { Flex, Heading } from '@chakra-ui/core';
+import { useToast } from '@chakra-ui/core';
 import api from 'api';
 import React from 'react';
 import { useQuery } from 'react-query';
 import semver from 'semver';
 
-import GitHubLoginButton from '~/components/GitHubLoginButton';
 import Layout from '~/components/Layout';
+import RateLimitExceededNotice from '~/components/RateLimitExceededNotice';
 import RepositoryReleasesComparator from '~/components/RepositoryReleasesComparator';
-import { EMPTY_VERSION_RANGE } from '~/global';
+import {
+  EMPTY_VERSION_RANGE,
+  GITHUB_RATE_LIMIT_EXCEEDED_ERROR,
+} from '~/global';
 import { Release, RepositoryQueryPayload, VersionRange } from '~/models';
 
 const ComparatorPage = () => {
   // TODO:
-  //  - show auth prompt on rate limit error
   //  - deal with access token properly on Api class
-  const [shouldShowAuth] = React.useState(false);
+  const [shouldShowExceeded, setShouldShowExceeded] = React.useState(false);
   const [versionRange, setVersionRange] = React.useState<VersionRange>(
     EMPTY_VERSION_RANGE
   );
@@ -28,14 +30,20 @@ const ComparatorPage = () => {
     setRequestPayload,
   ] = React.useState<RepositoryQueryPayload | null>(null);
 
-  const { data: repository, isFetching: isRepoFetching, refetch } = useQuery(
+  const {
+    data: repository,
+    error: repoError,
+    isFetching: isRepoFetching,
+    refetch: refetchRepo,
+  } = useQuery(
     ['repository', requestPayload],
     (_, payload) => api.readRepo(payload!),
-    { manual: true, refetchOnWindowFocus: false }
+    { manual: true }
   );
 
   const {
     data: releases,
+    error: releasesError,
     isFetching: isReleasesFetching,
   } = useQuery(repository && ['releases', requestPayload], (_, payload) =>
     api.readRepoReleases(payload!)
@@ -44,10 +52,10 @@ const ComparatorPage = () => {
   React.useEffect(
     function fetchRepoEffect() {
       if (requestPayload) {
-        refetch({ throwOnError: true });
+        refetchRepo();
       }
     },
-    [refetch, requestPayload]
+    [refetchRepo, requestPayload]
   );
 
   React.useEffect(
@@ -66,6 +74,41 @@ const ComparatorPage = () => {
     [releases]
   );
 
+  const toast = useToast();
+
+  const handleQueryError = React.useCallback(
+    (err: Error) => {
+      if (err) {
+        toast({
+          title: 'An error occurred.',
+          description: err.message || 'Something went wrong',
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        });
+
+        if (err.message === GITHUB_RATE_LIMIT_EXCEEDED_ERROR) {
+          setShouldShowExceeded(true);
+        }
+      }
+    },
+    [toast]
+  );
+
+  React.useEffect(
+    function handleRepoErrorEffect() {
+      handleQueryError(repoError as Error);
+    },
+    [handleQueryError, repoError]
+  );
+
+  React.useEffect(
+    function handleReleasesErrorEffect() {
+      handleQueryError(releasesError as Error);
+    },
+    [handleQueryError, releasesError]
+  );
+
   const handleRepositoryPayloadChange = (payload: RepositoryQueryPayload) => {
     setRequestPayload(payload);
     setVersionRange(EMPTY_VERSION_RANGE); // clean versions
@@ -73,34 +116,21 @@ const ComparatorPage = () => {
 
   return (
     <Layout extraTitle="Comparator">
-      {shouldShowAuth && (
-        <Flex justify="center">
-          <Flex
-            p={5}
-            shadow={{ base: 'none', md: 'md' }}
-            borderWidth={{ base: 'none', md: '1px' }}
-            width={{ base: 'full', md: 600 }}
-            direction="column"
-            justify="center"
-          >
-            <Heading fontSize="l" textAlign="center" mb={4}>
-              You need to authorize GitHub before using the comparator
-            </Heading>
-            <Flex justify="center">
-              <GitHubLoginButton />
-            </Flex>
-          </Flex>
-        </Flex>
+      {shouldShowExceeded ? (
+        <RateLimitExceededNotice
+          waitingMinutes={api.rateLimitWaitingMinutes}
+          isAuth={api.isAuth}
+        />
+      ) : (
+        <RepositoryReleasesComparator
+          repository={repository}
+          releases={refinedReleases}
+          versionRange={versionRange}
+          onRepositoryChange={handleRepositoryPayloadChange}
+          onVersionRangeChange={setVersionRange}
+          isFetching={isRepoFetching || isReleasesFetching}
+        />
       )}
-
-      <RepositoryReleasesComparator
-        repository={repository}
-        releases={refinedReleases}
-        versionRange={versionRange}
-        onRepositoryChange={handleRepositoryPayloadChange}
-        onVersionRangeChange={setVersionRange}
-        isFetching={isRepoFetching || isReleasesFetching}
-      />
     </Layout>
   );
 };

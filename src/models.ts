@@ -55,3 +55,9 @@ export enum MiscGroupTitles {
   thanks = 'thanks',
   credits = 'credits',
 }
+
+export interface GitHubRateLimit {
+  limit: number;
+  remaining: number;
+  reset: number;
+}

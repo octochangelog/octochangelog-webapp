@@ -6,6 +6,7 @@ import * as gtag from 'gtag';
 import { AppProps } from 'next/app';
 import { Router } from 'next/router';
 import NProgress from 'nprogress';
+import { ReactQueryConfigProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query-devtools';
 
 import 'highlight.styles.github.min.css';
@@ -21,15 +22,17 @@ Router.events.on('routeChangeComplete', (url) => {
   NProgress.done();
 });
 
+const queryConfig = { refetchAllOnWindowFocus: false, retry: 0 };
+
 const MyApp = ({ Component, pageProps }: AppProps) => (
-  <>
+  <ReactQueryConfigProvider config={queryConfig}>
     <ThemeProvider theme={customTheme}>
       <CSSReset />
       <Global styles={globalStyles} />
       <Component {...pageProps} />
     </ThemeProvider>
     <ReactQueryDevtools initialIsOpen={false} />
-  </>
+  </ReactQueryConfigProvider>
 );
 
 export default MyApp;

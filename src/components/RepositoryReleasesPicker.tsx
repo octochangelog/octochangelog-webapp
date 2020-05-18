@@ -36,29 +36,6 @@ const RepositoryReleasesPicker: React.FC<Props> = ({
 }) => {
   const windowWidth = useWindowWidth();
 
-  // TODO: move this to comparator page
-  // React.useEffect(
-  //   function displayErrors() {
-  //     if (error) {
-  //       const errorMsg =
-  //         // @ts-ignore
-  //         error?.networkError?.result?.message ??
-  //         'Unable to retrieve repository releases';
-  //       toast({
-  //         title: 'An error occurred.',
-  //         description: errorMsg,
-  //         status: 'error',
-  //         duration: 5000,
-  //         isClosable: true,
-  //       });
-  //
-  //       // clear versions
-  //       setVersionRange(EMPTY_VERSION_RANGE);
-  //     }
-  //   },
-  //   [error, toast]
-  // );
-
   const handleRepoReleasesSearch = React.useCallback(
     async (payload: RepositoryQueryPayload) => {
       onRepositoryChange(payload);

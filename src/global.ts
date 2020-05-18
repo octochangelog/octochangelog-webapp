@@ -27,3 +27,6 @@ export const LOW_PRIORITY_GROUP_TITLES: string[] = [
   MiscGroupTitles.thanks,
   MiscGroupTitles.artifacts,
 ];
+
+export const GITHUB_RATE_LIMIT_EXCEEDED_ERROR = 'Rate limit exceeded';
+export const GITHUB_UNKNOWN_ERROR = 'Unknown';
