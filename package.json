@@ -36,7 +36,7 @@
     "rehype-react": "^5.0.1",
     "remark-github": "^9.0.0",
     "remark-parse": "^8.0.2",
-    "remark-rehype": "^6.0.0",
+    "remark-rehype": "^7.0.0",
     "remark-stringify": "^8.0.0",
     "semver": "^7.3.2",
     "title": "^3.4.2",
