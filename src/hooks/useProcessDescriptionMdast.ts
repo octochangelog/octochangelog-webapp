@@ -67,7 +67,7 @@ function useProcessDescriptionMdast({
       const handleProcessDescription = async () => {
         const result = await processDescriptionAsync(
           description,
-          repository.url,
+          repository.html_url,
           componentsMapping
         );
 
@@ -76,7 +76,7 @@ function useProcessDescriptionMdast({
       };
       handleProcessDescription();
     },
-    [componentsMapping, description, repository.url]
+    [componentsMapping, description, repository.html_url]
   );
 
   const data = React.useMemo(

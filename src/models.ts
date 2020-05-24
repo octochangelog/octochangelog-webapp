@@ -1,4 +1,3 @@
-import React from 'react';
 import { Parent } from 'unist';
 
 declare global {
@@ -7,11 +6,9 @@ declare global {
   }
 }
 
-export type HookReturnValue<T> = [T, React.Dispatch<T>];
-
 export interface Repository {
   name: string;
-  url: string;
+  html_url: string;
 }
 
 export type RepositoryQueryPayload = {

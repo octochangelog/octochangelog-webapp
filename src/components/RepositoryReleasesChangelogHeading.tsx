@@ -38,7 +38,7 @@ const RepositoryReleasesChangelogHeading = ({
     >
       <Container>
         <Heading as="h1" size={isHeadingStick ? 'lg' : '2xl'} mb={2}>
-          <Link href={repository.url} isExternal color="primary.500">
+          <Link href={repository.html_url} isExternal color="primary.500">
             {getRepositoryNameDisplay(repository.name)}
           </Link>
         </Heading>
