@@ -10,6 +10,7 @@ import React from 'react';
 import Container from '~/components/Container';
 import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesChangelogHeading';
 import RepositoryReleasesPicker from '~/components/RepositoryReleasesPicker';
+import useIsClientSideHydrated from '~/hooks/useLazyShowChild';
 
 const RepositoryReleasesChangelog = React.lazy(() =>
   import('~/components/RepositoryReleasesChangelog')
@@ -39,16 +40,20 @@ const RepositoryReleasesComparator: React.FC<Props> = ({
   onRepositoryChange,
   onVersionRangeChange,
 }) => {
+  const isHydrated = useIsClientSideHydrated();
+
   return (
     <>
       <Container>
-        <RepositoryReleasesPicker
-          releases={releases}
-          versionRange={versionRange}
-          isFetching={isFetching}
-          onRepositoryChange={onRepositoryChange}
-          onVersionRangeChange={onVersionRangeChange}
-        />
+        {isHydrated && (
+          <RepositoryReleasesPicker
+            releases={releases}
+            versionRange={versionRange}
+            isFetching={isFetching}
+            onRepositoryChange={onRepositoryChange}
+            onVersionRangeChange={onVersionRangeChange}
+          />
+        )}
       </Container>
       <Divider my={4} />
       {repository && (
