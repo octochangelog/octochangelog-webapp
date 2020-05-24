@@ -39,7 +39,7 @@ const MenuLink: React.FC<{ href: string; isDesktop: boolean }> = ({
       color="white"
       borderBottomWidth={isActive ? '4px' : 'none'}
       borderColor={isActive ? 'primary.500' : 'none'}
-      fontSize="2xl"
+      fontSize={{ base: '2xl', md: 'lg' }}
       _hover={{
         textDecoration: 'none',
         color: isActive ? 'none' : 'primary.300',
@@ -55,7 +55,7 @@ const MenuLink: React.FC<{ href: string; isDesktop: boolean }> = ({
 const LinksStack: React.FC<{ isDesktop: boolean }> = ({ isDesktop }) => (
   <Stack
     isInline={isDesktop}
-    spacing={12}
+    spacing={{ base: 12, md: 8 }}
     align={isDesktop ? undefined : 'center'}
   >
     <MenuLink href="/" isDesktop={isDesktop}>
