@@ -36,9 +36,10 @@ const MenuLink: React.FC<{ href: string; isDesktop: boolean }> = ({
   return (
     <RouteLink
       href={href}
-      color={isDesktop ? 'white' : 'gray.800'}
+      color="white"
       borderBottomWidth={isActive ? '4px' : 'none'}
       borderColor={isActive ? 'primary.500' : 'none'}
+      fontSize="2xl"
       _hover={{
         textDecoration: 'none',
         color: isActive ? 'none' : 'primary.300',
@@ -54,7 +55,7 @@ const MenuLink: React.FC<{ href: string; isDesktop: boolean }> = ({
 const LinksStack: React.FC<{ isDesktop: boolean }> = ({ isDesktop }) => (
   <Stack
     isInline={isDesktop}
-    spacing={4}
+    spacing={12}
     align={isDesktop ? undefined : 'center'}
   >
     <MenuLink href="/" isDesktop={isDesktop}>
@@ -68,7 +69,7 @@ const LinksStack: React.FC<{ isDesktop: boolean }> = ({ isDesktop }) => (
 );
 
 const HeaderLinks: React.FC = () => {
-  // TODO: extract into useDesktopSize
+  // TODO: extract into useResponsiveBreakpoint
   const windowWidth = useWindowWidth();
   const { isOpen, onToggle, onClose } = useDisclosure();
 
@@ -90,9 +91,13 @@ const HeaderLinks: React.FC = () => {
       </Button>
       <Drawer placement="right" onClose={onClose} isOpen={isOpen} size="full">
         <DrawerOverlay />
-        <DrawerContent py={8}>
-          <DrawerCloseButton />
-          <DrawerBody>{linksInner}</DrawerBody>
+        <DrawerContent py={8} backgroundColor="gray.700">
+          <DrawerCloseButton color="gray.50" />
+          <DrawerBody>
+            <Flex justify="center" direction="column" h="full">
+              {linksInner}
+            </Flex>
+          </DrawerBody>
         </DrawerContent>
       </Drawer>
     </>
