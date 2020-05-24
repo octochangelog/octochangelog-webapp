@@ -48,7 +48,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           responseJson.access_token,
           context as NextPageContext
         );
-        context.res.writeHead(302, { Location: '/comparator' });
+        context.res.writeHead(302, { Location: '/' });
         context.res.end();
       } else {
         errorMessage = 'Something went wrong obtaining access token';

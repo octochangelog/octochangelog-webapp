@@ -60,8 +60,8 @@ const LinksStack: React.FC<{ isDesktop: boolean }> = ({ isDesktop }) => (
     <MenuLink href="/" isDesktop={isDesktop}>
       Home
     </MenuLink>
-    <MenuLink href="/comparator" isDesktop={isDesktop}>
-      Comparator
+    <MenuLink href="/about" isDesktop={isDesktop}>
+      About
     </MenuLink>
     {/* TODO: implement logout if necessary */}
   </Stack>
