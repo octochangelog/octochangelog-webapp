@@ -1,4 +1,4 @@
-import { NextPageContext } from 'next';
+import { GetServerSidePropsContext } from 'next';
 import { destroyCookie, parseCookies, setCookie } from 'nookies';
 
 import {
@@ -50,7 +50,7 @@ export class Api {
     this.#accessToken = newToken;
   }
 
-  saveAccessToken(newToken?: string, ctx?: NextPageContext) {
+  saveAccessToken(newToken?: string, ctx?: GetServerSidePropsContext) {
     this.accessToken = newToken;
 
     if (newToken) {

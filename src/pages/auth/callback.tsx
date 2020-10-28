@@ -1,5 +1,5 @@
 import { Alert, AlertIcon } from '@chakra-ui/core';
-import { GetServerSideProps, NextPageContext } from 'next';
+import { GetServerSideProps } from 'next';
 import React from 'react';
 
 import api from '~/api';
@@ -44,10 +44,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       if (response.ok) {
         const responseJson = await response.json();
         // save token and redirect to app
-        api.saveAccessToken(
-          responseJson.access_token,
-          context as NextPageContext
-        );
+        api.saveAccessToken(responseJson.access_token, context);
         context.res.writeHead(302, { Location: '/' });
         context.res.end();
       } else {
@@ -62,7 +59,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   // if this code is executed, something went wrong in the auth process,
   // so we need to delete the access token
-  api.saveAccessToken(undefined, context as NextPageContext);
+  api.saveAccessToken(undefined, context);
   return { props: { errorMessage } };
 };
 
