@@ -4,8 +4,10 @@ import customTheme from 'customTheme';
 import { globalStyles } from 'global';
 import * as gtag from 'gtag';
 import { AppProps } from 'next/app';
+import Head from 'next/head';
 import { Router } from 'next/router';
 import NProgress from 'nprogress';
+import React from 'react';
 import { ReactQueryConfigProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query-devtools';
 
@@ -29,6 +31,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
     <ThemeProvider theme={customTheme}>
       <CSSReset />
       <Global styles={globalStyles} />
+      <Head>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Component {...pageProps} />
     </ThemeProvider>
     <ReactQueryDevtools initialIsOpen={false} />
