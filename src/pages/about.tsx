@@ -8,8 +8,8 @@ import {
   ListItem,
   Stack,
 } from '@chakra-ui/core';
-import { Image } from '@chakra-ui/core/dist';
 import styled from '@emotion/styled';
+import Image from 'next/image';
 import NextLink from 'next/link';
 import React from 'react';
 
@@ -58,12 +58,12 @@ const MainSection: React.FC = () => {
           </Link>
         </Flex>
       </Stack>
-      <Box flexGrow={1} flexBasis={0} maxWidth={600} maxHeight="auto">
-        <Image
-          src="mascot-logo.png"
-          alt="Octoclairvoyant reading a crystal ball"
-        />
-      </Box>
+      <Image
+        src="/mascot-logo.png"
+        alt="Octoclairvoyant reading a crystal ball"
+        width={600}
+        height={600}
+      />
     </Flex>
   );
 };
