@@ -68,7 +68,7 @@ const LinksStack: React.FC<{ isDesktop: boolean }> = ({ isDesktop }) => (
   </Stack>
 );
 
-const HeaderLinks: React.FC = () => {
+const HeaderLinks = () => {
   // TODO: extract into useResponsiveBreakpoint
   const windowWidth = useWindowWidth();
   const { isOpen, onToggle, onClose } = useDisclosure();
@@ -83,7 +83,7 @@ const HeaderLinks: React.FC = () => {
       <Button
         aria-label="Toggle menu"
         variant="link"
-        variantColor="white"
+        variantColor="gray.50"
         size="sm"
         onClick={onToggle}
       >

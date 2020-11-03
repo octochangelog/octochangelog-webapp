@@ -24,10 +24,15 @@ Router.events.on('routeChangeComplete', (url) => {
   NProgress.done();
 });
 
-const queryConfig = { refetchAllOnWindowFocus: false, retry: 0 };
+const globalReactQueryConfig = {
+  queries: {
+    refetchAllOnWindowFocus: false,
+    retry: 1,
+  },
+};
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
-  <ReactQueryConfigProvider config={queryConfig}>
+  <ReactQueryConfigProvider config={globalReactQueryConfig}>
     <ThemeProvider theme={customTheme}>
       <CSSReset />
       <Global styles={globalStyles} />

@@ -108,7 +108,6 @@ export class Api {
 
     const finalInit = Object.assign(defaultRequestConfig, init);
 
-    console.log('finalInit', finalInit);
     let response;
     try {
       response = await fetch(`https://api.github.com/${uri}`, finalInit);

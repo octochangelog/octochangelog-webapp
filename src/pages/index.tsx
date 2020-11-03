@@ -34,28 +34,20 @@ const ComparatorPage = () => {
     data: repository,
     error: repoError,
     isFetching: isRepoFetching,
-    refetch: refetchRepo,
   } = useQuery(
     ['repository', requestPayload],
-    (_, payload) => api.readRepo(payload!),
-    { manual: true }
+    (_, payload) => api.readRepo(payload as any),
+    { enabled: requestPayload }
   );
 
   const {
     data: releases,
     error: releasesError,
     isFetching: isReleasesFetching,
-  } = useQuery(repository && ['releases', requestPayload], (_, payload) =>
-    api.readRepoReleases(payload!)
-  );
-
-  React.useEffect(
-    function fetchRepoEffect() {
-      if (requestPayload) {
-        refetchRepo();
-      }
-    },
-    [refetchRepo, requestPayload]
+  } = useQuery(
+    ['releases', requestPayload],
+    (_, payload) => api.readRepoReleases(payload as any),
+    { enabled: repository }
   );
 
   React.useEffect(
