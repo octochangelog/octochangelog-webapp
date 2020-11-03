@@ -3254,7 +3254,7 @@ convert-source-map@^0.3.3:
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-0.3.5.tgz#f1d802950af7dd2631a1febe0596550c86ab3190"
   integrity sha1-8dgClQr33SYxof6+BZZVDIarMZA=
 
-cookie@^0.4.0:
+cookie@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.1.tgz#afd713fe26ebd21ba95ceb61f9a8116e50a537d1"
   integrity sha512-ZwrFkGJxUR3EIoXtO+yVE69Eb7KlixbaeAWfBQB9vVsNn/o+Yw69gBWSSDK825hQNdN+wF8zELf3dFNl/kxkUA==
@@ -5853,6 +5853,11 @@ lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
   integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
 
+lodash@^4.17.20:
+  version "4.17.20"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
+  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
+
 log-symbols@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-4.0.0.tgz#69b3cc46d20f448eccdb75ea1fa733d9e821c920"
@@ -6525,13 +6530,13 @@ node-releases@^1.1.58, node-releases@^1.1.61:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.64.tgz#71b4ae988e9b1dd7c1ffce58dd9e561752dfebc5"
   integrity sha512-Iec8O9166/x2HRMJyLLLWkd0sFFLrFNy+Xf+JQfSQsdBJzPcHpNl3JQ9gD4j+aJxmCa25jNsIbM4bmACtSbkSg==
 
-nookies@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/nookies/-/nookies-2.3.1.tgz#4346c3673ca1317f81f4973802ae8fe32294e32e"
-  integrity sha512-lYUBJbBLLJe+xtvsqXAv4DZ/t7+VfpjFpxY1UylA4+TbM14qTFjPnDc359TXqUAktFgvMxCVv1EVDpZbze3Hcg==
+nookies@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/nookies/-/nookies-2.5.0.tgz#00c78ac9a91c3af82ab4bc8b193ad7bd41ee7aa5"
+  integrity sha512-yFIKz80h6SRqO1a6fcgO7D2qfnXAjXmGftPw5KrMWH+zGm1xHvyHyZ93z1yul9snwG/9LLvSY8pyZ3G5s6/UJQ==
   dependencies:
-    cookie "^0.4.0"
-    set-cookie-parser "^2.4.3"
+    cookie "^0.4.1"
+    set-cookie-parser "^2.4.6"
 
 noop-logger@^0.1.1:
   version "0.1.1"
@@ -7503,10 +7508,10 @@ react-focus-lock@^2.2.1:
     use-callback-ref "^1.2.1"
     use-sidecar "^1.0.1"
 
-react-icons@^3.10.0:
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-3.10.0.tgz#6c217a2dde2e8fa8d293210023914b123f317297"
-  integrity sha512-WsQ5n1JToG9VixWilSo1bHv842Cj5aZqTGiS3Ud47myF6aK7S/IUY2+dHcBdmkQcCFRuHsJ9OMUI0kTDfjyZXQ==
+react-icons@^3.11.0:
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-3.11.0.tgz#2ca2903dfab8268ca18ebd8cc2e879921ec3b254"
+  integrity sha512-JRgiI/vdF6uyBgyZhVyYJUZAop95Sy4XDe/jmT3R/bKliFWpO/uZBwvSjWEdxwzec7SYbEPNPck0Kff2tUGM2Q==
   dependencies:
     camelcase "^5.0.0"
 
@@ -8083,10 +8088,10 @@ set-blocking@~2.0.0:
   resolved "https://registry.yarnpkg.com/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
   integrity sha1-BF+XgtARrppoA93TgrJDkrPYkPc=
 
-set-cookie-parser@^2.4.3:
-  version "2.4.5"
-  resolved "https://registry.yarnpkg.com/set-cookie-parser/-/set-cookie-parser-2.4.5.tgz#94a5060724e614c56c65588010594dc4b848fb8d"
-  integrity sha512-LkSDwseogN5l6TerqGzFzL9mUDTxSq3hX2b5AaynjC1nSCNWiDypEgHatfc0v6KcnfgV3/6F6h4ABh6igjzlQQ==
+set-cookie-parser@^2.4.6:
+  version "2.4.6"
+  resolved "https://registry.yarnpkg.com/set-cookie-parser/-/set-cookie-parser-2.4.6.tgz#43bdea028b9e6f176474ee5298e758b4a44799c3"
+  integrity sha512-mNCnTUF0OYPwYzSHbdRdCfNNHqrne+HS5tS5xNb6yJbdP9wInV0q5xPLE0EyfV/Q3tImo3y/OXpD8Jn0Jtnjrg==
 
 set-value@^2.0.0, set-value@^2.0.1:
   version "2.0.1"
