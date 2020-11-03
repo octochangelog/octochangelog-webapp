@@ -11,7 +11,12 @@ import {
   EMPTY_VERSION_RANGE,
   GITHUB_RATE_LIMIT_EXCEEDED_ERROR,
 } from '~/global';
-import { Release, RepositoryQueryPayload, VersionRange } from '~/models';
+import {
+  Release,
+  Repository,
+  RepositoryQueryPayload,
+  VersionRange,
+} from '~/models';
 
 const ComparatorPage = () => {
   // TODO:
@@ -34,9 +39,9 @@ const ComparatorPage = () => {
     data: repository,
     error: repoError,
     isFetching: isRepoFetching,
-  } = useQuery(
+  } = useQuery<Repository>(
     ['repository', requestPayload],
-    (_, payload) => api.readRepo(payload as any),
+    (_, payload) => api.readRepo(payload),
     { enabled: requestPayload }
   );
 
@@ -44,9 +49,9 @@ const ComparatorPage = () => {
     data: releases,
     error: releasesError,
     isFetching: isReleasesFetching,
-  } = useQuery(
+  } = useQuery<Release[]>(
     ['releases', requestPayload],
-    (_, payload) => api.readRepoReleases(payload as any),
+    (_, payload) => api.readRepoReleases(payload),
     { enabled: repository }
   );
 
