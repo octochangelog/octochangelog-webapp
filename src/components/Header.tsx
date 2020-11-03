@@ -120,9 +120,7 @@ const Header = (props: BoxProps) => {
       <Container py={5}>
         <Flex justify="space-between" alignItems="center">
           <Flex alignItems="center">
-            <Box as="picture" h={LOGO_SIZES} w={LOGO_SIZES} mr={2}>
-              <source srcSet="/mascot-icon.webp" type="image/webp" />
-              <source src="/mascot-icon.png" type="image/png" />
+            <Box h={LOGO_SIZES} w={LOGO_SIZES} mr={2}>
               <Image
                 src="/mascot-icon.png"
                 alt="Octoclairvoyant reading a crystal ball"
