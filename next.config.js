@@ -1,26 +1,9 @@
-const withPlugins = require('next-compose-plugins');
-const optimizedImages = require('next-optimized-images');
+module.exports = {
+  webpack: (config) => {
+    config.node = {
+      fs: 'empty',
+    };
 
-module.exports = withPlugins(
-  [
-    [
-      optimizedImages,
-      {
-        optimizeImagesInDev: true,
-        responsive: {
-          min: 50,
-          max: 600,
-        },
-      },
-    ],
-  ],
-  {
-    webpack: (config) => {
-      config.node = {
-        fs: 'empty',
-      };
-
-      return config;
-    },
-  }
-);
+    return config;
+  },
+};

@@ -8,6 +8,7 @@ import {
   ListItem,
   Stack,
 } from '@chakra-ui/core';
+import { Image } from '@chakra-ui/core/dist';
 import styled from '@emotion/styled';
 import NextLink from 'next/link';
 import React from 'react';
@@ -15,7 +16,6 @@ import React from 'react';
 import Container from '~/components/Container';
 import Layout from '~/components/Layout';
 import Link from '~/components/Link';
-import MainLogo from '~/components/MainLogo';
 import customTheme from '~/customTheme';
 import { APP_MOTTO } from '~/global';
 import useWindowWidth from '~/hooks/useWindowWidth';
@@ -59,7 +59,10 @@ const MainSection: React.FC = () => {
         </Flex>
       </Stack>
       <Box flexGrow={1} flexBasis={0} maxWidth={600} maxHeight="auto">
-        <MainLogo />
+        <Image
+          src="mascot-logo.png"
+          alt="Octoclairvoyant reading a crystal ball"
+        />
       </Box>
     </Flex>
   );
