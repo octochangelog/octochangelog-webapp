@@ -24,11 +24,15 @@ import useWindowWidth from '~/hooks/useWindowWidth';
 const LOGO_SIZES = { base: '25px', md: '30px', lg: '50px' };
 const INLINE_BREAKPOINT = 768; // desktop
 
-const MenuLink: React.FC<{ href: string; isDesktop: boolean }> = ({
+const MenuLink = ({
   href,
   isDesktop,
   children,
   ...rest
+}: {
+  children: React.ReactNode;
+  href: string;
+  isDesktop: boolean;
 }) => {
   const router = useRouter();
   const isActive = router?.pathname === href;
@@ -52,7 +56,7 @@ const MenuLink: React.FC<{ href: string; isDesktop: boolean }> = ({
   );
 };
 
-const LinksStack: React.FC<{ isDesktop: boolean }> = ({ isDesktop }) => (
+const LinksStack = ({ isDesktop }: { isDesktop: boolean }) => (
   <Stack
     isInline={isDesktop}
     spacing={{ base: 12, md: 8 }}

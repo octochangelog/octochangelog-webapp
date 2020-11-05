@@ -32,14 +32,14 @@ interface Props {
   onVersionRangeChange(range: VersionRange): void;
 }
 
-const RepositoryReleasesComparator: React.FC<Props> = ({
+const RepositoryReleasesComparator = ({
   repository,
   releases,
   versionRange,
   isFetching = false,
   onRepositoryChange,
   onVersionRangeChange,
-}) => {
+}: Props) => {
   const isHydrated = useIsClientSideHydrated();
 
   return (

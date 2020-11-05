@@ -29,15 +29,12 @@ const getChildWrapper = (isHeaderFixed: boolean): BoxProps => {
 };
 
 type Props = {
+  children: React.ReactNode;
   extraTitle?: string;
   isHeaderFixed?: boolean;
 };
 
-const Layout: React.FC<Props> = ({
-  children,
-  extraTitle,
-  isHeaderFixed = false,
-}) => {
+const Layout = ({ children, extraTitle, isHeaderFixed = false }: Props) => {
   const headerProps = getHeaderProps(isHeaderFixed);
   const childrenWrapperProps = getChildWrapper(isHeaderFixed);
 

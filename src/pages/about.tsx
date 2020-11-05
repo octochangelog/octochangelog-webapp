@@ -26,7 +26,7 @@ const FeaturesHeading = styled(Heading)`
   scroll-margin-top: 6rem;
 `;
 
-const MainSection: React.FC = () => {
+const MainSection = () => {
   const windowWidth = useWindowWidth();
   const isDesktop = windowWidth >= DESKTOP_BREAKPOINT;
 

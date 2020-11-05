@@ -9,10 +9,7 @@ interface Props {
   isAuth?: boolean;
 }
 
-const RateLimitExceededNotice: React.FC<Props> = ({
-  waitingMinutes,
-  isAuth = false,
-}) => (
+const RateLimitExceededNotice = ({ waitingMinutes, isAuth = false }: Props) => (
   <Flex justify="center">
     <Flex
       p={5}

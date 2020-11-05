@@ -27,13 +27,13 @@ interface Props {
   onVersionRangeChange(range: VersionRange): void;
 }
 
-const RepositoryReleasesPicker: React.FC<Props> = ({
+const RepositoryReleasesPicker = ({
   releases,
   versionRange,
   isFetching = false,
   onRepositoryChange,
   onVersionRangeChange,
-}) => {
+}: Props) => {
   const windowWidth = useWindowWidth();
 
   const handleRepoReleasesSearch = React.useCallback(
