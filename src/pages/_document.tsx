@@ -99,7 +99,7 @@ class MyDocument extends Document {
           <meta name="twitter:description" content={APP_MOTTO} />
 
           <link
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
             rel="stylesheet"
           />
 
