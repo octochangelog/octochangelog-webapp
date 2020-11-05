@@ -11,7 +11,7 @@ import * as React from 'react';
 import Container from '~/components/Container';
 import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesChangelogHeading';
 import RepositoryReleasesPicker from '~/components/RepositoryReleasesPicker';
-import useIsClientSideHydrated from '~/hooks/useLazyShowChild';
+import useIsClientSide from '~/hooks/useIsClientSide';
 
 const RepositoryReleasesChangelog = dynamic(() =>
   import('~/components/RepositoryReleasesChangelog')
@@ -34,12 +34,12 @@ const RepositoryReleasesComparator = ({
   onRepositoryChange,
   onVersionRangeChange,
 }: Props) => {
-  const isHydrated = useIsClientSideHydrated();
+  const isClientSide = useIsClientSide();
 
   return (
     <>
       <Container>
-        {isHydrated && (
+        {isClientSide && (
           <RepositoryReleasesPicker
             releases={releases}
             versionRange={versionRange}

@@ -11,13 +11,13 @@ import {
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import NextLink from 'next/link';
-import { useState, useEffect } from 'react';
 
 import Container from '~/components/Container';
 import Layout from '~/components/Layout';
 import Link from '~/components/Link';
 import customTheme from '~/customTheme';
 import { APP_MOTTO } from '~/global';
+import useIsClientSide from '~/hooks/useIsClientSide';
 import useWindowWidth from '~/hooks/useWindowWidth';
 
 const DESKTOP_BREAKPOINT = 992;
@@ -70,14 +70,7 @@ const MainSection = () => {
 };
 
 const IndexPage = () => {
-  const [shouldShowMainSection, setShouldShowMainSection] = useState(false);
-
-  useEffect(function renderMainSectionOnClientSideHydrationEffect() {
-    // As this element depends on device since to render different variants,
-    // we only render HeaderLinks when on Client Side
-    // https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
-    setShouldShowMainSection(true);
-  }, []);
+  const isClientSide = useIsClientSide();
 
   return (
     <Layout isHeaderFixed>
@@ -87,13 +80,13 @@ const IndexPage = () => {
         minHeight="100vh"
         bgImage={`linear-gradient(180deg, ${customTheme.colors.primary[700]} 0%, ${customTheme.colors.white} 100%)`}
       >
-        <Container>{shouldShowMainSection && <MainSection />}</Container>
+        <Container>{isClientSide && <MainSection />}</Container>
       </Box>
 
       <Box>
         <Container
           transition="opacity 500ms linear"
-          opacity={shouldShowMainSection ? 1 : 0}
+          opacity={isClientSide ? 1 : 0}
         >
           <Stack
             spacing={8}

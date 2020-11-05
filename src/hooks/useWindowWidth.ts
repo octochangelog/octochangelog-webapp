@@ -6,7 +6,7 @@ import { useState, useLayoutEffect } from 'react';
  * https://usehooks.com/useWindowSize/
  */
 function useWindowWidth(): number {
-  const [width, setSize] = useState<number>(0);
+  const [width, setSize] = useState(0);
 
   const updateSize = () => {
     setSize(window.innerWidth);

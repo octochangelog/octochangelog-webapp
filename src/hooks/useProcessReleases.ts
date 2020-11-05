@@ -107,7 +107,7 @@ function useProcessReleases(
   releases: Release[] | null
 ): UseProcessReleasesReturn {
   const [processedReleases, setProcessedReleases] = useState<any>(null);
-  const [isProcessing, setIsProcessing] = useState<boolean>(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   useEffect(
     function processReleasesEffect() {

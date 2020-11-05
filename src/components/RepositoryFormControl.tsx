@@ -24,8 +24,8 @@ const RepositoryFormControl = ({
   isLoading = false,
   ...rest
 }: RepositoryFormControlProps) => {
-  const [repoUrl, setRepoUrl] = React.useState<string>('');
-  const [error, setError] = React.useState<string>('');
+  const [repoUrl, setRepoUrl] = React.useState('');
+  const [error, setError] = React.useState('');
 
   const triggerSearch = (url: string) => {
     const repoData = getRepositoryDataFromUrl(url);

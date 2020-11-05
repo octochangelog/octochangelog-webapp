@@ -59,7 +59,7 @@ function useProcessDescriptionMdast({
     setProcessedDescription,
   ] = React.useState<React.ReactNode | null>(null);
 
-  const [isProcessing, setIsProcessing] = React.useState<boolean>(false);
+  const [isProcessing, setIsProcessing] = React.useState(false);
 
   React.useEffect(
     function processDescriptionMdastEffect() {

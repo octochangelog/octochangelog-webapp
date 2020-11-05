@@ -19,6 +19,7 @@ import { FaBars } from 'react-icons/fa';
 
 import Container from '~/components/Container';
 import RouteLink from '~/components/RouteLink';
+import useIsClientSide from '~/hooks/useIsClientSide';
 import useWindowWidth from '~/hooks/useWindowWidth';
 
 const LOGO_SIZES = { base: '25px', md: '30px', lg: '50px' };
@@ -109,14 +110,7 @@ const HeaderLinks = () => {
 };
 
 const Header = (props: BoxProps) => {
-  const [shouldShowLinks, setShouldShowLinks] = React.useState(false);
-
-  React.useEffect(function renderLinksOnClientSideHydrationEffect() {
-    // As header links depend on device since to render different variants,
-    // we only render HeaderLinks when on Client Side
-    // https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
-    setShouldShowLinks(true);
-  }, []);
+  const isClientSide = useIsClientSide();
 
   return (
     /* FIXME: set zIndex to "banner" when chakra-ui fixes types here */
@@ -136,7 +130,7 @@ const Header = (props: BoxProps) => {
               Octoclairvoyant
             </Heading>
           </Flex>
-          {shouldShowLinks && <HeaderLinks />}
+          {isClientSide && <HeaderLinks />}
         </Flex>
       </Container>
     </Box>
