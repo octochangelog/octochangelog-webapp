@@ -12,24 +12,41 @@ type Props = {
   quality: number
 }
 
-const LazyImage = ({ src, loadingSrc, ...remainingProps }: Props) => {
+const LazyImage = ({
+  src,
+  loadingSrc,
+  height,
+  width,
+  ...remainingProps
+}: Props) => {
   const [isLoaded, setIsLoaded] = useState(false)
 
+  const dynamicWidth = `min(${width}px, 100vw)`
+  const dynamicHeight = `min(${height}px, 100vw)`
+
   return (
-    <Box position="relative" h={remainingProps.height} w={remainingProps.width}>
+    <Box position="relative" height={dynamicWidth} width={dynamicHeight}>
       <ChakraImage
         src={loadingSrc}
         {...remainingProps}
         opacity={!isLoaded ? 1 : 0}
         position="absolute"
         transition="opacity 500ms"
+        height={dynamicWidth}
+        width={dynamicHeight}
       />
       <Box
         opacity={isLoaded ? 1 : 0}
         position="absolute"
         transition="opacity 500ms"
       >
-        <Image src={src} {...remainingProps} onLoad={() => setIsLoaded(true)} />
+        <Image
+          src={src}
+          height={height}
+          width={width}
+          {...remainingProps}
+          onLoad={() => setIsLoaded(true)}
+        />
       </Box>
     </Box>
   )
