@@ -1,4 +1,4 @@
-import { Skeleton, Stack } from '@chakra-ui/core/';
+import { Skeleton, Stack } from '@chakra-ui/core/'
 
 const TextSkeleton = () => (
   <Stack spacing={3}>
@@ -7,6 +7,6 @@ const TextSkeleton = () => (
     <Skeleton height={4} width="10%" />
     <Skeleton height={4} width="35%" />
   </Stack>
-);
+)
 
-export default TextSkeleton;
+export default TextSkeleton

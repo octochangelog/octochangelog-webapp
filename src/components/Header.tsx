@@ -11,19 +11,19 @@ import {
   Heading,
   Stack,
   useDisclosure,
-} from '@chakra-ui/core';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import * as React from 'react';
-import { FaBars } from 'react-icons/fa';
+} from '@chakra-ui/core'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+import * as React from 'react'
+import { FaBars } from 'react-icons/fa'
 
-import Container from '~/components/Container';
-import RouteLink from '~/components/RouteLink';
-import useIsClientSide from '~/hooks/useIsClientSide';
-import useWindowWidth from '~/hooks/useWindowWidth';
+import Container from '~/components/Container'
+import RouteLink from '~/components/RouteLink'
+import useIsClientSide from '~/hooks/useIsClientSide'
+import useWindowWidth from '~/hooks/useWindowWidth'
 
-const LOGO_SIZES = { base: '25px', md: '30px', lg: '50px' };
-const INLINE_BREAKPOINT = 768; // desktop
+const LOGO_SIZES = { base: '25px', md: '30px', lg: '50px' }
+const INLINE_BREAKPOINT = 768 // desktop
 
 const MenuLink = ({
   href,
@@ -31,12 +31,12 @@ const MenuLink = ({
   children,
   ...rest
 }: {
-  children: React.ReactNode;
-  href: string;
-  isDesktop: boolean;
+  children: React.ReactNode
+  href: string
+  isDesktop: boolean
 }) => {
-  const router = useRouter();
-  const isActive = router?.pathname === href;
+  const router = useRouter()
+  const isActive = router?.pathname === href
 
   return (
     <RouteLink
@@ -54,8 +54,8 @@ const MenuLink = ({
     >
       {children}
     </RouteLink>
-  );
-};
+  )
+}
 
 const LinksStack = ({ isDesktop }: { isDesktop: boolean }) => (
   <Stack
@@ -71,15 +71,15 @@ const LinksStack = ({ isDesktop }: { isDesktop: boolean }) => (
     </MenuLink>
     {/* TODO: implement logout if necessary */}
   </Stack>
-);
+)
 
 const HeaderLinks = () => {
   // TODO: extract into useResponsiveBreakpoint
-  const windowWidth = useWindowWidth();
-  const { isOpen, onToggle, onClose } = useDisclosure();
+  const windowWidth = useWindowWidth()
+  const { isOpen, onToggle, onClose } = useDisclosure()
 
-  const isDesktop = windowWidth > INLINE_BREAKPOINT;
-  const linksInner = <LinksStack isDesktop={isDesktop} />;
+  const isDesktop = windowWidth > INLINE_BREAKPOINT
+  const linksInner = <LinksStack isDesktop={isDesktop} />
 
   return isDesktop ? (
     linksInner
@@ -106,11 +106,11 @@ const HeaderLinks = () => {
         </DrawerContent>
       </Drawer>
     </>
-  );
-};
+  )
+}
 
 const Header = (props: BoxProps) => {
-  const isClientSide = useIsClientSide();
+  const isClientSide = useIsClientSide()
 
   return (
     /* FIXME: set zIndex to "banner" when chakra-ui fixes types here */
@@ -134,7 +134,7 @@ const Header = (props: BoxProps) => {
         </Flex>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

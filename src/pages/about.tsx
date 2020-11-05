@@ -7,28 +7,28 @@ import {
   ListIcon,
   ListItem,
   Stack,
-} from '@chakra-ui/core';
-import styled from '@emotion/styled';
-import Image from 'next/image';
-import NextLink from 'next/link';
+} from '@chakra-ui/core'
+import styled from '@emotion/styled'
+import Image from 'next/image'
+import NextLink from 'next/link'
 
-import Container from '~/components/Container';
-import Layout from '~/components/Layout';
-import Link from '~/components/Link';
-import customTheme from '~/customTheme';
-import { APP_MOTTO } from '~/global';
-import useIsClientSide from '~/hooks/useIsClientSide';
-import useWindowWidth from '~/hooks/useWindowWidth';
+import Container from '~/components/Container'
+import Layout from '~/components/Layout'
+import Link from '~/components/Link'
+import customTheme from '~/customTheme'
+import { APP_MOTTO } from '~/global'
+import useIsClientSide from '~/hooks/useIsClientSide'
+import useWindowWidth from '~/hooks/useWindowWidth'
 
-const DESKTOP_BREAKPOINT = 992;
+const DESKTOP_BREAKPOINT = 992
 
 const FeaturesHeading = styled(Heading)`
   scroll-margin-top: 6rem;
-`;
+`
 
 const MainSection = () => {
-  const windowWidth = useWindowWidth();
-  const isDesktop = windowWidth >= DESKTOP_BREAKPOINT;
+  const windowWidth = useWindowWidth()
+  const isDesktop = windowWidth >= DESKTOP_BREAKPOINT
 
   return (
     <Flex alignItems="center" direction={isDesktop ? 'row' : 'column-reverse'}>
@@ -66,11 +66,11 @@ const MainSection = () => {
         quality={100}
       />
     </Flex>
-  );
-};
+  )
+}
 
 const IndexPage = () => {
-  const isClientSide = useIsClientSide();
+  const isClientSide = useIsClientSide()
 
   return (
     <Layout isHeaderFixed>
@@ -147,7 +147,7 @@ const IndexPage = () => {
         </Container>
       </Box>
     </Layout>
-  );
-};
+  )
+}
 
-export default IndexPage;
+export default IndexPage

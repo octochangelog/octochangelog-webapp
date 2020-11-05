@@ -1,29 +1,29 @@
-import { Divider } from '@chakra-ui/core';
+import { Divider } from '@chakra-ui/core'
 import {
   Release,
   Repository,
   RepositoryQueryPayload,
   VersionRange,
-} from 'models';
-import dynamic from 'next/dynamic';
-import * as React from 'react';
+} from 'models'
+import dynamic from 'next/dynamic'
+import * as React from 'react'
 
-import Container from '~/components/Container';
-import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesChangelogHeading';
-import RepositoryReleasesPicker from '~/components/RepositoryReleasesPicker';
-import useIsClientSide from '~/hooks/useIsClientSide';
+import Container from '~/components/Container'
+import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesChangelogHeading'
+import RepositoryReleasesPicker from '~/components/RepositoryReleasesPicker'
+import useIsClientSide from '~/hooks/useIsClientSide'
 
 const RepositoryReleasesChangelog = dynamic(() =>
   import('~/components/RepositoryReleasesChangelog')
-);
+)
 
 interface Props {
-  repository?: Repository;
-  releases?: Release[];
-  versionRange: VersionRange;
-  isFetching?: boolean;
-  onRepositoryChange(repository: RepositoryQueryPayload | null): void;
-  onVersionRangeChange(range: VersionRange): void;
+  repository?: Repository
+  releases?: Release[]
+  versionRange: VersionRange
+  isFetching?: boolean
+  onRepositoryChange(repository: RepositoryQueryPayload | null): void
+  onVersionRangeChange(range: VersionRange): void
 }
 
 const RepositoryReleasesComparator = ({
@@ -34,7 +34,7 @@ const RepositoryReleasesComparator = ({
   onRepositoryChange,
   onVersionRangeChange,
 }: Props) => {
-  const isClientSide = useIsClientSide();
+  const isClientSide = useIsClientSide()
 
   return (
     <>
@@ -68,7 +68,7 @@ const RepositoryReleasesComparator = ({
         </>
       )}
     </>
-  );
-};
+  )
+}
 
-export default RepositoryReleasesComparator;
+export default RepositoryReleasesComparator

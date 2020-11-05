@@ -1,9 +1,9 @@
-import { Flex, Box, BoxProps } from '@chakra-ui/core';
-import Head from 'next/head';
-import * as React from 'react';
+import { Flex, Box, BoxProps } from '@chakra-ui/core'
+import Head from 'next/head'
+import * as React from 'react'
 
-import Footer from '~/components/Footer';
-import Header from '~/components/Header';
+import Footer from '~/components/Footer'
+import Header from '~/components/Header'
 
 const getHeaderProps = (isFixed: boolean): BoxProps => {
   if (isFixed) {
@@ -12,31 +12,31 @@ const getHeaderProps = (isFixed: boolean): BoxProps => {
       top: '0',
       left: '0',
       right: '0',
-    };
+    }
   }
 
-  return {};
-};
+  return {}
+}
 
 const getChildWrapper = (isHeaderFixed: boolean): BoxProps => {
   if (isHeaderFixed) {
     return {
       mt: { base: 20, md: 24 },
-    };
+    }
   }
 
-  return { mt: { base: 4, md: 12 } };
-};
+  return { mt: { base: 4, md: 12 } }
+}
 
 type Props = {
-  children: React.ReactNode;
-  extraTitle?: string;
-  isHeaderFixed?: boolean;
-};
+  children: React.ReactNode
+  extraTitle?: string
+  isHeaderFixed?: boolean
+}
 
 const Layout = ({ children, extraTitle, isHeaderFixed = false }: Props) => {
-  const headerProps = getHeaderProps(isHeaderFixed);
-  const childrenWrapperProps = getChildWrapper(isHeaderFixed);
+  const headerProps = getHeaderProps(isHeaderFixed)
+  const childrenWrapperProps = getChildWrapper(isHeaderFixed)
 
   return (
     <>
@@ -51,7 +51,7 @@ const Layout = ({ children, extraTitle, isHeaderFixed = false }: Props) => {
         <Footer />
       </Flex>
     </>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

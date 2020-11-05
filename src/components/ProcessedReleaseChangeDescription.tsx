@@ -11,14 +11,14 @@ import {
   Tag,
   TagLabel,
   Text,
-} from '@chakra-ui/core/';
-import useProcessDescriptionMdast from 'hooks/useProcessDescriptionMdast';
-import { ProcessedReleaseChange, Repository } from 'models';
-import { GoTag } from 'react-icons/go';
+} from '@chakra-ui/core/'
+import useProcessDescriptionMdast from 'hooks/useProcessDescriptionMdast'
+import { ProcessedReleaseChange, Repository } from 'models'
+import { GoTag } from 'react-icons/go'
 
-import BlockQuote from '~/components/BlockQuote';
-import Link from '~/components/Link';
-import TextSkeleton from '~/components/TextSkeleton';
+import BlockQuote from '~/components/BlockQuote'
+import Link from '~/components/Link'
+import TextSkeleton from '~/components/TextSkeleton'
 
 const remarkReactComponents = {
   h1: (props: HeadingProps) => <Heading as="h2" size="xl" mb="4" {...props} />,
@@ -52,11 +52,11 @@ const remarkReactComponents = {
   ),
   code: (props: BoxProps) => <Code color="inherit" {...props} />,
   blockquote: (props: BoxProps) => <BlockQuote mb="2" {...props} />,
-};
+}
 
 interface ProcessedReleaseChangeProps extends BoxProps {
-  repository: Repository;
-  processedReleaseChange: ProcessedReleaseChange;
+  repository: Repository
+  processedReleaseChange: ProcessedReleaseChange
 }
 
 const ProcessedReleaseChangeDescription = ({
@@ -68,7 +68,7 @@ const ProcessedReleaseChangeDescription = ({
     repository,
     description: processedReleaseChange.descriptionMdast,
     componentsMapping: remarkReactComponents,
-  });
+  })
 
   return (
     <Box {...rest} mb={8}>
@@ -84,7 +84,7 @@ const ProcessedReleaseChangeDescription = ({
         <TextSkeleton />
       )}
     </Box>
-  );
-};
+  )
+}
 
-export default ProcessedReleaseChangeDescription;
+export default ProcessedReleaseChangeDescription

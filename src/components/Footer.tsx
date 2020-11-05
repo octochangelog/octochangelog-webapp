@@ -1,8 +1,8 @@
-import { Box, Stack } from '@chakra-ui/core';
+import { Box, Stack } from '@chakra-ui/core'
 
-import Container from '~/components/Container';
-import Link from '~/components/Link';
-import { REPO_URL } from '~/global';
+import Container from '~/components/Container'
+import Link from '~/components/Link'
+import { REPO_URL } from '~/global'
 
 const Footer = () => {
   return (
@@ -33,7 +33,7 @@ const Footer = () => {
         </Stack>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

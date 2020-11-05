@@ -1,148 +1,145 @@
-import { lowerCase } from 'lodash';
+import { lowerCase } from 'lodash'
 import {
   MiscGroupTitles,
   Release,
   RepositoryQueryPayload,
   SemVerGroupTitles,
-} from 'models';
-import semver from 'semver';
-import title from 'title';
+} from 'models'
+import semver from 'semver'
+import title from 'title'
 
-import {
-  HIGH_PRIORITY_GROUP_TITLES,
-  LOW_PRIORITY_GROUP_TITLES,
-} from '~/global';
+import { HIGH_PRIORITY_GROUP_TITLES, LOW_PRIORITY_GROUP_TITLES } from '~/global'
 
-const gitHubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,\-_.]+)\/([\w,\-_.]+)(.git)?((\/)?)/i;
+const gitHubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,\-_.]+)\/([\w,\-_.]+)(.git)?((\/)?)/i
 
 export function getRepositoryDataFromUrl(
   url: string
 ): RepositoryQueryPayload | null {
-  let repoObj = null;
+  let repoObj = null
 
   try {
-    const matchGroups = url.match(gitHubRepoRegExp);
-    const owner = matchGroups?.[7];
-    const name = matchGroups?.[8]?.replace('.git', ''); // remove .git suffix for repo names like next.js
+    const matchGroups = url.match(gitHubRepoRegExp)
+    const owner = matchGroups?.[7]
+    const name = matchGroups?.[8]?.replace('.git', '') // remove .git suffix for repo names like next.js
 
     if (owner && name) {
       repoObj = {
         name,
         owner,
-      };
+      }
     }
   } catch (e) {
     // do nothing
   }
 
-  return repoObj;
+  return repoObj
 }
 
 type FilterReleasesNodes = {
-  releases: Release[];
-  from: string;
-  to: string;
-};
+  releases: Release[]
+  from: string
+  to: string
+}
 
 export function filterReleasesByVersionRange(
   args: FilterReleasesNodes
 ): Release[] {
-  const { releases, from, to } = args;
+  const { releases, from, to } = args
 
   // filter version range as (from, to]
   return releases.filter(
     ({ tag_name }) => semver.gt(tag_name, from) && semver.lte(tag_name, to)
-  );
+  )
 }
 
-const customTitleSpecials: string[] = ['DOM', 'ESLint'];
+const customTitleSpecials: string[] = ['DOM', 'ESLint']
 
 export function getRepositoryNameDisplay(repoName: string): string {
   return title(repoName.replace(/[_-]/g, ' '), {
     special: customTitleSpecials,
-  });
+  })
 }
 
 // TODO: add tests for all variants
 export function getReleaseGroupTitle(
   mdastNode: any
 ): SemVerGroupTitles | MiscGroupTitles | string {
-  const mdastTitle = lowerCase(mdastNode.children[0].value);
+  const mdastTitle = lowerCase(mdastNode.children[0].value)
 
   // check features before than breaking changes to group here "Major Features"
   // and avoid grouping them under breaking changes group
   if (mdastTitle.match(/^.*(feature|minor).*$/i)) {
-    return SemVerGroupTitles.features;
+    return SemVerGroupTitles.features
   }
 
   if (mdastTitle.match(/^.*(breaking.*change|major).*$/i)) {
-    return SemVerGroupTitles.breakingChanges;
+    return SemVerGroupTitles.breakingChanges
   }
 
   if (mdastTitle.match(/^.*(bug|fix|patch).*$/i)) {
-    return SemVerGroupTitles.bugFixes;
+    return SemVerGroupTitles.bugFixes
   }
 
   if (mdastTitle.match(/^.*thank.*$/)) {
-    return MiscGroupTitles.thanks;
+    return MiscGroupTitles.thanks
   }
 
   if (mdastTitle.match(/^.*artifact.*$/)) {
-    return MiscGroupTitles.artifacts;
+    return MiscGroupTitles.artifacts
   }
 
   if (mdastTitle.match(/^.*credit.*$/)) {
-    return MiscGroupTitles.credits;
+    return MiscGroupTitles.credits
   }
 
-  return mdastTitle;
+  return mdastTitle
 }
 
 const getTitlePriorityGroup = (title: string): -1 | 1 | 0 => {
   if (HIGH_PRIORITY_GROUP_TITLES.includes(title)) {
-    return -1;
+    return -1
   }
 
   if (LOW_PRIORITY_GROUP_TITLES.includes(title)) {
-    return 1;
+    return 1
   }
 
-  return 0;
-};
+  return 0
+}
 
 // TODO: add tests for all variants
 export function compareReleaseGroupTitlesSort(a: string, b: string): number {
-  const aPriority = getTitlePriorityGroup(a);
-  const bPriority = getTitlePriorityGroup(b);
+  const aPriority = getTitlePriorityGroup(a)
+  const bPriority = getTitlePriorityGroup(b)
 
   // they belong to different priorities group, sort by highest one
   if (aPriority !== bPriority) {
-    return aPriority - bPriority;
+    return aPriority - bPriority
   }
 
   // they belong to neutral priority group, maintain sort unchanged
   if (aPriority === 0) {
-    return 0;
+    return 0
   }
 
   // they belong to high or low priority group,
   // sort by most important one within their group
   const priorityGroupReference =
-    aPriority === -1 ? HIGH_PRIORITY_GROUP_TITLES : LOW_PRIORITY_GROUP_TITLES;
+    aPriority === -1 ? HIGH_PRIORITY_GROUP_TITLES : LOW_PRIORITY_GROUP_TITLES
 
-  const indexOfA = priorityGroupReference.indexOf(a);
-  const indexOfB = priorityGroupReference.indexOf(b);
+  const indexOfA = priorityGroupReference.indexOf(a)
+  const indexOfB = priorityGroupReference.indexOf(b)
 
   if (indexOfA < indexOfB) {
-    return -1;
+    return -1
   }
 
   if (indexOfA > indexOfB) {
-    return 1;
+    return 1
   }
 
   // maintain sort unchanged just in case
-  return 0;
+  return 0
 }
 
 export const releasesComparator = (
@@ -150,14 +147,14 @@ export const releasesComparator = (
   b: Release,
   order: 'asc' | 'desc' = 'desc'
 ): number => {
-  const { tag_name: verA } = a;
-  const { tag_name: verB } = b;
+  const { tag_name: verA } = a
+  const { tag_name: verB } = b
 
   if (semver.gt(verA, verB)) {
-    return order === 'desc' ? -1 : 1;
+    return order === 'desc' ? -1 : 1
   } else if (semver.lt(verA, verB)) {
-    return order === 'desc' ? 1 : -1;
+    return order === 'desc' ? 1 : -1
   }
 
-  return 0;
-};
+  return 0
+}

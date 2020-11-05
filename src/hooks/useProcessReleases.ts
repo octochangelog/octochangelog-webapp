@@ -1,42 +1,42 @@
-import { MiscGroupTitles, ProcessedReleasesCollection, Release } from 'models';
-import { useState, useEffect, useMemo } from 'react';
-import parse from 'remark-parse';
-import unified from 'unified';
+import { MiscGroupTitles, ProcessedReleasesCollection, Release } from 'models'
+import { useState, useEffect, useMemo } from 'react'
+import parse from 'remark-parse'
+import unified from 'unified'
 
-import { getReleaseGroupTitle } from '~/utils';
+import { getReleaseGroupTitle } from '~/utils'
 
 function insertReleaseInGroup(
   newProcessedRelease: any,
   groupedReleases: any
 ): void {
-  const { title } = newProcessedRelease;
+  const { title } = newProcessedRelease
   if (groupedReleases[title]) {
     // group already exists, then append new changes of same type
-    groupedReleases[title].push(newProcessedRelease);
+    groupedReleases[title].push(newProcessedRelease)
   } else {
     // group doesn't exist yet, then create it and init with new changes
-    groupedReleases[title] = [newProcessedRelease];
+    groupedReleases[title] = [newProcessedRelease]
   }
 }
 
 function processedReleaseIsEmpty(processedRelease: any): boolean {
-  return processedRelease.descriptionMdast.children.length === 0;
+  return processedRelease.descriptionMdast.children.length === 0
 }
 
-const processor = unified().use(parse);
+const processor = unified().use(parse)
 
 async function processReleasesAsync(releases: Release[]) {
   // TODO: reject on error
   return new Promise((resolve) => {
     setTimeout(() => {
-      const processedReleasesCollection = {};
+      const processedReleasesCollection = {}
 
       releases.forEach((rel) => {
-        const { body, ...remainingRel } = rel;
+        const { body, ...remainingRel } = rel
 
-        const mdastDescription: any = processor.parse(body);
+        const mdastDescription: any = processor.parse(body)
 
-        let newProcessedRelease: any;
+        let newProcessedRelease: any
         mdastDescription.children.forEach((mdastNode: any) => {
           if (
             mdastNode.type === 'heading' &&
@@ -50,11 +50,11 @@ async function processReleasesAsync(releases: Release[]) {
               insertReleaseInGroup(
                 newProcessedRelease,
                 processedReleasesCollection
-              );
+              )
             }
 
             // ... and create new release if proper header found
-            const title = getReleaseGroupTitle(mdastNode);
+            const title = getReleaseGroupTitle(mdastNode)
             if (title) {
               newProcessedRelease = {
                 title,
@@ -64,7 +64,7 @@ async function processReleasesAsync(releases: Release[]) {
                   children: [],
                 },
                 ...remainingRel,
-              };
+              }
             }
           } else if (!newProcessedRelease) {
             // standalone or non-groupable release found
@@ -76,64 +76,61 @@ async function processReleasesAsync(releases: Release[]) {
                 children: [mdastNode],
               },
               ...remainingRel,
-            };
+            }
           } else {
             // append content to current release
-            newProcessedRelease.descriptionMdast.children.push(mdastNode);
+            newProcessedRelease.descriptionMdast.children.push(mdastNode)
           }
-        });
+        })
         // insert final release in group
         if (
           newProcessedRelease &&
           !processedReleaseIsEmpty(newProcessedRelease)
         ) {
-          insertReleaseInGroup(
-            newProcessedRelease,
-            processedReleasesCollection
-          );
+          insertReleaseInGroup(newProcessedRelease, processedReleasesCollection)
         }
-      });
-      resolve(processedReleasesCollection as any);
-    }, 0);
-  });
+      })
+      resolve(processedReleasesCollection as any)
+    }, 0)
+  })
 }
 
 interface UseProcessReleasesReturn {
-  processedReleases: ProcessedReleasesCollection;
-  isProcessing: boolean;
+  processedReleases: ProcessedReleasesCollection
+  isProcessing: boolean
 }
 
 function useProcessReleases(
   releases: Release[] | null
 ): UseProcessReleasesReturn {
-  const [processedReleases, setProcessedReleases] = useState<any>(null);
-  const [isProcessing, setIsProcessing] = useState(false);
+  const [processedReleases, setProcessedReleases] = useState<any>(null)
+  const [isProcessing, setIsProcessing] = useState(false)
 
   useEffect(
     function processReleasesEffect() {
-      setIsProcessing(true);
+      setIsProcessing(true)
 
       const handleProcessReleases = async () => {
         if (!releases || releases.length === 0) {
-          setProcessedReleases(null);
-          setIsProcessing(false);
+          setProcessedReleases(null)
+          setIsProcessing(false)
         } else {
-          const result = await processReleasesAsync(releases);
-          setProcessedReleases(result as any);
+          const result = await processReleasesAsync(releases)
+          setProcessedReleases(result as any)
         }
-        setIsProcessing(false);
-      };
+        setIsProcessing(false)
+      }
 
-      handleProcessReleases();
+      handleProcessReleases()
     },
     [releases]
-  );
+  )
 
   const data = useMemo(() => ({ processedReleases, isProcessing }), [
     isProcessing,
     processedReleases,
-  ]);
-  return data;
+  ])
+  return data
 }
 
-export default useProcessReleases;
+export default useProcessReleases

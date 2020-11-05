@@ -5,30 +5,30 @@ import {
   Heading,
   Skeleton,
   Stack,
-} from '@chakra-ui/core';
-import useProcessReleases from 'hooks/useProcessReleases';
+} from '@chakra-ui/core'
+import useProcessReleases from 'hooks/useProcessReleases'
 import {
   MiscGroupTitles,
   ProcessedReleaseChange,
   Release,
   Repository,
   SemVerGroupTitles,
-} from 'models';
-import { useState, useEffect } from 'react';
+} from 'models'
+import { useState, useEffect } from 'react'
 import {
   compareReleaseGroupTitlesSort,
   filterReleasesByVersionRange,
   releasesComparator,
-} from 'utils';
+} from 'utils'
 
-import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChangeDescription';
-import TextSkeleton from '~/components/TextSkeleton';
+import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChangeDescription'
+import TextSkeleton from '~/components/TextSkeleton'
 
 interface RepositoryReleasesChangelogProps {
-  repository: Repository;
-  releases?: Release[];
-  fromVersion: string;
-  toVersion: string;
+  repository: Repository
+  releases?: Release[]
+  fromVersion: string
+  toVersion: string
 }
 
 const RepositoryReleasesChangelog = ({
@@ -39,23 +39,23 @@ const RepositoryReleasesChangelog = ({
 }: RepositoryReleasesChangelogProps) => {
   const [filteredReleases, setFilteredReleases] = useState<Release[] | null>(
     null
-  );
+  )
 
   const { processedReleases, isProcessing } = useProcessReleases(
     filteredReleases
-  );
+  )
 
   const shouldShowProcessedReleaseTitle = () => {
     if (!processedReleases) {
-      return false;
+      return false
     }
 
-    const groupsTitles = Object.keys(processedReleases);
+    const groupsTitles = Object.keys(processedReleases)
 
     return (
       groupsTitles.length > 1 || !groupsTitles.includes(MiscGroupTitles.unknown)
-    );
-  };
+    )
+  }
 
   useEffect(
     function filterReleases() {
@@ -64,14 +64,14 @@ const RepositoryReleasesChangelog = ({
           releases,
           from: fromVersion,
           to: toVersion,
-        }).sort((a, b) => releasesComparator(a, b, 'asc'));
-        setFilteredReleases(filteredReleases);
+        }).sort((a, b) => releasesComparator(a, b, 'asc'))
+        setFilteredReleases(filteredReleases)
       } else {
-        setFilteredReleases(null);
+        setFilteredReleases(null)
       }
     },
     [releases, fromVersion, toVersion]
-  );
+  )
 
   // TODO: simplify conditional renders with state machine
   return (
@@ -89,11 +89,11 @@ const RepositoryReleasesChangelog = ({
             .sort(compareReleaseGroupTitlesSort)
             .map((title: string) => {
               // TODO: update `release` type to ProcessedReleaseGroup when available
-              const processedRelease = processedReleases[title];
+              const processedRelease = processedReleases[title]
               const textTransform =
                 title === SemVerGroupTitles.breakingChanges
                   ? 'uppercase'
-                  : 'capitalize';
+                  : 'capitalize'
               return (
                 <Box key={title}>
                   {shouldShowProcessedReleaseTitle() && (
@@ -119,7 +119,7 @@ const RepositoryReleasesChangelog = ({
                     )}
                   </Box>
                 </Box>
-              );
+              )
             })}
         </Stack>
       )}
@@ -131,7 +131,7 @@ const RepositoryReleasesChangelog = ({
         </Alert>
       )}
     </>
-  );
-};
+  )
+}
 
-export default RepositoryReleasesChangelog;
+export default RepositoryReleasesChangelog

@@ -1,11 +1,11 @@
-import { Flex, Heading } from '@chakra-ui/core';
+import { Flex, Heading } from '@chakra-ui/core'
 
-import GitHubLoginButton from '~/components/GitHubLoginButton';
-import Link from '~/components/Link';
+import GitHubLoginButton from '~/components/GitHubLoginButton'
+import Link from '~/components/Link'
 
 interface Props {
-  waitingMinutes?: number;
-  isAuth?: boolean;
+  waitingMinutes?: number
+  isAuth?: boolean
 }
 
 const RateLimitExceededNotice = ({ waitingMinutes, isAuth = false }: Props) => (
@@ -35,6 +35,6 @@ const RateLimitExceededNotice = ({ waitingMinutes, isAuth = false }: Props) => (
       </Flex>
     </Flex>
   </Flex>
-);
+)
 
-export default RateLimitExceededNotice;
+export default RateLimitExceededNotice

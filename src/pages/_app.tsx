@@ -1,34 +1,34 @@
-import { CSSReset, ThemeProvider } from '@chakra-ui/core';
-import { Global } from '@emotion/core';
-import customTheme from 'customTheme';
-import { globalStyles } from 'global';
-import * as gtag from 'gtag';
-import { AppProps } from 'next/app';
-import Head from 'next/head';
-import { Router } from 'next/router';
-import NProgress from 'nprogress';
-import { ReactQueryConfigProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query-devtools';
+import { CSSReset, ThemeProvider } from '@chakra-ui/core'
+import { Global } from '@emotion/core'
+import customTheme from 'customTheme'
+import { globalStyles } from 'global'
+import * as gtag from 'gtag'
+import { AppProps } from 'next/app'
+import Head from 'next/head'
+import { Router } from 'next/router'
+import NProgress from 'nprogress'
+import { ReactQueryConfigProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query-devtools'
 
-import 'highlight.styles.github.min.css';
+import 'highlight.styles.github.min.css'
 
 Router.events.on('routeChangeStart', () => {
-  NProgress.start();
-});
+  NProgress.start()
+})
 Router.events.on('routeChangeError', () => {
-  NProgress.done();
-});
+  NProgress.done()
+})
 Router.events.on('routeChangeComplete', (url) => {
-  gtag.pageView(url);
-  NProgress.done();
-});
+  gtag.pageView(url)
+  NProgress.done()
+})
 
 const globalReactQueryConfig = {
   queries: {
     refetchAllOnWindowFocus: false,
     retry: 1,
   },
-};
+}
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <ReactQueryConfigProvider config={globalReactQueryConfig}>
@@ -42,6 +42,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
     </ThemeProvider>
     <ReactQueryDevtools initialIsOpen={false} />
   </ReactQueryConfigProvider>
-);
+)
 
-export default MyApp;
+export default MyApp

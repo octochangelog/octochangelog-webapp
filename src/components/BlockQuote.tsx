@@ -1,4 +1,4 @@
-import { Text, BoxProps } from '@chakra-ui/core';
+import { Text, BoxProps } from '@chakra-ui/core'
 
 const BlockQuote = (props: BoxProps) => {
   return (
@@ -10,7 +10,7 @@ const BlockQuote = (props: BoxProps) => {
       color="gray.500"
       {...props}
     />
-  );
-};
+  )
+}
 
-export default BlockQuote;
+export default BlockQuote

@@ -1,11 +1,11 @@
-import { theme, ITheme, ColorHues } from '@chakra-ui/core/dist';
+import { theme, ITheme, ColorHues } from '@chakra-ui/core/dist'
 
 type CustomColors = ITheme['colors'] & {
-  primary: ColorHues;
-  secondary: ColorHues;
-};
+  primary: ColorHues
+  secondary: ColorHues
+}
 
-type ICustomTheme = Omit<ITheme, 'colors'> & { colors: CustomColors };
+type ICustomTheme = Omit<ITheme, 'colors'> & { colors: CustomColors }
 
 const primaryColor: ColorHues = {
   50: '#ffe8ff',
@@ -18,7 +18,7 @@ const primaryColor: ColorHues = {
   700: '#601c63',
   800: '#3b0f3d',
   900: '#180319',
-};
+}
 
 const blueColor: ColorHues = {
   50: '#def8ff',
@@ -31,7 +31,7 @@ const blueColor: ColorHues = {
   700: '#0c556e',
   800: '#003445',
   900: '#00131b',
-};
+}
 
 const customTheme: ICustomTheme = {
   ...theme,
@@ -45,6 +45,6 @@ const customTheme: ICustomTheme = {
     ...theme.fonts,
     heading: 'Open Sans, sans-serif;',
   },
-};
+}
 
-export default customTheme;
+export default customTheme

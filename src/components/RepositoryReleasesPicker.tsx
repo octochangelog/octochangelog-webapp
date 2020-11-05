@@ -1,13 +1,13 @@
-import { Stack } from '@chakra-ui/core';
-import useWindowWidth from 'hooks/useWindowWidth';
-import { Release, RepositoryQueryPayload, VersionRange } from 'models';
-import * as React from 'react';
+import { Stack } from '@chakra-ui/core'
+import useWindowWidth from 'hooks/useWindowWidth'
+import { Release, RepositoryQueryPayload, VersionRange } from 'models'
+import * as React from 'react'
 
-import ReleaseVersionFormControl from '~/components/ReleaseVersionFormControl';
-import RepositoryFormControl from '~/components/RepositoryFormControl';
-import { releasesComparator } from '~/utils';
+import ReleaseVersionFormControl from '~/components/ReleaseVersionFormControl'
+import RepositoryFormControl from '~/components/RepositoryFormControl'
+import { releasesComparator } from '~/utils'
 
-const INLINE_BREAKPOINT = 768; // desktop
+const INLINE_BREAKPOINT = 768 // desktop
 
 const renderOptionsFromReleases = (
   releases: Release[]
@@ -16,15 +16,15 @@ const renderOptionsFromReleases = (
     <option key={release.id} value={release.tag_name}>
       {release.tag_name}
     </option>
-  ));
-};
+  ))
+}
 
 interface Props {
-  releases?: Release[];
-  versionRange: VersionRange;
-  isFetching?: boolean;
-  onRepositoryChange(repository: RepositoryQueryPayload | null): void;
-  onVersionRangeChange(range: VersionRange): void;
+  releases?: Release[]
+  versionRange: VersionRange
+  isFetching?: boolean
+  onRepositoryChange(repository: RepositoryQueryPayload | null): void
+  onVersionRangeChange(range: VersionRange): void
 }
 
 const RepositoryReleasesPicker = ({
@@ -34,33 +34,33 @@ const RepositoryReleasesPicker = ({
   onRepositoryChange,
   onVersionRangeChange,
 }: Props) => {
-  const windowWidth = useWindowWidth();
+  const windowWidth = useWindowWidth()
 
   const handleRepoReleasesSearch = React.useCallback(
     async (payload: RepositoryQueryPayload) => {
-      onRepositoryChange(payload);
+      onRepositoryChange(payload)
     },
     [onRepositoryChange]
-  );
+  )
 
   const handleFromVersionChange = (newFrom: string) => {
-    const [, to] = versionRange;
-    onVersionRangeChange([newFrom, to]);
-  };
+    const [, to] = versionRange
+    onVersionRangeChange([newFrom, to])
+  }
 
   const handleToVersionChange = (newTo: string) => {
-    const [from] = versionRange;
-    onVersionRangeChange([from, newTo]);
-  };
+    const [from] = versionRange
+    onVersionRangeChange([from, newTo])
+  }
 
-  const releasesOptions = releases ? renderOptionsFromReleases(releases) : null;
+  const releasesOptions = releases ? renderOptionsFromReleases(releases) : null
 
   const selectPlaceholder =
     Array.isArray(releasesOptions) && releasesOptions.length === 0
       ? 'Versions not found'
-      : 'Choose a version';
+      : 'Choose a version'
 
-  const [fromVersion, toVersion] = versionRange;
+  const [fromVersion, toVersion] = versionRange
 
   return (
     <Stack
@@ -94,7 +94,7 @@ const RepositoryReleasesPicker = ({
         {releasesOptions}
       </ReleaseVersionFormControl>
     </Stack>
-  );
-};
+  )
+}
 
-export default RepositoryReleasesPicker;
+export default RepositoryReleasesPicker

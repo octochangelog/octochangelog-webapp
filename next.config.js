@@ -6,13 +6,13 @@ module.exports = {
         destination: '/',
         permanent: true,
       },
-    ];
+    ]
   },
   webpack: (config) => {
     config.node = {
       fs: 'empty',
-    };
+    }
 
-    return config;
+    return config
   },
-};
+}

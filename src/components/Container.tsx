@@ -1,4 +1,4 @@
-import { Box, BoxProps } from '@chakra-ui/core';
+import { Box, BoxProps } from '@chakra-ui/core'
 
 const Container = (props: BoxProps) => (
   <Box
@@ -8,6 +8,6 @@ const Container = (props: BoxProps) => (
     px={{ base: 2, md: 6 }}
     {...props}
   />
-);
+)
 
-export default Container;
+export default Container

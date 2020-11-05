@@ -1,11 +1,11 @@
-import { Alert, AlertIcon } from '@chakra-ui/core';
-import { GetServerSideProps } from 'next';
+import { Alert, AlertIcon } from '@chakra-ui/core'
+import { GetServerSideProps } from 'next'
 
-import api from '~/api';
-import Layout from '~/components/Layout';
+import api from '~/api'
+import Layout from '~/components/Layout'
 
 interface Props {
-  errorMessage?: string;
+  errorMessage?: string
 }
 
 const AuthCallbackPage = ({ errorMessage = 'Something went wrong' }: Props) => (
@@ -15,13 +15,13 @@ const AuthCallbackPage = ({ errorMessage = 'Something went wrong' }: Props) => (
       {errorMessage}
     </Alert>
   </Layout>
-);
+)
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  let errorMessage = null;
+  let errorMessage = null
 
   try {
-    const { code } = context.query;
+    const { code } = context.query
 
     if (code) {
       const response = await fetch(
@@ -38,31 +38,31 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             code,
           }),
         }
-      );
+      )
 
       if (response.ok) {
         // TODO: move saving accessToken and redirecting to component itself
         //  so all this is done in Client-Side in order to avoid:
         //  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
-        const responseJson = await response.json();
+        const responseJson = await response.json()
         // save token and redirect to app
-        api.saveAccessToken(responseJson.access_token, context);
-        context.res.writeHead(302, { Location: '/' });
-        context.res.end();
+        api.saveAccessToken(responseJson.access_token, context)
+        context.res.writeHead(302, { Location: '/' })
+        context.res.end()
       } else {
-        errorMessage = 'Something went wrong obtaining access token';
+        errorMessage = 'Something went wrong obtaining access token'
       }
     } else {
-      errorMessage = 'Empty temporary code received back from GitHub';
+      errorMessage = 'Empty temporary code received back from GitHub'
     }
   } catch (e) {
-    errorMessage = e.toString();
+    errorMessage = e.toString()
   }
 
   // if this code is executed, something went wrong in the auth process,
   // so we need to delete the access token
-  api.saveAccessToken(undefined, context);
-  return { props: { errorMessage } };
-};
+  api.saveAccessToken(undefined, context)
+  return { props: { errorMessage } }
+}
 
-export default AuthCallbackPage;
+export default AuthCallbackPage

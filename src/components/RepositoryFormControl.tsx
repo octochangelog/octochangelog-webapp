@@ -6,17 +6,17 @@ import {
   IconButton,
   Input,
   Stack,
-} from '@chakra-ui/core';
-import { RepositoryQueryPayload } from 'models';
-import * as React from 'react';
-import { getRepositoryDataFromUrl } from 'utils';
+} from '@chakra-ui/core'
+import { RepositoryQueryPayload } from 'models'
+import * as React from 'react'
+import { getRepositoryDataFromUrl } from 'utils'
 
 interface CustomProps {
-  isLoading?: boolean;
-  onSearch(repoData: RepositoryQueryPayload | null): void;
+  isLoading?: boolean
+  onSearch(repoData: RepositoryQueryPayload | null): void
 }
 
-type RepositoryFormControlProps = FormControlProps & CustomProps;
+type RepositoryFormControlProps = FormControlProps & CustomProps
 
 const RepositoryFormControl = ({
   onChange,
@@ -24,39 +24,39 @@ const RepositoryFormControl = ({
   isLoading = false,
   ...rest
 }: RepositoryFormControlProps) => {
-  const [repoUrl, setRepoUrl] = React.useState('');
-  const [error, setError] = React.useState('');
+  const [repoUrl, setRepoUrl] = React.useState('')
+  const [error, setError] = React.useState('')
 
   const triggerSearch = (url: string) => {
-    const repoData = getRepositoryDataFromUrl(url);
-    onSearch(repoData);
+    const repoData = getRepositoryDataFromUrl(url)
+    onSearch(repoData)
 
     if (repoData) {
-      setError('');
+      setError('')
     } else if (repoUrl) {
-      setError('Please fill valid GitHub repository url');
+      setError('Please fill valid GitHub repository url')
     }
-  };
+  }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setError('');
-    setRepoUrl(event.target.value);
-  };
+    setError('')
+    setRepoUrl(event.target.value)
+  }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      triggerSearch(repoUrl);
+      triggerSearch(repoUrl)
     }
-  };
+  }
 
   const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
-    event.preventDefault(); // prevent event so handleInputChange is not triggered
-    setError('');
+    event.preventDefault() // prevent event so handleInputChange is not triggered
+    setError('')
 
-    const pastedText = event.clipboardData.getData('Text');
-    setRepoUrl(pastedText);
-    triggerSearch(pastedText);
-  };
+    const pastedText = event.clipboardData.getData('Text')
+    setRepoUrl(pastedText)
+    triggerSearch(pastedText)
+  }
 
   return (
     <FormControl
@@ -91,7 +91,7 @@ const RepositoryFormControl = ({
         Please fill valid GitHub repository url
       </FormErrorMessage>
     </FormControl>
-  );
-};
+  )
+}
 
-export default RepositoryFormControl;
+export default RepositoryFormControl

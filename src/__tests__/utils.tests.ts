@@ -1,4 +1,4 @@
-import { getRepositoryDataFromUrl } from 'utils';
+import { getRepositoryDataFromUrl } from 'utils'
 
 describe('getRepositoryDataFromUrl function', () => {
   it.each`
@@ -23,14 +23,14 @@ describe('getRepositoryDataFromUrl function', () => {
   `(
     'should return data from valid url "$url"',
     ({ url, expectedName, expectedOwner }) => {
-      const result = getRepositoryDataFromUrl(url);
+      const result = getRepositoryDataFromUrl(url)
 
       expect(result).toEqual({
         name: expectedName,
         owner: expectedOwner,
-      });
+      })
     }
-  );
+  )
 
   it.each([
     'https://mario.dev',
@@ -40,7 +40,7 @@ describe('getRepositoryDataFromUrl function', () => {
     'asd',
     '11982',
   ])('should return null from invalid url "%s"', (url) => {
-    const result = getRepositoryDataFromUrl(url);
-    expect(result).toBeNull();
-  });
-});
+    const result = getRepositoryDataFromUrl(url)
+    expect(result).toBeNull()
+  })
+})

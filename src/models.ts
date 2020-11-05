@@ -1,39 +1,39 @@
-import { Parent } from 'unist';
+import { Parent } from 'unist'
 
 declare global {
   interface Window {
-    gtag: Function;
+    gtag: Function
   }
 }
 
 export interface Repository {
-  name: string;
-  html_url: string;
+  name: string
+  html_url: string
 }
 
 export type RepositoryQueryPayload = {
-  name: string;
-  owner: string;
-};
-
-export interface Release {
-  id: string;
-  body: string;
-  tag_name: string;
-  draft: boolean;
-  prerelease: boolean;
+  name: string
+  owner: string
 }
 
-export type VersionRange = [string, string];
+export interface Release {
+  id: string
+  body: string
+  tag_name: string
+  draft: boolean
+  prerelease: boolean
+}
+
+export type VersionRange = [string, string]
 
 // FIXME: generate proper types for processed release
-export type ProcessedReleasesCollection = any;
+export type ProcessedReleasesCollection = any
 
 export interface ProcessedReleaseChange extends Omit<Release, 'description'> {
-  title: string;
-  originalTitle: string;
+  title: string
+  originalTitle: string
   // level: enumerate with error, warning, info or unknown
-  descriptionMdast: Parent;
+  descriptionMdast: Parent
 }
 
 export enum SemVerGroupTitles {
@@ -50,7 +50,7 @@ export enum MiscGroupTitles {
 }
 
 export interface GitHubRateLimit {
-  limit: number;
-  remaining: number;
-  reset: number;
+  limit: number
+  remaining: number
+  reset: number
 }

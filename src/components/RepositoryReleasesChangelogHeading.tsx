@@ -1,16 +1,16 @@
-import { Badge, Box, Heading, Text } from '@chakra-ui/core';
-import { useRef } from 'react';
-import { getRepositoryNameDisplay } from 'utils';
+import { Badge, Box, Heading, Text } from '@chakra-ui/core'
+import { useRef } from 'react'
+import { getRepositoryNameDisplay } from 'utils'
 
-import Container from '~/components/Container';
-import Link from '~/components/Link';
-import useIsStick from '~/hooks/useIsStick';
-import { Repository } from '~/models';
+import Container from '~/components/Container'
+import Link from '~/components/Link'
+import useIsStick from '~/hooks/useIsStick'
+import { Repository } from '~/models'
 
 interface Props {
-  repository: Repository;
-  fromVersion: string;
-  toVersion: string;
+  repository: Repository
+  fromVersion: string
+  toVersion: string
 }
 
 const RepositoryReleasesChangelogHeading = ({
@@ -18,8 +18,8 @@ const RepositoryReleasesChangelogHeading = ({
   fromVersion,
   toVersion,
 }: Props) => {
-  const stickyEl = useRef({ offsetTop: 0 });
-  const isHeadingStick = useIsStick(stickyEl);
+  const stickyEl = useRef({ offsetTop: 0 })
+  const isHeadingStick = useIsStick(stickyEl)
 
   return (
     <Box
@@ -73,7 +73,7 @@ const RepositoryReleasesChangelogHeading = ({
         )}
       </Container>
     </Box>
-  );
-};
+  )
+}
 
-export default RepositoryReleasesChangelogHeading;
+export default RepositoryReleasesChangelogHeading

@@ -3,18 +3,18 @@ import {
   FormControlProps,
   FormLabel,
   Select,
-} from '@chakra-ui/core';
-import * as React from 'react';
+} from '@chakra-ui/core'
+import * as React from 'react'
 
 interface CustomProps {
-  label: string;
-  placeholder?: string;
-  onChange(version: string): void;
-  value?: string;
+  label: string
+  placeholder?: string
+  onChange(version: string): void
+  value?: string
 }
 
 type ReleaseVersionFormControlProps = Omit<FormControlProps, 'onChange'> &
-  CustomProps;
+  CustomProps
 
 const ReleaseVersionFormControl = ({
   children,
@@ -26,8 +26,8 @@ const ReleaseVersionFormControl = ({
   ...rest
 }: ReleaseVersionFormControlProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onChange(e.target.value);
-  };
+    onChange(e.target.value)
+  }
 
   return (
     <FormControl isRequired width="full" {...rest}>
@@ -41,7 +41,7 @@ const ReleaseVersionFormControl = ({
         {children}
       </Select>
     </FormControl>
-  );
-};
+  )
+}
 
-export default ReleaseVersionFormControl;
+export default ReleaseVersionFormControl
