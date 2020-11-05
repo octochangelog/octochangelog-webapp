@@ -6,6 +6,16 @@ export const globalStyles = {
   '#__next': { height: '100%' },
 };
 
+const githubAuthUrl = new URL('https://github.com');
+githubAuthUrl.pathname = '/login/oauth/authorize';
+githubAuthUrl.searchParams.append(
+  'client_id',
+  String(process.env.NEXT_PUBLIC_GITHUB_APP_CLIENT_ID)
+);
+githubAuthUrl.searchParams.append('scope', '');
+
+export { githubAuthUrl };
+
 export const EMPTY_VERSION_RANGE: [string, string] = ['', ''];
 
 export const REPO_URL = 'https://github.com/Belco90/octoclairvoyant';
