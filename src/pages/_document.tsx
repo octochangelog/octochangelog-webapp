@@ -103,8 +103,6 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
 
-          <link rel="stylesheet" type="text/css" href="/nprogress.css" />
-
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async

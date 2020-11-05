@@ -10,7 +10,8 @@ import NProgress from 'nprogress'
 import { ReactQueryConfigProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query-devtools'
 
-import 'highlight.styles.github.min.css'
+import '~/styles/highlight.styles.github.css'
+import '~/styles/nprogress.css'
 
 Router.events.on('routeChangeStart', () => {
   NProgress.start()
