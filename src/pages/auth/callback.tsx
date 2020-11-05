@@ -41,6 +41,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       );
 
       if (response.ok) {
+        // TODO: move saving accessToken and redirecting to component itself
+        //  so all this is done in Client-Side in order to avoid:
+        //  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
         const responseJson = await response.json();
         // save token and redirect to app
         api.saveAccessToken(responseJson.access_token, context);
