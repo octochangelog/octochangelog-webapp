@@ -1,10 +1,11 @@
-import { Divider, Skeleton } from '@chakra-ui/core';
+import { Divider } from '@chakra-ui/core';
 import {
+  Release,
   Repository,
   RepositoryQueryPayload,
   VersionRange,
-  Release,
 } from 'models';
+import dynamic from 'next/dynamic';
 import * as React from 'react';
 
 import Container from '~/components/Container';
@@ -12,15 +13,8 @@ import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesC
 import RepositoryReleasesPicker from '~/components/RepositoryReleasesPicker';
 import useIsClientSideHydrated from '~/hooks/useLazyShowChild';
 
-const RepositoryReleasesChangelog = React.lazy(() =>
+const RepositoryReleasesChangelog = dynamic(() =>
   import('~/components/RepositoryReleasesChangelog')
-);
-
-const fallbackSkeleton: React.ReactNode = (
-  <div>
-    <Skeleton height="50px" mb={4} width="50%" />
-    <Skeleton height="25px" width="25%" />
-  </div>
 );
 
 interface Props {
@@ -64,14 +58,12 @@ const RepositoryReleasesComparator = ({
             toVersion={versionRange[1]}
           />
           <Container>
-            <React.Suspense fallback={fallbackSkeleton}>
-              <RepositoryReleasesChangelog
-                repository={repository}
-                releases={releases}
-                fromVersion={versionRange[0]}
-                toVersion={versionRange[1]}
-              />
-            </React.Suspense>
+            <RepositoryReleasesChangelog
+              repository={repository}
+              releases={releases}
+              fromVersion={versionRange[0]}
+              toVersion={versionRange[1]}
+            />
           </Container>
         </>
       )}
