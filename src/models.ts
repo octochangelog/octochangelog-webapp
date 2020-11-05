@@ -16,10 +16,6 @@ export type RepositoryQueryPayload = {
   owner: string;
 };
 
-export type ReleaseEdge = {
-  node: Release;
-};
-
 export interface Release {
   id: string;
   body: string;
