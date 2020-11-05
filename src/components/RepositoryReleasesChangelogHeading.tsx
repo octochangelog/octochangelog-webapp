@@ -1,5 +1,5 @@
 import { Badge, Box, Heading, Text } from '@chakra-ui/core';
-import React from 'react';
+import { useRef } from 'react';
 import { getRepositoryNameDisplay } from 'utils';
 
 import Container from '~/components/Container';
@@ -18,7 +18,7 @@ const RepositoryReleasesChangelogHeading = ({
   fromVersion,
   toVersion,
 }: Props) => {
-  const stickyEl = React.useRef({ offsetTop: 0 });
+  const stickyEl = useRef({ offsetTop: 0 });
   const isHeadingStick = useIsStick(stickyEl);
 
   return (

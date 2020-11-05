@@ -8,7 +8,7 @@ import {
   Stack,
 } from '@chakra-ui/core';
 import { RepositoryQueryPayload } from 'models';
-import React from 'react';
+import * as React from 'react';
 import { getRepositoryDataFromUrl } from 'utils';
 
 interface CustomProps {

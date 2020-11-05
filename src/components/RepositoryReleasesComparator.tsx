@@ -5,7 +5,7 @@ import {
   VersionRange,
   Release,
 } from 'models';
-import React from 'react';
+import * as React from 'react';
 
 import Container from '~/components/Container';
 import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesChangelogHeading';

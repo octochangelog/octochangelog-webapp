@@ -1,6 +1,6 @@
 import { Flex, Box, BoxProps } from '@chakra-ui/core';
 import Head from 'next/head';
-import React from 'react';
+import * as React from 'react';
 
 import Footer from '~/components/Footer';
 import Header from '~/components/Header';

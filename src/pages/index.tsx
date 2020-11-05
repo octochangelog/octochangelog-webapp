@@ -1,6 +1,6 @@
 import { useToast } from '@chakra-ui/core';
 import api from 'api';
-import React from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useQuery } from 'react-query';
 import semver from 'semver';
 
@@ -21,19 +21,19 @@ import {
 const ComparatorPage = () => {
   // TODO:
   //  - deal with access token properly on Api class
-  const [shouldShowExceeded, setShouldShowExceeded] = React.useState(false);
-  const [versionRange, setVersionRange] = React.useState<VersionRange>(
+  const [shouldShowExceeded, setShouldShowExceeded] = useState(false);
+  const [versionRange, setVersionRange] = useState<VersionRange>(
     EMPTY_VERSION_RANGE
   );
 
-  const [refinedReleases, setRefinedReleases] = React.useState<
-    Release[] | undefined
-  >(undefined);
+  const [refinedReleases, setRefinedReleases] = useState<Release[] | undefined>(
+    undefined
+  );
 
   const [
     requestPayload,
     setRequestPayload,
-  ] = React.useState<RepositoryQueryPayload | null>(null);
+  ] = useState<RepositoryQueryPayload | null>(null);
 
   const {
     data: repository,
@@ -55,7 +55,7 @@ const ComparatorPage = () => {
     { enabled: repository }
   );
 
-  React.useEffect(
+  useEffect(
     function refineReleasesEffect() {
       let newReleases;
       if (releases) {
@@ -73,7 +73,7 @@ const ComparatorPage = () => {
 
   const toast = useToast();
 
-  const handleQueryError = React.useCallback(
+  const handleQueryError = useCallback(
     (err: Error) => {
       if (err) {
         toast({
@@ -93,14 +93,14 @@ const ComparatorPage = () => {
     [toast]
   );
 
-  React.useEffect(
+  useEffect(
     function handleRepoErrorEffect() {
       handleQueryError(repoError as Error);
     },
     [handleQueryError, repoError]
   );
 
-  React.useEffect(
+  useEffect(
     function handleReleasesErrorEffect() {
       handleQueryError(releasesError as Error);
     },

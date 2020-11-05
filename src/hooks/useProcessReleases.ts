@@ -1,5 +1,5 @@
 import { MiscGroupTitles, ProcessedReleasesCollection, Release } from 'models';
-import React from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import parse from 'remark-parse';
 import unified from 'unified';
 
@@ -106,10 +106,10 @@ interface UseProcessReleasesReturn {
 function useProcessReleases(
   releases: Release[] | null
 ): UseProcessReleasesReturn {
-  const [processedReleases, setProcessedReleases] = React.useState<any>(null);
-  const [isProcessing, setIsProcessing] = React.useState<boolean>(false);
+  const [processedReleases, setProcessedReleases] = useState<any>(null);
+  const [isProcessing, setIsProcessing] = useState<boolean>(false);
 
-  React.useEffect(
+  useEffect(
     function processReleasesEffect() {
       setIsProcessing(true);
 
@@ -129,7 +129,7 @@ function useProcessReleases(
     [releases]
   );
 
-  const data = React.useMemo(() => ({ processedReleases, isProcessing }), [
+  const data = useMemo(() => ({ processedReleases, isProcessing }), [
     isProcessing,
     processedReleases,
   ]);

@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import React from 'react';
 
 import { APP_MOTTO } from '~/global';
 

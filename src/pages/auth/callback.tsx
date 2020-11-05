@@ -1,6 +1,5 @@
 import { Alert, AlertIcon } from '@chakra-ui/core';
 import { GetServerSideProps } from 'next';
-import React from 'react';
 
 import api from '~/api';
 import Layout from '~/components/Layout';

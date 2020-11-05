@@ -1,5 +1,4 @@
 import { Flex, Heading } from '@chakra-ui/core';
-import React from 'react';
 
 import GitHubLoginButton from '~/components/GitHubLoginButton';
 import Link from '~/components/Link';

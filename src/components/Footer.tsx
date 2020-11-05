@@ -1,5 +1,4 @@
 import { Box, Stack } from '@chakra-ui/core';
-import React from 'react';
 
 import Container from '~/components/Container';
 import Link from '~/components/Link';

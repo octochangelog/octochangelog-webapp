@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/core';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import React from 'react';
+import * as React from 'react';
 import { FaBars } from 'react-icons/fa';
 
 import Container from '~/components/Container';

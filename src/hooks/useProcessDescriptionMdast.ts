@@ -1,5 +1,5 @@
 import { Repository } from 'models';
-import React from 'react';
+import * as React from 'react';
 import highlight from 'rehype-highlight';
 import rehype2react from 'rehype-react';
 import github from 'remark-github';

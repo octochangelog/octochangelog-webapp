@@ -1,18 +1,18 @@
 import { throttle } from 'lodash';
-import React from 'react';
+import { useState, useLayoutEffect } from 'react';
 
 /**
  * Inspired by `useWindowSize` from useHooks
  * https://usehooks.com/useWindowSize/
  */
 function useWindowWidth(): number {
-  const [width, setSize] = React.useState<number>(0);
+  const [width, setSize] = useState<number>(0);
 
   const updateSize = () => {
     setSize(window.innerWidth);
   };
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     const throttleUpdateSize = throttle(updateSize, 500);
     window.addEventListener('resize', throttleUpdateSize);
 

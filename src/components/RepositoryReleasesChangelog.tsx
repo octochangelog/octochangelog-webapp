@@ -14,7 +14,7 @@ import {
   Repository,
   SemVerGroupTitles,
 } from 'models';
-import React from 'react';
+import { useState, useEffect } from 'react';
 import {
   compareReleaseGroupTitlesSort,
   filterReleasesByVersionRange,
@@ -37,9 +37,9 @@ const RepositoryReleasesChangelog = ({
   fromVersion,
   toVersion,
 }: RepositoryReleasesChangelogProps) => {
-  const [filteredReleases, setFilteredReleases] = React.useState<
-    Release[] | null
-  >(null);
+  const [filteredReleases, setFilteredReleases] = useState<Release[] | null>(
+    null
+  );
 
   const { processedReleases, isProcessing } = useProcessReleases(
     filteredReleases
@@ -57,7 +57,7 @@ const RepositoryReleasesChangelog = ({
     );
   };
 
-  React.useEffect(
+  useEffect(
     function filterReleases() {
       if (releases && fromVersion && toVersion) {
         const filteredReleases = filterReleasesByVersionRange({

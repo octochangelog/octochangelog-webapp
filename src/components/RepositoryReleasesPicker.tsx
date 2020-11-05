@@ -1,7 +1,7 @@
 import { Stack } from '@chakra-ui/core';
 import useWindowWidth from 'hooks/useWindowWidth';
 import { Release, RepositoryQueryPayload, VersionRange } from 'models';
-import React from 'react';
+import * as React from 'react';
 
 import ReleaseVersionFormControl from '~/components/ReleaseVersionFormControl';
 import RepositoryFormControl from '~/components/RepositoryFormControl';

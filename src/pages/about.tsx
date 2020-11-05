@@ -11,7 +11,7 @@ import {
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import NextLink from 'next/link';
-import React from 'react';
+import { useState, useEffect } from 'react';
 
 import Container from '~/components/Container';
 import Layout from '~/components/Layout';
@@ -69,11 +69,9 @@ const MainSection = () => {
 };
 
 const IndexPage = () => {
-  const [shouldShowMainSection, setShouldShowMainSection] = React.useState(
-    false
-  );
+  const [shouldShowMainSection, setShouldShowMainSection] = useState(false);
 
-  React.useEffect(function renderMainSectionOnClientSideHydrationEffect() {
+  useEffect(function renderMainSectionOnClientSideHydrationEffect() {
     // As this element depends on device since to render different variants,
     // we only render HeaderLinks when on Client Side
     // https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85

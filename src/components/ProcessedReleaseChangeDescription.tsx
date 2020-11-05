@@ -14,7 +14,6 @@ import {
 } from '@chakra-ui/core/';
 import useProcessDescriptionMdast from 'hooks/useProcessDescriptionMdast';
 import { ProcessedReleaseChange, Repository } from 'models';
-import React from 'react';
 import { GoTag } from 'react-icons/go';
 
 import BlockQuote from '~/components/BlockQuote';
