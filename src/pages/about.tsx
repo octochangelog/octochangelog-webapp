@@ -61,8 +61,9 @@ const MainSection = () => {
       <Image
         src="/mascot-logo.png"
         alt="Octoclairvoyant reading a crystal ball"
-        width={600}
-        height={600}
+        width={500}
+        height={500}
+        quality={100}
       />
     </Flex>
   );
