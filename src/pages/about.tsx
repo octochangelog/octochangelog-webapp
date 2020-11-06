@@ -18,7 +18,7 @@ import Layout from '~/components/Layout'
 import LazyImage from '~/components/LazyImage'
 import Link from '~/components/Link'
 import customTheme from '~/customTheme'
-import { APP_MOTTO } from '~/global'
+import { APP_MOTTO, IS_PRODUCTION_MODE } from '~/global'
 import useIsClientSide from '~/hooks/useIsClientSide'
 import useWindowWidth from '~/hooks/useWindowWidth'
 
@@ -58,9 +58,8 @@ const MainSection = () => {
           <Link href="#features" ml={4} color="gray.700">
             Read more
           </Link>
-          {/* TODO: REMOVE THIS BUTTON */}
-          <GitHubLoginButton />
         </Flex>
+        {!IS_PRODUCTION_MODE && <GitHubLoginButton />}
       </Stack>
       <LazyImage
         src="/mascot-logo.png"
