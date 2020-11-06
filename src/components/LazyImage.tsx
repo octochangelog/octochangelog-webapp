@@ -21,8 +21,8 @@ const LazyImage = ({
 }: Props) => {
   const [isLoaded, setIsLoaded] = useState(false)
 
-  const dynamicWidth = `min(${width}px, 100vw)`
-  const dynamicHeight = `min(${height}px, 100vw)`
+  const dynamicWidth = `min(${width}px, 95vw)`
+  const dynamicHeight = `min(${height}px, 95vw)`
 
   return (
     <Box position="relative" height={dynamicWidth} width={dynamicHeight}>
