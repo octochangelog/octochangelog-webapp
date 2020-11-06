@@ -15,7 +15,7 @@ import {
   VersionRange,
 } from '~/models'
 
-const ComparatorPage = () => {
+const IndexPage = () => {
   // TODO:
   //  - deal with access token properly on Api class
   const [shouldShowExceeded, setShouldShowExceeded] = useState(false)
@@ -110,7 +110,7 @@ const ComparatorPage = () => {
   }
 
   return (
-    <Layout extraTitle="Comparator">
+    <Layout>
       {shouldShowExceeded ? (
         <RateLimitExceededNotice
           waitingMinutes={api.rateLimitWaitingMinutes}
@@ -130,4 +130,4 @@ const ComparatorPage = () => {
   )
 }
 
-export default ComparatorPage
+export default IndexPage

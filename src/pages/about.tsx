@@ -7,6 +7,7 @@ import {
   ListIcon,
   ListItem,
   Stack,
+  Text,
 } from '@chakra-ui/core'
 import styled from '@emotion/styled'
 import NextLink from 'next/link'
@@ -70,11 +71,11 @@ const MainSection = () => {
   )
 }
 
-const IndexPage = () => {
+const AboutPage = () => {
   const isClientSide = useIsClientSide()
 
   return (
-    <Layout isHeaderFixed>
+    <Layout isHeaderFixed extraTitle="About">
       <Box
         mt={-8}
         py={{ base: 8, lg: 16 }}
@@ -108,17 +109,18 @@ const IndexPage = () => {
               <List spacing={{ base: 4, lg: 8 }}>
                 <ListItem>
                   <ListIcon icon="check-circle" color="secondary.500" />
-                  Filter by range of versions
+                  Pick a repository and filter by range of releases versions
                 </ListItem>
                 <ListItem>
                   <ListIcon icon="check-circle" color="secondary.500" />
-                  Group changes by normalized categories (e.g. put "bug fixes"
-                  and "minor" under the same group)
-                </ListItem>
-                <ListItem>
-                  <ListIcon icon="check-circle" color="secondary.500" />
-                  Sort and prioritize by different level of changes for{' '}
+                  Sort and prioritize releases changes following{' '}
                   <Link href="https://semver.org/">Semantic Versioning</Link>
+                </ListItem>
+                <ListItem>
+                  <ListIcon icon="check-circle" color="secondary.500" />
+                  Normalize and merge changes categories (e.g. put{' '}
+                  <Text as="em">bug fixes</Text> and{' '}
+                  <Text as="em">minor changes</Text> under the same category)
                 </ListItem>
                 <ListItem>
                   <ListIcon icon="check-circle" color="secondary.500" />
@@ -130,20 +132,6 @@ const IndexPage = () => {
                 </ListItem>
               </List>
             </Box>
-            <Box px={{ base: 0, lg: 16 }}>
-              <Box shadow="lg">
-                <video autoPlay loop muted playsInline>
-                  <source
-                    src="/octoclairvoyant-preview.webm"
-                    type="video/webm"
-                  />
-                  <source
-                    src="https://i.imgur.com/kVBlLCL.mp4"
-                    type="video/mp4"
-                  />
-                </video>
-              </Box>
-            </Box>
           </Stack>
         </Container>
       </Box>
@@ -151,4 +139,4 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage
+export default AboutPage
