@@ -14,9 +14,6 @@ interface Props {
 }
 
 const AuthCallbackPage = ({ accessToken, errorMessage }: Props) => {
-  // TODO: remove this
-  console.log('access token:', accessToken)
-
   const router = useRouter()
   const { setAccessToken } = useGithubAuth()
 
