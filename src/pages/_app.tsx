@@ -26,7 +26,7 @@ Router.events.on('routeChangeComplete', (url) => {
 
 const globalReactQueryConfig = {
   queries: {
-    refetchAllOnWindowFocus: false,
+    refetchOnWindowFocus: false,
     retry: 1,
   },
 }

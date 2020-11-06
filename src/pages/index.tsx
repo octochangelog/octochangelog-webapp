@@ -1,5 +1,4 @@
 import { useToast } from '@chakra-ui/core'
-import api from 'api'
 import { useState, useEffect, useCallback } from 'react'
 import { useQuery } from 'react-query'
 import semver from 'semver'
@@ -123,10 +122,8 @@ const IndexPage = () => {
   return (
     <Layout>
       {shouldShowExceeded ? (
-        <RateLimitExceededNotice
-          waitingMinutes={api.rateLimitWaitingMinutes}
-          isAuth={api.isAuth}
-        />
+        // TODO: get rate limit exceeded data from octokit
+        <RateLimitExceededNotice />
       ) : (
         <RepositoryReleasesComparator
           repository={repository}

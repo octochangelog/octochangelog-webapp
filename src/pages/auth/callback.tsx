@@ -1,24 +1,41 @@
 import { Alert, AlertIcon } from '@chakra-ui/core'
 import { GetServerSideProps } from 'next'
+import { useEffect } from 'react'
 
-import api from '~/api'
 import Layout from '~/components/Layout'
 
 interface Props {
+  accessToken?: string
   errorMessage?: string
 }
 
-const AuthCallbackPage = ({ errorMessage = 'Something went wrong' }: Props) => (
-  <Layout>
-    <Alert status="error">
-      <AlertIcon />
-      {errorMessage}
-    </Alert>
-  </Layout>
-)
+const AuthCallbackPage = ({ accessToken, errorMessage }: Props) => {
+  console.log('access token:', accessToken)
+
+  // const router = useRouter()
+
+  useEffect(() => {
+    if (accessToken) {
+      console.log('TODO: redirect')
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  return (
+    <Layout extraTitle="Authorizing on GitHub">
+      {errorMessage && (
+        <Alert status="error">
+          <AlertIcon />
+          {errorMessage}
+        </Alert>
+      )}
+    </Layout>
+  )
+}
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  let errorMessage = null
+  let errorMessage = undefined
+  let accessToken = undefined
 
   try {
     const { code } = context.query
@@ -41,14 +58,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       )
 
       if (response.ok) {
-        // TODO: move saving accessToken and redirecting to component itself
-        //  so all this is done in Client-Side in order to avoid:
-        //  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
         const responseJson = await response.json()
+        accessToken = responseJson.access_token
         // save token and redirect to app
-        api.saveAccessToken(responseJson.access_token, context)
-        context.res.writeHead(302, { Location: '/' })
-        context.res.end()
+        // api.saveAccessToken(responseJson.access_token, context)
+        // context.res.writeHead(302, { Location: '/' })
+        // context.res.end()
       } else {
         errorMessage = 'Something went wrong obtaining access token'
       }
@@ -61,8 +76,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   // if this code is executed, something went wrong in the auth process,
   // so we need to delete the access token
-  api.saveAccessToken(undefined, context)
-  return { props: { errorMessage } }
+  // api.saveAccessToken(undefined, context)
+  return { props: { errorMessage, accessToken } }
 }
 
 export default AuthCallbackPage
