@@ -1,7 +1,7 @@
 import { Box, Button } from '@chakra-ui/core/dist'
 import { DiGithubBadge } from 'react-icons/di'
 
-import { githubAuthUrl } from '~/global'
+import { githubAuthUrl } from '~/github-client'
 
 const GitHubLoginButton = ({ children = 'Login with GitHub' }) => {
   const handleClick = (event: React.MouseEvent) => {

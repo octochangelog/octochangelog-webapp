@@ -13,6 +13,7 @@ import styled from '@emotion/styled'
 import NextLink from 'next/link'
 
 import Container from '~/components/Container'
+import GitHubLoginButton from '~/components/GitHubLoginButton'
 import Layout from '~/components/Layout'
 import LazyImage from '~/components/LazyImage'
 import Link from '~/components/Link'
@@ -57,6 +58,8 @@ const MainSection = () => {
           <Link href="#features" ml={4} color="gray.700">
             Read more
           </Link>
+          {/* TODO: REMOVE THIS BUTTON */}
+          <GitHubLoginButton />
         </Flex>
       </Stack>
       <LazyImage

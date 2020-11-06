@@ -12,6 +12,7 @@ import { ReactQueryDevtools } from 'react-query-devtools'
 
 import '~/styles/highlight.styles.github.css'
 import '~/styles/nprogress.css'
+import { GithubAuthProvider } from '~/contexts/github-auth-provider'
 
 Router.events.on('routeChangeStart', () => {
   NProgress.start()
@@ -35,17 +36,19 @@ const App = ({ Component, pageProps }: AppProps) => {
   // TODO: init GithubAuthProvider here
   return (
     <ReactQueryConfigProvider config={globalReactQueryConfig}>
-      <ThemeProvider theme={customTheme}>
-        <CSSReset />
-        <Global styles={globalStyles} />
-        <Head>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
-        </Head>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <GithubAuthProvider>
+        <ThemeProvider theme={customTheme}>
+          <CSSReset />
+          <Global styles={globalStyles} />
+          <Head>
+            <meta
+              name="viewport"
+              content="initial-scale=1.0, width=device-width"
+            />
+          </Head>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </GithubAuthProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </ReactQueryConfigProvider>
   )

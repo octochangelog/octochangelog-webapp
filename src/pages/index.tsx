@@ -6,6 +6,7 @@ import semver from 'semver'
 import Layout from '~/components/Layout'
 import RateLimitExceededNotice from '~/components/RateLimitExceededNotice'
 import RepositoryReleasesComparator from '~/components/RepositoryReleasesComparator'
+import { octokit } from '~/github-client'
 import { EMPTY_VERSION_RANGE, GITHUB_RATE_LIMIT_EXCEEDED_ERROR } from '~/global'
 import {
   Release,
@@ -13,11 +14,8 @@ import {
   RepositoryQueryParams,
   VersionRange,
 } from '~/models'
-import octokit from '~/octokit'
 
 const IndexPage = () => {
-  // TODO:
-  //  - deal with access token properly on Api class
   const [shouldShowExceeded, setShouldShowExceeded] = useState(false)
   const [versionRange, setVersionRange] = useState<VersionRange>(
     EMPTY_VERSION_RANGE
@@ -92,6 +90,7 @@ const IndexPage = () => {
           position: 'bottom-left',
         })
 
+        // TODO: get this from octokit properly
         if (err.message === GITHUB_RATE_LIMIT_EXCEEDED_ERROR) {
           setShouldShowExceeded(true)
         }

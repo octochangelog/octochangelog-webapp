@@ -1,8 +1,12 @@
-import { Alert, AlertIcon } from '@chakra-ui/core'
+import { Alert, AlertIcon, Flex, CircularProgress } from '@chakra-ui/core'
 import { GetServerSideProps } from 'next'
+import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
+import Container from '~/components/Container'
 import Layout from '~/components/Layout'
+import { useGithubAuth } from '~/contexts/github-auth-provider'
+import { obtainAccessToken } from '~/github-client'
 
 interface Props {
   accessToken?: string
@@ -10,73 +14,53 @@ interface Props {
 }
 
 const AuthCallbackPage = ({ accessToken, errorMessage }: Props) => {
+  // TODO: remove this
   console.log('access token:', accessToken)
 
-  // const router = useRouter()
+  const router = useRouter()
+  const { setAccessToken } = useGithubAuth()
 
   useEffect(() => {
+    setAccessToken(accessToken)
     if (accessToken) {
-      console.log('TODO: redirect')
+      router.replace('/')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <Layout extraTitle="Authorizing on GitHub">
-      {errorMessage && (
-        <Alert status="error">
-          <AlertIcon />
-          {errorMessage}
-        </Alert>
+      {errorMessage ? (
+        <Container>
+          <Alert status="error">
+            <AlertIcon />
+            {errorMessage}
+          </Alert>
+        </Container>
+      ) : (
+        <Flex align="center" justify="center" p={5}>
+          <CircularProgress
+            isIndeterminate
+            color="primary"
+            trackColor="primary"
+          />
+        </Flex>
       )}
     </Layout>
   )
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  let errorMessage = undefined
-  let accessToken = undefined
+  let errorMessage = null
+  let accessToken = null
 
   try {
     const { code } = context.query
-
-    if (code) {
-      const response = await fetch(
-        'https://github.com/login/oauth/access_token',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify({
-            client_id: process.env.NEXT_PUBLIC_GITHUB_APP_CLIENT_ID,
-            client_secret: process.env.GITHUB_APP_CLIENT_SECRET,
-            code,
-          }),
-        }
-      )
-
-      if (response.ok) {
-        const responseJson = await response.json()
-        accessToken = responseJson.access_token
-        // save token and redirect to app
-        // api.saveAccessToken(responseJson.access_token, context)
-        // context.res.writeHead(302, { Location: '/' })
-        // context.res.end()
-      } else {
-        errorMessage = 'Something went wrong obtaining access token'
-      }
-    } else {
-      errorMessage = 'Empty temporary code received back from GitHub'
-    }
+    accessToken = await obtainAccessToken(code as string | undefined)
   } catch (e) {
     errorMessage = e.toString()
   }
 
-  // if this code is executed, something went wrong in the auth process,
-  // so we need to delete the access token
-  // api.saveAccessToken(undefined, context)
   return { props: { errorMessage, accessToken } }
 }
 
