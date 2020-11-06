@@ -2,7 +2,7 @@ import { lowerCase } from 'lodash'
 import {
   MiscGroupTitles,
   Release,
-  RepositoryQueryPayload,
+  RepositoryQueryParams,
   SemVerGroupTitles,
 } from 'models'
 import semver from 'semver'
@@ -10,21 +10,21 @@ import title from 'title'
 
 import { HIGH_PRIORITY_GROUP_TITLES, LOW_PRIORITY_GROUP_TITLES } from '~/global'
 
-const gitHubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,\-_.]+)\/([\w,\-_.]+)(.git)?((\/)?)/i
+const githubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,\-_.]+)\/([\w,\-_.]+)(.git)?((\/)?)/i
 
 export function getRepositoryDataFromUrl(
   url: string
-): RepositoryQueryPayload | null {
+): RepositoryQueryParams | null {
   let repoObj = null
 
   try {
-    const matchGroups = url.match(gitHubRepoRegExp)
+    const matchGroups = url.match(githubRepoRegExp)
     const owner = matchGroups?.[7]
-    const name = matchGroups?.[8]?.replace('.git', '') // remove .git suffix for repo names like next.js
+    const repo = matchGroups?.[8]?.replace('.git', '') // remove .git suffix for repo names like next.js
 
-    if (owner && name) {
+    if (owner && repo) {
       repoObj = {
-        name,
+        repo,
         owner,
       }
     }

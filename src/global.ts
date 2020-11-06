@@ -16,6 +16,8 @@ githubAuthUrl.searchParams.append('scope', '')
 
 export { githubAuthUrl }
 
+export const IS_PRODUCTION_MODE = process.env.NODE_ENV === 'production'
+
 export const EMPTY_VERSION_RANGE: [string, string] = ['', '']
 
 export const REPO_URL = 'https://github.com/Belco90/octoclairvoyant'

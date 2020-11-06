@@ -1,6 +1,6 @@
 import { Stack } from '@chakra-ui/core'
 import useWindowWidth from 'hooks/useWindowWidth'
-import { Release, RepositoryQueryPayload, VersionRange } from 'models'
+import { Release, RepositoryQueryParams, VersionRange } from 'models'
 import * as React from 'react'
 
 import ReleaseVersionFormControl from '~/components/ReleaseVersionFormControl'
@@ -23,7 +23,7 @@ interface Props {
   releases?: Release[]
   versionRange: VersionRange
   isFetching?: boolean
-  onRepositoryChange(repository: RepositoryQueryPayload | null): void
+  onRepositoryChange(repository: RepositoryQueryParams | null): void
   onVersionRangeChange(range: VersionRange): void
 }
 
@@ -37,7 +37,7 @@ const RepositoryReleasesPicker = ({
   const windowWidth = useWindowWidth()
 
   const handleRepoReleasesSearch = React.useCallback(
-    async (payload: RepositoryQueryPayload) => {
+    async (payload: RepositoryQueryParams) => {
       onRepositoryChange(payload)
     },
     [onRepositoryChange]

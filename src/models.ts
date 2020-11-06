@@ -1,3 +1,4 @@
+import { RestEndpointMethodTypes } from '@octokit/rest'
 import { Parent } from 'unist'
 
 declare global {
@@ -6,23 +7,11 @@ declare global {
   }
 }
 
-export interface Repository {
-  name: string
-  html_url: string
-}
+export type RepositoryQueryParams = RestEndpointMethodTypes['repos']['get']['parameters']
 
-export type RepositoryQueryPayload = {
-  name: string
-  owner: string
-}
+export type Repository = RestEndpointMethodTypes['repos']['get']['response']['data']
 
-export interface Release {
-  id: string
-  body: string
-  tag_name: string
-  draft: boolean
-  prerelease: boolean
-}
+export type Release = RestEndpointMethodTypes['repos']['getRelease']['response']['data']
 
 export type VersionRange = [string, string]
 

@@ -11,9 +11,10 @@ import { EMPTY_VERSION_RANGE, GITHUB_RATE_LIMIT_EXCEEDED_ERROR } from '~/global'
 import {
   Release,
   Repository,
-  RepositoryQueryPayload,
+  RepositoryQueryParams,
   VersionRange,
 } from '~/models'
+import octokit from '~/octokit'
 
 const IndexPage = () => {
   // TODO:
@@ -30,7 +31,7 @@ const IndexPage = () => {
   const [
     requestPayload,
     setRequestPayload,
-  ] = useState<RepositoryQueryPayload | null>(null)
+  ] = useState<RepositoryQueryParams | null>(null)
 
   const {
     data: repository,
@@ -38,7 +39,10 @@ const IndexPage = () => {
     isFetching: isRepoFetching,
   } = useQuery<Repository>(
     ['repository', requestPayload],
-    (_, payload) => api.readRepo(payload),
+    async (_, params: RepositoryQueryParams) => {
+      const resp = await octokit.repos.get(params)
+      return resp.data
+    },
     { enabled: requestPayload }
   )
 
@@ -48,7 +52,14 @@ const IndexPage = () => {
     isFetching: isReleasesFetching,
   } = useQuery<Release[]>(
     ['releases', requestPayload],
-    (_, payload) => api.readRepoReleases(payload),
+    async (_, params: RepositoryQueryParams) => {
+      const resp = await octokit.repos.listReleases({
+        ...params,
+        page: 1,
+        per_page: 100,
+      })
+      return resp.data
+    },
     { enabled: repository }
   )
 
@@ -104,7 +115,7 @@ const IndexPage = () => {
     [handleQueryError, releasesError]
   )
 
-  const handleRepositoryPayloadChange = (payload: RepositoryQueryPayload) => {
+  const handleRepositoryPayloadChange = (payload: RepositoryQueryParams) => {
     setRequestPayload(payload)
     setVersionRange(EMPTY_VERSION_RANGE) // clean versions
   }

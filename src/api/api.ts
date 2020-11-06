@@ -10,7 +10,7 @@ import {
   GitHubRateLimit,
   Release,
   Repository,
-  RepositoryQueryPayload,
+  RepositoryQueryParams,
 } from '~/models'
 
 function parseHeadersRateLimit(headers: Headers): GitHubRateLimit {
@@ -128,14 +128,11 @@ export class Api {
     throw new Error(response.statusText || GITHUB_UNKNOWN_ERROR)
   }
 
-  readRepo({ owner, name }: RepositoryQueryPayload): Promise<Repository> {
+  readRepo({ owner, name }: RepositoryQueryParams): Promise<Repository> {
     return this.request(`repos/${owner}/${name}`, { method: 'GET' })
   }
 
-  readRepoReleases({
-    owner,
-    name,
-  }: RepositoryQueryPayload): Promise<Release[]> {
+  readRepoReleases({ owner, name }: RepositoryQueryParams): Promise<Release[]> {
     return this.request(`repos/${owner}/${name}/releases?page=1&per_page=100`, {
       method: 'GET',
     })

@@ -2,7 +2,7 @@ import { Divider } from '@chakra-ui/core'
 import {
   Release,
   Repository,
-  RepositoryQueryPayload,
+  RepositoryQueryParams,
   VersionRange,
 } from 'models'
 import dynamic from 'next/dynamic'
@@ -13,8 +13,8 @@ import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesC
 import RepositoryReleasesPicker from '~/components/RepositoryReleasesPicker'
 import useIsClientSide from '~/hooks/useIsClientSide'
 
-const RepositoryReleasesChangelog = dynamic(() =>
-  import('~/components/RepositoryReleasesChangelog')
+const RepositoryReleasesChangelog = dynamic(
+  () => import('~/components/RepositoryReleasesChangelog')
 )
 
 interface Props {
@@ -22,7 +22,7 @@ interface Props {
   releases?: Release[]
   versionRange: VersionRange
   isFetching?: boolean
-  onRepositoryChange(repository: RepositoryQueryPayload | null): void
+  onRepositoryChange(repository: RepositoryQueryParams | null): void
   onVersionRangeChange(range: VersionRange): void
 }
 

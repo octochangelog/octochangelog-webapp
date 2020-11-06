@@ -31,18 +31,24 @@ const globalReactQueryConfig = {
   },
 }
 
-const MyApp = ({ Component, pageProps }: AppProps) => (
-  <ReactQueryConfigProvider config={globalReactQueryConfig}>
-    <ThemeProvider theme={customTheme}>
-      <CSSReset />
-      <Global styles={globalStyles} />
-      <Head>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      <Component {...pageProps} />
-    </ThemeProvider>
-    <ReactQueryDevtools initialIsOpen={false} />
-  </ReactQueryConfigProvider>
-)
+const App = ({ Component, pageProps }: AppProps) => {
+  // TODO: init GithubAuthProvider here
+  return (
+    <ReactQueryConfigProvider config={globalReactQueryConfig}>
+      <ThemeProvider theme={customTheme}>
+        <CSSReset />
+        <Global styles={globalStyles} />
+        <Head>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+        </Head>
+        <Component {...pageProps} />
+      </ThemeProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </ReactQueryConfigProvider>
+  )
+}
 
-export default MyApp
+export default App
