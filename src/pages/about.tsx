@@ -13,12 +13,11 @@ import styled from '@emotion/styled'
 import NextLink from 'next/link'
 
 import Container from '~/components/Container'
-import GitHubLoginButton from '~/components/GitHubLoginButton'
 import Layout from '~/components/Layout'
 import LazyImage from '~/components/LazyImage'
 import Link from '~/components/Link'
 import customTheme from '~/customTheme'
-import { APP_MOTTO, IS_PRODUCTION_MODE } from '~/global'
+import { APP_MOTTO } from '~/global'
 import useIsClientSide from '~/hooks/useIsClientSide'
 import useWindowWidth from '~/hooks/useWindowWidth'
 
@@ -59,7 +58,6 @@ const MainSection = () => {
             Read more
           </Link>
         </Flex>
-        {!IS_PRODUCTION_MODE && <GitHubLoginButton />}
       </Stack>
       <LazyImage
         src="/mascot-logo.png"

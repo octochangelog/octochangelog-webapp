@@ -1,4 +1,4 @@
-import { Divider } from '@chakra-ui/core'
+import { Text, Divider, Flex } from '@chakra-ui/core'
 import {
   Release,
   Repository,
@@ -9,8 +9,10 @@ import dynamic from 'next/dynamic'
 import * as React from 'react'
 
 import Container from '~/components/Container'
+import GitHubLoginButton from '~/components/GitHubLoginButton'
 import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesChangelogHeading'
 import RepositoryReleasesPicker from '~/components/RepositoryReleasesPicker'
+import { useGithubAuth } from '~/contexts/github-auth-provider'
 import useIsClientSide from '~/hooks/useIsClientSide'
 
 const RepositoryReleasesChangelog = dynamic(
@@ -35,6 +37,7 @@ const RepositoryReleasesComparator = ({
   onVersionRangeChange,
 }: Props) => {
   const isClientSide = useIsClientSide()
+  const { isAuth } = useGithubAuth()
 
   return (
     <>
@@ -66,6 +69,17 @@ const RepositoryReleasesComparator = ({
             />
           </Container>
         </>
+      )}
+      {!repository && !isAuth && (
+        <Container>
+          <Flex alignItems="center" flexDirection="column">
+            <Text mb={4}>
+              You can increase the max number of allowed requests to GitHub by
+              authorizing the app
+            </Text>
+            <GitHubLoginButton />
+          </Flex>
+        </Container>
       )}
     </>
   )
