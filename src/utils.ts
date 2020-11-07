@@ -95,12 +95,12 @@ export function getReleaseGroupTitle(
   return mdastTitle
 }
 
-const getTitlePriorityGroup = (title: string): -1 | 1 | 0 => {
-  if (HIGH_PRIORITY_GROUP_TITLES.includes(title)) {
+const getTitlePriorityGroup = (titleParam: string): -1 | 1 | 0 => {
+  if (HIGH_PRIORITY_GROUP_TITLES.includes(titleParam)) {
     return -1
   }
 
-  if (LOW_PRIORITY_GROUP_TITLES.includes(title)) {
+  if (LOW_PRIORITY_GROUP_TITLES.includes(titleParam)) {
     return 1
   }
 

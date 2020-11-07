@@ -60,12 +60,12 @@ const RepositoryReleasesChangelog = ({
   useEffect(
     function filterReleases() {
       if (releases && fromVersion && toVersion) {
-        const filteredReleases = filterReleasesByVersionRange({
+        const newFilteredReleases = filterReleasesByVersionRange({
           releases,
           from: fromVersion,
           to: toVersion,
         }).sort((a, b) => releasesComparator(a, b, 'asc'))
-        setFilteredReleases(filteredReleases)
+        setFilteredReleases(newFilteredReleases)
       } else {
         setFilteredReleases(null)
       }

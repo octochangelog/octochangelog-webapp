@@ -8,14 +8,12 @@ import RateLimitExceededNotice from '~/components/RateLimitExceededNotice'
 import RepositoryReleasesComparator from '~/components/RepositoryReleasesComparator'
 import { octokit } from '~/github-client'
 import { EMPTY_VERSION_RANGE, GITHUB_RATE_LIMIT_EXCEEDED_ERROR } from '~/global'
-import {
-  Release,
-  Repository,
-  RepositoryQueryParams,
-  VersionRange,
-} from '~/models'
+import { Release, Repository, VersionRange } from '~/models'
 
 const IndexPage = () => {
+  const [repository, setRepository] = useState<Repository | undefined>(
+    undefined
+  )
   const [shouldShowExceeded, setShouldShowExceeded] = useState(false)
   const [versionRange, setVersionRange] = useState<VersionRange>(
     EMPTY_VERSION_RANGE
@@ -25,33 +23,16 @@ const IndexPage = () => {
     undefined
   )
 
-  const [
-    requestPayload,
-    setRequestPayload,
-  ] = useState<RepositoryQueryParams | null>(null)
-
-  const {
-    data: repository,
-    error: repoError,
-    isFetching: isRepoFetching,
-  } = useQuery<Repository>(
-    ['repository', requestPayload],
-    async (_, params: RepositoryQueryParams) => {
-      const resp = await octokit.repos.get(params)
-      return resp.data
-    },
-    { enabled: requestPayload }
-  )
-
   const {
     data: releases,
     error: releasesError,
     isFetching: isReleasesFetching,
   } = useQuery<Release[]>(
-    ['releases', requestPayload],
-    async (_, params: RepositoryQueryParams) => {
+    ['releases', repository],
+    async (_, repositorySelected: Repository) => {
       const resp = await octokit.repos.listReleases({
-        ...params,
+        repo: repositorySelected.name,
+        owner: repositorySelected.owner.login,
         page: 1,
         per_page: 100,
       })
@@ -100,21 +81,15 @@ const IndexPage = () => {
   )
 
   useEffect(
-    function handleRepoErrorEffect() {
-      handleQueryError(repoError as Error)
-    },
-    [handleQueryError, repoError]
-  )
-
-  useEffect(
     function handleReleasesErrorEffect() {
       handleQueryError(releasesError as Error)
     },
     [handleQueryError, releasesError]
   )
 
-  const handleRepositoryPayloadChange = (payload: RepositoryQueryParams) => {
-    setRequestPayload(payload)
+  const handleRepositoryChange = (repo: Repository) => {
+    // setRequestPayload(repo)
+    setRepository(repo)
     setVersionRange(EMPTY_VERSION_RANGE) // clean versions
   }
 
@@ -128,9 +103,9 @@ const IndexPage = () => {
           repository={repository}
           releases={refinedReleases}
           versionRange={versionRange}
-          onRepositoryChange={handleRepositoryPayloadChange}
+          onRepositoryChange={handleRepositoryChange}
           onVersionRangeChange={setVersionRange}
-          isFetching={isRepoFetching || isReleasesFetching}
+          isFetching={isReleasesFetching}
         />
       )}
     </Layout>

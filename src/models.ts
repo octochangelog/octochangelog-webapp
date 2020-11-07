@@ -25,12 +25,14 @@ export interface ProcessedReleaseChange extends Omit<Release, 'description'> {
   descriptionMdast: Parent
 }
 
+// eslint-disable-next-line no-shadow
 export enum SemVerGroupTitles {
   breakingChanges = 'breaking changes',
   features = 'features',
   bugFixes = 'bug fixes',
 }
 
+// eslint-disable-next-line no-shadow
 export enum MiscGroupTitles {
   unknown = 'others',
   artifacts = 'artifacts',

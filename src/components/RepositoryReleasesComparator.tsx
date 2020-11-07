@@ -1,10 +1,5 @@
-import { Text, Divider, Flex } from '@chakra-ui/core'
-import {
-  Release,
-  Repository,
-  RepositoryQueryParams,
-  VersionRange,
-} from 'models'
+import { Divider, Flex, Text } from '@chakra-ui/core'
+import { Release, Repository, VersionRange } from 'models'
 import dynamic from 'next/dynamic'
 import * as React from 'react'
 
@@ -24,7 +19,7 @@ interface Props {
   releases?: Release[]
   versionRange: VersionRange
   isFetching?: boolean
-  onRepositoryChange(repository: RepositoryQueryParams | null): void
+  onRepositoryChange(repo: Repository | null | undefined): void
   onVersionRangeChange(range: VersionRange): void
 }
 

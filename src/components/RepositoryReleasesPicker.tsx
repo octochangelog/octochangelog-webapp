@@ -1,10 +1,10 @@
 import { Stack } from '@chakra-ui/core'
 import useWindowWidth from 'hooks/useWindowWidth'
-import { Release, RepositoryQueryParams, VersionRange } from 'models'
+import { Release, Repository, VersionRange } from 'models'
 import * as React from 'react'
 
 import ReleaseVersionFormControl from '~/components/ReleaseVersionFormControl'
-import RepositoryFormControl from '~/components/RepositoryFormControl'
+import RepositorySearchCombobox from '~/components/RepositorySearchCombobox'
 import { releasesComparator } from '~/utils'
 
 const INLINE_BREAKPOINT = 768 // desktop
@@ -23,7 +23,7 @@ interface Props {
   releases?: Release[]
   versionRange: VersionRange
   isFetching?: boolean
-  onRepositoryChange(repository: RepositoryQueryParams | null): void
+  onRepositoryChange(repo: Repository | null | undefined): void
   onVersionRangeChange(range: VersionRange): void
 }
 
@@ -36,9 +36,9 @@ const RepositoryReleasesPicker = ({
 }: Props) => {
   const windowWidth = useWindowWidth()
 
-  const handleRepoReleasesSearch = React.useCallback(
-    async (payload: RepositoryQueryParams) => {
-      onRepositoryChange(payload)
+  const handleRepositorySelect = React.useCallback(
+    async (repo?: Repository | null) => {
+      onRepositoryChange(repo)
     },
     [onRepositoryChange]
   )
@@ -67,10 +67,7 @@ const RepositoryReleasesPicker = ({
       spacing={{ base: 2, md: 6 }}
       isInline={windowWidth >= INLINE_BREAKPOINT}
     >
-      <RepositoryFormControl
-        isLoading={isFetching}
-        onSearch={handleRepoReleasesSearch}
-      />
+      <RepositorySearchCombobox onSelect={handleRepositorySelect} />
       <ReleaseVersionFormControl
         label="From version"
         id="from-version"

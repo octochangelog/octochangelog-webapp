@@ -15,6 +15,7 @@ module.exports = {
     'plugin:import/typescript',
   ],
   rules: {
+    'no-shadow': 2,
     'react/react-in-jsx-scope': 0, // Next.js exposes React globally
     'react/self-closing-comp': 2,
     'import/newline-after-import': 2,
