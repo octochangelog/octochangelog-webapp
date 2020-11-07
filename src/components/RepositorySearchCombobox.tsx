@@ -1,11 +1,4 @@
-import {
-  FormControl,
-  FormLabel,
-  List,
-  ListItem,
-  Box,
-  Input,
-} from '@chakra-ui/core'
+import { FormControl, FormLabel, Input, List, ListItem } from '@chakra-ui/core'
 import { RestEndpointMethodTypes } from '@octokit/rest'
 import { useCombobox } from 'downshift'
 import { debounce } from 'lodash'
@@ -40,6 +33,7 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
     getComboboxProps,
     getInputProps,
     getItemProps,
+    getLabelProps,
     getMenuProps,
     highlightedIndex,
   } = useCombobox({
@@ -69,27 +63,26 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
       width="full"
       isDisabled={false}
       isInvalid={false}
+      {...getComboboxProps()}
       {...rest}
     >
-      <FormLabel htmlFor="repo">Repository</FormLabel>
-      <Box {...getComboboxProps()}>
-        <Input {...getInputProps()} autoFocus />
-        <List {...getMenuProps()}>
-          {isOpen &&
-            data?.items.map((repo, index) => (
-              <ListItem
-                key={repo.id}
-                backgroundColor={
-                  highlightedIndex === index ? 'primary' : undefined
-                }
-                {...getItemProps({ item: repo, index })}
-              >
-                {repo.full_name}
-              </ListItem>
-            ))}
-          {/*    TODO: show no results message*/}
-        </List>
-      </Box>
+      <FormLabel {...getLabelProps()}>Repository</FormLabel>
+      <Input {...getInputProps()} autoFocus />
+      <List {...getMenuProps()}>
+        {isOpen &&
+          data?.items.map((repo, index) => (
+            <ListItem
+              key={repo.id}
+              backgroundColor={
+                highlightedIndex === index ? 'primary' : undefined
+              }
+              {...getItemProps({ item: repo, index })}
+            >
+              {repo.full_name}
+            </ListItem>
+          ))}
+        {/*    TODO: show no results message*/}
+      </List>
     </FormControl>
   )
 }
