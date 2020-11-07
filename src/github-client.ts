@@ -7,12 +7,20 @@ const userAgent = IS_PRODUCTION_MODE
   ? 'Octoclairvoyant'
   : 'Test Octoclairvoyant'
 
-const COOKIE_PREFIX = IS_PRODUCTION_MODE ? '' : 'test-'
-const GITHUB_COOKIE_KEY = `${COOKIE_PREFIX}octoclairvoyant-github-access-token`
+const STORAGE_KEY_PREFIX = IS_PRODUCTION_MODE ? '' : 'test-'
+const GITHUB_STORAGE_KEY = `${STORAGE_KEY_PREFIX}octoclairvoyant-github-access-token`
+
+const makeOctokit = (authToken?: string | null) => {
+  return new Octokit({
+    auth: authToken,
+    userAgent,
+    log: IS_PRODUCTION_MODE ? undefined : console,
+  })
+}
 
 export const getGithubAccessToken = function (): string | null {
   const cookies = parseCookies(null, { path: '/' })
-  return cookies[GITHUB_COOKIE_KEY] || null
+  return cookies[GITHUB_STORAGE_KEY] || null
 }
 
 export const setGithubAccessToken = function (
@@ -22,22 +30,20 @@ export const setGithubAccessToken = function (
     return
   }
 
+  // Create new octokit instance when access token updated since it's the only
+  // way to set `auth` dynamically on Octokit.
+  octokit = makeOctokit(newAccessToken)
   if (newAccessToken) {
-    setCookie(null, GITHUB_COOKIE_KEY, newAccessToken, {
+    setCookie(null, GITHUB_STORAGE_KEY, newAccessToken, {
       maxAge: 31536000, // 1 year
       path: '/',
     })
   } else {
-    destroyCookie(null, GITHUB_COOKIE_KEY)
+    destroyCookie(null, GITHUB_STORAGE_KEY)
   }
 }
 
-export const octokit = new Octokit({
-  // TODO: improve this to get access token dynamically
-  auth: getGithubAccessToken(),
-  userAgent,
-  log: IS_PRODUCTION_MODE ? undefined : console,
-})
+export let octokit = makeOctokit(getGithubAccessToken())
 
 /**
  * Exchanges temporary `code` for an access token.
