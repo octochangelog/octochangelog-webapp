@@ -22,7 +22,7 @@ const renderOptionsFromReleases = (
 interface Props {
   releases?: Release[]
   versionRange: VersionRange
-  isFetching?: boolean
+  isLoading?: boolean
   onRepositoryChange(repo: Repository | null | undefined): void
   onVersionRangeChange(range: VersionRange): void
 }
@@ -30,7 +30,7 @@ interface Props {
 const RepositoryReleasesPicker = ({
   releases,
   versionRange,
-  isFetching = false,
+  isLoading = false,
   onRepositoryChange,
   onVersionRangeChange,
 }: Props) => {
@@ -72,7 +72,7 @@ const RepositoryReleasesPicker = ({
         label="From version"
         id="from-version"
         width={{ base: 'full', md: '30%' }}
-        isDisabled={!releasesOptions || isFetching}
+        isDisabled={!releasesOptions || isLoading}
         placeholder={selectPlaceholder}
         onChange={handleFromVersionChange}
         value={fromVersion}
@@ -83,7 +83,7 @@ const RepositoryReleasesPicker = ({
         label="To version"
         id="to-version"
         width={{ base: 'full', md: '30%' }}
-        isDisabled={!releasesOptions || isFetching}
+        isDisabled={!releasesOptions || isLoading}
         placeholder={selectPlaceholder}
         onChange={handleToVersionChange}
         value={toVersion}

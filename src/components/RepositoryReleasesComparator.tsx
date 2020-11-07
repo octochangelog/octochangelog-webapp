@@ -18,7 +18,7 @@ interface Props {
   repository?: Repository
   releases?: Release[]
   versionRange: VersionRange
-  isFetching?: boolean
+  isLoading?: boolean
   onRepositoryChange(repo: Repository | null | undefined): void
   onVersionRangeChange(range: VersionRange): void
 }
@@ -27,7 +27,7 @@ const RepositoryReleasesComparator = ({
   repository,
   releases,
   versionRange,
-  isFetching = false,
+  isLoading = false,
   onRepositoryChange,
   onVersionRangeChange,
 }: Props) => {
@@ -41,7 +41,7 @@ const RepositoryReleasesComparator = ({
           <RepositoryReleasesPicker
             releases={releases}
             versionRange={versionRange}
-            isFetching={isFetching}
+            isLoading={isLoading}
             onRepositoryChange={onRepositoryChange}
             onVersionRangeChange={onVersionRangeChange}
           />

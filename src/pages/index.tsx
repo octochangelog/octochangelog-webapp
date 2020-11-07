@@ -11,6 +11,7 @@ import { EMPTY_VERSION_RANGE, GITHUB_RATE_LIMIT_EXCEEDED_ERROR } from '~/global'
 import { Release, Repository, VersionRange } from '~/models'
 
 const IndexPage = () => {
+  // TODO: move this to context
   const [repository, setRepository] = useState<Repository | undefined>(
     undefined
   )
@@ -26,7 +27,7 @@ const IndexPage = () => {
   const {
     data: releases,
     error: releasesError,
-    isFetching: isReleasesFetching,
+    isLoading: isReleasesLoading,
   } = useQuery<Release[]>(
     ['releases', repository],
     async (_, repositorySelected: Repository) => {
@@ -88,7 +89,6 @@ const IndexPage = () => {
   )
 
   const handleRepositoryChange = (repo: Repository) => {
-    // setRequestPayload(repo)
     setRepository(repo)
     setVersionRange(EMPTY_VERSION_RANGE) // clean versions
   }
@@ -105,7 +105,7 @@ const IndexPage = () => {
           versionRange={versionRange}
           onRepositoryChange={handleRepositoryChange}
           onVersionRangeChange={setVersionRange}
-          isFetching={isReleasesFetching}
+          isLoading={isReleasesLoading}
         />
       )}
     </Layout>
