@@ -7,6 +7,7 @@ import {
   List,
   ListItem,
   Spinner,
+  Text,
 } from '@chakra-ui/core'
 import { RestEndpointMethodTypes } from '@octokit/rest'
 import { useCombobox } from 'downshift'
@@ -83,7 +84,13 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
   const isLoading = isTyping || isQueryLoading
 
   return (
-    <FormControl isRequired width="full" {...getComboboxProps()} {...rest}>
+    <FormControl
+      isRequired
+      width="full"
+      position="relative"
+      {...getComboboxProps()}
+      {...rest}
+    >
       <FormLabel {...getLabelProps()}>Repository</FormLabel>
       <InputGroup>
         <Input {...getInputProps()} autoFocus />
@@ -93,21 +100,43 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
           </InputRightElement>
         )}
       </InputGroup>
-      <List {...getMenuProps()}>
+      <List
+        {...getMenuProps()}
+        position="absolute"
+        width="full"
+        mt={1}
+        shadow="md"
+        backgroundColor="white"
+        borderColor="gray.200"
+        borderWidth={1}
+        borderRadius={3}
+        zIndex="popover"
+        py={2}
+        maxHeight="300px"
+        overflowY="scroll"
+        opacity={isOpen && !isLoading ? 1 : 0}
+      >
         {isOpen && (
           <>
             {!isLoading && (
-              <ListItem>{data?.total_count ?? 0} results</ListItem>
+              <ListItem mb={1}>
+                <Text as="em" color="gray.500" px={2}>
+                  {data?.total_count ?? 0} results
+                </Text>
+              </ListItem>
             )}
             {data?.items.map((repo, index) => (
               <ListItem
+                py={1}
                 key={repo.id}
                 backgroundColor={
-                  highlightedIndex === index ? 'primary' : undefined
+                  highlightedIndex === index ? 'primary.400' : undefined
                 }
+                color={highlightedIndex === index ? 'gray.50' : 'gray.700'}
+                cursor="pointer"
                 {...getItemProps({ item: repo, index })}
               >
-                {repo.full_name}
+                <Text px={2}>{repo.full_name}</Text>
               </ListItem>
             ))}
           </>
