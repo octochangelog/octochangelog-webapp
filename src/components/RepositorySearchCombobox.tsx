@@ -27,7 +27,8 @@ type QueryParams = RestEndpointMethodTypes['search']['repos']['parameters']
 
 const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
   const [inputValue, setInputValue] = useState('')
-  const { data, refetch, isLoading } = useQuery<QueryResults>(
+  const [isTyping, setIsTyping] = useState(false)
+  const { data, refetch, isLoading: isQueryLoading } = useQuery<QueryResults>(
     ['repos', { q: inputValue }],
     async (_, params: QueryParams) => {
       const resp = await octokit.search.repos(params)
@@ -48,16 +49,29 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
   } = useCombobox({
     items: data?.items || [],
     itemToString: (repo) => repo?.full_name ?? 'unknown',
-    onInputValueChange: ({ inputValue: newInputValue }) => {
-      setInputValue(newInputValue ?? '')
+    onInputValueChange: ({
+      inputValue: newInputValue,
+      isOpen: isOpenOnChange,
+    }) => {
+      setIsTyping(!!isOpenOnChange)
+
+      // Avoid set input value when is not open as that means the user already
+      // picked an option so we don't want to refetch again.
+      if (isOpenOnChange) {
+        setInputValue(newInputValue ?? '')
+      }
     },
     onSelectedItemChange: ({ selectedItem }) => {
+      setIsTyping(false)
       onSelect((selectedItem as unknown) as Repository)
     },
   })
 
   const throttleRefetch = useMemo(() => {
-    return debounce(refetch, 500)
+    return debounce(() => {
+      setIsTyping(false)
+      refetch()
+    }, 500)
   }, [refetch])
 
   useEffect(() => {
@@ -65,6 +79,8 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
       throttleRefetch()
     }
   }, [inputValue, throttleRefetch])
+
+  const isLoading = isTyping || isQueryLoading
 
   return (
     <FormControl isRequired width="full" {...getComboboxProps()} {...rest}>
@@ -78,19 +94,24 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
         )}
       </InputGroup>
       <List {...getMenuProps()}>
-        {isOpen &&
-          data?.items.map((repo, index) => (
-            <ListItem
-              key={repo.id}
-              backgroundColor={
-                highlightedIndex === index ? 'primary' : undefined
-              }
-              {...getItemProps({ item: repo, index })}
-            >
-              {repo.full_name}
-            </ListItem>
-          ))}
-        {/*    TODO: show no results message*/}
+        {isOpen && (
+          <>
+            {!isLoading && (
+              <ListItem>{data?.total_count ?? 0} results</ListItem>
+            )}
+            {data?.items.map((repo, index) => (
+              <ListItem
+                key={repo.id}
+                backgroundColor={
+                  highlightedIndex === index ? 'primary' : undefined
+                }
+                {...getItemProps({ item: repo, index })}
+              >
+                {repo.full_name}
+              </ListItem>
+            ))}
+          </>
+        )}
       </List>
     </FormControl>
   )
