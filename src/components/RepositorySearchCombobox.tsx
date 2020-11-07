@@ -1,6 +1,7 @@
 import {
   FormControl,
   FormLabel,
+  IconButton,
   Input,
   InputGroup,
   InputRightElement,
@@ -46,6 +47,7 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
     getItemProps,
     getLabelProps,
     getMenuProps,
+    getToggleButtonProps,
     highlightedIndex,
   } = useCombobox({
     items: data?.items || [],
@@ -58,6 +60,8 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
 
       // Avoid set input value when is not open as that means the user already
       // picked an option so we don't want to refetch again.
+      // Also, we keep original value entered by user in case they want to select
+      // other option from last results.
       if (isOpenOnChange) {
         setInputValue(newInputValue ?? '')
       }
@@ -94,11 +98,18 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
       <FormLabel {...getLabelProps()}>Repository</FormLabel>
       <InputGroup>
         <Input {...getInputProps()} autoFocus />
-        {isLoading && (
-          <InputRightElement>
+        <InputRightElement>
+          {isLoading ? (
             <Spinner color="primary.400" />
-          </InputRightElement>
-        )}
+          ) : (
+            <IconButton
+              {...getToggleButtonProps()}
+              size="sm"
+              aria-label="toggle repositories results menu"
+              icon="arrow-up-down"
+            />
+          )}
+        </InputRightElement>
       </InputGroup>
       <List
         {...getMenuProps()}
