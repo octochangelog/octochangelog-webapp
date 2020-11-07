@@ -1,4 +1,13 @@
-import { FormControl, FormLabel, Input, List, ListItem } from '@chakra-ui/core'
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  InputRightElement,
+  List,
+  ListItem,
+  Spinner,
+} from '@chakra-ui/core'
 import { RestEndpointMethodTypes } from '@octokit/rest'
 import { useCombobox } from 'downshift'
 import { debounce } from 'lodash'
@@ -18,7 +27,7 @@ type QueryParams = RestEndpointMethodTypes['search']['repos']['parameters']
 
 const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
   const [inputValue, setInputValue] = useState('')
-  const { data, refetch } = useQuery<QueryResults>(
+  const { data, refetch, isLoading } = useQuery<QueryResults>(
     ['repos', { q: inputValue }],
     async (_, params: QueryParams) => {
       const resp = await octokit.search.repos(params)
@@ -58,16 +67,16 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
   }, [inputValue, throttleRefetch])
 
   return (
-    <FormControl
-      isRequired
-      width="full"
-      isDisabled={false}
-      isInvalid={false}
-      {...getComboboxProps()}
-      {...rest}
-    >
+    <FormControl isRequired width="full" {...getComboboxProps()} {...rest}>
       <FormLabel {...getLabelProps()}>Repository</FormLabel>
-      <Input {...getInputProps()} autoFocus />
+      <InputGroup>
+        <Input {...getInputProps()} autoFocus />
+        {isLoading && (
+          <InputRightElement>
+            <Spinner color="primary.400" />
+          </InputRightElement>
+        )}
+      </InputGroup>
       <List {...getMenuProps()}>
         {isOpen &&
           data?.items.map((repo, index) => (
