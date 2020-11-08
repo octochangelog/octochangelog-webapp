@@ -1,13 +1,16 @@
 import {
+  Box,
+  CircularProgress,
   FormControl,
   FormLabel,
+  HStack,
+  Icon,
   IconButton,
   Input,
   InputGroup,
   InputRightElement,
   List,
   ListItem,
-  Spinner,
   Text,
 } from '@chakra-ui/core'
 import { RestEndpointMethodTypes } from '@octokit/rest'
@@ -15,6 +18,7 @@ import { useCombobox } from 'downshift'
 import { debounce } from 'lodash'
 import * as React from 'react'
 import { useEffect, useMemo, useState } from 'react'
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
 import { useQuery } from 'react-query'
 
 import { octokit } from '~/github-client'
@@ -96,21 +100,23 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
       {...rest}
     >
       <FormLabel {...getLabelProps()}>Repository</FormLabel>
-      <InputGroup>
-        <Input {...getInputProps()} autoFocus />
-        <InputRightElement>
-          {isLoading ? (
-            <Spinner color="primary.400" />
-          ) : (
-            <IconButton
-              {...getToggleButtonProps()}
-              size="sm"
-              aria-label="toggle repositories results menu"
-              icon="arrow-up-down"
-            />
-          )}
-        </InputRightElement>
-      </InputGroup>
+      <HStack>
+        <InputGroup>
+          <Input {...getInputProps()} autoFocus />
+          <InputRightElement>
+            {isLoading && (
+              <CircularProgress size="8" isIndeterminate color="primary.400" />
+            )}
+          </InputRightElement>
+        </InputGroup>
+        <Box>
+          <IconButton
+            {...getToggleButtonProps()}
+            aria-label="toggle repositories results menu"
+            icon={<Icon as={isOpen ? FaArrowUp : FaArrowDown} />}
+          />
+        </Box>
+      </HStack>
       <List
         {...getMenuProps()}
         position="absolute"
