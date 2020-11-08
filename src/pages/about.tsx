@@ -7,6 +7,7 @@ import {
   ListIcon,
   ListItem,
   Stack,
+  VStack,
   Text,
 } from '@chakra-ui/core'
 import NextLink from 'next/link'
@@ -86,17 +87,9 @@ const AboutPage = () => {
         <Container>{isClientSide && <MainSection />}</Container>
       </Box>
 
-      <Box>
-        <Container
-          transition="opacity 500ms linear"
-          opacity={isClientSide ? 1 : 0}
-        >
-          <Stack
-            spacing={8}
-            alignItems="center"
-            py={{ base: 8, lg: 16 }}
-            direction="column"
-          >
+      <Box mb={4}>
+        <Container>
+          <VStack spacing={8} alignItems="center" py={{ base: 8, lg: 16 }}>
             <Box>
               <Heading
                 as="h2"
@@ -133,7 +126,7 @@ const AboutPage = () => {
                 </ListItem>
               </List>
             </Box>
-          </Stack>
+          </VStack>
         </Container>
       </Box>
     </Layout>
