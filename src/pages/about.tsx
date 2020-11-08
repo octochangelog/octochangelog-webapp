@@ -10,6 +10,7 @@ import {
   Text,
 } from '@chakra-ui/core'
 import NextLink from 'next/link'
+import { FaCheckCircle } from 'react-icons/fa'
 
 import Container from '~/components/Container'
 import Layout from '~/components/Layout'
@@ -108,26 +109,26 @@ const AboutPage = () => {
               </Heading>
               <List spacing={{ base: 4, lg: 8 }}>
                 <ListItem>
-                  <ListIcon icon="check-circle" color="secondary.500" />
+                  <ListIcon as={FaCheckCircle} color="secondary.500" />
                   Search repositories and pick releases version range
                 </ListItem>
                 <ListItem>
-                  <ListIcon icon="check-circle" color="secondary.500" />
+                  <ListIcon as={FaCheckCircle} color="secondary.500" />
                   Sort and group releases changes following{' '}
                   <Link href="https://semver.org/">Semantic Versioning</Link>
                 </ListItem>
                 <ListItem>
-                  <ListIcon icon="check-circle" color="secondary.500" />
+                  <ListIcon as={FaCheckCircle} color="secondary.500" />
                   Normalize changes categories (e.g. put{' '}
                   <Text as="em">bug fixes</Text> and{' '}
                   <Text as="em">minor changes</Text> under the same category)
                 </ListItem>
                 <ListItem>
-                  <ListIcon icon="check-circle" color="secondary.500" />
+                  <ListIcon as={FaCheckCircle} color="secondary.500" />
                   Highlight code blocks syntax and GitHub references
                 </ListItem>
                 <ListItem>
-                  <ListIcon icon="check-circle" color="secondary.500" />
+                  <ListIcon as={FaCheckCircle} color="secondary.500" />
                   Make easy to spot which version introduced specific changes
                 </ListItem>
               </List>
