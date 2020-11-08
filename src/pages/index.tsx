@@ -24,6 +24,7 @@ const IndexPage = () => {
     undefined
   )
 
+  // TODO: move this within version range component
   const {
     data: releases,
     error: releasesError,
@@ -96,7 +97,8 @@ const IndexPage = () => {
   return (
     <Layout>
       {shouldShowExceeded ? (
-        // TODO: get rate limit exceeded data from octokit
+        // TODO: get rate limit exceeded data from octokit and show this as
+        //  modal over the page
         <RateLimitExceededNotice />
       ) : (
         <RepositoryReleasesComparator

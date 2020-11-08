@@ -65,7 +65,7 @@ const RepositoryReleasesComparator = ({
           </Container>
         </>
       )}
-      {!repository && !isAuth && (
+      {isClientSide && !repository && !isAuth && (
         <Container>
           <Flex alignItems="center" flexDirection="column">
             <Text mb={4}>
