@@ -1,4 +1,4 @@
-import { theme, Theme } from '@chakra-ui/core'
+import { extendTheme } from '@chakra-ui/core'
 
 type ColorHues = {
   '50': string
@@ -12,13 +12,6 @@ type ColorHues = {
   '800': string
   '900': string
 }
-
-type CustomColors = Theme['colors'] & {
-  primary: ColorHues
-  secondary: ColorHues
-}
-
-type CustomTheme = Omit<Theme, 'colors'> & { colors: CustomColors }
 
 const primaryColor: ColorHues = {
   50: '#ffe8ff',
@@ -46,25 +39,20 @@ const blueColor: ColorHues = {
   900: '#00131b',
 }
 
-const customTheme: CustomTheme = {
-  ...theme,
-  styles: {
-    global: {
-      html: { height: '100%' },
-      body: { height: '100%' },
-      '#__next': { height: '100%' },
-    },
-  },
+const customTheme = extendTheme({
   colors: {
-    ...theme.colors,
     blue: blueColor,
     primary: primaryColor,
     secondary: blueColor,
   },
   fonts: {
-    ...theme.fonts,
     heading: 'Open Sans, sans-serif;',
   },
-}
+  styles: {
+    global: {
+      'html, body, #__next': { height: '100%' },
+    },
+  },
+})
 
 export default customTheme
