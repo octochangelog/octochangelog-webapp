@@ -16,7 +16,7 @@ const GitHubLoginButton = ({ children = 'Login with GitHub' }) => {
       color="white"
       _hover={{ bg: 'gray.900' }}
     >
-      {children} <Box as={DiGithubBadge} size="8" ml={2} />
+      {children} <Box as={DiGithubBadge} h={8} w={8} ml={2} />
     </Button>
   )
 }

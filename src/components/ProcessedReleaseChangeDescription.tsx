@@ -75,7 +75,7 @@ const ProcessedReleaseChangeDescription = ({
       {processedDescription ? (
         <>
           <Tag size="md" mb={2} rounded="full" colorScheme="primary">
-            <Box as={GoTag} size="4" mr={1} />
+            <Box as={GoTag} h={4} w={4} mr={1} />
             <TagLabel>{processedReleaseChange.tag_name}</TagLabel>
           </Tag>
           <Box ml={4}>{processedDescription}</Box>
