@@ -9,7 +9,6 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/core'
-import styled from '@emotion/styled'
 import NextLink from 'next/link'
 
 import Container from '~/components/Container'
@@ -23,9 +22,10 @@ import useWindowWidth from '~/hooks/useWindowWidth'
 
 const DESKTOP_BREAKPOINT = 992
 
-const FeaturesHeading = styled(Heading)`
-  scroll-margin-top: 6rem;
-`
+// TODO: chakra-v1 - move this to `sx` prop
+// const FeaturesHeading = styled(Heading)`
+//   scroll-margin-top: 6rem;
+// `
 
 const MainSection = () => {
   const windowWidth = useWindowWidth()
@@ -97,7 +97,7 @@ const AboutPage = () => {
             direction="column"
           >
             <Box>
-              <FeaturesHeading
+              <Heading
                 as="h2"
                 fontSize="3xl"
                 mb={{ base: 4, lg: 8 }}
@@ -105,7 +105,7 @@ const AboutPage = () => {
                 id="features"
               >
                 Main Features
-              </FeaturesHeading>
+              </Heading>
               <List spacing={{ base: 4, lg: 8 }}>
                 <ListItem>
                   <ListIcon icon="check-circle" color="secondary.500" />
