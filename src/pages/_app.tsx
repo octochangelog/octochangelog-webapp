@@ -7,6 +7,7 @@ import { Router } from 'next/router'
 import NProgress from 'nprogress'
 import { ReactQueryConfigProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query-devtools'
+import 'focus-visible/dist/focus-visible'
 
 import '~/styles/highlight.styles.github.css'
 import '~/styles/nprogress.css'

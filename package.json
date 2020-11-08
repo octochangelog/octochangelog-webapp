@@ -19,6 +19,7 @@
     "@chakra-ui/core": "^1.0.0-rc.8",
     "@octokit/rest": "^18.0.9",
     "downshift": "^6.0.6",
+    "focus-visible": "^5.2.0",
     "framer-motion": "^2.9.4",
     "lodash": "^4.17.20",
     "next": "^10.0.1",
