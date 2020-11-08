@@ -1,4 +1,4 @@
-import { CSSReset, ThemeProvider } from '@chakra-ui/core'
+import { ChakraProvider } from '@chakra-ui/core'
 import customTheme from 'customTheme'
 import * as gtag from 'gtag'
 import { AppProps } from 'next/app'
@@ -33,9 +33,8 @@ const globalReactQueryConfig = {
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <ReactQueryConfigProvider config={globalReactQueryConfig}>
-      <GithubAuthProvider>
-        <ThemeProvider theme={customTheme}>
-          <CSSReset />
+      <ChakraProvider theme={customTheme}>
+        <GithubAuthProvider>
           {/* TODO: chakra-v1 - update global styles config */}
           {/*<Global styles={globalStyles} />*/}
           <Head>
@@ -45,8 +44,8 @@ const App = ({ Component, pageProps }: AppProps) => {
             />
           </Head>
           <Component {...pageProps} />
-        </ThemeProvider>
-      </GithubAuthProvider>
+        </GithubAuthProvider>
+      </ChakraProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </ReactQueryConfigProvider>
   )
