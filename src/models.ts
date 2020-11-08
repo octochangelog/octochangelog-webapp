@@ -7,8 +7,6 @@ declare global {
   }
 }
 
-export type RepositoryQueryParams = RestEndpointMethodTypes['repos']['get']['parameters']
-
 export type Repository = RestEndpointMethodTypes['repos']['get']['response']['data']
 
 export type Release = RestEndpointMethodTypes['repos']['getRelease']['response']['data']
@@ -38,10 +36,4 @@ export enum MiscGroupTitles {
   artifacts = 'artifacts',
   thanks = 'thanks',
   credits = 'credits',
-}
-
-export interface GitHubRateLimit {
-  limit: number
-  remaining: number
-  reset: number
 }

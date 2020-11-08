@@ -1,39 +1,9 @@
 import { lowerCase } from 'lodash'
-import {
-  MiscGroupTitles,
-  Release,
-  RepositoryQueryParams,
-  SemVerGroupTitles,
-} from 'models'
+import { MiscGroupTitles, Release, SemVerGroupTitles } from 'models'
 import semver from 'semver'
 import title from 'title'
 
 import { HIGH_PRIORITY_GROUP_TITLES, LOW_PRIORITY_GROUP_TITLES } from '~/global'
-
-const githubRepoRegExp = /((git@|http(s)?:\/\/)(www\.)?(github\.com)([/:]))([\w,\-_.]+)\/([\w,\-_.]+)(.git)?((\/)?)/i
-
-export function getRepositoryDataFromUrl(
-  url: string
-): RepositoryQueryParams | null {
-  let repoObj = null
-
-  try {
-    const matchGroups = url.match(githubRepoRegExp)
-    const owner = matchGroups?.[7]
-    const repo = matchGroups?.[8]?.replace('.git', '') // remove .git suffix for repo names like next.js
-
-    if (owner && repo) {
-      repoObj = {
-        repo,
-        owner,
-      }
-    }
-  } catch (e) {
-    // do nothing
-  }
-
-  return repoObj
-}
 
 type FilterReleasesNodes = {
   releases: Release[]

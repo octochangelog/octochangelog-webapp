@@ -121,7 +121,7 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
         borderColor="gray.200"
         borderWidth={1}
         borderRadius={3}
-        zIndex="popover"
+        zIndex="dropdown"
         py={2}
         maxHeight="300px"
         overflowY="scroll"
