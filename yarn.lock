@@ -2009,6 +2009,11 @@
   dependencies:
     mkdirp "^1.0.4"
 
+"@octokit/auth-callback@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@octokit/auth-callback/-/auth-callback-1.1.0.tgz#4b68b5bbcf794662b1894674edbe89b75290c2c3"
+  integrity sha512-2X2IMKS0qGwp+OE1i0Nb7g53MjpjTPeToy+HYE/xEzh5XX3xzrLGrSgmSj03yOevg/wcjFUfurXwMUFWhztmig==
+
 "@octokit/auth-token@^2.4.0":
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/@octokit/auth-token/-/auth-token-2.4.3.tgz#b868b5f2366533a7e62933eaa1181a8924228cc4"
