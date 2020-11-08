@@ -12,7 +12,8 @@ export const EMPTY_VERSION_RANGE: VersionRange = ['', '']
 
 export const REPO_URL = 'https://github.com/Belco90/octoclairvoyant'
 
-export const APP_MOTTO = 'Compare GitHub repositories releases with ease'
+export const APP_MOTTO =
+  'Compare across GitHub repositories releases with ease '
 
 export const HIGH_PRIORITY_GROUP_TITLES: string[] = [
   SemVerGroupTitles.breakingChanges,

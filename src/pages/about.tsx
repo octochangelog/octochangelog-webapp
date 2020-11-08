@@ -109,16 +109,16 @@ const AboutPage = () => {
               <List spacing={{ base: 4, lg: 8 }}>
                 <ListItem>
                   <ListIcon icon="check-circle" color="secondary.500" />
-                  Pick a repository and filter by range of releases versions
+                  Search repositories and pick releases version range
                 </ListItem>
                 <ListItem>
                   <ListIcon icon="check-circle" color="secondary.500" />
-                  Sort and prioritize releases changes following{' '}
+                  Sort and group releases changes following{' '}
                   <Link href="https://semver.org/">Semantic Versioning</Link>
                 </ListItem>
                 <ListItem>
                   <ListIcon icon="check-circle" color="secondary.500" />
-                  Normalize and merge changes categories (e.g. put{' '}
+                  Normalize changes categories (e.g. put{' '}
                   <Text as="em">bug fixes</Text> and{' '}
                   <Text as="em">minor changes</Text> under the same category)
                 </ListItem>
@@ -128,7 +128,7 @@ const AboutPage = () => {
                 </ListItem>
                 <ListItem>
                   <ListIcon icon="check-circle" color="secondary.500" />
-                  Spot original version where specific changes were introduced
+                  Make easy to spot which version introduced specific changes
                 </ListItem>
               </List>
             </Box>

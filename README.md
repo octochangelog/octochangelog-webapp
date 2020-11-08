@@ -6,7 +6,7 @@
     width="200"
     alt="Octoclairvoyant reading a crystal ball"
   >
-  <h3>Compare GitHub repositories releases with ease</h3>
+  <h3>Compare across GitHub repositories releases with ease</h3>
   <p>
     <span role="img" aria-label="Crystall ball">🔮</span> https://octoclairvoyant.now.sh
   </p>
@@ -20,11 +20,11 @@
 
 ### Main Features:
 
-- Filter by range of versions
-- Group changes by normalized categories (e.g. put "bug fixes" and "minor" under the same group)
-- Sort and prioritize by different level of changes for [Semantic Versioning](https://semver.org/)
+- Search repositories and pick version ranges
+- Sort and group releases changes following [Semantic Versioning](https://semver.org/)
+- Normalize changes categories (e.g. put _bug fixes_ and _minor changes_ under the same category)
 - Highlight code blocks syntax and GitHub references
-- Spot original version where specific changes were introduced
+- Make easy to spot which version introduced specific changes
 
 ### Motivation
 In January 2020 [GitHub announced a shortcut to compare across two releases](https://github.blog/changelog/2020-01-13-shortcut-to-compare-across-two-releases/).
