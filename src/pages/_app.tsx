@@ -35,8 +35,6 @@ const App = ({ Component, pageProps }: AppProps) => {
     <ReactQueryConfigProvider config={globalReactQueryConfig}>
       <ChakraProvider theme={customTheme}>
         <GithubAuthProvider>
-          {/* TODO: chakra-v1 - update global styles config */}
-          {/*<Global styles={globalStyles} />*/}
           <Head>
             <meta
               name="viewport"

@@ -1,4 +1,4 @@
-import { Box, Button } from '@chakra-ui/core/dist'
+import { Box, Button } from '@chakra-ui/core'
 import { DiGithubBadge } from 'react-icons/di'
 
 import { githubAuthUrl } from '~/github-client'
