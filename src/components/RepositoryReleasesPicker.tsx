@@ -1,13 +1,10 @@
 import { Stack } from '@chakra-ui/core'
-import useWindowWidth from 'hooks/useWindowWidth'
 import { Release, Repository, VersionRange } from 'models'
 import * as React from 'react'
 
 import ReleaseVersionFormControl from '~/components/ReleaseVersionFormControl'
 import RepositorySearchCombobox from '~/components/RepositorySearchCombobox'
 import { releasesComparator } from '~/utils'
-
-const INLINE_BREAKPOINT = 768 // desktop
 
 const renderOptionsFromReleases = (
   releases: Release[]
@@ -34,8 +31,6 @@ const RepositoryReleasesPicker = ({
   onRepositoryChange,
   onVersionRangeChange,
 }: Props) => {
-  const windowWidth = useWindowWidth()
-
   const handleRepositorySelect = React.useCallback(
     async (repo?: Repository | null) => {
       onRepositoryChange(repo)
@@ -65,7 +60,7 @@ const RepositoryReleasesPicker = ({
   return (
     <Stack
       spacing={{ base: 2, md: 6 }}
-      isInline={windowWidth >= INLINE_BREAKPOINT}
+      direction={{ base: 'column', md: 'row' }}
     >
       <RepositorySearchCombobox onSelect={handleRepositorySelect} />
       <ReleaseVersionFormControl

@@ -60,7 +60,7 @@ const MenuLink = ({
 
 const LinksStack = ({ isDesktop }: { isDesktop: boolean }) => (
   <Stack
-    isInline={isDesktop}
+    direction={{ base: 'column', md: 'row' }}
     spacing={{ base: 12, md: 8 }}
     align={isDesktop ? undefined : 'center'}
   >

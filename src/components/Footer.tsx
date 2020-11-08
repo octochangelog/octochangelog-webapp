@@ -1,4 +1,4 @@
-import { Box, Stack } from '@chakra-ui/core'
+import { Box, HStack } from '@chakra-ui/core'
 
 import Container from '~/components/Container'
 import Link from '~/components/Link'
@@ -8,8 +8,7 @@ const Footer = () => {
   return (
     <Box as="footer" bg="gray.50" flexShrink={0}>
       <Container py={5}>
-        <Stack
-          isInline
+        <HStack
           justify="space-between"
           alignItems="center"
           justifyContent="center"
@@ -30,7 +29,7 @@ const Footer = () => {
           <Link href={REPO_URL} title="GitHub repo link">
             GitHub
           </Link>
-        </Stack>
+        </HStack>
       </Container>
     </Box>
   )
