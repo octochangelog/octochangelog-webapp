@@ -6,12 +6,12 @@
     width="200"
     alt="Octoclairvoyant reading a crystal ball"
   >
-  <h3>Filter and group GitHub repositories releases to compare changes with ease</h3>
+  <h3>Compare GitHub repositories releases with ease</h3>
   <p>
     <span role="img" aria-label="Crystall ball">🔮</span> https://octoclairvoyant.now.sh
   </p>
   
-  <img src="https://media.giphy.com/media/ife87VTSQNohM62tOH/giphy.gif" alt="App preview" >
+  <img src="https://i.imgur.com/bFXUj09.png" alt="App preview" >
 </div>
 
 

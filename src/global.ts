@@ -1,4 +1,4 @@
-import { MiscGroupTitles, SemVerGroupTitles } from '~/models'
+import { MiscGroupTitles, SemVerGroupTitles, VersionRange } from '~/models'
 
 export const globalStyles = {
   html: { height: '100%' },
@@ -8,12 +8,11 @@ export const globalStyles = {
 
 export const IS_PRODUCTION_MODE = process.env.NODE_ENV === 'production'
 
-export const EMPTY_VERSION_RANGE: [string, string] = ['', '']
+export const EMPTY_VERSION_RANGE: VersionRange = ['', '']
 
 export const REPO_URL = 'https://github.com/Belco90/octoclairvoyant'
 
-export const APP_MOTTO =
-  'Filter and group GitHub repositories releases to compare changes with ease'
+export const APP_MOTTO = 'Compare GitHub repositories releases with ease'
 
 export const HIGH_PRIORITY_GROUP_TITLES: string[] = [
   SemVerGroupTitles.breakingChanges,
@@ -29,4 +28,3 @@ export const LOW_PRIORITY_GROUP_TITLES: string[] = [
 ]
 
 export const GITHUB_RATE_LIMIT_EXCEEDED_ERROR = 'Rate limit exceeded'
-export const GITHUB_UNKNOWN_ERROR = 'Unknown'
