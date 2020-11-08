@@ -88,7 +88,7 @@ const HeaderLinks = () => {
       <Button
         aria-label="Toggle menu"
         variant="link"
-        variantColor="gray.50"
+        colorScheme="gray.50"
         size="sm"
         onClick={onToggle}
       >
