@@ -39,7 +39,7 @@ const AuthCallbackPage = ({ accessToken, errorMessage }: Props) => {
           <CircularProgress
             isIndeterminate
             color="primary"
-            trackColor="primary"
+            trackColor="primary.500"
           />
         </Flex>
       )}
