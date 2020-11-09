@@ -1,4 +1,4 @@
-import { Box, Button } from '@chakra-ui/core/dist'
+import { Button, Icon } from '@chakra-ui/core'
 import { DiGithubBadge } from 'react-icons/di'
 
 import { githubAuthUrl } from '~/github-client'
@@ -16,7 +16,7 @@ const GitHubLoginButton = ({ children = 'Login with GitHub' }) => {
       color="white"
       _hover={{ bg: 'gray.900' }}
     >
-      {children} <Box as={DiGithubBadge} size="8" ml={2} />
+      {children} <Icon as={DiGithubBadge} ml={2} boxSize={6} />
     </Button>
   )
 }

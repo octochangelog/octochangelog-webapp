@@ -7,10 +7,11 @@ import {
   ListIcon,
   ListItem,
   Stack,
+  VStack,
   Text,
 } from '@chakra-ui/core'
-import styled from '@emotion/styled'
 import NextLink from 'next/link'
+import { FaCheckCircle } from 'react-icons/fa'
 
 import Container from '~/components/Container'
 import Layout from '~/components/Layout'
@@ -23,9 +24,10 @@ import useWindowWidth from '~/hooks/useWindowWidth'
 
 const DESKTOP_BREAKPOINT = 992
 
-const FeaturesHeading = styled(Heading)`
-  scroll-margin-top: 6rem;
-`
+// TODO: chakra-v1 - move this to `sx` prop
+// const FeaturesHeading = styled(Heading)`
+//   scroll-margin-top: 6rem;
+// `
 
 const MainSection = () => {
   const windowWidth = useWindowWidth()
@@ -85,19 +87,11 @@ const AboutPage = () => {
         <Container>{isClientSide && <MainSection />}</Container>
       </Box>
 
-      <Box>
-        <Container
-          transition="opacity 500ms linear"
-          opacity={isClientSide ? 1 : 0}
-        >
-          <Stack
-            spacing={8}
-            alignItems="center"
-            py={{ base: 8, lg: 16 }}
-            direction="column"
-          >
+      <Box mb={4}>
+        <Container>
+          <VStack spacing={8} alignItems="center" py={{ base: 8, lg: 16 }}>
             <Box>
-              <FeaturesHeading
+              <Heading
                 as="h2"
                 fontSize="3xl"
                 mb={{ base: 4, lg: 8 }}
@@ -105,34 +99,34 @@ const AboutPage = () => {
                 id="features"
               >
                 Main Features
-              </FeaturesHeading>
+              </Heading>
               <List spacing={{ base: 4, lg: 8 }}>
                 <ListItem>
-                  <ListIcon icon="check-circle" color="secondary.500" />
+                  <ListIcon as={FaCheckCircle} color="secondary.500" />
                   Search repositories and pick releases version range
                 </ListItem>
                 <ListItem>
-                  <ListIcon icon="check-circle" color="secondary.500" />
+                  <ListIcon as={FaCheckCircle} color="secondary.500" />
                   Sort and group releases changes following{' '}
                   <Link href="https://semver.org/">Semantic Versioning</Link>
                 </ListItem>
                 <ListItem>
-                  <ListIcon icon="check-circle" color="secondary.500" />
+                  <ListIcon as={FaCheckCircle} color="secondary.500" />
                   Normalize changes categories (e.g. put{' '}
                   <Text as="em">bug fixes</Text> and{' '}
                   <Text as="em">minor changes</Text> under the same category)
                 </ListItem>
                 <ListItem>
-                  <ListIcon icon="check-circle" color="secondary.500" />
+                  <ListIcon as={FaCheckCircle} color="secondary.500" />
                   Highlight code blocks syntax and GitHub references
                 </ListItem>
                 <ListItem>
-                  <ListIcon icon="check-circle" color="secondary.500" />
+                  <ListIcon as={FaCheckCircle} color="secondary.500" />
                   Make easy to spot which version introduced specific changes
                 </ListItem>
               </List>
             </Box>
-          </Stack>
+          </VStack>
         </Container>
       </Box>
     </Layout>

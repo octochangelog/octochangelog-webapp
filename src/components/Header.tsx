@@ -1,7 +1,6 @@
 import {
   Box,
   BoxProps,
-  Button,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -9,6 +8,8 @@ import {
   DrawerOverlay,
   Flex,
   Heading,
+  Icon,
+  IconButton,
   Stack,
   useDisclosure,
 } from '@chakra-ui/core'
@@ -59,7 +60,7 @@ const MenuLink = ({
 
 const LinksStack = ({ isDesktop }: { isDesktop: boolean }) => (
   <Stack
-    isInline={isDesktop}
+    direction={{ base: 'column', md: 'row' }}
     spacing={{ base: 12, md: 8 }}
     align={isDesktop ? undefined : 'center'}
   >
@@ -85,15 +86,14 @@ const HeaderLinks = () => {
     linksInner
   ) : (
     <>
-      <Button
+      <IconButton
         aria-label="Toggle menu"
-        variant="link"
-        variantColor="gray.50"
+        icon={<Icon as={FaBars} />}
+        variant="unstyled"
+        colorScheme="gray.50"
         size="sm"
         onClick={onToggle}
-      >
-        <Box as={FaBars} />
-      </Button>
+      />
       <Drawer placement="right" onClose={onClose} isOpen={isOpen} size="full">
         <DrawerOverlay />
         <DrawerContent py={8} backgroundColor="gray.700">

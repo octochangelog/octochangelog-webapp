@@ -28,11 +28,21 @@ const RepositoryReleasesChangelogHeading = ({
         {fromVersion && toVersion ? (
           <Heading fontSize="md" mb={2} color="secondary.500">
             Comparing changes from{' '}
-            <Badge variant="solid" variantColor="secondary" fontSize={13}>
+            <Badge
+              variant="solid"
+              colorScheme="secondary"
+              fontSize={13}
+              lineHeight={1.5}
+            >
               {fromVersion}
             </Badge>{' '}
             to{' '}
-            <Badge variant="solid" variantColor="secondary" fontSize={13}>
+            <Badge
+              variant="solid"
+              colorScheme="secondary"
+              fontSize={13}
+              lineHeight={1.5}
+            >
               {toVersion}
             </Badge>
           </Heading>

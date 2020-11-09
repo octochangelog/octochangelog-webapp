@@ -11,9 +11,10 @@ import {
   Tag,
   TagLabel,
   Text,
-} from '@chakra-ui/core/'
+} from '@chakra-ui/core'
 import useProcessDescriptionMdast from 'hooks/useProcessDescriptionMdast'
 import { ProcessedReleaseChange, Repository } from 'models'
+import { FiExternalLink } from 'react-icons/fi'
 import { GoTag } from 'react-icons/go'
 
 import BlockQuote from '~/components/BlockQuote'
@@ -30,7 +31,7 @@ const remarkReactComponents = {
   p: (props: BoxProps) => <Text mb="2" {...props} />,
   a: ({ href, children, ...rest }: LinkProps) => (
     <Link href={href} isExternal {...rest}>
-      {children} <Icon name="external-link" mx="2px" />
+      {children} <Icon as={FiExternalLink} mx="2px" />
     </Link>
   ),
   ul: (props: any) => (
@@ -74,8 +75,8 @@ const ProcessedReleaseChangeDescription = ({
     <Box {...rest} mb={8}>
       {processedDescription ? (
         <>
-          <Tag size="md" mb={2} rounded="full" variantColor="primary">
-            <Box as={GoTag} size="4" mr={1} />
+          <Tag size="md" mb={2} rounded="full" colorScheme="primary">
+            <Box as={GoTag} h={4} w={4} mr={1} />
             <TagLabel>{processedReleaseChange.tag_name}</TagLabel>
           </Tag>
           <Box ml={4}>{processedDescription}</Box>

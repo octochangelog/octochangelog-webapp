@@ -1,11 +1,5 @@
 import { MiscGroupTitles, SemVerGroupTitles, VersionRange } from '~/models'
 
-export const globalStyles = {
-  html: { height: '100%' },
-  body: { height: '100%' },
-  '#__next': { height: '100%' },
-}
-
 export const IS_PRODUCTION_MODE = process.env.NODE_ENV === 'production'
 
 export const EMPTY_VERSION_RANGE: VersionRange = ['', '']

@@ -1,7 +1,5 @@
-import { CSSReset, ThemeProvider } from '@chakra-ui/core'
-import { Global } from '@emotion/core'
+import { ChakraProvider } from '@chakra-ui/core'
 import customTheme from 'customTheme'
-import { globalStyles } from 'global'
 import * as gtag from 'gtag'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -9,6 +7,7 @@ import { Router } from 'next/router'
 import NProgress from 'nprogress'
 import { ReactQueryConfigProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query-devtools'
+import 'focus-visible/dist/focus-visible'
 
 import '~/styles/highlight.styles.github.css'
 import '~/styles/nprogress.css'
@@ -33,13 +32,10 @@ const globalReactQueryConfig = {
 }
 
 const App = ({ Component, pageProps }: AppProps) => {
-  // TODO: init GithubAuthProvider here
   return (
     <ReactQueryConfigProvider config={globalReactQueryConfig}>
-      <GithubAuthProvider>
-        <ThemeProvider theme={customTheme}>
-          <CSSReset />
-          <Global styles={globalStyles} />
+      <ChakraProvider theme={customTheme}>
+        <GithubAuthProvider>
           <Head>
             <meta
               name="viewport"
@@ -47,8 +43,8 @@ const App = ({ Component, pageProps }: AppProps) => {
             />
           </Head>
           <Component {...pageProps} />
-        </ThemeProvider>
-      </GithubAuthProvider>
+        </GithubAuthProvider>
+      </ChakraProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </ReactQueryConfigProvider>
   )
