@@ -11,7 +11,7 @@ import {
   Tag,
   TagLabel,
   Text,
-} from '@chakra-ui/core/'
+} from '@chakra-ui/core'
 import useProcessDescriptionMdast from 'hooks/useProcessDescriptionMdast'
 import { ProcessedReleaseChange, Repository } from 'models'
 import { FiExternalLink } from 'react-icons/fi'
