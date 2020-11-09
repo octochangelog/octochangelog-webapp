@@ -20,21 +20,10 @@ import Link from '~/components/Link'
 import customTheme from '~/customTheme'
 import { APP_MOTTO } from '~/global'
 import useIsClientSide from '~/hooks/useIsClientSide'
-import useWindowWidth from '~/hooks/useWindowWidth'
-
-const DESKTOP_BREAKPOINT = 992
-
-// TODO: chakra-v1 - move this to `sx` prop
-// const FeaturesHeading = styled(Heading)`
-//   scroll-margin-top: 6rem;
-// `
 
 const MainSection = () => {
-  const windowWidth = useWindowWidth()
-  const isDesktop = windowWidth >= DESKTOP_BREAKPOINT
-
   return (
-    <Flex alignItems="center" direction={isDesktop ? 'row' : 'column-reverse'}>
+    <Stack align="center" direction={['column-reverse', 'row']}>
       <Stack
         alignItems={{ base: 'center', lg: 'start' }}
         spacing={{ base: 4, lg: 8 }}
@@ -44,7 +33,7 @@ const MainSection = () => {
       >
         <Heading
           as="h1"
-          color={isDesktop ? 'gray.50' : 'gray.700'}
+          color={['gray.700', 'gray.50']}
           fontSize="4xl"
           textAlign={{ base: 'center', lg: 'left' }}
         >
@@ -69,7 +58,7 @@ const MainSection = () => {
         height={600}
         quality={100}
       />
-    </Flex>
+    </Stack>
   )
 }
 

@@ -11,6 +11,7 @@ import {
   Icon,
   IconButton,
   Stack,
+  useBreakpointValue,
   useDisclosure,
 } from '@chakra-ui/core'
 import Image from 'next/image'
@@ -21,23 +22,20 @@ import { FaBars } from 'react-icons/fa'
 import Container from '~/components/Container'
 import RouteLink from '~/components/RouteLink'
 import useIsClientSide from '~/hooks/useIsClientSide'
-import useWindowWidth from '~/hooks/useWindowWidth'
 
 const LOGO_SIZES = { base: '25px', md: '30px', lg: '50px' }
-const INLINE_BREAKPOINT = 768 // desktop
 
 const MenuLink = ({
   href,
-  isDesktop,
   children,
   ...rest
 }: {
   children: React.ReactNode
   href: string
-  isDesktop: boolean
 }) => {
   const router = useRouter()
   const isActive = router?.pathname === href
+  const linkWidth = useBreakpointValue(['min-content', 'auto'])
 
   return (
     <RouteLink
@@ -50,7 +48,7 @@ const MenuLink = ({
         textDecoration: 'none',
         color: isActive ? 'none' : 'primary.300',
       }}
-      width={isDesktop ? 'auto' : 'min-content'}
+      width={linkWidth}
       {...rest}
     >
       {children}
@@ -58,29 +56,23 @@ const MenuLink = ({
   )
 }
 
-const LinksStack = ({ isDesktop }: { isDesktop: boolean }) => (
+const LinksStack = () => (
   <Stack
     direction={{ base: 'column', md: 'row' }}
     spacing={{ base: 12, md: 8 }}
-    align={isDesktop ? undefined : 'center'}
+    align={['center', 'initial']}
   >
-    <MenuLink href="/" isDesktop={isDesktop}>
-      Home
-    </MenuLink>
-    <MenuLink href="/about" isDesktop={isDesktop}>
-      About
-    </MenuLink>
+    <MenuLink href="/">Home</MenuLink>
+    <MenuLink href="/about">About</MenuLink>
     {/* TODO: implement logout if necessary */}
   </Stack>
 )
 
 const HeaderLinks = () => {
-  // TODO: extract into useResponsiveBreakpoint
-  const windowWidth = useWindowWidth()
   const { isOpen, onToggle, onClose } = useDisclosure()
+  const isDesktop = useBreakpointValue([false, true])
 
-  const isDesktop = windowWidth > INLINE_BREAKPOINT
-  const linksInner = <LinksStack isDesktop={isDesktop} />
+  const linksInner = <LinksStack />
 
   return isDesktop ? (
     linksInner
