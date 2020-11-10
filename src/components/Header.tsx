@@ -105,8 +105,7 @@ const Header = (props: BoxProps) => {
   const isClientSide = useIsClientSide()
 
   return (
-    /* FIXME: set zIndex to "banner" when chakra-ui fixes types here */
-    <Box as="header" bg="gray.700" color="white" zIndex={1200} {...props}>
+    <Box as="header" bg="gray.700" color="white" zIndex="banner" {...props}>
       <Container py={5}>
         <Flex justify="space-between" alignItems="center">
           <Flex alignItems="center">
