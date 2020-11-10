@@ -19,7 +19,6 @@ import LazyImage from '~/components/LazyImage'
 import Link from '~/components/Link'
 import customTheme from '~/customTheme'
 import { APP_MOTTO } from '~/global'
-import useIsClientSide from '~/hooks/useIsClientSide'
 
 const MainSection = () => {
   return (
@@ -63,8 +62,6 @@ const MainSection = () => {
 }
 
 const AboutPage = () => {
-  const isClientSide = useIsClientSide()
-
   return (
     <Layout isHeaderFixed extraTitle="About">
       <Box
@@ -73,7 +70,9 @@ const AboutPage = () => {
         minHeight="100vh"
         bgImage={`linear-gradient(180deg, ${customTheme.colors.primary[700]} 0%, ${customTheme.colors.white} 100%)`}
       >
-        <Container>{isClientSide && <MainSection />}</Container>
+        <Container>
+          <MainSection />
+        </Container>
       </Box>
 
       <Box mb={4}>
