@@ -37,15 +37,13 @@ const RepositoryReleasesComparator = ({
   return (
     <>
       <Container>
-        {isClientSide && (
-          <RepositoryReleasesPicker
-            releases={releases}
-            versionRange={versionRange}
-            isLoading={isLoading}
-            onRepositoryChange={onRepositoryChange}
-            onVersionRangeChange={onVersionRangeChange}
-          />
-        )}
+        <RepositoryReleasesPicker
+          releases={releases}
+          versionRange={versionRange}
+          isLoading={isLoading}
+          onRepositoryChange={onRepositoryChange}
+          onVersionRangeChange={onVersionRangeChange}
+        />
       </Container>
       <Divider my={4} />
       {repository && (
@@ -65,6 +63,8 @@ const RepositoryReleasesComparator = ({
           </Container>
         </>
       )}
+
+      {/* This is rendered only in CS since SSR doesn't have info about auth user yet*/}
       {isClientSide && !repository && !isAuth && (
         <Container>
           <Flex alignItems="center" flexDirection="column">
