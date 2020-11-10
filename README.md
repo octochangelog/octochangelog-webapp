@@ -8,10 +8,10 @@
   >
   <h3>Compare across GitHub repositories releases with ease</h3>
   <p>
-    <span role="img" aria-label="Crystall ball">🔮</span> https://octoclairvoyant.now.sh
+    <span role="img" aria-label="Crystall ball">🔮</span> https://octoclairvoyant.vercel.app/
   </p>
   
-  <img src="https://i.imgur.com/bFXUj09.png" alt="App preview" >
+  <img src="https://i.imgur.com/y98G27j.png" alt="Octoclairvoyant preview comparing releases for eslint-plugin-testing-library" >
 </div>
 
 
@@ -89,7 +89,7 @@ So the final sorting will be:
 
 ### Future Features:
 
-- [ ] Autocomplete repo url input
+- [X] Autocomplete repo url input
 - [ ] Search versions when typing on selects
 - [ ] Restrict from and to version selects when some option is selected
 - [ ] Group and sort other versioning system than Semantic Versioning
