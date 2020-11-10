@@ -1,5 +1,6 @@
 import { ChakraProvider } from '@chakra-ui/core'
 import customTheme from 'customTheme'
+import { resetIdCounter } from 'downshift'
 import * as gtag from 'gtag'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
@@ -32,6 +33,8 @@ const globalReactQueryConfig = {
 }
 
 const App = ({ Component, pageProps }: AppProps) => {
+  resetIdCounter()
+
   return (
     <ReactQueryConfigProvider config={globalReactQueryConfig}>
       <ChakraProvider theme={customTheme}>
