@@ -23,7 +23,7 @@ import useIsClientSide from '~/hooks/useIsClientSide'
 
 const MainSection = () => {
   return (
-    <Stack align="center" direction={['column-reverse', 'row']}>
+    <Stack align="center" direction={{ base: 'column-reverse', lg: 'row' }}>
       <Stack
         alignItems={{ base: 'center', lg: 'start' }}
         spacing={{ base: 4, lg: 8 }}
@@ -33,7 +33,7 @@ const MainSection = () => {
       >
         <Heading
           as="h1"
-          color={['gray.700', 'gray.50']}
+          color={{ base: 'gray.700', lg: 'gray.50' }}
           fontSize="4xl"
           textAlign={{ base: 'center', lg: 'left' }}
         >

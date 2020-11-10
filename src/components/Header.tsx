@@ -35,7 +35,7 @@ const MenuLink = ({
 }) => {
   const router = useRouter()
   const isActive = router?.pathname === href
-  const linkWidth = useBreakpointValue(['min-content', 'auto'])
+  const linkWidth = useBreakpointValue({ base: 'min-content', md: 'auto' })
 
   return (
     <RouteLink
@@ -60,7 +60,7 @@ const LinksStack = () => (
   <Stack
     direction={{ base: 'column', md: 'row' }}
     spacing={{ base: 12, md: 8 }}
-    align={['center', 'initial']}
+    align={{ base: 'center', md: 'initial' }}
   >
     <MenuLink href="/">Home</MenuLink>
     <MenuLink href="/about">About</MenuLink>
@@ -70,7 +70,7 @@ const LinksStack = () => (
 
 const HeaderLinks = () => {
   const { isOpen, onToggle, onClose } = useDisclosure()
-  const isDesktop = useBreakpointValue([false, true])
+  const isDesktop = useBreakpointValue({ base: false, md: true })
 
   const linksInner = <LinksStack />
 
