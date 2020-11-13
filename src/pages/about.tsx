@@ -9,7 +9,7 @@ import {
   Stack,
   VStack,
   Text,
-} from '@chakra-ui/core'
+} from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { FaCheckCircle } from 'react-icons/fa'
 

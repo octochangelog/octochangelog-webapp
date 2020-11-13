@@ -5,7 +5,7 @@ import {
   Heading,
   Skeleton,
   Stack,
-} from '@chakra-ui/core'
+} from '@chakra-ui/react'
 import useProcessReleases from 'hooks/useProcessReleases'
 import {
   MiscGroupTitles,

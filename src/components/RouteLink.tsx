@@ -1,4 +1,4 @@
-import { Link, LinkProps } from '@chakra-ui/core'
+import { Link, LinkProps } from '@chakra-ui/react'
 import NextLink from 'next/link'
 
 const RouteLink = ({ href = '#', children, ...rest }: LinkProps) => (

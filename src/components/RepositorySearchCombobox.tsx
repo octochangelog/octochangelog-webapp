@@ -12,7 +12,7 @@ import {
   List,
   ListItem,
   Text,
-} from '@chakra-ui/core'
+} from '@chakra-ui/react'
 import { RestEndpointMethodTypes } from '@octokit/rest'
 import { useCombobox } from 'downshift'
 import { debounce } from 'lodash'

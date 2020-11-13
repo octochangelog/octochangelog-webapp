@@ -1,4 +1,4 @@
-import { Box, HStack } from '@chakra-ui/core'
+import { Box, HStack } from '@chakra-ui/react'
 
 import Container from '~/components/Container'
 import Link from '~/components/Link'

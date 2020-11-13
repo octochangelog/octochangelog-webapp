@@ -1,4 +1,4 @@
-import { ChakraProvider } from '@chakra-ui/core'
+import { ChakraProvider } from '@chakra-ui/react'
 import customTheme from 'customTheme'
 import { resetIdCounter } from 'downshift'
 import * as gtag from 'gtag'

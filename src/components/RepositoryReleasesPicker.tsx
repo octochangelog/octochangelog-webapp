@@ -1,4 +1,4 @@
-import { Stack } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/react'
 import { Release, Repository, VersionRange } from 'models'
 import * as React from 'react'
 

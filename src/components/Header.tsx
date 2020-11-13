@@ -13,7 +13,7 @@ import {
   Stack,
   useBreakpointValue,
   useDisclosure,
-} from '@chakra-ui/core'
+} from '@chakra-ui/react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import * as React from 'react'

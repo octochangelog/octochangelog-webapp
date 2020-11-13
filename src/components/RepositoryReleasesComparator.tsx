@@ -1,4 +1,4 @@
-import { Divider, Flex, Text } from '@chakra-ui/core'
+import { Divider, Flex, Text } from '@chakra-ui/react'
 import { Release, Repository, VersionRange } from 'models'
 import dynamic from 'next/dynamic'
 import * as React from 'react'

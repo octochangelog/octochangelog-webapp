@@ -1,4 +1,4 @@
-import { Badge, Box, Heading, Text } from '@chakra-ui/core'
+import { Badge, Box, Heading, Text } from '@chakra-ui/react'
 import { getRepositoryNameDisplay } from 'utils'
 
 import Container from '~/components/Container'

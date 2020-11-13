@@ -11,7 +11,7 @@ import {
   Tag,
   TagLabel,
   Text,
-} from '@chakra-ui/core'
+} from '@chakra-ui/react'
 import useProcessDescriptionMdast from 'hooks/useProcessDescriptionMdast'
 import { ProcessedReleaseChange, Repository } from 'models'
 import { FiExternalLink } from 'react-icons/fi'
@@ -35,7 +35,7 @@ const remarkReactComponents = {
     </Link>
   ),
   ul: (props: any) => (
-    <List styleType="disc" mb="4" ml="4" stylePos="outside" {...props} />
+    <List styleType="disc" mb="4" ml="4" stylePosition="outside" {...props} />
   ),
   ol: (props: any) => (
     <List
@@ -43,7 +43,7 @@ const remarkReactComponents = {
       styleType="decimal"
       mb="4"
       ml="4"
-      stylePos="outside"
+      stylePosition="outside"
       {...props}
     />
   ),
