@@ -34,7 +34,8 @@ export const setGithubAccessToken = function (
 }
 
 export const octokit = new Octokit({
-  authStrategy: createCallbackAuth(getGithubAccessToken),
+  authStrategy: createCallbackAuth,
+  auth: { callback: getGithubAccessToken },
   userAgent,
   log: IS_PRODUCTION_MODE ? undefined : console,
 })
