@@ -1,15 +1,9 @@
 import { Box, Image as ChakraImage } from '@chakra-ui/react'
-import Image from 'next/image'
+import NextImage, { ImageProps } from 'next/image'
 import { useState } from 'react'
 
-// TODO: extend ImageProps when exported from next/image
-type Props = {
+type Props = ImageProps & {
   loadingSrc: string
-  src: string
-  alt: string
-  width: number
-  height: number
-  quality: number
 }
 
 const LazyImage = ({
@@ -40,7 +34,9 @@ const LazyImage = ({
         position="absolute"
         transition="opacity 500ms"
       >
-        <Image
+        {/* TODO: ImageProps available now from next/image but throwing some types issues */}
+        {/* @ts-ignore */}
+        <NextImage
           src={src}
           height={height}
           width={width}
