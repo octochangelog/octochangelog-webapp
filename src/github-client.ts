@@ -1,3 +1,4 @@
+import { createCallbackAuth } from '@octokit/auth-callback'
 import { Octokit } from '@octokit/rest'
 import { destroyCookie, parseCookies, setCookie } from 'nookies'
 
@@ -10,17 +11,9 @@ const userAgent = IS_PRODUCTION_MODE
 const STORAGE_KEY_PREFIX = IS_PRODUCTION_MODE ? '' : 'test-'
 const GITHUB_STORAGE_KEY = `${STORAGE_KEY_PREFIX}octoclairvoyant-github-access-token`
 
-const makeOctokit = (authToken?: string | null) => {
-  return new Octokit({
-    auth: authToken,
-    userAgent,
-    log: IS_PRODUCTION_MODE ? undefined : console,
-  })
-}
-
-export const getGithubAccessToken = function (): string | null {
+export const getGithubAccessToken = function (): string | undefined {
   const cookies = parseCookies(null, { path: '/' })
-  return cookies[GITHUB_STORAGE_KEY] || null
+  return cookies[GITHUB_STORAGE_KEY]
 }
 
 export const setGithubAccessToken = function (
@@ -30,9 +23,6 @@ export const setGithubAccessToken = function (
     return
   }
 
-  // Create new octokit instance when access token updated since it's the only
-  // way to set `auth` dynamically on Octokit.
-  octokit = makeOctokit(newAccessToken)
   if (newAccessToken) {
     setCookie(null, GITHUB_STORAGE_KEY, newAccessToken, {
       maxAge: 31536000, // 1 year
@@ -43,7 +33,12 @@ export const setGithubAccessToken = function (
   }
 }
 
-export let octokit = makeOctokit(getGithubAccessToken())
+export const octokit = new Octokit({
+  authStrategy: createCallbackAuth,
+  auth: { callback: getGithubAccessToken },
+  userAgent,
+  log: IS_PRODUCTION_MODE ? undefined : console,
+})
 
 /**
  * Exchanges temporary `code` for an access token.
