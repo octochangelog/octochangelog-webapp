@@ -16,8 +16,8 @@
     "format:check": "yarn prettier --check"
   },
   "dependencies": {
-    "@chakra-ui/react": "^1.0.0",
-    "@emotion/react": "^11.0.0",
+    "@chakra-ui/react": "^1.0.1",
+    "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "@octokit/auth-callback": "^2.0.0",
     "@octokit/rest": "^18.0.9",
