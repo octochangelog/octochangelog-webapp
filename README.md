@@ -1,7 +1,7 @@
 <div align="center">
   <h1>Octoclairvoyant</h1>
   <img
-    src="https://raw.githubusercontent.com/belco90/octoclairvoyant/master/public/mascot-logo.png"
+    src="https://raw.githubusercontent.com/belco90/octoclairvoyant/main/public/mascot-logo.png"
     height="200"
     width="200"
     alt="Octoclairvoyant reading a crystal ball"
@@ -90,9 +90,10 @@ So the final sorting will be:
 ### Future Features:
 
 - [X] Autocomplete repo url input
+- [X] Retrieve more releases when repo has more than 100 available (pagination)
+- [ ] Add shareable urls
 - [ ] Search versions when typing on selects
 - [ ] Restrict from and to version selects when some option is selected
-- [ ] Group and sort other versioning system than Semantic Versioning
-- [ ] Try to get changes from CHANGELOG.md if repository releases not available
-- [ ] Retrieve more releases when repo has more than 100 available (pagination)
+- [ ] Improve grouping and sorting for other versioning system than Semantic Versioning
 - [ ] Options to include pre-releases and drafts within filters
+- [ ] Try to get changes from CHANGELOG.md if repository releases not available

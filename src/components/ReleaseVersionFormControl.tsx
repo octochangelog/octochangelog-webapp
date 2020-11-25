@@ -11,6 +11,7 @@ interface CustomProps {
   placeholder?: string
   onChange(version: string): void
   value?: string
+  isLoading?: boolean
 }
 
 type ReleaseVersionFormControlProps = Omit<FormControlProps, 'onChange'> &
@@ -23,6 +24,7 @@ const ReleaseVersionFormControl = ({
   placeholder = 'Choose a version',
   onChange,
   value,
+  isLoading = false,
   ...rest
 }: ReleaseVersionFormControlProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -34,7 +36,7 @@ const ReleaseVersionFormControl = ({
       <FormLabel htmlFor={id}>{label}</FormLabel>
       <Select
         id={id}
-        placeholder={placeholder}
+        placeholder={isLoading ? 'Loading...' : placeholder}
         onChange={handleChange}
         value={value}
       >

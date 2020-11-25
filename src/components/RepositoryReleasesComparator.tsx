@@ -5,8 +5,8 @@ import * as React from 'react'
 
 import Container from '~/components/Container'
 import GitHubLoginButton from '~/components/GitHubLoginButton'
+import ReleasesRangeSelect from '~/components/ReleasesRangeSelect'
 import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesChangelogHeading'
-import RepositoryReleasesPicker from '~/components/RepositoryReleasesPicker'
 import { useGithubAuth } from '~/contexts/github-auth-provider'
 import useIsClientSide from '~/hooks/useIsClientSide'
 
@@ -37,7 +37,7 @@ const RepositoryReleasesComparator = ({
   return (
     <>
       <Container>
-        <RepositoryReleasesPicker
+        <ReleasesRangeSelect
           releases={releases}
           versionRange={versionRange}
           isLoading={isLoading}

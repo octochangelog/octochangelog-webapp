@@ -24,7 +24,7 @@ interface Props {
   onVersionRangeChange(range: VersionRange): void
 }
 
-const RepositoryReleasesPicker = ({
+const ReleasesRangeSelect = ({
   releases,
   versionRange,
   isLoading = false,
@@ -52,8 +52,8 @@ const RepositoryReleasesPicker = ({
 
   const selectPlaceholder =
     Array.isArray(releasesOptions) && releasesOptions.length === 0
-      ? 'Versions not found'
-      : 'Choose a version'
+      ? 'Releases not found'
+      : 'Choose a release'
 
   const [fromVersion, toVersion] = versionRange
 
@@ -64,10 +64,11 @@ const RepositoryReleasesPicker = ({
     >
       <RepositorySearchCombobox onSelect={handleRepositorySelect} />
       <ReleaseVersionFormControl
-        label="From version"
+        label="From release"
         id="from-version"
         width={{ base: 'full', md: '30%' }}
         isDisabled={!releasesOptions || isLoading}
+        isLoading={isLoading}
         placeholder={selectPlaceholder}
         onChange={handleFromVersionChange}
         value={fromVersion}
@@ -75,10 +76,11 @@ const RepositoryReleasesPicker = ({
         {releasesOptions}
       </ReleaseVersionFormControl>
       <ReleaseVersionFormControl
-        label="To version"
+        label="To release"
         id="to-version"
         width={{ base: 'full', md: '30%' }}
         isDisabled={!releasesOptions || isLoading}
+        isLoading={isLoading}
         placeholder={selectPlaceholder}
         onChange={handleToVersionChange}
         value={toVersion}
@@ -89,4 +91,4 @@ const RepositoryReleasesPicker = ({
   )
 }
 
-export default RepositoryReleasesPicker
+export default ReleasesRangeSelect

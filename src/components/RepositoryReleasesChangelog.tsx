@@ -110,7 +110,7 @@ const RepositoryReleasesChangelog = ({
                     {processedRelease.map(
                       (processedReleaseChange: ProcessedReleaseChange) => (
                         <ProcessedReleaseChangeDescription
-                          key={processedReleaseChange.id}
+                          key={`${title}-${processedReleaseChange.id}`}
                           repository={repository}
                           processedReleaseChange={processedReleaseChange}
                           mb={8}

@@ -32,13 +32,10 @@ const IndexPage = () => {
   } = useQuery<Release[]>(
     ['releases', repository],
     async (_, repositorySelected: Repository) => {
-      const resp = await octokit.repos.listReleases({
-        repo: repositorySelected.name,
+      return octokit.paginate('GET /repos/:owner/:repo/releases', {
         owner: repositorySelected.owner.login,
-        page: 1,
-        per_page: 100,
+        repo: repositorySelected.name,
       })
-      return resp.data
     },
     { enabled: repository }
   )
