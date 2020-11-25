@@ -24,7 +24,7 @@ interface Props {
   onVersionRangeChange(range: VersionRange): void
 }
 
-const ReleasesRangeSelect = ({
+const RepositoriesComparatorFilters = ({
   releases,
   versionRange,
   isLoading = false,
@@ -91,4 +91,4 @@ const ReleasesRangeSelect = ({
   )
 }
 
-export default ReleasesRangeSelect
+export default RepositoriesComparatorFilters

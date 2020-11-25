@@ -5,8 +5,9 @@ import * as React from 'react'
 
 import Container from '~/components/Container'
 import GitHubLoginButton from '~/components/GitHubLoginButton'
-import ReleasesRangeSelect from '~/components/ReleasesRangeSelect'
+import RepositoriesComparatorFilters from '~/components/RepositoriesComparatorFilters'
 import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesChangelogHeading'
+import { useComparatorState } from '~/contexts/comparator-context'
 import { useGithubAuth } from '~/contexts/github-auth-provider'
 import useIsClientSide from '~/hooks/useIsClientSide'
 
@@ -15,7 +16,6 @@ const RepositoryReleasesChangelog = dynamic(
 )
 
 interface Props {
-  repository?: Repository
   releases?: Release[]
   versionRange: VersionRange
   isLoading?: boolean
@@ -24,7 +24,6 @@ interface Props {
 }
 
 const RepositoryReleasesComparator = ({
-  repository,
   releases,
   versionRange,
   isLoading = false,
@@ -33,11 +32,12 @@ const RepositoryReleasesComparator = ({
 }: Props) => {
   const isClientSide = useIsClientSide()
   const { isAuth } = useGithubAuth()
+  const { repository } = useComparatorState()
 
   return (
     <>
       <Container>
-        <ReleasesRangeSelect
+        <RepositoriesComparatorFilters
           releases={releases}
           versionRange={versionRange}
           isLoading={isLoading}

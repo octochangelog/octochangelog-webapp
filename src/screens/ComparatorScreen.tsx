@@ -5,15 +5,18 @@ import semver from 'semver'
 
 import RateLimitExceededNotice from '~/components/RateLimitExceededNotice'
 import RepositoryReleasesComparator from '~/components/RepositoryReleasesComparator'
+import {
+  useComparatorState,
+  useComparatorUpdater,
+} from '~/contexts/comparator-context'
 import { octokit } from '~/github-client'
 import { EMPTY_VERSION_RANGE, GITHUB_RATE_LIMIT_EXCEEDED_ERROR } from '~/global'
 import { Release, Repository, VersionRange } from '~/models'
 
 const ComparatorScreen = () => {
-  // TODO: move this to context
-  const [repository, setRepository] = useState<Repository | undefined>(
-    undefined
-  )
+  const { repository } = useComparatorState()
+  const { setRepository } = useComparatorUpdater()
+
   const [shouldShowExceeded, setShouldShowExceeded] = useState(false)
   const [versionRange, setVersionRange] = useState<VersionRange>(
     EMPTY_VERSION_RANGE
@@ -96,7 +99,6 @@ const ComparatorScreen = () => {
 
   return (
     <RepositoryReleasesComparator
-      repository={repository}
       releases={refinedReleases}
       versionRange={versionRange}
       onRepositoryChange={handleRepositoryChange}
