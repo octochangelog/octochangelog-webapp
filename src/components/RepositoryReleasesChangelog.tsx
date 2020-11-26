@@ -11,10 +11,12 @@ import {
   MiscGroupTitles,
   ProcessedReleaseChange,
   Release,
+  ReleaseVersion,
   Repository,
   SemVerGroupTitles,
 } from 'models'
 import { useState, useEffect } from 'react'
+import { useQueryCache } from 'react-query'
 import {
   compareReleaseGroupTitlesSort,
   filterReleasesByVersionRange,
@@ -26,17 +28,16 @@ import TextSkeleton from '~/components/TextSkeleton'
 
 interface RepositoryReleasesChangelogProps {
   repository: Repository
-  releases?: Release[]
-  fromVersion: string
-  toVersion: string
+  fromVersion?: ReleaseVersion
+  toVersion?: ReleaseVersion
 }
 
 const RepositoryReleasesChangelog = ({
   repository,
-  releases,
   fromVersion,
   toVersion,
 }: RepositoryReleasesChangelogProps) => {
+  const queryCache = useQueryCache()
   const [filteredReleases, setFilteredReleases] = useState<Release[] | null>(
     null
   )
@@ -44,6 +45,12 @@ const RepositoryReleasesChangelog = ({
   const { processedReleases, isProcessing } = useProcessReleases(
     filteredReleases
   )
+
+  // TODO: extract this to some util when creating RQ custom query hooks
+  const releases: Release[] | undefined = queryCache.getQueryData([
+    'releases',
+    { owner: repository.owner.login, repo: repository.name },
+  ])
 
   const shouldShowProcessedReleaseTitle = () => {
     if (!processedReleases) {
@@ -70,7 +77,7 @@ const RepositoryReleasesChangelog = ({
         setFilteredReleases(null)
       }
     },
-    [releases, fromVersion, toVersion]
+    [fromVersion, releases, toVersion]
   )
 
   // TODO: simplify conditional renders with state machine

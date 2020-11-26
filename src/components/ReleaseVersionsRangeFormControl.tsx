@@ -1,16 +1,15 @@
 import { Stack, StackProps } from '@chakra-ui/react'
 import { ReactNode } from 'react'
+import { useQuery } from 'react-query'
 
 import ReleaseVersionFormControl from '~/components/ReleaseVersionFormControl'
-import { Release, VersionRange } from '~/models'
-import { releasesComparator } from '~/utils'
-
-type Props = StackProps & {
-  releases?: Release[]
-  isLoading?: boolean
-  versionRange: VersionRange
-  onVersionRangeChange(range: VersionRange): void
-}
+import {
+  useComparatorState,
+  useComparatorUpdater,
+} from '~/contexts/comparator-context'
+import { octokit } from '~/github-client'
+import { Release, RepositoryQueryParams } from '~/models'
+import { isStableRelease, releasesComparator } from '~/utils'
 
 const renderReleasesOptions = (releases: Release[]): ReactNode[] | null => {
   return releases.sort(releasesComparator).map((release) => (
@@ -20,22 +19,21 @@ const renderReleasesOptions = (releases: Release[]): ReactNode[] | null => {
   ))
 }
 
-const ReleaseVersionsRangeFormControl = ({
-  releases,
-  isLoading = false,
-  versionRange,
-  onVersionRangeChange,
-  ...rest
-}: Props) => {
-  const handleFromVersionChange = (newFrom: string) => {
-    const [, to] = versionRange
-    onVersionRangeChange([newFrom, to])
-  }
+const ReleaseVersionsRangeFormControl = (props: StackProps) => {
+  const { repository, fromVersion, toVersion } = useComparatorState()
+  const { setFromVersion, setToVersion } = useComparatorUpdater()
 
-  const handleToVersionChange = (newTo: string) => {
-    const [from] = versionRange
-    onVersionRangeChange([from, newTo])
-  }
+  const { data: releases, isLoading } = useQuery<Release[]>(
+    ['releases', { owner: repository?.owner.login, repo: repository?.name }],
+    async (_, queryParams: RepositoryQueryParams) => {
+      return octokit.paginate(
+        'GET /repos/:owner/:repo/releases',
+        queryParams,
+        (response) => response.data.filter(isStableRelease)
+      )
+    },
+    { enabled: repository }
+  )
 
   const releasesOptions = releases ? renderReleasesOptions(releases) : null
 
@@ -44,17 +42,15 @@ const ReleaseVersionsRangeFormControl = ({
       ? 'Releases not found'
       : 'Choose a release'
 
-  const [fromVersion, toVersion] = versionRange
-
   return (
-    <Stack {...rest}>
+    <Stack {...props}>
       <ReleaseVersionFormControl
         label="From release"
         id="from-version"
         isDisabled={!releasesOptions || isLoading}
         isLoading={isLoading}
         placeholder={selectPlaceholder}
-        onChange={handleFromVersionChange}
+        onChange={setFromVersion}
         value={fromVersion}
       >
         {releasesOptions}
@@ -65,7 +61,7 @@ const ReleaseVersionsRangeFormControl = ({
         isDisabled={!releasesOptions || isLoading}
         isLoading={isLoading}
         placeholder={selectPlaceholder}
-        onChange={handleToVersionChange}
+        onChange={setToVersion}
         value={toVersion}
       >
         {releasesOptions}

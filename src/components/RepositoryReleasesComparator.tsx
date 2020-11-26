@@ -1,5 +1,4 @@
 import { Divider, Flex, Text } from '@chakra-ui/react'
-import { Release, Repository, VersionRange } from 'models'
 import dynamic from 'next/dynamic'
 import * as React from 'react'
 
@@ -15,50 +14,29 @@ const RepositoryReleasesChangelog = dynamic(
   () => import('~/components/RepositoryReleasesChangelog')
 )
 
-interface Props {
-  releases?: Release[]
-  versionRange: VersionRange
-  isLoading?: boolean
-  onRepositoryChange(repo: Repository | null | undefined): void
-  onVersionRangeChange(range: VersionRange): void
-}
-
-const RepositoryReleasesComparator = ({
-  releases,
-  versionRange,
-  isLoading = false,
-  onRepositoryChange,
-  onVersionRangeChange,
-}: Props) => {
+const RepositoryReleasesComparator = () => {
   const isClientSide = useIsClientSide()
   const { isAuth } = useGithubAuth()
-  const { repository } = useComparatorState()
+  const { repository, fromVersion, toVersion } = useComparatorState()
 
   return (
     <>
       <Container>
-        <RepositoriesComparatorFilters
-          releases={releases}
-          versionRange={versionRange}
-          isLoading={isLoading}
-          onRepositoryChange={onRepositoryChange}
-          onVersionRangeChange={onVersionRangeChange}
-        />
+        <RepositoriesComparatorFilters />
       </Container>
       <Divider my={4} />
       {repository && (
         <>
           <RepositoryReleasesChangelogHeading
             repository={repository}
-            fromVersion={versionRange[0]}
-            toVersion={versionRange[1]}
+            fromVersion={fromVersion}
+            toVersion={toVersion}
           />
           <Container>
             <RepositoryReleasesChangelog
               repository={repository}
-              releases={releases}
-              fromVersion={versionRange[0]}
-              toVersion={versionRange[1]}
+              fromVersion={fromVersion}
+              toVersion={toVersion}
             />
           </Container>
         </>

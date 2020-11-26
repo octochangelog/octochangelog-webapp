@@ -7,11 +7,16 @@ declare global {
   }
 }
 
+export type RepositoryQueryParams = {
+  repo: string
+  owner: string
+}
+
 export type Repository = RestEndpointMethodTypes['repos']['get']['response']['data']
 
 export type Release = RestEndpointMethodTypes['repos']['getRelease']['response']['data']
 
-export type VersionRange = [string, string]
+export type ReleaseVersion = string
 
 // FIXME: generate proper types for processed release
 export type ProcessedReleasesCollection = any

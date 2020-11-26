@@ -1,12 +1,22 @@
-import { createContext, ReactNode, useContext, useState } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 
-import { Repository } from '~/models'
+import { ReleaseVersion, Repository } from '~/models'
 
 type ComparatorStateContextValue = {
   repository?: Repository
+  fromVersion?: ReleaseVersion
+  toVersion?: ReleaseVersion
 }
 type ComparatorUpdaterContextValue = {
-  setRepository: (newRepository: Repository) => void
+  setRepository: (newRepository?: Repository) => void
+  setFromVersion: (newVersion?: ReleaseVersion) => void
+  setToVersion: (newVersion?: ReleaseVersion) => void
 }
 
 const ComparatorStateContext = createContext<
@@ -20,13 +30,29 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
   const [repository, setRepository] = useState<Repository | undefined>(
     undefined
   )
+  const [fromVersion, setFromVersion] = useState<ReleaseVersion | undefined>(
+    undefined
+  )
+  const [toVersion, setToVersion] = useState<ReleaseVersion | undefined>(
+    undefined
+  )
+
+  useEffect(() => {
+    // clean versions when repo changes
+    setFromVersion(undefined)
+    setToVersion(undefined)
+  }, [repository])
 
   const stateValue = {
     repository,
+    fromVersion,
+    toVersion,
   }
 
   const updaterValue = {
     setRepository,
+    setFromVersion,
+    setToVersion,
   }
 
   return (

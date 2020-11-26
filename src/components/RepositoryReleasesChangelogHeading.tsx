@@ -7,8 +7,8 @@ import { Repository } from '~/models'
 
 interface Props {
   repository: Repository
-  fromVersion: string
-  toVersion: string
+  fromVersion?: string
+  toVersion?: string
 }
 
 const RepositoryReleasesChangelogHeading = ({

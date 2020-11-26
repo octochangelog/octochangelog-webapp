@@ -1,8 +1,6 @@
-import { MiscGroupTitles, SemVerGroupTitles, VersionRange } from '~/models'
+import { MiscGroupTitles, SemVerGroupTitles } from '~/models'
 
 export const IS_PRODUCTION_MODE = process.env.NODE_ENV === 'production'
-
-export const EMPTY_VERSION_RANGE: VersionRange = ['', '']
 
 export const REPO_URL = 'https://github.com/Belco90/octoclairvoyant'
 

@@ -25,7 +25,7 @@ import { octokit } from '~/github-client'
 import { Repository } from '~/models'
 
 type Props = {
-  onSelect: (repo?: Repository | null) => void
+  onSelect: (repo?: Repository | undefined) => void
 }
 
 type QueryResults = RestEndpointMethodTypes['search']['repos']['response']['data']

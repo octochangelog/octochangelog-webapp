@@ -1,5 +1,10 @@
 import { lowerCase } from 'lodash'
-import { MiscGroupTitles, Release, SemVerGroupTitles } from 'models'
+import {
+  MiscGroupTitles,
+  Release,
+  ReleaseVersion,
+  SemVerGroupTitles,
+} from 'models'
 import semver from 'semver'
 import title from 'title'
 
@@ -7,8 +12,8 @@ import { HIGH_PRIORITY_GROUP_TITLES, LOW_PRIORITY_GROUP_TITLES } from '~/global'
 
 type FilterReleasesNodes = {
   releases: Release[]
-  from: string
-  to: string
+  from: ReleaseVersion
+  to: ReleaseVersion
 }
 
 export function filterReleasesByVersionRange(
@@ -20,6 +25,12 @@ export function filterReleasesByVersionRange(
   return releases.filter(
     ({ tag_name }) => semver.gt(tag_name, from) && semver.lte(tag_name, to)
   )
+}
+
+export function isStableRelease(release: Release): boolean {
+  const { tag_name } = release
+
+  return !!semver.valid(tag_name) && !semver.prerelease(tag_name)
 }
 
 const customTitleSpecials: string[] = ['DOM', 'ESLint']
