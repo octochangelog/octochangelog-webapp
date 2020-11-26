@@ -13,34 +13,25 @@ import {
   ListItem,
   Text,
 } from '@chakra-ui/react'
-import { RestEndpointMethodTypes } from '@octokit/rest'
 import { useCombobox } from 'downshift'
 import { debounce } from 'lodash'
 import * as React from 'react'
 import { useEffect, useMemo, useState } from 'react'
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
-import { useQuery } from 'react-query'
 
-import { octokit } from '~/github-client'
 import { Repository } from '~/models'
+import useSearchRepositories from '~/queries/repository'
 
 type Props = {
   onSelect: (repo?: Repository | undefined) => void
 }
 
-type QueryResults = RestEndpointMethodTypes['search']['repos']['response']['data']
-type QueryParams = RestEndpointMethodTypes['search']['repos']['parameters']
-
 const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
-  const { data, refetch, isLoading: isQueryLoading } = useQuery<QueryResults>(
-    ['repos', { q: inputValue }],
-    async (_, params: QueryParams) => {
-      const resp = await octokit.search.repos(params)
 
-      return resp.data
-    },
+  const { data, refetch, isLoading: isQueryLoading } = useSearchRepositories(
+    { q: inputValue },
     { enabled: false }
   )
 
