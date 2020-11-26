@@ -2,16 +2,7 @@ import { QueryConfig, QueryResult, useQuery, useQueryCache } from 'react-query'
 
 import { octokit } from '~/github-client'
 import { Release, Repository, RepositoryQueryParams } from '~/models'
-import { isStableRelease } from '~/utils'
-
-function mapRepositoryQueryParams(
-  repository?: Repository
-): RepositoryQueryParams {
-  return {
-    owner: repository?.owner.login ?? '',
-    repo: repository?.name ?? '',
-  }
-}
+import { isStableRelease, mapRepositoryToQueryParams } from '~/utils'
 
 type ReleasesQueryResults = Release[]
 type ReleasesQueryParams = {
@@ -25,7 +16,7 @@ function useReleasesQuery(
   config?: QueryConfig<ReleasesQueryResults>
 ): QueryResult<ReleasesQueryResults> {
   return useQuery<ReleasesQueryResults>(
-    [QUERY_KEY, mapRepositoryQueryParams(params.repository)],
+    [QUERY_KEY, mapRepositoryToQueryParams(params.repository)],
     async (_, queryParams: RepositoryQueryParams) => {
       return octokit.paginate(
         'GET /repos/:owner/:repo/releases',
@@ -42,7 +33,7 @@ function useReleasesData(repository: Repository): Release[] | undefined {
 
   return queryCache.getQueryData([
     QUERY_KEY,
-    mapRepositoryQueryParams(repository),
+    mapRepositoryToQueryParams(repository),
   ])
 }
 

@@ -1,42 +1,34 @@
+import { isEqual } from 'lodash'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+
 import RepositoryReleasesComparator from '~/components/RepositoryReleasesComparator'
+import { useComparatorState } from '~/contexts/comparator-context'
+import { mapRepositoryToString } from '~/utils'
 
 const ComparatorScreen = () => {
-  // TODO: get this back when errors moved to comparator context
-  //  or try to set global RQ onError
-  // const [shouldShowExceeded, setShouldShowExceeded] = useState(false)
-  // const toast = useToast()
-  //
-  // const handleQueryError = useCallback(
-  //   (err: Error) => {
-  //     if (err) {
-  //       toast({
-  //         title: 'An error occurred.',
-  //         description: err.message || 'Something went wrong',
-  //         status: 'error',
-  //         duration: 5000,
-  //         isClosable: true,
-  //         position: 'bottom-left',
-  //       })
-  //
-  //       // TODO: get this from octokit properly
-  //       if (err.message === GITHUB_RATE_LIMIT_EXCEEDED_ERROR) {
-  //         setShouldShowExceeded(true)
-  //       }
-  //     }
-  //   },
-  //   [toast]
-  // )
-  //
-  // useEffect(
-  //   function handleReleasesErrorEffect() {
-  //     handleQueryError(releasesError as Error)
-  //   },
-  //   [handleQueryError, releasesError]
-  // )
-  //
-  // if (shouldShowExceeded) {
-  //   return <RateLimitExceededNotice />
-  // }
+  const router = useRouter()
+  const { repository, fromVersion, toVersion } = useComparatorState()
+
+  useEffect(() => {
+    let newQuery = {}
+
+    if (repository && fromVersion && toVersion) {
+      newQuery = {
+        repo: mapRepositoryToString(repository),
+        from: fromVersion,
+        to: toVersion,
+      }
+    }
+
+    if (!isEqual(router.query, newQuery)) {
+      router.replace(
+        { pathname: router.pathname, query: newQuery },
+        undefined,
+        { shallow: true }
+      )
+    }
+  }, [repository, fromVersion, toVersion, router])
 
   return <RepositoryReleasesComparator />
 }

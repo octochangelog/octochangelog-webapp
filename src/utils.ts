@@ -3,12 +3,33 @@ import {
   MiscGroupTitles,
   Release,
   ReleaseVersion,
+  Repository,
+  RepositoryQueryParams,
   SemVerGroupTitles,
 } from 'models'
 import semver from 'semver'
 import title from 'title'
 
 import { HIGH_PRIORITY_GROUP_TITLES, LOW_PRIORITY_GROUP_TITLES } from '~/global'
+
+export function mapRepositoryToQueryParams(
+  repository?: Repository
+): RepositoryQueryParams {
+  return {
+    owner: repository?.owner.login ?? '',
+    repo: repository?.name ?? '',
+  }
+}
+
+export function mapRepositoryToString(repository?: Repository): string {
+  const { owner, repo } = mapRepositoryToQueryParams(repository)
+
+  if (!owner || !repo) {
+    return ''
+  }
+
+  return `${owner}/${repo}`
+}
 
 type FilterReleasesNodes = {
   releases: Release[]
