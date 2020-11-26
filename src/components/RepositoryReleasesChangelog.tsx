@@ -15,8 +15,7 @@ import {
   Repository,
   SemVerGroupTitles,
 } from 'models'
-import { useState, useEffect } from 'react'
-import { useQueryCache } from 'react-query'
+import { useEffect, useState } from 'react'
 import {
   compareReleaseGroupTitlesSort,
   filterReleasesByVersionRange,
@@ -25,6 +24,7 @@ import {
 
 import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChangeDescription'
 import TextSkeleton from '~/components/TextSkeleton'
+import { useReleasesData } from '~/queries/release'
 
 interface RepositoryReleasesChangelogProps {
   repository: Repository
@@ -37,7 +37,6 @@ const RepositoryReleasesChangelog = ({
   fromVersion,
   toVersion,
 }: RepositoryReleasesChangelogProps) => {
-  const queryCache = useQueryCache()
   const [filteredReleases, setFilteredReleases] = useState<Release[] | null>(
     null
   )
@@ -46,11 +45,7 @@ const RepositoryReleasesChangelog = ({
     filteredReleases
   )
 
-  // TODO: extract this to some util when creating RQ custom query hooks
-  const releases: Release[] | undefined = queryCache.getQueryData([
-    'releases',
-    { owner: repository.owner.login, repo: repository.name },
-  ])
+  const releases = useReleasesData(repository)
 
   const shouldShowProcessedReleaseTitle = () => {
     if (!processedReleases) {
