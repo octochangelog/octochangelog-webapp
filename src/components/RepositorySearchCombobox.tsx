@@ -20,7 +20,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
 
 import { Repository } from '~/models'
-import { useSearchRepositories } from '~/queries/repository'
+import { useSearchRepositoriesQuery } from '~/queries/repository'
 
 type Props = {
   onSelect: (repo?: Repository | undefined) => void
@@ -30,10 +30,11 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
 
-  const { data, refetch, isLoading: isQueryLoading } = useSearchRepositories(
-    { q: inputValue },
-    { enabled: false }
-  )
+  const {
+    data,
+    refetch,
+    isLoading: isQueryLoading,
+  } = useSearchRepositoriesQuery({ q: inputValue }, { enabled: false })
 
   const {
     isOpen,

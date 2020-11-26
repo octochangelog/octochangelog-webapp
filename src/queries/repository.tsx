@@ -6,7 +6,7 @@ import { octokit } from '~/github-client'
 type ReposQueryResults = RestEndpointMethodTypes['search']['repos']['response']['data']
 type ReposQueryParams = RestEndpointMethodTypes['search']['repos']['parameters']
 
-function useSearchRepositories(
+function useSearchRepositoriesQuery(
   params: ReposQueryParams,
   config?: QueryConfig<ReposQueryResults>
 ): QueryResult<ReposQueryResults> {
@@ -21,4 +21,4 @@ function useSearchRepositories(
   )
 }
 
-export { useSearchRepositories }
+export { useSearchRepositoriesQuery }

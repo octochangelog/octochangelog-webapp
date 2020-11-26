@@ -20,7 +20,7 @@ type ReleasesQueryParams = {
 
 const QUERY_KEY = 'releases'
 
-function useReleases(
+function useReleasesQuery(
   params: ReleasesQueryParams,
   config?: QueryConfig<ReleasesQueryResults>
 ): QueryResult<ReleasesQueryResults> {
@@ -46,4 +46,4 @@ function useReleasesData(repository: Repository): Release[] | undefined {
   ])
 }
 
-export { useReleases, useReleasesData }
+export { useReleasesQuery, useReleasesData }

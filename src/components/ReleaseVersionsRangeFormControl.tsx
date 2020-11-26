@@ -7,7 +7,7 @@ import {
   useComparatorUpdater,
 } from '~/contexts/comparator-context'
 import { Release } from '~/models'
-import { useReleases } from '~/queries/release'
+import { useReleasesQuery } from '~/queries/release'
 import { releasesComparator } from '~/utils'
 
 const renderReleasesOptions = (releases: Release[]): ReactNode[] | null => {
@@ -22,7 +22,7 @@ const ReleaseVersionsRangeFormControl = (props: StackProps) => {
   const { repository, fromVersion, toVersion } = useComparatorState()
   const { setFromVersion, setToVersion } = useComparatorUpdater()
 
-  const { data: releases, isLoading } = useReleases({ repository })
+  const { data: releases, isLoading } = useReleasesQuery({ repository })
 
   const releasesOptions = releases ? renderReleasesOptions(releases) : null
 
