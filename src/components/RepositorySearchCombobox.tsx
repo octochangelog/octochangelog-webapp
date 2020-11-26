@@ -20,7 +20,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
 
 import { Repository } from '~/models'
-import useSearchRepositories from '~/queries/repository'
+import { useSearchRepositories } from '~/queries/repository'
 
 type Props = {
   onSelect: (repo?: Repository | undefined) => void

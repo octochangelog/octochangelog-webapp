@@ -21,4 +21,4 @@ function useSearchRepositories(
   )
 }
 
-export default useSearchRepositories
+export { useSearchRepositories }
