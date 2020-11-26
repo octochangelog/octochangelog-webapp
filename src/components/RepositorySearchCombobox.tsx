@@ -51,7 +51,7 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
       inputValue: newInputValue,
       isOpen: isOpenOnChange,
     }) => {
-      setIsTyping(!!isOpenOnChange)
+      setIsTyping(!!isOpenOnChange && !!newInputValue)
 
       // Avoid set input value when is not open as that means the user already
       // picked an option so we don't want to refetch again.
