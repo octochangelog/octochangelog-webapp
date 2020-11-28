@@ -1,3 +1,4 @@
+import { Flex, CircularProgress } from '@chakra-ui/react'
 import { isEqual } from 'lodash'
 import { useRouter } from 'next/router'
 import {
@@ -37,6 +38,12 @@ const ComparatorUpdaterContext = createContext<
 >(undefined)
 
 type InitStatus = 'mount' | 'loading' | 'done'
+
+const loadingElement = (
+  <Flex align="center" justify="center" height="100%">
+    <CircularProgress size="8" isIndeterminate color="primary.400" />
+  </Flex>
+)
 
 function ComparatorProvider({ children }: { children: ReactNode }) {
   const statusRef = useRef<InitStatus>('mount')
@@ -141,7 +148,7 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
   return (
     <ComparatorStateContext.Provider value={stateValue}>
       <ComparatorUpdaterContext.Provider value={updaterValue}>
-        {isReady ? children : 'LOADING...'}
+        {isReady ? children : loadingElement}
       </ComparatorUpdaterContext.Provider>
     </ComparatorStateContext.Provider>
   )
