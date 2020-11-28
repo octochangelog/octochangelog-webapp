@@ -19,7 +19,7 @@ const RepositoriesComparatorFilters = () => {
     >
       <RepositorySearchCombobox
         onSelect={setRepository}
-        initialInputValue={initialValues.repository?.full_name}
+        initialInputValue={initialValues?.repository?.full_name}
       />
       <ReleaseVersionsRangeFormControl
         width={{ base: 'full', md: '80%' }}

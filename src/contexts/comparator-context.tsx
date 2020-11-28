@@ -21,7 +21,7 @@ interface ValuesShape {
 }
 
 interface ComparatorStateContextValue extends ValuesShape {
-  initialValues: ValuesShape
+  initialValues: ValuesShape | null
 }
 
 interface ComparatorUpdaterContextValue {
@@ -47,7 +47,7 @@ const loadingElement = (
 
 function ComparatorProvider({ children }: { children: ReactNode }) {
   const statusRef = useRef<InitStatus>('mount')
-  const initialValuesRef = useRef<ValuesShape>({})
+  const initialValuesRef = useRef<ValuesShape>(null)
   const [isReady, setIsReady] = useState<boolean>(false)
   const [repository, setRepository] = useState<Repository | undefined>(
     undefined
@@ -73,9 +73,11 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
           searchParams.get('repo') ?? ''
         )
 
-        initialValuesRef.current.fromVersion =
-          searchParams.get('from') || undefined
-        initialValuesRef.current.toVersion = searchParams.get('to') || undefined
+        // @ts-ignore (TS complains current is read-only)
+        initialValuesRef.current = {
+          fromVersion: searchParams.get('from') || undefined,
+          toVersion: searchParams.get('to') || undefined,
+        }
 
         if (repositoryQueryParams) {
           const response = await octokit.repos.get(repositoryQueryParams)
