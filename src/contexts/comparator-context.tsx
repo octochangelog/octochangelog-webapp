@@ -14,9 +14,9 @@ import { ReleaseVersion, Repository } from '~/models'
 import { mapStringToRepositoryQueryParams } from '~/utils'
 
 interface ValuesShape {
-  repository?: Repository | null
-  fromVersion?: ReleaseVersion | null
-  toVersion?: ReleaseVersion | null
+  repository?: Repository
+  fromVersion?: ReleaseVersion
+  toVersion?: ReleaseVersion
 }
 
 interface ComparatorStateContextValue extends ValuesShape {
@@ -66,8 +66,9 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
           searchParams.get('repo') ?? ''
         )
 
-        initialValuesRef.current.fromVersion = searchParams.get('from')
-        initialValuesRef.current.toVersion = searchParams.get('to')
+        initialValuesRef.current.fromVersion =
+          searchParams.get('from') || undefined
+        initialValuesRef.current.toVersion = searchParams.get('to') || undefined
 
         if (repositoryQueryParams) {
           const response = await octokit.repos.get(repositoryQueryParams)
