@@ -45,7 +45,9 @@ const RepositoryReleasesChangelog = ({
     filteredReleases
   )
 
-  const { data: releases, isSuccess } = useReleasesQuery({ repository })
+  const { data: releases, isSuccess } = useReleasesQuery({
+    repository,
+  })
 
   const shouldShowProcessedReleaseTitle = () => {
     if (!processedReleases) {
@@ -78,7 +80,7 @@ const RepositoryReleasesChangelog = ({
   // TODO: simplify conditional renders with state machine
   return (
     <>
-      {(isProcessing || !isSuccess) && (
+      {isProcessing && (
         <>
           <Skeleton width="20%" height={8} mb={4} />
           <TextSkeleton />
