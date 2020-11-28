@@ -113,7 +113,6 @@ function useProcessReleases(
       const handleProcessReleases = async () => {
         if (!releases || releases.length === 0) {
           setProcessedReleases(null)
-          setIsProcessing(false)
         } else {
           const result = await processReleasesAsync(releases)
           setProcessedReleases(result as any)

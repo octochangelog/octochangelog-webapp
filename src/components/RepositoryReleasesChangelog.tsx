@@ -24,7 +24,7 @@ import {
 
 import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChangeDescription'
 import TextSkeleton from '~/components/TextSkeleton'
-import { useReleasesData } from '~/queries/release'
+import { useReleasesQuery } from '~/queries/release'
 
 interface RepositoryReleasesChangelogProps {
   repository: Repository
@@ -45,7 +45,7 @@ const RepositoryReleasesChangelog = ({
     filteredReleases
   )
 
-  const releases = useReleasesData(repository)
+  const { data: releases, isSuccess } = useReleasesQuery({ repository })
 
   const shouldShowProcessedReleaseTitle = () => {
     if (!processedReleases) {
@@ -78,14 +78,14 @@ const RepositoryReleasesChangelog = ({
   // TODO: simplify conditional renders with state machine
   return (
     <>
-      {isProcessing && (
+      {(isProcessing || !isSuccess) && (
         <>
           <Skeleton width="20%" height={8} mb={4} />
           <TextSkeleton />
         </>
       )}
 
-      {!isProcessing && processedReleases && (
+      {!isProcessing && isSuccess && processedReleases && (
         <Stack spacing={6}>
           {Object.keys(processedReleases)
             .sort(compareReleaseGroupTitlesSort)
@@ -126,12 +126,16 @@ const RepositoryReleasesChangelog = ({
         </Stack>
       )}
 
-      {fromVersion && toVersion && !processedReleases && !isProcessing && (
-        <Alert status="error">
-          <AlertIcon />
-          No processed releases to show
-        </Alert>
-      )}
+      {fromVersion &&
+        toVersion &&
+        !processedReleases &&
+        !isProcessing &&
+        !isSuccess && (
+          <Alert status="error">
+            <AlertIcon />
+            No processed releases to show
+          </Alert>
+        )}
     </>
   )
 }

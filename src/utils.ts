@@ -21,14 +21,15 @@ export function mapRepositoryToQueryParams(
   }
 }
 
-export function mapRepositoryToString(repository?: Repository): string {
-  const { owner, repo } = mapRepositoryToQueryParams(repository)
-
-  if (!owner || !repo) {
-    return ''
+export function mapStringToRepositoryQueryParams(
+  str: string
+): RepositoryQueryParams | null {
+  try {
+    const [owner, repo] = str.split('/')
+    return { owner, repo }
+  } catch (e) {
+    return null
   }
-
-  return `${owner}/${repo}`
 }
 
 type FilterReleasesNodes = {

@@ -10,7 +10,7 @@ import { Release } from '~/models'
 import { useReleasesQuery } from '~/queries/release'
 import { releasesComparator } from '~/utils'
 
-const renderReleasesOptions = (releases: Release[]): ReactNode[] | null => {
+const renderReleasesOptions = (releases: Release[]): ReactNode[] => {
   return releases.sort(releasesComparator).map((release) => (
     <option key={release.id} value={release.tag_name}>
       {release.tag_name}

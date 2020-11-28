@@ -1,4 +1,4 @@
-import { QueryConfig, QueryResult, useQuery, useQueryCache } from 'react-query'
+import { QueryConfig, QueryResult, useQuery } from 'react-query'
 
 import { octokit } from '~/github-client'
 import { Release, Repository, RepositoryQueryParams } from '~/models'
@@ -28,13 +28,4 @@ function useReleasesQuery(
   )
 }
 
-function useReleasesData(repository: Repository): Release[] | undefined {
-  const queryCache = useQueryCache()
-
-  return queryCache.getQueryData([
-    QUERY_KEY,
-    mapRepositoryToQueryParams(repository),
-  ])
-}
-
-export { useReleasesQuery, useReleasesData }
+export { useReleasesQuery }
