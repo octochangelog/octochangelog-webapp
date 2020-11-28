@@ -22,11 +22,12 @@ import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
 import { Repository } from '~/models'
 import { useSearchRepositoriesQuery } from '~/queries/repository'
 
-type Props = {
+interface Props {
   onSelect: (repo?: Repository | undefined) => void
+  initialInputValue?: string
 }
 
-const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
+const RepositorySearchCombobox = ({ onSelect, initialInputValue }: Props) => {
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
 
@@ -48,6 +49,7 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
   } = useCombobox({
     items: data?.items || [],
     itemToString: (repo) => repo?.full_name ?? 'unknown',
+    initialInputValue,
     onInputValueChange: ({
       inputValue: newInputValue,
       isOpen: isOpenOnChange,
@@ -89,7 +91,6 @@ const RepositorySearchCombobox = ({ onSelect, ...rest }: Props) => {
       width="full"
       position="relative"
       {...getComboboxProps()}
-      {...rest}
     >
       <FormLabel {...getLabelProps()}>Repository</FormLabel>
       <HStack>

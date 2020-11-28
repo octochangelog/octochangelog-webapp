@@ -19,12 +19,11 @@ interface ValuesShape {
   toVersion?: ReleaseVersion | null
 }
 
-type ComparatorStateContextValue = {
-  repository?: Repository
-  fromVersion?: ReleaseVersion
-  toVersion?: ReleaseVersion
+interface ComparatorStateContextValue extends ValuesShape {
+  initialValues: ValuesShape
 }
-type ComparatorUpdaterContextValue = {
+
+interface ComparatorUpdaterContextValue {
   setRepository: (newRepository?: Repository) => void
   setFromVersion: (newVersion?: ReleaseVersion) => void
   setToVersion: (newVersion?: ReleaseVersion) => void
@@ -40,9 +39,9 @@ const ComparatorUpdaterContext = createContext<
 type InitStatus = 'mount' | 'loading' | 'done'
 
 function ComparatorProvider({ children }: { children: ReactNode }) {
-  // const [initStatus, setInitStatus] = useState<InitStatus>('mount')
   const statusRef = useRef<InitStatus>('mount')
   const initialValuesRef = useRef<ValuesShape>({})
+  const [isReady, setIsReady] = useState<boolean>(false)
   const [repository, setRepository] = useState<Repository | undefined>(
     undefined
   )
@@ -61,7 +60,6 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
       const locationSearch = window.location.search.substring(1)
 
       if (locationSearch) {
-        // setInitStatus('loading')
         statusRef.current = 'loading'
         const searchParams = new URLSearchParams(locationSearch)
         const repositoryQueryParams = mapStringToRepositoryQueryParams(
@@ -88,25 +86,24 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
         }
       }
 
-      // setInitStatus('done')
       statusRef.current = 'done'
+      setIsReady(true)
     }
 
     initComparator()
   }, [])
 
   useEffect(() => {
-    // if (initStatus === 'done') {
-    if (statusRef.current === 'done') {
-      // clean versions when repo changes
-      setFromVersion(undefined)
-      setToVersion(undefined)
+    // clean versions when repo changes
+    if (statusRef.current !== 'done') {
+      return
     }
+    setFromVersion(undefined)
+    setToVersion(undefined)
   }, [repository])
 
   useEffect(() => {
     // update qs filter values
-    // if (initStatus !== 'done') {
     if (statusRef.current !== 'done') {
       return
     }
@@ -131,6 +128,7 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
     repository,
     fromVersion,
     toVersion,
+    initialValues: initialValuesRef.current,
   }
 
   const updaterValue = {
@@ -142,7 +140,7 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
   return (
     <ComparatorStateContext.Provider value={stateValue}>
       <ComparatorUpdaterContext.Provider value={updaterValue}>
-        {children}
+        {isReady ? children : 'LOADING...'}
       </ComparatorUpdaterContext.Provider>
     </ComparatorStateContext.Provider>
   )

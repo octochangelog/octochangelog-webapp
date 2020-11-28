@@ -45,7 +45,7 @@ const RepositoryReleasesChangelog = ({
     filteredReleases
   )
 
-  const { data: releases, isSuccess } = useReleasesQuery({
+  const { data: releases, isLoading } = useReleasesQuery({
     repository,
   })
 
@@ -87,7 +87,7 @@ const RepositoryReleasesChangelog = ({
         </>
       )}
 
-      {!isProcessing && isSuccess && processedReleases && (
+      {!isProcessing && !isLoading && processedReleases && (
         <Stack spacing={6}>
           {Object.keys(processedReleases)
             .sort(compareReleaseGroupTitlesSort)
@@ -132,7 +132,7 @@ const RepositoryReleasesChangelog = ({
         toVersion &&
         !processedReleases &&
         !isProcessing &&
-        !isSuccess && (
+        !isLoading && (
           <Alert status="error">
             <AlertIcon />
             No processed releases to show
