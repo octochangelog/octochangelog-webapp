@@ -27,7 +27,10 @@ interface Props {
   initialInputValue?: string
 }
 
-const RepositorySearchCombobox = ({ onSelect, initialInputValue }: Props) => {
+const RepositorySearchCombobox = ({
+  onSelect,
+  initialInputValue = '',
+}: Props) => {
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
 

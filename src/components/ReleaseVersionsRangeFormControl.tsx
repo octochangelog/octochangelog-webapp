@@ -1,21 +1,38 @@
 import { Stack, StackProps } from '@chakra-ui/react'
-import { ReactNode } from 'react'
 
 import ReleaseVersionFormControl from '~/components/ReleaseVersionFormControl'
 import {
   useComparatorState,
   useComparatorUpdater,
 } from '~/contexts/comparator-context'
-import { Release } from '~/models'
+import { Release, SimplifiedRelease } from '~/models'
 import { useReleasesQuery } from '~/queries/release'
-import { releasesComparator } from '~/utils'
+import { getReleaseVersion, releasesComparator } from '~/utils'
 
-const renderReleasesOptions = (releases: Release[]): ReactNode[] => {
-  return releases.sort(releasesComparator).map((release) => (
-    <option key={release.id} value={release.tag_name}>
-      {release.tag_name}
-    </option>
-  ))
+function mapReleasesRange(
+  releases?: Release[]
+): [SimplifiedRelease[], SimplifiedRelease[]] {
+  if (!releases?.length) {
+    return [[], []]
+  }
+
+  const sortedReleases = releases.sort(releasesComparator)
+
+  // remove very last version to leave a gap of 1 version between penultimate from version and last to version
+  const fromReleases =
+    sortedReleases.length === 1 ? sortedReleases : sortedReleases.slice(1)
+
+  // prepend "latest" option based on last release object
+  const toReleases = [
+    {
+      name: `Latest (${getReleaseVersion(sortedReleases[0])})`,
+      tag_name: 'latest',
+      id: 'latest',
+    },
+    ...sortedReleases,
+  ]
+
+  return [fromReleases, toReleases]
 }
 
 const ReleaseVersionsRangeFormControl = (props: StackProps) => {
@@ -24,10 +41,10 @@ const ReleaseVersionsRangeFormControl = (props: StackProps) => {
 
   const { data: releases, isLoading } = useReleasesQuery({ repository })
 
-  const releasesOptions = releases ? renderReleasesOptions(releases) : null
+  const [fromReleases, toReleases] = mapReleasesRange(releases)
 
   const selectPlaceholder =
-    Array.isArray(releasesOptions) && releasesOptions.length === 0
+    Array.isArray(releases) && releases.length === 0
       ? 'Releases not found'
       : 'Choose a release'
 
@@ -36,25 +53,23 @@ const ReleaseVersionsRangeFormControl = (props: StackProps) => {
       <ReleaseVersionFormControl
         label="From release"
         id="from-version"
-        isDisabled={!releasesOptions || isLoading}
+        isDisabled={!releases || isLoading}
         isLoading={isLoading}
         placeholder={selectPlaceholder}
+        options={fromReleases}
         onChange={setFromVersion}
         value={fromVersion}
-      >
-        {releasesOptions}
-      </ReleaseVersionFormControl>
+      />
       <ReleaseVersionFormControl
         label="To release"
         id="to-version"
-        isDisabled={!releasesOptions || isLoading}
+        isDisabled={!releases || isLoading}
         isLoading={isLoading}
         placeholder={selectPlaceholder}
+        options={toReleases}
         onChange={setToVersion}
         value={toVersion}
-      >
-        {releasesOptions}
-      </ReleaseVersionFormControl>
+      />
     </Stack>
   )
 }

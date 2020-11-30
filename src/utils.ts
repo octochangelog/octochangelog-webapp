@@ -6,6 +6,7 @@ import {
   Repository,
   RepositoryQueryParams,
   SemVerGroupTitles,
+  SimplifiedRelease,
 } from 'models'
 import semver from 'semver'
 import title from 'title'
@@ -38,10 +39,21 @@ type FilterReleasesNodes = {
   to: ReleaseVersion
 }
 
+export function getReleaseVersion(
+  release: Release | SimplifiedRelease
+): string {
+  return release.name || release.tag_name
+}
+
 export function filterReleasesByVersionRange(
   args: FilterReleasesNodes
 ): Release[] {
-  const { releases, from, to } = args
+  const { releases, from, to: originalTo } = args
+
+  const to =
+    originalTo.toLowerCase() === 'latest'
+      ? getReleaseVersion(releases[0])
+      : originalTo
 
   // filter version range as (from, to]
   return releases.filter(
