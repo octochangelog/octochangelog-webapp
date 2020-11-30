@@ -1,19 +1,30 @@
+import { Flex, CircularProgress } from '@chakra-ui/react'
+import { isEqual } from 'lodash'
+import { useRouter } from 'next/router'
 import {
   createContext,
   ReactNode,
   useContext,
   useEffect,
+  useRef,
   useState,
 } from 'react'
 
+import { octokit } from '~/github-client'
 import { ReleaseVersion, Repository } from '~/models'
+import { mapStringToRepositoryQueryParams } from '~/utils'
 
-type ComparatorStateContextValue = {
+interface ValuesShape {
   repository?: Repository
   fromVersion?: ReleaseVersion
   toVersion?: ReleaseVersion
 }
-type ComparatorUpdaterContextValue = {
+
+interface ComparatorStateContextValue extends ValuesShape {
+  initialValues: ValuesShape | null
+}
+
+interface ComparatorUpdaterContextValue {
   setRepository: (newRepository?: Repository) => void
   setFromVersion: (newVersion?: ReleaseVersion) => void
   setToVersion: (newVersion?: ReleaseVersion) => void
@@ -26,7 +37,18 @@ const ComparatorUpdaterContext = createContext<
   ComparatorUpdaterContextValue | undefined
 >(undefined)
 
+type InitStatus = 'mount' | 'loading' | 'done'
+
+const loadingElement = (
+  <Flex align="center" justify="center" height="100%">
+    <CircularProgress size="8" isIndeterminate color="primary.400" />
+  </Flex>
+)
+
 function ComparatorProvider({ children }: { children: ReactNode }) {
+  const statusRef = useRef<InitStatus>('mount')
+  const initialValuesRef = useRef<ValuesShape>(null)
+  const [isReady, setIsReady] = useState<boolean>(false)
   const [repository, setRepository] = useState<Repository | undefined>(
     undefined
   )
@@ -36,17 +58,87 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
   const [toVersion, setToVersion] = useState<ReleaseVersion | undefined>(
     undefined
   )
+  const router = useRouter()
+
+  useEffect(() => {
+    const initComparator = async () => {
+      // using window.location.search instead of router.query since the latter
+      // is not available until rerender after mount
+      const locationSearch = window.location.search.substring(1)
+
+      if (locationSearch) {
+        statusRef.current = 'loading'
+        const searchParams = new URLSearchParams(locationSearch)
+        const repositoryQueryParams = mapStringToRepositoryQueryParams(
+          searchParams.get('repo') ?? ''
+        )
+
+        // @ts-ignore (TS complains current is read-only)
+        initialValuesRef.current = {
+          fromVersion: searchParams.get('from') || undefined,
+          toVersion: searchParams.get('to') || undefined,
+        }
+
+        if (repositoryQueryParams) {
+          const response = await octokit.repos.get(repositoryQueryParams)
+
+          if (response?.data) {
+            initialValuesRef.current.repository = response.data
+            setRepository(response.data)
+          }
+        }
+
+        if (initialValuesRef.current.fromVersion) {
+          setFromVersion(initialValuesRef.current.fromVersion)
+        }
+        if (initialValuesRef.current.toVersion) {
+          setToVersion(initialValuesRef.current.toVersion)
+        }
+      }
+
+      statusRef.current = 'done'
+      setIsReady(true)
+    }
+
+    initComparator()
+  }, [])
 
   useEffect(() => {
     // clean versions when repo changes
+    if (statusRef.current !== 'done') {
+      return
+    }
     setFromVersion(undefined)
     setToVersion(undefined)
   }, [repository])
+
+  useEffect(() => {
+    // update qs filter values
+    if (statusRef.current !== 'done') {
+      return
+    }
+    const newQuery = Object.fromEntries(
+      Object.entries({
+        repo: repository?.full_name,
+        from: fromVersion,
+        to: toVersion,
+      }).filter(([_, value]) => Boolean(value))
+    )
+
+    if (!isEqual(router.query, newQuery)) {
+      router.replace(
+        { pathname: router.pathname, query: newQuery },
+        undefined,
+        { shallow: true }
+      )
+    }
+  }, [repository, fromVersion, toVersion, router])
 
   const stateValue = {
     repository,
     fromVersion,
     toVersion,
+    initialValues: initialValuesRef.current,
   }
 
   const updaterValue = {
@@ -58,7 +150,7 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
   return (
     <ComparatorStateContext.Provider value={stateValue}>
       <ComparatorUpdaterContext.Provider value={updaterValue}>
-        {children}
+        {isReady ? children : loadingElement}
       </ComparatorUpdaterContext.Provider>
     </ComparatorStateContext.Provider>
   )

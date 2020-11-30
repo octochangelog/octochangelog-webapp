@@ -5,31 +5,22 @@ import * as gtag from 'gtag'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { Router } from 'next/router'
-import NProgress from 'nprogress'
 import { ReactQueryConfigProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query-devtools'
 import 'focus-visible/dist/focus-visible'
 
 import '~/styles/highlight.styles.github.css'
-import '~/styles/nprogress.css'
 import { GithubAuthProvider } from '~/contexts/github-auth-provider'
 
-Router.events.on('routeChangeStart', () => {
-  NProgress.start()
-})
-Router.events.on('routeChangeError', () => {
-  NProgress.done()
-})
 Router.events.on('routeChangeComplete', (url) => {
   gtag.pageView(url)
-  NProgress.done()
 })
 
 const globalReactQueryConfig = {
   queries: {
     refetchOnWindowFocus: false,
     retry: 1,
-    staleTime: 3 * 60 * 1000, // 3min
+    staleTime: 5 * 60 * 1000, // 5min
   },
 }
 

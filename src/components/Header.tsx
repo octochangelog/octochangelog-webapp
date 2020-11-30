@@ -21,6 +21,7 @@ import { FaBars } from 'react-icons/fa'
 
 import Container from '~/components/Container'
 import RouteLink from '~/components/RouteLink'
+import useIsClientSide from '~/hooks/useIsClientSide'
 
 const LOGO_SIZES = { base: '25px', md: '30px', lg: '50px' }
 
@@ -101,6 +102,7 @@ const HeaderLinks = () => {
 }
 
 const Header = (props: BoxProps) => {
+  const isClientSide = useIsClientSide()
   return (
     <Box as="header" bg="gray.700" color="white" zIndex="banner" {...props}>
       <Container py={5}>
@@ -118,7 +120,7 @@ const Header = (props: BoxProps) => {
               Octoclairvoyant
             </Heading>
           </Flex>
-          <HeaderLinks />
+          {isClientSide && <HeaderLinks />}
         </Flex>
       </Container>
     </Box>

@@ -3,9 +3,13 @@ import * as React from 'react'
 
 import ReleaseVersionsRangeFormControl from '~/components/ReleaseVersionsRangeFormControl'
 import RepositorySearchCombobox from '~/components/RepositorySearchCombobox'
-import { useComparatorUpdater } from '~/contexts/comparator-context'
+import {
+  useComparatorState,
+  useComparatorUpdater,
+} from '~/contexts/comparator-context'
 
 const RepositoriesComparatorFilters = () => {
+  const { initialValues } = useComparatorState()
   const { setRepository } = useComparatorUpdater()
 
   return (
@@ -13,7 +17,10 @@ const RepositoriesComparatorFilters = () => {
       spacing={{ base: 2, md: 6 }}
       direction={{ base: 'column', md: 'row' }}
     >
-      <RepositorySearchCombobox onSelect={setRepository} />
+      <RepositorySearchCombobox
+        onSelect={setRepository}
+        initialInputValue={initialValues?.repository?.full_name}
+      />
       <ReleaseVersionsRangeFormControl
         width={{ base: 'full', md: '80%' }}
         direction={{ base: 'column', md: 'row' }}
