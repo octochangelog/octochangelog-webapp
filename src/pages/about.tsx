@@ -95,8 +95,12 @@ const AboutPage = () => {
                 </ListItem>
                 <ListItem>
                   <ListIcon as={FaCheckCircle} color="secondary.500" />
-                  Sort and group releases changes following{' '}
+                  Sort and group releases changelogs following{' '}
                   <Link href="https://semver.org/">Semantic Versioning</Link>
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={FaCheckCircle} color="secondary.500" />
+                  Share changelogs comparison through links
                 </ListItem>
                 <ListItem>
                   <ListIcon as={FaCheckCircle} color="secondary.500" />

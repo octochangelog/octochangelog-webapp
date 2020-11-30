@@ -20,8 +20,9 @@
 
 ### Main Features:
 
-- Search repositories and pick version ranges
-- Sort and group releases changes following [Semantic Versioning](https://semver.org/)
+- Search repositories and pick version range
+- Sort and group releases changelogs following [Semantic Versioning](https://semver.org/)
+- Share changelogs comparison through links
 - Normalize changes categories (e.g. put _bug fixes_ and _minor changes_ under the same category)
 - Highlight code blocks syntax and GitHub references
 - Make easy to spot which version introduced specific changes
@@ -91,7 +92,7 @@ So the final sorting will be:
 
 - [X] Autocomplete repo url input
 - [X] Retrieve more releases when repo has more than 100 available (pagination)
-- [ ] Add shareable urls
+- [X] Add shareable urls
 - [ ] Search versions when typing on selects
 - [ ] Restrict from and to version selects when some option is selected
 - [ ] Improve grouping and sorting for other versioning system than Semantic Versioning
