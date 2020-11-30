@@ -4,7 +4,10 @@ import {
   FormLabel,
   Select,
 } from '@chakra-ui/react'
-import * as React from 'react'
+import { ChangeEvent, ReactNode } from 'react'
+
+import { SimplifiedRelease } from '~/models'
+import { getReleaseVersion } from '~/utils'
 
 interface CustomProps {
   label: string
@@ -12,13 +15,31 @@ interface CustomProps {
   onChange(version: string): void
   value?: string
   isLoading?: boolean
+  options: SimplifiedRelease[]
 }
 
-type ReleaseVersionFormControlProps = Omit<FormControlProps, 'onChange'> &
+type ReleaseVersionFormControlProps = Omit<
+  FormControlProps,
+  'onChange' | 'children'
+> &
   CustomProps
 
+function renderReleasesOptions(
+  releases?: SimplifiedRelease[]
+): ReactNode[] | null {
+  if (!releases) {
+    return null
+  }
+
+  return releases.map((release) => (
+    <option key={release.id} value={release.tag_name}>
+      {getReleaseVersion(release)}
+    </option>
+  ))
+}
+
 const ReleaseVersionFormControl = ({
-  children,
+  options,
   label,
   id,
   placeholder = 'Choose a version',
@@ -27,7 +48,7 @@ const ReleaseVersionFormControl = ({
   isLoading = false,
   ...rest
 }: ReleaseVersionFormControlProps) => {
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     onChange(e.target.value)
   }
 
@@ -40,7 +61,7 @@ const ReleaseVersionFormControl = ({
         onChange={handleChange}
         value={value}
       >
-        {children}
+        {renderReleasesOptions(options)}
       </Select>
     </FormControl>
   )

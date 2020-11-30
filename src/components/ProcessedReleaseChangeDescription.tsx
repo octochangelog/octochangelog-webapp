@@ -20,6 +20,7 @@ import { GoTag } from 'react-icons/go'
 import BlockQuote from '~/components/BlockQuote'
 import Link from '~/components/Link'
 import TextSkeleton from '~/components/TextSkeleton'
+import { getReleaseVersion } from '~/utils'
 
 const remarkReactComponents = {
   h1: (props: HeadingProps) => <Heading as="h2" size="xl" mb="4" {...props} />,
@@ -77,7 +78,7 @@ const ProcessedReleaseChangeDescription = ({
         <>
           <Tag size="md" mb={2} rounded="full" colorScheme="primary">
             <Box as={GoTag} h={4} w={4} mr={1} />
-            <TagLabel>{processedReleaseChange.tag_name}</TagLabel>
+            <TagLabel>{getReleaseVersion(processedReleaseChange)}</TagLabel>
           </Tag>
           <Box ml={4}>{processedDescription}</Box>
         </>
