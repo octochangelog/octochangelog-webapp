@@ -45,7 +45,7 @@ const RepositoryReleasesChangelog = ({
     filteredReleases
   )
 
-  const { data: releases, isLoading } = useReleasesQuery({
+  const { data: releases, isLoading, isFetched } = useReleasesQuery({
     repository,
   })
 
@@ -132,7 +132,7 @@ const RepositoryReleasesChangelog = ({
         toVersion &&
         !processedReleases &&
         !isProcessing &&
-        !isLoading && (
+        isFetched && (
           <Alert status="error">
             <AlertIcon />
             No processed releases to show

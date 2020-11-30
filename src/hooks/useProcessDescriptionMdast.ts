@@ -59,12 +59,12 @@ function useProcessDescriptionMdast({
     setProcessedDescription,
   ] = React.useState<React.ReactNode | null>(null)
 
-  const [isProcessing, setIsProcessing] = React.useState(false)
+  const [isProcessing, setIsProcessing] = React.useState(true)
 
   React.useEffect(
     function processDescriptionMdastEffect() {
-      setIsProcessing(true)
       const handleProcessDescription = async () => {
+        setIsProcessing(true)
         const result = await processDescriptionAsync(
           description,
           repository.html_url,
