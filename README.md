@@ -6,7 +6,7 @@
     width="200"
     alt="Octoclairvoyant reading a crystal ball"
   >
-  <h3>Compare across GitHub repositories releases with ease</h3>
+  <h3>Compare GitHub changelogs across multiple releases in a single view.</h3>
   <p>
     <span role="img" aria-label="Crystall ball">🔮</span> https://octoclairvoyant.vercel.app/
   </p>

@@ -5,7 +5,7 @@ export const IS_PRODUCTION_MODE = process.env.NODE_ENV === 'production'
 export const REPO_URL = 'https://github.com/Belco90/octoclairvoyant'
 
 export const APP_MOTTO =
-  'Compare across GitHub repositories releases with ease '
+  'Compare GitHub changelogs across multiple releases in a single view.'
 
 export const HIGH_PRIORITY_GROUP_TITLES: string[] = [
   SemVerGroupTitles.breakingChanges,
