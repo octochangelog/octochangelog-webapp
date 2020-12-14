@@ -5,8 +5,8 @@ import * as gtag from 'gtag'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { Router } from 'next/router'
-import { ReactQueryConfigProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query-devtools'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import 'focus-visible/dist/focus-visible'
 
 import '~/styles/highlight.styles.github.css'
@@ -16,19 +16,21 @@ Router.events.on('routeChangeComplete', (url) => {
   gtag.pageView(url)
 })
 
-const globalReactQueryConfig = {
-  queries: {
-    refetchOnWindowFocus: false,
-    retry: 1,
-    staleTime: 5 * 60 * 1000, // 5min
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 1,
+      staleTime: 5 * 60 * 1000, // 5min
+    },
   },
-}
+})
 
 const App = ({ Component, pageProps }: AppProps) => {
   resetIdCounter()
 
   return (
-    <ReactQueryConfigProvider config={globalReactQueryConfig}>
+    <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={customTheme}>
         <GithubAuthProvider>
           <Head>
@@ -41,7 +43,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         </GithubAuthProvider>
       </ChakraProvider>
       <ReactQueryDevtools initialIsOpen={false} />
-    </ReactQueryConfigProvider>
+    </QueryClientProvider>
   )
 }
 

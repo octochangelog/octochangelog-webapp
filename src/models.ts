@@ -18,12 +18,6 @@ export type Release = RestEndpointMethodTypes['repos']['getRelease']['response']
 
 export type ReleaseVersion = string
 
-export interface SimplifiedRelease {
-  name: string
-  tag_name: string
-  id: number | string
-}
-
 // FIXME: generate proper types for processed release
 export type ProcessedReleasesCollection = any
 
