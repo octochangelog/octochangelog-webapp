@@ -20,7 +20,7 @@
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "@octokit/auth-callback": "^2.0.0",
-    "@octokit/rest": "^18.0.9",
+    "@octokit/rest": "^18.0.12",
     "downshift": "^6.0.6",
     "focus-visible": "^5.2.0",
     "framer-motion": "^2.9.4",
