@@ -6,7 +6,7 @@ import {
 } from '@chakra-ui/react'
 import { ChangeEvent, ReactNode } from 'react'
 
-import { SimplifiedRelease } from '~/models'
+import { Release } from '~/models'
 import { getReleaseVersion } from '~/utils'
 
 interface CustomProps {
@@ -15,7 +15,7 @@ interface CustomProps {
   onChange(version: string): void
   value?: string
   isLoading?: boolean
-  options: SimplifiedRelease[]
+  options: Release[]
 }
 
 type ReleaseVersionFormControlProps = Omit<
@@ -24,9 +24,7 @@ type ReleaseVersionFormControlProps = Omit<
 > &
   CustomProps
 
-function renderReleasesOptions(
-  releases?: SimplifiedRelease[]
-): ReactNode[] | null {
+function renderReleasesOptions(releases?: Release[]): ReactNode[] | null {
   if (!releases) {
     return null
   }

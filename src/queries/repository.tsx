@@ -1,23 +1,24 @@
 import { RestEndpointMethodTypes } from '@octokit/rest'
-import { useQuery, QueryResult, QueryConfig } from 'react-query'
+import { useQuery, UseQueryOptions, UseQueryResult } from 'react-query'
 
 import { octokit } from '~/github-client'
 
-type ReposQueryResults = RestEndpointMethodTypes['search']['repos']['response']['data']
+type ReposQueryResponse = RestEndpointMethodTypes['search']['repos']['response']
+type ReposQueryResults = ReposQueryResponse['data']
 type ReposQueryParams = RestEndpointMethodTypes['search']['repos']['parameters']
 
 function useSearchRepositoriesQuery(
   params: ReposQueryParams,
-  config?: QueryConfig<ReposQueryResults>
-): QueryResult<ReposQueryResults> {
-  return useQuery<ReposQueryResults>(
-    ['repos', { per_page: 100, ...params }],
-    async (_, queryParams: ReposQueryParams) => {
-      const resp = await octokit.search.repos(queryParams)
-
-      return resp.data
-    },
-    config
+  config?: UseQueryOptions<ReposQueryResults, Error, ReposQueryResponse>
+): UseQueryResult<ReposQueryResults, Error> {
+  const finalParams = { per_page: 100, ...params }
+  return useQuery<ReposQueryResults, Error, ReposQueryResponse>(
+    ['repos', finalParams],
+    () => octokit.search.repos(finalParams),
+    {
+      ...config,
+      select: (response) => response.data,
+    }
   )
 }
 

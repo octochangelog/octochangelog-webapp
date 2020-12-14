@@ -6,7 +6,6 @@ import {
   Repository,
   RepositoryQueryParams,
   SemVerGroupTitles,
-  SimplifiedRelease,
 } from 'models'
 import semver from 'semver'
 import title from 'title'
@@ -17,7 +16,7 @@ export function mapRepositoryToQueryParams(
   repository?: Repository
 ): RepositoryQueryParams {
   return {
-    owner: repository?.owner.login ?? '',
+    owner: repository?.owner?.login ?? '',
     repo: repository?.name ?? '',
   }
 }
@@ -39,11 +38,9 @@ type FilterReleasesNodes = {
   to: ReleaseVersion
 }
 
-export function getReleaseVersion(
-  release: Release | SimplifiedRelease
-): string {
+export function getReleaseVersion(release: Release): string {
   if (release.tag_name === 'latest') {
-    return release.name
+    return release.name || release.tag_name
   }
   return release.tag_name
 }

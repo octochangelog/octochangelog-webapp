@@ -5,13 +5,11 @@ import {
   useComparatorState,
   useComparatorUpdater,
 } from '~/contexts/comparator-context'
-import { Release, SimplifiedRelease } from '~/models'
+import { Release } from '~/models'
 import { useReleasesQuery } from '~/queries/release'
 import { getReleaseVersion, releasesComparator } from '~/utils'
 
-function mapReleasesRange(
-  releases?: Release[]
-): [SimplifiedRelease[], SimplifiedRelease[]] {
+function mapReleasesRange(releases?: Release[]): [Release[], Release[]] {
   if (!releases?.length) {
     return [[], []]
   }
@@ -25,10 +23,11 @@ function mapReleasesRange(
   // prepend "latest" option based on last release object
   const toReleases = [
     {
+      ...sortedReleases[0],
       name: `Latest (${getReleaseVersion(sortedReleases[0])})`,
       tag_name: 'latest',
-      id: 'latest',
-    },
+      id: -1,
+    } as Release,
     ...sortedReleases,
   ]
 

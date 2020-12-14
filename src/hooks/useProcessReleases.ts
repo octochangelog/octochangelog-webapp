@@ -33,6 +33,10 @@ async function processReleasesAsync(releases: Release[]) {
     releases.forEach((rel) => {
       const { body, ...remainingRel } = rel
 
+      if (!body) {
+        return
+      }
+
       const mdastDescription: any = processor.parse(body)
 
       let newProcessedRelease: any
