@@ -42,7 +42,10 @@ type FilterReleasesNodes = {
 export function getReleaseVersion(
   release: Release | SimplifiedRelease
 ): string {
-  return release.name || release.tag_name
+  if (release.tag_name === 'latest') {
+    return release.name
+  }
+  return release.tag_name
 }
 
 export function filterReleasesByVersionRange(
