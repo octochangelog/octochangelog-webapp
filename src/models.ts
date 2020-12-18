@@ -1,4 +1,6 @@
 import { RestEndpointMethodTypes } from '@octokit/rest'
+import { ReactElement } from 'react'
+import { ComponentLike } from 'rehype-react'
 import { Parent } from 'unist'
 
 declare global {
@@ -41,4 +43,8 @@ export enum MiscGroupTitles {
   artifacts = 'artifacts',
   thanks = 'thanks',
   credits = 'credits',
+}
+
+export type ComponentsMapping = {
+  [element: string]: ComponentLike<ReactElement>
 }
