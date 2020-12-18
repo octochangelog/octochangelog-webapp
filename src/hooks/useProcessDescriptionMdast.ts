@@ -1,7 +1,8 @@
 import { ComponentsMapping, Repository } from 'models'
-import * as React from 'react'
+import { createElement, ReactNode, useEffect, useMemo, useState } from 'react'
 import highlight from 'rehype-highlight'
 import rehype2react from 'rehype-react'
+import gfm from 'remark-gfm'
 import github from 'remark-github'
 import parse from 'remark-parse'
 import remark2rehype from 'remark-rehype'
@@ -16,7 +17,7 @@ interface HookArgs {
 }
 
 interface HookReturnedValue {
-  processedDescription: React.ReactNode
+  processedDescription: ReactNode
   isProcessing: boolean
 }
 
@@ -24,28 +25,28 @@ async function processDescriptionAsync(
   description: Parent,
   repositoryUrl: string,
   components: ComponentsMapping
-): Promise<React.ReactNode> {
+): Promise<ReactNode> {
   return new Promise((resolve, reject) => {
-    const processor = unified()
+    unified()
       .use(parse)
       .use(github, { repository: repositoryUrl })
+      .use(gfm)
       .use(remark2rehype)
       .use(highlight, { ignoreMissing: true })
       .use(rehype2react, {
-        createElement: React.createElement,
+        createElement: createElement,
         components,
       })
-
-    processor.process(
-      unified().use(markdown).stringify(description),
-      (err, file: any) => {
-        if (err) {
-          reject(err)
-        } else {
-          resolve(file.result)
+      .process(
+        unified().use(markdown).use(gfm).stringify(description),
+        (err, file: any) => {
+          if (err) {
+            reject(err)
+          } else {
+            resolve(file.result)
+          }
         }
-      }
-    )
+      )
   })
 }
 
@@ -57,11 +58,11 @@ function useProcessDescriptionMdast({
   const [
     processedDescription,
     setProcessedDescription,
-  ] = React.useState<React.ReactNode | null>(null)
+  ] = useState<ReactNode | null>(null)
 
-  const [isProcessing, setIsProcessing] = React.useState(true)
+  const [isProcessing, setIsProcessing] = useState(true)
 
-  React.useEffect(
+  useEffect(
     function processDescriptionMdastEffect() {
       const handleProcessDescription = async () => {
         setIsProcessing(true)
@@ -79,7 +80,7 @@ function useProcessDescriptionMdast({
     [componentsMapping, description, repository.html_url]
   )
 
-  const data = React.useMemo(
+  const data = useMemo(
     () => ({
       processedDescription,
       isProcessing,

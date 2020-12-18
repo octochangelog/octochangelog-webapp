@@ -1,5 +1,6 @@
 import { MiscGroupTitles, ProcessedReleasesCollection, Release } from 'models'
 import { useState, useEffect, useMemo } from 'react'
+import gfm from 'remark-gfm'
 import parse from 'remark-parse'
 import unified from 'unified'
 
@@ -23,7 +24,7 @@ function processedReleaseIsEmpty(processedRelease: any): boolean {
   return processedRelease.descriptionMdast.children.length === 0
 }
 
-const processor = unified().use(parse)
+const processor = unified().use(parse).use(gfm)
 
 async function processReleasesAsync(releases: Release[]) {
   // TODO: reject on error
