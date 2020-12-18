@@ -1,10 +1,9 @@
 name: Code Validation
 
-on: [ push ]
+on: [push]
 
 jobs:
-  build:
-
+  code-validation:
     runs-on: ubuntu-latest
 
     steps:
@@ -13,9 +12,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '14.x'
-      - run: yarn install
-      - run: yarn type-check
-      - run: yarn lint
-      - run: yarn format:check
+      - name: Install dependencies
+        run: yarn install
+      - name: Check types
+        run: yarn type-check
+      - name: Lint code base
+        run: yarn lint
+      - name: Check code base formatting
+        run: yarn format:check
         env:
           CI: true

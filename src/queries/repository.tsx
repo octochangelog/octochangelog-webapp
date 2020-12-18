@@ -9,10 +9,10 @@ type ReposQueryParams = RestEndpointMethodTypes['search']['repos']['parameters']
 
 function useSearchRepositoriesQuery(
   params: ReposQueryParams,
-  config?: UseQueryOptions<ReposQueryResults, Error, ReposQueryResponse>
+  config?: UseQueryOptions<ReposQueryResponse, Error, ReposQueryResults>
 ): UseQueryResult<ReposQueryResults, Error> {
   const finalParams = { per_page: 100, ...params }
-  return useQuery<ReposQueryResults, Error, ReposQueryResponse>(
+  return useQuery<ReposQueryResponse, Error, ReposQueryResults>(
     ['repos', finalParams],
     () => octokit.search.repos(finalParams),
     {
