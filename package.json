@@ -16,7 +16,7 @@
     "format:check": "yarn prettier --check"
   },
   "dependencies": {
-    "@chakra-ui/react": "^1.0.3",
+    "@chakra-ui/react": "^1.0.4",
     "@emotion/react": "^11.1.2",
     "@emotion/styled": "^11.0.0",
     "@octokit/auth-callback": "^2.0.0",
@@ -30,13 +30,13 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^3.11.0",
-    "react-query": "^3.3.0",
+    "react-query": "^3.3.2",
     "rehype-highlight": "^4.0.0",
     "rehype-react": "^5.0.1",
-    "remark-github": "^9.0.0",
-    "remark-parse": "^8.0.2",
+    "remark-github": "^9.0.1",
+    "remark-parse": "^8.0.3",
     "remark-rehype": "^7.0.0",
-    "remark-stringify": "^8.0.0",
+    "remark-stringify": "^8.1.1",
     "semver": "^7.3.4",
     "title": "^3.4.2",
     "unified": "^9.2.0"
