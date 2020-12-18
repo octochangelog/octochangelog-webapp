@@ -1,6 +1,6 @@
-name: Code Validation
+name: CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   code-validation:
