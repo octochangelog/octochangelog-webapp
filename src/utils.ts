@@ -67,7 +67,7 @@ export function isStableRelease(release: Release): boolean {
   return !!semver.valid(tag_name) && !semver.prerelease(tag_name)
 }
 
-const customTitleSpecials: string[] = ['DOM', 'ESLint']
+const customTitleSpecials: string[] = ['DOM', 'ESLint', 'UI']
 
 export function getRepositoryNameDisplay(repoName: string): string {
   return title(repoName.replace(/[_-]/g, ' '), {
