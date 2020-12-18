@@ -4,7 +4,6 @@ import {
   Code,
   Heading,
   Icon,
-  HeadingProps,
   LinkProps,
   List,
   ListItem,
@@ -16,6 +15,7 @@ import useProcessDescriptionMdast from 'hooks/useProcessDescriptionMdast'
 import { ProcessedReleaseChange, Repository } from 'models'
 import { FiExternalLink } from 'react-icons/fi'
 import { GoTag } from 'react-icons/go'
+import { ComponentProps } from 'rehype-react'
 
 import BlockQuote from '~/components/BlockQuote'
 import Link from '~/components/Link'
@@ -23,22 +23,34 @@ import TextSkeleton from '~/components/TextSkeleton'
 import { getReleaseVersion } from '~/utils'
 
 const remarkReactComponents = {
-  h1: (props: HeadingProps) => <Heading as="h2" size="xl" mb="4" {...props} />,
-  h2: (props: HeadingProps) => <Heading as="h3" size="lg" mb="4" {...props} />,
-  h3: (props: HeadingProps) => <Heading as="h4" size="md" mb="4" {...props} />,
-  h4: (props: HeadingProps) => <Heading as="h5" size="sm" mb="4" {...props} />,
-  h5: (props: HeadingProps) => <Heading as="h6" size="xs" mb="2" {...props} />,
-  h6: (props: HeadingProps) => <Heading as="h6" size="xs" mb="2" {...props} />,
-  p: (props: BoxProps) => <Text mb="2" {...props} />,
-  a: ({ href, children, ...rest }: LinkProps) => (
+  h1: (props: ComponentProps) => (
+    <Heading as="h2" size="xl" mb="4" {...props} />
+  ),
+  h2: (props: ComponentProps) => (
+    <Heading as="h3" size="lg" mb="4" {...props} />
+  ),
+  h3: (props: ComponentProps) => (
+    <Heading as="h4" size="md" mb="4" {...props} />
+  ),
+  h4: (props: ComponentProps) => (
+    <Heading as="h5" size="sm" mb="4" {...props} />
+  ),
+  h5: (props: ComponentProps) => (
+    <Heading as="h6" size="xs" mb="2" {...props} />
+  ),
+  h6: (props: ComponentProps) => (
+    <Heading as="h6" size="xs" mb="2" {...props} />
+  ),
+  p: (props: ComponentProps) => <Text mb="2" {...props} />,
+  a: ({ href, children, ...rest }: ComponentProps & LinkProps) => (
     <Link href={href} isExternal {...rest}>
       {children} <Icon as={FiExternalLink} mx="2px" />
     </Link>
   ),
-  ul: (props: any) => (
+  ul: (props: ComponentProps) => (
     <List styleType="disc" mb="4" ml="4" stylePosition="outside" {...props} />
   ),
-  ol: (props: any) => (
+  ol: (props: ComponentProps) => (
     <List
       as="ol"
       styleType="decimal"
@@ -48,12 +60,12 @@ const remarkReactComponents = {
       {...props}
     />
   ),
-  li: ListItem,
-  pre: (props: BoxProps) => (
+  li: (props: ComponentProps) => <ListItem {...props} />,
+  pre: (props: ComponentProps) => (
     <Code as="pre" display="block" mb="4" p="3" overflowX="auto" {...props} />
   ),
-  code: (props: BoxProps) => <Code color="inherit" {...props} />,
-  blockquote: (props: BoxProps) => <BlockQuote mb="2" {...props} />,
+  code: (props: ComponentProps) => <Code color="inherit" {...props} />,
+  blockquote: (props: ComponentProps) => <BlockQuote mb="2" {...props} />,
 }
 
 interface ProcessedReleaseChangeProps extends BoxProps {

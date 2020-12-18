@@ -1,4 +1,4 @@
-import { Repository } from 'models'
+import { ComponentsMapping, Repository } from 'models'
 import * as React from 'react'
 import highlight from 'rehype-highlight'
 import rehype2react from 'rehype-react'
@@ -12,7 +12,7 @@ import { Parent } from 'unist'
 interface HookArgs {
   repository: Repository
   description: Parent
-  componentsMapping: object
+  componentsMapping: ComponentsMapping
 }
 
 interface HookReturnedValue {
@@ -23,7 +23,7 @@ interface HookReturnedValue {
 async function processDescriptionAsync(
   description: Parent,
   repositoryUrl: string,
-  components: object
+  components: ComponentsMapping
 ): Promise<React.ReactNode> {
   return new Promise((resolve, reject) => {
     const processor = unified()
