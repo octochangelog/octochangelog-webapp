@@ -9,7 +9,6 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import 'focus-visible/dist/focus-visible'
 
-import '~/styles/highlight.styles.github.css'
 import { GithubAuthProvider } from '~/contexts/github-auth-provider'
 
 Router.events.on('routeChangeComplete', (url) => {
