@@ -1,19 +1,16 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import customTheme from 'customTheme'
 import { resetIdCounter } from 'downshift'
-import * as gtag from 'gtag'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import { Router } from 'next/router'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import 'focus-visible/dist/focus-visible'
 
 import { GithubAuthProvider } from '~/contexts/github-auth-provider'
-
-Router.events.on('routeChangeComplete', (url) => {
-  gtag.pageView(url)
-})
+import * as gtag from '~/lib/gtag'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,6 +23,18 @@ const queryClient = new QueryClient({
 })
 
 const App = ({ Component, pageProps }: AppProps) => {
+  const router = useRouter()
+
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      gtag.pageView(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+
   resetIdCounter()
 
   return (
