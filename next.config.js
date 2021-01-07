@@ -8,9 +8,6 @@ module.exports = {
       },
     ]
   },
-  experimental: {
-    optimizeFonts: true,
-  },
   webpack: (config) => {
     config.node = {
       fs: 'empty',

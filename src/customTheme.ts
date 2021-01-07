@@ -46,7 +46,7 @@ const customTheme = extendTheme({
     secondary: blueColor,
   },
   fonts: {
-    heading: 'Open Sans, sans-serif;',
+    heading: '"Open Sans", sans-serif;',
   },
   styles: {
     global: {

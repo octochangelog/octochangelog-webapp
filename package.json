@@ -19,6 +19,7 @@
     "@chakra-ui/react": "^1.1.2",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
+    "@fontsource/open-sans": "^4.1.0",
     "@octokit/auth-callback": "^2.0.0",
     "@octokit/rest": "^18.0.12",
     "downshift": "^6.0.10",

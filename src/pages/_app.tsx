@@ -7,6 +7,8 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import '@fontsource/open-sans/400.css'
+import '@fontsource/open-sans/700.css'
 import 'focus-visible/dist/focus-visible'
 
 import { GithubAuthProvider } from '~/contexts/github-auth-provider'
