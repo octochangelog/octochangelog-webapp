@@ -19,7 +19,6 @@ import Container from '~/components/Container'
 import Layout from '~/components/Layout'
 import Link from '~/components/Link'
 import SEO from '~/components/SEO'
-import customTheme from '~/customTheme'
 
 const MainSection = () => {
   return (
@@ -70,7 +69,7 @@ const AboutPage = () => {
         mt={-8}
         py={{ base: 8, lg: 16 }}
         minHeight="100vh"
-        bgImage={`linear-gradient(180deg, ${customTheme.colors.primary[700]} 0%, ${customTheme.colors.white} 100%)`}
+        bgGradient="linear(to-b, primary.700, white)"
       >
         <Container>
           <MainSection />
