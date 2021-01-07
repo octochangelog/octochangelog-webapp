@@ -1,5 +1,6 @@
 import { Alert, AlertIcon, Flex, CircularProgress } from '@chakra-ui/react'
 import { GetServerSideProps } from 'next'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
@@ -26,7 +27,10 @@ const AuthCallbackPage = ({ accessToken, errorMessage }: Props) => {
   }, [])
 
   return (
-    <Layout extraTitle="Authorizing on GitHub">
+    <Layout>
+      <Head>
+        <title>Authorizing on GitHub</title>
+      </Head>
       {errorMessage ? (
         <Container>
           <Alert status="error">
