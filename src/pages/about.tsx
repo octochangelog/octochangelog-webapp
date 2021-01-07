@@ -14,11 +14,12 @@ import Image from 'next/image'
 import NextLink from 'next/link'
 import { FaCheckCircle } from 'react-icons/fa'
 
+import { APP_MOTTO } from '~/common'
 import Container from '~/components/Container'
 import Layout from '~/components/Layout'
 import Link from '~/components/Link'
+import SEO from '~/components/SEO'
 import customTheme from '~/customTheme'
-import { APP_MOTTO } from '~/global'
 
 const MainSection = () => {
   return (
@@ -63,7 +64,8 @@ const MainSection = () => {
 
 const AboutPage = () => {
   return (
-    <Layout isHeaderFixed extraTitle="About">
+    <Layout isHeaderFixed>
+      <SEO title="About" />
       <Box
         mt={-8}
         py={{ base: 8, lg: 16 }}

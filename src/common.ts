@@ -4,6 +4,8 @@ export const IS_PRODUCTION_MODE = process.env.NODE_ENV === 'production'
 
 export const REPO_URL = 'https://github.com/Belco90/octoclairvoyant'
 
+export const SITE_TITLE = 'Octoclairvoyant'
+
 export const APP_MOTTO =
   'Compare GitHub changelogs across multiple releases in a single view.'
 

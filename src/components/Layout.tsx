@@ -1,5 +1,4 @@
 import { Flex, Box, BoxProps } from '@chakra-ui/react'
-import Head from 'next/head'
 import * as React from 'react'
 
 import Footer from '~/components/Footer'
@@ -30,27 +29,21 @@ const getChildWrapper = (isHeaderFixed: boolean): BoxProps => {
 
 type Props = {
   children: React.ReactNode
-  extraTitle?: string
   isHeaderFixed?: boolean
 }
 
-const Layout = ({ children, extraTitle, isHeaderFixed = false }: Props) => {
+const Layout = ({ children, isHeaderFixed = false }: Props) => {
   const headerProps = getHeaderProps(isHeaderFixed)
   const childrenWrapperProps = getChildWrapper(isHeaderFixed)
 
   return (
-    <>
-      <Head>
-        <title>Octoclairvoyant{extraTitle && ` - ${extraTitle}`}</title>
-      </Head>
-      <Flex height="100%" direction="column">
-        <Header {...headerProps} />
-        <Box {...childrenWrapperProps} flex="1 0 auto">
-          {children}
-        </Box>
-        <Footer />
-      </Flex>
-    </>
+    <Flex height="100%" direction="column">
+      <Header {...headerProps} />
+      <Box {...childrenWrapperProps} flex="1 0 auto">
+        {children}
+      </Box>
+      <Footer />
+    </Flex>
   )
 }
 

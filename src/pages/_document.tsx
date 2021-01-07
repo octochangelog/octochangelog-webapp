@@ -1,7 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
-import { APP_MOTTO } from '~/global'
-
 class MyDocument extends Document {
   render() {
     return (
@@ -84,19 +82,6 @@ class MyDocument extends Document {
             content="/favicon/ms-icon-144x144.png"
           />
           <meta name="theme-color" content="#ac35b0" />
-          <meta name="description" content={APP_MOTTO} />
-          <meta name="keywords" content="GitHub Release Repository Changelog" />
-          <meta property="og:title" content="Octoclairvoyant" />
-          <meta property="og:description" content={APP_MOTTO} />
-          <meta property="og:type" content="website" />
-          <meta name="twitter:card" content="summary" />
-          <meta name="twitter:title" content="Octoclairvoyant" />
-          <meta
-            name="twitter:image"
-            content="https://raw.githubusercontent.com/belco90/octoclairvoyant/main/public/mascot-logo.png"
-          />
-          <meta name="twitter:creator" content="@belcoDev" />
-          <meta name="twitter:description" content={APP_MOTTO} />
 
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script

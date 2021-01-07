@@ -2,7 +2,7 @@ import { createCallbackAuth } from '@octokit/auth-callback'
 import { Octokit } from '@octokit/rest'
 import { destroyCookie, parseCookies, setCookie } from 'nookies'
 
-import { IS_PRODUCTION_MODE } from '~/global'
+import { IS_PRODUCTION_MODE } from '~/common'
 
 const userAgent = IS_PRODUCTION_MODE
   ? 'Octoclairvoyant'

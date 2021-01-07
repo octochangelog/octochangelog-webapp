@@ -1,8 +1,8 @@
 import { Box, HStack } from '@chakra-ui/react'
 
+import { REPO_URL } from '~/common'
 import Container from '~/components/Container'
 import Link from '~/components/Link'
-import { REPO_URL } from '~/global'
 
 const Footer = () => {
   return (
