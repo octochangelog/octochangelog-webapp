@@ -62,7 +62,7 @@ const LinksStack = () => (
     spacing={{ base: 12, md: 8 }}
     align={{ base: 'center', md: 'initial' }}
   >
-    <MenuLink href="/">Home</MenuLink>
+    <MenuLink href="/">Comparator</MenuLink>
     <MenuLink href="/about">About</MenuLink>
     {/* TODO: implement logout if necessary */}
   </Stack>

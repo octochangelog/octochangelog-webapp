@@ -27,6 +27,7 @@
     "framer-motion": "^3.1.4",
     "lodash": "^4.17.20",
     "next": "^10.0.5",
+    "next-seo": "^4.17.0",
     "nookies": "^2.5.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
