@@ -2,7 +2,7 @@ import { Divider, Flex, Text } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import * as React from 'react'
 
-import Container from '~/components/Container'
+import FluidContainer from '~/components/FluidContainer'
 import GitHubLoginButton from '~/components/GitHubLoginButton'
 import RepositoriesComparatorFilters from '~/components/RepositoriesComparatorFilters'
 import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesChangelogHeading'
@@ -21,9 +21,9 @@ const RepositoryReleasesComparator = () => {
 
   return (
     <>
-      <Container>
+      <FluidContainer>
         <RepositoriesComparatorFilters />
-      </Container>
+      </FluidContainer>
       <Divider my={4} />
       {repository && (
         <>
@@ -32,19 +32,19 @@ const RepositoryReleasesComparator = () => {
             fromVersion={fromVersion}
             toVersion={toVersion}
           />
-          <Container>
+          <FluidContainer>
             <RepositoryReleasesChangelog
               repository={repository}
               fromVersion={fromVersion}
               toVersion={toVersion}
             />
-          </Container>
+          </FluidContainer>
         </>
       )}
 
       {/* This is rendered only in CS since SSR doesn't have info about auth user yet*/}
       {isClientSide && !repository && !isAuth && (
-        <Container>
+        <FluidContainer>
           <Flex alignItems="center" flexDirection="column">
             <Text mb={4}>
               You can increase the max number of allowed requests to GitHub by
@@ -52,7 +52,7 @@ const RepositoryReleasesComparator = () => {
             </Text>
             <GitHubLoginButton />
           </Flex>
-        </Container>
+        </FluidContainer>
       )}
     </>
   )

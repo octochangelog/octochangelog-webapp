@@ -16,7 +16,7 @@ import NextLink from 'next/link'
 import { FaCheckCircle } from 'react-icons/fa'
 
 import { APP_MOTTO } from '~/common'
-import Container from '~/components/Container'
+import FluidContainer from '~/components/FluidContainer'
 import Layout from '~/components/Layout'
 import Link from '~/components/Link'
 
@@ -71,13 +71,13 @@ const AboutPage = () => {
         minHeight="100vh"
         bgGradient="linear(to-b, primary.700, white)"
       >
-        <Container>
+        <FluidContainer>
           <MainSection />
-        </Container>
+        </FluidContainer>
       </Box>
 
       <Box mb={4}>
-        <Container>
+        <FluidContainer>
           <VStack spacing={8} alignItems="center" py={{ base: 8, lg: 16 }}>
             <Box>
               <Heading
@@ -120,7 +120,7 @@ const AboutPage = () => {
               </List>
             </Box>
           </VStack>
-        </Container>
+        </FluidContainer>
       </Box>
     </Layout>
   )

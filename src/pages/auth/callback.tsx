@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-import Container from '~/components/Container'
+import FluidContainer from '~/components/FluidContainer'
 import Layout from '~/components/Layout'
 import { useGithubAuth } from '~/contexts/github-auth-provider'
 import { obtainAccessToken } from '~/github-client'
@@ -32,12 +32,12 @@ const AuthCallbackPage = ({ accessToken, errorMessage }: Props) => {
         <title>Authorizing on GitHub</title>
       </Head>
       {errorMessage ? (
-        <Container>
+        <FluidContainer>
           <Alert status="error">
             <AlertIcon />
             {errorMessage}
           </Alert>
-        </Container>
+        </FluidContainer>
       ) : (
         <Flex align="center" justify="center" p={5}>
           <CircularProgress

@@ -19,7 +19,7 @@ import { useRouter } from 'next/router'
 import * as React from 'react'
 import { FaBars } from 'react-icons/fa'
 
-import Container from '~/components/Container'
+import FluidContainer from '~/components/FluidContainer'
 import RouteLink from '~/components/RouteLink'
 import useIsClientSide from '~/hooks/useIsClientSide'
 
@@ -105,7 +105,7 @@ const Header = (props: BoxProps) => {
   const isClientSide = useIsClientSide()
   return (
     <Box as="header" bg="gray.700" color="white" zIndex="banner" {...props}>
-      <Container py={5}>
+      <FluidContainer py={5}>
         <Flex justify="space-between" alignItems="center">
           <Flex alignItems="center">
             <Box h={LOGO_SIZES} w={LOGO_SIZES} mr={2}>
@@ -122,7 +122,7 @@ const Header = (props: BoxProps) => {
           </Flex>
           {isClientSide && <HeaderLinks />}
         </Flex>
-      </Container>
+      </FluidContainer>
     </Box>
   )
 }

@@ -1,13 +1,13 @@
 import { Box, HStack } from '@chakra-ui/react'
 
 import { REPO_URL } from '~/common'
-import Container from '~/components/Container'
+import FluidContainer from '~/components/FluidContainer'
 import Link from '~/components/Link'
 
 const Footer = () => {
   return (
     <Box as="footer" bg="gray.50" flexShrink={0}>
-      <Container py={5}>
+      <FluidContainer py={5}>
         <HStack
           justify="space-between"
           alignItems="center"
@@ -30,7 +30,7 @@ const Footer = () => {
             GitHub
           </Link>
         </HStack>
-      </Container>
+      </FluidContainer>
     </Box>
   )
 }
