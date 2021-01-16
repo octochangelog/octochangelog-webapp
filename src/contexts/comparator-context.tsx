@@ -47,7 +47,7 @@ const loadingElement = (
 
 function ComparatorProvider({ children }: { children: ReactNode }) {
   const statusRef = useRef<InitStatus>('mount')
-  const initialValuesRef = useRef<ValuesShape>(null)
+  const initialValuesRef = useRef<ValuesShape>({})
   const [isReady, setIsReady] = useState<boolean>(false)
   const [repository, setRepository] = useState<Repository | undefined>(
     undefined
@@ -62,22 +62,20 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const initComparator = async () => {
-      // using window.location.search instead of router.query since the latter
-      // is not available until rerender after mount
-      const locationSearch = window.location.search.substring(1)
+      const { repo, from, to } = router.query as {
+        repo: string
+        from: string
+        to: string
+      }
 
-      if (locationSearch) {
+      if (repo || from || to) {
         statusRef.current = 'loading'
-        const searchParams = new URLSearchParams(locationSearch)
         const repositoryQueryParams = mapStringToRepositoryQueryParams(
-          searchParams.get('repo') ?? ''
+          repo ?? ''
         )
 
-        // @ts-ignore (TS complains current is read-only)
-        initialValuesRef.current = {
-          fromVersion: searchParams.get('from') || undefined,
-          toVersion: searchParams.get('to') || undefined,
-        }
+        initialValuesRef.current.fromVersion = from
+        initialValuesRef.current.toVersion = to
 
         if (repositoryQueryParams) {
           const response = await octokit.repos.get(repositoryQueryParams)
@@ -100,8 +98,11 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
       setIsReady(true)
     }
 
-    initComparator()
-  }, [])
+    console.log(statusRef.current, router.isReady)
+    if (statusRef.current === 'mount' && router.isReady) {
+      initComparator()
+    }
+  }, [router.isReady, router.query])
 
   useEffect(() => {
     // clean versions when repo changes
