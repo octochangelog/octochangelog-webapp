@@ -15,7 +15,7 @@ import Image from 'next/image'
 import NextLink from 'next/link'
 import { FaCheckCircle } from 'react-icons/fa'
 
-import { APP_MOTTO } from '~/common'
+import { FULL_DESCRIPTION } from '~/common'
 import FluidContainer from '~/components/FluidContainer'
 import Layout from '~/components/Layout'
 import Link from '~/components/Link'
@@ -36,7 +36,7 @@ const MainSection = () => {
           fontSize="4xl"
           textAlign={{ base: 'center', lg: 'left' }}
         >
-          {APP_MOTTO}
+          {FULL_DESCRIPTION}
         </Heading>
         <Flex justify="center" align="center">
           <NextLink href="/">

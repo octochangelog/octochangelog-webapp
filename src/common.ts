@@ -6,8 +6,11 @@ export const REPO_URL = 'https://github.com/Belco90/octoclairvoyant'
 
 export const SITE_TITLE = 'Octoclairvoyant'
 
-export const APP_MOTTO =
-  'Compare GitHub changelogs across multiple releases in a single view.'
+export const BRIEF_DESCRIPTION =
+  'Compare GitHub changelogs across multiple releases'
+
+export const FULL_DESCRIPTION =
+  'Compare GitHub changelogs across multiple releases in a single view'
 
 export const HIGH_PRIORITY_GROUP_TITLES: string[] = [
   SemVerGroupTitles.breakingChanges,

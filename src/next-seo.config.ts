@@ -1,13 +1,13 @@
 import { DefaultSeoProps } from 'next-seo'
-import { APP_MOTTO, SITE_TITLE } from '~/common'
+import { BRIEF_DESCRIPTION, FULL_DESCRIPTION, SITE_TITLE } from '~/common'
 
 const DefaultSEO: DefaultSeoProps = {
-  titleTemplate: `%s | ${SITE_TITLE}`,
-  description: APP_MOTTO,
+  titleTemplate: `%s | ${SITE_TITLE}: ${BRIEF_DESCRIPTION}`,
+  description: `🔮 ${FULL_DESCRIPTION}`,
   openGraph: {
     type: 'website',
     url: 'https://octoclairvoyant.vercel.app/',
-    title: `${SITE_TITLE}: ${APP_MOTTO}`,
+    title: `${SITE_TITLE}: ${FULL_DESCRIPTION}`,
     images: [
       {
         url:
