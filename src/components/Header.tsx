@@ -49,6 +49,7 @@ const MenuLink = ({
         color: isActive ? 'none' : 'primary.300',
       }}
       width={linkWidth}
+      aria-current={isActive ? 'page' : undefined}
       {...rest}
     >
       {children}
