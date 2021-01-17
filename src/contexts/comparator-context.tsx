@@ -1,5 +1,6 @@
+import { ParsedUrlQuery } from 'querystring'
+
 import { Flex, CircularProgress } from '@chakra-ui/react'
-import { isEqual } from 'lodash'
 import { useRouter } from 'next/router'
 import {
   createContext,
@@ -14,20 +15,22 @@ import { octokit } from '~/github-client'
 import { ReleaseVersion, Repository } from '~/models'
 import { mapStringToRepositoryQueryParams } from '~/utils'
 
-interface ValuesShape {
-  repository?: Repository
-  fromVersion?: ReleaseVersion
-  toVersion?: ReleaseVersion
-}
-
-interface ComparatorStateContextValue extends ValuesShape {
-  initialValues: ValuesShape | null
+interface ComparatorStateContextValue {
+  repository?: Repository | null
+  fromVersion?: ReleaseVersion | null
+  toVersion?: ReleaseVersion | null
 }
 
 interface ComparatorUpdaterContextValue {
-  setRepository: (newRepository?: Repository) => void
-  setFromVersion: (newVersion?: ReleaseVersion) => void
-  setToVersion: (newVersion?: ReleaseVersion) => void
+  setRepository: (newRepository?: Repository | null) => void
+  setFromVersion: (newVersion?: ReleaseVersion | null) => void
+  setToVersion: (newVersion?: ReleaseVersion | null) => void
+}
+
+interface FiltersQuerystring {
+  repo?: string | null
+  from?: string | null
+  to?: string | null
 }
 
 const ComparatorStateContext = createContext<
@@ -47,50 +50,56 @@ const loadingElement = (
 
 function ComparatorProvider({ children }: { children: ReactNode }) {
   const statusRef = useRef<InitStatus>('mount')
-  const initialValuesRef = useRef<ValuesShape>({})
   const [isReady, setIsReady] = useState<boolean>(false)
-  const [repository, setRepository] = useState<Repository | undefined>(
-    undefined
-  )
-  const [fromVersion, setFromVersion] = useState<ReleaseVersion | undefined>(
-    undefined
-  )
-  const [toVersion, setToVersion] = useState<ReleaseVersion | undefined>(
-    undefined
-  )
+  const [repository, setRepository] = useState<Repository | null>(null)
   const router = useRouter()
+  const { repo, from, to } = router.query as FiltersQuerystring
+
+  const setQuerystringParams = (newFilters: FiltersQuerystring) => {
+    const mergedFilters: FiltersQuerystring = Object.assign(
+      {},
+      router.query,
+      newFilters
+    )
+    const newQuery: ParsedUrlQuery = Object.fromEntries(
+      Object.entries(mergedFilters).filter(([_, value]) => Boolean(value))
+    )
+
+    router.replace({ pathname: router.pathname, query: newQuery }, undefined, {
+      shallow: true,
+    })
+  }
+
+  const setSelectedRepository = (newRepository?: Repository | null) => {
+    setRepository(newRepository ?? null)
+    setQuerystringParams({
+      repo: newRepository?.full_name,
+      from: null, // clear from and to when changing repo
+      to: null,
+    })
+  }
+  const setSelectedFromVersion = (newFrom?: string | null) => {
+    setQuerystringParams({ from: newFrom })
+  }
+  const setSelectedToVersion = (newTo?: string | null) => {
+    setQuerystringParams({ to: newTo })
+  }
 
   useEffect(() => {
-    const initComparator = async () => {
-      const { repo, from, to } = router.query as {
-        repo: string
-        from: string
-        to: string
-      }
-
-      if (repo || from || to) {
+    const getInitialRepository = async () => {
+      if (repo) {
         statusRef.current = 'loading'
+
         const repositoryQueryParams = mapStringToRepositoryQueryParams(
           repo ?? ''
         )
-
-        initialValuesRef.current.fromVersion = from
-        initialValuesRef.current.toVersion = to
 
         if (repositoryQueryParams) {
           const response = await octokit.repos.get(repositoryQueryParams)
 
           if (response?.data) {
-            initialValuesRef.current.repository = response.data
             setRepository(response.data)
           }
-        }
-
-        if (initialValuesRef.current.fromVersion) {
-          setFromVersion(initialValuesRef.current.fromVersion)
-        }
-        if (initialValuesRef.current.toVersion) {
-          setToVersion(initialValuesRef.current.toVersion)
         }
       }
 
@@ -98,54 +107,21 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
       setIsReady(true)
     }
 
-    console.log(statusRef.current, router.isReady)
     if (statusRef.current === 'mount' && router.isReady) {
-      initComparator()
+      getInitialRepository()
     }
-  }, [router.isReady, router.query])
+  }, [repo, router.isReady, router.query])
 
-  useEffect(() => {
-    // clean versions when repo changes
-    if (statusRef.current !== 'done') {
-      return
-    }
-    setFromVersion(undefined)
-    setToVersion(undefined)
-  }, [repository])
-
-  useEffect(() => {
-    // update qs filter values
-    if (statusRef.current !== 'done') {
-      return
-    }
-    const newQuery = Object.fromEntries(
-      Object.entries({
-        repo: repository?.full_name,
-        from: fromVersion,
-        to: toVersion,
-      }).filter(([_, value]) => Boolean(value))
-    )
-
-    if (!isEqual(router.query, newQuery)) {
-      router.replace(
-        { pathname: router.pathname, query: newQuery },
-        undefined,
-        { shallow: true }
-      )
-    }
-  }, [repository, fromVersion, toVersion, router])
-
-  const stateValue = {
-    repository,
-    fromVersion,
-    toVersion,
-    initialValues: initialValuesRef.current,
+  const stateValue: ComparatorStateContextValue = {
+    repository: repository,
+    fromVersion: from,
+    toVersion: to,
   }
 
-  const updaterValue = {
-    setRepository,
-    setFromVersion,
-    setToVersion,
+  const updaterValue: ComparatorUpdaterContextValue = {
+    setRepository: setSelectedRepository,
+    setFromVersion: setSelectedFromVersion,
+    setToVersion: setSelectedToVersion,
   }
 
   return (

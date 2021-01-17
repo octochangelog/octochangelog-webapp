@@ -6,7 +6,7 @@ import { isStableRelease, mapRepositoryToQueryParams } from '~/utils'
 
 type ReleasesQueryResults = Release[]
 type ReleasesQueryParams = {
-  repository?: Repository
+  repository?: Repository | null
 }
 
 const QUERY_KEY = 'releases'
@@ -16,7 +16,7 @@ function useReleasesQuery(
   config?: UseQueryOptions<ReleasesQueryResults, Error>
 ): UseQueryResult<ReleasesQueryResults, Error> {
   const finalParams: RepositoryQueryParams = mapRepositoryToQueryParams(
-    params.repository
+    params.repository ?? undefined
   )
 
   return useQuery<ReleasesQueryResults, Error>(

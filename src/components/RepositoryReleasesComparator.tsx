@@ -29,14 +29,14 @@ const RepositoryReleasesComparator = () => {
         <>
           <RepositoryReleasesChangelogHeading
             repository={repository}
-            fromVersion={fromVersion}
-            toVersion={toVersion}
+            fromVersion={fromVersion ?? undefined}
+            toVersion={toVersion ?? undefined}
           />
           <FluidContainer>
             <RepositoryReleasesChangelog
               repository={repository}
-              fromVersion={fromVersion}
-              toVersion={toVersion}
+              fromVersion={fromVersion ?? undefined}
+              toVersion={toVersion ?? undefined}
             />
           </FluidContainer>
         </>

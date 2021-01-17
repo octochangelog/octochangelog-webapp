@@ -9,7 +9,7 @@ import {
 } from '~/contexts/comparator-context'
 
 const RepositoriesComparatorFilters = () => {
-  const { initialValues } = useComparatorState()
+  const { repository } = useComparatorState()
   const { setRepository } = useComparatorUpdater()
 
   return (
@@ -19,7 +19,7 @@ const RepositoriesComparatorFilters = () => {
     >
       <RepositorySearchCombobox
         onSelect={setRepository}
-        initialInputValue={initialValues?.repository?.full_name}
+        initialInputValue={repository?.full_name}
       />
       <ReleaseVersionsRangeFormControl
         width={{ base: 'full', md: '80%' }}
