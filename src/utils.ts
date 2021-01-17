@@ -1,4 +1,4 @@
-import { lowerCase } from 'lodash'
+import lowerCase from 'lodash/lowerCase'
 import semver from 'semver'
 import title from 'title'
 

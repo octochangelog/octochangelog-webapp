@@ -14,7 +14,7 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { useCombobox } from 'downshift'
-import { debounce } from 'lodash'
+import debounce from 'lodash/debounce'
 import * as React from 'react'
 import { useEffect, useMemo, useState } from 'react'
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
