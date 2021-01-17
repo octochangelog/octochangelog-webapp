@@ -1,4 +1,3 @@
-import { ComponentsMapping, Repository } from 'models'
 import { createElement, ReactNode, useEffect, useMemo, useState } from 'react'
 import highlight from 'rehype-highlight'
 import rehype2react from 'rehype-react'
@@ -9,6 +8,8 @@ import remark2rehype from 'remark-rehype'
 import markdown from 'remark-stringify'
 import unified from 'unified'
 import { Parent } from 'unist'
+
+import { ComponentsMapping, Repository } from '~/models'
 
 interface HookArgs {
   repository: Repository

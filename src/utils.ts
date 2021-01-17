@@ -1,4 +1,8 @@
 import { lowerCase } from 'lodash'
+import semver from 'semver'
+import title from 'title'
+
+import { HIGH_PRIORITY_GROUP_TITLES, LOW_PRIORITY_GROUP_TITLES } from '~/common'
 import {
   MiscGroupTitles,
   Release,
@@ -6,11 +10,7 @@ import {
   Repository,
   RepositoryQueryParams,
   SemVerGroupTitles,
-} from 'models'
-import semver from 'semver'
-import title from 'title'
-
-import { HIGH_PRIORITY_GROUP_TITLES, LOW_PRIORITY_GROUP_TITLES } from '~/common'
+} from '~/models'
 
 export function mapRepositoryToQueryParams(
   repository?: Repository

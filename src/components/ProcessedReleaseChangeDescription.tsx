@@ -11,8 +11,6 @@ import {
   TagLabel,
   Text,
 } from '@chakra-ui/react'
-import useProcessDescriptionMdast from 'hooks/useProcessDescriptionMdast'
-import { ProcessedReleaseChange, Repository } from 'models'
 import { FiExternalLink } from 'react-icons/fi'
 import { GoTag } from 'react-icons/go'
 import { ComponentProps } from 'rehype-react'
@@ -20,6 +18,8 @@ import { ComponentProps } from 'rehype-react'
 import BlockQuote from '~/components/BlockQuote'
 import Link from '~/components/Link'
 import TextSkeleton from '~/components/TextSkeleton'
+import useProcessDescriptionMdast from '~/hooks/useProcessDescriptionMdast'
+import { ProcessedReleaseChange, Repository } from '~/models'
 import { getReleaseVersion } from '~/utils'
 
 const remarkReactComponents = {

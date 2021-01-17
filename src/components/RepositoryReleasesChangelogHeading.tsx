@@ -1,9 +1,9 @@
 import { Badge, Box, Heading, Text } from '@chakra-ui/react'
-import { getRepositoryNameDisplay } from 'utils'
 
 import FluidContainer from '~/components/FluidContainer'
 import Link from '~/components/Link'
 import { Repository } from '~/models'
+import { getRepositoryNameDisplay } from '~/utils'
 
 interface Props {
   repository: Repository

@@ -6,7 +6,11 @@ import {
   Skeleton,
   Stack,
 } from '@chakra-ui/react'
-import useProcessReleases from 'hooks/useProcessReleases'
+import dynamic from 'next/dynamic'
+import { useEffect, useState } from 'react'
+
+import TextSkeleton from '~/components/TextSkeleton'
+import useProcessReleases from '~/hooks/useProcessReleases'
 import {
   MiscGroupTitles,
   ProcessedReleaseChange,
@@ -14,17 +18,18 @@ import {
   ReleaseVersion,
   Repository,
   SemVerGroupTitles,
-} from 'models'
-import { useEffect, useState } from 'react'
+} from '~/models'
+import { useReleasesQuery } from '~/queries/release'
 import {
   compareReleaseGroupTitlesSort,
   filterReleasesByVersionRange,
   releasesComparator,
-} from 'utils'
+} from '~/utils'
 
-import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChangeDescription'
-import TextSkeleton from '~/components/TextSkeleton'
-import { useReleasesQuery } from '~/queries/release'
+const ProcessedReleaseChangeDescription = dynamic(
+  () => import('~/components/ProcessedReleaseChangeDescription'),
+  { ssr: false }
+)
 
 interface RepositoryReleasesChangelogProps {
   repository: Repository
