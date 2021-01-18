@@ -6,9 +6,9 @@ import {
   Skeleton,
   Stack,
 } from '@chakra-ui/react'
-import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 
+import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChangeDescription'
 import TextSkeleton from '~/components/TextSkeleton'
 import useProcessReleases from '~/hooks/useProcessReleases'
 import {
@@ -25,11 +25,6 @@ import {
   filterReleasesByVersionRange,
   releasesComparator,
 } from '~/utils'
-
-const ProcessedReleaseChangeDescription = dynamic(
-  () => import('~/components/ProcessedReleaseChangeDescription'),
-  { ssr: false }
-)
 
 interface RepositoryReleasesChangelogProps {
   repository: Repository
