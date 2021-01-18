@@ -37,7 +37,6 @@ export const octokit = new Octokit({
   authStrategy: createCallbackAuth,
   auth: { callback: getGithubAccessToken },
   userAgent,
-  log: IS_PRODUCTION_MODE ? undefined : console,
 })
 
 /**

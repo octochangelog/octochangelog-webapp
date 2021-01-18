@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import gfm from 'remark-gfm'
 import parse from 'remark-parse'
 import unified from 'unified'
@@ -26,7 +26,7 @@ function processedReleaseIsEmpty(processedRelease: any): boolean {
 
 const processor = unified().use(parse).use(gfm)
 
-async function processReleasesAsync(releases: Release[]) {
+function processReleasesAsync(releases: Release[]) {
   // TODO: reject on error
   return new Promise((resolve) => {
     const processedReleasesCollection = {}
@@ -106,7 +106,10 @@ interface UseProcessReleasesReturn {
 function useProcessReleases(
   releases: Release[] | null
 ): UseProcessReleasesReturn {
-  const [processedReleases, setProcessedReleases] = useState<any>(null)
+  const [
+    processedReleases,
+    setProcessedReleases,
+  ] = useState<ProcessedReleasesCollection | null>(null)
   const [isProcessing, setIsProcessing] = useState(false)
 
   useEffect(
@@ -117,7 +120,7 @@ function useProcessReleases(
         } else {
           setIsProcessing(true)
           const result = await processReleasesAsync(releases)
-          setProcessedReleases(result as any)
+          setProcessedReleases(result)
         }
         setIsProcessing(false)
       }
@@ -127,11 +130,7 @@ function useProcessReleases(
     [releases]
   )
 
-  const data = useMemo(() => ({ processedReleases, isProcessing }), [
-    isProcessing,
-    processedReleases,
-  ])
-  return data
+  return { processedReleases, isProcessing }
 }
 
 export default useProcessReleases
