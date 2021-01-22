@@ -115,6 +115,7 @@ const Header = (props: BoxProps) => {
                 alt="Octoclairvoyant reading a crystal ball"
                 width={50}
                 height={50}
+                priority
               />
             </Box>
             <Heading fontSize={{ xs: 'md', md: 'xl', lg: '4xl' }}>
