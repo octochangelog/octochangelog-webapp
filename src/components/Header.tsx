@@ -118,7 +118,7 @@ const Header = (props: BoxProps) => {
                 priority
               />
             </Box>
-            <Heading fontSize={{ xs: 'md', md: 'xl', lg: '4xl' }}>
+            <Heading fontSize={{ base: 'md', md: 'xl', lg: '4xl' }}>
               Octoclairvoyant
             </Heading>
           </Flex>
