@@ -16,7 +16,7 @@ module.exports = {
   ],
   rules: {
     'no-shadow': 2,
-    'react/react-in-jsx-scope': 0, // Next.js exposes React globally
+    'react/react-in-jsx-scope': 0, // not necessary anymore since React v17
     'react/self-closing-comp': 2,
     'import/newline-after-import': 2,
     'import/order': [
