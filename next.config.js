@@ -3,6 +3,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 module.exports = withBundleAnalyzer({
+  future: {
+    webpack5: true,
+  },
   async redirects() {
     return [
       {
@@ -11,12 +14,5 @@ module.exports = withBundleAnalyzer({
         permanent: true,
       },
     ]
-  },
-  webpack: (config) => {
-    config.node = {
-      fs: 'empty',
-    }
-
-    return config
   },
 })
