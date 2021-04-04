@@ -2,7 +2,6 @@ import { createElement, ReactNode, useEffect, useMemo, useState } from 'react'
 import highlight from 'rehype-highlight'
 import rehype2react from 'rehype-react'
 import gfm from 'remark-gfm'
-import github from 'remark-github'
 import parse from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 import markdown from 'remark-stringify'
@@ -24,13 +23,11 @@ interface HookReturnedValue {
 
 async function processDescriptionAsync(
   description: Parent,
-  repositoryUrl: string,
   components: ComponentsMapping
 ): Promise<ReactNode> {
   return new Promise((resolve, reject) => {
     unified()
       .use(parse)
-      .use(github, { repository: repositoryUrl })
       .use(gfm)
       .use(remark2rehype)
       .use(highlight, { ignoreMissing: true })
@@ -69,7 +66,6 @@ function useProcessDescriptionMdast({
         setIsProcessing(true)
         const result = await processDescriptionAsync(
           description,
-          repository.html_url,
           componentsMapping
         )
 
