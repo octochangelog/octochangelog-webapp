@@ -20,12 +20,12 @@
 
 ### Main Features:
 
-- Search repositories and pick version range
-- Sort and group releases changelogs following [Semantic Versioning](https://semver.org/)
-- Share changelogs comparison through links
+- Search repositories and pick a version range
+- Sort and group a releases' changelogs following [Semantic Versioning](https://semver.org/)
+- Share changelogs comparison with others by giving them a link
 - Normalize changes categories (e.g. put _bug fixes_ and _minor changes_ under the same category)
 - Highlight code blocks syntax and GitHub references
-- Make easy to spot which version introduced specific changes
+- Makes it easy to spot which version introduced specific changes
 
 ### Motivation
 In January 2020 [GitHub announced a shortcut to compare across two releases](https://github.blog/changelog/2020-01-13-shortcut-to-compare-across-two-releases/).
@@ -34,12 +34,12 @@ Then you'll see a diff of the code between those two versions.
 This is a nice addition, so you can see at once all code changes between a range of versions. However, this is not what I expected at all or what I would find most useful when comparing releases.
 
 What did I expect then? I spend a lot of time comparing releases, either for upgrading dependencies at work or in my personal projects. Or even just to be up to date about some library updates.
-This process is usually tedious, specially if there are a lot of releases between base and target versions as you need to paginate between multiple pages.
-I usually do this process over GitHub releases tab or going through CHANGELOG.md if available. Usually I'm interested in looking for breaking changes more than any other kind of changes.
-**So why not comparing changelogs through releases descriptions filtering, grouping and sorting what really matters?**
+This process is tedious, specially if there are a lot of releases between base and target versions as you need to paginate between multiple pages.
+I usually do this process over GitHub releases tab or going through the `CHANGELOG.md` if available. Usually I'm interested in looking for breaking changes more than any other kind of changes.
+**So why not compare changelogs through releases descriptions filtering, grouping and sorting what really matters?**
 
 That's what Octoclairvoyant does for you with their ability to gain information through extrasensory perception! 
-It retrieves all the releases description available from a repo, and leaves you filter them by base and target versions.
+It retrieves all the releases description available from a repo, and leaves you to filter them by base and target versions.
 Then, it will **parse, normalize, group and sort** those changes for you.
 
 But how? Well, there is no mystery on retrieving those descriptions from GitHub right? So let's see those previous points in detail:
@@ -47,12 +47,12 @@ But how? Well, there is no mystery on retrieving those descriptions from GitHub 
 ##### Parsing
 This is the most complex process of the app. Even if there is a big parsing step at first, after some other processes there are also some additional parsings too.
 This is done with [unified js](https://unifiedjs.com/), an amazing content compiler to syntax tree. It turns out that this powerful library is heavily used by `mdx-js`, `prettier` or `gatsby`!
-So what's the process here? I receive markdown from GitHub releases, and I want to output React elements, so the process is something like this:
+So what's the process here? I receive Markdown from GitHub releases, and I want to output React elements, so the process is something like this:
 > MD --> MDAST --> manipulation explained in steps below --> HTML --> React
 
 The idea behind this is:
 
-1. Convert to MDAST (MarkDown AST) to manipulate the content.
+1. Convert to MDAST (**M**ark**d**own **AST**) to manipulate the content.
 2. Look for interesting content: MD headings, so descriptions can be classified properly. This is when **normalizing** and **grouping** happens.
 3. When descriptions are grouped, convert them to HTML and apply some improvements (highlight GitHub references and code blocks).
 4. Finally, convert to React to avoid rendering the HTML through `dangerouslySetInnerHTML`. 
@@ -70,9 +70,9 @@ under the same level can be grouped properly. Obviously, it needs to normalize d
 one repo could refer to patch level as "bugfix" and another one as "BUG FIXES". 
 
 ##### Grouping
-At the parsing step where the MD is converted into MDAST, it's best opportunity to group changes after being normalized.
-This implies put all Breaking Changes together, Features together and so on. What if the group doesn't belong to SemVer tho?
-Well, the app will do its best and keep every single category of changes received, and group them if several found. 
+At the parsing step where the Markdown is converted into Markdown AST, it's best opportunity to group changes after being normalized.
+This implies put all Breaking Changes together, Features together and so on. What if the group doesn't belong to SemVer though?
+Well, the app will do its best and keep every single category of changes received, and group them if several found.
 
 ##### Sorting
 Last but not least: sort the groups by priority. As mentioned in the intro, the group of changes we should worry about the most
@@ -90,11 +90,11 @@ So the final sorting will be:
 
 ### Future Features:
 
-- [X] Autocomplete repo url input
+- [X] Autocomplete repo URL input
 - [X] Retrieve more releases when repo has more than 100 available (pagination)
-- [X] Add shareable urls
+- [X] Add shareable URLs
 - [ ] Search versions when typing on selects
 - [ ] Restrict from and to version selects when some option is selected
 - [ ] Improve grouping and sorting for other versioning system than Semantic Versioning
 - [ ] Options to include pre-releases and drafts within filters
-- [ ] Try to get changes from CHANGELOG.md if repository releases not available
+- [ ] Try to get changes from `CHANGELOG.md` if repository releases not available
