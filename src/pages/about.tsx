@@ -63,7 +63,7 @@ const MainSection = () => {
 
 const AboutPage = () => {
   return (
-    <Layout isHeaderFixed>
+    <Layout>
       <NextSeo title="About" />
       <Box
         mt={-8}
