@@ -1,4 +1,5 @@
-import { Box, HStack } from '@chakra-ui/react'
+import { Box, Center, HStack, Stack } from '@chakra-ui/react'
+import Image from 'next/image'
 
 import { REPO_URL } from '~/common'
 import FluidContainer from '~/components/FluidContainer'
@@ -8,28 +9,39 @@ const Footer = () => {
   return (
     <Box as="footer" bg="gray.50" flexShrink={0}>
       <FluidContainer py={5}>
-        <HStack
+        <Stack
           justify="space-between"
-          alignItems="center"
-          justifyContent="center"
-          fontSize={{ base: 'md', md: 'lg' }}
-          shouldWrapChildren
+          direction={['column', 'row']}
+          spacing={4}
         >
-          <Box>
-            Created with{' '}
-            <span role="img" aria-label="Love">
-              💜
-            </span>{' '}
-            by{' '}
-            <Link href="https://mario.dev/" isExternal>
-              Mario
+          <HStack
+            justify="space-between"
+            alignItems="center"
+            justifyContent="center"
+            fontSize={{ base: 'md', md: 'lg' }}
+            shouldWrapChildren
+          >
+            <Box>
+              Created with{' '}
+              <span role="img" aria-label="Love">
+                💜
+              </span>{' '}
+              by{' '}
+              <Link href="https://mario.dev/" isExternal>
+                Mario
+              </Link>
+            </Box>
+            <Box as="span">-</Box>
+            <Link href={REPO_URL} title="GitHub repo link">
+              GitHub
             </Link>
+          </HStack>
+          <Box>
+            <Center>
+              <Image src="/powered-by-vercel.svg" width={212} height={44} />
+            </Center>
           </Box>
-          <Box as="span">-</Box>
-          <Link href={REPO_URL} title="GitHub repo link">
-            GitHub
-          </Link>
-        </HStack>
+        </Stack>
       </FluidContainer>
     </Box>
   )
