@@ -105,10 +105,12 @@ So the final sorting will be:
 
 <hr>
 <div align="center">
-  <img
+  <a href="https://vercel.com/?utm_source=octoclairvoyant&utm_campaign=oss">
+    <img
     src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg"
     height="200"
     width="200"
     alt="Octoclairvoyant reading a crystal ball"
-  >
+    >
+  </a>
 </div>

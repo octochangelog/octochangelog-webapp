@@ -38,7 +38,12 @@ const Footer = () => {
           </HStack>
           <Box>
             <Center>
-              <Image src="/powered-by-vercel.svg" width={212} height={44} />
+              <Link
+                href="https://vercel.com/?utm_source=octoclairvoyant&utm_campaign=oss"
+                isExternal
+              >
+                <Image src="/powered-by-vercel.svg" width={212} height={44} />
+              </Link>
             </Center>
           </Box>
         </Stack>
