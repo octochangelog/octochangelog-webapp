@@ -116,7 +116,7 @@ or "Artifacts". So the final sorting will be:
 
 <hr>
 <div align="center">
-  <a href="https://vercel.com/?utm_source=octoclairvoyant&utm_campaign=oss">
+  <a href="https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss">
     <img
       src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg"
       height="200"

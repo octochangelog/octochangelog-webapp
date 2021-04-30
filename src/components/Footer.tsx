@@ -39,7 +39,7 @@ const Footer = () => {
           <Box>
             <Center>
               <Link
-                href="https://vercel.com/?utm_source=octoclairvoyant&utm_campaign=oss"
+                href="https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss"
                 isExternal
               >
                 <Image src="/powered-by-vercel.svg" width={212} height={44} />
