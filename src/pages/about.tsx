@@ -92,7 +92,7 @@ const AboutPage = () => {
               <List spacing={{ base: 4, lg: 8 }}>
                 <ListItem>
                   <ListIcon as={FaCheckCircle} color="secondary.500" />
-                  Search repositories and pick releases version range
+                  Search repositories and pick a version range
                 </ListItem>
                 <ListItem>
                   <ListIcon as={FaCheckCircle} color="secondary.500" />
@@ -101,13 +101,13 @@ const AboutPage = () => {
                 </ListItem>
                 <ListItem>
                   <ListIcon as={FaCheckCircle} color="secondary.500" />
-                  Share changelogs comparison through links
+                  Share changelogs comparison with others by giving them a link
                 </ListItem>
                 <ListItem>
                   <ListIcon as={FaCheckCircle} color="secondary.500" />
                   Normalize changes categories (e.g. put{' '}
                   <Text as="em">bug fixes</Text> and{' '}
-                  <Text as="em">minor changes</Text> under the same category)
+                  <Text as="em">minor changes</Text> in the same category)
                 </ListItem>
                 <ListItem>
                   <ListIcon as={FaCheckCircle} color="secondary.500" />
@@ -115,7 +115,8 @@ const AboutPage = () => {
                 </ListItem>
                 <ListItem>
                   <ListIcon as={FaCheckCircle} color="secondary.500" />
-                  Make easy to spot which version introduced specific changes
+                  Makes it easy to spot which version introduced specific
+                  changes
                 </ListItem>
               </List>
             </Box>
