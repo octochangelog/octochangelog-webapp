@@ -21,7 +21,7 @@
 - Search repositories and pick a version range
 - Sort and group a releases' changelogs following [Semantic Versioning](https://semver.org/)
 - Share changelogs comparison with others by giving them a link
-- Normalize changes categories (e.g. put _bug fixes_ and _minor changes_ under the same category)
+- Normalize changes categories (e.g. put _bug fixes_ and _minor changes_ in the same category)
 - Highlight code blocks syntax and GitHub references
 - Makes it easy to spot which version introduced specific changes
 
