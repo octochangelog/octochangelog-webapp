@@ -49,8 +49,8 @@ const RepositoryReleasesChangelogHeading = ({
             </Badge>
           </Heading>
         ) : (
-          <Text as="i" color="gray.500">
-            No releases selected to compare
+          <Text as="i" color="gray.900">
+            No releases selected to compare between.
           </Text>
         )}
       </FluidContainer>
