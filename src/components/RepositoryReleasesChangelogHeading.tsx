@@ -19,36 +19,38 @@ const RepositoryReleasesChangelogHeading = ({
   return (
     <Box width="full" py={1} mb={{ base: 4, md: 8 }}>
       <FluidContainer>
-        <Heading as="h1" size="2xl" mb={2}>
+        <Heading as="h1" size="lg" mb={2}>
           <Link href={repository.html_url} isExternal color="primary.500">
             {getRepositoryNameDisplay(repository.name)}
           </Link>
         </Heading>
 
         {fromVersion && toVersion ? (
-          <Heading fontSize="md" mb={2} color="secondary.500">
-            Comparing changes from{' '}
+          <Heading fontSize="md" mb={2} color="secondary.600">
+            Changes from{' '}
             <Badge
-              variant="solid"
+              variant="subtle"
               colorScheme="secondary"
               fontSize={13}
               lineHeight={1.5}
+              color="secondary.800"
             >
               {fromVersion}
             </Badge>{' '}
             to{' '}
             <Badge
-              variant="solid"
+              variant="subtle"
               colorScheme="secondary"
               fontSize={13}
               lineHeight={1.5}
+              color="secondary.800"
             >
               {toVersion}
             </Badge>
           </Heading>
         ) : (
-          <Text as="i" color="gray.500">
-            No releases selected to compare
+          <Text as="i" color="gray.900">
+            No releases selected to compare between.
           </Text>
         )}
       </FluidContainer>
