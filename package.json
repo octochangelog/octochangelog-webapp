@@ -11,11 +11,11 @@
     "type-check": "tsc --noEmit",
     "analyze": "ANALYZE=true yarn build",
     "test": "jest",
-    "eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "eslint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "yarn lint --fix",
     "prettier": "prettier --ignore-path .gitignore \"./**/*.{js,jsx,ts,tsx}\"",
-    "prettier:fix": "yarn prettier --write",
-    "prettier:check": "yarn prettier --check"
+    "format": "yarn prettier --write",
+    "format:check": "yarn prettier --check"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.0",
