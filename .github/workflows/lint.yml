@@ -30,7 +30,7 @@ jobs:
         run: yarn type-check
 
       - name: Prettier
-        run: yarn prettier:check
+        run: yarn format:check
 
       - name: ESLint
-        run: yarn eslint
+        run: yarn lint
