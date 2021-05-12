@@ -41,11 +41,11 @@ const MainSection = () => {
         <Flex justify="center" align="center">
           <NextLink href="/">
             <Button bg="gray.700" color="white" _hover={{ bg: 'gray.900' }}>
-              Check it out!
+              Try me now!
             </Button>
           </NextLink>
           <Link href="#features" ml={4} color="gray.700">
-            Read more
+            Feature list
           </Link>
         </Flex>
       </Stack>
