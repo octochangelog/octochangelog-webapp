@@ -16,6 +16,9 @@
 
 <hr>
 
+[![Build](https://github.com/Belco90/octoclairvoyant/actions/workflows/build.yml/badge.svg)](https://github.com/Belco90/octoclairvoyant/actions/workflows/build.yml)
+[![Lint](https://github.com/Belco90/octoclairvoyant/actions/workflows/lint.yml/badge.svg)](https://github.com/Belco90/octoclairvoyant/actions/workflows/lint.yml)
+
 ### Main Features:
 
 - Search repositories and pick a version range
