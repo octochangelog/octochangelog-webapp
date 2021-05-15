@@ -96,7 +96,7 @@ Well, the app will do its best and keep every single category of changes receive
 Last but not least: sort the groups by priority.
 As mentioned in the intro, the group of changes we should worry about the most is **breaking changes**.
 Features and Bug Fixes will come next, but what about those groups out of SemVer?
-Well, they'll come after SemVer one without any specific order, except some low priority groups as "Credits", "Thanks"or "Artifacts".
+Well, they'll come after SemVer one without any specific order, except some low priority groups as "Credits", "Thanks" or "Artifacts".
 So the final sorting will be:
 
 1. BREAKING CHANGES
