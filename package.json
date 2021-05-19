@@ -19,7 +19,7 @@
     "format:check": "yarn prettier --check"
   },
   "dependencies": {
-    "@chakra-ui/react": "1.6.0",
+    "@chakra-ui/react": "1.6.1",
     "@emotion/react": "11.1.5",
     "@emotion/styled": "11.3.0",
     "@fontsource/open-sans": "4.2.2",
