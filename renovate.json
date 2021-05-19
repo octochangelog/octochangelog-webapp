@@ -1,0 +1,16 @@
+{
+  "extends": ["config:base"],
+  "dependencyDashboard": true,
+  "prCreation": "not-pending",
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "internalChecksFilter": "strict",
+  "packageRules": [
+    {
+      "description": "Wait 3 days before creating a npm update PR",
+      "matchDatasources": ["npm"],
+      "stabilityDays": 3
+    }
+  ]
+}
