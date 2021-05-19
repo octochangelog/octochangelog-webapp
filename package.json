@@ -55,7 +55,7 @@
     "@types/nprogress": "0.2.0",
     "@types/react": "17.0.4",
     "@types/react-dom": "17.0.3",
-    "@types/semver": "7.3.5",
+    "@types/semver": "7.3.6",
     "@types/unist": "2.0.3",
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
