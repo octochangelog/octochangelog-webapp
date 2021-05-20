@@ -101,7 +101,12 @@ const RepositorySearchCombobox = ({
           <Input {...getInputProps()} autoFocus />
           <InputRightElement>
             {isLoading && (
-              <CircularProgress size="8" isIndeterminate color="primary.400" />
+              <CircularProgress
+                isIndeterminate
+                size="6"
+                trackColor="primary.50"
+                color="primary.500"
+              />
             )}
           </InputRightElement>
         </InputGroup>
