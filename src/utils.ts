@@ -6,6 +6,7 @@ import { HIGH_PRIORITY_GROUP_TITLES, LOW_PRIORITY_GROUP_TITLES } from '~/common'
 import {
   MiscGroupTitles,
   Release,
+  ReleaseLike,
   ReleaseVersion,
   Repository,
   RepositoryQueryParams,
@@ -38,7 +39,7 @@ type FilterReleasesNodes = {
   to: ReleaseVersion
 }
 
-export function getReleaseVersion(release: Release): string {
+export function getReleaseVersion(release: ReleaseLike): string {
   if (release.tag_name === 'latest') {
     return release.name || release.tag_name
   }

@@ -18,6 +18,8 @@ export type Repository = RestEndpointMethodTypes['repos']['get']['response']['da
 
 export type Release = RestEndpointMethodTypes['repos']['getRelease']['response']['data']
 
+export type ReleaseLike = Omit<Release, 'description'>
+
 export type ReleaseVersion = string
 
 // FIXME: generate proper types for processed release
