@@ -7,7 +7,7 @@
     "dev": "next",
     "build": "next build",
     "serve": "next start",
-    "smoketest": "yarn type-check && yarn eslint && yarn prettier:check && yarn build",
+    "smoketest": "yarn type-check && yarn lint && yarn format:check && yarn build",
     "postinstall": "husky install",
     "type-check": "tsc --noEmit",
     "analyze": "ANALYZE=true yarn build",
