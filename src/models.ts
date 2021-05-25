@@ -25,7 +25,7 @@ export type ReleaseVersion = string
 // FIXME: generate proper types for processed release
 export type ProcessedReleasesCollection = any
 
-export interface ProcessedReleaseChange extends Omit<Release, 'description'> {
+export interface ProcessedReleaseChange extends ReleaseLike {
   title: string
   originalTitle: string
   // level: enumerate with error, warning, info or unknown
