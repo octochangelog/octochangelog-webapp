@@ -107,17 +107,6 @@ So the final sorting will be:
 6. Thanks
 7. Artifacts
 
-### Future features:
-
-- [x] Autocomplete repo URL input
-- [x] Retrieve more releases when repo has more than 100 available (pagination)
-- [x] Add shareable URLs
-- [ ] Search versions when typing on selects
-- [ ] Restrict from and to version selects when some option is selected
-- [ ] Improve grouping and sorting for other versioning system than Semantic Versioning
-- [ ] Options to include pre-releases and drafts within filters
-- [ ] Try to get changes from `CHANGELOG.md` if repository releases not available
-
 <hr>
 <div align="center">
   <a href="https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss">
