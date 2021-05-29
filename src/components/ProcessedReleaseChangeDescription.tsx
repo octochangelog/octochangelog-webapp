@@ -90,7 +90,15 @@ const ProcessedReleaseChangeDescription = ({
         <>
           <Tag size="md" mb={2} rounded="full" colorScheme="primary">
             <Box as={GoTag} h={4} w={4} mr={1} />
-            <TagLabel>{getReleaseVersion(processedReleaseChange)}</TagLabel>
+            <TagLabel>
+              <Link
+                href={processedReleaseChange.html_url}
+                isExternal
+                color="primary.800"
+              >
+                {getReleaseVersion(processedReleaseChange)}
+              </Link>
+            </TagLabel>
           </Tag>
           <Box ml={4}>{processedDescription}</Box>
         </>
