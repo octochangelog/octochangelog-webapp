@@ -14,9 +14,11 @@ export type RepositoryQueryParams = {
   owner: string
 }
 
-export type Repository = RestEndpointMethodTypes['repos']['get']['response']['data']
+export type Repository =
+  RestEndpointMethodTypes['repos']['get']['response']['data']
 
-export type Release = RestEndpointMethodTypes['repos']['getRelease']['response']['data']
+export type Release =
+  RestEndpointMethodTypes['repos']['getRelease']['response']['data']
 
 export type ReleaseLike = Omit<Release, 'description'>
 

@@ -53,10 +53,8 @@ function useProcessDescriptionMdast({
   description,
   componentsMapping,
 }: HookArgs): HookReturnedValue {
-  const [
-    processedDescription,
-    setProcessedDescription,
-  ] = useState<ReactNode | null>(null)
+  const [processedDescription, setProcessedDescription] =
+    useState<ReactNode | null>(null)
 
   const [isProcessing, setIsProcessing] = useState(true)
 
