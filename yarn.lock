@@ -994,10 +994,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/open-sans@4.3.0":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@fontsource/open-sans/-/open-sans-4.3.0.tgz#960c3d9df5e841369e47d775dbb1a80212ff08d1"
-  integrity sha512-U4mz+KC0WT0AbjR5BanmfXbtkirFU3puOCOblJ3dm8ekV+SfZ4QSjpEryNCaY16gqNgKtwMWMOtVvlNPmc9gfw==
+"@fontsource/open-sans@4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/open-sans/-/open-sans-4.4.0.tgz#35c914f9d694f8edeecb241a0ec75181dc12eabc"
+  integrity sha512-BuCgcH70BTPAE0/j/ipM0wtyXQayjmc+AXr2an3KTPg5QDZyENeWHrSRzx4wzsNizcx7uMdsqi0R99u284DQAQ==
 
 "@hapi/accept@5.0.2":
   version "5.0.2"
