@@ -3,7 +3,8 @@
   "dependencyDashboard": true,
   "prCreation": "not-pending",
   "lockFileMaintenance": {
-    "enabled": true
+    "enabled": true,
+    "automerge": true
   },
   "internalChecksFilter": "strict",
   "packageRules": [
