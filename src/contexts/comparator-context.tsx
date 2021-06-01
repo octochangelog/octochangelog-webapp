@@ -33,12 +33,10 @@ interface FiltersQuerystring {
   to?: string | null
 }
 
-const ComparatorStateContext = createContext<
-  ComparatorStateContextValue | undefined
->(undefined)
-const ComparatorUpdaterContext = createContext<
-  ComparatorUpdaterContextValue | undefined
->(undefined)
+const ComparatorStateContext =
+  createContext<ComparatorStateContextValue | undefined>(undefined)
+const ComparatorUpdaterContext =
+  createContext<ComparatorUpdaterContextValue | undefined>(undefined)
 
 type InitStatus = 'mount' | 'loading' | 'done'
 

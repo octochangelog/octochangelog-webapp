@@ -106,10 +106,8 @@ interface UseProcessReleasesReturn {
 function useProcessReleases(
   releases: Release[] | null
 ): UseProcessReleasesReturn {
-  const [
-    processedReleases,
-    setProcessedReleases,
-  ] = useState<ProcessedReleasesCollection | null>(null)
+  const [processedReleases, setProcessedReleases] =
+    useState<ProcessedReleasesCollection | null>(null)
   const [isProcessing, setIsProcessing] = useState(false)
 
   useEffect(
