@@ -69,7 +69,7 @@ const RepositorySearchCombobox = ({
     },
     onSelectedItemChange: ({ selectedItem }) => {
       setIsTyping(false)
-      onSelect((selectedItem as unknown) as Repository)
+      onSelect(selectedItem as unknown as Repository)
     },
   })
 

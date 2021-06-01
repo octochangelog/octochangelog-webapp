@@ -10,8 +10,7 @@ const DefaultSEO: DefaultSeoProps = {
     title: `${SITE_TITLE}: ${FULL_DESCRIPTION}`,
     images: [
       {
-        url:
-          'https://raw.githubusercontent.com/belco90/octoclairvoyant/main/public/mascot-logo.png',
+        url: 'https://raw.githubusercontent.com/belco90/octoclairvoyant/main/public/mascot-logo.png',
         width: 516,
         height: 516,
         alt: 'Octoclairvoyant mascot reading a crystal ball',

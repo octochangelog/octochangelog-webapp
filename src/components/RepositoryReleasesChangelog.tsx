@@ -72,15 +72,17 @@ const RepositoryReleasesChangelog = ({
   fromVersion,
   toVersion,
 }: RepositoryReleasesChangelogProps) => {
-  const [filteredReleases, setFilteredReleases] = useState<Release[] | null>(
-    null
-  )
+  const [filteredReleases, setFilteredReleases] =
+    useState<Release[] | null>(null)
 
-  const { processedReleases, isProcessing } = useProcessReleases(
-    filteredReleases
-  )
+  const { processedReleases, isProcessing } =
+    useProcessReleases(filteredReleases)
 
-  const { data: releases, isLoading, isFetched } = useReleasesQuery({
+  const {
+    data: releases,
+    isLoading,
+    isFetched,
+  } = useReleasesQuery({
     repository,
   })
 
