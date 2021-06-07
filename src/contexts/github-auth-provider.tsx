@@ -10,8 +10,9 @@ type GithubAuthContextValue = {
 const GithubAuthContext = createContext<GithubAuthContextValue | null>(null)
 
 function GithubAuthProvider(props: any) {
-  const [accessToken, setAccessToken] =
-    useState<string | null | undefined>(getGithubAccessToken)
+  const [accessToken, setAccessToken] = useState<string | null | undefined>(
+    getGithubAccessToken
+  )
 
   useEffect(() => {
     setGithubAccessToken(accessToken)
