@@ -55,6 +55,7 @@ const MainSection = () => {
               bg="primary.100"
               color="primary.900"
               _hover={{ bg: 'primary.200' }}
+              _active={{ bg: 'primary.300' }}
             >
               Try me now!
             </Button>
