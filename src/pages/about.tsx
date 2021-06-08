@@ -13,40 +13,52 @@ import {
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import NextLink from 'next/link'
-import { FaCheckCircle } from 'react-icons/fa'
+import { FaCheck } from 'react-icons/fa'
 
-import { FULL_DESCRIPTION } from '~/common'
+import { BRIEF_DESCRIPTION } from '~/common'
 import FluidContainer from '~/components/FluidContainer'
 import Layout from '~/components/Layout'
 import Link from '~/components/Link'
 
 const MainSection = () => {
   return (
-    <Stack align="center" direction={{ base: 'column-reverse', lg: 'row' }}>
+    <Stack
+      px="10"
+      align="center"
+      direction={{ base: 'column-reverse', lg: 'row' }}
+    >
       <Stack
         alignItems={{ base: 'center', lg: 'start' }}
-        spacing={{ base: 4, lg: 8 }}
+        spacing="8"
         flexGrow={1}
         flexBasis={0}
         shouldWrapChildren
       >
         <Heading
           as="h1"
-          color={{ base: 'gray.700', lg: 'gray.50' }}
+          color={{ base: 'gray.900' }}
           fontSize="4xl"
           textAlign={{ base: 'center', lg: 'left' }}
+          letterSpacing="tight"
         >
-          {FULL_DESCRIPTION}
+          {BRIEF_DESCRIPTION}
         </Heading>
-        <Flex justify="center" align="center">
+        <Flex py="6" justify="center" align="center">
           <NextLink href="/">
-            <Button bg="gray.700" color="white" _hover={{ bg: 'gray.900' }}>
+            <Button
+              fontWeight="black"
+              fontSize="2xl"
+              letterSpacing="tight"
+              p="6"
+              size="lg"
+              shadow="lg"
+              bg="primary.100"
+              color="primary.900"
+              _hover={{ bg: 'primary.200' }}
+            >
               Try me now!
             </Button>
           </NextLink>
-          <Link href="#features" ml={4} color="gray.700">
-            Feature list
-          </Link>
         </Flex>
       </Stack>
       <Image
@@ -65,56 +77,51 @@ const AboutPage = () => {
   return (
     <Layout>
       <NextSeo title="About" />
-      <Box
-        mt={-8}
-        py={{ base: 8, lg: 16 }}
-        minHeight="100vh"
-        bgGradient="linear(to-b, primary.700, white)"
-      >
+      <Box mt={-8} py={{ base: 8, lg: 16 }} bg="gray.50">
         <FluidContainer>
           <MainSection />
         </FluidContainer>
       </Box>
 
-      <Box mb={4}>
+      <Box bg="gray.50">
         <FluidContainer>
-          <VStack spacing={8} alignItems="center" py={{ base: 8, lg: 16 }}>
+          <VStack spacing={8} alignItems="left" py="20" px="10">
             <Box>
               <Heading
                 as="h2"
                 fontSize="3xl"
-                mb={{ base: 4, lg: 8 }}
-                color="primary.500"
+                mb="4"
+                color="gray.900"
                 id="features"
               >
-                Main Features
+                Features
               </Heading>
-              <List spacing={{ base: 4, lg: 8 }}>
-                <ListItem>
-                  <ListIcon as={FaCheckCircle} color="secondary.500" />
+              <List fontSize="" spacing="4">
+                <ListItem mt="-2">
+                  <ListIcon as={FaCheck} color="secondary.300" />
                   Search repositories and pick a version range
                 </ListItem>
                 <ListItem>
-                  <ListIcon as={FaCheckCircle} color="secondary.500" />
+                  <ListIcon as={FaCheck} color="secondary.300" />
                   Sort and group releases changelogs following{' '}
                   <Link href="https://semver.org/">Semantic Versioning</Link>
                 </ListItem>
                 <ListItem>
-                  <ListIcon as={FaCheckCircle} color="secondary.500" />
+                  <ListIcon as={FaCheck} color="secondary.300" />
                   Share changelogs comparison with others by giving them a link
                 </ListItem>
                 <ListItem>
-                  <ListIcon as={FaCheckCircle} color="secondary.500" />
+                  <ListIcon as={FaCheck} color="secondary.300" />
                   Normalize changes categories (e.g. put{' '}
                   <Text as="em">bug fixes</Text> and{' '}
                   <Text as="em">minor changes</Text> in the same category)
                 </ListItem>
                 <ListItem>
-                  <ListIcon as={FaCheckCircle} color="secondary.500" />
+                  <ListIcon as={FaCheck} color="secondary.300" />
                   Highlight code blocks syntax and GitHub references
                 </ListItem>
                 <ListItem>
-                  <ListIcon as={FaCheckCircle} color="secondary.500" />
+                  <ListIcon as={FaCheck} color="secondary.300" />
                   Makes it easy to spot which version introduced specific
                   changes
                 </ListItem>
