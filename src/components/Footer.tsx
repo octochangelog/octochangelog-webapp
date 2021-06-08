@@ -32,7 +32,11 @@ const Footer = () => {
               </Link>
             </Box>
             <Box as="span">-</Box>
-            <Link href={REPO_URL} title="GitHub repo link">
+            <Link
+              href={REPO_URL}
+              isExternal
+              title="Octoclairvoyant repository on GitHub"
+            >
               GitHub
             </Link>
           </HStack>
