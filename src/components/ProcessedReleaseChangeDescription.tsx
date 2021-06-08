@@ -12,7 +12,6 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { FiExternalLink } from 'react-icons/fi'
-import { GoTag } from 'react-icons/go'
 import { ComponentProps } from 'rehype-react'
 
 import BlockQuote from '~/components/BlockQuote'
@@ -98,7 +97,6 @@ const ProcessedReleaseChangeDescription = ({
               _hover={{ bgColor: 'gray.300' }}
               _active={{ bgColor: 'gray.400', color: 'gray.900' }}
             >
-              <Box as={GoTag} h={4} w={4} mr={1} />
               <TagLabel>{getReleaseVersion(processedReleaseChange)}</TagLabel>
             </Tag>
           </Link>
