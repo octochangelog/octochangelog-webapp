@@ -88,18 +88,19 @@ const ProcessedReleaseChangeDescription = ({
     <Box {...rest} mb={8}>
       {!isProcessing ? (
         <>
-          <Tag size="md" mb={2} rounded="full" colorScheme="primary">
-            <Box as={GoTag} h={4} w={4} mr={1} />
-            <TagLabel>
-              <Link
-                href={processedReleaseChange.html_url}
-                isExternal
-                color="primary.800"
-              >
-                {getReleaseVersion(processedReleaseChange)}
-              </Link>
-            </TagLabel>
-          </Tag>
+          <Link href={processedReleaseChange.html_url} isExternal>
+            <Tag
+              size="md"
+              mb={2}
+              rounded="full"
+              bgColor="primary.100"
+              _hover={{ bgColor: 'primary.200' }}
+              _active={{ bgColor: 'primary.600', color: 'white' }}
+            >
+              <Box as={GoTag} h={4} w={4} mr={1} />
+              <TagLabel>{getReleaseVersion(processedReleaseChange)}</TagLabel>
+            </Tag>
+          </Link>
           <Box ml={4}>{processedDescription}</Box>
         </>
       ) : (
