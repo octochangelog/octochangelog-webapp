@@ -90,12 +90,13 @@ const ProcessedReleaseChangeDescription = ({
         <>
           <Link href={processedReleaseChange.html_url} isExternal>
             <Tag
+              color="gray.900"
               size="md"
               mb={2}
               rounded="full"
-              bgColor="primary.100"
-              _hover={{ bgColor: 'primary.200' }}
-              _active={{ bgColor: 'primary.600', color: 'white' }}
+              bgColor="gray.100"
+              _hover={{ bgColor: 'gray.300' }}
+              _active={{ bgColor: 'gray.400', color: 'gray.900' }}
             >
               <Box as={GoTag} h={4} w={4} mr={1} />
               <TagLabel>{getReleaseVersion(processedReleaseChange)}</TagLabel>
