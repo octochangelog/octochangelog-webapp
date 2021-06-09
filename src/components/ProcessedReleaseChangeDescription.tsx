@@ -12,7 +12,6 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { FiExternalLink } from 'react-icons/fi'
-import { GoTag } from 'react-icons/go'
 import { ComponentProps } from 'rehype-react'
 
 import BlockQuote from '~/components/BlockQuote'
@@ -88,10 +87,19 @@ const ProcessedReleaseChangeDescription = ({
     <Box {...rest} mb={8}>
       {!isProcessing ? (
         <>
-          <Tag size="md" mb={2} rounded="full" colorScheme="primary">
-            <Box as={GoTag} h={4} w={4} mr={1} />
-            <TagLabel>{getReleaseVersion(processedReleaseChange)}</TagLabel>
-          </Tag>
+          <Link href={processedReleaseChange.html_url} isExternal>
+            <Tag
+              color="gray.900"
+              size="md"
+              mb={2}
+              rounded="full"
+              bgColor="gray.100"
+              _hover={{ bgColor: 'gray.300' }}
+              _active={{ bgColor: 'gray.400', color: 'gray.900' }}
+            >
+              <TagLabel>{getReleaseVersion(processedReleaseChange)}</TagLabel>
+            </Tag>
+          </Link>
           <Box ml={4}>{processedDescription}</Box>
         </>
       ) : (
