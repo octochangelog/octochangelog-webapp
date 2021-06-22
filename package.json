@@ -21,7 +21,6 @@
     "@chakra-ui/react": "1.6.4",
     "@emotion/react": "11.4.0",
     "@emotion/styled": "11.3.0",
-    "@fontsource/open-sans": "4.4.5",
     "@next/bundle-analyzer": "11.0.1",
     "@octokit/auth-callback": "2.0.1",
     "@octokit/rest": "18.6.2",
