@@ -1,3 +1,4 @@
+import mascotIcon from '@app-public/mascot-icon.png'
 import {
   Box,
   BoxProps,
@@ -111,11 +112,10 @@ const Header = (props: BoxProps) => {
           <Flex alignItems="center">
             <Box h={LOGO_SIZES} w={LOGO_SIZES} mr={2}>
               <Image
-                src="/mascot-icon.png"
+                src={mascotIcon}
                 alt="Octoclairvoyant reading a crystal ball"
-                width={50}
-                height={50}
                 priority
+                placeholder="blur"
               />
             </Box>
             <Heading fontSize={{ base: 'md', md: 'xl', lg: '4xl' }}>

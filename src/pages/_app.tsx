@@ -1,5 +1,4 @@
 import { ChakraProvider } from '@chakra-ui/react'
-import customTheme from 'customTheme'
 import { resetIdCounter } from 'downshift'
 import { DefaultSeo } from 'next-seo'
 import { AppProps } from 'next/app'
@@ -12,6 +11,7 @@ import '@fontsource/open-sans/700.css'
 import 'focus-visible/dist/focus-visible'
 
 import { GithubAuthProvider } from '~/contexts/github-auth-provider'
+import customTheme from '~/customTheme'
 import * as gtag from '~/lib/gtag'
 import DefaultSEO from '~/next-seo.config'
 

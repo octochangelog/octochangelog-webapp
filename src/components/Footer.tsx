@@ -1,3 +1,4 @@
+import poweredByVercelLogo from '@app-public/powered-by-vercel.svg'
 import { Box, Center, HStack, Stack } from '@chakra-ui/react'
 import Image from 'next/image'
 
@@ -46,7 +47,7 @@ const Footer = () => {
                 href="https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss"
                 isExternal
               >
-                <Image src="/powered-by-vercel.svg" width={212} height={44} />
+                <Image src={poweredByVercelLogo} />
               </Link>
             </Center>
           </Box>
