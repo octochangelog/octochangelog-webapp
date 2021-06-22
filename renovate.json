@@ -6,12 +6,19 @@
     "enabled": true,
     "automerge": true
   },
+  "automergeType": "branch",
   "internalChecksFilter": "strict",
   "packageRules": [
     {
       "description": "Wait 3 days before creating a npm update PR",
       "matchDatasources": ["npm"],
       "stabilityDays": 3
+    },
+    {
+      "description": "Automerge ESLint and Prettier updates",
+      "matchDepTypes": ["devDependencies"],
+      "matchPackagePatterns": ["eslint", "prettier"],
+      "automerge": true
     }
   ]
 }
