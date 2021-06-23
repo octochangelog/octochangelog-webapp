@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [main, renovate/**]
+    branches: [main]
   pull_request:
     branches: [main]
 
