@@ -18,6 +18,13 @@
       "matchDepTypes": ["devDependencies"],
       "matchPackagePatterns": ["eslint", "prettier"],
       "automerge": true
+    },
+    {
+      "description": "Automerge minor and patch Jest updates",
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchDepTypes": ["devDependencies"],
+      "matchPackagePatterns": ["jest"],
+      "automerge": true
     }
   ]
 }
