@@ -6,7 +6,6 @@
     "enabled": true,
     "automerge": true
   },
-  "automergeType": "branch",
   "internalChecksFilter": "strict",
   "packageRules": [
     {
