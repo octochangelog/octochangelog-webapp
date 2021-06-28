@@ -37,7 +37,7 @@
     "react-icons": "4.2.0",
     "react-query": "3.17.2",
     "rehype-highlight": "4.1.0",
-    "rehype-react": "6.2.0",
+    "rehype-react": "6.2.1",
     "remark-gfm": "1.0.0",
     "remark-github": "10.1.0",
     "remark-parse": "9.0.0",
