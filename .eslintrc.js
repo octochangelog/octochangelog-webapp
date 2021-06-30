@@ -15,6 +15,9 @@ module.exports = {
     'plugin:import/typescript',
     'plugin:@next/next/recommended',
   ],
+  settings: {
+    'import/internal-regex': '^(@app-|~)',
+  },
   rules: {
     'no-shadow': 2,
     'react/react-in-jsx-scope': 0, // not necessary anymore since React v17
@@ -23,13 +26,6 @@ module.exports = {
     'import/order': [
       2,
       {
-        pathGroups: [
-          {
-            pattern: '~/**',
-            group: 'parent',
-            position: 'before',
-          },
-        ],
         'newlines-between': 'always',
         alphabetize: {
           order: 'asc',
