@@ -1,3 +1,4 @@
+import mascotLogo from '@app-public/mascot-logo.png'
 import {
   Box,
   Button,
@@ -63,12 +64,11 @@ const MainSection = () => {
         </Flex>
       </Stack>
       <Image
-        src="/mascot-logo.png"
+        src={mascotLogo}
         alt="Octoclairvoyant reading a crystal ball"
-        width={600}
-        height={600}
         quality={100}
         priority
+        placeholder="blur"
       />
     </Stack>
   )
