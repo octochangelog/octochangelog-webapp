@@ -39,6 +39,7 @@ const MainSection = () => {
           as="h1"
           color={{ base: 'gray.900' }}
           fontSize="4xl"
+          fontWeight="black"
           textAlign={{ base: 'center', lg: 'left' }}
           letterSpacing="tight"
         >
@@ -93,6 +94,7 @@ const AboutPage = () => {
                 fontSize="3xl"
                 mb="4"
                 color="gray.900"
+                fontWeight="black"
                 id="features"
               >
                 Features
