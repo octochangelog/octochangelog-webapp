@@ -9,7 +9,12 @@ module.exports = {
     node: true,
   },
   plugins: ['@typescript-eslint'],
-  extends: ['react-app', 'prettier', 'plugin:import/typescript'],
+  extends: [
+    'react-app',
+    'prettier',
+    'plugin:import/typescript',
+    'plugin:@next/next/recommended',
+  ],
   rules: {
     'no-shadow': 2,
     'react/react-in-jsx-scope': 0, // not necessary anymore since React v17
