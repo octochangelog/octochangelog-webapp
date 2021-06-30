@@ -12,11 +12,17 @@ module.exports = {
   extends: [
     'react-app',
     'prettier',
+    'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:@next/next/recommended',
   ],
   settings: {
     'import/internal-regex': '^(@app-|~)',
+    'import/resolver': {
+      typescript: {
+        project: '.',
+      },
+    },
   },
   rules: {
     'no-shadow': 2,
@@ -33,5 +39,6 @@ module.exports = {
         },
       },
     ],
+    'import/no-unresolved': [2, { ignore: ['unist'] }],
   },
 }
