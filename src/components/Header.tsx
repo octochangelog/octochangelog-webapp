@@ -118,7 +118,11 @@ const Header = (props: BoxProps) => {
                 placeholder="blur"
               />
             </Box>
-            <Heading fontSize={{ base: 'md', md: 'xl', lg: '4xl' }}>
+            <Heading
+              letterSpacing="tight"
+              fontWeight="black"
+              fontSize={{ base: 'md', md: 'xl', lg: '4xl' }}
+            >
               Octoclairvoyant
             </Heading>
           </Flex>

@@ -46,7 +46,8 @@ const customTheme = extendTheme({
     secondary: blueColor,
   },
   fonts: {
-    heading: '"Open Sans", sans-serif;',
+    heading: '"Inter", sans-serif;',
+    body: '"Inter", sans-serif;',
   },
   styles: {
     global: {
