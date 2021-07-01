@@ -1,7 +1,7 @@
-import poweredByVercelLogo from '@app-public/powered-by-vercel.svg'
 import { Box, Center, HStack, Stack } from '@chakra-ui/react'
 import Image from 'next/image'
 
+import poweredByVercelLogo from '@app-public/powered-by-vercel.svg'
 import { REPO_URL } from '~/common'
 import FluidContainer from '~/components/FluidContainer'
 import Link from '~/components/Link'
