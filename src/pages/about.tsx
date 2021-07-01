@@ -1,4 +1,3 @@
-import mascotLogo from '@app-public/mascot-logo.png'
 import {
   Box,
   Button,
@@ -16,6 +15,7 @@ import Image from 'next/image'
 import NextLink from 'next/link'
 import { FaCheck } from 'react-icons/fa'
 
+import mascotLogo from '@app-public/mascot-logo.png'
 import { BRIEF_DESCRIPTION } from '~/common'
 import FluidContainer from '~/components/FluidContainer'
 import Layout from '~/components/Layout'

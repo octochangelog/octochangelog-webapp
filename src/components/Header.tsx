@@ -1,4 +1,3 @@
-import mascotIcon from '@app-public/mascot-icon.png'
 import {
   Box,
   BoxProps,
@@ -20,6 +19,7 @@ import { useRouter } from 'next/router'
 import * as React from 'react'
 import { FaBars } from 'react-icons/fa'
 
+import mascotIcon from '@app-public/mascot-icon.png'
 import FluidContainer from '~/components/FluidContainer'
 import RouteLink from '~/components/RouteLink'
 import useIsClientSide from '~/hooks/useIsClientSide'

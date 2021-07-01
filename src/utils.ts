@@ -1,5 +1,5 @@
 import lowerCase from 'lodash/lowerCase'
-import semver from 'semver'
+import * as semver from 'semver'
 import title from 'title'
 
 import { HIGH_PRIORITY_GROUP_TITLES, LOW_PRIORITY_GROUP_TITLES } from '~/common'
