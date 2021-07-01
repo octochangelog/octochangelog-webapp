@@ -12,9 +12,18 @@ module.exports = {
   extends: [
     'react-app',
     'prettier',
+    'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:@next/next/recommended',
   ],
+  settings: {
+    'import/internal-regex': '^(@app-|~)',
+    'import/resolver': {
+      typescript: {
+        project: '.',
+      },
+    },
+  },
   rules: {
     'no-shadow': 2,
     'react/react-in-jsx-scope': 0, // not necessary anymore since React v17
@@ -23,13 +32,6 @@ module.exports = {
     'import/order': [
       2,
       {
-        pathGroups: [
-          {
-            pattern: '~/**',
-            group: 'parent',
-            position: 'before',
-          },
-        ],
         'newlines-between': 'always',
         alphabetize: {
           order: 'asc',
@@ -37,5 +39,6 @@ module.exports = {
         },
       },
     ],
+    'import/no-unresolved': [2, { ignore: ['unist'] }],
   },
 }
