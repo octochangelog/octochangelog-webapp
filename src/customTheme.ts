@@ -48,7 +48,6 @@ const customTheme = extendTheme({
   fonts: {
     heading: '"Inter", sans-serif;',
     body: '"Inter", sans-serif;',
-    mono: '"Inter", sans-serif;',
   },
   styles: {
     global: {
