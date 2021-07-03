@@ -26,7 +26,7 @@ function processedReleaseIsEmpty(processedRelease: any): boolean {
 
 const processor = unified().use(parse).use(gfm)
 
-function processReleasesAsync(releases: Release[]) {
+async function processReleasesAsync(releases: Release[]) {
   // TODO: reject on error
   return new Promise((resolve) => {
     const processedReleasesCollection = {}

@@ -49,6 +49,4 @@ export enum MiscGroupTitles {
   credits = 'credits',
 }
 
-export type ComponentsMapping = {
-  [element: string]: ComponentLike<ReactElement>
-}
+export type ComponentsMapping = Record<string, ComponentLike<ReactElement>>

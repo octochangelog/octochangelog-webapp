@@ -85,27 +85,27 @@ export function getReleaseGroupTitle(
 
   // Check features before than breaking changes to group here "Major Features"
   // and avoid grouping them under breaking changes group
-  if (mdastTitle.match(/^.*(feature|minor).*$/i)) {
+  if (/^.*(feature|minor).*$/i.exec(mdastTitle)) {
     return SemVerGroupTitles.features
   }
 
-  if (mdastTitle.match(/^.*(breaking.*change|major).*$/i)) {
+  if (/^.*(breaking.*change|major).*$/i.exec(mdastTitle)) {
     return SemVerGroupTitles.breakingChanges
   }
 
-  if (mdastTitle.match(/^.*(bug|fix|patch).*$/i)) {
+  if (/^.*(bug|fix|patch).*$/i.exec(mdastTitle)) {
     return SemVerGroupTitles.bugFixes
   }
 
-  if (mdastTitle.match(/^.*thank.*$/)) {
+  if (/^.*thank.*$/.exec(mdastTitle)) {
     return MiscGroupTitles.thanks
   }
 
-  if (mdastTitle.match(/^.*artifact.*$/)) {
+  if (/^.*artifact.*$/.exec(mdastTitle)) {
     return MiscGroupTitles.artifacts
   }
 
-  if (mdastTitle.match(/^.*credit.*$/)) {
+  if (/^.*credit.*$/.exec(mdastTitle)) {
     return MiscGroupTitles.credits
   }
 

@@ -11,7 +11,7 @@ import { useGithubAuth } from '~/contexts/github-auth-provider'
 import useIsClientSide from '~/hooks/useIsClientSide'
 
 const RepositoryReleasesChangelog = dynamic(
-  () => import('~/components/RepositoryReleasesChangelog')
+  async () => import('~/components/RepositoryReleasesChangelog')
 )
 
 const RepositoryReleasesComparator = () => {

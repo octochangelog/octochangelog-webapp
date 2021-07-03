@@ -39,7 +39,7 @@ const ReleaseChangelogGroup = ({
   shouldShowTitle,
 }: {
   title: string
-  releaseGroup: Array<ProcessedReleaseChange>
+  releaseGroup: ProcessedReleaseChange[]
   repository: Repository
   shouldShowTitle: boolean
 }) => {
@@ -115,7 +115,7 @@ const RepositoryReleasesChangelog = ({
     )
   })()
 
-  const sortedGroupTitles: Array<string> | null = processedReleases
+  const sortedGroupTitles: string[] | null = processedReleases
     ? Object.keys(processedReleases).sort(compareReleaseGroupTitlesSort)
     : []
 
