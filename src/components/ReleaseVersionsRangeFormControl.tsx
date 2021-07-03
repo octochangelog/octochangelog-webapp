@@ -27,7 +27,7 @@ function mapReleasesRange(releases?: Release[]): [Release[], Release[]] {
       name: `Latest (${getReleaseVersion(sortedReleases[0])})`,
       tag_name: 'latest',
       id: -1,
-    } as Release,
+    },
     ...sortedReleases,
   ]
 
