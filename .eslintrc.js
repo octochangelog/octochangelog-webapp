@@ -11,9 +11,10 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   extends: [
     'react-app',
-    'xo/browser',
     'plugin:import/recommended',
     'plugin:import/typescript',
+    'xo/browser',
+    'xo-typescript',
     'plugin:@next/next/recommended',
     'prettier',
   ],

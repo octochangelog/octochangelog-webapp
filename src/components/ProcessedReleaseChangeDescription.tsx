@@ -85,7 +85,9 @@ const ProcessedReleaseChangeDescription = ({
 
   return (
     <Box {...rest} mb={8}>
-      {!isProcessing ? (
+      {isProcessing ? (
+        <TextSkeleton />
+      ) : (
         <>
           <Link href={processedReleaseChange.html_url} isExternal>
             <Tag
@@ -102,8 +104,6 @@ const ProcessedReleaseChangeDescription = ({
           </Link>
           <Box ml={4}>{processedDescription}</Box>
         </>
-      ) : (
-        <TextSkeleton />
       )}
     </Box>
   )
