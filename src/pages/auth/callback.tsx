@@ -21,7 +21,7 @@ const AuthCallbackPage = ({ accessToken, errorMessage }: Props) => {
   useEffect(() => {
     setAccessToken(accessToken)
     if (accessToken) {
-      router.replace('/')
+      void router.replace('/')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -58,8 +58,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const { code } = context.query
     accessToken = await obtainAccessToken(code as string | undefined)
-  } catch (e) {
-    errorMessage = e.toString()
+  } catch (e: unknown) {
+    errorMessage = String(e)
   }
 
   return { props: { errorMessage, accessToken } }
