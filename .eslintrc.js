@@ -1,13 +1,6 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  globals: {
-    React: 'writable',
-  },
-  env: {
-    browser: true,
-    node: true,
-  },
   plugins: ['@typescript-eslint'],
   extends: [
     'react-app',
