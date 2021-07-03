@@ -50,7 +50,7 @@ const RepositorySearchCombobox = ({
     getToggleButtonProps,
     highlightedIndex,
   } = useCombobox({
-    items: data?.items || [],
+    items: data?.items ?? [],
     itemToString: (repo) => repo?.full_name ?? 'unknown',
     initialInputValue,
     onInputValueChange: ({
@@ -77,7 +77,7 @@ const RepositorySearchCombobox = ({
     () =>
       debounce(() => {
         setIsTyping(false)
-        refetch()
+        void refetch()
       }, 500),
     [refetch]
   )
