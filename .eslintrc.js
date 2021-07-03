@@ -26,9 +26,14 @@ module.exports = {
     },
   },
   rules: {
+    // Base
     'no-shadow': 2,
-    'react/react-in-jsx-scope': 0, // Not necessary anymore since React v17
+    'no-warning-comments': 0,
+
+    // React
     'react/self-closing-comp': 2,
+
+    // Import
     'import/newline-after-import': 2,
     'import/order': [
       2,
