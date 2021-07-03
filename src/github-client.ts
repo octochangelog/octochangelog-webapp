@@ -70,6 +70,7 @@ export async function obtainAccessToken(
   if (!response.ok) {
     throw new Error('Something went wrong obtaining access token')
   }
+
   const responseJson = await response.json()
   return responseJson.access_token
 }

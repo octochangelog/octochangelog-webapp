@@ -38,7 +38,7 @@ function useReleasesQuery(
         }
       )
     },
-    { enabled: !!params.repository, ...config }
+    { enabled: Boolean(params.repository), ...config }
   )
 }
 

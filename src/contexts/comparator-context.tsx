@@ -56,11 +56,10 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
   const { repo, from, to } = router.query as FiltersQuerystring
 
   const setQuerystringParams = (newFilters: FiltersQuerystring) => {
-    const mergedFilters: FiltersQuerystring = Object.assign(
-      {},
-      router.query,
-      newFilters
-    )
+    const mergedFilters: FiltersQuerystring = {
+      ...router.query,
+      ...newFilters,
+    }
     const newQuery: ParsedUrlQuery = Object.fromEntries(
       Object.entries(mergedFilters).filter(([_, value]) => Boolean(value))
     )
@@ -74,13 +73,15 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
     setRepository(newRepository ?? null)
     setQuerystringParams({
       repo: newRepository?.full_name,
-      from: null, // clear from and to when changing repo
+      from: null, // Clear from and to when changing repo
       to: null,
     })
   }
+
   const setSelectedFromVersion = (newFrom?: string | null) => {
     setQuerystringParams({ from: newFrom })
   }
+
   const setSelectedToVersion = (newTo?: string | null) => {
     setQuerystringParams({ to: newTo })
   }
@@ -113,7 +114,7 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
   }, [repo, router.isReady, router.query])
 
   const stateValue: ComparatorStateContextValue = {
-    repository: repository,
+    repository,
     fromVersion: from,
     toVersion: to,
   }

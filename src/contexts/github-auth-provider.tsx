@@ -20,7 +20,7 @@ function GithubAuthProvider(props: any) {
 
   const providerValue: GithubAuthContextValue = {
     setAccessToken,
-    isAuth: !!accessToken,
+    isAuth: Boolean(accessToken),
   }
 
   return <GithubAuthContext.Provider {...props} value={providerValue} />

@@ -32,7 +32,7 @@ async function processDescriptionAsync(
       .use(remark2rehype)
       .use(highlight, { ignoreMissing: true })
       .use(rehype2react, {
-        createElement: createElement,
+        createElement,
         components,
       })
       .process(
@@ -70,6 +70,7 @@ function useProcessDescriptionMdast({
         setProcessedDescription(result)
         setIsProcessing(false)
       }
+
       handleProcessDescription()
     },
     [componentsMapping, description, repository.html_url]

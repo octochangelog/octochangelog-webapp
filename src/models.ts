@@ -30,7 +30,7 @@ export type ProcessedReleasesCollection = any
 export interface ProcessedReleaseChange extends ReleaseLike {
   title: string
   originalTitle: string
-  // level: enumerate with error, warning, info or unknown
+  // Level: enumerate with error, warning, info or unknown
   descriptionMdast: Parent
 }
 

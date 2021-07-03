@@ -57,7 +57,7 @@ const RepositorySearchCombobox = ({
       inputValue: newInputValue,
       isOpen: isOpenOnChange,
     }) => {
-      setIsTyping(!!isOpenOnChange && !!newInputValue)
+      setIsTyping(Boolean(isOpenOnChange) && Boolean(newInputValue))
 
       // Avoid set input value when is not open as that means the user already
       // picked an option so we don't want to refetch again.
@@ -73,12 +73,14 @@ const RepositorySearchCombobox = ({
     },
   })
 
-  const throttleRefetch = useMemo(() => {
-    return debounce(() => {
-      setIsTyping(false)
-      refetch()
-    }, 500)
-  }, [refetch])
+  const throttleRefetch = useMemo(
+    () =>
+      debounce(() => {
+        setIsTyping(false)
+        refetch()
+      }, 500),
+    [refetch]
+  )
 
   useEffect(() => {
     if (inputValue.trim()) {

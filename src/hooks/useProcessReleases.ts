@@ -12,10 +12,10 @@ function insertReleaseInGroup(
 ): void {
   const { title } = newProcessedRelease
   if (groupedReleases[title]) {
-    // group already exists, then append new changes of same type
+    // Group already exists, then append new changes of same type
     groupedReleases[title].push(newProcessedRelease)
   } else {
-    // group doesn't exist yet, then create it and init with new changes
+    // Group doesn't exist yet, then create it and init with new changes
     groupedReleases[title] = [newProcessedRelease]
   }
 }
@@ -46,7 +46,7 @@ function processReleasesAsync(releases: Release[]) {
           mdastNode.type === 'heading' &&
           [1, 2, 3].includes(mdastNode.depth)
         ) {
-          // check if prev release available, and save it if so...
+          // Check if prev release available, and save it if so...
           if (
             newProcessedRelease &&
             !processedReleaseIsEmpty(newProcessedRelease)
@@ -71,7 +71,7 @@ function processReleasesAsync(releases: Release[]) {
             }
           }
         } else if (!newProcessedRelease) {
-          // standalone or non-groupable release found
+          // Standalone or non-groupable release found
           newProcessedRelease = {
             title: MiscGroupTitles.unknown,
             originalTitle: mdastNode.children[0].value,
@@ -82,11 +82,11 @@ function processReleasesAsync(releases: Release[]) {
             ...remainingRel,
           }
         } else {
-          // append content to current release
+          // Append content to current release
           newProcessedRelease.descriptionMdast.children.push(mdastNode)
         }
       })
-      // insert final release in group
+      // Insert final release in group
       if (
         newProcessedRelease &&
         !processedReleaseIsEmpty(newProcessedRelease)
@@ -120,6 +120,7 @@ function useProcessReleases(
           const result = await processReleasesAsync(releases)
           setProcessedReleases(result)
         }
+
         setIsProcessing(false)
       }
 

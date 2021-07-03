@@ -43,6 +43,7 @@ export function getReleaseVersion(release: ReleaseLike): string {
   if (release.tag_name === 'latest') {
     return release.name || release.tag_name
   }
+
   return release.tag_name
 }
 
@@ -56,7 +57,7 @@ export function filterReleasesByVersionRange(
       ? getReleaseVersion(releases[0])
       : originalTo
 
-  // filter version range as (from, to]
+  // Filter version range as (from, to]
   return releases.filter(
     ({ tag_name }) => semver.gt(tag_name, from) && semver.lte(tag_name, to)
   )
@@ -65,7 +66,7 @@ export function filterReleasesByVersionRange(
 export function isStableRelease(release: Release): boolean {
   const { tag_name } = release
 
-  return !!semver.valid(tag_name) && !semver.prerelease(tag_name)
+  return Boolean(semver.valid(tag_name)) && !semver.prerelease(tag_name)
 }
 
 const customTitleSpecials: string[] = ['DOM', 'ESLint', 'UI']
@@ -82,7 +83,7 @@ export function getReleaseGroupTitle(
 ): SemVerGroupTitles | MiscGroupTitles | string {
   const mdastTitle = lowerCase(mdastNode.children[0].value)
 
-  // check features before than breaking changes to group here "Major Features"
+  // Check features before than breaking changes to group here "Major Features"
   // and avoid grouping them under breaking changes group
   if (mdastTitle.match(/^.*(feature|minor).*$/i)) {
     return SemVerGroupTitles.features
@@ -128,17 +129,17 @@ export function compareReleaseGroupTitlesSort(a: string, b: string): number {
   const aPriority = getTitlePriorityGroup(a)
   const bPriority = getTitlePriorityGroup(b)
 
-  // they belong to different priorities group, sort by highest one
+  // They belong to different priorities group, sort by highest one
   if (aPriority !== bPriority) {
     return aPriority - bPriority
   }
 
-  // they belong to neutral priority group, maintain sort unchanged
+  // They belong to neutral priority group, maintain sort unchanged
   if (aPriority === 0) {
     return 0
   }
 
-  // they belong to high or low priority group,
+  // They belong to high or low priority group,
   // sort by most important one within their group
   const priorityGroupReference =
     aPriority === -1 ? HIGH_PRIORITY_GROUP_TITLES : LOW_PRIORITY_GROUP_TITLES
@@ -154,7 +155,7 @@ export function compareReleaseGroupTitlesSort(a: string, b: string): number {
     return 1
   }
 
-  // maintain sort unchanged just in case
+  // Maintain sort unchanged just in case
   return 0
 }
 
@@ -168,7 +169,9 @@ export const releasesComparator = (
 
   if (semver.gt(verA, verB)) {
     return order === 'desc' ? -1 : 1
-  } else if (semver.lt(verA, verB)) {
+  }
+
+  if (semver.lt(verA, verB)) {
     return order === 'desc' ? 1 : -1
   }
 

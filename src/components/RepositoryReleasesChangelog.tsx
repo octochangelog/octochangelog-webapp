@@ -115,7 +115,7 @@ const RepositoryReleasesChangelog = ({
     )
   })()
 
-  const sortedGroupTitles: Array<string> | null = !!processedReleases
+  const sortedGroupTitles: Array<string> | null = processedReleases
     ? Object.keys(processedReleases).sort(compareReleaseGroupTitlesSort)
     : []
 

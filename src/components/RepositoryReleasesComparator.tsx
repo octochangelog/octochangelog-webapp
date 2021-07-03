@@ -42,7 +42,7 @@ const RepositoryReleasesComparator = () => {
         </>
       )}
 
-      {/* This is rendered only in CS since SSR doesn't have info about auth user yet*/}
+      {/* This is rendered only in CS since SSR doesn't have info about auth user yet */}
       {isClientSide && !repository && !isAuth && (
         <FluidContainer>
           <Flex alignItems="center" flexDirection="column">
