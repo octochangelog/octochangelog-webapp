@@ -34,6 +34,11 @@ module.exports = {
     // React
     'react/self-closing-comp': 2,
 
+    // TypeScript
+    // Disabling this one temporary until types are properly defined across
+    // the whole codebase.
+    '@typescript-eslint/no-unsafe-assignment': 0,
+
     // Import
     'import/newline-after-import': 2,
     'import/order': [
