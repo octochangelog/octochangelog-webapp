@@ -11,10 +11,11 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   extends: [
     'react-app',
-    'prettier',
+    'xo/browser',
     'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:@next/next/recommended',
+    'prettier',
   ],
   settings: {
     'import/internal-regex': '^(@app-|~)',
@@ -26,7 +27,7 @@ module.exports = {
   },
   rules: {
     'no-shadow': 2,
-    'react/react-in-jsx-scope': 0, // not necessary anymore since React v17
+    'react/react-in-jsx-scope': 0, // Not necessary anymore since React v17
     'react/self-closing-comp': 2,
     'import/newline-after-import': 2,
     'import/order': [
