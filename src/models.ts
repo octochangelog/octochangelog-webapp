@@ -3,12 +3,6 @@ import { ReactElement } from 'react'
 import { ComponentLike } from 'rehype-react'
 import { Parent } from 'unist'
 
-declare global {
-  interface Window {
-    gtag: Function
-  }
-}
-
 export type RepositoryQueryParams = {
   repo: string
   owner: string
@@ -20,7 +14,7 @@ export type Repository =
 export type Release =
   RestEndpointMethodTypes['repos']['getRelease']['response']['data']
 
-export type ReleaseLike = Omit<Release, 'description'>
+export type ReleaseLike = Release
 
 export type ReleaseVersion = string
 
