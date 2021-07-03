@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call */
 import { useState, useEffect } from 'react'
 import gfm from 'remark-gfm'
 import parse from 'remark-parse'
@@ -70,7 +71,10 @@ async function processReleasesAsync(releases: Release[]) {
               ...remainingRel,
             }
           }
-        } else if (!newProcessedRelease) {
+        } else if (newProcessedRelease) {
+          // Append content to current release
+          newProcessedRelease.descriptionMdast.children.push(mdastNode)
+        } else {
           // Standalone or non-groupable release found
           newProcessedRelease = {
             title: MiscGroupTitles.unknown,
@@ -81,9 +85,6 @@ async function processReleasesAsync(releases: Release[]) {
             },
             ...remainingRel,
           }
-        } else {
-          // Append content to current release
-          newProcessedRelease.descriptionMdast.children.push(mdastNode)
         }
       })
       // Insert final release in group
@@ -110,24 +111,21 @@ function useProcessReleases(
     useState<ProcessedReleasesCollection | null>(null)
   const [isProcessing, setIsProcessing] = useState(false)
 
-  useEffect(
-    function processReleasesEffect() {
-      const handleProcessReleases = async () => {
-        if (!releases || releases.length === 0) {
-          setProcessedReleases(null)
-        } else {
-          setIsProcessing(true)
-          const result = await processReleasesAsync(releases)
-          setProcessedReleases(result)
-        }
-
-        setIsProcessing(false)
+  useEffect(() => {
+    const handleProcessReleases = async () => {
+      if (!releases || releases.length === 0) {
+        setProcessedReleases(null)
+      } else {
+        setIsProcessing(true)
+        const result = await processReleasesAsync(releases)
+        setProcessedReleases(result)
       }
 
-      handleProcessReleases()
-    },
-    [releases]
-  )
+      setIsProcessing(false)
+    }
+
+    void handleProcessReleases()
+  }, [releases])
 
   return { processedReleases, isProcessing }
 }
