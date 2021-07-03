@@ -87,21 +87,18 @@ const RepositoryReleasesChangelog = ({
     repository,
   })
 
-  useEffect(
-    function filterReleases() {
-      if (releases && fromVersion && toVersion) {
-        const newFilteredReleases = filterReleasesByVersionRange({
-          releases,
-          from: fromVersion,
-          to: toVersion,
-        }).sort((a, b) => releasesComparator(a, b, 'asc'))
-        setFilteredReleases(newFilteredReleases)
-      } else {
-        setFilteredReleases(null)
-      }
-    },
-    [fromVersion, releases, toVersion]
-  )
+  useEffect(() => {
+    if (releases && fromVersion && toVersion) {
+      const newFilteredReleases = filterReleasesByVersionRange({
+        releases,
+        from: fromVersion,
+        to: toVersion,
+      }).sort((a, b) => releasesComparator(a, b, 'asc'))
+      setFilteredReleases(newFilteredReleases)
+    } else {
+      setFilteredReleases(null)
+    }
+  }, [fromVersion, releases, toVersion])
 
   const shouldShowProcessedReleaseTitle = (function () {
     if (!processedReleases) {
@@ -135,6 +132,7 @@ const RepositoryReleasesChangelog = ({
             <ReleaseChangelogGroup
               key={title}
               title={title}
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
               releaseGroup={processedReleases[title]}
               repository={repository}
               shouldShowTitle={shouldShowProcessedReleaseTitle}
