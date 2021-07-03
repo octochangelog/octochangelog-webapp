@@ -1,5 +1,3 @@
-import { ParsedUrlQuery } from 'querystring'
-
 import { Flex, CircularProgress } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import {
@@ -60,13 +58,17 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
       ...router.query,
       ...newFilters,
     }
-    const newQuery: ParsedUrlQuery = Object.fromEntries(
+    const newQuery = Object.fromEntries(
       Object.entries(mergedFilters).filter(([_, value]) => Boolean(value))
     )
 
-    router.replace({ pathname: router.pathname, query: newQuery }, undefined, {
-      shallow: true,
-    })
+    void router.replace(
+      { pathname: router.pathname, query: newQuery },
+      undefined,
+      {
+        shallow: true,
+      }
+    )
   }
 
   const setSelectedRepository = (newRepository?: Repository | null) => {
@@ -109,7 +111,7 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
     }
 
     if (statusRef.current === 'mount' && router.isReady) {
-      getInitialRepository()
+      void getInitialRepository()
     }
   }, [repo, router.isReady, router.query])
 
