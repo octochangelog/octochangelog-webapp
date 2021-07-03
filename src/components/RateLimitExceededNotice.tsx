@@ -24,7 +24,7 @@ const RateLimitExceededNotice = ({ waitingMinutes, isAuth = false }: Props) => (
           GitHub API hourly limit
         </Link>{' '}
         for {isAuth ? 'authenticated' : 'unauthenticated'} requests. You need to
-        wait {waitingMinutes || 'some'} minutes or{' '}
+        wait {waitingMinutes ?? 'some'} minutes or{' '}
         {isAuth
           ? 'renew your existing token'
           : 'create a token for extending this limit'}
