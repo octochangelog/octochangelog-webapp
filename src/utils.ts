@@ -28,7 +28,7 @@ export function mapStringToRepositoryQueryParams(
   try {
     const [owner, repo] = str.split('/')
     return { owner, repo }
-  } catch (e) {
+  } catch (_: unknown) {
     return null
   }
 }
@@ -41,6 +41,7 @@ type FilterReleasesNodes = {
 
 export function getReleaseVersion(release: ReleaseLike): string {
   if (release.tag_name === 'latest') {
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     return release.name || release.tag_name
   }
 
@@ -81,6 +82,7 @@ export function getRepositoryNameDisplay(repoName: string): string {
 export function getReleaseGroupTitle(
   mdastNode: any
 ): SemVerGroupTitles | MiscGroupTitles | string {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const mdastTitle = lowerCase(mdastNode.children[0].value)
 
   // Check features before than breaking changes to group here "Major Features"
