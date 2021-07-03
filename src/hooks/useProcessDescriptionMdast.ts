@@ -37,11 +37,11 @@ async function processDescriptionAsync(
       })
       .process(
         unified().use(markdown).use(gfm).stringify(description),
-        (err, file: any) => {
+        (err, file) => {
           if (err) {
             reject(err)
           } else {
-            resolve(file.result)
+            resolve(file.result as ReactNode)
           }
         }
       )
@@ -58,23 +58,20 @@ function useProcessDescriptionMdast({
 
   const [isProcessing, setIsProcessing] = useState(true)
 
-  useEffect(
-    function processDescriptionMdastEffect() {
-      const handleProcessDescription = async () => {
-        setIsProcessing(true)
-        const result = await processDescriptionAsync(
-          description,
-          componentsMapping
-        )
+  useEffect(() => {
+    const handleProcessDescription = async () => {
+      setIsProcessing(true)
+      const result = await processDescriptionAsync(
+        description,
+        componentsMapping
+      )
 
-        setProcessedDescription(result)
-        setIsProcessing(false)
-      }
+      setProcessedDescription(result)
+      setIsProcessing(false)
+    }
 
-      handleProcessDescription()
-    },
-    [componentsMapping, description, repository.html_url]
-  )
+    void handleProcessDescription()
+  }, [componentsMapping, description, repository.html_url])
 
   const data = useMemo(
     () => ({
