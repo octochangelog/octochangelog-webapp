@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
 import { getGithubAccessToken, setGithubAccessToken } from '~/github-client'
 
@@ -18,10 +18,13 @@ const GithubAuthProvider = (props: any) => {
     setGithubAccessToken(accessToken)
   }, [accessToken])
 
-  const providerValue: GithubAuthContextValue = {
-    setAccessToken,
-    isAuth: Boolean(accessToken),
-  }
+  const providerValue: GithubAuthContextValue = useMemo(
+    () => ({
+      setAccessToken,
+      isAuth: Boolean(accessToken),
+    }),
+    [accessToken]
+  )
 
   return <GithubAuthContext.Provider {...props} value={providerValue} />
 }
