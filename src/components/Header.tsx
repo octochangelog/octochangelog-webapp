@@ -88,7 +88,7 @@ const HeaderLinks = () => {
         size="sm"
         onClick={onToggle}
       />
-      <Drawer placement="right" onClose={onClose} isOpen={isOpen} size="full">
+      <Drawer placement="right" isOpen={isOpen} size="full" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent py={8} backgroundColor="gray.700">
           <DrawerCloseButton color="gray.50" />
@@ -112,9 +112,9 @@ const Header = (props: BoxProps) => {
           <Flex alignItems="center">
             <Box h={LOGO_SIZES} w={LOGO_SIZES} mr={2}>
               <Image
+                priority
                 src={mascotIcon}
                 alt="Octoclairvoyant reading a crystal ball"
-                priority
                 placeholder="blur"
               />
             </Box>

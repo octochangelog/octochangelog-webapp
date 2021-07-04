@@ -16,18 +16,18 @@ function mapReleasesRange(releases?: Release[]): [Release[], Release[]] {
 
   const sortedReleases = releases.sort(releasesComparator)
 
-  // remove very last version to leave a gap of 1 version between penultimate from version and last to version
+  // Remove very last version to leave a gap of 1 version between penultimate from version and last to version
   const fromReleases =
     sortedReleases.length === 1 ? sortedReleases : sortedReleases.slice(1)
 
-  // prepend "latest" option based on last release object
+  // Prepend "latest" option based on last release object
   const toReleases = [
     {
       ...sortedReleases[0],
       name: `Latest (${getReleaseVersion(sortedReleases[0])})`,
       tag_name: 'latest',
       id: -1,
-    } as Release,
+    },
     ...sortedReleases,
   ]
 
@@ -56,8 +56,8 @@ const ReleaseVersionsRangeFormControl = (props: StackProps) => {
         isLoading={isLoading}
         placeholder={selectPlaceholder}
         options={fromReleases}
-        onChange={setFromVersion}
         value={fromVersion ?? undefined}
+        onChange={setFromVersion}
       />
       <ReleaseVersionFormControl
         label="To release"
@@ -66,8 +66,8 @@ const ReleaseVersionsRangeFormControl = (props: StackProps) => {
         isLoading={isLoading}
         placeholder={selectPlaceholder}
         options={toReleases}
-        onChange={setToVersion}
         value={toVersion ?? undefined}
+        onChange={setToVersion}
       />
     </Stack>
   )

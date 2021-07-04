@@ -11,7 +11,7 @@ import { useGithubAuth } from '~/contexts/github-auth-provider'
 import useIsClientSide from '~/hooks/useIsClientSide'
 
 const RepositoryReleasesChangelog = dynamic(
-  () => import('~/components/RepositoryReleasesChangelog')
+  async () => import('~/components/RepositoryReleasesChangelog')
 )
 
 const RepositoryReleasesComparator = () => {
@@ -42,7 +42,7 @@ const RepositoryReleasesComparator = () => {
         </>
       )}
 
-      {/* This is rendered only in CS since SSR doesn't have info about auth user yet*/}
+      {/* This is rendered only in CS since SSR doesn't have info about auth user yet */}
       {isClientSide && !repository && !isAuth && (
         <FluidContainer>
           <Flex alignItems="center" flexDirection="column">
