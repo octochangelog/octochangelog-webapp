@@ -3,8 +3,10 @@ import { useRouter } from 'next/router'
 import {
   createContext,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react'
@@ -53,40 +55,52 @@ const ComparatorProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter()
   const { repo, from, to } = router.query as FiltersQuerystring
 
-  const setQuerystringParams = (newFilters: FiltersQuerystring) => {
-    const mergedFilters: FiltersQuerystring = {
-      ...router.query,
-      ...newFilters,
-    }
-    const newQuery = Object.fromEntries(
-      Object.entries(mergedFilters).filter(([_, value]) => Boolean(value))
-    )
-
-    void router.replace(
-      { pathname: router.pathname, query: newQuery },
-      undefined,
-      {
-        shallow: true,
+  const setQuerystringParams = useCallback(
+    (newFilters: FiltersQuerystring) => {
+      const mergedFilters: FiltersQuerystring = {
+        ...router.query,
+        ...newFilters,
       }
-    )
-  }
+      const newQuery = Object.fromEntries(
+        Object.entries(mergedFilters).filter(([_, value]) => Boolean(value))
+      )
 
-  const setSelectedRepository = (newRepository?: Repository | null) => {
-    setRepository(newRepository ?? null)
-    setQuerystringParams({
-      repo: newRepository?.full_name,
-      from: null, // Clear from and to when changing repo
-      to: null,
-    })
-  }
+      void router.replace(
+        { pathname: router.pathname, query: newQuery },
+        undefined,
+        {
+          shallow: true,
+        }
+      )
+    },
+    [router]
+  )
 
-  const setSelectedFromVersion = (newFrom?: string | null) => {
-    setQuerystringParams({ from: newFrom })
-  }
+  const setSelectedRepository = useCallback(
+    (newRepository?: Repository | null) => {
+      setRepository(newRepository ?? null)
+      setQuerystringParams({
+        repo: newRepository?.full_name,
+        from: null, // Clear from and to when changing repo
+        to: null,
+      })
+    },
+    [setQuerystringParams]
+  )
 
-  const setSelectedToVersion = (newTo?: string | null) => {
-    setQuerystringParams({ to: newTo })
-  }
+  const setSelectedFromVersion = useCallback(
+    (newFrom?: string | null) => {
+      setQuerystringParams({ from: newFrom })
+    },
+    [setQuerystringParams]
+  )
+
+  const setSelectedToVersion = useCallback(
+    (newTo?: string | null) => {
+      setQuerystringParams({ to: newTo })
+    },
+    [setQuerystringParams]
+  )
 
   useEffect(() => {
     const getInitialRepository = async () => {
@@ -115,17 +129,23 @@ const ComparatorProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [repo, router.isReady, router.query])
 
-  const stateValue: ComparatorStateContextValue = {
-    repository,
-    fromVersion: from,
-    toVersion: to,
-  }
+  const stateValue = useMemo<ComparatorStateContextValue>(
+    () => ({
+      repository,
+      fromVersion: from,
+      toVersion: to,
+    }),
+    [from, repository, to]
+  )
 
-  const updaterValue: ComparatorUpdaterContextValue = {
-    setRepository: setSelectedRepository,
-    setFromVersion: setSelectedFromVersion,
-    setToVersion: setSelectedToVersion,
-  }
+  const updaterValue = useMemo<ComparatorUpdaterContextValue>(
+    () => ({
+      setRepository: setSelectedRepository,
+      setFromVersion: setSelectedFromVersion,
+      setToVersion: setSelectedToVersion,
+    }),
+    [setSelectedFromVersion, setSelectedRepository, setSelectedToVersion]
+  )
 
   return (
     <ComparatorStateContext.Provider value={stateValue}>
