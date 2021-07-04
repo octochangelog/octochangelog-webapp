@@ -10,6 +10,10 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
           />
           <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          />
+          <link
             rel="apple-touch-icon"
             sizes="57x57"
             href="/favicon/apple-icon-57x57.png"
