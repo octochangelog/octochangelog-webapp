@@ -102,9 +102,9 @@ const sky: ColorHues = {
 // Do NOT use when you have text that goes on a colored background.
 // Text on colored backgrounds should use a suitable hue from the background color scheme.
 
-const primaryText = '#111827'
-const secondaryText = '#4B5563'
-const tertiaryText = '#6B7280'
+const primaryTextLightmode = '#111827'
+const secondaryTextLightmode = '#4B5563'
+const tertiaryTextLightmode = '#6B7280'
 
 // ***** Collect constants, put them in a customTheme *****
 
@@ -116,9 +116,9 @@ const customTheme = extendTheme({
     coolGray,
     fuchsia,
     sky,
-    primaryText,
-    secondaryText,
-    tertiaryText,
+    primaryTextLightmode,
+    secondaryTextLightmode,
+    tertiaryTextLightmode,
   },
   fonts: {
     heading: '"Inter", sans-serif;',
