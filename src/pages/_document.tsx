@@ -93,6 +93,7 @@ class MyDocument extends Document {
               .NEXT_PUBLIC_GA_TRACKING_ID!}`}
           />
           <script
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: `
             window.dataLayer = window.dataLayer || [];
