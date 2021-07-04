@@ -31,7 +31,7 @@ const RateLimitExceededNotice = ({ waitingMinutes, isAuth = false }: Props) => (
         .
       </Heading>
       <Flex justify="center">
-        <GitHubLoginButton children="Auth with GitHub" />
+        <GitHubLoginButton>Auth with GitHub</GitHubLoginButton>
       </Flex>
     </Flex>
   </Flex>
