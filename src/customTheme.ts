@@ -15,7 +15,7 @@ type ColorHues = {
 
 // ***** Legacy colorscheme *****
 
-// primaryColor will be replaced with a suitable hue out of the Fuchsia TailwindCSS color palette.
+// The old primaryColor palette will be replaced with a suitable hue out of the Fuchsia TailwindCSS color palette.
 
 const primaryColor: ColorHues = {
   50: '#ffe8ff',
@@ -30,7 +30,7 @@ const primaryColor: ColorHues = {
   900: '#180319',
 }
 
-// blueColor will be replaced with a suitable hue out of the Sky TailwindCSS color palette.
+// The old blueColor palette will be replaced with a suitable hue out of the Sky TailwindCSS color palette.
 
 const blueColor: ColorHues = {
   50: '#def8ff',
@@ -47,7 +47,7 @@ const blueColor: ColorHues = {
 
 // ***** New colorscheme *****
 
-// coolGray contains all the shades of gray we'll use in the app.
+// The coolGray palette contains all the shades of gray we'll use in the app.
 // Example uses: body text, headings, changelog text, page background.
 // https://tailwindcss.com/docs/customizing-colors#color-palette-reference
 
@@ -64,7 +64,7 @@ const tailwind_coolGray: ColorHues = {
   900: '#111827',
 }
 
-// Fuchsia is our primary accent.
+// The Fuchsia palette is our primary accent.
 // Example uses: call to action button, primary action button.
 // https://tailwindcss.com/docs/customizing-colors#color-palette-reference
 
@@ -81,7 +81,7 @@ const tailwind_Fuchsia: ColorHues = {
   900: '#701A75',
 }
 
-// Sky is our secondary accent.
+// The Sky palette is our secondary accent.
 // Example uses: secondary button, version badge.
 // https://tailwindcss.com/docs/customizing-colors#color-palette-reference
 
@@ -116,9 +116,9 @@ const customTheme = extendTheme({
     coolGray: tailwind_coolGray,
     fuchsia: tailwind_Fuchsia,
     sky: tailwind_Sky,
-    primaryText: primaryText,
-    secondaryText: secondaryText,
-    tertiaryText: tertiaryText,
+    primaryText,
+    secondaryText,
+    tertiaryText,
   },
   fonts: {
     heading: '"Inter", sans-serif;',
