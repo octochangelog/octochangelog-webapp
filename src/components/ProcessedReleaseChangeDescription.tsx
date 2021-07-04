@@ -42,7 +42,7 @@ const remarkReactComponents = {
   ),
   p: (props: ComponentProps) => <Text mb="2" {...props} />,
   a: ({ href, children, ...rest }: ComponentProps & LinkProps) => (
-    <Link href={href} isExternal {...rest}>
+    <Link isExternal href={href} {...rest}>
       {children} <Icon as={FiExternalLink} mx="2px" />
     </Link>
   ),
@@ -85,9 +85,11 @@ const ProcessedReleaseChangeDescription = ({
 
   return (
     <Box {...rest} mb={8}>
-      {!isProcessing ? (
+      {isProcessing ? (
+        <TextSkeleton />
+      ) : (
         <>
-          <Link href={processedReleaseChange.html_url} isExternal>
+          <Link isExternal href={processedReleaseChange.html_url}>
             <Tag
               color="gray.900"
               size="md"
@@ -102,8 +104,6 @@ const ProcessedReleaseChangeDescription = ({
           </Link>
           <Box ml={4}>{processedDescription}</Box>
         </>
-      ) : (
-        <TextSkeleton />
       )}
     </Box>
   )

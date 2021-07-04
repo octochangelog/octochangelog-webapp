@@ -20,18 +20,18 @@ const RateLimitExceededNotice = ({ waitingMinutes, isAuth = false }: Props) => (
     >
       <Heading fontSize="md" textAlign="center" mb={4}>
         Octoclairvoyant has exceed the{' '}
-        <Link href="https://developer.github.com/v3/#rate-limiting" isExternal>
+        <Link isExternal href="https://developer.github.com/v3/#rate-limiting">
           GitHub API hourly limit
         </Link>{' '}
         for {isAuth ? 'authenticated' : 'unauthenticated'} requests. You need to
-        wait {waitingMinutes || 'some'} minutes or{' '}
+        wait {waitingMinutes ?? 'some'} minutes or{' '}
         {isAuth
           ? 'renew your existing token'
           : 'create a token for extending this limit'}
         .
       </Heading>
       <Flex justify="center">
-        <GitHubLoginButton children="Auth with GitHub" />
+        <GitHubLoginButton>Auth with GitHub</GitHubLoginButton>
       </Flex>
     </Flex>
   </Flex>

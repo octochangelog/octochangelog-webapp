@@ -30,6 +30,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     const handleRouteChange = (url: string) => {
       gtag.pageView(url)
     }
+
     router.events.on('routeChangeComplete', handleRouteChange)
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange)

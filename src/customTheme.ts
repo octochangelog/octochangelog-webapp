@@ -121,7 +121,8 @@ const customTheme = extendTheme({
     tertiaryText: tertiaryText,
   },
   fonts: {
-    heading: '"Open Sans", sans-serif;',
+    heading: '"Inter", sans-serif;',
+    body: '"Inter", sans-serif;',
   },
   styles: {
     global: {

@@ -7,7 +7,7 @@ class MyDocument extends Document {
         <Head>
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
           />
           <link
             rel="apple-touch-icon"
@@ -89,15 +89,17 @@ class MyDocument extends Document {
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_TRACKING_ID}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env
+              .NEXT_PUBLIC_GA_TRACKING_ID!}`}
           />
           <script
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING_ID}', {
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_TRACKING_ID!}', {
               page_path: window.location.pathname,
             });
           `,

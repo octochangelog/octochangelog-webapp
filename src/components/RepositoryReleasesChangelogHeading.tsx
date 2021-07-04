@@ -15,47 +15,45 @@ const RepositoryReleasesChangelogHeading = ({
   repository,
   fromVersion,
   toVersion,
-}: Props) => {
-  return (
-    <Box width="full" py={1} mb={{ base: 4, md: 8 }}>
-      <FluidContainer>
-        <Heading as="h1" size="lg" mb={2}>
-          <Link href={repository.html_url} isExternal color="primary.500">
-            {getRepositoryNameDisplay(repository.name)}
-          </Link>
-        </Heading>
+}: Props) => (
+  <Box width="full" py={1} mb={{ base: 4, md: 8 }}>
+    <FluidContainer>
+      <Heading as="h1" size="lg" mb={2}>
+        <Link isExternal href={repository.html_url} color="primary.500">
+          {getRepositoryNameDisplay(repository.name)}
+        </Link>
+      </Heading>
 
-        {fromVersion && toVersion ? (
-          <Heading fontSize="md" mb={2} color="secondary.600">
-            Changes from{' '}
-            <Badge
-              variant="subtle"
-              colorScheme="secondary"
-              fontSize={13}
-              lineHeight={1.5}
-              color="secondary.800"
-            >
-              {fromVersion}
-            </Badge>{' '}
-            to{' '}
-            <Badge
-              variant="subtle"
-              colorScheme="secondary"
-              fontSize={13}
-              lineHeight={1.5}
-              color="secondary.800"
-            >
-              {toVersion}
-            </Badge>
-          </Heading>
-        ) : (
-          <Text as="i" color="gray.900">
-            No releases selected to compare between.
-          </Text>
-        )}
-      </FluidContainer>
-    </Box>
-  )
-}
+      {fromVersion && toVersion ? (
+        <Heading fontSize="md" mb={2} color="secondary.600">
+          Changes from{' '}
+          <Badge
+            variant="subtle"
+            colorScheme="secondary"
+            fontSize={13}
+            lineHeight={1.5}
+            color="secondary.800"
+          >
+            {fromVersion}
+          </Badge>{' '}
+          to{' '}
+          <Badge
+            variant="subtle"
+            colorScheme="secondary"
+            fontSize={13}
+            lineHeight={1.5}
+            color="secondary.800"
+          >
+            {toVersion}
+          </Badge>
+        </Heading>
+      ) : (
+        <Text as="i" color="gray.900">
+          No releases selected to compare between.
+        </Text>
+      )}
+    </FluidContainer>
+  </Box>
+)
 
 export default RepositoryReleasesChangelogHeading

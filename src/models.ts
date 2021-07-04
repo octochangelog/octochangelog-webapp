@@ -3,12 +3,6 @@ import { ReactElement } from 'react'
 import { ComponentLike } from 'rehype-react'
 import { Parent } from 'unist'
 
-declare global {
-  interface Window {
-    gtag: Function
-  }
-}
-
 export type RepositoryQueryParams = {
   repo: string
   owner: string
@@ -20,7 +14,7 @@ export type Repository =
 export type Release =
   RestEndpointMethodTypes['repos']['getRelease']['response']['data']
 
-export type ReleaseLike = Omit<Release, 'description'>
+export type ReleaseLike = Release
 
 export type ReleaseVersion = string
 
@@ -30,7 +24,7 @@ export type ProcessedReleasesCollection = any
 export interface ProcessedReleaseChange extends ReleaseLike {
   title: string
   originalTitle: string
-  // level: enumerate with error, warning, info or unknown
+  // Level: enumerate with error, warning, info or unknown
   descriptionMdast: Parent
 }
 
@@ -49,6 +43,4 @@ export enum MiscGroupTitles {
   credits = 'credits',
 }
 
-export type ComponentsMapping = {
-  [element: string]: ComponentLike<ReactElement>
-}
+export type ComponentsMapping = Record<string, ComponentLike<ReactElement>>

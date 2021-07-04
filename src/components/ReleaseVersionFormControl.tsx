@@ -5,6 +5,7 @@ import {
   Select,
 } from '@chakra-ui/react'
 import { ChangeEvent, ReactNode } from 'react'
+import { Except } from 'type-fest'
 
 import { Release } from '~/models'
 import { getReleaseVersion } from '~/utils'
@@ -12,13 +13,13 @@ import { getReleaseVersion } from '~/utils'
 interface CustomProps {
   label: string
   placeholder?: string
-  onChange(version: string): void
   value?: string
   isLoading?: boolean
   options: Release[]
+  onChange(version: string): void
 }
 
-type ReleaseVersionFormControlProps = Omit<
+type ReleaseVersionFormControlProps = Except<
   FormControlProps,
   'onChange' | 'children'
 > &
@@ -56,8 +57,8 @@ const ReleaseVersionFormControl = ({
       <Select
         id={id}
         placeholder={isLoading ? 'Loading...' : placeholder}
-        onChange={handleChange}
         value={value}
+        onChange={handleChange}
       >
         {renderReleasesOptions(options)}
       </Select>

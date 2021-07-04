@@ -22,7 +22,7 @@ function useReleasesQuery(
 
   return useQuery<ReleasesQueryResults, Error>(
     [QUERY_KEY, finalParams],
-    () => {
+    async () => {
       let paginationCount = 0
       return octokit.paginate(
         'GET /repos/{owner}/{repo}/releases',
@@ -38,7 +38,7 @@ function useReleasesQuery(
         }
       )
     },
-    { enabled: !!params.repository, ...config }
+    { enabled: Boolean(params.repository), ...config }
   )
 }
 

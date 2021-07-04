@@ -14,7 +14,7 @@ function useSearchRepositoriesQuery(
   const finalParams = { per_page: 100, ...params }
   return useQuery<ReposQueryResponse, Error, ReposQueryResults>(
     ['repos', finalParams],
-    () => octokit.search.repos(finalParams),
+    async () => octokit.search.repos(finalParams),
     {
       ...config,
       select: (response) => response.data,
