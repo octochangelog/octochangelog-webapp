@@ -7,6 +7,7 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:import/typescript',
     'xo/browser',
+    'xo-react',
     'xo-typescript',
     'plugin:@next/next/recommended',
     'prettier',
@@ -26,6 +27,7 @@ module.exports = {
 
     // React
     'react/self-closing-comp': 2,
+    'react/react-in-jsx-scope': 0,
 
     // TypeScript
     // Disabling this one temporary until types are properly defined across
