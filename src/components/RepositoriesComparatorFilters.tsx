@@ -18,8 +18,8 @@ const RepositoriesComparatorFilters = () => {
       direction={{ base: 'column', md: 'row' }}
     >
       <RepositorySearchCombobox
-        onSelect={setRepository}
         initialInputValue={repository?.full_name}
+        onSelect={setRepository}
       />
       <ReleaseVersionsRangeFormControl
         width={{ base: 'full', md: '80%' }}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call */
 import { useState, useEffect } from 'react'
 import gfm from 'remark-gfm'
 import parse from 'remark-parse'
@@ -12,10 +13,10 @@ function insertReleaseInGroup(
 ): void {
   const { title } = newProcessedRelease
   if (groupedReleases[title]) {
-    // group already exists, then append new changes of same type
+    // Group already exists, then append new changes of same type
     groupedReleases[title].push(newProcessedRelease)
   } else {
-    // group doesn't exist yet, then create it and init with new changes
+    // Group doesn't exist yet, then create it and init with new changes
     groupedReleases[title] = [newProcessedRelease]
   }
 }
@@ -26,7 +27,7 @@ function processedReleaseIsEmpty(processedRelease: any): boolean {
 
 const processor = unified().use(parse).use(gfm)
 
-function processReleasesAsync(releases: Release[]) {
+async function processReleasesAsync(releases: Release[]) {
   // TODO: reject on error
   return new Promise((resolve) => {
     const processedReleasesCollection = {}
@@ -46,7 +47,7 @@ function processReleasesAsync(releases: Release[]) {
           mdastNode.type === 'heading' &&
           [1, 2, 3].includes(mdastNode.depth)
         ) {
-          // check if prev release available, and save it if so...
+          // Check if prev release available, and save it if so...
           if (
             newProcessedRelease &&
             !processedReleaseIsEmpty(newProcessedRelease)
@@ -70,8 +71,11 @@ function processReleasesAsync(releases: Release[]) {
               ...remainingRel,
             }
           }
-        } else if (!newProcessedRelease) {
-          // standalone or non-groupable release found
+        } else if (newProcessedRelease) {
+          // Append content to current release
+          newProcessedRelease.descriptionMdast.children.push(mdastNode)
+        } else {
+          // Standalone or non-groupable release found
           newProcessedRelease = {
             title: MiscGroupTitles.unknown,
             originalTitle: mdastNode.children[0].value,
@@ -81,12 +85,9 @@ function processReleasesAsync(releases: Release[]) {
             },
             ...remainingRel,
           }
-        } else {
-          // append content to current release
-          newProcessedRelease.descriptionMdast.children.push(mdastNode)
         }
       })
-      // insert final release in group
+      // Insert final release in group
       if (
         newProcessedRelease &&
         !processedReleaseIsEmpty(newProcessedRelease)
@@ -110,23 +111,21 @@ function useProcessReleases(
     useState<ProcessedReleasesCollection | null>(null)
   const [isProcessing, setIsProcessing] = useState(false)
 
-  useEffect(
-    function processReleasesEffect() {
-      const handleProcessReleases = async () => {
-        if (!releases || releases.length === 0) {
-          setProcessedReleases(null)
-        } else {
-          setIsProcessing(true)
-          const result = await processReleasesAsync(releases)
-          setProcessedReleases(result)
-        }
-        setIsProcessing(false)
+  useEffect(() => {
+    const handleProcessReleases = async () => {
+      if (!releases || releases.length === 0) {
+        setProcessedReleases(null)
+      } else {
+        setIsProcessing(true)
+        const result = await processReleasesAsync(releases)
+        setProcessedReleases(result)
       }
 
-      handleProcessReleases()
-    },
-    [releases]
-  )
+      setIsProcessing(false)
+    }
+
+    void handleProcessReleases()
+  }, [releases])
 
   return { processedReleases, isProcessing }
 }

@@ -50,14 +50,14 @@ const RepositorySearchCombobox = ({
     getToggleButtonProps,
     highlightedIndex,
   } = useCombobox({
-    items: data?.items || [],
+    items: data?.items ?? [],
     itemToString: (repo) => repo?.full_name ?? 'unknown',
     initialInputValue,
     onInputValueChange: ({
       inputValue: newInputValue,
       isOpen: isOpenOnChange,
     }) => {
-      setIsTyping(!!isOpenOnChange && !!newInputValue)
+      setIsTyping(Boolean(isOpenOnChange) && Boolean(newInputValue))
 
       // Avoid set input value when is not open as that means the user already
       // picked an option so we don't want to refetch again.
@@ -73,12 +73,14 @@ const RepositorySearchCombobox = ({
     },
   })
 
-  const throttleRefetch = useMemo(() => {
-    return debounce(() => {
-      setIsTyping(false)
-      refetch()
-    }, 500)
-  }, [refetch])
+  const throttleRefetch = useMemo(
+    () =>
+      debounce(() => {
+        setIsTyping(false)
+        void refetch()
+      }, 500),
+    [refetch]
+  )
 
   useEffect(() => {
     if (inputValue.trim()) {
@@ -98,7 +100,7 @@ const RepositorySearchCombobox = ({
       <FormLabel {...getLabelProps()}>Repository</FormLabel>
       <HStack>
         <InputGroup>
-          <Input {...getInputProps()} autoFocus />
+          <Input {...getInputProps()} />
           <InputRightElement>
             {isLoading && (
               <CircularProgress
@@ -145,8 +147,8 @@ const RepositorySearchCombobox = ({
             )}
             {data?.items.map((repo, index) => (
               <ListItem
-                py={1}
                 key={repo.id}
+                py={1}
                 backgroundColor={
                   highlightedIndex === index ? 'primary.400' : undefined
                 }

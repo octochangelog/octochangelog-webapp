@@ -1,12 +1,12 @@
-import { ParsedUrlQuery } from 'querystring'
-
 import { Flex, CircularProgress } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import {
   createContext,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react'
@@ -44,46 +44,63 @@ type InitStatus = 'mount' | 'loading' | 'done'
 
 const loadingElement = (
   <Flex align="center" justify="center" height="100%">
-    <CircularProgress size="8" isIndeterminate color="primary.400" />
+    <CircularProgress isIndeterminate size="8" color="primary.400" />
   </Flex>
 )
 
-function ComparatorProvider({ children }: { children: ReactNode }) {
+const ComparatorProvider = ({ children }: { children: ReactNode }) => {
   const statusRef = useRef<InitStatus>('mount')
   const [isReady, setIsReady] = useState<boolean>(false)
   const [repository, setRepository] = useState<Repository | null>(null)
   const router = useRouter()
   const { repo, from, to } = router.query as FiltersQuerystring
 
-  const setQuerystringParams = (newFilters: FiltersQuerystring) => {
-    const mergedFilters: FiltersQuerystring = Object.assign(
-      {},
-      router.query,
-      newFilters
-    )
-    const newQuery: ParsedUrlQuery = Object.fromEntries(
-      Object.entries(mergedFilters).filter(([_, value]) => Boolean(value))
-    )
+  const setQuerystringParams = useCallback(
+    (newFilters: FiltersQuerystring) => {
+      const mergedFilters: FiltersQuerystring = {
+        ...router.query,
+        ...newFilters,
+      }
+      const newQuery = Object.fromEntries(
+        Object.entries(mergedFilters).filter(([_, value]) => Boolean(value))
+      )
 
-    router.replace({ pathname: router.pathname, query: newQuery }, undefined, {
-      shallow: true,
-    })
-  }
+      void router.replace(
+        { pathname: router.pathname, query: newQuery },
+        undefined,
+        {
+          shallow: true,
+        }
+      )
+    },
+    [router]
+  )
 
-  const setSelectedRepository = (newRepository?: Repository | null) => {
-    setRepository(newRepository ?? null)
-    setQuerystringParams({
-      repo: newRepository?.full_name,
-      from: null, // clear from and to when changing repo
-      to: null,
-    })
-  }
-  const setSelectedFromVersion = (newFrom?: string | null) => {
-    setQuerystringParams({ from: newFrom })
-  }
-  const setSelectedToVersion = (newTo?: string | null) => {
-    setQuerystringParams({ to: newTo })
-  }
+  const setSelectedRepository = useCallback(
+    (newRepository?: Repository | null) => {
+      setRepository(newRepository ?? null)
+      setQuerystringParams({
+        repo: newRepository?.full_name,
+        from: null, // Clear from and to when changing repo
+        to: null,
+      })
+    },
+    [setQuerystringParams]
+  )
+
+  const setSelectedFromVersion = useCallback(
+    (newFrom?: string | null) => {
+      setQuerystringParams({ from: newFrom })
+    },
+    [setQuerystringParams]
+  )
+
+  const setSelectedToVersion = useCallback(
+    (newTo?: string | null) => {
+      setQuerystringParams({ to: newTo })
+    },
+    [setQuerystringParams]
+  )
 
   useEffect(() => {
     const getInitialRepository = async () => {
@@ -108,21 +125,27 @@ function ComparatorProvider({ children }: { children: ReactNode }) {
     }
 
     if (statusRef.current === 'mount' && router.isReady) {
-      getInitialRepository()
+      void getInitialRepository()
     }
   }, [repo, router.isReady, router.query])
 
-  const stateValue: ComparatorStateContextValue = {
-    repository: repository,
-    fromVersion: from,
-    toVersion: to,
-  }
+  const stateValue = useMemo<ComparatorStateContextValue>(
+    () => ({
+      repository,
+      fromVersion: from,
+      toVersion: to,
+    }),
+    [from, repository, to]
+  )
 
-  const updaterValue: ComparatorUpdaterContextValue = {
-    setRepository: setSelectedRepository,
-    setFromVersion: setSelectedFromVersion,
-    setToVersion: setSelectedToVersion,
-  }
+  const updaterValue = useMemo<ComparatorUpdaterContextValue>(
+    () => ({
+      setRepository: setSelectedRepository,
+      setFromVersion: setSelectedFromVersion,
+      setToVersion: setSelectedToVersion,
+    }),
+    [setSelectedFromVersion, setSelectedRepository, setSelectedToVersion]
+  )
 
   return (
     <ComparatorStateContext.Provider value={stateValue}>
