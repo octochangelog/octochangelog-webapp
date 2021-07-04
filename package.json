@@ -12,9 +12,9 @@
     "analyze": "ANALYZE=true yarn build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "yarn lint --fix",
-    "prettier": "prettier --ignore-path .gitignore \"./**/*.{js,jsx,ts,tsx}\"",
-    "format": "yarn prettier --write",
-    "format:check": "yarn prettier --check",
+    "prettier-base": "prettier . --ignore-path .gitignore --ignore-unknown",
+    "format": "yarn prettier-base --write",
+    "format:check": "yarn prettier-base --check",
     "prepare": "husky install"
   },
   "dependencies": {
