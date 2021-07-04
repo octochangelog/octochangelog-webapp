@@ -1,14 +1,14 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'jsx-a11y'],
   extends: [
-    'react-app',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
     'xo/browser',
     'xo-react',
     'xo-typescript',
+    'plugin:jsx-a11y/recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
     'plugin:@next/next/recommended',
     'prettier',
   ],

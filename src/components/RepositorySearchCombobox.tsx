@@ -100,7 +100,7 @@ const RepositorySearchCombobox = ({
       <FormLabel {...getLabelProps()}>Repository</FormLabel>
       <HStack>
         <InputGroup>
-          <Input {...getInputProps()} autoFocus />
+          <Input {...getInputProps()} />
           <InputRightElement>
             {isLoading && (
               <CircularProgress
