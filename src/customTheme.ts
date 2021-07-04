@@ -51,7 +51,7 @@ const blueColor: ColorHues = {
 // Example uses: body text, headings, changelog text, page background.
 // https://tailwindcss.com/docs/customizing-colors#color-palette-reference
 
-const tailwind_coolGray: ColorHues = {
+const coolGray: ColorHues = {
   50: '#F9FAFB',
   100: '#F3F4F6',
   200: '#E5E7EB',
@@ -68,7 +68,7 @@ const tailwind_coolGray: ColorHues = {
 // Example uses: call to action button, primary action button.
 // https://tailwindcss.com/docs/customizing-colors#color-palette-reference
 
-const tailwind_Fuchsia: ColorHues = {
+const fuchsia: ColorHues = {
   50: '#FDF4FF',
   100: '#FAE8FF',
   200: '#F5D0FE',
@@ -85,7 +85,7 @@ const tailwind_Fuchsia: ColorHues = {
 // Example uses: secondary button, version badge.
 // https://tailwindcss.com/docs/customizing-colors#color-palette-reference
 
-const tailwind_Sky: ColorHues = {
+const sky: ColorHues = {
   50: '#F0F9FF',
   100: '#E0F2FE',
   200: '#BAE6FD',
@@ -113,9 +113,9 @@ const customTheme = extendTheme({
     blue: blueColor,
     primary: primaryColor,
     secondary: blueColor,
-    coolGray: tailwind_coolGray,
-    fuchsia: tailwind_Fuchsia,
-    sky: tailwind_Sky,
+    coolGray,
+    fuchsia,
+    sky,
     primaryText,
     secondaryText,
     tertiaryText,
