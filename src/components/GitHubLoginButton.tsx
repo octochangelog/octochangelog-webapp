@@ -11,10 +11,10 @@ const GitHubLoginButton = ({ children = 'Login with GitHub' }) => {
 
   return (
     <Button
-      onClick={handleClick}
       bg="gray.700"
       color="white"
       _hover={{ bg: 'gray.900' }}
+      onClick={handleClick}
     >
       {children} <Icon as={DiGithubBadge} ml={2} boxSize={6} />
     </Button>

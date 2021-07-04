@@ -57,8 +57,8 @@ const ReleaseVersionFormControl = ({
       <Select
         id={id}
         placeholder={isLoading ? 'Loading...' : placeholder}
-        onChange={handleChange}
         value={value}
+        onChange={handleChange}
       >
         {renderReleasesOptions(options)}
       </Select>

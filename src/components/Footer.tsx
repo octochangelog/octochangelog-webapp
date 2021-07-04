@@ -11,11 +11,11 @@ const Footer = () => (
     <FluidContainer py={5}>
       <Stack justify="space-between" direction={['column', 'row']} spacing={4}>
         <HStack
+          shouldWrapChildren
           justify="space-between"
           alignItems="center"
           justifyContent="center"
           fontSize={{ base: 'md', md: 'lg' }}
-          shouldWrapChildren
         >
           <Box>
             Created with{' '}
@@ -23,14 +23,14 @@ const Footer = () => (
               💜
             </span>{' '}
             by{' '}
-            <Link href="https://mario.dev/" isExternal>
+            <Link isExternal href="https://mario.dev/">
               Mario
             </Link>
           </Box>
           <Box as="span">-</Box>
           <Link
-            href={REPO_URL}
             isExternal
+            href={REPO_URL}
             title="Octoclairvoyant repository on GitHub"
           >
             GitHub
@@ -39,8 +39,8 @@ const Footer = () => (
         <Box>
           <Center>
             <Link
-              href="https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss"
               isExternal
+              href="https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss"
             >
               <Image src={poweredByVercelLogo} />
             </Link>

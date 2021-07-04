@@ -56,8 +56,8 @@ const ReleaseVersionsRangeFormControl = (props: StackProps) => {
         isLoading={isLoading}
         placeholder={selectPlaceholder}
         options={fromReleases}
-        onChange={setFromVersion}
         value={fromVersion ?? undefined}
+        onChange={setFromVersion}
       />
       <ReleaseVersionFormControl
         label="To release"
@@ -66,8 +66,8 @@ const ReleaseVersionsRangeFormControl = (props: StackProps) => {
         isLoading={isLoading}
         placeholder={selectPlaceholder}
         options={toReleases}
-        onChange={setToVersion}
         value={toVersion ?? undefined}
+        onChange={setToVersion}
       />
     </Stack>
   )

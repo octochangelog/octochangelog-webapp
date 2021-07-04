@@ -20,7 +20,7 @@ const RateLimitExceededNotice = ({ waitingMinutes, isAuth = false }: Props) => (
     >
       <Heading fontSize="md" textAlign="center" mb={4}>
         Octoclairvoyant has exceed the{' '}
-        <Link href="https://developer.github.com/v3/#rate-limiting" isExternal>
+        <Link isExternal href="https://developer.github.com/v3/#rate-limiting">
           GitHub API hourly limit
         </Link>{' '}
         for {isAuth ? 'authenticated' : 'unauthenticated'} requests. You need to

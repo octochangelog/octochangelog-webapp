@@ -42,11 +42,11 @@ type InitStatus = 'mount' | 'loading' | 'done'
 
 const loadingElement = (
   <Flex align="center" justify="center" height="100%">
-    <CircularProgress size="8" isIndeterminate color="primary.400" />
+    <CircularProgress isIndeterminate size="8" color="primary.400" />
   </Flex>
 )
 
-function ComparatorProvider({ children }: { children: ReactNode }) {
+const ComparatorProvider = ({ children }: { children: ReactNode }) => {
   const statusRef = useRef<InitStatus>('mount')
   const [isReady, setIsReady] = useState<boolean>(false)
   const [repository, setRepository] = useState<Repository | null>(null)

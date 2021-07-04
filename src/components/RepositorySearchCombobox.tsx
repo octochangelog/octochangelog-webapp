@@ -147,8 +147,8 @@ const RepositorySearchCombobox = ({
             )}
             {data?.items.map((repo, index) => (
               <ListItem
-                py={1}
                 key={repo.id}
+                py={1}
                 backgroundColor={
                   highlightedIndex === index ? 'primary.400' : undefined
                 }

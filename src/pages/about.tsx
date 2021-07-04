@@ -28,11 +28,11 @@ const MainSection = () => (
     direction={{ base: 'column-reverse', lg: 'row' }}
   >
     <Stack
+      shouldWrapChildren
       alignItems={{ base: 'center', lg: 'start' }}
       spacing="8"
       flexGrow={1}
       flexBasis={0}
-      shouldWrapChildren
     >
       <Heading
         as="h1"
@@ -64,10 +64,10 @@ const MainSection = () => (
       </Flex>
     </Stack>
     <Image
+      priority
       src={mascotLogo}
       alt="Octoclairvoyant reading a crystal ball"
       quality={100}
-      priority
       placeholder="blur"
     />
   </Stack>
