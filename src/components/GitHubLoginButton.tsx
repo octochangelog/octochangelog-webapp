@@ -1,10 +1,17 @@
 import { Button, Icon } from '@chakra-ui/react'
+import { ReactNode, MouseEvent } from 'react'
 import { DiGithubBadge } from 'react-icons/di'
 
 import { githubAuthUrl } from '~/github-client'
 
-const GitHubLoginButton = ({ children = 'Login with GitHub' }) => {
-  const handleClick = (event: React.MouseEvent) => {
+interface GitHubLoginButtonProps {
+  children?: ReactNode
+}
+
+const GitHubLoginButton = ({
+  children = 'Login with GitHub',
+}: GitHubLoginButtonProps) => {
+  const handleClick = (event: MouseEvent) => {
     event.preventDefault()
     window.location.href = githubAuthUrl.toString()
   }
