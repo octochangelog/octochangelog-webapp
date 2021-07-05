@@ -70,4 +70,8 @@ We recommend you follow this process:
 
 ## Query string to check comparator output
 
-Use the following query string to check the comparator output: INSERT PROPER LINK HERE
+Use the following query string to check the comparator output:
+
+```
+?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0
+```
