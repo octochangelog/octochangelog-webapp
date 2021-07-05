@@ -98,13 +98,17 @@ const sky: ColorHues = {
   '900': '#0C4A6E',
 }
 
-// These are our normal text colors.
-// Do NOT use when you have text that goes on a colored background.
+// These are our normal text colors for light and dark modes.
+// Do NOT use for text that goes on a colored background.
 // Text on colored backgrounds should use a suitable hue from the background color scheme.
 
-const primaryTextLightmode = '#111827'
-const secondaryTextLightmode = '#4B5563'
-const tertiaryTextLightmode = '#6B7280'
+const primaryTextLightmode = coolGray['900']
+const secondaryTextLightmode = coolGray['700']
+const tertiaryTextLightmode = coolGray['600']
+
+const primaryTextDarkmode = coolGray['50']
+const secondaryTextDarkmode = coolGray['300']
+const tertiaryTextDarkmode = coolGray['400']
 
 // ***** Collect constants, put them in a customTheme *****
 
@@ -119,6 +123,9 @@ const customTheme = extendTheme({
     primaryTextLightmode,
     secondaryTextLightmode,
     tertiaryTextLightmode,
+    primaryTextDarkmode,
+    secondaryTextDarkmode,
+    tertiaryTextDarkmode,
   },
   fonts: {
     heading: '"Inter", sans-serif;',
