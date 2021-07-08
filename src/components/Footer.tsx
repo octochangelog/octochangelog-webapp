@@ -42,7 +42,7 @@ const Footer = () => (
               isExternal
               href="https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss"
             >
-              <Image alt="Powered by Vercel" src={poweredByVercelLogo} />
+              <Image alt="Powered by Vercel logo" src={poweredByVercelLogo} />
             </Link>
           </Center>
         </Box>
