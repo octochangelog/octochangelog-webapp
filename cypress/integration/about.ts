@@ -1,6 +1,6 @@
 describe('The about page', () => {
   it('has working link to comparator page', () => {
-    cy.visit('/')
+    cy.visit('/about')
 
     cy.contains('Comparator').click()
 
