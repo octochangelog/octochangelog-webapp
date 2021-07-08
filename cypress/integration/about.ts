@@ -4,7 +4,7 @@ describe('The about page', () => {
 
     cy.contains('Comparator').click()
 
-    cy.url().should('include', '/')
+    cy.url().should('equal', 'http://localhost:3000/')
   })
 })
 
