@@ -9,8 +9,8 @@ module.exports = {
     'kentcdodds/react',
     'kentcdodds/jsx-a11y',
     'next',
-    'plugin:import/typescript',
     'plugin:import/recommended',
+    'plugin:import/typescript',
     'prettier',
   ],
   settings: {
