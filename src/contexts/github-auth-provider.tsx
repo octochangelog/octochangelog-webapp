@@ -9,7 +9,8 @@ type GithubAuthContextValue = {
 
 const GithubAuthContext = createContext<GithubAuthContextValue | null>(null)
 
-const GithubAuthProvider = (props: unknown) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const GithubAuthProvider = (props: any) => {
   const [accessToken, setAccessToken] = useState<string | null | undefined>(
     getGithubAccessToken
   )
