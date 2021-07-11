@@ -49,7 +49,16 @@ const ReleaseChangelogGroup = ({
   return (
     <Box key={title}>
       {shouldShowTitle && (
-        <Heading as="h2" size="xl" mb={4} textTransform={textTransform}>
+        <Heading
+          as="h2"
+          size="xl"
+          bg="white"
+          mb={4}
+          py={4}
+          textTransform={textTransform}
+          position="sticky"
+          top={0}
+        >
           {title}
         </Heading>
       )}
