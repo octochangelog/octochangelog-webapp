@@ -40,7 +40,7 @@ const ComparatorUpdaterContext = createContext<
   ComparatorUpdaterContextValue | undefined
 >(undefined)
 
-type InitStatus = 'mount' | 'loading' | 'done'
+type InitStatus = 'done' | 'loading' | 'mount'
 
 const loadingElement = (
   <Flex align="center" justify="center" height="100%">
@@ -107,16 +107,12 @@ const ComparatorProvider = ({ children }: { children: ReactNode }) => {
       if (repo) {
         statusRef.current = 'loading'
 
-        const repositoryQueryParams = mapStringToRepositoryQueryParams(
-          repo ?? ''
-        )
+        const repositoryQueryParams = mapStringToRepositoryQueryParams(repo)
 
         if (repositoryQueryParams) {
           const response = await octokit.repos.get(repositoryQueryParams)
 
-          if (response?.data) {
-            setRepository(response.data)
-          }
+          setRepository(response.data)
         }
       }
 

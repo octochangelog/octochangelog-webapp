@@ -109,7 +109,7 @@ const RepositoryReleasesChangelog = ({
     }
   }, [fromVersion, releases, toVersion])
 
-  const shouldShowProcessedReleaseTitle = (function () {
+  const shouldShowProcessedReleaseTitle = (() => {
     if (!processedReleases) {
       return false
     }

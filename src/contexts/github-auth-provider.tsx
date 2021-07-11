@@ -9,7 +9,7 @@ type GithubAuthContextValue = {
 
 const GithubAuthContext = createContext<GithubAuthContextValue | null>(null)
 
-const GithubAuthProvider = (props: any) => {
+const GithubAuthProvider = (props: unknown) => {
   const [accessToken, setAccessToken] = useState<string | null | undefined>(
     getGithubAccessToken
   )

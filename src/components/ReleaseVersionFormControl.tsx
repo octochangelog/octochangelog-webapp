@@ -19,11 +19,8 @@ interface CustomProps {
   onChange(version: string): void
 }
 
-type ReleaseVersionFormControlProps = Except<
-  FormControlProps,
-  'onChange' | 'children'
-> &
-  CustomProps
+type ReleaseVersionFormControlProps = CustomProps &
+  Except<FormControlProps, 'children' | 'onChange'>
 
 function renderReleasesOptions(releases?: Release[]): ReactNode[] | null {
   if (!releases) {

@@ -11,14 +11,12 @@ const userAgent = IS_PRODUCTION_MODE
 const STORAGE_KEY_PREFIX = IS_PRODUCTION_MODE ? '' : 'test-'
 const GITHUB_STORAGE_KEY = `${STORAGE_KEY_PREFIX}octoclairvoyant-github-access-token`
 
-export const getGithubAccessToken = function (): string | undefined {
+export function getGithubAccessToken(): string | undefined {
   const cookies = parseCookies(null, { path: '/' })
   return cookies[GITHUB_STORAGE_KEY]
 }
 
-export const setGithubAccessToken = function (
-  newAccessToken?: string | null
-): void {
+export function setGithubAccessToken(newAccessToken?: string | null): void {
   if (newAccessToken === getGithubAccessToken()) {
     return
   }
@@ -49,7 +47,7 @@ export const octokit = new Octokit({
  */
 export async function obtainAccessToken(
   code?: string
-): Promise<string | Error> {
+): Promise<Error | string> {
   if (!code) {
     throw new Error('Empty code received back from GitHub')
   }

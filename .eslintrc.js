@@ -1,15 +1,16 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'jsx-a11y'],
+  plugins: ['@typescript-eslint'],
   extends: [
-    'xo/browser',
-    'xo-react',
-    'xo-typescript',
-    'plugin:jsx-a11y/recommended',
-    'plugin:import/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'kentcdodds',
+    'kentcdodds/jest',
+    'kentcdodds/react',
+    'kentcdodds/jsx-a11y',
+    'next',
     'plugin:import/typescript',
-    'plugin:@next/next/recommended',
+    'plugin:import/recommended',
     'prettier',
   ],
   settings: {
@@ -30,9 +31,10 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
 
     // TypeScript
-    // Disabling this one temporary until types are properly defined across
+    // Disabling these rules temporary until types are properly defined across
     // the whole codebase.
     '@typescript-eslint/no-unsafe-assignment': 0,
+    '@typescript-eslint/no-unsafe-argument': 0,
 
     // Import
     'import/newline-after-import': 2,
@@ -46,6 +48,5 @@ module.exports = {
         },
       },
     ],
-    'import/no-unresolved': [2, { ignore: ['unist'] }],
   },
 }

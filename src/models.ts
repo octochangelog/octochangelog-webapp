@@ -19,6 +19,7 @@ export type ReleaseLike = Release
 export type ReleaseVersion = string
 
 // FIXME: generate proper types for processed release
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ProcessedReleasesCollection = any
 
 export interface ProcessedReleaseChange extends ReleaseLike {
