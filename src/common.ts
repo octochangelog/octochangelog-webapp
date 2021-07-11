@@ -12,13 +12,13 @@ export const BRIEF_DESCRIPTION =
 export const FULL_DESCRIPTION =
   'Compare GitHub changelogs across multiple releases in a single view'
 
-export const HIGH_PRIORITY_GROUP_TITLES: string[] = [
+export const HIGH_PRIORITY_GROUP_TITLES: Array<string> = [
   SemVerGroupTitles.breakingChanges,
   SemVerGroupTitles.features,
   SemVerGroupTitles.bugFixes,
 ]
 
-export const LOW_PRIORITY_GROUP_TITLES: string[] = [
+export const LOW_PRIORITY_GROUP_TITLES: Array<string> = [
   MiscGroupTitles.unknown,
   MiscGroupTitles.credits,
   MiscGroupTitles.thanks,

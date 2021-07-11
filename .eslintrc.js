@@ -36,6 +36,13 @@ module.exports = {
     '@typescript-eslint/no-unsafe-assignment': 0,
     '@typescript-eslint/no-unsafe-argument': 0,
 
+    '@typescript-eslint/array-type': [
+      'error',
+      {
+        default: 'generic',
+      },
+    ],
+
     // Import
     'import/newline-after-import': 2,
     'import/order': [

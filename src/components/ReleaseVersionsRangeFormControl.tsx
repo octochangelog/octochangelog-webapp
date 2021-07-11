@@ -9,7 +9,9 @@ import { Release } from '~/models'
 import { useReleasesQuery } from '~/queries/release'
 import { getReleaseVersion, releasesComparator } from '~/utils'
 
-function mapReleasesRange(releases?: Release[]): [Release[], Release[]] {
+function mapReleasesRange(
+  releases?: Array<Release>
+): [Array<Release>, Array<Release>] {
   if (!releases?.length) {
     return [[], []]
   }

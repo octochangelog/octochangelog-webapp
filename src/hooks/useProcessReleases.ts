@@ -27,7 +27,7 @@ function processedReleaseIsEmpty(processedRelease: any): boolean {
 
 const processor = unified().use(parse).use(gfm)
 
-async function processReleasesAsync(releases: Release[]) {
+async function processReleasesAsync(releases: Array<Release>) {
   // TODO: reject on error
   return new Promise((resolve) => {
     const processedReleasesCollection = {}
@@ -105,7 +105,7 @@ interface UseProcessReleasesReturn {
 }
 
 function useProcessReleases(
-  releases: Release[] | null
+  releases: Array<Release> | null
 ): UseProcessReleasesReturn {
   const [processedReleases, setProcessedReleases] =
     useState<ProcessedReleasesCollection | null>(null)
