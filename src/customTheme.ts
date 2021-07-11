@@ -1,19 +1,6 @@
-import { extendTheme } from '@chakra-ui/react'
+import { ColorHues, extendTheme } from '@chakra-ui/react'
 
-type ColorHues = {
-  '50': string
-  '100': string
-  '200': string
-  '300': string
-  '400': string
-  '500': string
-  '600': string
-  '700': string
-  '800': string
-  '900': string
-}
-
-const primaryColor: ColorHues = {
+const primaryColor: Partial<ColorHues> = {
   50: '#ffe8ff',
   100: '#efc2f0',
   200: '#e09ce3',
@@ -26,7 +13,7 @@ const primaryColor: ColorHues = {
   900: '#180319',
 }
 
-const blueColor: ColorHues = {
+const blueColor: Partial<ColorHues> = {
   50: '#def8ff',
   100: '#b8e6f7',
   200: '#90d4ee',
