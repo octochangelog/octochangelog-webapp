@@ -56,7 +56,8 @@ const ReleaseChangelogGroup = ({
           mb={4}
           py={4}
           textTransform={textTransform}
-          sx={{ position: 'sticky', top: '0px' }}
+          position="sticky"
+          top={0}
         >
           {title}
         </Heading>
