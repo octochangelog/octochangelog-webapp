@@ -41,13 +41,16 @@ const MenuLink = ({
   return (
     <RouteLink
       href={href}
-      color="white"
-      borderBottomWidth={isActive ? '4px' : 'none'}
-      borderColor={isActive ? 'primary.500' : 'none'}
+      color="primaryTextLightmode"
+      borderBottomWidth="4px"
+      // TODO: If link is not the active element, borderColor should equal header/drawer background
+      borderColor={isActive ? 'fuchsia.300' : 'white'}
+      fontWeight="black"
       fontSize={{ base: '2xl', md: 'lg' }}
       _hover={{
         textDecoration: 'none',
-        color: isActive ? 'none' : 'primary.300',
+        borderBottomColor: 'fuchsia.500',
+        color: isActive ? 'none' : 'primaryTextLightmode',
       }}
       width={linkWidth}
       aria-current={isActive ? 'page' : undefined}
@@ -84,14 +87,14 @@ const HeaderLinks = () => {
         aria-label="Toggle menu"
         icon={<Icon as={FaBars} />}
         variant="unstyled"
-        colorScheme="gray.50"
-        size="sm"
+        colorScheme="coolGray.900"
+        size="lg"
         onClick={onToggle}
       />
       <Drawer placement="right" isOpen={isOpen} size="full" onClose={onClose}>
         <DrawerOverlay />
-        <DrawerContent py={8} backgroundColor="gray.700">
-          <DrawerCloseButton color="gray.50" />
+        <DrawerContent py={8} backgroundColor="coolGray.100">
+          <DrawerCloseButton color="coolGray.900" size="lg" />
           <DrawerBody>
             <Flex justify="center" direction="column" h="full">
               {linksInner}
@@ -106,7 +109,14 @@ const HeaderLinks = () => {
 const Header = (props: BoxProps) => {
   const isClientSide = useIsClientSide()
   return (
-    <Box as="header" bg="gray.700" color="white" zIndex="banner" {...props}>
+    <Box
+      as="header"
+      zIndex="banner"
+      {...props}
+      // TODO: borderTop should be 4px when on iPhones
+      borderTop="8px"
+      borderColor="fuchsia.700"
+    >
       <FluidContainer py={5}>
         <Flex justify="space-between" alignItems="center">
           <Flex alignItems="center">
@@ -119,9 +129,11 @@ const Header = (props: BoxProps) => {
               />
             </Box>
             <Heading
+              color="primaryTextLightmode"
               letterSpacing="tight"
               fontWeight="black"
-              fontSize={{ base: 'md', md: 'xl', lg: '4xl' }}
+              // TODO: fontSize should be 16 px on iPhones
+              fontSize="36px"
             >
               Octoclairvoyant
             </Heading>
