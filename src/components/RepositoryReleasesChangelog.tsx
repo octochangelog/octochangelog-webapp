@@ -39,7 +39,7 @@ const ReleaseChangelogGroup = ({
   shouldShowTitle,
 }: {
   title: string
-  releaseGroup: ProcessedReleaseChange[]
+  releaseGroup: Array<ProcessedReleaseChange>
   repository: Repository
   shouldShowTitle: boolean
 }) => {
@@ -81,9 +81,8 @@ const RepositoryReleasesChangelog = ({
   fromVersion,
   toVersion,
 }: RepositoryReleasesChangelogProps) => {
-  const [filteredReleases, setFilteredReleases] = useState<Release[] | null>(
-    null
-  )
+  const [filteredReleases, setFilteredReleases] =
+    useState<Array<Release> | null>(null)
 
   const { processedReleases, isProcessing } =
     useProcessReleases(filteredReleases)
@@ -109,7 +108,7 @@ const RepositoryReleasesChangelog = ({
     }
   }, [fromVersion, releases, toVersion])
 
-  const shouldShowProcessedReleaseTitle = (function () {
+  const shouldShowProcessedReleaseTitle = (() => {
     if (!processedReleases) {
       return false
     }
@@ -121,7 +120,7 @@ const RepositoryReleasesChangelog = ({
     )
   })()
 
-  const sortedGroupTitles: string[] | null = processedReleases
+  const sortedGroupTitles: Array<string> | null = processedReleases
     ? Object.keys(processedReleases).sort(compareReleaseGroupTitlesSort)
     : []
 

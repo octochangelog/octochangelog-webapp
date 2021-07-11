@@ -35,7 +35,7 @@ const MenuLink = ({
   href: string
 }) => {
   const router = useRouter()
-  const isActive = router?.pathname === href
+  const isActive = router.pathname === href
   const linkWidth = useBreakpointValue({ base: 'min-content', md: 'auto' })
 
   return (

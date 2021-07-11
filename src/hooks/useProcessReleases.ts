@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react'
 import gfm from 'remark-gfm'
 import parse from 'remark-parse'
@@ -27,7 +27,7 @@ function processedReleaseIsEmpty(processedRelease: any): boolean {
 
 const processor = unified().use(parse).use(gfm)
 
-async function processReleasesAsync(releases: Release[]) {
+async function processReleasesAsync(releases: Array<Release>) {
   // TODO: reject on error
   return new Promise((resolve) => {
     const processedReleasesCollection = {}
@@ -105,7 +105,7 @@ interface UseProcessReleasesReturn {
 }
 
 function useProcessReleases(
-  releases: Release[] | null
+  releases: Array<Release> | null
 ): UseProcessReleasesReturn {
   const [processedReleases, setProcessedReleases] =
     useState<ProcessedReleasesCollection | null>(null)

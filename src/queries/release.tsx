@@ -4,7 +4,7 @@ import { octokit } from '~/github-client'
 import { Release, Repository, RepositoryQueryParams } from '~/models'
 import { isStableRelease, mapRepositoryToQueryParams } from '~/utils'
 
-type ReleasesQueryResults = Release[]
+type ReleasesQueryResults = Array<Release>
 type ReleasesQueryParams = {
   repository?: Repository | null
 }

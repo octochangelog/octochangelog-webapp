@@ -3,5 +3,3 @@ node_modules
 .next
 .now
 .env*
-*.config*
-.eslintrc.js

@@ -15,17 +15,16 @@ interface CustomProps {
   placeholder?: string
   value?: string
   isLoading?: boolean
-  options: Release[]
+  options: Array<Release>
   onChange(version: string): void
 }
 
-type ReleaseVersionFormControlProps = Except<
-  FormControlProps,
-  'onChange' | 'children'
-> &
-  CustomProps
+type ReleaseVersionFormControlProps = CustomProps &
+  Except<FormControlProps, 'children' | 'onChange'>
 
-function renderReleasesOptions(releases?: Release[]): ReactNode[] | null {
+function renderReleasesOptions(
+  releases?: Array<Release>
+): Array<ReactNode> | null {
   if (!releases) {
     return null
   }

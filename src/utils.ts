@@ -34,7 +34,7 @@ export function mapStringToRepositoryQueryParams(
 }
 
 type FilterReleasesNodes = {
-  releases: Release[]
+  releases: Array<Release>
   from: ReleaseVersion
   to: ReleaseVersion
 }
@@ -50,7 +50,7 @@ export function getReleaseVersion(release: ReleaseLike): string {
 
 export function filterReleasesByVersionRange(
   args: FilterReleasesNodes
-): Release[] {
+): Array<Release> {
   const { releases, from, to: originalTo } = args
 
   const to =
@@ -70,7 +70,7 @@ export function isStableRelease(release: Release): boolean {
   return Boolean(semver.valid(tag_name)) && !semver.prerelease(tag_name)
 }
 
-const customTitleSpecials: string[] = ['DOM', 'ESLint', 'UI']
+const customTitleSpecials: Array<string> = ['DOM', 'ESLint', 'UI']
 
 export function getRepositoryNameDisplay(repoName: string): string {
   return title(repoName.replace(/[_-]/g, ' '), {
@@ -80,8 +80,9 @@ export function getRepositoryNameDisplay(repoName: string): string {
 
 // TODO: add tests for all variants
 export function getReleaseGroupTitle(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   mdastNode: any
-): SemVerGroupTitles | MiscGroupTitles | string {
+): MiscGroupTitles | SemVerGroupTitles | string {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
   const mdastTitle = lowerCase(mdastNode.children[0].value)
 
@@ -114,7 +115,7 @@ export function getReleaseGroupTitle(
   return mdastTitle
 }
 
-const getTitlePriorityGroup = (titleParam: string): -1 | 1 | 0 => {
+const getTitlePriorityGroup = (titleParam: string): -1 | 0 | 1 => {
   if (HIGH_PRIORITY_GROUP_TITLES.includes(titleParam)) {
     return -1
   }
