@@ -1,4 +1,4 @@
-import { ColorHues, extendTheme } from '@chakra-ui/react'
+import { ColorHues, extendTheme, ThemeConfig } from '@chakra-ui/react'
 
 // ***** Legacy colorscheme *****
 
@@ -99,6 +99,11 @@ const tertiaryTextDarkmode = coolGray['400']
 
 // ***** Collect constants, put them in a customTheme *****
 
+const themeConfig: ThemeConfig = {
+  initialColorMode: 'light',
+  useSystemColorMode: true,
+}
+
 const customTheme = extendTheme({
   colors: {
     blue: blueColor,
@@ -124,6 +129,7 @@ const customTheme = extendTheme({
       'html, body, #__next': { height: '100%' },
     },
   },
+  config: themeConfig,
 })
 
 export default customTheme
