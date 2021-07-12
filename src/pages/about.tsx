@@ -21,12 +21,6 @@ import FluidContainer from '~/components/FluidContainer'
 import Layout from '~/components/Layout'
 import Link from '~/components/Link'
 
-function handleBoom() {
-  // @ts-expect-error Force Sentry error
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  unexistingMethod()
-}
-
 const MainSection = () => (
   <Stack
     px="10"
@@ -67,9 +61,6 @@ const MainSection = () => (
             Try me now!
           </Button>
         </NextLink>
-        <Button onClick={handleBoom} colorScheme="primary">
-          Boom!
-        </Button>
       </Flex>
     </Stack>
     <Image
