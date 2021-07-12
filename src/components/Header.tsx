@@ -113,7 +113,7 @@ const Header = (props: BoxProps) => {
       zIndex="banner"
       {...props}
       borderTop={{ base: '4px', sm: '8px' }}
-      borderColor={{ base: 'fuchsia.700', sm: 'fuchsia.700' }}
+      borderColor="fuchsia.700"
     >
       <FluidContainer py={5}>
         <Flex justify="space-between" alignItems="center">
