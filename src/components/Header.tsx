@@ -44,7 +44,7 @@ const MenuLink = ({
       color="primaryTextLightmode"
       borderBottomWidth="4px"
       // TODO: If link is not the active element, borderColor should equal header/drawer background
-      borderColor={isActive ? 'fuchsia.300' : 'white'}
+      borderColor={isActive ? 'fuchsia.300' : 'none'}
       fontWeight="black"
       fontSize={{ base: '2xl', md: 'lg' }}
       _hover={{
