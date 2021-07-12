@@ -112,7 +112,7 @@ const Header = (props: BoxProps) => {
       as="header"
       zIndex="banner"
       {...props}
-      borderTop={{ base: '4px', sm: '8px' }}
+      borderTopWidth={{ base: '4px', sm: '8px' }}
       borderColor="fuchsia.700"
     >
       <FluidContainer py={5}>
