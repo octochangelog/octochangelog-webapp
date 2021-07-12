@@ -23,7 +23,7 @@ const SentryWebpackPluginOptions = {
   //   release, url, org, project, authToken, configFile, stripPrefix,
   //   urlPrefix, include, ignore
 
-  silent: process.env.NODE_ENV !== 'production', // Suppresses all logs in envs other than production
+  silent: !process.env.VERCEL_ENV, // Suppresses all logs if not building the app at Vercel
   deploy: {
     env: process.env.VERCEL_ENV,
   },
@@ -31,4 +31,9 @@ const SentryWebpackPluginOptions = {
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 }
 
-module.exports = withSentryConfig(config, SentryWebpackPluginOptions)
+if (process.env.VERCEL) {
+  // wrap the bundle with Sentry only if built/deployed in Vercel
+  module.exports = withSentryConfig(config, SentryWebpackPluginOptions)
+} else {
+  module.exports = config
+}
