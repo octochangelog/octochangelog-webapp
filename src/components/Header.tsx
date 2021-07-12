@@ -131,8 +131,7 @@ const Header = (props: BoxProps) => {
               color="primaryTextLightmode"
               letterSpacing="tight"
               fontWeight="black"
-              // TODO: fontSize should be 16 px on iPhones
-              fontSize="36px"
+              fontSize={{ base: '16px', sm: '36px' }}
             >
               Octoclairvoyant
             </Heading>
