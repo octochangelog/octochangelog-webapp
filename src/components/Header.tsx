@@ -113,9 +113,8 @@ const Header = (props: BoxProps) => {
       as="header"
       zIndex="banner"
       {...props}
-      // TODO: borderTop should be 4px when on iPhones
-      borderTop="8px"
-      borderColor="fuchsia.700"
+      borderTop={{ base: '4px', sm: '8px' }}
+      borderColor={{ base: 'fuchsia.700', sm: 'fuchsia.700' }}
     >
       <FluidContainer py={5}>
         <Flex justify="space-between" alignItems="center">
