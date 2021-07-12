@@ -24,6 +24,9 @@ const SentryWebpackPluginOptions = {
   //   urlPrefix, include, ignore
 
   silent: process.env.NODE_ENV !== 'production', // Suppresses all logs in envs other than production
+  deploy: {
+    env: process.env.VERCEL_ENV,
+  },
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 }
