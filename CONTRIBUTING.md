@@ -85,5 +85,5 @@ Do the following to get a ugly button to toggle between light/dark mode:
 
 1. Create a file named `.env.local` in the root of the project (this file is on the `.gitignore` list so it won't be committed accidentally)
 1. Put `NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE=true` inside the `.env.local` file.
-1. Stop the development server, and run `yarn start` to restar the server
+1. Stop the development server, and run `yarn start` to restart the server
 1. You can now use the button in the header to switch between light/dark mode
