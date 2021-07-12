@@ -66,8 +66,10 @@ const MainSection = () => (
           >
             Try me now!
           </Button>
-          <Button onClick={handleBoom}>Boom!</Button>
         </NextLink>
+        <Button onClick={handleBoom} colorScheme="primary">
+          Boom!
+        </Button>
       </Flex>
     </Stack>
     <Image
