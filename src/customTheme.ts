@@ -101,7 +101,7 @@ const tertiaryTextDarkmode = coolGray['400']
 
 const themeConfig: ThemeConfig = {
   initialColorMode: 'light',
-  useSystemColorMode: true,
+  useSystemColorMode: !!process.env.NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE,
 }
 
 const customTheme = extendTheme({

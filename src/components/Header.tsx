@@ -67,7 +67,9 @@ const LinksStack = () => (
   >
     <MenuLink href="/">Comparator</MenuLink>
     <MenuLink href="/about">About</MenuLink>
-    <ToggleColorModeButton />
+    {!!process.env.NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE && (
+      <ToggleColorModeButton />
+    )}
     {/* TODO: implement logout if necessary */}
   </Stack>
 )
