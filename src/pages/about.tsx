@@ -60,6 +60,8 @@ const MainSection = () => (
           >
             Try me now!
           </Button>
+          {/* @ts-expect-error Testing Sentry */}
+          <Button onClick={nonExistingMethod}>Boom!</Button>
         </NextLink>
       </Flex>
     </Stack>
