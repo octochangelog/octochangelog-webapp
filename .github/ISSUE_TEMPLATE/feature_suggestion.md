@@ -1,7 +1,7 @@
 ---
 name: Feature suggestion
 about: Suggest a new feature
-labels: 'enhancement'
+labels: 'enhancement, status:requirements'
 ---
 
 ## What feature would you like to have?
