@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Report a bug
-labels: 'bug'
+labels: 'bug, status:requirements'
 ---
 
 ## Describe the bug
