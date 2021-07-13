@@ -114,6 +114,9 @@ const Header = (props: BoxProps) => {
       {...props}
       borderTopWidth={{ base: '4px', sm: '8px' }}
       borderColor="fuchsia.700"
+      // TODO: Remove borderBottomWidth and borderBottomColor once we fix the issue
+      borderBottomWidth="8px"
+      borderBottomColor="sky.700"
     >
       <FluidContainer py={5}>
         <Flex justify="space-between" alignItems="center">
