@@ -22,6 +22,7 @@ import { FaBars } from 'react-icons/fa'
 import mascotIcon from '@app-public/mascot-icon.png'
 import FluidContainer from '~/components/FluidContainer'
 import RouteLink from '~/components/RouteLink'
+import ToggleColorModeButton from '~/components/ToggleColorModeButton'
 import useIsClientSide from '~/hooks/useIsClientSide'
 
 const LOGO_SIZES = { base: '25px', md: '30px', lg: '50px' }
@@ -68,6 +69,9 @@ const LinksStack = () => (
   >
     <MenuLink href="/">Comparator</MenuLink>
     <MenuLink href="/about">About</MenuLink>
+    {!!process.env.NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE && (
+      <ToggleColorModeButton />
+    )}
     {/* TODO: implement logout if necessary */}
   </Stack>
 )

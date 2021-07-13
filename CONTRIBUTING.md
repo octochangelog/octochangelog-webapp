@@ -75,3 +75,48 @@ Use the following query string to check the comparator output:
 ```
 ?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0
 ```
+
+## Working on dark mode locally
+
+We've hidden the color mode behind a feature flag called `NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE`.
+This way we can work on the dark mode without publishing the feature.
+
+Do the following to get a ugly button to toggle between light/dark mode:
+
+1. Create a file named `.env.local` in the root of the project (this file is on the `.gitignore` list so it won't be committed accidentally)
+1. Put `NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE=true` inside the `.env.local` file.
+1. Stop the development server, and run `yarn start` to restart the server
+1. You can now use the button in the header to switch between light/dark mode
+
+### Setting colors for light/dark mode
+
+You only need to pass 2 values to `useColorModeValue`:
+
+- the first one is the variant for light mode
+- the second one is the variant for dark mode
+
+Save the values in a `const` that will _automagically_ get the corresponding value based on the current color mode.
+You can use this `const` anywhere, but most of the time it will be passed to a Chakra component prop.
+
+You can use `useColorModeValue` as many times you need/want inside a component to generate several variables based on color mode.
+
+### Example in code
+
+Here's an example of how to colorize a component.
+
+1. Create/edit a `const` that contains the colors.
+1. Ue the `const` within a Chakra property.
+
+```typescript
+const Footer = () => {
+  const boxBgColor = useColorModeValue('gray.50', 'gray.900')
+
+  return (
+    <Box as="footer" bg={boxBgColor}>
+      <FluidContainer></FluidContainer>
+    </Box>
+  )
+}
+
+export default Footer
+```
