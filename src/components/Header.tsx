@@ -43,7 +43,7 @@ const MenuLink = ({
     <RouteLink
       href={href}
       color="primaryTextLightmode"
-      borderBottomWidth="4px"
+      borderBottomWidth={isActive ? '4px' : 'none'}
       borderColor={isActive ? 'fuchsia.400' : 'fuchsia.200'}
       fontWeight="black"
       fontSize={{ base: '2xl', md: 'lg' }}
