@@ -36,7 +36,24 @@ const Header = (props: BoxProps) => {
               fontWeight="black"
               fontSize={{ base: '16px', sm: '36px' }}
             >
-              <RouteLink href="/">Octoclairvoyant</RouteLink>
+              <RouteLink
+                href="/"
+                _hover={{
+                  borderBottomWidth: '4px',
+                  borderBottomColor: 'fuchsia.700',
+                }}
+                _focus={{
+                  boxShadow: 'outline',
+                  borderBottomWidth: '4px',
+                  borderBottomColor: 'fuchsia.700',
+                }}
+                _active={{
+                  borderBottomWidth: '4px',
+                  borderBottomColor: 'fuchsia.900',
+                }}
+              >
+                Octoclairvoyant
+              </RouteLink>
             </Heading>
           </Flex>
           {!!process.env.NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE && (
