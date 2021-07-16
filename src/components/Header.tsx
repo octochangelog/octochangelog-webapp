@@ -4,6 +4,7 @@ import * as React from 'react'
 
 import mascotIcon from '@app-public/mascot-icon.png'
 import FluidContainer from '~/components/FluidContainer'
+import RouteLink from '~/components/RouteLink'
 import ToggleColorModeButton from '~/components/ToggleColorModeButton'
 
 const LOGO_SIZES = { base: '25px', md: '30px', lg: '50px' }
@@ -34,7 +35,7 @@ const Header = (props: BoxProps) => {
               fontWeight="black"
               fontSize={{ base: '16px', sm: '36px' }}
             >
-              Octoclairvoyant
+              <RouteLink href="/">Octoclairvoyant</RouteLink>
             </Heading>
           </Flex>
           {!!process.env.NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE && (
