@@ -35,7 +35,7 @@ const MainSection = () => (
       flexBasis={0}
     >
       <Heading
-        as="h1"
+        as="h2"
         color={{ base: 'gray.900' }}
         fontSize="4xl"
         fontWeight="black"
@@ -87,7 +87,7 @@ const AboutPage = () => (
         <VStack spacing={8} alignItems="left" py="20" px="10">
           <Box>
             <Heading
-              as="h2"
+              as="h3"
               fontSize="3xl"
               mb="4"
               color="gray.900"

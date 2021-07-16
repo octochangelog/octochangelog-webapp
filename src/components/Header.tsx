@@ -30,6 +30,7 @@ const Header = (props: BoxProps) => {
               />
             </Box>
             <Heading
+              as="h1"
               color="primaryTextLightmode"
               letterSpacing="tight"
               fontWeight="black"
