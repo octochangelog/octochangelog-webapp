@@ -1,0 +1,41 @@
+name: Feature suggestion
+description: Suggest a new feature
+labels: ['enhancement', 'status:requirements']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for thinking about cool new things for our repo!
+
+  - type: textarea
+    id: what-feature-would-you-like-to-have
+    attributes:
+      label: What feature would you like to have?
+      placeholder: Describe the feature.
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-problem-will-this-feature-solve
+    attributes:
+      label: What problem will this feature solve?
+      placeholder: Explain how the new feature will make things better/easier.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: do-you-want-to-help-make-the-feature
+    attributes:
+      label: Do you want to help make the feature?
+      options:
+        - 'Yes'
+        - 'No'
+    validations:
+      required: true
+
+  - type: textarea
+    id: is-there-anything-else-we-need-to-know
+    attributes:
+      label: Is there anything else we need to know?
+    validations:
+      required: false

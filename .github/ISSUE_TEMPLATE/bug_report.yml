@@ -1,0 +1,76 @@
+name: Bug Report
+description: Report a bug
+labels: ['bug', 'status:requirements']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+
+  - type: textarea
+    id: describe-the-bug
+    attributes:
+      label: Describe the bug
+      placeholder: Tell us what's going wrong.
+    validations:
+      required: true
+
+  - type: textarea
+    id: give-the-steps-to-reproduce
+    attributes:
+      label: Give the steps to reproduce
+      placeholder: Provide a ordered list with steps to reproduce.
+      value: |
+        1.
+        2.
+        3.
+        ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - 'Firefox'
+        - 'Chrome'
+        - 'Safari'
+        - 'Microsoft Edge'
+        - 'Bug is not about browser'
+    validations:
+      required: true
+
+  - type: dropdown
+    id: have-you-thought-of-a-possible-solution
+    attributes:
+      label: Have you thought of a possible solution?
+      options:
+        - 'Yes'
+        - 'No'
+    validations:
+      required: true
+
+  - type: textarea
+    id: possible-solution-suggestion
+    attributes:
+      label: If you have thought of a solution, please tell us about it!
+      placeholder: Explain the possible solution.
+
+  - type: dropdown
+    id: do-you-want-to-help-fix-the-bug
+    attributes:
+      label: Do you want to help fix the bug?
+      options:
+        - 'Yes'
+        - 'No'
+    validations:
+      required: true
+
+  - type: textarea
+    id: is-there-anything-else-we-need-to-know
+    attributes:
+      label: Is there anything else we need to know?
+    validations:
+      required: false
