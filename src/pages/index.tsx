@@ -73,9 +73,9 @@ const MainSection = () => (
   </Stack>
 )
 
-const AboutPage = () => (
+const HomePage = () => (
   <Layout>
-    <NextSeo title="About" />
+    <NextSeo title="Homepage" />
     <Box mt={-8} py={{ base: 8, lg: 16 }} bg="gray.50">
       <FluidContainer>
         <MainSection />
@@ -132,4 +132,4 @@ const AboutPage = () => (
   </Layout>
 )
 
-export default AboutPage
+export default HomePage
