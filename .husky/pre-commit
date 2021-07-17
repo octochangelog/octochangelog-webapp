@@ -6,7 +6,7 @@
 
 yarn lint-staged
 
-# Prevent commit if default branch
+# Prevent commit if on main branch
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 if [[ "$BRANCH" =~ ^(main)$ ]]; then
