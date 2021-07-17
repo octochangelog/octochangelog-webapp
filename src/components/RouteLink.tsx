@@ -1,7 +1,11 @@
 import { Link, LinkProps } from '@chakra-ui/react'
 import NextLink from 'next/link'
 
-const RouteLink = ({ href = '#', children, ...rest }: LinkProps) => (
+interface RouteLinkProps extends LinkProps {
+  href: string
+}
+
+const RouteLink = ({ href, children, ...rest }: RouteLinkProps) => (
   <NextLink passHref href={href}>
     <Link {...rest}>{children}</Link>
   </NextLink>

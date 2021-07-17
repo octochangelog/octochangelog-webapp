@@ -4,12 +4,18 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 const { withSentryConfig } = require('@sentry/nextjs')
 
+// @ts-check
+
+/**
+ * @type {import('next').NextConfig}
+ **/
 const config = withBundleAnalyzer({
   async redirects() {
     return [
       {
-        source: '/comparator',
-        destination: '/',
+        source: '/',
+        destination: '/comparator',
+        has: [{ type: 'query', key: 'repo' }],
         permanent: true,
       },
     ]
