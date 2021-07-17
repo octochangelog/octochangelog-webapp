@@ -4,7 +4,7 @@ import Layout from '~/components/Layout'
 import RepositoryReleasesComparator from '~/components/RepositoryReleasesComparator'
 import { ComparatorProvider } from '~/contexts/comparator-context'
 
-const IndexPage = () => (
+const ComparatorPage = () => (
   <Layout>
     <NextSeo title="Comparator" />
     <ComparatorProvider>
@@ -13,4 +13,4 @@ const IndexPage = () => (
   </Layout>
 )
 
-export default IndexPage
+export default ComparatorPage
