@@ -21,16 +21,16 @@ const Header = (props: BoxProps) => {
       <FluidContainer py={5}>
         <Flex justify="space-between" alignItems="center">
           <Flex alignItems="center">
-            <RouteLink href="/">
-              <Box h={LOGO_SIZES} w={LOGO_SIZES} mr={2}>
+            <Box h={LOGO_SIZES} w={LOGO_SIZES} mr={2}>
+              <RouteLink href="/">
                 <Image
                   priority
                   src={mascotIcon}
-                  alt="Octoclairvoyant reading a crystal ball"
+                  alt="Go to home page"
                   placeholder="blur"
                 />
-              </Box>
-            </RouteLink>
+              </RouteLink>
+            </Box>
             <Heading
               as="h1"
               color="primaryTextLightmode"
