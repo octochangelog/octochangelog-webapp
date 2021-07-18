@@ -47,7 +47,7 @@
     "remark-stringify": "9.0.1",
     "semver": "7.3.5",
     "title": "3.4.3",
-    "unified": "9.2.2"
+    "unified": "10.0.0"
   },
   "devDependencies": {
     "@chakra-ui/cli": "1.5.0",
