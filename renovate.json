@@ -1,5 +1,5 @@
 {
-  "extends": ["config:base"],
+  "extends": ["config:base", "helpers:pinGitHubActionDigests"],
   "dependencyDashboard": true,
   "prCreation": "not-pending",
   "lockFileMaintenance": {
