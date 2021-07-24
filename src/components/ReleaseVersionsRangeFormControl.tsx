@@ -50,7 +50,7 @@ const ReleaseVersionsRangeFormControl = (props: StackProps) => {
   return (
     <Stack {...props}>
       <ReleaseVersionFormControl
-        label="From release"
+        label="Select from release"
         id="from-version"
         isDisabled={!releases || isLoading}
         isLoading={isLoading}
@@ -60,7 +60,7 @@ const ReleaseVersionsRangeFormControl = (props: StackProps) => {
         onChange={setFromVersion}
       />
       <ReleaseVersionFormControl
-        label="To release"
+        label="Select to release"
         id="to-version"
         isDisabled={!releases || isLoading}
         isLoading={isLoading}
