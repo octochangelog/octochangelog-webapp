@@ -90,38 +90,38 @@ const HomePage = () => (
               as="h3"
               fontSize="3xl"
               mb="4"
-              color="gray.900"
+              color="primaryTextLightmode"
               fontWeight="black"
               id="features"
             >
               Features
             </Heading>
-            <List fontSize="" spacing="4">
+            <List fontSize="" color="secondaryTextLightmode" spacing="4">
               <ListItem mt="-2">
-                <ListIcon as={FaCheck} color="secondary.300" />
+                <ListIcon as={FaCheck} color="sky.400" />
                 Search repositories and pick a version range
               </ListItem>
               <ListItem>
-                <ListIcon as={FaCheck} color="secondary.300" />
+                <ListIcon as={FaCheck} color="sky.400" />
                 Sort and group releases changelogs following{' '}
                 <Link href="https://semver.org/">Semantic Versioning</Link>
               </ListItem>
               <ListItem>
-                <ListIcon as={FaCheck} color="secondary.300" />
+                <ListIcon as={FaCheck} color="sky.400" />
                 Share changelogs comparison with others by giving them a link
               </ListItem>
               <ListItem>
-                <ListIcon as={FaCheck} color="secondary.300" />
+                <ListIcon as={FaCheck} color="sky.400" />
                 Normalize changes categories (e.g. put{' '}
                 <Text as="em">bug fixes</Text> and{' '}
                 <Text as="em">minor changes</Text> in the same category)
               </ListItem>
               <ListItem>
-                <ListIcon as={FaCheck} color="secondary.300" />
+                <ListIcon as={FaCheck} color="sky.400" />
                 Highlight code blocks syntax and GitHub references
               </ListItem>
               <ListItem>
-                <ListIcon as={FaCheck} color="secondary.300" />
+                <ListIcon as={FaCheck} color="sky.400" />
                 Makes it easy to spot which version introduced specific changes
               </ListItem>
             </List>
