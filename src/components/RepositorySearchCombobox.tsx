@@ -17,7 +17,7 @@ import { useCombobox } from 'downshift'
 import debounce from 'lodash/debounce'
 import * as React from 'react'
 import { useEffect, useMemo, useState } from 'react'
-import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
+import { FaSearch, FaArrowUp } from 'react-icons/fa'
 
 import { Repository } from '~/models'
 import { useSearchRepositoriesQuery } from '~/queries/repository'
@@ -116,7 +116,7 @@ const RepositorySearchCombobox = ({
           <IconButton
             {...getToggleButtonProps()}
             aria-label="toggle repositories results menu"
-            icon={<Icon as={isOpen ? FaArrowUp : FaArrowDown} />}
+            icon={<Icon as={isOpen ? FaArrowUp : FaSearch} />}
           />
         </Box>
       </HStack>
