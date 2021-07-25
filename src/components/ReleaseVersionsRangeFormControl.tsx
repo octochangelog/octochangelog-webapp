@@ -45,7 +45,9 @@ const ReleaseVersionsRangeFormControl = (props: StackProps) => {
   const [fromReleases, toReleases] = mapReleasesRange(releases)
 
   const selectPlaceholder =
-    Array.isArray(releases) && releases.length === 0 ? 'No releases found' : ''
+    Array.isArray(releases) && releases.length === 0
+      ? 'Releases not found'
+      : 'Choose a release'
 
   return (
     <Stack {...props}>
