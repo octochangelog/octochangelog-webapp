@@ -1,5 +1,9 @@
 {
-  "extends": ["config:base", "helpers:pinGitHubActionDigests"],
+  "extends": [
+    "config:base",
+    "helpers:pinGitHubActionDigests",
+    ":automergeTypes"
+  ],
   "dependencyDashboard": true,
   "prCreation": "not-pending",
   "lockFileMaintenance": {
