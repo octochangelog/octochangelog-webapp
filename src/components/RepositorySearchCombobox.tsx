@@ -97,7 +97,7 @@ const RepositorySearchCombobox = ({
       position="relative"
       {...getComboboxProps()}
     >
-      <FormLabel {...getLabelProps()}>Type repository name</FormLabel>
+      <FormLabel {...getLabelProps()}>Enter repository name</FormLabel>
       <HStack>
         <InputGroup>
           <Input {...getInputProps()} />
