@@ -36,6 +36,7 @@ async function processDescriptionAsync(
         components,
       })
       .process(
+        // @ts-expect-error Not sure where Root type is coming from within stringify args
         unified().use(markdown).use(gfm).stringify(description),
         (err, file) => {
           if (err || !file) {
