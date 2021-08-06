@@ -1,6 +1,5 @@
 import { RestEndpointMethodTypes } from '@octokit/rest'
 import { ReactElement } from 'react'
-import { ComponentLike } from 'rehype-react'
 import { Parent } from 'unist'
 
 export type RepositoryQueryParams = {
@@ -43,5 +42,12 @@ export enum MiscGroupTitles {
   thanks = 'thanks',
   credits = 'credits',
 }
+
+type ComponentPropsWithoutNode = Record<string, unknown>
+
+type ComponentLike<
+  T,
+  P extends ComponentPropsWithoutNode = ComponentPropsWithoutNode
+> = (props: P) => T | null
 
 export type ComponentsMapping = Record<string, ComponentLike<ReactElement>>

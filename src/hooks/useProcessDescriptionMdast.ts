@@ -1,11 +1,11 @@
 import { createElement, ReactNode, useEffect, useMemo, useState } from 'react'
-import highlight from 'rehype-highlight'
+import rehypeHighlight from 'rehype-highlight'
 import rehype2react from 'rehype-react'
 import gfm from 'remark-gfm'
 import parse from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 import markdown from 'remark-stringify'
-import unified from 'unified'
+import { unified } from 'unified'
 import { Parent } from 'unist'
 
 import { ComponentsMapping, Repository } from '~/models'
@@ -30,7 +30,7 @@ async function processDescriptionAsync(
       .use(parse)
       .use(gfm)
       .use(remark2rehype)
-      .use(highlight, { ignoreMissing: true })
+      .use(rehypeHighlight, { ignoreMissing: true })
       .use(rehype2react, {
         createElement,
         components,
@@ -38,9 +38,10 @@ async function processDescriptionAsync(
       .process(
         unified().use(markdown).use(gfm).stringify(description),
         (err, file) => {
-          if (err) {
+          if (err || !file) {
             reject(err)
           } else {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             resolve(file.result as ReactNode)
           }
         }
