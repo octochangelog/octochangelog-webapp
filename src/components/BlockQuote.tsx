@@ -5,8 +5,8 @@ const BlockQuote = (props: BoxProps) => (
     as="blockquote"
     px={4}
     borderLeftWidth={4}
-    borderLeftColor="gray.300"
-    color="gray.500"
+    borderLeftColor="coolGray.200"
+    color="tertiaryTextLightmode"
     {...props}
   />
 )
