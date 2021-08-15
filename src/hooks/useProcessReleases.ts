@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import gfm from 'remark-gfm'
 import parse from 'remark-parse'
-import unified from 'unified'
+import { unified } from 'unified'
 
 import { MiscGroupTitles, ProcessedReleasesCollection, Release } from '~/models'
 import { getReleaseGroupTitle } from '~/utils'
