@@ -2,7 +2,11 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   extends: [
-    'kentcdodds',
+    'kentcdodds/deprecated-rules',
+    'kentcdodds/stylistic',
+    'kentcdodds/best-practices',
+    'kentcdodds/possible-errors',
+    'kentcdodds/es6',
     'kentcdodds/react',
     'kentcdodds/jsx-a11y',
     'next',
