@@ -26,7 +26,7 @@
     "@next/bundle-analyzer": "11.1.0",
     "@octokit/auth-callback": "2.0.1",
     "@octokit/rest": "18.8.0",
-    "@sentry/nextjs": "6.10.0",
+    "@sentry/nextjs": "6.11.0",
     "downshift": "6.1.7",
     "focus-visible": "5.2.0",
     "framer-motion": "4.1.17",
