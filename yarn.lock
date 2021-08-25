@@ -5971,10 +5971,10 @@ remark-gfm@2.0.0:
     micromark-extension-gfm "^1.0.0"
     unified "^10.0.0"
 
-remark-github@11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/remark-github/-/remark-github-11.0.0.tgz#b0fea885ca06afcaba36dddd4f4fadff5e35bc21"
-  integrity sha512-oMHSlB/Lu/5unlPbO1bJnhhlTD8ozYR7H0qJJGPedOQscrRqr8BdJ/dnRWbFBV6qb1ZZASLMwwHY7BL751SoLQ==
+remark-github@11.1.0:
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/remark-github/-/remark-github-11.1.0.tgz#b19a0801059822f1f5e077d449683900df108ca8"
+  integrity sha512-bI3Xuf3Kmq6GkYDMc7wjqTps1z+JAQ1VkQG8hHfq7A/HwoXJvatGNMguEx4Ci1v4aeu7cMalWDERJK1bQmoBkg==
   dependencies:
     "@types/mdast" "^3.0.0"
     mdast-util-find-and-replace "^2.0.0"
