@@ -5901,10 +5901,10 @@ rehype-highlight@5.0.0:
     unified "^10.0.0"
     unist-util-visit "^4.0.0"
 
-rehype-react@7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/rehype-react/-/rehype-react-7.0.0.tgz#6176a4e1fade465a0ca0d0756354903d217203f7"
-  integrity sha512-x24M2jkvhDd9otFiHpAP2yt+zLLPAxgvSvhPaXCwHG2UfKT8LTOgfZN/5qcauQLaqsCDgcdTgUKQTbc1jFpfBA==
+rehype-react@7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/rehype-react/-/rehype-react-7.0.1.tgz#47eac223ffc145979441c430c76fc63d6cd191d9"
+  integrity sha512-H1Dha9uGt2ThGEpWT3p1lOUpvvihhXoa0FfANfkAfKJVQH1E4dXGwaJTdYcNGaZUXl9eU9enbGLo6iW6VUPrlA==
   dependencies:
     "@mapbox/hast-util-table-cell-style" "^0.2.0"
     "@types/hast" "^2.0.0"
