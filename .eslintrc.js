@@ -2,13 +2,8 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   extends: [
-    'kentcdodds/deprecated-rules',
-    'kentcdodds/stylistic',
-    'kentcdodds/best-practices',
-    'kentcdodds/possible-errors',
-    'kentcdodds/es6',
-    'kentcdodds/react',
-    'kentcdodds/jsx-a11y',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
     'next',
     'prettier',
   ],
@@ -22,19 +17,20 @@ module.exports = {
   },
   rules: {
     // Base
-    'no-shadow': 2,
-    'no-warning-comments': 0,
+    'no-shadow': 'error',
+    'no-warning-comments': 'off',
 
     // React
-    'react/self-closing-comp': 2,
-    'react/react-in-jsx-scope': 0,
+    'react/self-closing-comp': 'error',
+    'react/react-in-jsx-scope': 'off',
 
     // TypeScript
     // Disabling these rules temporary until types are properly defined across
     // the whole codebase.
-    '@typescript-eslint/no-unsafe-assignment': 0,
-    '@typescript-eslint/no-unsafe-argument': 0,
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/no-unsafe-argument': 'off',
 
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/array-type': [
       'error',
       {
@@ -43,9 +39,9 @@ module.exports = {
     ],
 
     // Import
-    'import/newline-after-import': 2,
+    'import/newline-after-import': 'error',
     'import/order': [
-      2,
+      'error',
       {
         'newlines-between': 'always',
         alphabetize: {
