@@ -62,7 +62,7 @@ const ComparatorProvider = ({ children }: { children: ReactNode }) => {
         ...newFilters,
       }
       const newQuery = Object.fromEntries(
-        Object.entries(mergedFilters).filter(([_, value]) => Boolean(value))
+        Object.entries(mergedFilters).filter(([, value]) => Boolean(value))
       )
 
       void router.replace(
