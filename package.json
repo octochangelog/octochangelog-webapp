@@ -17,6 +17,8 @@
     "format:check": "yarn prettier-base --check",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
+    "e2e": "start-server-and-test 'yarn dev' http://localhost:3000 'yarn cypress'",
+    "e2e:headless": "start-server-and-test 'yarn serve' http://localhost:3000 'yarn cypress:headless'",
     "gen:theme-typings": "chakra-cli tokens src/customTheme.ts",
     "prepare": "husky install",
     "postinstall": "yarn gen:theme-typings"
@@ -78,6 +80,7 @@
     "husky": "7.0.2",
     "lint-staged": "11.1.2",
     "prettier": "2.4.0",
+    "start-server-and-test": "1.14.0",
     "type-fest": "2.2.0",
     "typescript": "4.4.2"
   },
