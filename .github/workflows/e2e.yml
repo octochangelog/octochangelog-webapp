@@ -37,3 +37,17 @@ jobs:
           build: yarn build
           start: yarn serve
           wait-on: 'http://localhost:3000'
+          record: true
+          group: merge
+          # tag will be either "push" or "pull_request"
+          tag: ${{ github.event_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+          # - if the event is push, the title will be undefined
+          # and Cypress will get the commit message from Git information
+          # - if the event is pull_request, then we set the commit
+          # message to the pull request title
+          # https://github.com/cypress-io/github-action/issues/124#issuecomment-653180260
+          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
