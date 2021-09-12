@@ -15,6 +15,8 @@
     "prettier-base": "prettier . --ignore-path .gitignore --ignore-unknown",
     "format": "yarn prettier-base --write",
     "format:check": "yarn prettier-base --check",
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run",
     "gen:theme-typings": "chakra-cli tokens src/customTheme.ts",
     "prepare": "husky install",
     "postinstall": "yarn gen:theme-typings"
@@ -62,6 +64,7 @@
     "@typescript-eslint/eslint-plugin": "4.31.0",
     "@typescript-eslint/parser": "4.31.0",
     "babel-eslint": "10.1.0",
+    "cypress": "8.3.1",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "eslint-config-prettier": "8.3.0",
