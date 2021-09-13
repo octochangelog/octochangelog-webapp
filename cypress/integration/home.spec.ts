@@ -24,6 +24,15 @@ it('should display h2 heading with correct text', () => {
   }).should('exist')
 })
 
+it('should display h3 heading with correct text', () => {
+  cy.visit('/')
+
+  cy.findByRole('heading', {
+    level: 3,
+    name: 'Features',
+  }).should('exist')
+})
+
 // TODO: Write test that checks for image being present (alt text is already checked via some other linter).
 
 it('should have a working link to comparator page', () => {
