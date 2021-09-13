@@ -51,4 +51,8 @@ module.exports = {
       },
     ],
   },
+
+  overrides: [
+    { files: ['cypress/**/*.[jt]s'], extends: ['plugin:cypress/recommended'] },
+  ],
 }
