@@ -19,7 +19,7 @@ import './commands'
 // Set GitHub token for all tests
 before(() => {
   const githubTestingAccessToken =
-    Cypress.env('GITHUB_TESTING_ACCESS_TOKEN') || 'none'
+    Cypress.env('GITHUB_TESTING_ACCESS_TOKEN') || ''
   cy.setCookie(GITHUB_STORAGE_KEY, githubTestingAccessToken)
 })
 Cypress.Cookies.defaults({ preserve: GITHUB_STORAGE_KEY })
