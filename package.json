@@ -24,7 +24,7 @@
     "postinstall": "yarn gen:theme-typings"
   },
   "dependencies": {
-    "@chakra-ui/react": "1.6.7",
+    "@chakra-ui/react": "1.6.8",
     "@emotion/react": "11.4.1",
     "@emotion/styled": "11.3.0",
     "@next/bundle-analyzer": "11.1.2",
@@ -54,7 +54,7 @@
     "unified": "10.1.0"
   },
   "devDependencies": {
-    "@chakra-ui/cli": "1.5.0",
+    "@chakra-ui/cli": "1.5.1",
     "@testing-library/cypress": "8.0.1",
     "@types/gtag.js": "0.0.7",
     "@types/lodash": "4.14.173",
