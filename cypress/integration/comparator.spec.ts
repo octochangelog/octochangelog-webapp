@@ -23,7 +23,6 @@ it('should show expected results when using standard query string', () => {
     name: /breaking changes/i,
   })
 
-  cy.findByText('v7.0.0')
   cy.contains('span', 'v7.0.0')
 
   cy.findByRole('heading', { level: 5, name: /drop node 8/i })
