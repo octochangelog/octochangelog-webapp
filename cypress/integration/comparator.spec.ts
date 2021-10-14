@@ -28,10 +28,10 @@ it('should show expected results when using standard query string', () => {
   cy.findByRole('heading', { level: 5, name: /drop node 8/i })
 
   cy.contains('p', 'Node 10 or greater is required.')
-  cy.contains('a', 'out of LTS')
-  cy.contains('a', '#459')
-  cy.contains('a', 'c3ab843')
-  cy.contains('a', '#430')
+  cy.findByRole('link', { name: /out of lts/i })
+  cy.findByRole('link', { name: /#459/i })
+  cy.findByRole('link', { name: /c3ab843/i })
+  cy.findByRole('link', { name: /#430/i })
 
   cy.contains('pre', 'devDependencies')
 
