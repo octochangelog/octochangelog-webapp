@@ -1,30 +1,33 @@
-// TODO: implement e2e for comparator here
-
-// Write new test that fills out the form so that it ends up with the standard comparator query, to confirm our form is functional.
-
-// Ask Belco how to get cy.findByText(/Changes from v6.16.0 to v8.1.0/i).should('exist') to wait for the result.
-// We should mock/fixture the result somehow, as we're expecting the same results each time... and it's really easy to hit the API limits unauthenticated.
-// For now these tests do work properly, but they're not using any Testing Library queries.
-
 it('should show expected results when using standard query string', () => {
   cy.visit(
     '/?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0'
   )
 
-  // Confirm from and to version range are displayed
+  // Confirm repository name is displayed
+  // TOOD: Check correct href: https://github.com/testing-library/dom-testing-library
 
-  cy.contains('Changes from v6.16.0 to v8.1.0')
+  cy.findByRole('link', { name: /dom testing library/i }).should(
+    'have.attr',
+    'href',
+    'https://github.com/testing-library/dom-testing-library'
+  )
 
-  // Confirm versions are mentioned somewhere
+  // Confirm from and to version range is displayed
 
-  cy.contains('v6.16.0')
-  cy.contains('v8.1.0')
+  cy.findByRole('heading', {
+    name: /changes from v6\.16\.0 to v8\.1\.0/i,
+  })
 
-  cy.contains('h2', 'breaking changes')
+  cy.findByRole('heading', {
+    level: 2,
+    name: /breaking changes/i,
+  })
 
+  cy.findByText('v7.0.0')
   cy.contains('span', 'v7.0.0')
 
-  cy.contains('h5', 'Drop Node 8')
+  cy.findByRole('heading', { level: 5, name: /drop node 8/i })
+
   cy.contains('p', 'Node 10 or greater is required.')
   cy.contains('a', 'out of LTS')
   cy.contains('a', '#459')
@@ -43,6 +46,8 @@ it('should show expected results when using standard query string', () => {
 
   cy.contains('h2', 'chore')
 })
+
+// TODO: Write new test that fills out the form so that it ends up with the standard comparator query, to confirm our form is functional.
 
 // Keep the export {} braces here!
 

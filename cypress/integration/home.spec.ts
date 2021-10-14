@@ -19,9 +19,15 @@ it('should display h1 heading with correct text', () => {
     name: 'Compare GitHub changelogs across multiple releases',
   }).should('exist')
 
-  // TODO: check 'src' property of the found img tag is correct
-  // NOTE: Testing playground suggests: cy.findByRole('img', { name: /octoclairvoyant reading a crystal ball/i })
-  cy.findByAltText(/octoclairvoyant reading a crystal ball/i).should('exist')
+  cy.findByAltText(/octoclairvoyant reading a crystal ball/i)
+    .should('have.attr', 'src')
+    .should('include', 'mascot-logo')
+
+  cy.findByAltText(/octoclairvoyant reading a crystal ball/i).should(
+    'have.attr',
+    'src',
+    '/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fpublic%2Fmascot-logo.8655d29c013a9c688dd05a79c6b04187.png&w=1200&q=100'
+  )
 
   cy.findByRole('heading', {
     level: 3,
