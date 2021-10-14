@@ -78,7 +78,7 @@
     "eslint-plugin-react": "7.26.1",
     "eslint-plugin-react-hooks": "4.2.0",
     "husky": "7.0.2",
-    "lint-staged": "11.2.2",
+    "lint-staged": "11.2.3",
     "prettier": "2.4.1",
     "start-server-and-test": "1.14.0",
     "type-fest": "2.3.4",
