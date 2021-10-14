@@ -55,9 +55,9 @@ it('should show expected results when using standard query string', () => {
   )
 
   // Check if the code block renders with the diff display
-  cy.findByText(/\- "test": "react\-scripts test \-\-env=dom"/i)
+  cy.findByText(/- "test": "react-scripts test --env=dom"/i)
   cy.findByText(
-    /\+ "test": "react\-scripts test \-\-env=jest\-environment\-jsdom\-sixteen"/i
+    /\+ "test": "react-scripts test --env=jest-environment-jsdom-sixteen"/i
   )
 
   cy.findByRole('heading', { level: 2, name: /features/i })
