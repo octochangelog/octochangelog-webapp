@@ -4,7 +4,6 @@ it('should show expected results when using standard query string', () => {
   )
 
   // Confirm repository name is displayed
-  // TOOD: Check correct href: https://github.com/testing-library/dom-testing-library
 
   cy.findByRole('link', { name: /dom testing library/i }).should(
     'have.attr',
@@ -28,22 +27,46 @@ it('should show expected results when using standard query string', () => {
   cy.findByRole('heading', { level: 5, name: /drop node 8/i })
 
   cy.contains('p', 'Node 10 or greater is required.')
-  cy.findByRole('link', { name: /out of lts/i })
-  cy.findByRole('link', { name: /#459/i })
-  cy.findByRole('link', { name: /c3ab843/i })
-  cy.findByRole('link', { name: /#430/i })
 
-  cy.contains('pre', 'devDependencies')
+  cy.findByRole('link', { name: /out of lts/i }).should(
+    'have.attr',
+    'href',
+    'https://nodejs.org/en/about/releases/'
+  )
 
-  cy.contains('h2', 'features')
+  cy.findByRole('link', { name: /#459/i }).should(
+    'have.attr',
+    'href',
+    'https://github.com/testing-library/dom-testing-library/issues/459'
+  )
 
-  cy.contains('h2', 'bug fixes')
+  cy.findByRole('link', { name: /c3ab843/i }).should(
+    'have.attr',
+    'href',
+    'https://github.com/testing-library/dom-testing-library/commit/c3ab843c292484428f045671ea22cbb30eb70559'
+  )
 
-  cy.contains('h2', 'reverts')
+  cy.findByRole('link', { name: /#430/i }).should(
+    'have.attr',
+    'href',
+    'https://github.com/testing-library/dom-testing-library/issues/430'
+  )
 
-  cy.contains('h2', 'recommendations')
+  // Check if the code block renders with the diff display
+  cy.findByText(/\- "test": "react\-scripts test \-\-env=dom"/i)
+  cy.findByText(
+    /\+ "test": "react\-scripts test \-\-env=jest\-environment\-jsdom\-sixteen"/i
+  )
 
-  cy.contains('h2', 'chore')
+  cy.findByRole('heading', { level: 2, name: /features/i })
+
+  cy.findByRole('heading', { level: 2, name: /bug fixes/i })
+
+  cy.findByRole('heading', { level: 2, name: /reverts/i })
+
+  cy.findByRole('heading', { level: 2, name: /recommendations/i })
+
+  cy.findByRole('heading', { level: 2, name: /chore/i })
 })
 
 // TODO: Write new test that fills out the form so that it ends up with the standard comparator query, to confirm our form is functional.
