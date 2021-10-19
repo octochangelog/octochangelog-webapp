@@ -24,7 +24,7 @@ it('should show expected results when using standard query string', () => {
     name: /breaking changes/i,
   })
 
-  cy.findAllByText('v7.0.0').should('have.length', 4)
+  cy.findAllByText('v7.0.0', { ignore: 'option' }).should('have.length', 2)
 
   cy.findByRole('heading', { level: 5, name: /drop node 8/i })
 
