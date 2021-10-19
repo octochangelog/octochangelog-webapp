@@ -73,7 +73,6 @@ it('should show expected results when using standard query string', () => {
   cy.findByRole('heading', { level: 2, name: /chore/i })
 })
 
-// TODO: Write new test that fills out the form so that it ends up with the standard comparator query, to confirm our form is functional.
 
 // Keep the export {} braces here!
 
