@@ -5,10 +5,6 @@ it('should should display corresponding information', () => {
     'equal',
     'Homepage | Octoclairvoyant: Compare GitHub changelogs across multiple releases'
   )
-})
-
-it('should display h1 heading with correct text', () => {
-  cy.visit('/')
 
   cy.findByRole('heading', { level: 1, name: 'Octoclairvoyant' }).should(
     'exist'
