@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Flex,
   Heading,
   List,
@@ -17,6 +16,7 @@ import { FaCheck } from 'react-icons/fa'
 
 import mascotLogo from '@app-public/mascot-logo.png'
 import { BRIEF_DESCRIPTION } from '~/common'
+import { CTAButton } from '~/components/CTAButton'
 import FluidContainer from '~/components/FluidContainer'
 import Layout from '~/components/Layout'
 import Link from '~/components/Link'
@@ -46,20 +46,7 @@ const MainSection = () => (
       </Heading>
       <Flex py="6" justify="center" align="center">
         <NextLink href="/comparator">
-          <Button
-            fontWeight="black"
-            fontSize="2xl"
-            letterSpacing="tight"
-            p="6"
-            size="lg"
-            shadow="lg"
-            bg="primary.100"
-            color="primary.900"
-            _hover={{ bg: 'primary.200' }}
-            _active={{ bg: 'primary.300' }}
-          >
-            Try me now!
-          </Button>
+          <CTAButton>Try me now!</CTAButton>
         </NextLink>
       </Flex>
     </Stack>
