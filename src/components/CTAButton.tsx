@@ -10,11 +10,12 @@ export const CTAButton = ({ children, ...remainingProps }: ButtonProps) => {
       letterSpacing="tight"
       p="6"
       size="lg"
-      shadow="lg"
+      boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
+      borderRadius="2xl"
       bg="fuchsia.200"
-      color="primary.900"
-      _hover={{ bg: 'primary.200' }}
-      _active={{ bg: 'primary.300' }}
+      color="fuchsia.900"
+      _hover={{ bg: 'fuchsia.100' }}
+      _active={{ bg: 'fuchsia.50' }}
     >
       {children}
     </Button>
