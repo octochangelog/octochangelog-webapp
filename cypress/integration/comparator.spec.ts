@@ -24,11 +24,13 @@ it('should show expected results when using standard query string', () => {
     name: /breaking changes/i,
   })
 
-  cy.findByText('v7.0.0').should('exist')
+  cy.findAllByText('v7.0.0').should('have.length', 4)
 
   cy.findByRole('heading', { level: 5, name: /drop node 8/i })
 
-  cy.findByText('Node 10 or greater is required.').should('exist')
+  cy.findByText(
+    /node 10 or greater is required\. node 8 is \(\) \(\), closes/i
+  ).should('have.length', 1)
 
   cy.findByRole('link', { name: /out of lts/i }).should(
     'have.attr',
