@@ -9,7 +9,7 @@ const userAgent = IS_PRODUCTION_MODE
   : 'Test Octoclairvoyant'
 
 const STORAGE_KEY_PREFIX = IS_PRODUCTION_MODE ? '' : 'test-'
-const GITHUB_STORAGE_KEY = `${STORAGE_KEY_PREFIX}octoclairvoyant-github-access-token`
+export const GITHUB_STORAGE_KEY = `${STORAGE_KEY_PREFIX}octoclairvoyant-github-access-token`
 
 export function getGithubAccessToken(): string | undefined {
   const cookies = parseCookies(null, { path: '/' })
