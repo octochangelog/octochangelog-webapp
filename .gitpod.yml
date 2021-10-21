@@ -35,6 +35,8 @@ tasks:
     command: yarn cypress
   - command: git branch
 ports:
+  - port: 3000
+    onOpen: open-browser
   - port: 5900
     onOpen: ignore
   - port: 6080
