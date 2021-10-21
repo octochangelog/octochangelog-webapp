@@ -120,3 +120,20 @@ const Footer = () => {
 
 export default Footer
 ```
+
+### Running E2E
+
+Our E2E tests are implemented with Cypress.
+
+For now, they always perform real requests to GitHub API.
+If you want to add an access token to extend the API rate limit, follow these steps:
+
+1. [Create a personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+2. Create a file named `cypress.env.json` in the root of the project (this file is on the `.gitignore` list, so it won't be committed accidentally)
+3. Create a key-value pair `GITHUB_TESTING_ACCESS_TOKEN` and copy/paste the personal access token into it, like this:
+
+```json
+{
+  "GITHUB_TESTING_ACCESS_TOKEN": "token-created-in-step-1"
+}
+```
