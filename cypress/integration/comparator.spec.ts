@@ -2,7 +2,7 @@ it('should have a working form interface', () => {
   cy.visit('/comparator')
 
   cy.findByRole('textbox', { name: /enter repository name/i }).type(
-    'testing-library/dom-testing-librar'
+    'dom testing library'
   )
   cy.wait(4000) // eslint-disable-line cypress/no-unnecessary-waiting
 
