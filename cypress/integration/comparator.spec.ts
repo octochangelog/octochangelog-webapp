@@ -1,3 +1,26 @@
+it('should have a working form interface', () => {
+  cy.visit('/comparator')
+
+  cy.findByRole('textbox', { name: /enter repository name/i }).type(
+    'dom testing library'
+  )
+  cy.wait(4000) // eslint-disable-line cypress/no-unnecessary-waiting
+
+  cy.findByRole('listbox', { name: /enter repository name/i })
+    .findByText('testing-library/dom-testing-library')
+    .click()
+
+  cy.findByRole('combobox', { name: /select from release/i }).select('v6.16.0')
+
+  cy.findByRole('combobox', { name: /select to release/i }).select('v8.1.0')
+
+  cy.findByRole('link', { name: /dom testing library/i }).should(
+    'have.attr',
+    'href',
+    'https://github.com/testing-library/dom-testing-library'
+  )
+})
+
 it('should show expected results when using standard query string', () => {
   cy.visit(
     '/?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0'
