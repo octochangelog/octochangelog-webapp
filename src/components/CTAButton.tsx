@@ -15,8 +15,10 @@ export const CTAButton = ({ children, ...remainingProps }: ButtonProps) => {
       bg="fuchsia.200"
       color="fuchsia.900"
       _hover={{ bg: 'fuchsia.100' }}
-      _active={{ bg: 'fuchsia.200' }}
-      _focus={{ boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.25) !important' }}
+      _active={{
+        bg: 'fuchsia.200',
+        boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.25) !important',
+      }}
     >
       {children}
     </Button>
