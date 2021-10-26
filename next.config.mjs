@@ -1,4 +1,4 @@
-const { withSentryConfig } = require('@sentry/nextjs')
+import { withSentryConfig } from '@sentry/nextjs'
 
 // @ts-check
 
@@ -6,6 +6,7 @@ const { withSentryConfig } = require('@sentry/nextjs')
  * @type {import('next').NextConfig}
  **/
 const config = {
+  swcMinify: true,
   async redirects() {
     return [
       {
