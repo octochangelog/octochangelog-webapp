@@ -37,9 +37,9 @@ const SentryWebpackPluginOptions = {
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 }
 
-if (process.env.VERCEL) {
-  // wrap the bundle with Sentry only if built/deployed in Vercel
-  module.exports = withSentryConfig(config, SentryWebpackPluginOptions)
-} else {
-  module.exports = config
-}
+// wrap the bundle with Sentry only if built/deployed in Vercel
+const activeConfig = process.env.VERCEL
+  ? withSentryConfig(config, SentryWebpackPluginOptions)
+  : config
+
+export default activeConfig
