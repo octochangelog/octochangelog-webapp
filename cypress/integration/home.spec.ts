@@ -22,7 +22,7 @@ it('should should display corresponding information', () => {
   cy.findByAltText(/octoclairvoyant reading a crystal ball/i).should(
     'have.attr',
     'src',
-    '/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fpublic%2Fmascot-logo.8655d29c013a9c688dd05a79c6b04187.png&w=1200&q=100'
+    '/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmascot-logo.8655d29c.png&w=1200&q=100'
   )
 
   cy.findByRole('heading', {
