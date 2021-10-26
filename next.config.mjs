@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
 const { withSentryConfig } = require('@sentry/nextjs')
 
 // @ts-check
@@ -9,7 +5,7 @@ const { withSentryConfig } = require('@sentry/nextjs')
 /**
  * @type {import('next').NextConfig}
  **/
-const config = withBundleAnalyzer({
+const config = {
   async redirects() {
     return [
       {
@@ -20,7 +16,7 @@ const config = withBundleAnalyzer({
       },
     ]
   },
-})
+}
 
 const SentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
