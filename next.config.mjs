@@ -1,15 +1,15 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
-const { withSentryConfig } = require('@sentry/nextjs')
+import { withSentryConfig } from '@sentry/nextjs'
 
 // @ts-check
 
 /**
  * @type {import('next').NextConfig}
  **/
-const config = withBundleAnalyzer({
+const config = {
+  swcMinify: true,
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
   async redirects() {
     return [
       {
@@ -20,7 +20,7 @@ const config = withBundleAnalyzer({
       },
     ]
   },
-})
+}
 
 const SentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
@@ -37,9 +37,9 @@ const SentryWebpackPluginOptions = {
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 }
 
-if (process.env.VERCEL) {
-  // wrap the bundle with Sentry only if built/deployed in Vercel
-  module.exports = withSentryConfig(config, SentryWebpackPluginOptions)
-} else {
-  module.exports = config
-}
+// wrap the bundle with Sentry only if built/deployed in Vercel
+const activeConfig = process.env.VERCEL
+  ? withSentryConfig(config, SentryWebpackPluginOptions)
+  : config
+
+export default activeConfig
