@@ -6288,10 +6288,10 @@ remark-gfm@3.0.0:
     micromark-extension-gfm "^2.0.0"
     unified "^10.0.0"
 
-remark-github@11.1.1:
-  version "11.1.1"
-  resolved "https://registry.yarnpkg.com/remark-github/-/remark-github-11.1.1.tgz#ac60e45519a862de9fd685ab7407a32efc809999"
-  integrity sha512-k0BmmGxBMK3f18nkZAdqWjt4vzjrsnbv9W1Uf+DtlFmqWJQr+7lMQLpVpiybR8Ov0WZ0WE8HOMsCl4hCCR95ew==
+remark-github@11.2.0:
+  version "11.2.0"
+  resolved "https://registry.yarnpkg.com/remark-github/-/remark-github-11.2.0.tgz#45dfc40f02941a4ba51682aa0bf44fa5ae720f6e"
+  integrity sha512-3c/pSLPktel3ZskD8QYRBz9oqOeqSoUPAcafXGs6Sz9mIUdtAe6hGYfwUzjFF7Zmwv5QfXfa2TXbMUqmgxwK2w==
   dependencies:
     "@types/mdast" "^3.0.0"
     mdast-util-find-and-replace "^2.0.0"
