@@ -1,4 +1,4 @@
-import { Box, BoxProps, Flex, Heading } from '@chakra-ui/react'
+import { Box, BoxProps, Flex, Heading, HStack } from '@chakra-ui/react'
 import Image from 'next/image'
 import * as React from 'react'
 
@@ -21,42 +21,41 @@ const Header = (props: BoxProps) => {
       <FluidContainer py={5}>
         <Flex justify="space-between" alignItems="center">
           <Flex alignItems="center">
-            <RouteLink href="/">
-              <Box h={LOGO_SIZES} w={LOGO_SIZES} mr={2}>
-                <Image
-                  priority
-                  src={mascotIcon}
-                  alt="Go to home page"
-                  placeholder="blur"
-                />
-              </Box>
-            </RouteLink>
-            <Heading
-              as="h1"
-              color="primaryTextLightmode"
-              letterSpacing="tight"
-              fontWeight="black"
-              fontSize={{ base: '16px', sm: '36px' }}
+            <RouteLink
+              href="/"
+              borderBottomWidth={4}
+              borderBottomColor="transparent"
+              _hover={{
+                borderBottomColor: 'fuchsia.700',
+              }}
+              _focus={{
+                boxShadow: 'outline',
+                borderBottomColor: 'fuchsia.700',
+              }}
+              _active={{
+                borderBottomColor: 'fuchsia.900',
+              }}
             >
-              <RouteLink
-                href="/"
-                _hover={{
-                  borderBottomWidth: '4px',
-                  borderBottomColor: 'fuchsia.700',
-                }}
-                _focus={{
-                  boxShadow: 'outline',
-                  borderBottomWidth: '4px',
-                  borderBottomColor: 'fuchsia.700',
-                }}
-                _active={{
-                  borderBottomWidth: '4px',
-                  borderBottomColor: 'fuchsia.900',
-                }}
-              >
-                Octoclairvoyant
-              </RouteLink>
-            </Heading>
+              <HStack spacing={2}>
+                <Box h={LOGO_SIZES} w={LOGO_SIZES}>
+                  <Image
+                    priority
+                    src={mascotIcon}
+                    alt="Go to home page"
+                    placeholder="blur"
+                  />
+                </Box>
+                <Heading
+                  as="h1"
+                  color="primaryTextLightmode"
+                  letterSpacing="tight"
+                  fontWeight="black"
+                  fontSize={{ base: '16px', sm: '36px' }}
+                >
+                  Octoclairvoyant
+                </Heading>
+              </HStack>
+            </RouteLink>
           </Flex>
           {!!process.env.NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE && (
             <ToggleColorModeButton />
