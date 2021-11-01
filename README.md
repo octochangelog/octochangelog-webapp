@@ -16,7 +16,7 @@
 
 <hr>
 
-[![CI](https://github.com/octoclairvoyant/octoclairvoyant-webapp/actions/workflows/ci.yml/badge.svg)](https://github.com/Belco90/octoclairvoyant/actions/workflows/ci.yml)
+[![CI](https://github.com/octoclairvoyant/octoclairvoyant-webapp/actions/workflows/ci.yml/badge.svg)](https://github.com/octoclairvoyant/octoclairvoyant-webapp/actions/workflows/ci.yml)
 [![Octoclairvoyant Webapp Cypress tests](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/u8grd8&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/u8grd8/runs)
 
 ### Main Features:
