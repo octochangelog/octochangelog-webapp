@@ -11,30 +11,31 @@ jobs:
   lint:
     name: Code Linting
     runs-on: ubuntu-latest
+    uses: octoclairvoyant/octoclairvoyant-webapp/.github/workflows/setup.yml@main
     steps:
-      - uses: octoclairvoyant/octoclairvoyant-webapp/.github/workflows/setup.yml@main
       - name: ESLint
         run: yarn lint
 
   types_check:
     name: Types Check
     runs-on: ubuntu-latest
+    uses: octoclairvoyant/octoclairvoyant-webapp/.github/workflows/setup.yml@main
     steps:
-      - uses: octoclairvoyant/octoclairvoyant-webapp/.github/workflows/setup.yml@main
       - name: Check types
         run: yarn type-check
 
   format_check:
     name: Format Check
     runs-on: ubuntu-latest
+    uses: octoclairvoyant/octoclairvoyant-webapp/.github/workflows/setup.yml@main
     steps:
-      - uses: octoclairvoyant/octoclairvoyant-webapp/.github/workflows/setup.yml@main
       - name: Prettier
         run: yarn format:check
 
   e2e:
     name: E2E tests
     runs-on: ubuntu-latest
+    uses: octoclairvoyant/octoclairvoyant-webapp/.github/workflows/setup.yml@main
     strategy:
       # when one test fails, DO NOT cancel the other
       # containers, because this will kill Cypress processes
@@ -46,7 +47,6 @@ jobs:
         containers: [1, 2, 3]
 
     steps:
-      - uses: octoclairvoyant/octoclairvoyant-webapp/.github/workflows/setup.yml@main
       - name: Run Cypress tests
         uses: cypress-io/github-action@a69c39e3d674805c4e0f3bb8a94222c97f48815a
         with:
