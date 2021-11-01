@@ -2,7 +2,8 @@ import { MiscGroupTitles, SemVerGroupTitles } from '~/models'
 
 export const IS_PRODUCTION_MODE = process.env.NODE_ENV === 'production'
 
-export const REPO_URL = 'https://github.com/Belco90/octoclairvoyant'
+export const REPO_URL =
+  'https://github.com/octoclairvoyant/octoclairvoyant-webapp'
 
 export const SITE_TITLE = 'Octoclairvoyant'
 
