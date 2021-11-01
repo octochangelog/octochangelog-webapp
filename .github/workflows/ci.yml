@@ -11,69 +11,31 @@ jobs:
   lint:
     name: Code Linting
     runs-on: ubuntu-latest
+    uses: octoclairvoyant/octoclairvoyant-webapp/.github/workflows/setup.yml@main
     steps:
-      # Arrange
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@a40b8845c0683271d9f53dfcb887a7e181d3918b # renovate: tag=v0.9.1
-      - name: Checkout repository
-        uses: actions/checkout@1e204e9a9253d643386038d443f96446fa156a97 # renovate: tag=v2.3.5
-      - name: Setup Node.js
-        uses: actions/setup-node@270253e841af726300e85d718a5f606959b2903c # renovate: tag=v2.4.1
-        with:
-          node-version: '14'
-          cache: 'yarn'
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
-      # Act
       - name: ESLint
         run: yarn lint
 
   types_check:
     name: Types Check
     runs-on: ubuntu-latest
+    uses: octoclairvoyant/octoclairvoyant-webapp/.github/workflows/setup.yml@main
     steps:
-      # Arrange
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@a40b8845c0683271d9f53dfcb887a7e181d3918b # renovate: tag=v0.9.1
-      - name: Checkout repository
-        uses: actions/checkout@1e204e9a9253d643386038d443f96446fa156a97 # renovate: tag=v2.3.5
-      - name: Setup Node.js
-        uses: actions/setup-node@270253e841af726300e85d718a5f606959b2903c # renovate: tag=v2.4.1
-        with:
-          node-version: '14'
-          cache: 'yarn'
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
-      # Act
       - name: Check types
         run: yarn type-check
 
   format_check:
     name: Format Check
     runs-on: ubuntu-latest
+    uses: octoclairvoyant/octoclairvoyant-webapp/.github/workflows/setup.yml@main
     steps:
-      # Arrange
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@a40b8845c0683271d9f53dfcb887a7e181d3918b # renovate: tag=v0.9.1
-      - name: Checkout repository
-        uses: actions/checkout@1e204e9a9253d643386038d443f96446fa156a97 # renovate: tag=v2.3.5
-      - name: Setup Node.js
-        uses: actions/setup-node@270253e841af726300e85d718a5f606959b2903c # renovate: tag=v2.4.1
-        with:
-          node-version: '14'
-          cache: 'yarn'
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
-      # Act
       - name: Prettier
         run: yarn format:check
 
   e2e:
     name: E2E tests
     runs-on: ubuntu-latest
+    uses: octoclairvoyant/octoclairvoyant-webapp/.github/workflows/setup.yml@main
     strategy:
       # when one test fails, DO NOT cancel the other
       # containers, because this will kill Cypress processes
@@ -85,20 +47,6 @@ jobs:
         containers: [1, 2, 3]
 
     steps:
-      # Arrange
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@a40b8845c0683271d9f53dfcb887a7e181d3918b # renovate: tag=v0.9.1
-      - name: Checkout repository
-        uses: actions/checkout@1e204e9a9253d643386038d443f96446fa156a97 # renovate: tag=v2.3.5
-      - name: Setup Node.js
-        uses: actions/setup-node@270253e841af726300e85d718a5f606959b2903c # renovate: tag=v2.4.1
-        with:
-          node-version: '14'
-          cache: 'yarn'
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
-      # Act
       - name: Run Cypress tests
         uses: cypress-io/github-action@a69c39e3d674805c4e0f3bb8a94222c97f48815a
         with:
