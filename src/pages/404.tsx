@@ -7,7 +7,7 @@ import mascotLogo from '@app-public/mascot-logo.png'
 import { CTAButton } from '~/components/CTAButton'
 import FluidContainer from '~/components/FluidContainer'
 import Layout from '~/components/Layout'
-import Link from '~/components/Link'
+import RouteLink from '~/components/RouteLink'
 
 const Custom404 = () => (
   <Layout>
@@ -49,9 +49,9 @@ const Custom404 = () => (
             <CTAButton>Go to comparator</CTAButton>
           </NextLink>
 
-          <NextLink href="/">
-            <Link fontWeight="black">Or go to homepage</Link>
-          </NextLink>
+          <RouteLink href="/" color="primary.500" fontWeight="black">
+            Or go to homepage
+          </RouteLink>
         </VStack>
       </FluidContainer>
     </Box>
