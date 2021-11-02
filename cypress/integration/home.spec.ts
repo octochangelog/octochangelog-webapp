@@ -1,9 +1,9 @@
-it('should should display corresponding information', () => {
+it('should display corresponding information', () => {
   cy.visit('/')
 
   cy.title().should(
     'equal',
-    'Homepage | Octoclairvoyant: Compare GitHub changelogs across multiple releases'
+    'Octoclairvoyant: Compare GitHub changelogs across multiple releases'
   )
 
   cy.findByRole('heading', { level: 1, name: 'Octoclairvoyant' }).should(
