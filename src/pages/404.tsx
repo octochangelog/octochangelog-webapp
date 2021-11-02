@@ -3,7 +3,7 @@ import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import NextLink from 'next/link'
 
-import mascotLogo from '@app-public/mascot-logo.png'
+import mascotIcon from '@app-public/mascot-icon.png'
 import { CTAButton } from '~/components/CTAButton'
 import FluidContainer from '~/components/FluidContainer'
 import Layout from '~/components/Layout'
@@ -16,7 +16,7 @@ const Custom404 = () => (
       <FluidContainer>
         <VStack px="10">
           <Image
-            src={mascotLogo}
+            src={mascotIcon}
             alt="Octoclairvoyant reading a crystal ball"
             placeholder="blur"
             priority
