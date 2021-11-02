@@ -8,3 +8,13 @@
 
 Fixes #1
 -->
+
+## Tests
+
+<!-- We do not accept new features without corresponding automated tests. -->
+
+I've checked my work by:
+
+- [ ] Adding new test or adjusting existing tests
+- [ ] Testing manually in the browser
+- [ ] Looking at the code only
