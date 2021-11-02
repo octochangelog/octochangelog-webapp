@@ -35,7 +35,6 @@ const Custom404 = () => (
               color="gray.900"
               fontSize="4xl"
               fontWeight="black"
-              textAlign={{ base: 'center', lg: 'left' }}
               letterSpacing="tight"
             >
               This page could not be found.
