@@ -43,6 +43,8 @@ const Header = (props: BoxProps) => {
                     src={mascotIcon}
                     alt="Go to home page"
                     placeholder="blur"
+                    height={150}
+                    width={150}
                   />
                 </Box>
                 <Heading
