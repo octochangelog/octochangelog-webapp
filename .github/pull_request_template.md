@@ -16,5 +16,4 @@ Fixes #1
 I've checked my work by:
 
 - [ ] Adding new test or adjusting existing tests
-- [ ] Testing manually in the browser
-- [ ] Looking at the code only
+- [ ] Testing manually
