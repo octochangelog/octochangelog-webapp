@@ -65,6 +65,7 @@ We recommend you follow this process:
 1. Start the development server with `yarn start`
 1. Make improvements
 1. Put chunks of work in a commit (the Husky program will run some checks)
+1. Write/adjust tests to check the functionality of the new code
 1. Run `yarn smoketest` to confirm you're not breaking anything critical
 1. Create pull request
 
