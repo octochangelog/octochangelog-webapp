@@ -11,6 +11,10 @@ it('should display custom 404 page when not found', () => {
     'exist'
   )
 
+  cy.findByAltText(/octoclairvoyant reading a crystal ball/i)
+    .should('have.attr', 'src')
+    .and('contain', 'mascot-icon')
+
   cy.findByRole('button', { name: 'Go to comparator' }).click()
   cy.url().should('equal', `${Cypress.config().baseUrl}/comparator`)
 

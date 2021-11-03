@@ -19,11 +19,9 @@ it('should display corresponding information', () => {
     .should('have.attr', 'src')
     .should('include', 'mascot-logo')
 
-  cy.findByAltText(/octoclairvoyant reading a crystal ball/i).should(
-    'have.attr',
-    'src',
-    '/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmascot-logo.8655d29c.png&w=1200&q=100'
-  )
+  cy.findByAltText(/octoclairvoyant reading a crystal ball/i)
+    .should('have.attr', 'src')
+    .and('contain', 'mascot-logo')
 
   cy.findByRole('heading', {
     level: 3,
