@@ -4,7 +4,7 @@
     src="https://raw.githubusercontent.com/belco90/octoclairvoyant/main/public/mascot-logo.png"
     height="200"
     width="200"
-    alt="Octoclairvoyant reading a crystal ball"
+    alt="A purple octopus reading a crystal ball"
   >
   <h3>Compare GitHub changelogs across multiple releases in a single view.</h3>
   <p>

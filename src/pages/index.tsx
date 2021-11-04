@@ -53,7 +53,7 @@ const MainSection = () => (
     <Image
       priority
       src={mascotLogo}
-      alt="Octoclairvoyant reading a crystal ball"
+      alt="A purple octopus reading a crystal ball"
       quality={100}
       placeholder="blur"
     />

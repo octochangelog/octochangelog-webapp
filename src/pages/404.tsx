@@ -17,7 +17,7 @@ const Custom404 = () => (
         <VStack px="10">
           <Image
             src={mascotIcon}
-            alt="Octoclairvoyant reading a crystal ball"
+            alt="A purple octopus reading a crystal ball"
             placeholder="blur"
             priority
             width={250}

@@ -11,7 +11,7 @@ it('should display custom 404 page when not found', () => {
     'exist'
   )
 
-  cy.findByAltText(/octoclairvoyant reading a crystal ball/i)
+  cy.findByAltText(/A purple octopus reading a crystal ball/i)
     .should('have.attr', 'src')
     .and('contain', 'mascot-icon')
 
