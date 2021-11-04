@@ -17,8 +17,9 @@
     "format:check": "yarn prettier-base --check",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
-    "e2e": "start-server-and-test 'yarn dev' http://localhost:3000 'yarn cypress'",
-    "e2e:headless": "start-server-and-test 'yarn serve' http://localhost:3000 'yarn cypress:headless'",
+    "e2e": "start-server-and-test 'yarn build && yarn serve' http://localhost:3000 'yarn cypress'",
+    "e2e:dev": "start-server-and-test 'yarn dev' http://localhost:3000 'yarn cypress'",
+    "e2e:headless": "start-server-and-test 'yarn build && yarn serve' http://localhost:3000 'yarn cypress:headless'",
     "gen:theme-typings": "chakra-cli tokens src/customTheme.ts",
     "prepare": "husky install",
     "postinstall": "yarn gen:theme-typings"

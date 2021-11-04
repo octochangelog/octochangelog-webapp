@@ -53,7 +53,7 @@ const MainSection = () => (
     <Image
       priority
       src={mascotLogo}
-      alt="Octoclairvoyant reading a crystal ball"
+      alt="A purple octopus reading a crystal ball"
       quality={100}
       placeholder="blur"
     />
@@ -62,7 +62,7 @@ const MainSection = () => (
 
 const HomePage = () => (
   <Layout>
-    <NextSeo title="Homepage" />
+    <NextSeo />
     <Box mt={-8} py={{ base: 8, lg: 16 }} bg="gray.50">
       <FluidContainer>
         <MainSection />
