@@ -32,14 +32,14 @@ const Custom404 = () => (
           >
             <Heading
               as="h2"
-              color="gray.900"
+              color="primaryTextLightmode"
               fontSize="4xl"
               fontWeight="black"
               letterSpacing="tight"
             >
               This page could not be found.
             </Heading>
-            <Text as="p" color="coolGray.700" fontSize="2xl" fontWeight="black">
+            <Text as="p" color="secondaryTextLightmode" fontSize="2xl" fontWeight="black">
               Octoclairvoyant cannot divine the page you wanted.
             </Text>
           </Stack>
