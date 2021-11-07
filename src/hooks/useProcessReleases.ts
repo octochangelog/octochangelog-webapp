@@ -34,21 +34,20 @@ const processor = unified().use(parse).use(gfm)
 async function processReleasesAsync(
   releases: Array<Release>
 ): Promise<ProcessedReleasesCollection> {
-  // TODO: reject on error
   return new Promise((resolve) => {
     const processedReleasesCollection: ProcessedReleasesCollection = {}
 
-    releases.forEach((rel) => {
+    for (const rel of releases) {
       const { body, ...remainingRel } = rel
 
       if (!body) {
-        return
+        continue
       }
 
       const mdastDescription = processor.parse(body)
 
       let newProcessedRelease: ProcessedRelease | undefined
-      mdastDescription.children.forEach((mdastNode) => {
+      for (const mdastNode of mdastDescription.children) {
         const nodeChildren = 'children' in mdastNode ? mdastNode.children : null
         const originalTitle =
           nodeChildren && 'value' in nodeChildren[0]
@@ -98,7 +97,7 @@ async function processReleasesAsync(
             ...remainingRel,
           }
         }
-      })
+      }
       // Insert final release in group
       if (
         newProcessedRelease &&
@@ -106,7 +105,7 @@ async function processReleasesAsync(
       ) {
         insertReleaseInGroup(newProcessedRelease, processedReleasesCollection)
       }
-    })
+    }
     resolve(processedReleasesCollection)
   })
 }

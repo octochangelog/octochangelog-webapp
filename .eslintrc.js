@@ -7,6 +7,7 @@ module.exports = {
     'next',
     'prettier',
   ],
+  plugins: ['unicorn'],
   settings: {
     'import/internal-regex': '^(@app-|~)',
     'import/resolver': {
@@ -50,6 +51,11 @@ module.exports = {
         },
       },
     ],
+
+    // Unicorn
+    'unicorn/no-for-loop': 'error',
+    'unicorn/no-array-for-each': 'error',
+    'unicorn/no-array-reduce': 'error',
   },
 
   overrides: [
