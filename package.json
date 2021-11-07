@@ -10,7 +10,7 @@
     "smoketest": "yarn type-check && yarn lint && yarn format:check && yarn build",
     "type-check": "tsc --noEmit",
     "analyze": "ANALYZE=true yarn build",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0 --report-unused-disable-directives",
     "lint:fix": "yarn lint --fix",
     "prettier-base": "prettier . --ignore-path .gitignore --ignore-unknown",
     "format": "yarn prettier-base --write",
