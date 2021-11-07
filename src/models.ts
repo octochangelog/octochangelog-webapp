@@ -1,4 +1,5 @@
 import { RestEndpointMethodTypes } from '@octokit/rest'
+import { Content } from 'mdast'
 import { ReactElement } from 'react'
 import { Parent } from 'unist'
 
@@ -15,11 +16,21 @@ export type Release =
 
 export type ReleaseLike = Release
 
-export type ReleaseVersion = string
+export interface ProcessedRelease extends Omit<Release, 'body'> {
+  title: string
+  originalTitle: string
+  descriptionMdast: {
+    type: 'root'
+    children: Array<Content>
+  }
+}
 
-// FIXME: generate proper types for processed release
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ProcessedReleasesCollection = any
+export type ProcessedReleasesCollection = Record<
+  string,
+  Array<ProcessedRelease>
+>
+
+export type ReleaseVersion = string
 
 export interface ProcessedReleaseChange extends ReleaseLike {
   title: string
