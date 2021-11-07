@@ -1,4 +1,11 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 
 import { getGithubAccessToken, setGithubAccessToken } from '~/github-client'
 
@@ -9,8 +16,11 @@ type GithubAuthContextValue = {
 
 const GithubAuthContext = createContext<GithubAuthContextValue | null>(null)
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const GithubAuthProvider = (props: any) => {
+interface GithubAuthProviderProps {
+  children: ReactNode
+}
+
+const GithubAuthProvider = ({ children }: GithubAuthProviderProps) => {
   const [accessToken, setAccessToken] = useState<string | null | undefined>(
     getGithubAccessToken
   )
@@ -27,7 +37,11 @@ const GithubAuthProvider = (props: any) => {
     [accessToken]
   )
 
-  return <GithubAuthContext.Provider {...props} value={providerValue} />
+  return (
+    <GithubAuthContext.Provider value={providerValue}>
+      {children}
+    </GithubAuthContext.Provider>
+  )
 }
 
 function useGithubAuth() {
