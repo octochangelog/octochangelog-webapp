@@ -1,7 +1,6 @@
 import { RestEndpointMethodTypes } from '@octokit/rest'
-import { Content } from 'mdast'
+import { Root } from 'mdast'
 import { ReactElement } from 'react'
-import { Parent } from 'unist'
 
 export type RepositoryQueryParams = {
   repo: string
@@ -19,10 +18,7 @@ export type ReleaseLike = Release
 export interface ProcessedRelease extends Omit<Release, 'body'> {
   title: string
   originalTitle: string
-  descriptionMdast: {
-    type: 'root'
-    children: Array<Content>
-  }
+  descriptionMdast: Root
 }
 
 export type ProcessedReleasesCollection = Record<
@@ -31,13 +27,6 @@ export type ProcessedReleasesCollection = Record<
 >
 
 export type ReleaseVersion = string
-
-export interface ProcessedReleaseChange extends ReleaseLike {
-  title: string
-  originalTitle: string
-  // Level: enumerate with error, warning, info or unknown
-  descriptionMdast: Parent
-}
 
 // eslint-disable-next-line no-shadow
 export enum SemVerGroupTitles {

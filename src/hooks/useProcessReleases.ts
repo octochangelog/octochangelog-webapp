@@ -9,7 +9,7 @@ import {
   ProcessedReleasesCollection,
   Release,
 } from '~/models'
-import { getReleaseGroupTitle } from '~/utils'
+import { getMdastContentNodeTitle, getReleaseGroupTitle } from '~/utils'
 
 function insertReleaseInGroup(
   newProcessedRelease: ProcessedRelease,
@@ -48,11 +48,7 @@ async function processReleasesAsync(
 
       let newProcessedRelease: ProcessedRelease | undefined
       for (const mdastNode of mdastDescription.children) {
-        const nodeChildren = 'children' in mdastNode ? mdastNode.children : null
-        const originalTitle =
-          nodeChildren && 'value' in nodeChildren[0]
-            ? nodeChildren[0].value
-            : 'unknown'
+        const originalTitle = getMdastContentNodeTitle(mdastNode)
 
         if (
           mdastNode.type === 'heading' &&

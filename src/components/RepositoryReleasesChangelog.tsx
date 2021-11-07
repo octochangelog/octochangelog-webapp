@@ -140,7 +140,6 @@ const RepositoryReleasesChangelog = ({
             <ReleaseChangelogGroup
               key={title}
               title={title}
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
               releaseGroup={processedReleases[title]}
               repository={repository}
               shouldShowTitle={shouldShowProcessedReleaseTitle}

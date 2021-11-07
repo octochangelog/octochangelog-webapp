@@ -18,7 +18,7 @@ import BlockQuote from '~/components/BlockQuote'
 import Link from '~/components/Link'
 import TextSkeleton from '~/components/TextSkeleton'
 import useProcessDescriptionMdast from '~/hooks/useProcessDescriptionMdast'
-import { ProcessedReleaseChange, Repository } from '~/models'
+import { ProcessedRelease, Repository } from '~/models'
 import { getReleaseVersion } from '~/utils'
 
 const RemarkH1 = (props: unknown) => (
@@ -96,7 +96,7 @@ const remarkReactComponents = {
 
 interface ProcessedReleaseChangeProps extends BoxProps {
   repository: Repository
-  processedReleaseChange: ProcessedReleaseChange
+  processedReleaseChange: ProcessedRelease
 }
 
 const ProcessedReleaseChangeDescription = ({

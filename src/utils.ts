@@ -1,4 +1,5 @@
 import lowerCase from 'lodash/lowerCase'
+import { Content } from 'mdast'
 import * as semver from 'semver'
 import title from 'title'
 
@@ -41,7 +42,6 @@ type FilterReleasesNodes = {
 
 export function getReleaseVersion(release: ReleaseLike): string {
   if (release.tag_name === 'latest') {
-    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     return release.name || release.tag_name
   }
 
@@ -78,13 +78,22 @@ export function getRepositoryNameDisplay(repoName: string): string {
   })
 }
 
+export function getMdastContentNodeTitle(mdastNode: Content): string {
+  const nodeChildren = 'children' in mdastNode ? mdastNode.children : null
+
+  if (nodeChildren && 'value' in nodeChildren[0]) {
+    return nodeChildren[0].value
+  }
+
+  return 'unknown'
+}
+
 // TODO: add tests for all variants
 export function getReleaseGroupTitle(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  mdastNode: any
+  mdastNode: Content
 ): MiscGroupTitles | SemVerGroupTitles | string {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  const mdastTitle = lowerCase(mdastNode.children[0].value)
+  const nodeTitle = getMdastContentNodeTitle(mdastNode)
+  const mdastTitle = lowerCase(nodeTitle)
 
   // Check features before than breaking changes to group here "Major Features"
   // and avoid grouping them under breaking changes group
