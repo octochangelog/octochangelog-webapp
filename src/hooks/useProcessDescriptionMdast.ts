@@ -6,13 +6,12 @@ import parse from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 import markdown from 'remark-stringify'
 import { unified } from 'unified'
-import { Parent } from 'unist'
 
-import { ComponentsMapping, Repository } from '~/models'
+import { ComponentsMapping, ProcessedRelease, Repository } from '~/models'
 
 interface HookArgs {
   repository: Repository
-  description: Parent
+  description: ProcessedRelease['descriptionMdast']
   componentsMapping: ComponentsMapping
 }
 
@@ -22,7 +21,7 @@ interface HookReturnedValue {
 }
 
 async function processDescriptionAsync(
-  description: Parent,
+  description: ProcessedRelease['descriptionMdast'],
   components: ComponentsMapping
 ): Promise<ReactNode> {
   return new Promise((resolve, reject) => {
@@ -36,14 +35,12 @@ async function processDescriptionAsync(
         components,
       })
       .process(
-        // @ts-expect-error Not sure where Root type is coming from within stringify args
         unified().use(markdown).use(gfm).stringify(description),
         (err, file) => {
           if (err || !file) {
             reject(err)
           } else {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-            resolve(file.result as ReactNode)
+            resolve(file.result)
           }
         }
       )

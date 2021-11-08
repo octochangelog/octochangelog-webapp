@@ -7,6 +7,7 @@ module.exports = {
     'next',
     'prettier',
   ],
+  plugins: ['unicorn'],
   settings: {
     'import/internal-regex': '^(@app-|~)',
     'import/resolver': {
@@ -25,11 +26,6 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
 
     // TypeScript
-    // Disabling these rules temporary until types are properly defined across
-    // the whole codebase.
-    '@typescript-eslint/no-unsafe-assignment': 'off',
-    '@typescript-eslint/no-unsafe-argument': 'off',
-
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/array-type': [
       'error',
@@ -50,6 +46,11 @@ module.exports = {
         },
       },
     ],
+
+    // Unicorn
+    'unicorn/no-for-loop': 'error',
+    'unicorn/no-array-for-each': 'error',
+    'unicorn/no-array-reduce': 'error',
   },
 
   overrides: [

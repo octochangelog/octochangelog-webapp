@@ -12,12 +12,11 @@ import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChan
 import TextSkeleton from '~/components/TextSkeleton'
 import useProcessReleases from '~/hooks/useProcessReleases'
 import {
-  MiscGroupTitles,
-  ProcessedReleaseChange,
+  ProcessedRelease,
   Release,
+  ReleaseGroupTitle,
   ReleaseVersion,
   Repository,
-  SemVerGroupTitles,
 } from '~/models'
 import { useReleasesQuery } from '~/queries/release'
 import {
@@ -38,13 +37,13 @@ const ReleaseChangelogGroup = ({
   repository,
   shouldShowTitle,
 }: {
-  title: string
-  releaseGroup: Array<ProcessedReleaseChange>
+  title: ReleaseGroupTitle
+  releaseGroup: Array<ProcessedRelease>
   repository: Repository
   shouldShowTitle: boolean
 }) => {
   const textTransform =
-    title === SemVerGroupTitles.breakingChanges ? 'uppercase' : 'capitalize'
+    title === 'breaking changes' ? 'uppercase' : 'capitalize'
 
   return (
     <Box key={title}>
@@ -63,7 +62,7 @@ const ReleaseChangelogGroup = ({
         </Heading>
       )}
       <Box mb={4}>
-        {releaseGroup.map((processedReleaseChange: ProcessedReleaseChange) => (
+        {releaseGroup.map((processedReleaseChange: ProcessedRelease) => (
           <ProcessedReleaseChangeDescription
             key={`${title}-${processedReleaseChange.id}`}
             repository={repository}
@@ -115,9 +114,7 @@ const RepositoryReleasesChangelog = ({
 
     const groupsTitles = Object.keys(processedReleases)
 
-    return (
-      groupsTitles.length > 1 || !groupsTitles.includes(MiscGroupTitles.unknown)
-    )
+    return groupsTitles.length > 1 || !groupsTitles.includes('others')
   })()
 
   const sortedGroupTitles: Array<string> | null = processedReleases
@@ -140,7 +137,6 @@ const RepositoryReleasesChangelog = ({
             <ReleaseChangelogGroup
               key={title}
               title={title}
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
               releaseGroup={processedReleases[title]}
               repository={repository}
               shouldShowTitle={shouldShowProcessedReleaseTitle}
