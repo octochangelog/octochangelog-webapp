@@ -2,6 +2,12 @@ import { RestEndpointMethodTypes } from '@octokit/rest'
 import { Root } from 'mdast'
 import { ReactElement } from 'react'
 
+export type SemVerGroupTitle = 'breaking changes' | 'features' | 'bug fixes'
+
+export type MiscGroupTitle = 'others' | 'artifacts' | 'thanks' | 'credits'
+
+export type ReleaseGroupTitle = SemVerGroupTitle | MiscGroupTitle | string
+
 export type RepositoryQueryParams = {
   repo: string
   owner: string
@@ -22,26 +28,11 @@ export interface ProcessedRelease extends Omit<Release, 'body'> {
 }
 
 export type ProcessedReleasesCollection = Record<
-  string,
+  ReleaseGroupTitle,
   Array<ProcessedRelease>
 >
 
 export type ReleaseVersion = string
-
-// eslint-disable-next-line no-shadow
-export enum SemVerGroupTitles {
-  breakingChanges = 'breaking changes',
-  features = 'features',
-  bugFixes = 'bug fixes',
-}
-
-// eslint-disable-next-line no-shadow
-export enum MiscGroupTitles {
-  unknown = 'others',
-  artifacts = 'artifacts',
-  thanks = 'thanks',
-  credits = 'credits',
-}
 
 type ComponentPropsWithoutNode = Record<string, unknown>
 

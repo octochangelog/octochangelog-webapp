@@ -5,13 +5,14 @@ import title from 'title'
 
 import { HIGH_PRIORITY_GROUP_TITLES, LOW_PRIORITY_GROUP_TITLES } from '~/common'
 import {
-  MiscGroupTitles,
+  MiscGroupTitle,
   Release,
+  ReleaseGroupTitle,
   ReleaseLike,
   ReleaseVersion,
   Repository,
   RepositoryQueryParams,
-  SemVerGroupTitles,
+  SemVerGroupTitle,
 } from '~/models'
 
 export function mapRepositoryToQueryParams(
@@ -91,40 +92,40 @@ export function getMdastContentNodeTitle(mdastNode: Content): string {
 // TODO: add tests for all variants
 export function getReleaseGroupTitle(
   mdastNode: Content
-): MiscGroupTitles | SemVerGroupTitles | string {
+): MiscGroupTitle | SemVerGroupTitle | string {
   const nodeTitle = getMdastContentNodeTitle(mdastNode)
   const mdastTitle = lowerCase(nodeTitle)
 
   // Check features before than breaking changes to group here "Major Features"
   // and avoid grouping them under breaking changes group
   if (/^.*(feature|minor).*$/i.exec(mdastTitle)) {
-    return SemVerGroupTitles.features
+    return 'features'
   }
 
   if (/^.*(breaking.*change|major).*$/i.exec(mdastTitle)) {
-    return SemVerGroupTitles.breakingChanges
+    return 'breaking changes'
   }
 
   if (/^.*(bug|fix|patch).*$/i.exec(mdastTitle)) {
-    return SemVerGroupTitles.bugFixes
+    return 'bug fixes'
   }
 
   if (/^.*thank.*$/.exec(mdastTitle)) {
-    return MiscGroupTitles.thanks
+    return 'thanks'
   }
 
   if (/^.*artifact.*$/.exec(mdastTitle)) {
-    return MiscGroupTitles.artifacts
+    return 'artifacts'
   }
 
   if (/^.*credit.*$/.exec(mdastTitle)) {
-    return MiscGroupTitles.credits
+    return 'credits'
   }
 
   return mdastTitle
 }
 
-const getTitlePriorityGroup = (titleParam: string): -1 | 0 | 1 => {
+const getTitlePriorityGroup = (titleParam: ReleaseGroupTitle): -1 | 0 | 1 => {
   if (HIGH_PRIORITY_GROUP_TITLES.includes(titleParam)) {
     return -1
   }

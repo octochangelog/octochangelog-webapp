@@ -4,7 +4,6 @@ import parse from 'remark-parse'
 import { unified } from 'unified'
 
 import {
-  MiscGroupTitles,
   ProcessedRelease,
   ProcessedReleasesCollection,
   Release,
@@ -84,7 +83,7 @@ async function processReleasesAsync(
         } else {
           // Standalone or non-groupable release found
           newProcessedRelease = {
-            title: MiscGroupTitles.unknown,
+            title: 'others',
             originalTitle,
             descriptionMdast: {
               type: 'root',
