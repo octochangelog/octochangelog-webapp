@@ -1,16 +1,18 @@
 import lowerCase from 'lodash/lowerCase'
+import { Content } from 'mdast'
 import * as semver from 'semver'
 import title from 'title'
 
 import { HIGH_PRIORITY_GROUP_TITLES, LOW_PRIORITY_GROUP_TITLES } from '~/common'
 import {
-  MiscGroupTitles,
+  MiscGroupTitle,
   Release,
+  ReleaseGroupTitle,
   ReleaseLike,
   ReleaseVersion,
   Repository,
   RepositoryQueryParams,
-  SemVerGroupTitles,
+  SemVerGroupTitle,
 } from '~/models'
 
 export function mapRepositoryToQueryParams(
@@ -41,7 +43,6 @@ type FilterReleasesNodes = {
 
 export function getReleaseVersion(release: ReleaseLike): string {
   if (release.tag_name === 'latest') {
-    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
     return release.name || release.tag_name
   }
 
@@ -78,44 +79,53 @@ export function getRepositoryNameDisplay(repoName: string): string {
   })
 }
 
+export function getMdastContentNodeTitle(mdastNode: Content): string {
+  const nodeChildren = 'children' in mdastNode ? mdastNode.children : null
+
+  if (nodeChildren && 'value' in nodeChildren[0]) {
+    return nodeChildren[0].value
+  }
+
+  return 'unknown'
+}
+
 // TODO: add tests for all variants
 export function getReleaseGroupTitle(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  mdastNode: any
-): MiscGroupTitles | SemVerGroupTitles | string {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-  const mdastTitle = lowerCase(mdastNode.children[0].value)
+  mdastNode: Content
+): MiscGroupTitle | SemVerGroupTitle | string {
+  const nodeTitle = getMdastContentNodeTitle(mdastNode)
+  const mdastTitle = lowerCase(nodeTitle)
 
   // Check features before than breaking changes to group here "Major Features"
   // and avoid grouping them under breaking changes group
   if (/^.*(feature|minor).*$/i.exec(mdastTitle)) {
-    return SemVerGroupTitles.features
+    return 'features'
   }
 
   if (/^.*(breaking.*change|major).*$/i.exec(mdastTitle)) {
-    return SemVerGroupTitles.breakingChanges
+    return 'breaking changes'
   }
 
   if (/^.*(bug|fix|patch).*$/i.exec(mdastTitle)) {
-    return SemVerGroupTitles.bugFixes
+    return 'bug fixes'
   }
 
   if (/^.*thank.*$/.exec(mdastTitle)) {
-    return MiscGroupTitles.thanks
+    return 'thanks'
   }
 
   if (/^.*artifact.*$/.exec(mdastTitle)) {
-    return MiscGroupTitles.artifacts
+    return 'artifacts'
   }
 
   if (/^.*credit.*$/.exec(mdastTitle)) {
-    return MiscGroupTitles.credits
+    return 'credits'
   }
 
   return mdastTitle
 }
 
-const getTitlePriorityGroup = (titleParam: string): -1 | 0 | 1 => {
+const getTitlePriorityGroup = (titleParam: ReleaseGroupTitle): -1 | 0 | 1 => {
   if (HIGH_PRIORITY_GROUP_TITLES.includes(titleParam)) {
     return -1
   }

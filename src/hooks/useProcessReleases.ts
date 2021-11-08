@@ -1,15 +1,18 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react'
 import gfm from 'remark-gfm'
 import parse from 'remark-parse'
 import { unified } from 'unified'
 
-import { MiscGroupTitles, ProcessedReleasesCollection, Release } from '~/models'
-import { getReleaseGroupTitle } from '~/utils'
+import {
+  ProcessedRelease,
+  ProcessedReleasesCollection,
+  Release,
+} from '~/models'
+import { getMdastContentNodeTitle, getReleaseGroupTitle } from '~/utils'
 
 function insertReleaseInGroup(
-  newProcessedRelease: any,
-  groupedReleases: any
+  newProcessedRelease: ProcessedRelease,
+  groupedReleases: ProcessedReleasesCollection
 ): void {
   const { title } = newProcessedRelease
   if (groupedReleases[title]) {
@@ -21,28 +24,31 @@ function insertReleaseInGroup(
   }
 }
 
-function processedReleaseIsEmpty(processedRelease: any): boolean {
+function processedReleaseIsEmpty(processedRelease: ProcessedRelease): boolean {
   return processedRelease.descriptionMdast.children.length === 0
 }
 
 const processor = unified().use(parse).use(gfm)
 
-async function processReleasesAsync(releases: Array<Release>) {
-  // TODO: reject on error
+async function processReleasesAsync(
+  releases: Array<Release>
+): Promise<ProcessedReleasesCollection> {
   return new Promise((resolve) => {
-    const processedReleasesCollection = {}
+    const processedReleasesCollection: ProcessedReleasesCollection = {}
 
-    releases.forEach((rel) => {
+    for (const rel of releases) {
       const { body, ...remainingRel } = rel
 
       if (!body) {
-        return
+        continue
       }
 
-      const mdastDescription: any = processor.parse(body)
+      const mdastDescription = processor.parse(body)
 
-      let newProcessedRelease: any
-      mdastDescription.children.forEach((mdastNode: any) => {
+      let newProcessedRelease: ProcessedRelease | undefined
+      for (const mdastNode of mdastDescription.children) {
+        const originalTitle = getMdastContentNodeTitle(mdastNode)
+
         if (
           mdastNode.type === 'heading' &&
           [1, 2, 3].includes(mdastNode.depth)
@@ -63,7 +69,7 @@ async function processReleasesAsync(releases: Array<Release>) {
           if (title) {
             newProcessedRelease = {
               title,
-              originalTitle: mdastNode.children[0].value,
+              originalTitle,
               descriptionMdast: {
                 type: 'root',
                 children: [],
@@ -77,8 +83,8 @@ async function processReleasesAsync(releases: Array<Release>) {
         } else {
           // Standalone or non-groupable release found
           newProcessedRelease = {
-            title: MiscGroupTitles.unknown,
-            originalTitle: mdastNode.children[0].value,
+            title: 'others',
+            originalTitle,
             descriptionMdast: {
               type: 'root',
               children: [mdastNode],
@@ -86,7 +92,7 @@ async function processReleasesAsync(releases: Array<Release>) {
             ...remainingRel,
           }
         }
-      })
+      }
       // Insert final release in group
       if (
         newProcessedRelease &&
@@ -94,13 +100,13 @@ async function processReleasesAsync(releases: Array<Release>) {
       ) {
         insertReleaseInGroup(newProcessedRelease, processedReleasesCollection)
       }
-    })
-    resolve(processedReleasesCollection as any)
+    }
+    resolve(processedReleasesCollection)
   })
 }
 
 interface UseProcessReleasesReturn {
-  processedReleases: ProcessedReleasesCollection
+  processedReleases: ProcessedReleasesCollection | null
   isProcessing: boolean
 }
 

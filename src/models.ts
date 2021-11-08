@@ -1,6 +1,12 @@
 import { RestEndpointMethodTypes } from '@octokit/rest'
+import { Root } from 'mdast'
 import { ReactElement } from 'react'
-import { Parent } from 'unist'
+
+export type SemVerGroupTitle = 'breaking changes' | 'features' | 'bug fixes'
+
+export type MiscGroupTitle = 'others' | 'artifacts' | 'thanks' | 'credits'
+
+export type ReleaseGroupTitle = SemVerGroupTitle | MiscGroupTitle | string
 
 export type RepositoryQueryParams = {
   repo: string
@@ -15,33 +21,18 @@ export type Release =
 
 export type ReleaseLike = Release
 
-export type ReleaseVersion = string
-
-// FIXME: generate proper types for processed release
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ProcessedReleasesCollection = any
-
-export interface ProcessedReleaseChange extends ReleaseLike {
+export interface ProcessedRelease extends Omit<Release, 'body'> {
   title: string
   originalTitle: string
-  // Level: enumerate with error, warning, info or unknown
-  descriptionMdast: Parent
+  descriptionMdast: Root
 }
 
-// eslint-disable-next-line no-shadow
-export enum SemVerGroupTitles {
-  breakingChanges = 'breaking changes',
-  features = 'features',
-  bugFixes = 'bug fixes',
-}
+export type ProcessedReleasesCollection = Record<
+  ReleaseGroupTitle,
+  Array<ProcessedRelease>
+>
 
-// eslint-disable-next-line no-shadow
-export enum MiscGroupTitles {
-  unknown = 'others',
-  artifacts = 'artifacts',
-  thanks = 'thanks',
-  credits = 'credits',
-}
+export type ReleaseVersion = string
 
 type ComponentPropsWithoutNode = Record<string, unknown>
 
