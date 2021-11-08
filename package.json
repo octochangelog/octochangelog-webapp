@@ -47,7 +47,7 @@
     "remark-gfm": "3.0.1",
     "remark-github": "11.2.1",
     "remark-parse": "10.0.0",
-    "remark-rehype": "10.0.0",
+    "remark-rehype": "10.0.1",
     "remark-stringify": "10.0.1",
     "semver": "7.3.5",
     "title": "3.4.3",
