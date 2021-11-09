@@ -56,7 +56,6 @@
   "devDependencies": {
     "@chakra-ui/cli": "1.5.3",
     "@testing-library/cypress": "8.0.1",
-    "@types/gtag.js": "0.0.8",
     "@types/lodash": "4.14.176",
     "@types/node": "14.17.32",
     "@types/nprogress": "0.2.0",
