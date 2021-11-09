@@ -1,4 +1,4 @@
 name: 'Octoclairvoyant CodeQL config'
 
 paths-ignore:
-  - 'cypress/**'
+  - 'cypress/tsconfig.json'
