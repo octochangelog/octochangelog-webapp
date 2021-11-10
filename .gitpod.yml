@@ -28,11 +28,11 @@ image:
 
 tasks:
   - init: |
-      yarn
+      npm install
       gp sync-done install
-    command: yarn dev
+    command: npm run dev
   - init: gp sync-await install
-    command: yarn cypress
+    command: npm run cypress
   - command: git branch
 ports:
   - port: 3000

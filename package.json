@@ -1,28 +1,31 @@
 {
-  "name": "octoclairvoyant",
+  "name": "octoclairvoyant-webapp",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "^14.0.0",
+    "npm": "^8.0.0"
+  },
   "scripts": {
-    "start": "yarn dev",
+    "start": "npm dev",
     "dev": "next",
     "build": "next build",
     "serve": "next start",
-    "smoketest": "yarn type-check && yarn lint && yarn format:check && yarn build",
+    "smoketest": "npm run type-check && npm run lint && npm run format:check && npm run build",
     "type-check": "tsc --noEmit",
-    "analyze": "ANALYZE=true yarn build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0 --report-unused-disable-directives",
-    "lint:fix": "yarn lint --fix",
+    "lint:fix": "npm run lint --fix",
     "prettier-base": "prettier . --ignore-path .gitignore --ignore-unknown",
-    "format": "yarn prettier-base --write",
-    "format:check": "yarn prettier-base --check",
+    "format": "npm run prettier-base --write",
+    "format:check": "npm run prettier-base --check",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
-    "e2e": "start-server-and-test 'yarn build && yarn serve' http://localhost:3000 'yarn cypress'",
-    "e2e:dev": "start-server-and-test 'yarn dev' http://localhost:3000 'yarn cypress'",
-    "e2e:headless": "start-server-and-test 'yarn build && yarn serve' http://localhost:3000 'yarn cypress:headless'",
+    "e2e": "start-server-and-test 'npm run build && npm run serve' http://localhost:3000 'npm run cypress'",
+    "e2e:dev": "start-server-and-test 'npm run dev' http://localhost:3000 'npm run cypress'",
+    "e2e:headless": "start-server-and-test 'npm run build && npm run serve' http://localhost:3000 'npm run cypress:headless'",
     "gen:theme-typings": "chakra-cli tokens src/customTheme.ts",
     "prepare": "husky install",
-    "postinstall": "yarn gen:theme-typings"
+    "postinstall": "npm run gen:theme-typings"
   },
   "dependencies": {
     "@chakra-ui/react": "1.6.12",
