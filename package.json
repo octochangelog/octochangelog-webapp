@@ -6,7 +6,7 @@
     "npm": "^8.0.0"
   },
   "scripts": {
-    "start": "npm dev",
+    "start": "npm run dev",
     "dev": "next",
     "build": "next build",
     "serve": "next start",
