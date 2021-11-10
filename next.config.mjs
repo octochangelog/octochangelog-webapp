@@ -6,6 +6,7 @@ import { withSentryConfig } from '@sentry/nextjs'
  * @type {import('next').NextConfig}
  **/
 const config = {
+  swcMinify: true,
   images: {
     formats: ['image/avif', 'image/webp'],
   },
