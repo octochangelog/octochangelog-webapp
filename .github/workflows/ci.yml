@@ -27,7 +27,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # Act
       - name: ESLint
@@ -48,7 +48,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # Act
       - name: Check types
@@ -69,7 +69,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # Act
       - name: Prettier
@@ -100,7 +100,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # Act
       - name: Run Cypress tests
