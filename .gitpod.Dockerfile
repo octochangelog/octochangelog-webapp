@@ -66,6 +66,9 @@ RUN sudo apt-get update \
 # Source of original file https://github.com/gitpod-io/website/blob/main/src/routes/docs/languages/javascript.md
 
 # Use nvm to setup the version of node we want to use.
-RUN bash -c ". .nvm/nvm.sh     && nvm install 14     && nvm use 14     && nvm alias default 14"
+RUN bash -c ". .nvm/nvm.sh \
+    && nvm install \
+    && nvm use \
+    && npm install -g npm@8"
 
-RUN echo "nvm use default &>/dev/null" >> ~/.bashrc.d/51-nvm-fix
+RUN echo "nvm use &>/dev/null" >> ~/.bashrc.d/51-nvm-fix
