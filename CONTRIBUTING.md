@@ -17,7 +17,7 @@ It's even better if you know a bit of React and the basics of TypeScript.
 
 - Git
 - Latest version of Node.js 14
-- npm v8 package manager (should be provided by Node.js)
+- npm v8 package manager (bundled with Node.js)
 
 This guide assumes you'll run the code on your workstation directly.
 
@@ -29,10 +29,6 @@ The [git-scm.com](https://git-scm.com/) site has links to download Git for your 
 
 You can install Node.js + npm using a [Node.js version manager](https://docs.npmjs.com/cli/v7/configuring-npm/install#using-a-node-version-manager-to-install-nodejs-and-npm) (recommended).
 
-If you use Linux, use your operating system's package manager (`dnf`, `apt` or similar) to install the latest version of Node 14.
-If you use Ubuntu, you can also get a snap of the Node 14 program.
-
-If you use Windows or macOS, you can grab binaries from the [Node.js offical website](https://nodejs.org/).
 
 ### Where to get npm (optional)
 
