@@ -69,7 +69,6 @@ RUN sudo apt-get update \
 COPY .nvmrc ./
 RUN bash -c ". .nvm/nvm.sh \
     && nvm install \
-    && nvm use"
+    && nvm use \
+    && npm install -g npm@8"
 RUN echo "nvm use &>/dev/null" >> ~/.bashrc.d/51-nvm-fix
-
-RUN npm install -g npm@8
