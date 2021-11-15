@@ -27,7 +27,7 @@
     "postinstall": "npm run gen:theme-typings"
   },
   "dependencies": {
-    "@chakra-ui/react": "1.7.0",
+    "@chakra-ui/react": "1.7.1",
     "@emotion/react": "11.5.0",
     "@emotion/styled": "11.3.0",
     "@octokit/auth-callback": "2.0.1",
