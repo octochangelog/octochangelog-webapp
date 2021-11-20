@@ -26,7 +26,28 @@ it('should display corresponding information', () => {
 
   cy.contains('footer', 'Created with')
   cy.contains('footer', 'by Mario')
+
+  cy.findByRole('link', { name: /mario/i }).should(
+    'have.attr',
+    'href',
+    'https://mario.dev/'
+  )
+
+  cy.findByRole('link', {
+    name: /octoclairvoyant repository on github/i,
+  }).should(
+    'have.attr',
+    'href',
+    'https://github.com/octoclairvoyant/octoclairvoyant-webapp'
+  )
+
+  cy.findByRole('img', { name: /powered by vercel logo/i })
+  // Find way to make this query below work
+  // .should('have.attr', 'src')
+  // .should('include', 'powered-by-vercel')
 })
+
+// TODO: Add test that checks if the Vercel img has the correct href, should be: https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss
 
 it('should have a working link to comparator page', () => {
   cy.visit('/')
