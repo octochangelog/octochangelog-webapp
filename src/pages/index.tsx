@@ -12,7 +12,14 @@ import {
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import NextLink from 'next/link'
-import { FaCheck } from 'react-icons/fa'
+import {
+  HiOutlineFilter,
+  HiOutlineSwitchHorizontal,
+  HiOutlineShare,
+  HiOutlineFire,
+  HiOutlineDocumentSearch,
+  HiOutlineTag,
+} from 'react-icons/hi'
 
 import mascotLogo from '@app-public/mascot-logo.png'
 import { BRIEF_DESCRIPTION } from '~/common'
@@ -85,30 +92,30 @@ const HomePage = () => (
             </Heading>
             <List fontSize="" color="secondaryTextLightmode" spacing="4">
               <ListItem mt="-2">
-                <ListIcon as={FaCheck} color="sky.400" />
+                <ListIcon as={HiOutlineSwitchHorizontal} color="sky.400" />
                 Search repositories and pick a version range
               </ListItem>
               <ListItem>
-                <ListIcon as={FaCheck} color="sky.400" />
+                <ListIcon as={HiOutlineFilter} color="sky.400" />
                 Sort and group releases changelogs following{' '}
                 <Link href="https://semver.org/">Semantic Versioning</Link>
               </ListItem>
               <ListItem>
-                <ListIcon as={FaCheck} color="sky.400" />
+                <ListIcon as={HiOutlineShare} color="sky.400" />
                 Share changelogs comparison with others by giving them a link
               </ListItem>
               <ListItem>
-                <ListIcon as={FaCheck} color="sky.400" />
+                <ListIcon as={HiOutlineTag} color="sky.400" />
                 Normalize changes categories (e.g. put{' '}
                 <Text as="em">bug fixes</Text> and{' '}
                 <Text as="em">minor changes</Text> in the same category)
               </ListItem>
               <ListItem>
-                <ListIcon as={FaCheck} color="sky.400" />
+                <ListIcon as={HiOutlineDocumentSearch} color="sky.400" />
                 Highlight code blocks syntax and GitHub references
               </ListItem>
               <ListItem>
-                <ListIcon as={FaCheck} color="sky.400" />
+                <ListIcon as={HiOutlineFire} color="sky.400" />
                 Makes it easy to spot which version introduced specific changes
               </ListItem>
             </List>
