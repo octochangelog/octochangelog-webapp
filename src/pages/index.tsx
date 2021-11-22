@@ -91,31 +91,41 @@ const HomePage = () => (
               Features
             </Heading>
             <List fontSize="" color="secondaryTextLightmode" spacing="4">
-              <ListItem mt="-2">
-                <ListIcon as={HiOutlineSwitchHorizontal} color="sky.700" />
+              <ListItem d="flex">
+                <ListIcon
+                  as={HiOutlineSwitchHorizontal}
+                  color="sky.700"
+                  boxSize={6}
+                />
                 Search repositories and pick a version range
               </ListItem>
-              <ListItem>
-                <ListIcon as={HiOutlineFilter} color="sky.700" />
+              <ListItem d="flex">
+                <ListIcon as={HiOutlineFilter} color="sky.700" boxSize={6} />
                 Sort and group releases changelogs following{' '}
                 <Link href="https://semver.org/">Semantic Versioning</Link>
               </ListItem>
-              <ListItem>
-                <ListIcon as={HiOutlineShare} color="sky.700" />
+              <ListItem d="flex">
+                <ListIcon as={HiOutlineShare} color="sky.700" boxSize={6} />
                 Share changelogs comparison with others by giving them a link
               </ListItem>
-              <ListItem>
-                <ListIcon as={HiOutlineTag} color="sky.700" />
-                Normalize changes categories (e.g. put{' '}
-                <Text as="em">bug fixes</Text> and{' '}
-                <Text as="em">minor changes</Text> in the same category)
+              <ListItem d="flex">
+                <ListIcon as={HiOutlineTag} color="sky.700" boxSize={6} />
+                <Box>
+                  Normalize changes categories (e.g. put{' '}
+                  <Text as="em">bug fixes</Text> and{' '}
+                  <Text as="em">minor changes</Text> in the same category)
+                </Box>
               </ListItem>
-              <ListItem>
-                <ListIcon as={HiOutlineDocumentSearch} color="sky.700" />
+              <ListItem d="flex">
+                <ListIcon
+                  as={HiOutlineDocumentSearch}
+                  color="sky.700"
+                  boxSize={6}
+                />
                 Highlight code blocks syntax and GitHub references
               </ListItem>
-              <ListItem>
-                <ListIcon as={HiOutlineFire} color="sky.700" />
+              <ListItem d="flex">
+                <ListIcon as={HiOutlineFire} color="sky.700" boxSize={6} />
                 Makes it easy to spot which version introduced specific changes
               </ListItem>
             </List>
