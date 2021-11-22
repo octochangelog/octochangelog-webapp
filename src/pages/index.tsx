@@ -101,8 +101,10 @@ const HomePage = () => (
               </ListItem>
               <ListItem d="flex">
                 <ListIcon as={HiOutlineFilter} color="sky.700" boxSize={6} />
-                Sort and group releases changelogs following{' '}
-                <Link href="https://semver.org/">Semantic Versioning</Link>
+                <Box>
+                  Sort and group releases changelogs following{' '}
+                  <Link href="https://semver.org/">Semantic Versioning</Link>
+                </Box>
               </ListItem>
               <ListItem d="flex">
                 <ListIcon as={HiOutlineShare} color="sky.700" boxSize={6} />
