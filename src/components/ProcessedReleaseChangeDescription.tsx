@@ -12,7 +12,7 @@ import {
   TagLabel,
   Text,
 } from '@chakra-ui/react'
-import { FiExternalLink } from 'react-icons/fi'
+import { HiOutlineExternalLink } from 'react-icons/hi'
 
 import BlockQuote from '~/components/BlockQuote'
 import Link from '~/components/Link'
@@ -48,7 +48,7 @@ const RemarkP = (props: unknown) => <Text mb="2" {...props} />
 
 const RemarkA = ({ href, children, ...rest }: LinkProps) => (
   <Link isExternal href={href} {...rest}>
-    {children} <Icon as={FiExternalLink} mx="2px" />
+    {children} <Icon as={HiOutlineExternalLink} mx="2px" />
   </Link>
 )
 
