@@ -8,9 +8,6 @@ permissions:
   contents: read
   actions: write
 
-env:
-  NODE_VERSION: '14'
-
 jobs:
   lint:
     name: Code Linting
@@ -24,7 +21,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@04c56d2f954f1e4c69436aa54cfef261a018f458 # renovate: tag=v2.5.0
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: '.nvmrc'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
@@ -45,7 +42,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@04c56d2f954f1e4c69436aa54cfef261a018f458 # renovate: tag=v2.5.0
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: '.nvmrc'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
@@ -66,7 +63,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@04c56d2f954f1e4c69436aa54cfef261a018f458 # renovate: tag=v2.5.0
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: '.nvmrc'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
@@ -97,7 +94,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@04c56d2f954f1e4c69436aa54cfef261a018f458 # renovate: tag=v2.5.0
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: '.nvmrc'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
