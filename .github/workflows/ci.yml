@@ -8,9 +8,6 @@ permissions:
   contents: read
   actions: write
 
-env:
-  NODE_VERSION: '14'
-
 jobs:
   lint:
     name: Code Linting
@@ -22,9 +19,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # renovate: tag=v2.4.0
       - name: Setup Node.js
-        uses: actions/setup-node@270253e841af726300e85d718a5f606959b2903c # renovate: tag=v2.4.1
+        uses: actions/setup-node@04c56d2f954f1e4c69436aa54cfef261a018f458 # renovate: tag=v2.5.0
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: '.nvmrc'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
@@ -43,9 +40,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # renovate: tag=v2.4.0
       - name: Setup Node.js
-        uses: actions/setup-node@270253e841af726300e85d718a5f606959b2903c # renovate: tag=v2.4.1
+        uses: actions/setup-node@04c56d2f954f1e4c69436aa54cfef261a018f458 # renovate: tag=v2.5.0
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: '.nvmrc'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
@@ -64,9 +61,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # renovate: tag=v2.4.0
       - name: Setup Node.js
-        uses: actions/setup-node@270253e841af726300e85d718a5f606959b2903c # renovate: tag=v2.4.1
+        uses: actions/setup-node@04c56d2f954f1e4c69436aa54cfef261a018f458 # renovate: tag=v2.5.0
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: '.nvmrc'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
@@ -95,16 +92,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # renovate: tag=v2.4.0
       - name: Setup Node.js
-        uses: actions/setup-node@270253e841af726300e85d718a5f606959b2903c # renovate: tag=v2.4.1
+        uses: actions/setup-node@04c56d2f954f1e4c69436aa54cfef261a018f458 # renovate: tag=v2.5.0
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: '.nvmrc'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
 
       # Act
       - name: Run Cypress tests
-        uses: cypress-io/github-action@cc7f6995fee073feb696d4a2fb24f594535e5d51
+        uses: cypress-io/github-action@9c473bbdeb57610b3c03af2e2b4efcbbdfb5060d
         with:
           install: false
           build: npm run build
