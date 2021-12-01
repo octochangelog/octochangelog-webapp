@@ -42,12 +42,9 @@ it('should display corresponding information', () => {
   )
 
   cy.findByRole('img', { name: /powered by vercel logo/i })
-  // Find way to make this query below work
-  // .should('have.attr', 'src')
-  // .should('include', 'powered-by-vercel')
-})
 
-// TODO: Add test that checks if the Vercel img has the correct href, should be: https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss
+  // TODO: Add test that checks if the Vercel img has the correct href, should be: https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss
+})
 
 it('should have a working link to comparator page', () => {
   cy.visit('/')
@@ -56,5 +53,4 @@ it('should have a working link to comparator page', () => {
 
   cy.url().should('equal', `${Cypress.config().baseUrl}/comparator`)
 })
-
 export {}
