@@ -101,7 +101,7 @@ jobs:
 
       # Act
       - name: Run Cypress tests
-        uses: cypress-io/github-action@7d1d0900e236c0bb6d69deda27163a3bae41e549
+        uses: cypress-io/github-action@9fa01aa4a24bcbd3bfd00d0381cf13fe5d48f89f
         with:
           install: false
           build: npm run build
