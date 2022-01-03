@@ -1,4 +1,5 @@
-import { ColorHues, extendTheme, ThemeConfig } from '@chakra-ui/react'
+import type { ColorHues, ThemeConfig } from '@chakra-ui/react'
+import { extendTheme } from '@chakra-ui/react'
 
 // ***** Legacy colorscheme *****
 

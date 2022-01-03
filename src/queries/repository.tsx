@@ -1,5 +1,6 @@
-import { RestEndpointMethodTypes } from '@octokit/rest'
-import { useQuery, UseQueryOptions, UseQueryResult } from 'react-query'
+import type { RestEndpointMethodTypes } from '@octokit/rest'
+import type { UseQueryOptions, UseQueryResult } from 'react-query'
+import { useQuery } from 'react-query'
 
 import { octokit } from '~/github-client'
 

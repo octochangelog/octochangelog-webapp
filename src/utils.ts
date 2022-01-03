@@ -1,10 +1,10 @@
 import lowerCase from 'lodash/lowerCase'
-import { Content } from 'mdast'
+import type { Content } from 'mdast'
 import * as semver from 'semver'
 import title from 'title'
 
 import { HIGH_PRIORITY_GROUP_TITLES, LOW_PRIORITY_GROUP_TITLES } from '~/common'
-import {
+import type {
   MiscGroupTitle,
   Release,
   ReleaseGroupTitle,

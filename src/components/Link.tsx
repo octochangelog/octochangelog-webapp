@@ -1,4 +1,5 @@
-import { Link as ChakraLink, LinkProps } from '@chakra-ui/react'
+import type { LinkProps } from '@chakra-ui/react'
+import { Link as ChakraLink } from '@chakra-ui/react'
 import { forwardRef } from 'react'
 
 const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => (

@@ -1,5 +1,5 @@
 import { Button, Icon } from '@chakra-ui/react'
-import { ReactNode, MouseEvent } from 'react'
+import type { ReactNode, MouseEvent } from 'react'
 import { DiGithubBadge } from 'react-icons/di'
 
 import { githubAuthUrl } from '~/github-client'

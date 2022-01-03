@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react'
 import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChangeDescription'
 import TextSkeleton from '~/components/TextSkeleton'
 import useProcessReleases from '~/hooks/useProcessReleases'
-import {
+import type {
   ProcessedRelease,
   Release,
   ReleaseGroupTitle,
