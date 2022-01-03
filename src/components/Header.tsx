@@ -1,4 +1,5 @@
-import { Box, BoxProps, Flex, Heading, HStack } from '@chakra-ui/react'
+import type { BoxProps } from '@chakra-ui/react'
+import { Box, Flex, Heading, HStack } from '@chakra-ui/react'
 import Image from 'next/image'
 import * as React from 'react'
 

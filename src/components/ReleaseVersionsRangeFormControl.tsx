@@ -1,11 +1,12 @@
-import { Stack, StackProps } from '@chakra-ui/react'
+import type { StackProps } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 
 import ReleaseVersionFormControl from '~/components/ReleaseVersionFormControl'
 import {
   useComparatorState,
   useComparatorUpdater,
 } from '~/contexts/comparator-context'
-import { Release } from '~/models'
+import type { Release } from '~/models'
 import { useReleasesQuery } from '~/queries/release'
 import { getReleaseVersion, releasesComparator } from '~/utils'
 

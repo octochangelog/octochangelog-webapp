@@ -1,4 +1,5 @@
-import { createElement, ReactNode, useEffect, useMemo, useState } from 'react'
+import type { ReactNode } from 'react'
+import { createElement, useEffect, useMemo, useState } from 'react'
 import rehypeHighlight from 'rehype-highlight'
 import rehype2react from 'rehype-react'
 import gfm from 'remark-gfm'
@@ -7,7 +8,7 @@ import remark2rehype from 'remark-rehype'
 import markdown from 'remark-stringify'
 import { unified } from 'unified'
 
-import { ComponentsMapping, ProcessedRelease, Repository } from '~/models'
+import type { ComponentsMapping, ProcessedRelease, Repository } from '~/models'
 
 interface HookArgs {
   repository: Repository

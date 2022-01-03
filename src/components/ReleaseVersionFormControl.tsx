@@ -1,13 +1,9 @@
-import {
-  FormControl,
-  FormControlProps,
-  FormLabel,
-  Select,
-} from '@chakra-ui/react'
-import { ChangeEvent, ReactNode } from 'react'
-import { Except } from 'type-fest'
+import type { FormControlProps } from '@chakra-ui/react'
+import { FormControl, FormLabel, Select } from '@chakra-ui/react'
+import type { ChangeEvent, ReactNode } from 'react'
+import type { Except } from 'type-fest'
 
-import { Release } from '~/models'
+import type { Release } from '~/models'
 import { getReleaseVersion } from '~/utils'
 
 interface CustomProps {
