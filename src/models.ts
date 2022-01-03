@@ -1,6 +1,6 @@
-import { RestEndpointMethodTypes } from '@octokit/rest'
-import { Root } from 'mdast'
-import { ReactElement } from 'react'
+import type { RestEndpointMethodTypes } from '@octokit/rest'
+import type { Root } from 'mdast'
+import type { ReactElement } from 'react'
 
 export type SemVerGroupTitle = 'breaking changes' | 'features' | 'bug fixes'
 

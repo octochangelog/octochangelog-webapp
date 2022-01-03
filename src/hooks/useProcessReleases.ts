@@ -3,7 +3,7 @@ import gfm from 'remark-gfm'
 import parse from 'remark-parse'
 import { unified } from 'unified'
 
-import {
+import type {
   ProcessedRelease,
   ProcessedReleasesCollection,
   Release,

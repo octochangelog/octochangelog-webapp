@@ -1,4 +1,4 @@
-import { DefaultSeoProps } from 'next-seo'
+import type { DefaultSeoProps } from 'next-seo'
 
 import { BRIEF_DESCRIPTION, FULL_DESCRIPTION, SITE_TITLE } from '~/common'
 

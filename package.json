@@ -13,7 +13,7 @@
     "smoketest": "npm run type-check && npm run lint && npm run format:check && npm run build",
     "type-check": "tsc --noEmit",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0 --report-unused-disable-directives",
-    "lint:fix": "npm run lint --fix",
+    "lint:fix": "npm run lint -- --fix",
     "prettier-base": "prettier . --ignore-path .gitignore --ignore-unknown",
     "format": "npm run prettier-base --write",
     "format:check": "npm run prettier-base --check",

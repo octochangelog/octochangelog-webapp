@@ -1,5 +1,5 @@
 import { Alert, AlertIcon, Flex, CircularProgress } from '@chakra-ui/react'
-import { GetServerSideProps } from 'next'
+import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'

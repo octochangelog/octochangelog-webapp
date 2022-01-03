@@ -1,7 +1,8 @@
-import { useQuery, UseQueryOptions, UseQueryResult } from 'react-query'
+import type { UseQueryOptions, UseQueryResult } from 'react-query'
+import { useQuery } from 'react-query'
 
 import { octokit } from '~/github-client'
-import { Release, Repository, RepositoryQueryParams } from '~/models'
+import type { Release, Repository, RepositoryQueryParams } from '~/models'
 import { isStableRelease, mapRepositoryToQueryParams } from '~/utils'
 
 type ReleasesQueryResults = Array<Release>

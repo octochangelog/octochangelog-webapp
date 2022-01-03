@@ -1,10 +1,8 @@
 module.exports = {
-  root: true,
-  parser: '@typescript-eslint/parser',
   extends: [
     'eslint:recommended',
+    'next/core-web-vitals',
     'plugin:@typescript-eslint/recommended',
-    'next',
     'prettier',
   ],
   plugins: ['unicorn'],
@@ -24,15 +22,6 @@ module.exports = {
     // React
     'react/self-closing-comp': 'error',
     'react/react-in-jsx-scope': 'off',
-
-    // TypeScript
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/array-type': [
-      'error',
-      {
-        default: 'generic',
-      },
-    ],
 
     // Import
     'import/newline-after-import': 'error',
@@ -54,6 +43,27 @@ module.exports = {
   },
 
   overrides: [
+    // TypeScript
+    {
+      files: ['**/*.ts?(x)'],
+      parserOptions: {
+        project: ['./tsconfig.json'],
+      },
+      rules: {
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        '@typescript-eslint/array-type': [
+          'error',
+          {
+            default: 'generic',
+          },
+        ],
+        '@typescript-eslint/no-floating-promises': 'error',
+        '@typescript-eslint/consistent-type-exports': 'error',
+        '@typescript-eslint/consistent-type-imports': 'error',
+        '@typescript-eslint/no-explicit-any': 'error',
+      },
+    },
+    // Cypress
     { files: ['cypress/**/*.[jt]s'], extends: ['plugin:cypress/recommended'] },
   ],
 }
