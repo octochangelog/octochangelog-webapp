@@ -8,11 +8,6 @@ module.exports = {
   plugins: ['unicorn'],
   settings: {
     'import/internal-regex': '^(@app-|~)',
-    'import/resolver': {
-      typescript: {
-        project: '.',
-      },
-    },
   },
   rules: {
     // Base
