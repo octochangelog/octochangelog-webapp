@@ -53,7 +53,7 @@ const MainSection = () => (
       </Heading>
       <Flex py="6" justify="center" align="center">
         <NextLink href="/comparator">
-          <CTAButton>Try me now!</CTAButton>
+          <CTAButton as="a">Try me now!</CTAButton>
         </NextLink>
       </Flex>
     </Stack>

@@ -17,7 +17,7 @@ export const CTAButton = forwardRef<HTMLButtonElement, ButtonProps>(
         borderRadius="2xl"
         bg="fuchsia.200"
         color="fuchsia.900"
-        _hover={{ bg: 'fuchsia.100' }}
+        _hover={{ bg: 'fuchsia.100', cursor: 'pointer' }}
         _active={{
           bg: 'fuchsia.200',
           boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.25) !important',
