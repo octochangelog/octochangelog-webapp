@@ -41,9 +41,20 @@ it('should display corresponding information', () => {
     'https://github.com/octoclairvoyant/octoclairvoyant-webapp'
   )
 
-  cy.findByRole('img', { name: /powered by vercel logo/i })
-
-  // TODO: Add test that checks if the Vercel img has the correct href, should be: https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss
+  // we first query the link
+  cy.findByRole('link', { name: /powered by vercel/i })
+    // and check it has the proper href
+    .should(
+      'have.attr',
+      'href',
+      'https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss'
+    )
+    // now, since `should` returns a Chainable, we can chain it with `within`, which allows us to query
+    // for something inside the previous element
+    .within(() => {
+      // the image is gonna be searched within the link, so we can make sure the logo is part of the link!
+      cy.findByRole('img', { name: /powered by vercel logo/i })
+    })
 })
 
 it('should have a working link to comparator page', () => {
