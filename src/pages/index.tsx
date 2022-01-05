@@ -1,7 +1,9 @@
 import {
   Box,
+  Button,
   Flex,
   Heading,
+  Link,
   List,
   ListIcon,
   ListItem,
@@ -26,7 +28,6 @@ import { BRIEF_DESCRIPTION } from '~/common'
 import { CTAButton } from '~/components/CTAButton'
 import FluidContainer from '~/components/FluidContainer'
 import Layout from '~/components/Layout'
-import Link from '~/components/Link'
 
 const MainSection = () => (
   <Stack
@@ -133,6 +134,7 @@ const HomePage = () => (
             </List>
           </Box>
         </VStack>
+        <Button>Hello there!</Button>
       </FluidContainer>
     </Box>
   </Layout>

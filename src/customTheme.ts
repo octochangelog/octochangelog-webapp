@@ -1,5 +1,5 @@
 import type { ColorHues, ThemeConfig } from '@chakra-ui/react'
-import { extendTheme } from '@chakra-ui/react'
+import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react'
 
 // ***** Legacy colorscheme *****
 
@@ -105,32 +105,41 @@ const themeConfig: ThemeConfig = {
   useSystemColorMode: !!process.env.NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE,
 }
 
-const customTheme = extendTheme({
-  colors: {
-    blue: blueColor,
-    primary: primaryColor,
-    secondary: blueColor,
-    coolGray,
-    fuchsia,
-    sky,
-    primaryTextLightmode,
-    secondaryTextLightmode,
-    tertiaryTextLightmode,
-    primaryTextDarkmode,
-    secondaryTextDarkmode,
-    tertiaryTextDarkmode,
-  },
-  fonts: {
-    heading: '"Inter", sans-serif;',
-    body: '"Inter", sans-serif;',
-    mono: '"Roboto Mono", monospace;',
-  },
-  styles: {
-    global: {
-      'html, body, #__next': { height: '100%' },
+const customTheme = extendTheme(
+  {
+    colors: {
+      blue: blueColor,
+      primary: primaryColor,
+      secondary: blueColor,
+      coolGray,
+      fuchsia,
+      sky,
+      primaryTextLightmode,
+      secondaryTextLightmode,
+      tertiaryTextLightmode,
+      primaryTextDarkmode,
+      secondaryTextDarkmode,
+      tertiaryTextDarkmode,
+    },
+    fonts: {
+      heading: '"Inter", sans-serif;',
+      body: '"Inter", sans-serif;',
+      mono: '"Roboto Mono", monospace;',
+    },
+    styles: {
+      global: {
+        'html, body, #__next': { height: '100%' },
+      },
+    },
+    config: themeConfig,
+    components: {
+      Link: {
+        baseStyle: { color: 'primary.500' },
+      },
     },
   },
-  config: themeConfig,
-})
+  withDefaultColorScheme({ colorScheme: 'primary' }),
+  withDefaultColorScheme({ colorScheme: 'gray', components: ['Code'] })
+)
 
 export default customTheme

@@ -115,6 +115,7 @@ const RepositorySearchCombobox = ({
         <Box>
           <IconButton
             {...getToggleButtonProps()}
+            colorScheme="gray"
             aria-label="toggle repositories results menu"
             icon={<Icon as={isOpen ? HiArrowUp : HiArrowDown} />}
           />

@@ -1,10 +1,16 @@
-import { Box, Center, HStack, Stack, useColorModeValue } from '@chakra-ui/react'
+import {
+  Box,
+  Center,
+  HStack,
+  Link,
+  Stack,
+  useColorModeValue,
+} from '@chakra-ui/react'
 import Image from 'next/image'
 
 import poweredByVercelLogo from '@app-public/powered-by-vercel.svg'
 import { REPO_URL } from '~/common'
 import FluidContainer from '~/components/FluidContainer'
-import Link from '~/components/Link'
 
 const Footer = () => {
   const boxBgColor = useColorModeValue('gray.50', 'gray.900')
