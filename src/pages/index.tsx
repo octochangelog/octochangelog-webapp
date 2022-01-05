@@ -10,6 +10,7 @@ import {
   Stack,
   VStack,
   Text,
+  Container,
 } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
@@ -25,7 +26,6 @@ import {
 
 import mascotLogo from '@app-public/mascot-logo.png'
 import { BRIEF_DESCRIPTION } from '~/common'
-import FluidContainer from '~/components/FluidContainer'
 import Layout from '~/components/Layout'
 
 const MainSection = () => (
@@ -73,13 +73,13 @@ const HomePage = () => (
   <Layout>
     <NextSeo />
     <Box mt={-8} py={{ base: 8, lg: 16 }} bg="gray.50">
-      <FluidContainer>
+      <Container variant="fluid">
         <MainSection />
-      </FluidContainer>
+      </Container>
     </Box>
 
     <Box bg="gray.50">
-      <FluidContainer>
+      <Container variant="fluid">
         <VStack spacing={8} alignItems="left" py="20" px="10">
           <Box>
             <Heading
@@ -135,7 +135,7 @@ const HomePage = () => (
             </List>
           </Box>
         </VStack>
-      </FluidContainer>
+      </Container>
     </Box>
   </Layout>
 )

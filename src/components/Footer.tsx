@@ -1,6 +1,7 @@
 import {
   Box,
   Center,
+  Container,
   HStack,
   Link,
   Stack,
@@ -10,14 +11,13 @@ import Image from 'next/image'
 
 import poweredByVercelLogo from '@app-public/powered-by-vercel.svg'
 import { REPO_URL } from '~/common'
-import FluidContainer from '~/components/FluidContainer'
 
 const Footer = () => {
   const boxBgColor = useColorModeValue('gray.50', 'gray.900')
 
   return (
     <Box as="footer" bg={boxBgColor} flexShrink={0}>
-      <FluidContainer py={5}>
+      <Container py={5} variant="fluid">
         <Stack
           justify="space-between"
           direction={['column', 'row']}
@@ -60,7 +60,7 @@ const Footer = () => {
             </Center>
           </Box>
         </Stack>
-      </FluidContainer>
+      </Container>
     </Box>
   )
 }

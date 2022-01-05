@@ -1,6 +1,5 @@
-import { Badge, Box, Heading, Link, Text } from '@chakra-ui/react'
+import { Badge, Box, Container, Heading, Link, Text } from '@chakra-ui/react'
 
-import FluidContainer from '~/components/FluidContainer'
 import type { Repository } from '~/models'
 
 interface Props {
@@ -15,7 +14,7 @@ const RepositoryReleasesChangelogHeading = ({
   toVersion,
 }: Props) => (
   <Box width="full" py={1} mb={{ base: 4, md: 8 }}>
-    <FluidContainer>
+    <Container variant="fluid">
       <Heading as="h1" size="lg" mb={2}>
         <Link isExternal href={repository.html_url} color="primary.500">
           {repository.name}
@@ -50,7 +49,7 @@ const RepositoryReleasesChangelogHeading = ({
           No releases selected to compare between.
         </Text>
       )}
-    </FluidContainer>
+    </Container>
   </Box>
 )
 

@@ -1,10 +1,9 @@
 import type { BoxProps } from '@chakra-ui/react'
-import { Box, Flex, Heading, HStack } from '@chakra-ui/react'
+import { Box, Flex, Container, Heading, HStack } from '@chakra-ui/react'
 import Image from 'next/image'
 import * as React from 'react'
 
 import mascotIcon from '@app-public/mascot-icon.png'
-import FluidContainer from '~/components/FluidContainer'
 import RouteLink from '~/components/RouteLink'
 import ToggleColorModeButton from '~/components/ToggleColorModeButton'
 
@@ -19,7 +18,7 @@ const Header = (props: BoxProps) => {
       borderTopWidth={{ base: '4px', sm: '8px' }}
       borderColor="fuchsia.700"
     >
-      <FluidContainer py={5}>
+      <Container variant="fluid" py={5}>
         <Flex justify="space-between" alignItems="center">
           <Flex alignItems="center">
             <RouteLink
@@ -64,7 +63,7 @@ const Header = (props: BoxProps) => {
             <ToggleColorModeButton />
           )}
         </Flex>
-      </FluidContainer>
+      </Container>
     </Box>
   )
 }

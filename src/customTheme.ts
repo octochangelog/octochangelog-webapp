@@ -162,6 +162,13 @@ const customTheme = extendTheme(
           },
         },
       },
+      Container: {
+        variants: {
+          fluid: {
+            maxWidth: 'container.xl',
+          },
+        },
+      },
     },
   },
   withDefaultColorScheme({ colorScheme: 'primary' }),

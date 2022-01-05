@@ -1,10 +1,15 @@
-import { Alert, AlertIcon, Flex, CircularProgress } from '@chakra-ui/react'
+import {
+  Alert,
+  AlertIcon,
+  Flex,
+  CircularProgress,
+  Container,
+} from '@chakra-ui/react'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-import FluidContainer from '~/components/FluidContainer'
 import Layout from '~/components/Layout'
 import { useGithubAuth } from '~/contexts/github-auth-provider'
 import { obtainAccessToken } from '~/github-client'
@@ -32,12 +37,12 @@ const AuthCallbackPage = ({ accessToken, errorMessage }: Props) => {
         <title>Authorizing on GitHub</title>
       </Head>
       {errorMessage ? (
-        <FluidContainer>
+        <Container variant="fluid">
           <Alert status="error">
             <AlertIcon />
             {errorMessage}
           </Alert>
-        </FluidContainer>
+        </Container>
       ) : (
         <Flex align="center" justify="center" p={5}>
           <CircularProgress
