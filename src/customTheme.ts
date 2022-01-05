@@ -103,7 +103,6 @@ const tertiaryTextDarkmode = coolGray['400']
 // ***** Collect constants, put them in a customTheme *****
 
 const themeConfig: ThemeConfig = {
-  initialColorMode: 'light',
   useSystemColorMode: !!process.env.NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE,
 }
 
