@@ -52,7 +52,7 @@ const MainSection = () => (
         {BRIEF_DESCRIPTION}
       </Heading>
       <Flex py="6" justify="center" align="center">
-        <NextLink href="/comparator">
+        <NextLink href="/comparator" passHref>
           <Button as="a" variant="cta">
             Try me now!
           </Button>

@@ -15,7 +15,7 @@ it('should display custom 404 page when not found', () => {
     .should('have.attr', 'src')
     .and('contain', 'mascot-icon')
 
-  cy.findByRole('button', { name: 'Go to comparator' }).click()
+  cy.findByRole('link', { name: /go to comparator/i }).click()
   cy.url().should('equal', `${Cypress.config().baseUrl}/comparator`)
 
   cy.go('back')

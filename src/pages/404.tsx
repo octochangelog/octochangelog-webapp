@@ -56,13 +56,13 @@ const Custom404 = () => (
           </Stack>
         </VStack>
         <VStack mt={12} spacing={5}>
-          <NextLink href="/comparator">
+          <NextLink href="/comparator" passHref>
             <Button as="a" variant="cta">
               Go to comparator
             </Button>
           </NextLink>
 
-          <RouteLink href="/" color="primary.500" fontWeight="black">
+          <RouteLink href="/" fontWeight="black">
             Or go to homepage
           </RouteLink>
         </VStack>
