@@ -136,7 +136,7 @@ const customTheme = extendTheme(
     components: {
       Link: {
         baseStyle: (props: Dict) => {
-          return { color: mode('primary.500', 'primary.200')(props) }
+          return { color: mode('fuchsia.500', 'fuchsia.200')(props) }
         },
       },
       Button: {
@@ -150,14 +150,14 @@ const customTheme = extendTheme(
               size: 'lg',
               boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
               borderRadius: '2xl',
-              bg: mode('primary.200', 'primary.900')(props),
-              color: mode('primary.900', 'white')(props),
+              bg: mode('fuchsia.200', 'fuchsia.900')(props),
+              color: mode('fuchsia.900', 'white')(props),
               _hover: {
-                bg: mode('primary.100', 'primary.700')(props),
+                bg: mode('fuchsia.100', 'fuchsia.700')(props),
                 cursor: 'pointer',
               },
               _active: {
-                bg: mode('primary.200', 'primary.800')(props),
+                bg: mode('fuchsia.200', 'fuchsia.800')(props),
                 boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.25) !important',
               },
             }
