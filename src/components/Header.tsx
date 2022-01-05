@@ -41,7 +41,7 @@ const Header = (props: BoxProps) => {
                   <Image
                     priority
                     src={mascotIcon}
-                    alt="Go to home page"
+                    alt=""
                     placeholder="blur"
                     height={150}
                     width={150}

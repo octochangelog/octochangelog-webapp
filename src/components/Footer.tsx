@@ -54,8 +54,9 @@ const Footer = () => {
               <Link
                 isExternal
                 href="https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss"
+                aria-label="Powered by Vercel"
               >
-                <Image alt="Powered by Vercel logo" src={poweredByVercelLogo} />
+                <Image alt="" src={poweredByVercelLogo} />
               </Link>
             </Center>
           </Box>
