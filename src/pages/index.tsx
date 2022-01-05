@@ -25,7 +25,6 @@ import {
 
 import mascotLogo from '@app-public/mascot-logo.png'
 import { BRIEF_DESCRIPTION } from '~/common'
-import { CTAButton } from '~/components/CTAButton'
 import FluidContainer from '~/components/FluidContainer'
 import Layout from '~/components/Layout'
 
@@ -54,7 +53,9 @@ const MainSection = () => (
       </Heading>
       <Flex py="6" justify="center" align="center">
         <NextLink href="/comparator">
-          <CTAButton as="a">Try me now!</CTAButton>
+          <Button as="a" variant="cta">
+            Try me now!
+          </Button>
         </NextLink>
       </Flex>
     </Stack>
@@ -134,7 +135,6 @@ const HomePage = () => (
             </List>
           </Box>
         </VStack>
-        <Button>Hello there!</Button>
       </FluidContainer>
     </Box>
   </Layout>

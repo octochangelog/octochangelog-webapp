@@ -1,5 +1,7 @@
 import type { ColorHues, ThemeConfig } from '@chakra-ui/react'
 import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react'
+import { mode } from '@chakra-ui/theme-tools'
+import type { Dict } from '@chakra-ui/utils'
 
 // ***** Legacy colorscheme *****
 
@@ -135,6 +137,31 @@ const customTheme = extendTheme(
     components: {
       Link: {
         baseStyle: { color: 'primary.500' },
+      },
+      Button: {
+        variants: {
+          cta: (props: Dict) => {
+            return {
+              fontWeight: 'black',
+              fontSize: '2xl',
+              letterSpacing: 'tight',
+              p: 6,
+              size: 'lg',
+              boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+              borderRadius: '2xl',
+              bg: mode('fuchsia.200', 'fuchsia.900')(props),
+              color: mode('fuchsia.900', 'white')(props),
+              _hover: {
+                bg: mode('fuchsia.100', 'fuchsia.700')(props),
+                cursor: 'pointer',
+              },
+              _active: {
+                bg: mode('fuchsia.200', 'fuchsia.800')(props),
+                boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.25) !important',
+              },
+            }
+          },
+        },
       },
     },
   },

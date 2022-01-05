@@ -1,10 +1,9 @@
-import { Box, Heading, Stack, VStack, Text } from '@chakra-ui/react'
+import { Box, Heading, Stack, VStack, Text, Button } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import NextLink from 'next/link'
 
 import mascotIcon from '@app-public/mascot-icon.png'
-import { CTAButton } from '~/components/CTAButton'
 import FluidContainer from '~/components/FluidContainer'
 import Layout from '~/components/Layout'
 import RouteLink from '~/components/RouteLink'
@@ -51,7 +50,9 @@ const Custom404 = () => (
         </VStack>
         <VStack mt={12} spacing={5}>
           <NextLink href="/comparator">
-            <CTAButton>Go to comparator</CTAButton>
+            <Button as="a" variant="cta">
+              Go to comparator
+            </Button>
           </NextLink>
 
           <RouteLink href="/" color="primary.500" fontWeight="black">
