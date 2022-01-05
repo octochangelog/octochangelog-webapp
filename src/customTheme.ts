@@ -135,7 +135,9 @@ const customTheme = extendTheme(
     config: themeConfig,
     components: {
       Link: {
-        baseStyle: { color: 'primary.500' },
+        baseStyle: (props: Dict) => {
+          return { color: mode('primary.500', 'primary.200')(props) }
+        },
       },
       Button: {
         variants: {
@@ -148,14 +150,14 @@ const customTheme = extendTheme(
               size: 'lg',
               boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
               borderRadius: '2xl',
-              bg: mode('fuchsia.200', 'fuchsia.900')(props),
-              color: mode('fuchsia.900', 'white')(props),
+              bg: mode('primary.200', 'primary.900')(props),
+              color: mode('primary.900', 'white')(props),
               _hover: {
-                bg: mode('fuchsia.100', 'fuchsia.700')(props),
+                bg: mode('primary.100', 'primary.700')(props),
                 cursor: 'pointer',
               },
               _active: {
-                bg: mode('fuchsia.200', 'fuchsia.800')(props),
+                bg: mode('primary.200', 'primary.800')(props),
                 boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.25) !important',
               },
             }
@@ -172,7 +174,10 @@ const customTheme = extendTheme(
     },
   },
   withDefaultColorScheme({ colorScheme: 'primary' }),
-  withDefaultColorScheme({ colorScheme: 'gray', components: ['Code'] })
+  withDefaultColorScheme({
+    colorScheme: 'gray',
+    components: ['Code', 'BlockQuote'],
+  })
 )
 
 export default customTheme

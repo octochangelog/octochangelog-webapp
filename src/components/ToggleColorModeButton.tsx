@@ -5,10 +5,7 @@ const ToggleColorModeButton = () => {
   const isLightMode = colorMode === 'light'
 
   return (
-    <Button
-      onClick={toggleColorMode}
-      colorScheme={isLightMode ? 'primary' : 'secondary'}
-    >
+    <Button onClick={toggleColorMode}>
       Toggle {isLightMode ? 'Dark' : 'Light'}
     </Button>
   )
