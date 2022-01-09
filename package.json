@@ -22,7 +22,7 @@
     "e2e": "start-server-and-test 'npm run build && npm run serve' http://localhost:3000 'npm run cypress'",
     "e2e:dev": "start-server-and-test 'npm run dev' http://localhost:3000 'npm run cypress'",
     "e2e:headless": "start-server-and-test 'npm run build && npm run serve' http://localhost:3000 'npm run cypress:headless'",
-    "gen:theme-typings": "chakra-cli tokens src/customTheme.ts",
+    "gen:theme-typings": "chakra-cli tokens src/customTheme.ts --strict-component-types",
     "prepare": "husky install",
     "postinstall": "npm run gen:theme-typings"
   },
