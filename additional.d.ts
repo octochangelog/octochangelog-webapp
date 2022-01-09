@@ -1,6 +1,1 @@
-declare module 'title' {
-  export default function title(
-    str: string,
-    config: { special: Array<string> }
-  ): string
-}
+// declare here any additional module with no types

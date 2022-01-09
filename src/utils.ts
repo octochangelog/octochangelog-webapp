@@ -1,7 +1,6 @@
 import lowerCase from 'lodash/lowerCase'
 import type { Content } from 'mdast'
 import * as semver from 'semver'
-import title from 'title'
 
 import { HIGH_PRIORITY_GROUP_TITLES, LOW_PRIORITY_GROUP_TITLES } from '~/common'
 import type {
@@ -69,14 +68,6 @@ export function isStableRelease(release: Release): boolean {
   const { tag_name } = release
 
   return Boolean(semver.valid(tag_name)) && !semver.prerelease(tag_name)
-}
-
-const customTitleSpecials: Array<string> = ['DOM', 'ESLint', 'UI']
-
-export function getRepositoryNameDisplay(repoName: string): string {
-  return title(repoName.replace(/[_-]/g, ' '), {
-    special: customTitleSpecials,
-  })
 }
 
 export function getMdastContentNodeTitle(mdastNode: Content): string {
