@@ -11,5 +11,5 @@ https://docs.cypress.io/guides/tooling/typescript-support#Clashing-types-with-Je
   "include": ["next-env.d.ts", "additional.d.ts", "**/*.ts", "**/*.tsx"],
 
   // Avoid excluding testing files for linting
-  "exclude": ["node_modules"]
+  "exclude": []
 }
