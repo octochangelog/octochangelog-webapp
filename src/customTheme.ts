@@ -136,7 +136,7 @@ const customTheme = extendTheme(
     components: {
       Link: {
         baseStyle: (props: Dict) => {
-          return { color: mode('fuchsia.500', 'fuchsia.200')(props) }
+          return { color: mode('fuchsia.700', 'fuchsia.400')(props) }
         },
       },
       Button: {
