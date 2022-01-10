@@ -1,4 +1,5 @@
-/* Avoid clashing types between Cypress and Jest
+/* Avoid clashing types between Cypress and Jest for linting files
+(i.e. lint command)
 
 Inspired by official solution #1:
 https://docs.cypress.io/guides/tooling/typescript-support#Clashing-types-with-Jest

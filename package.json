@@ -11,7 +11,7 @@
     "build": "next build",
     "serve": "next start",
     "smoketest": "npm run type-check && npm run lint && npm run format:check && npm run build",
-    "type-check": "tsc --project tsconfig.lint.json",
+    "type-check": "tsc --project tsconfig.validation.json",
     "type-check:cypress": "tsc --project cypress/tsconfig.json",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0 --report-unused-disable-directives",
     "lint:fix": "npm run lint -- --fix",
