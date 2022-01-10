@@ -151,13 +151,13 @@ const customTheme = extendTheme(
               boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
               borderRadius: '2xl',
               bg: mode('fuchsia.200', 'fuchsia.900')(props),
-              color: mode('fuchsia.900', 'white')(props),
+              color: mode('white', 'fuchsia.900')(props),
               _hover: {
-                bg: mode('fuchsia.100', 'fuchsia.700')(props),
+                bg: mode('fuchsia.700', 'fuchsia.100')(props),
                 cursor: 'pointer',
               },
               _active: {
-                bg: mode('fuchsia.200', 'fuchsia.800')(props),
+                bg: mode('fuchsia.800', 'fuchsia.200')(props),
                 boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.25) !important',
               },
             }
