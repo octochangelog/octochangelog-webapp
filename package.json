@@ -20,7 +20,7 @@
     "format:check": "npm run prettier-base --check",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
-    "test:ci": "echo \"TODO: still pending\"",
+    "test:ci": "npm run test -- --ci",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
     "e2e": "start-server-and-test 'npm run build && npm run serve' http://localhost:3000 'npm run cypress'",
