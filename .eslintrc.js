@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const jestVersion = require('jest/package.json').version
+
 module.exports = {
   extends: [
     'eslint:recommended',
@@ -8,6 +11,9 @@ module.exports = {
   plugins: ['unicorn'],
   settings: {
     'import/internal-regex': '^(@app-|~)',
+    jest: {
+      version: jestVersion,
+    },
   },
   rules: {
     // Base
@@ -56,6 +62,21 @@ module.exports = {
         '@typescript-eslint/consistent-type-exports': 'error',
         '@typescript-eslint/consistent-type-imports': 'error',
         '@typescript-eslint/no-explicit-any': 'error',
+      },
+    },
+    // Jest
+    {
+      files: [
+        'src/**/__tests__/**/*.[jt]s?(x)',
+        'src/**/?(*.)+(spec|test).[jt]s?(x)',
+      ],
+      extends: [
+        'plugin:jest/recommended',
+        'plugin:jest/style',
+        'plugin:jest-formatting/recommended',
+      ],
+      rules: {
+        'jest/consistent-test-it': 'warn',
       },
     },
     // Cypress
