@@ -3,7 +3,6 @@ import { Badge, Box, Heading, Text } from '@chakra-ui/react'
 import FluidContainer from '~/components/FluidContainer'
 import Link from '~/components/Link'
 import type { Repository } from '~/models'
-import { getRepositoryNameDisplay } from '~/utils'
 
 interface Props {
   repository: Repository
@@ -20,7 +19,7 @@ const RepositoryReleasesChangelogHeading = ({
     <FluidContainer>
       <Heading as="h1" size="lg" mb={2}>
         <Link isExternal href={repository.html_url} color="primary.500">
-          {getRepositoryNameDisplay(repository.name)}
+          {repository.name}
         </Link>
       </Heading>
 

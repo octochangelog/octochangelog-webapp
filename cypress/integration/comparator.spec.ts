@@ -14,7 +14,7 @@ it('should have a working form interface', () => {
 
   cy.findByRole('combobox', { name: /select to release/i }).select('v8.1.0')
 
-  cy.findByRole('link', { name: /dom testing library/i }).should(
+  cy.findByRole('link', { name: 'dom-testing-library' }).should(
     'have.attr',
     'href',
     'https://github.com/testing-library/dom-testing-library'
@@ -30,7 +30,7 @@ it('should show expected results when using standard query string', () => {
 
   // Confirm repository name is displayed
 
-  cy.findByRole('link', { name: /dom testing library/i }).should(
+  cy.findByRole('link', { name: 'dom-testing-library' }).should(
     'have.attr',
     'href',
     'https://github.com/testing-library/dom-testing-library'
