@@ -42,7 +42,7 @@ module.exports = {
     {
       files: ['**/*.ts?(x)'],
       parserOptions: {
-        project: ['./tsconfig.json'],
+        project: ['./tsconfig.lint.json'],
       },
       rules: {
         '@typescript-eslint/explicit-module-boundary-types': 'off',

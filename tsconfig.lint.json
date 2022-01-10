@@ -1,0 +1,15 @@
+/* Avoid clashing types between Cypress and Jest
+
+Inspired by official solution #1:
+https://docs.cypress.io/guides/tooling/typescript-support#Clashing-types-with-Jest
+*/
+
+{
+  "extends": "./tsconfig.json",
+  // Include al TS files in the project, not just the ones inside src/
+  // so cypress/ ones are linted.
+  "include": ["next-env.d.ts", "additional.d.ts", "**/*.ts", "**/*.tsx"],
+
+  // Avoid excluding testing files for linting
+  "exclude": ["node_modules"]
+}
