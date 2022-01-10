@@ -75,7 +75,7 @@ jobs:
         run: npm run format:check
 
   tests:
-    name: Unit/Integration tests
+    name: Unit & Integration tests
     runs-on: ubuntu-latest
     steps:
       # Arrange
