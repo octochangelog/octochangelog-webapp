@@ -1,6 +1,9 @@
 import type { Repository } from '../models'
 
-import { mapRepositoryToQueryParams } from '~/utils'
+import {
+  mapRepositoryToQueryParams,
+  mapStringToRepositoryQueryParams,
+} from '~/utils'
 
 describe('mapRepositoryToQueryParams util', () => {
   it('should map an undefined repository', () => {
@@ -25,5 +28,25 @@ describe('mapRepositoryToQueryParams util', () => {
     } as Repository)
 
     expect(result).toEqual({ owner: '', repo: 'bar' })
+  })
+})
+
+describe('mapStringToRepositoryQueryParams util', () => {
+  it('should return full repo details from splittable string', () => {
+    const result = mapStringToRepositoryQueryParams('org/name')
+
+    expect(result).toEqual({ owner: 'org', repo: 'name' })
+  })
+
+  it('should return partial repo details from non-splittable string', () => {
+    const result = mapStringToRepositoryQueryParams('foo')
+
+    expect(result).toEqual({ owner: 'foo', repo: '' })
+  })
+
+  it('should return empty details from empty string', () => {
+    const result = mapStringToRepositoryQueryParams('')
+
+    expect(result).toEqual({ owner: '', repo: '' })
   })
 })

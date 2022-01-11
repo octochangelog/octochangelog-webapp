@@ -25,13 +25,9 @@ export function mapRepositoryToQueryParams(
 
 export function mapStringToRepositoryQueryParams(
   str: string
-): RepositoryQueryParams | null {
-  try {
-    const [owner, repo] = str.split('/')
-    return { owner, repo }
-  } catch (_: unknown) {
-    return null
-  }
+): RepositoryQueryParams {
+  const [owner = '', repo = ''] = str.split('/')
+  return { owner, repo }
 }
 
 type FilterReleasesNodes = {
