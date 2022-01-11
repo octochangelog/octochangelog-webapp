@@ -37,6 +37,9 @@ export function getReleaseVersion(release: Release): string {
   return release.tag_name
 }
 
+/**
+ * releases - Must be in desc order
+ */
 type FilterReleasesNodes = {
   releases: Array<Release>
   from: ReleaseVersion

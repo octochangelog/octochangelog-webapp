@@ -1,6 +1,7 @@
 import type { Release, Repository } from '../models'
 
 import {
+  filterReleasesByVersionRange,
   getReleaseVersion,
   mapRepositoryToQueryParams,
   mapStringToRepositoryQueryParams,
@@ -78,5 +79,82 @@ describe('getReleaseVersion util', () => {
     } as Release)
 
     expect(result).toBe('v1.2.3')
+  })
+})
+
+describe('filterReleasesByVersionRange util', () => {
+  const getFakeReleases = (): Array<Release> => {
+    return [
+      { tag_name: 'v2.9.23' },
+      { tag_name: 'v2.9.15' },
+      { tag_name: 'v2.9.7' },
+      { tag_name: 'v2.2.0' },
+      { tag_name: 'v2.1.0' },
+      { tag_name: 'v2.0.0' },
+      { tag_name: 'v1.1.2' },
+      { tag_name: 'v1.1.1' },
+      { tag_name: 'v1.1.0' },
+      { tag_name: 'v1.0.0' },
+    ] as Array<Release>
+  }
+
+  it('should filter by provided range excluding the "from" but including the "to"', () => {
+    const result = filterReleasesByVersionRange({
+      releases: getFakeReleases(),
+      from: 'v2.0.0',
+      to: 'v2.9.7',
+    })
+
+    expect(result).toEqual([
+      { tag_name: 'v2.9.7' },
+      { tag_name: 'v2.2.0' },
+      { tag_name: 'v2.1.0' },
+    ])
+  })
+
+  it('should filter until the latest available release', () => {
+    const result = filterReleasesByVersionRange({
+      releases: getFakeReleases(),
+      from: 'v2.0.0',
+      to: 'latest',
+    })
+
+    expect(result).toEqual([
+      { tag_name: 'v2.9.23' },
+      { tag_name: 'v2.9.15' },
+      { tag_name: 'v2.9.7' },
+      { tag_name: 'v2.2.0' },
+      { tag_name: 'v2.1.0' },
+    ])
+  })
+
+  it('should return an empty array if the range is the other way around', () => {
+    const result = filterReleasesByVersionRange({
+      releases: getFakeReleases(),
+      from: 'v2.0.0',
+      to: 'v1.0.0',
+    })
+
+    expect(result).toEqual([])
+  })
+
+  it('should return an empty array if the releases are out of the rage', () => {
+    const result = filterReleasesByVersionRange({
+      releases: getFakeReleases(),
+      from: 'v2.99.0',
+      to: 'v5.0.0',
+    })
+
+    expect(result).toEqual([])
+  })
+
+  it('should throw an error if a range version is invalid', () => {
+    expect(() =>
+      filterReleasesByVersionRange({
+        releases: getFakeReleases(),
+        from: '1',
+        to: '2',
+      })
+    ).toThrow(TypeError('Invalid Version: 1'))
   })
 })
