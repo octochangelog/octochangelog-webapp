@@ -1,4 +1,4 @@
-import type { ReleaseLike, Repository } from '../models'
+import type { Release, Repository } from '../models'
 
 import {
   getReleaseVersion,
@@ -57,7 +57,7 @@ describe('getReleaseVersion util', () => {
     const result = getReleaseVersion({
       tag_name: 'latest',
       name: 'v5.2.0',
-    } as ReleaseLike)
+    } as Release)
 
     expect(result).toBe('v5.2.0')
   })
@@ -66,7 +66,7 @@ describe('getReleaseVersion util', () => {
     const result = getReleaseVersion({
       tag_name: 'latest',
       name: '',
-    } as ReleaseLike)
+    } as Release)
 
     expect(result).toBe('latest')
   })
@@ -75,7 +75,7 @@ describe('getReleaseVersion util', () => {
     const result = getReleaseVersion({
       tag_name: 'v1.2.3',
       name: 'ignore-me',
-    } as ReleaseLike)
+    } as Release)
 
     expect(result).toBe('v1.2.3')
   })

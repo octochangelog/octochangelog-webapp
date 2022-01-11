@@ -7,7 +7,6 @@ import type {
   MiscGroupTitle,
   Release,
   ReleaseGroupTitle,
-  ReleaseLike,
   ReleaseVersion,
   Repository,
   RepositoryQueryParams,
@@ -30,18 +29,18 @@ export function mapStringToRepositoryQueryParams(
   return { owner, repo }
 }
 
-type FilterReleasesNodes = {
-  releases: Array<Release>
-  from: ReleaseVersion
-  to: ReleaseVersion
-}
-
-export function getReleaseVersion(release: ReleaseLike): string {
+export function getReleaseVersion(release: Release): string {
   if (release.tag_name === 'latest') {
     return release.name || release.tag_name
   }
 
   return release.tag_name
+}
+
+type FilterReleasesNodes = {
+  releases: Array<Release>
+  from: ReleaseVersion
+  to: ReleaseVersion
 }
 
 export function filterReleasesByVersionRange(

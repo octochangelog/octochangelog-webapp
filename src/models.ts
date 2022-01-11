@@ -1,4 +1,4 @@
-import type { RestEndpointMethodTypes } from '@octokit/rest'
+import type { components } from '@octokit/openapi-types'
 import type { Root } from 'mdast'
 import type { ReactElement } from 'react'
 
@@ -13,13 +13,9 @@ export type RepositoryQueryParams = {
   owner: string
 }
 
-export type Repository =
-  RestEndpointMethodTypes['repos']['get']['response']['data']
+export type Repository = components['schemas']['full-repository']
 
-export type Release =
-  RestEndpointMethodTypes['repos']['getRelease']['response']['data']
-
-export type ReleaseLike = Release
+export type Release = components['schemas']['release']
 
 export interface ProcessedRelease extends Omit<Release, 'body'> {
   title: string
