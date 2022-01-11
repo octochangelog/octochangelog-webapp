@@ -1,6 +1,7 @@
-import type { Repository } from '../models'
+import type { ReleaseLike, Repository } from '../models'
 
 import {
+  getReleaseVersion,
   mapRepositoryToQueryParams,
   mapStringToRepositoryQueryParams,
 } from '~/utils'
@@ -48,5 +49,34 @@ describe('mapStringToRepositoryQueryParams util', () => {
     const result = mapStringToRepositoryQueryParams('')
 
     expect(result).toEqual({ owner: '', repo: '' })
+  })
+})
+
+describe('getReleaseVersion util', () => {
+  it('should return the release name for a "latest" release', () => {
+    const result = getReleaseVersion({
+      tag_name: 'latest',
+      name: 'v5.2.0',
+    } as ReleaseLike)
+
+    expect(result).toBe('v5.2.0')
+  })
+
+  it('should return the tag name as fallback for a "latest" release', () => {
+    const result = getReleaseVersion({
+      tag_name: 'latest',
+      name: '',
+    } as ReleaseLike)
+
+    expect(result).toBe('latest')
+  })
+
+  it('should return the tag name for a "non-latest" release', () => {
+    const result = getReleaseVersion({
+      tag_name: 'v1.2.3',
+      name: 'ignore-me',
+    } as ReleaseLike)
+
+    expect(result).toBe('v1.2.3')
   })
 })
