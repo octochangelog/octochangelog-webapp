@@ -106,6 +106,7 @@ jobs:
       fail-fast: false
       matrix:
         # run 3 copies of the current job in parallel
+        # (remember to update PERCY_PARALLEL_TOTAL if this is changed)
         containers: [1, 2, 3]
 
     steps:
@@ -135,10 +136,16 @@ jobs:
           group: merge
           # tag will be either "push" or "pull_request"
           tag: ${{ github.event_name }}
+          command-prefix: 'percy exec -- npx'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_PARALLEL_TOTAL: 3
+          PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ github.sha }}'
+          PERCY_TARGET_BRANCH: 'main'
+          PERCY_BRANCH: ${{ github.head_ref }}
           # - if the event is push, the title will be undefined
           # and Cypress will get the commit message from Git information
           # - if the event is pull_request, then we set the commit
