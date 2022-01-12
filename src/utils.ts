@@ -4,13 +4,11 @@ import * as semver from 'semver'
 
 import { HIGH_PRIORITY_GROUP_TITLES, LOW_PRIORITY_GROUP_TITLES } from '~/common'
 import type {
-  MiscGroupTitle,
   Release,
-  ReleaseGroupTitle,
+  ReleaseGroup,
   ReleaseVersion,
   Repository,
   RepositoryQueryParams,
-  SemVerGroupTitle,
 } from '~/models'
 
 export function mapRepositoryToQueryParams(
@@ -78,9 +76,7 @@ export function getMdastContentNodeTitle(mdastNode: Content): string {
   return 'unknown'
 }
 
-export function getMdastContentReleaseGroup(
-  mdastNode: Content
-): MiscGroupTitle | SemVerGroupTitle | string {
+export function getMdastContentReleaseGroup(mdastNode: Content): ReleaseGroup {
   const nodeTitle = getMdastContentNodeTitle(mdastNode)
   const mdastTitle = lowerCase(nodeTitle)
 
@@ -113,7 +109,7 @@ export function getMdastContentReleaseGroup(
   return mdastTitle
 }
 
-const getTitlePriorityGroup = (titleParam: ReleaseGroupTitle): -1 | 0 | 1 => {
+const getReleaseGroupPriority = (titleParam: ReleaseGroup): -1 | 0 | 1 => {
   if (HIGH_PRIORITY_GROUP_TITLES.includes(titleParam)) {
     return -1
   }
@@ -125,10 +121,9 @@ const getTitlePriorityGroup = (titleParam: ReleaseGroupTitle): -1 | 0 | 1 => {
   return 0
 }
 
-// TODO: add tests for all variants
-export function compareReleaseGroupTitlesSort(a: string, b: string): number {
-  const aPriority = getTitlePriorityGroup(a)
-  const bPriority = getTitlePriorityGroup(b)
+export function compareReleaseGroupsFunction(a: string, b: string): number {
+  const aPriority = getReleaseGroupPriority(a)
+  const bPriority = getReleaseGroupPriority(b)
 
   // They belong to different priorities group, sort by highest one
   if (aPriority !== bPriority) {

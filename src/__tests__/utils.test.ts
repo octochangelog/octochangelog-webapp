@@ -2,6 +2,7 @@ import type { Content } from 'mdast'
 
 import type { Release, Repository, RepositoryQueryParams } from '~/models'
 import {
+  compareReleaseGroupsFunction,
   filterReleasesByVersionRange,
   getMdastContentNodeTitle,
   getMdastContentReleaseGroup,
@@ -211,4 +212,32 @@ describe('getMdastContentReleaseGroup util', () => {
       expect(result).toBe(output)
     }
   )
+})
+
+describe('compareReleaseGroupSort util', () => {
+  it('should sort groups as expected', () => {
+    const groups = [
+      'credits',
+      'features',
+      '📑 documentation',
+      'bug fixes',
+      'core changes',
+      'thanks',
+      'artifacts',
+      'breaking changes',
+    ]
+
+    groups.sort(compareReleaseGroupsFunction)
+
+    expect(groups).toEqual([
+      'breaking changes',
+      'features',
+      'bug fixes',
+      '📑 documentation',
+      'core changes',
+      'credits',
+      'thanks',
+      'artifacts',
+    ])
+  })
 })

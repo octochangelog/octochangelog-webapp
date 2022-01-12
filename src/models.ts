@@ -2,11 +2,11 @@ import type { components } from '@octokit/openapi-types'
 import type { Root } from 'mdast'
 import type { ReactElement } from 'react'
 
-export type SemVerGroupTitle = 'breaking changes' | 'features' | 'bug fixes'
+export type SemVerGroup = 'breaking changes' | 'features' | 'bug fixes'
 
-export type MiscGroupTitle = 'others' | 'artifacts' | 'thanks' | 'credits'
+export type MiscGroup = 'others' | 'artifacts' | 'thanks' | 'credits'
 
-export type ReleaseGroupTitle = SemVerGroupTitle | MiscGroupTitle | string
+export type ReleaseGroup = SemVerGroup | MiscGroup | string
 
 export type RepositoryQueryParams = {
   repo: string
@@ -24,7 +24,7 @@ export interface ProcessedRelease extends Omit<Release, 'body'> {
 }
 
 export type ProcessedReleasesCollection = Record<
-  ReleaseGroupTitle,
+  ReleaseGroup,
   Array<ProcessedRelease>
 >
 
