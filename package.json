@@ -59,6 +59,7 @@
     "unified": "10.1.1"
   },
   "devDependencies": {
+    "@applitools/eyes-cypress": "3.23.5",
     "@chakra-ui/cli": "1.7.0",
     "@testing-library/cypress": "8.0.2",
     "@types/jest": "27.4.0",
