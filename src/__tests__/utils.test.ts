@@ -1,5 +1,4 @@
-import type { Release, Repository } from '../models'
-
+import type { Release, Repository, RepositoryQueryParams } from '~/models'
 import {
   filterReleasesByVersionRange,
   getReleaseVersion,
@@ -8,78 +7,57 @@ import {
 } from '~/utils'
 
 describe('mapRepositoryToQueryParams util', () => {
-  it('should map an undefined repository', () => {
-    const result = mapRepositoryToQueryParams()
+  it.each`
+    label               | input                                       | output
+    ${'an empty repo'}  | ${undefined}                                | ${{ owner: '', repo: '' }}
+    ${'a full repo'}    | ${{ owner: { login: 'foo' }, name: 'bar' }} | ${{ owner: 'foo', repo: 'bar' }}
+    ${'a partial repo'} | ${{ owner: {}, name: 'bar' }}               | ${{ owner: '', repo: 'bar' }}
+  `(
+    'should map $label',
+    ({
+      input,
+      output,
+    }: {
+      input: undefined | Repository
+      output: RepositoryQueryParams
+    }) => {
+      const result = mapRepositoryToQueryParams(input)
 
-    expect(result).toEqual({ owner: '', repo: '' })
-  })
-
-  it('should map a full repository', () => {
-    const result = mapRepositoryToQueryParams({
-      owner: { login: 'foo' },
-      name: 'bar',
-    } as Repository)
-
-    expect(result).toEqual({ owner: 'foo', repo: 'bar' })
-  })
-
-  it('should map a partial repository', () => {
-    const result = mapRepositoryToQueryParams({
-      owner: {},
-      name: 'bar',
-    } as Repository)
-
-    expect(result).toEqual({ owner: '', repo: 'bar' })
-  })
+      expect(result).toEqual(output)
+    }
+  )
 })
 
 describe('mapStringToRepositoryQueryParams util', () => {
-  it('should return full repo details from splittable string', () => {
-    const result = mapStringToRepositoryQueryParams('org/name')
+  it.each`
+    label                                                | input         | output
+    ${'full repo details from splittable string'}        | ${'org/name'} | ${{ owner: 'org', repo: 'name' }}
+    ${'partial repo details from non-splittable string'} | ${'foo'}      | ${{ owner: 'foo', repo: '' }}
+    ${'empty details from empty string'}                 | ${''}         | ${{ owner: '', repo: '' }}
+  `('should return $label', ({ input, output }) => {
+    const result = mapStringToRepositoryQueryParams(input)
 
-    expect(result).toEqual({ owner: 'org', repo: 'name' })
-  })
-
-  it('should return partial repo details from non-splittable string', () => {
-    const result = mapStringToRepositoryQueryParams('foo')
-
-    expect(result).toEqual({ owner: 'foo', repo: '' })
-  })
-
-  it('should return empty details from empty string', () => {
-    const result = mapStringToRepositoryQueryParams('')
-
-    expect(result).toEqual({ owner: '', repo: '' })
+    expect(result).toEqual(output)
   })
 })
 
 describe('getReleaseVersion util', () => {
-  it('should return the release name for a "latest" release', () => {
-    const result = getReleaseVersion({
-      tag_name: 'latest',
-      name: 'v5.2.0',
-    } as Release)
+  it.each`
+    tagName     | releaseName    | output
+    ${'latest'} | ${'v5.2.0'}    | ${'v5.2.0'}
+    ${'latest'} | ${''}          | ${'latest'}
+    ${'v1.2.3'} | ${'ignore me'} | ${'v1.2.3'}
+  `(
+    'should return the correct version for a release with tag "$tagName" and name "$releaseName"',
+    ({ tagName, releaseName, output }) => {
+      const result = getReleaseVersion({
+        tag_name: tagName,
+        name: releaseName,
+      } as Release)
 
-    expect(result).toBe('v5.2.0')
-  })
-
-  it('should return the tag name as fallback for a "latest" release', () => {
-    const result = getReleaseVersion({
-      tag_name: 'latest',
-      name: '',
-    } as Release)
-
-    expect(result).toBe('latest')
-  })
-
-  it('should return the tag name for a "non-latest" release', () => {
-    const result = getReleaseVersion({
-      tag_name: 'v1.2.3',
-      name: 'ignore-me',
-    } as Release)
-
-    expect(result).toBe('v1.2.3')
-  })
+      expect(result).toEqual(output)
+    }
+  )
 })
 
 describe('filterReleasesByVersionRange util', () => {
