@@ -4,6 +4,7 @@ import type { Release, Repository, RepositoryQueryParams } from '~/models'
 import {
   filterReleasesByVersionRange,
   getMdastContentNodeTitle,
+  getMdastContentReleaseGroup,
   getReleaseVersion,
   isStableRelease,
   mapRepositoryToQueryParams,
@@ -182,4 +183,32 @@ describe('getMdastContentNodeTitle util', () => {
 
     expect(result).toBe('unknown')
   })
+})
+
+describe('getMdastContentReleaseGroup util', () => {
+  it.each`
+    input                 | output
+    ${'Major Features'}   | ${'features'}
+    ${'🐙 Features'}      | ${'features'}
+    ${'Minor changes'}    | ${'features'}
+    ${'Breaking Changes'} | ${'breaking changes'}
+    ${'Major release'}    | ${'breaking changes'}
+    ${'🐞 Bug fixes'}     | ${'bug fixes'}
+    ${'bugs'}             | ${'bug fixes'}
+    ${'Patch release'}    | ${'bug fixes'}
+    ${'Thanks to'}        | ${'thanks'}
+    ${'Artifacts'}        | ${'artifacts'}
+    ${'Credits to'}       | ${'credits'}
+    ${'📑 Documentation'} | ${'📑 documentation'}
+    ${'Core changes:'}    | ${'core changes'}
+  `(
+    'should return the group "$output" for a node with the title "$input"',
+    ({ input, output }: { input: string; output: string }) => {
+      const result = getMdastContentReleaseGroup({
+        children: [{ value: input }],
+      } as Content)
+
+      expect(result).toBe(output)
+    }
+  )
 })

@@ -78,8 +78,7 @@ export function getMdastContentNodeTitle(mdastNode: Content): string {
   return 'unknown'
 }
 
-// TODO: add tests for all variants
-export function getReleaseGroupTitle(
+export function getMdastContentReleaseGroup(
   mdastNode: Content
 ): MiscGroupTitle | SemVerGroupTitle | string {
   const nodeTitle = getMdastContentNodeTitle(mdastNode)
