@@ -121,7 +121,7 @@ const getReleaseGroupPriority = (titleParam: ReleaseGroup): -1 | 0 | 1 => {
   return 0
 }
 
-export function compareReleaseGroupsSorting(a: string, b: string): number {
+export function compareReleaseGroupsByPriority(a: string, b: string): number {
   const aPriority = getReleaseGroupPriority(a)
   const bPriority = getReleaseGroupPriority(b)
 

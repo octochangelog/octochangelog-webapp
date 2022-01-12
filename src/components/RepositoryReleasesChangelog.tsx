@@ -20,7 +20,7 @@ import type {
 } from '~/models'
 import { useReleasesQuery } from '~/queries/release'
 import {
-  compareReleaseGroupsSorting,
+  compareReleaseGroupsByPriority,
   filterReleasesByVersionRange,
   compareReleasesByVersion,
 } from '~/utils'
@@ -118,7 +118,7 @@ const RepositoryReleasesChangelog = ({
   })()
 
   const sortedGroupTitles: Array<string> | null = processedReleases
-    ? Object.keys(processedReleases).sort(compareReleaseGroupsSorting)
+    ? Object.keys(processedReleases).sort(compareReleaseGroupsByPriority)
     : []
 
   // TODO: simplify conditional renders with state machine
