@@ -145,3 +145,7 @@ jobs:
           # message to the pull request title
           # https://github.com/cypress-io/github-action/issues/124#issuecomment-653180260
           COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+
+          # Applitools config
+          APPLITOOLS_IS_DISABLED: false
+          APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
