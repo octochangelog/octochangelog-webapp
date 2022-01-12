@@ -1,6 +1,9 @@
+import type { Content } from 'mdast'
+
 import type { Release, Repository, RepositoryQueryParams } from '~/models'
 import {
   filterReleasesByVersionRange,
+  getMdastContentNodeTitle,
   getReleaseVersion,
   isStableRelease,
   mapRepositoryToQueryParams,
@@ -155,4 +158,28 @@ describe('isStableRelease util', () => {
       expect(result).toBe(output)
     }
   )
+})
+
+describe('getMdastContentNodeTitle util', () => {
+  it('should return the title of the first child node found', () => {
+    const result = getMdastContentNodeTitle({
+      children: [{ value: 'foo' }, { value: 'bar' }],
+    } as Content)
+
+    expect(result).toBe('foo')
+  })
+
+  it('should return "unknown" if the first child node found has no title', () => {
+    const result = getMdastContentNodeTitle({
+      children: [{}, { value: 'bar' }],
+    } as Content)
+
+    expect(result).toBe('unknown')
+  })
+
+  it('should return "unknown" if there are no children', () => {
+    const result = getMdastContentNodeTitle({} as Content)
+
+    expect(result).toBe('unknown')
+  })
 })
