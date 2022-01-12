@@ -2,7 +2,7 @@ import type { Content } from 'mdast'
 
 import type { Release, Repository, RepositoryQueryParams } from '~/models'
 import {
-  compareReleaseGroupsFunction,
+  compareReleaseGroupsSorting,
   filterReleasesByVersionRange,
   getMdastContentNodeTitle,
   getMdastContentReleaseGroup,
@@ -214,7 +214,7 @@ describe('getMdastContentReleaseGroup util', () => {
   )
 })
 
-describe('compareReleaseGroupSort util', () => {
+describe('compareReleaseGroupsSorting util', () => {
   it('should sort groups as expected', () => {
     const groups = [
       'credits',
@@ -227,7 +227,7 @@ describe('compareReleaseGroupSort util', () => {
       'breaking changes',
     ]
 
-    groups.sort(compareReleaseGroupsFunction)
+    groups.sort(compareReleaseGroupsSorting)
 
     expect(groups).toEqual([
       'breaking changes',
