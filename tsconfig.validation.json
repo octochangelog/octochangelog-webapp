@@ -1,0 +1,13 @@
+/* Avoid clashing types between Cypress and Jest for validating types
+(i.e. type-check command)
+
+Inspired by official solution #1:
+https://docs.cypress.io/guides/tooling/typescript-support#Clashing-types-with-Jest
+*/
+
+{
+  "extends": "./tsconfig.json",
+
+  // Avoid excluding testing files for linting
+  "exclude": []
+}
