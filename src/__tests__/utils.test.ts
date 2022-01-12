@@ -123,7 +123,7 @@ describe('filterReleasesByVersionRange util', () => {
     expect(result).toEqual([])
   })
 
-  it('should return an empty array if the releases are out of the rage', () => {
+  it('should return an empty array if the releases are out of the range', () => {
     const result = filterReleasesByVersionRange({
       releases: getFakeReleases(),
       from: 'v2.99.0',
