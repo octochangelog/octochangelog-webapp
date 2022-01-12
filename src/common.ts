@@ -1,3 +1,5 @@
+import type { MiscGroup, SemVerGroup } from '~/models'
+
 export const IS_PRODUCTION_MODE = process.env.NODE_ENV === 'production'
 
 export const REPO_URL =
@@ -11,13 +13,13 @@ export const BRIEF_DESCRIPTION =
 export const FULL_DESCRIPTION =
   'Compare GitHub changelogs across multiple releases in a single view'
 
-export const HIGH_PRIORITY_GROUP_TITLES = [
+export const HIGH_PRIORITY_GROUP_TITLES: Array<SemVerGroup> = [
   'breaking changes',
   'features',
   'bug fixes',
 ]
 
-export const LOW_PRIORITY_GROUP_TITLES = [
+export const LOW_PRIORITY_GROUP_TITLES: Array<MiscGroup> = [
   'others',
   'credits',
   'thanks',
