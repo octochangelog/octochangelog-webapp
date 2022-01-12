@@ -1,4 +1,5 @@
 it('should display corresponding information', () => {
+  cy.eyesOpen()
   cy.visit('/')
 
   cy.title().should(
@@ -55,6 +56,8 @@ it('should display corresponding information', () => {
       // the image is gonna be searched within the link, so we can make sure the logo is part of the link!
       cy.findByRole('img', { name: /powered by vercel logo/i })
     })
+  cy.eyesCheckWindow()
+  cy.eyesClose()
 })
 
 it('should have a working link to comparator page', () => {
