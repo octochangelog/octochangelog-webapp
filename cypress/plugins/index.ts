@@ -19,6 +19,5 @@ const pluginConfig: Cypress.PluginConfig = () => {
 
 module.exports = pluginConfig
 
-// TODO: try to convert this to ESM export
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('@applitools/eyes-cypress')(module)
