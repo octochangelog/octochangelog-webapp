@@ -14,15 +14,15 @@ import useProcessReleases from '~/hooks/useProcessReleases'
 import type {
   ProcessedRelease,
   Release,
-  ReleaseGroupTitle,
+  ReleaseGroup,
   ReleaseVersion,
   Repository,
 } from '~/models'
 import { useReleasesQuery } from '~/queries/release'
 import {
-  compareReleaseGroupTitlesSort,
+  compareReleaseGroupsByPriority,
   filterReleasesByVersionRange,
-  releasesComparator,
+  compareReleasesByVersion,
 } from '~/utils'
 
 interface RepositoryReleasesChangelogProps {
@@ -37,7 +37,7 @@ const ReleaseChangelogGroup = ({
   repository,
   shouldShowTitle,
 }: {
-  title: ReleaseGroupTitle
+  title: ReleaseGroup
   releaseGroup: Array<ProcessedRelease>
   repository: Repository
   shouldShowTitle: boolean
@@ -100,7 +100,7 @@ const RepositoryReleasesChangelog = ({
         releases,
         from: fromVersion,
         to: toVersion,
-      }).sort((a, b) => releasesComparator(a, b, 'asc'))
+      }).sort((a, b) => compareReleasesByVersion(a, b, 'asc'))
       setFilteredReleases(newFilteredReleases)
     } else {
       setFilteredReleases(null)
@@ -118,7 +118,7 @@ const RepositoryReleasesChangelog = ({
   })()
 
   const sortedGroupTitles: Array<string> | null = processedReleases
-    ? Object.keys(processedReleases).sort(compareReleaseGroupTitlesSort)
+    ? Object.keys(processedReleases).sort(compareReleaseGroupsByPriority)
     : []
 
   // TODO: simplify conditional renders with state machine

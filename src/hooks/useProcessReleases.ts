@@ -8,7 +8,7 @@ import type {
   ProcessedReleasesCollection,
   Release,
 } from '~/models'
-import { getMdastContentNodeTitle, getReleaseGroupTitle } from '~/utils'
+import { getMdastContentNodeTitle, getMdastContentReleaseGroup } from '~/utils'
 
 function insertReleaseInGroup(
   newProcessedRelease: ProcessedRelease,
@@ -65,7 +65,7 @@ async function processReleasesAsync(
           }
 
           // ... and create new release if proper header found
-          const title = getReleaseGroupTitle(mdastNode)
+          const title = getMdastContentReleaseGroup(mdastNode)
           if (title) {
             newProcessedRelease = {
               title,

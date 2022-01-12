@@ -8,7 +8,7 @@ import {
 } from '~/contexts/comparator-context'
 import type { Release } from '~/models'
 import { useReleasesQuery } from '~/queries/release'
-import { getReleaseVersion, releasesComparator } from '~/utils'
+import { getReleaseVersion, compareReleasesByVersion } from '~/utils'
 
 function mapReleasesRange(
   releases?: Array<Release>
@@ -17,7 +17,7 @@ function mapReleasesRange(
     return [[], []]
   }
 
-  const sortedReleases = releases.sort(releasesComparator)
+  const sortedReleases = releases.sort(compareReleasesByVersion)
 
   // Remove very last version to leave a gap of 1 version between penultimate from version and last to version
   const fromReleases =
