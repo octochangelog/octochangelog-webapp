@@ -3,6 +3,7 @@ import type { Content } from 'mdast'
 import type { Release, Repository, RepositoryQueryParams } from '~/models'
 import {
   compareReleaseGroupsSorting,
+  compareReleasesByVersion,
   filterReleasesByVersionRange,
   getMdastContentNodeTitle,
   getMdastContentReleaseGroup,
@@ -215,7 +216,7 @@ describe('getMdastContentReleaseGroup util', () => {
 })
 
 describe('compareReleaseGroupsSorting util', () => {
-  it('should sort groups as expected', () => {
+  it('should sort groups by desc priority', () => {
     const groups = [
       'credits',
       'features',
@@ -238,6 +239,52 @@ describe('compareReleaseGroupsSorting util', () => {
       'credits',
       'thanks',
       'artifacts',
+    ])
+  })
+})
+
+describe('compareReleasesByVersion', () => {
+  const getUnsortedReleases = (): Array<Release> => {
+    return [
+      { tag_name: 'v4.5.0' },
+      { tag_name: 'v1.0.0' },
+      { tag_name: 'v0.9.0' },
+      { tag_name: 'v4.5.1' },
+      { tag_name: 'v5.0.0' },
+      { tag_name: 'v1.1.0' },
+      { tag_name: 'v1.0.1' },
+    ] as Array<Release>
+  }
+
+  it('should sort versions by desc order', () => {
+    const releases = getUnsortedReleases()
+
+    releases.sort(compareReleasesByVersion)
+
+    expect(releases).toEqual([
+      { tag_name: 'v5.0.0' },
+      { tag_name: 'v4.5.1' },
+      { tag_name: 'v4.5.0' },
+      { tag_name: 'v1.1.0' },
+      { tag_name: 'v1.0.1' },
+      { tag_name: 'v1.0.0' },
+      { tag_name: 'v0.9.0' },
+    ])
+  })
+
+  it('should sort versions by asc order', () => {
+    const releases = getUnsortedReleases()
+
+    releases.sort((a, b) => compareReleasesByVersion(a, b, 'asc'))
+
+    expect(releases).toEqual([
+      { tag_name: 'v0.9.0' },
+      { tag_name: 'v1.0.0' },
+      { tag_name: 'v1.0.1' },
+      { tag_name: 'v1.1.0' },
+      { tag_name: 'v4.5.0' },
+      { tag_name: 'v4.5.1' },
+      { tag_name: 'v5.0.0' },
     ])
   })
 })

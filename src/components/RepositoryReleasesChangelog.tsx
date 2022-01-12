@@ -22,7 +22,7 @@ import { useReleasesQuery } from '~/queries/release'
 import {
   compareReleaseGroupsSorting,
   filterReleasesByVersionRange,
-  compareReleaseVersionsSorting,
+  compareReleasesByVersion,
 } from '~/utils'
 
 interface RepositoryReleasesChangelogProps {
@@ -100,7 +100,7 @@ const RepositoryReleasesChangelog = ({
         releases,
         from: fromVersion,
         to: toVersion,
-      }).sort((a, b) => compareReleaseVersionsSorting(a, b, 'asc'))
+      }).sort((a, b) => compareReleasesByVersion(a, b, 'asc'))
       setFilteredReleases(newFilteredReleases)
     } else {
       setFilteredReleases(null)

@@ -155,7 +155,7 @@ export function compareReleaseGroupsSorting(a: string, b: string): number {
   return 0
 }
 
-export const releasesComparator = (
+export const compareReleasesByVersion = (
   a: Release,
   b: Release,
   order: 'asc' | 'desc' = 'desc'
