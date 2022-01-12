@@ -2,6 +2,7 @@ import type { Release, Repository, RepositoryQueryParams } from '~/models'
 import {
   filterReleasesByVersionRange,
   getReleaseVersion,
+  isStableRelease,
   mapRepositoryToQueryParams,
   mapStringToRepositoryQueryParams,
 } from '~/utils'
@@ -135,4 +136,23 @@ describe('filterReleasesByVersionRange util', () => {
       })
     ).toThrow(TypeError('Invalid Version: 1'))
   })
+})
+
+describe('isStableRelease util', () => {
+  it.each`
+    tagName                 | output
+    ${'v0.7.0'}             | ${true}
+    ${'v1.0.0'}             | ${true}
+    ${'v2.5.7'}             | ${true}
+    ${'v5.0.0-alpha.3'}     | ${false}
+    ${'v4.0.0-beta.4'}      | ${false}
+    ${'I am not a release'} | ${false}
+  `(
+    'should return "$output" for tag "$tagName"',
+    ({ tagName, output }: { tagName: string; output: boolean }) => {
+      const result = isStableRelease({ tag_name: tagName } as Release)
+
+      expect(result).toBe(output)
+    }
+  )
 })
