@@ -70,7 +70,7 @@
     "@types/semver": "7.3.9",
     "@types/unist": "2.0.6",
     "@typescript-eslint/eslint-plugin": "5.9.1",
-    "cypress": "9.2.0",
+    "cypress": "9.2.1",
     "eslint": "8.6.0",
     "eslint-config-next": "12.0.7",
     "eslint-config-prettier": "8.3.0",
