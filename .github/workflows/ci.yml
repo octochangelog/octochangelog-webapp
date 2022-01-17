@@ -136,7 +136,7 @@ jobs:
           group: merge
           # tag will be either "push" or "pull_request"
           tag: ${{ github.event_name }}
-          command-prefix: 'percy exec -- npx'
+          command-prefix: 'percy exec -t 350 -- npx'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
