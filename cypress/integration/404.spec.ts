@@ -23,5 +23,3 @@ it('should display custom 404 page when not found', () => {
   cy.findByRole('link', { name: 'Or go to homepage' }).click()
   cy.url().should('equal', `${Cypress.config().baseUrl}/`)
 })
-
-export {}

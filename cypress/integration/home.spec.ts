@@ -66,4 +66,3 @@ it('should have a working link to comparator page', () => {
 
   cy.url().should('equal', `${Cypress.config().baseUrl}/comparator`)
 })
-export {}
