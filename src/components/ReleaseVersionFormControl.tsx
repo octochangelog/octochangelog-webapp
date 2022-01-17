@@ -48,7 +48,9 @@ const ReleaseVersionFormControl = ({
 
   return (
     <FormControl isRequired width="full" {...rest}>
-      <FormLabel htmlFor={id}>{label}</FormLabel>
+      <FormLabel htmlFor={id} isTruncated>
+        {label}
+      </FormLabel>
       <Select
         id={id}
         placeholder={isLoading ? 'Loading...' : placeholder}

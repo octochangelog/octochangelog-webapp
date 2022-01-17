@@ -53,14 +53,14 @@ it('should display corresponding information', () => {
     // for something inside the previous element
     .within(() => {
       // the image is gonna be searched within the link, so we can make sure the logo is part of the link!
-      cy.findByRole('img', { name: /powered by vercel logo/i })
+      cy.findByRole('img', { name: '' }).should('have.attr', 'src')
     })
 })
 
 it('should have a working link to comparator page', () => {
   cy.visit('/')
 
-  cy.findByRole('button', { name: 'Try me now!' }).click()
+  cy.findByRole('link', { name: 'Try me now!' }).click()
 
   cy.url().should('equal', `${Cypress.config().baseUrl}/comparator`)
 })

@@ -1,11 +1,17 @@
-import { Box, Heading, Stack, VStack, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Heading,
+  Stack,
+  VStack,
+  Text,
+  Button,
+  Container,
+} from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import NextLink from 'next/link'
 
 import mascotIcon from '@app-public/mascot-icon.png'
-import { CTAButton } from '~/components/CTAButton'
-import FluidContainer from '~/components/FluidContainer'
 import Layout from '~/components/Layout'
 import RouteLink from '~/components/RouteLink'
 
@@ -13,7 +19,7 @@ const Custom404 = () => (
   <Layout>
     <NextSeo title="404 - Not Found" />
     <Box pb={{ base: 8, lg: 16 }} align="center">
-      <FluidContainer>
+      <Container variant="fluid">
         <VStack px="10">
           <Image
             src={mascotIcon}
@@ -50,15 +56,17 @@ const Custom404 = () => (
           </Stack>
         </VStack>
         <VStack mt={12} spacing={5}>
-          <NextLink href="/comparator">
-            <CTAButton>Go to comparator</CTAButton>
+          <NextLink href="/comparator" passHref>
+            <Button as="a" variant="cta">
+              Go to comparator
+            </Button>
           </NextLink>
 
-          <RouteLink href="/" color="primary.500" fontWeight="black">
+          <RouteLink href="/" fontWeight="black">
             Or go to homepage
           </RouteLink>
         </VStack>
-      </FluidContainer>
+      </Container>
     </Box>
   </Layout>
 )

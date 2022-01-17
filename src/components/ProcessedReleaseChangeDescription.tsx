@@ -4,6 +4,7 @@ import {
   Code,
   Heading,
   Icon,
+  Link,
   List,
   ListItem,
   Tag,
@@ -13,7 +14,6 @@ import {
 import { HiOutlineExternalLink } from 'react-icons/hi'
 
 import BlockQuote from '~/components/BlockQuote'
-import Link from '~/components/Link'
 import TextSkeleton from '~/components/TextSkeleton'
 import useProcessDescriptionMdast from '~/hooks/useProcessDescriptionMdast'
 import type { ProcessedRelease, Repository } from '~/models'

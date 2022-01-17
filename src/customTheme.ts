@@ -1,5 +1,7 @@
 import type { ColorHues, ThemeConfig } from '@chakra-ui/react'
-import { extendTheme } from '@chakra-ui/react'
+import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react'
+import { mode } from '@chakra-ui/theme-tools'
+import type { Dict } from '@chakra-ui/utils'
 
 // ***** Legacy colorscheme *****
 
@@ -101,36 +103,81 @@ const tertiaryTextDarkmode = coolGray['400']
 // ***** Collect constants, put them in a customTheme *****
 
 const themeConfig: ThemeConfig = {
-  initialColorMode: 'light',
   useSystemColorMode: !!process.env.NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE,
 }
 
-const customTheme = extendTheme({
-  colors: {
-    blue: blueColor,
-    primary: primaryColor,
-    secondary: blueColor,
-    coolGray,
-    fuchsia,
-    sky,
-    primaryTextLightmode,
-    secondaryTextLightmode,
-    tertiaryTextLightmode,
-    primaryTextDarkmode,
-    secondaryTextDarkmode,
-    tertiaryTextDarkmode,
-  },
-  fonts: {
-    heading: '"Inter", sans-serif;',
-    body: '"Inter", sans-serif;',
-    mono: '"Roboto Mono", monospace;',
-  },
-  styles: {
-    global: {
-      'html, body, #__next': { height: '100%' },
+const customTheme = extendTheme(
+  {
+    colors: {
+      blue: blueColor,
+      primary: primaryColor,
+      secondary: blueColor,
+      coolGray,
+      fuchsia,
+      sky,
+      primaryTextLightmode,
+      secondaryTextLightmode,
+      tertiaryTextLightmode,
+      primaryTextDarkmode,
+      secondaryTextDarkmode,
+      tertiaryTextDarkmode,
+    },
+    fonts: {
+      heading: '"Inter", sans-serif;',
+      body: '"Inter", sans-serif;',
+      mono: '"Roboto Mono", monospace;',
+    },
+    styles: {
+      global: {
+        'html, body, #__next': { height: '100%' },
+      },
+    },
+    config: themeConfig,
+    components: {
+      Link: {
+        baseStyle: (props: Dict) => {
+          return { color: mode('fuchsia.700', 'fuchsia.400')(props) }
+        },
+      },
+      Button: {
+        variants: {
+          cta: (props: Dict) => {
+            return {
+              fontWeight: 'black',
+              fontSize: '2xl',
+              letterSpacing: 'tight',
+              p: 6,
+              size: 'lg',
+              boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+              borderRadius: '2xl',
+              bg: mode('fuchsia.900', 'fuchsia.200')(props),
+              color: mode('white', 'fuchsia.900')(props),
+              _hover: {
+                bg: mode('fuchsia.700', 'fuchsia.100')(props),
+                cursor: 'pointer',
+              },
+              _active: {
+                bg: mode('fuchsia.800', 'fuchsia.200')(props),
+                boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.25) !important',
+              },
+            }
+          },
+        },
+      },
+      Container: {
+        variants: {
+          fluid: {
+            maxWidth: 'container.xl',
+          },
+        },
+      },
     },
   },
-  config: themeConfig,
-})
+  withDefaultColorScheme({ colorScheme: 'primary' }),
+  withDefaultColorScheme({
+    colorScheme: 'gray',
+    components: ['Code', 'BlockQuote'],
+  })
+)
 
 export default customTheme

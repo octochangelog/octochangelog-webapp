@@ -1,17 +1,23 @@
-import { Box, Center, HStack, Stack, useColorModeValue } from '@chakra-ui/react'
+import {
+  Box,
+  Center,
+  Container,
+  HStack,
+  Link,
+  Stack,
+  useColorModeValue,
+} from '@chakra-ui/react'
 import Image from 'next/image'
 
 import poweredByVercelLogo from '@app-public/powered-by-vercel.svg'
 import { REPO_URL } from '~/common'
-import FluidContainer from '~/components/FluidContainer'
-import Link from '~/components/Link'
 
 const Footer = () => {
   const boxBgColor = useColorModeValue('gray.50', 'gray.900')
 
   return (
     <Box as="footer" bg={boxBgColor} flexShrink={0}>
-      <FluidContainer py={5}>
+      <Container py={5} variant="fluid">
         <Stack
           justify="space-between"
           direction={['column', 'row']}
@@ -48,13 +54,14 @@ const Footer = () => {
               <Link
                 isExternal
                 href="https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss"
+                aria-label="Powered by Vercel"
               >
-                <Image alt="Powered by Vercel logo" src={poweredByVercelLogo} />
+                <Image alt="" src={poweredByVercelLogo} />
               </Link>
             </Center>
           </Box>
         </Stack>
-      </FluidContainer>
+      </Container>
     </Box>
   )
 }

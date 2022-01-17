@@ -29,7 +29,6 @@ The [git-scm.com](https://git-scm.com/) site has links to download Git for your 
 
 You can install Node.js + npm using a [Node.js version manager](https://docs.npmjs.com/cli/v7/configuring-npm/install#using-a-node-version-manager-to-install-nodejs-and-npm) (recommended).
 
-
 ### Where to get npm (optional)
 
 In case you didn't get npm v8 automatically bundled with Node.js, [there are different ways of installing/updating it](https://docs.npmjs.com/cli/v7/configuring-npm/install).
@@ -109,7 +108,7 @@ const Footer = () => {
 
   return (
     <Box as="footer" bg={boxBgColor}>
-      <FluidContainer></FluidContainer>
+      <Container></Container>
     </Box>
   )
 }
