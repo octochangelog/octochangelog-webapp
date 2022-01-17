@@ -29,7 +29,7 @@
     "e2e:headless": "start-server-and-test 'npm run build && npm run serve' http://localhost:3000 'npm run cypress:headless'",
     "e2e:percy": "start-server-and-test 'npm run build && npm run serve' http://localhost:3000 'npm run cypress:percy'",
     "gen:theme-typings": "chakra-cli tokens src/customTheme.ts --strict-component-types",
-    "prepare": "husky install",
+    "prepare": "is-ci || husky install",
     "postinstall": "npm run gen:theme-typings"
   },
   "dependencies": {
@@ -83,6 +83,7 @@
     "eslint-plugin-jest-formatting": "3.1.0",
     "eslint-plugin-unicorn": "40.1.0",
     "husky": "7.0.4",
+    "is-ci": "3.0.1",
     "jest": "27.4.7",
     "lint-staged": "12.1.7",
     "prettier": "2.5.1",
