@@ -6,7 +6,7 @@ module.exports = {
     percyCSS: '',
   },
   discovery: {
-    allowedHostnames: [],
+    allowedHostnames: ['fonts.gstatic.com', 'vercel.com'],
     networkIdleTimeout: 100,
   },
   static: {
