@@ -7,9 +7,6 @@ import { withSentryConfig } from '@sentry/nextjs'
  **/
 const config = {
   swcMinify: true,
-  images: {
-    formats: ['image/avif', 'image/webp'],
-  },
   async redirects() {
     return [
       {
