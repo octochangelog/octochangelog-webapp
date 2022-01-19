@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('@percy/core').PercyConfigOptions} */
+const percyConfig = {
   version: 2,
   snapshot: {
     widths: [375, 1280],
@@ -6,7 +7,7 @@ module.exports = {
     percyCSS: '',
   },
   discovery: {
-    allowedHostnames: ['fonts.gstatic.com', 'vercel.com'],
+    allowedHostnames: ['fonts.gstatic.com'],
     networkIdleTimeout: 100,
   },
   static: {
@@ -18,3 +19,5 @@ module.exports = {
     stripExtensions: false,
   },
 }
+
+module.exports = percyConfig
