@@ -55,6 +55,8 @@ it('should display corresponding information', () => {
       // the image is gonna be searched within the link, so we can make sure the logo is part of the link!
       cy.findByRole('img', { name: '' }).should('have.attr', 'src')
     })
+
+  cy.percySnapshot('Home page')
 })
 
 it('should have a working link to comparator page', () => {
@@ -64,4 +66,3 @@ it('should have a working link to comparator page', () => {
 
   cy.url().should('equal', `${Cypress.config().baseUrl}/comparator`)
 })
-export {}

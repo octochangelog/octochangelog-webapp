@@ -106,6 +106,7 @@ jobs:
       fail-fast: false
       matrix:
         # run 3 copies of the current job in parallel
+        # (remember to update PERCY_PARALLEL_TOTAL if this is changed)
         containers: [1, 2, 3]
 
     steps:
@@ -135,6 +136,7 @@ jobs:
           group: merge
           # tag will be either "push" or "pull_request"
           tag: ${{ github.event_name }}
+          command-prefix: 'percy exec -t 350 -- npx'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -145,3 +147,9 @@ jobs:
           # message to the pull request title
           # https://github.com/cypress-io/github-action/issues/124#issuecomment-653180260
           COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+
+          # Percy config
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_PARALLEL_TOTAL: 3 # remember to keep this synced with matrix.containers
+          PERCY_TARGET_BRANCH: 'main'
+          PERCY_BRANCH: ${{ github.head_ref }}
