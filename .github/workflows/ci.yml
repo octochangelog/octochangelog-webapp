@@ -151,6 +151,5 @@ jobs:
           # Percy config
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
           PERCY_PARALLEL_TOTAL: 3
-          PERCY_PARALLEL_NONCE: '${{ github.event_name }}-${{ github.sha }}'
           PERCY_TARGET_BRANCH: 'main'
           PERCY_BRANCH: ${{ github.head_ref }}
