@@ -106,7 +106,6 @@ jobs:
       fail-fast: false
       matrix:
         # run 3 copies of the current job in parallel
-        # (remember to update PERCY_PARALLEL_TOTAL if this is changed)
         containers: [1, 2, 3]
 
     steps:
