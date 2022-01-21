@@ -56,7 +56,7 @@ it('should display corresponding information', () => {
       cy.findByRole('img', { name: '' }).should('have.attr', 'src')
     })
 
-  cy.percySnapshot('Home page')
+  cy.get('body').happoScreenshot({ component: 'Home page' })
 })
 
 it('should have a working link to comparator page', () => {

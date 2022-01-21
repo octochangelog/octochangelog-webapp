@@ -95,5 +95,5 @@ it('should show expected results when using standard query string', () => {
 
   cy.findByRole('heading', { level: 2, name: /chore/i })
 
-  cy.percySnapshot('Comparator page')
+  cy.get('body').happoScreenshot({ component: 'Comparator page: full example' })
 })
