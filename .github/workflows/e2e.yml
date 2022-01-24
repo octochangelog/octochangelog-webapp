@@ -18,6 +18,8 @@ jobs:
     name: Cypress with Happo
     runs-on: ubuntu-latest
     env:
+      HAPPO_API_KEY: ${{ secrets.HAPPO_API_KEY }}
+      HAPPO_API_SECRET: ${{ secrets.HAPPO_API_SECRET }}
       HAPPO_NONCE: '${{ github.event_name }}-${{ github.sha }}'
     strategy:
       # when one test fails, DO NOT cancel the other
@@ -67,10 +69,6 @@ jobs:
           # message to the pull request title
           # https://github.com/cypress-io/github-action/issues/124#issuecomment-653180260
           COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
-
-          # Visual Testing config
-          HAPPO_API_KEY: ${{ secrets.HAPPO_API_KEY }}
-          HAPPO_API_SECRET: ${{ secrets.HAPPO_API_SECRET }}
 
       - name: Finalize Happo
         run: npx happo-e2e finalize
