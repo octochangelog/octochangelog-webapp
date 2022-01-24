@@ -74,6 +74,7 @@ jobs:
   finalize-happo:
     name: Finalize Happo
     runs-on: ubuntu-latest
+    if: ${{ always() }}
     needs:
       - cypress
     steps:
