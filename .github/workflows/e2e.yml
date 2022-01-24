@@ -73,5 +73,5 @@ jobs:
           HAPPO_API_SECRET: ${{ secrets.HAPPO_API_SECRET }}
 
       - name: Finalize Happo
-        run: 'node bin/happo-e2e.js finalize'
+        run: npx happo-e2e finalize
         if: always()
