@@ -74,3 +74,4 @@ jobs:
 
       - name: Finalize Happo
         run: 'node bin/happo-e2e.js finalize'
+        if: always()
