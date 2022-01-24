@@ -20,7 +20,7 @@ jobs:
     env:
       HAPPO_API_KEY: ${{ secrets.HAPPO_API_KEY }}
       HAPPO_API_SECRET: ${{ secrets.HAPPO_API_SECRET }}
-      HAPPO_NONCE: '${{ github.event_name }}-${{ github.sha }}'
+      HAPPO_NONCE: '${{ github.run_id }}-${{ github.run_attempt }}'
     strategy:
       # when one test fails, DO NOT cancel the other
       # containers, because this will kill Cypress processes
