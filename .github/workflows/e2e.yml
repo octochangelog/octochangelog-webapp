@@ -15,8 +15,10 @@ permissions:
 
 jobs:
   cypress:
-    name: Cypress with Percy
+    name: Cypress with Happo
     runs-on: ubuntu-latest
+    env:
+      HAPPO_NONCE: '${{ github.event_name }}-${{ github.sha }}'
     strategy:
       # when one test fails, DO NOT cancel the other
       # containers, because this will kill Cypress processes
@@ -25,7 +27,6 @@ jobs:
       fail-fast: false
       matrix:
         # run 3 copies of the current job in parallel
-        # (remember to update PERCY_PARALLEL_TOTAL if this is changed)
         containers: [1, 2, 3]
 
     steps:
@@ -55,7 +56,7 @@ jobs:
           group: merge
           # tag will be either "push" or "pull_request"
           tag: ${{ github.event_name }}
-          command-prefix: 'percy exec -t 350 -- npx'
+          command-prefix: 'npx happo-e2e --port 3000 -- npx'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -68,6 +69,8 @@ jobs:
           COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
 
           # Visual Testing config
-          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          PERCY_PARALLEL_TOTAL: 3 # remember to keep this synced with matrix.containers
-          PERCY_BRANCH: ${{ github.head_ref }}
+          HAPPO_API_KEY: ${{ secrets.HAPPO_API_KEY }}
+          HAPPO_API_SECRET: ${{ secrets.HAPPO_API_SECRET }}
+
+      - name: Finalize Happo
+        run: 'node bin/happo-e2e.js finalize'
