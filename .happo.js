@@ -16,7 +16,7 @@ module.exports = {
     'Chrome - Mobile': new RemoteBrowserTarget('chrome', {
       viewport: MOBILE_VIEWPORT,
     }),
-    'Safari - Mobile': new RemoteBrowserTarget('ios-safari', {
+    'Safari - Mobile': new RemoteBrowserTarget('safari', {
       viewport: MOBILE_VIEWPORT,
     }),
   },
