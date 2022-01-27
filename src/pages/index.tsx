@@ -40,7 +40,6 @@ const MainSection = () => (
       alignItems={{ base: 'center', lg: 'start' }}
       spacing="8"
       flexGrow={1}
-      flexBasis={0}
     >
       <Heading
         as="h2"
