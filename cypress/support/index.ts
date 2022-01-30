@@ -15,7 +15,6 @@
 
 import { GITHUB_STORAGE_KEY } from '~/github-client'
 import './commands'
-import '@percy/cypress'
 
 // Set GitHub token for all tests
 before(() => {
