@@ -16,7 +16,7 @@ const Header = (props: BoxProps) => {
       zIndex="banner"
       {...props}
       borderTopWidth={{ base: '4px', sm: '8px' }}
-      borderColor="fuchsia.700"
+      borderColor="primary.700"
     >
       <Container variant="fluid" py={5}>
         <Flex justify="space-between" alignItems="center">
@@ -26,14 +26,14 @@ const Header = (props: BoxProps) => {
               borderBottomWidth={4}
               borderBottomColor="transparent"
               _hover={{
-                borderBottomColor: 'fuchsia.700',
+                borderBottomColor: 'primary.700',
               }}
               _focus={{
                 boxShadow: 'outline',
-                borderBottomColor: 'fuchsia.700',
+                borderBottomColor: 'primary.700',
               }}
               _active={{
-                borderBottomColor: 'fuchsia.900',
+                borderBottomColor: 'primary.900',
               }}
             >
               <HStack spacing={2}>
