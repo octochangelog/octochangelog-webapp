@@ -39,7 +39,6 @@ const Header = (props: BoxProps) => {
               <HStack spacing={2}>
                 <Box h={LOGO_SIZES} w={LOGO_SIZES}>
                   <Image
-                    priority
                     src={mascotIcon}
                     alt=""
                     placeholder="blur"
