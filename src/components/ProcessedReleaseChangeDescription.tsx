@@ -68,10 +68,20 @@ const RemarkOl = (props: unknown) => (
 const RemarkLi = (props: ListItemProps) => <ListItem {...props} />
 
 const RemarkPre = (props: unknown) => (
-  <Code as="pre" display="block" mb="4" p="3" overflowX="auto" {...props} />
+  <Code
+    as="pre"
+    display="block"
+    bgColor="primaryBg"
+    mb="4"
+    p="3"
+    overflowX="auto"
+    {...props}
+  />
 )
 
-const RemarkCode = (props: unknown) => <Code color="inherit" {...props} />
+const RemarkCode = (props: unknown) => (
+  <Code color="inherit" bgColor="primaryBg" {...props} />
+)
 
 const RemarkBlockquote = (props: unknown) => <BlockQuote mb="2" {...props} />
 

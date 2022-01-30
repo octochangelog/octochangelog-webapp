@@ -76,15 +76,21 @@ const customTheme = extendTheme(
       primary: fuchsia,
       secondary: sky,
       gray: coolGray,
-      primaryTextLightMode,
-      secondaryTextLightMode,
-      tertiaryTextLightMode,
-      primaryTextDarkMode,
-      secondaryTextDarkMode,
-      tertiaryTextDarkMode,
     },
     semanticTokens: {
       colors: {
+        primaryText: {
+          default: primaryTextLightMode,
+          _dark: primaryTextDarkMode,
+        },
+        secondaryText: {
+          default: secondaryTextLightMode,
+          _dark: secondaryTextDarkMode,
+        },
+        tertiaryText: {
+          default: tertiaryTextLightMode,
+          _dark: tertiaryTextDarkMode,
+        },
         primaryBg: {
           default: 'gray.50',
           _dark: 'gray.900',
