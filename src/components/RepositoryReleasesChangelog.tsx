@@ -51,7 +51,7 @@ const ReleaseChangelogGroup = ({
         <Heading
           as="h2"
           size="xl"
-          bg="white"
+          bgColor="secondaryBg"
           mb={4}
           py={4}
           textTransform={textTransform}
