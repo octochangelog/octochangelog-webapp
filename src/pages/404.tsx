@@ -31,7 +31,7 @@ const Custom404 = () => (
           >
             <Heading
               as="h2"
-              color="primaryTextLightmode"
+              color="primaryText"
               fontSize="4xl"
               fontWeight="black"
               letterSpacing="tight"
@@ -40,7 +40,7 @@ const Custom404 = () => (
             </Heading>
             <Text
               as="p"
-              color="secondaryTextLightmode"
+              color="secondaryText"
               fontSize="2xl"
               fontWeight="black"
             >

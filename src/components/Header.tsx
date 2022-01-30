@@ -44,7 +44,7 @@ const Header = (props: BoxProps) => {
                 </Box>
                 <Heading
                   as="h1"
-                  color="primaryTextLightmode"
+                  color="primaryText"
                   letterSpacing="tight"
                   fontWeight="black"
                   fontSize={{ base: '16px', sm: '36px' }}

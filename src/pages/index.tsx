@@ -42,7 +42,7 @@ const MainSection = () => (
     >
       <Heading
         as="h2"
-        color="gray.900"
+        color="primaryText"
         fontSize="4xl"
         fontWeight="black"
         textAlign={{ base: 'center', lg: 'left' }}
@@ -80,13 +80,13 @@ const HomePage = () => {
                 as="h3"
                 fontSize="3xl"
                 mb="4"
-                color="primaryTextLightmode"
+                color="primaryText"
                 fontWeight="black"
                 id="features"
               >
                 Features
               </Heading>
-              <List fontSize="" color="secondaryTextLightmode" spacing="4">
+              <List fontSize="" color="secondaryText" spacing="4">
                 <ListItem d="flex">
                   <ListIcon
                     as={HiOutlineSwitchHorizontal}

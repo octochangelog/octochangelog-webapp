@@ -7,7 +7,7 @@ const BlockQuote = (props: BoxProps) => (
     px={4}
     borderLeftWidth={4}
     borderLeftColor="coolGray.200"
-    color="tertiaryTextLightmode"
+    color="tertiaryText"
     {...props}
   />
 )
