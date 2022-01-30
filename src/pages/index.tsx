@@ -11,7 +11,6 @@ import {
   VStack,
   Text,
   Container,
-  useColorModeValue,
 } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
@@ -64,18 +63,16 @@ const MainSection = () => (
 )
 
 const HomePage = () => {
-  const pageBgColor = useColorModeValue('gray.50', 'gray.900')
-
   return (
     <Layout>
       <NextSeo />
-      <Box mt={-8} py={{ base: 8, lg: 16 }} bgColor={pageBgColor}>
+      <Box mt={-8} py={{ base: 8, lg: 16 }}>
         <Container variant="fluid">
           <MainSection />
         </Container>
       </Box>
 
-      <Box bg="gray.50">
+      <Box>
         <Container variant="fluid">
           <VStack spacing={8} alignItems="left" py="20" px="10">
             <Box>

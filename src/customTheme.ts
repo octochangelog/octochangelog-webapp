@@ -83,6 +83,18 @@ const customTheme = extendTheme(
       secondaryTextDarkMode,
       tertiaryTextDarkMode,
     },
+    semanticTokens: {
+      colors: {
+        primaryBg: {
+          default: 'gray.50',
+          _dark: 'gray.900',
+        },
+        secondaryBg: {
+          default: 'gray.100',
+          _dark: 'gray.800',
+        },
+      },
+    },
     fonts: {
       heading: '"Inter", sans-serif;',
       body: '"Inter", sans-serif;',
