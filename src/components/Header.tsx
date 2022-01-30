@@ -23,17 +23,19 @@ const Header = (props: BoxProps) => {
           <Flex alignItems="center">
             <RouteLink
               href="/"
-              borderBottomWidth={4}
-              borderBottomColor="transparent"
+              textDecorationLine="underline"
+              textDecorationThickness="4px"
+              textUnderlineOffset="2px"
+              textDecorationColor="transparent"
               _hover={{
-                borderBottomColor: 'primary.700',
+                textDecorationColor: 'primary.700',
               }}
               _focus={{
                 boxShadow: 'outline',
-                borderBottomColor: 'primary.700',
+                textDecorationColor: 'primary.700',
               }}
               _active={{
-                borderBottomColor: 'primary.900',
+                textDecorationColor: 'primary.900',
               }}
             >
               <HStack spacing={2}>
