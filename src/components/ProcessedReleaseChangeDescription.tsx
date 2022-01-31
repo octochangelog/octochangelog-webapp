@@ -126,13 +126,13 @@ const ProcessedReleaseChangeDescription = ({
         <>
           <Link isExternal href={processedReleaseChange.html_url}>
             <Tag
-              color="gray.900"
-              size="md"
+              color="secondary.900"
+              size="lg"
               mb={2}
               rounded="full"
-              bgColor="gray.100"
-              _hover={{ bgColor: 'gray.300' }}
-              _active={{ bgColor: 'gray.400', color: 'gray.900' }}
+              bgColor="secondary.200"
+              _hover={{ bgColor: 'secondary.300' }}
+              _active={{ bgColor: 'secondary.200', color: 'secondary.900' }}
             >
               <TagLabel>{getReleaseVersion(processedReleaseChange)}</TagLabel>
             </Tag>
