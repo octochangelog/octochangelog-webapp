@@ -15,6 +15,12 @@ it('should display corresponding information', () => {
     name: 'Compare GitHub changelogs across multiple releases',
   }).should('exist')
 
+  cy.findByRole('main').within(() => {
+    cy.findByRole('img')
+      .should('have.attr', 'src')
+      .and('contain', 'mascot-logo')
+  })
+
   cy.findByRole('heading', {
     level: 3,
     name: 'Features',
