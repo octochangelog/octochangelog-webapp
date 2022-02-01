@@ -15,10 +15,6 @@ it('should display corresponding information', () => {
     name: 'Compare GitHub changelogs across multiple releases',
   }).should('exist')
 
-  cy.findByAltText(/A purple octopus reading a crystal ball/i)
-    .should('have.attr', 'src')
-    .should('include', 'mascot-logo')
-
   cy.findByRole('heading', {
     level: 3,
     name: 'Features',
