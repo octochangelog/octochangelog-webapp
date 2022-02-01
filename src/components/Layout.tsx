@@ -11,7 +11,7 @@ interface Props {
 const Layout = ({ children }: Props) => (
   <Flex height="100%" direction="column">
     <Header />
-    <Box mt={{ base: 4, md: 8 }} flex="1 0 auto">
+    <Box as="main" mt={{ base: 4, md: 8 }} flex="1 0 auto">
       {children}
     </Box>
     <Footer />
