@@ -59,12 +59,7 @@ const MainSection = () => (
         </NextLink>
       </Flex>
     </Stack>
-    <Image
-      priority
-      src={mascotLogo}
-      alt="A purple octopus reading a crystal ball"
-      quality={100}
-    />
+    <Image src={mascotLogo} alt="" quality={100} />
   </Stack>
 )
 
