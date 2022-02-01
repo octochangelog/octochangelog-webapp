@@ -21,14 +21,7 @@ const Custom404 = () => (
     <Box pb={{ base: 8, lg: 16 }} align="center">
       <Container variant="fluid">
         <VStack px="10">
-          <Image
-            src={mascotIcon}
-            alt="A purple octopus reading a crystal ball"
-            placeholder="blur"
-            priority
-            width={250}
-            height={250}
-          />
+          <Image src={mascotIcon} alt="" width={250} height={250} />
           <Stack
             shouldWrapChildren
             alignItems="center"

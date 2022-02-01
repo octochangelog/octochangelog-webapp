@@ -64,7 +64,6 @@ const MainSection = () => (
       src={mascotLogo}
       alt="A purple octopus reading a crystal ball"
       quality={100}
-      placeholder="blur"
     />
   </Stack>
 )
