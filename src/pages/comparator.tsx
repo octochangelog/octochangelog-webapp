@@ -5,7 +5,7 @@ import RepositoryReleasesComparator from '~/components/RepositoryReleasesCompara
 import { ComparatorProvider } from '~/contexts/comparator-context'
 
 const ComparatorPage = () => (
-  <Layout pageBgColor="secondaryBg">
+  <Layout>
     <NextSeo title="Comparator" />
     <ComparatorProvider>
       <RepositoryReleasesComparator />

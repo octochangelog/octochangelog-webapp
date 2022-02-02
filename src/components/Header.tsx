@@ -17,6 +17,7 @@ const Header = (props: BoxProps) => {
       {...props}
       borderTopWidth={{ base: '4px', sm: '8px' }}
       borderColor="primary.700"
+      bgColor="primaryBg"
     >
       <Container variant="fluid" py={5}>
         <Flex justify="space-between" alignItems="center">
