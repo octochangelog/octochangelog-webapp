@@ -11,7 +11,6 @@ import {
   VStack,
   Text,
   Container,
-  useColorModeValue,
 } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
@@ -43,7 +42,7 @@ const MainSection = () => (
     >
       <Heading
         as="h2"
-        color={{ base: 'gray.900' }}
+        color="primaryText"
         fontSize="4xl"
         fontWeight="black"
         textAlign={{ base: 'center', lg: 'left' }}
@@ -64,18 +63,16 @@ const MainSection = () => (
 )
 
 const HomePage = () => {
-  const pageBgColor = useColorModeValue('gray.50', 'gray.900')
-
   return (
     <Layout>
       <NextSeo />
-      <Box mt={-8} py={{ base: 8, lg: 16 }} bgColor={pageBgColor}>
+      <Box mt={-8} py={{ base: 8, lg: 16 }}>
         <Container variant="fluid">
           <MainSection />
         </Container>
       </Box>
 
-      <Box bg="gray.50">
+      <Box>
         <Container variant="fluid">
           <VStack spacing={8} alignItems="left" py="20" px="10">
             <Box>
@@ -83,34 +80,46 @@ const HomePage = () => {
                 as="h3"
                 fontSize="3xl"
                 mb="4"
-                color="primaryTextLightmode"
+                color="primaryText"
                 fontWeight="black"
                 id="features"
               >
                 Features
               </Heading>
-              <List fontSize="" color="secondaryTextLightmode" spacing="4">
+              <List fontSize="" color="secondaryText" spacing="4">
                 <ListItem d="flex">
                   <ListIcon
                     as={HiOutlineSwitchHorizontal}
-                    color="sky.700"
+                    color="secondary.700"
                     boxSize={6}
                   />
                   Search repositories and pick a version range
                 </ListItem>
                 <ListItem d="flex">
-                  <ListIcon as={HiOutlineFilter} color="sky.700" boxSize={6} />
+                  <ListIcon
+                    as={HiOutlineFilter}
+                    color="secondary.700"
+                    boxSize={6}
+                  />
                   <Box>
                     Sort and group releases changelogs following{' '}
                     <Link href="https://semver.org/">Semantic Versioning</Link>
                   </Box>
                 </ListItem>
                 <ListItem d="flex">
-                  <ListIcon as={HiOutlineShare} color="sky.700" boxSize={6} />
+                  <ListIcon
+                    as={HiOutlineShare}
+                    color="secondary.700"
+                    boxSize={6}
+                  />
                   Share changelogs comparison with others by giving them a link
                 </ListItem>
                 <ListItem d="flex">
-                  <ListIcon as={HiOutlineTag} color="sky.700" boxSize={6} />
+                  <ListIcon
+                    as={HiOutlineTag}
+                    color="secondary.700"
+                    boxSize={6}
+                  />
                   <Box>
                     Normalize changes categories (e.g. put{' '}
                     <Text as="em">bug fixes</Text> and{' '}
@@ -120,13 +129,17 @@ const HomePage = () => {
                 <ListItem d="flex">
                   <ListIcon
                     as={HiOutlineDocumentSearch}
-                    color="sky.700"
+                    color="secondary.700"
                     boxSize={6}
                   />
                   Highlight code blocks syntax and GitHub references
                 </ListItem>
                 <ListItem d="flex">
-                  <ListIcon as={HiOutlineFire} color="sky.700" boxSize={6} />
+                  <ListIcon
+                    as={HiOutlineFire}
+                    color="secondary.700"
+                    boxSize={6}
+                  />
                   Makes it easy to spot which version introduced specific
                   changes
                 </ListItem>

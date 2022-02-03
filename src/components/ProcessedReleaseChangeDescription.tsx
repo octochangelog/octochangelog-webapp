@@ -68,10 +68,20 @@ const RemarkOl = (props: unknown) => (
 const RemarkLi = (props: ListItemProps) => <ListItem {...props} />
 
 const RemarkPre = (props: unknown) => (
-  <Code as="pre" display="block" mb="4" p="3" overflowX="auto" {...props} />
+  <Code
+    as="pre"
+    display="block"
+    bgColor="primaryBg"
+    mb="4"
+    p="3"
+    overflowX="auto"
+    {...props}
+  />
 )
 
-const RemarkCode = (props: unknown) => <Code color="inherit" {...props} />
+const RemarkCode = (props: unknown) => (
+  <Code color="inherit" bgColor="primaryBg" {...props} />
+)
 
 const RemarkBlockquote = (props: unknown) => <BlockQuote mb="2" {...props} />
 
@@ -116,13 +126,13 @@ const ProcessedReleaseChangeDescription = ({
         <>
           <Link isExternal href={processedReleaseChange.html_url}>
             <Tag
-              color="gray.900"
-              size="md"
+              color="secondary.900"
+              size="lg"
               mb={2}
               rounded="full"
-              bgColor="gray.100"
-              _hover={{ bgColor: 'gray.300' }}
-              _active={{ bgColor: 'gray.400', color: 'gray.900' }}
+              bgColor="secondary.200"
+              _hover={{ bgColor: 'secondary.300' }}
+              _active={{ bgColor: 'secondary.200', color: 'secondary.900' }}
             >
               <TagLabel>{getReleaseVersion(processedReleaseChange)}</TagLabel>
             </Tag>

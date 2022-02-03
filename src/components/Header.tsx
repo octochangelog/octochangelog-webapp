@@ -16,24 +16,27 @@ const Header = (props: BoxProps) => {
       zIndex="banner"
       {...props}
       borderTopWidth={{ base: '4px', sm: '8px' }}
-      borderColor="fuchsia.700"
+      borderColor="primary.700"
+      bgColor="primaryBg"
     >
       <Container variant="fluid" py={5}>
         <Flex justify="space-between" alignItems="center">
           <Flex alignItems="center">
             <RouteLink
               href="/"
-              borderBottomWidth={4}
-              borderBottomColor="transparent"
+              textDecorationLine="underline"
+              textDecorationThickness="4px"
+              textUnderlineOffset="2px"
+              textDecorationColor="transparent"
               _hover={{
-                borderBottomColor: 'fuchsia.700',
+                textDecorationColor: 'primary.700',
               }}
               _focus={{
                 boxShadow: 'outline',
-                borderBottomColor: 'fuchsia.700',
+                textDecorationColor: 'primary.700',
               }}
               _active={{
-                borderBottomColor: 'fuchsia.900',
+                textDecorationColor: 'primary.900',
               }}
             >
               <HStack spacing={2}>
@@ -42,7 +45,7 @@ const Header = (props: BoxProps) => {
                 </Box>
                 <Heading
                   as="h1"
-                  color="primaryTextLightmode"
+                  color="primaryText"
                   letterSpacing="tight"
                   fontWeight="black"
                   fontSize={{ base: '16px', sm: '36px' }}

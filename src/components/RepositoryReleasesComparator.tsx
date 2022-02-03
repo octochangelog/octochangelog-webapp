@@ -1,4 +1,4 @@
-import { Container, Divider, Flex, Text } from '@chakra-ui/react'
+import { Box, Container, Divider, Flex, Text } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import * as React from 'react'
 
@@ -23,36 +23,38 @@ const RepositoryReleasesComparator = () => {
       <Container variant="fluid">
         <RepositoriesComparatorFilters />
       </Container>
-      <Divider my={4} />
-      {repository && (
-        <>
-          <RepositoryReleasesChangelogHeading
-            repository={repository}
-            fromVersion={fromVersion ?? undefined}
-            toVersion={toVersion ?? undefined}
-          />
-          <Container variant="fluid">
-            <RepositoryReleasesChangelog
+      <Divider mt={4} />
+      <Box bgColor="secondaryBg" pt={2} minHeight="full">
+        {repository && (
+          <>
+            <RepositoryReleasesChangelogHeading
               repository={repository}
               fromVersion={fromVersion ?? undefined}
               toVersion={toVersion ?? undefined}
             />
-          </Container>
-        </>
-      )}
+            <Container variant="fluid">
+              <RepositoryReleasesChangelog
+                repository={repository}
+                fromVersion={fromVersion ?? undefined}
+                toVersion={toVersion ?? undefined}
+              />
+            </Container>
+          </>
+        )}
 
-      {/* This is rendered only in CS since SSR doesn't have info about auth user yet */}
-      {isClientSide && !repository && !isAuth && (
-        <Container variant="fluid">
-          <Flex alignItems="center" flexDirection="column">
-            <Text mb={4}>
-              You can increase the max number of allowed requests to GitHub by
-              authorizing the app
-            </Text>
-            <GitHubLoginButton />
-          </Flex>
-        </Container>
-      )}
+        {/* This is rendered only in CS since SSR doesn't have info about auth user yet */}
+        {isClientSide && !repository && !isAuth && (
+          <Container variant="fluid">
+            <Flex alignItems="center" flexDirection="column">
+              <Text mb={4}>
+                You can increase the max number of allowed requests to GitHub by
+                authorizing the app
+              </Text>
+              <GitHubLoginButton />
+            </Flex>
+          </Container>
+        )}
+      </Box>
     </>
   )
 }
