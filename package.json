@@ -31,7 +31,7 @@
     "postinstall": "npm run gen:theme-typings"
   },
   "dependencies": {
-    "@chakra-ui/react": "1.8.2",
+    "@chakra-ui/react": "1.8.3",
     "@emotion/react": "11.7.1",
     "@emotion/styled": "11.6.0",
     "@octokit/auth-callback": "2.0.1",
@@ -59,7 +59,7 @@
     "unified": "10.1.1"
   },
   "devDependencies": {
-    "@chakra-ui/cli": "1.8.0",
+    "@chakra-ui/cli": "1.8.1",
     "@octokit/openapi-types": "11.2.0",
     "@testing-library/cypress": "8.0.2",
     "@types/happo-cypress": "1.17.2",
