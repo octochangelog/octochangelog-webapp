@@ -27,7 +27,7 @@ const Header = (props: BoxProps) => {
       {...props}
       borderTopWidth={{ base: '4px', md: '8px' }}
       borderColor="primary.700"
-      bgColor="primaryBg" // TODO: remove this one, leave it transparent
+      bgColor="primaryBg"
     >
       <Container
         maxWidth="full"
