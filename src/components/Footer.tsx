@@ -36,7 +36,6 @@ const Footer = () => {
             <Link
               href="https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss"
               aria-label="Powered by Vercel"
-              title="Powered by Vercel"
               isExternal
             >
               <Image alt="" src={poweredByVercelLogo} />
