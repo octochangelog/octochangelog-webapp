@@ -10,7 +10,7 @@ const ToggleColorModeButton = (props: Partial<IconButtonProps>) => {
 
   return (
     <IconButton
-      colorScheme="gray" // TODO: set custom "monochrome"
+      colorScheme="gray"
       aria-label="Dark theme"
       aria-pressed={isLightMode}
       icon={<Icon as={iconMode} boxSize={{ base: '16px', md: '18px' }} />}

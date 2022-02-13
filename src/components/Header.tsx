@@ -27,7 +27,7 @@ const Header = (props: BoxProps) => {
       {...props}
       borderTopWidth={{ base: '4px', md: '8px' }}
       borderColor="primary.700"
-      bgColor="primaryBg"
+      bgColor="background2"
     >
       <Container
         maxWidth="full"
@@ -90,8 +90,7 @@ const Header = (props: BoxProps) => {
               <Icon
                 as={DiGithubBadge}
                 boxSize={LOGO_SIZES}
-                color="black"
-                // TODO: set color to custom "monochrome"
+                color="monochrome1"
                 _hover={{ rounded: 'full', bgColor: 'gray.200' }}
               />
             </Link>

@@ -5,7 +5,7 @@ import poweredByVercelLogo from '@app-public/powered-by-vercel.svg'
 
 const Footer = () => {
   return (
-    <Box as="footer" bgColor="primaryBg">
+    <Box as="footer" bgColor="background2">
       <Container
         centerContent
         maxWidth="full"
@@ -36,6 +36,7 @@ const Footer = () => {
             <Link
               href="https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss"
               aria-label="Powered by Vercel"
+              title="Powered by Vercel"
               isExternal
             >
               <Image alt="" src={poweredByVercelLogo} />

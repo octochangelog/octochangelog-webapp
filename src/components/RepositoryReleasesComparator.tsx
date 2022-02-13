@@ -24,7 +24,7 @@ const RepositoryReleasesComparator = () => {
         <RepositoriesComparatorFilters />
       </Container>
       <Divider mt={4} />
-      <Box bgColor="secondaryBg" pt={2} flex="1 0 auto">
+      <Box bgColor="background3" pt={2} flex="1 0 auto">
         {repository && (
           <>
             <RepositoryReleasesChangelogHeading
