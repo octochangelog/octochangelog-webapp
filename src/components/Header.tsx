@@ -1,9 +1,19 @@
 import type { BoxProps } from '@chakra-ui/react'
-import { Box, Flex, Container, Heading, HStack } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  Container,
+  Heading,
+  HStack,
+  Icon,
+  Link,
+} from '@chakra-ui/react'
 import Image from 'next/image'
 import * as React from 'react'
+import { DiGithubBadge } from 'react-icons/di'
 
 import mascotIcon from '@app-public/mascot-icon.png'
+import { REPO_URL } from '~/common'
 import RouteLink from '~/components/RouteLink'
 import ToggleColorModeButton from '~/components/ToggleColorModeButton'
 
@@ -17,7 +27,7 @@ const Header = (props: BoxProps) => {
       {...props}
       borderTopWidth={{ base: '4px', md: '8px' }}
       borderColor="primary.700"
-      bgColor="primaryBg"
+      bgColor="primaryBg" // TODO: remove this one, leave it transparent
     >
       <Container
         maxWidth="full"
@@ -65,14 +75,26 @@ const Header = (props: BoxProps) => {
               </HStack>
             </RouteLink>
           </Flex>
-          <HStack>
+          <HStack spacing={{ base: 4, md: 10 }}>
             {!!process.env.NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE && (
               <ToggleColorModeButton
                 boxSize={LOGO_SIZES}
                 minWidth={LOGO_SIZES}
               />
             )}
-            <span>GitHub</span>
+            <Link
+              href={REPO_URL}
+              aria-label="Octoclairvoyant repository on GitHub"
+              isExternal
+            >
+              <Icon
+                as={DiGithubBadge}
+                boxSize={LOGO_SIZES}
+                color="black"
+                // TODO: set color to custom "monochrome"
+                _hover={{ rounded: 'full', bgColor: 'gray.200' }}
+              />
+            </Link>
           </HStack>
         </Flex>
       </Container>
