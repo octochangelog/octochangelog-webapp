@@ -7,7 +7,7 @@ import mascotIcon from '@app-public/mascot-icon.png'
 import RouteLink from '~/components/RouteLink'
 import ToggleColorModeButton from '~/components/ToggleColorModeButton'
 
-const LOGO_SIZES = { base: '25px', md: '30px', lg: '50px' }
+const LOGO_SIZES = { base: '32px', sm: '64px' }
 
 const Header = (props: BoxProps) => {
   return (
@@ -15,11 +15,15 @@ const Header = (props: BoxProps) => {
       as="header"
       zIndex="banner"
       {...props}
-      borderTopWidth={{ base: '4px', sm: '8px' }}
+      borderTopWidth={{ base: '4px', md: '8px' }}
       borderColor="primary.700"
       bgColor="primaryBg"
     >
-      <Container variant="fluid" py={5}>
+      <Container
+        maxWidth="full"
+        py={{ base: 1, lg: 4 }}
+        px={{ base: 4, lg: 5 }}
+      >
         <Flex justify="space-between" alignItems="center">
           <Flex alignItems="center">
             <RouteLink
@@ -39,9 +43,9 @@ const Header = (props: BoxProps) => {
                 textDecorationColor: 'primary.900',
               }}
             >
-              <HStack spacing={2}>
+              <HStack spacing={{ base: 1, lg: 2 }}>
                 <Box h={LOGO_SIZES} w={LOGO_SIZES}>
-                  <Image src={mascotIcon} alt="" height={150} width={150} />
+                  <Image src={mascotIcon} alt="" height={70} width={70} />
                 </Box>
                 <Heading
                   as="h1"
@@ -55,9 +59,12 @@ const Header = (props: BoxProps) => {
               </HStack>
             </RouteLink>
           </Flex>
-          {!!process.env.NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE && (
-            <ToggleColorModeButton />
-          )}
+          <HStack>
+            {!!process.env.NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE && (
+              <ToggleColorModeButton />
+            )}
+            <span>GitHub</span>
+          </HStack>
         </Flex>
       </Container>
     </Box>
