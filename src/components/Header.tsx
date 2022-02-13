@@ -7,7 +7,7 @@ import mascotIcon from '@app-public/mascot-icon.png'
 import RouteLink from '~/components/RouteLink'
 import ToggleColorModeButton from '~/components/ToggleColorModeButton'
 
-const LOGO_SIZES = { base: '32px', sm: '64px' }
+const LOGO_SIZES = { base: 8, md: 16 }
 
 const Header = (props: BoxProps) => {
   return (
@@ -45,14 +45,20 @@ const Header = (props: BoxProps) => {
             >
               <HStack spacing={{ base: 1, lg: 2 }}>
                 <Box h={LOGO_SIZES} w={LOGO_SIZES}>
-                  <Image src={mascotIcon} alt="" height={70} width={70} />
+                  <Image
+                    src={mascotIcon}
+                    alt=""
+                    height={70}
+                    width={70}
+                    aria-hidden
+                  />
                 </Box>
                 <Heading
                   as="h1"
                   color="primaryText"
                   letterSpacing="tight"
                   fontWeight="black"
-                  fontSize={{ base: '16px', sm: '36px' }}
+                  fontSize={{ base: '16px', md: '36px' }}
                 >
                   Octoclairvoyant
                 </Heading>
@@ -61,7 +67,10 @@ const Header = (props: BoxProps) => {
           </Flex>
           <HStack>
             {!!process.env.NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE && (
-              <ToggleColorModeButton />
+              <ToggleColorModeButton
+                boxSize={LOGO_SIZES}
+                minWidth={LOGO_SIZES}
+              />
             )}
             <span>GitHub</span>
           </HStack>

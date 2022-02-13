@@ -1,13 +1,23 @@
-import { Button, useColorMode } from '@chakra-ui/react'
+import type { IconButtonProps } from '@chakra-ui/react'
+import { Icon, IconButton, useColorMode } from '@chakra-ui/react'
+import * as React from 'react'
+import { HiOutlineSun, HiOutlineMoon } from 'react-icons/hi'
 
-const ToggleColorModeButton = () => {
+const ToggleColorModeButton = (props: Partial<IconButtonProps>) => {
   const { colorMode, toggleColorMode } = useColorMode()
   const isLightMode = colorMode === 'light'
+  const iconMode = isLightMode ? HiOutlineSun : HiOutlineMoon
 
   return (
-    <Button onClick={toggleColorMode}>
-      Toggle {isLightMode ? 'Dark' : 'Light'}
-    </Button>
+    <IconButton
+      colorScheme="gray" // TODO: set custom "monochrome"
+      aria-label="Dark theme"
+      aria-pressed={isLightMode}
+      icon={<Icon as={iconMode} boxSize={{ base: '16px', md: '18px' }} />}
+      isRound
+      {...props}
+      onClick={toggleColorMode}
+    />
   )
 }
 
