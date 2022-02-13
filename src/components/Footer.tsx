@@ -1,66 +1,47 @@
-import {
-  Box,
-  Center,
-  Container,
-  HStack,
-  Link,
-  Stack,
-  useColorModeValue,
-} from '@chakra-ui/react'
+import { Box, Container, Link, Text, VStack } from '@chakra-ui/react'
 import Image from 'next/image'
 
 import poweredByVercelLogo from '@app-public/powered-by-vercel.svg'
-import { REPO_URL } from '~/common'
 
 const Footer = () => {
-  const boxBgColor = useColorModeValue('gray.50', 'gray.900')
-
   return (
-    <Box as="footer" bg={boxBgColor} flexShrink={0}>
-      <Container py={5} variant="fluid">
-        <Stack
-          justify="space-between"
-          direction={['column', 'row']}
-          spacing={4}
-        >
-          <HStack
-            shouldWrapChildren
-            justify="space-between"
-            alignItems="center"
-            justifyContent="center"
-            fontSize={{ base: 'md', md: 'lg' }}
+    <Box as="footer" bgColor="primaryBg">
+      <Container
+        centerContent
+        maxWidth="full"
+        py={{ base: 1, lg: 4 }}
+        px={{ base: 4, lg: 5 }}
+      >
+        <VStack spacing={5}>
+          <Text
+            color="primaryText"
+            fontSize={{ base: 'lg', md: '2xl' }}
+            fontWeight="black"
+            textAlign="center"
           >
-            <Box>
-              Created with{' '}
-              <span role="img" aria-label="Love">
-                💜
-              </span>{' '}
-              by{' '}
-              <Link isExternal href="https://mario.dev/">
-                Mario
-              </Link>
-            </Box>
-            <Box as="span">-</Box>
+            Created with love <br /> by{' '}
+            <Link isExternal href="https://mario.dev/" title="Mario's website">
+              Mario
+            </Link>{' '}
+            &{' '}
             <Link
               isExternal
-              href={REPO_URL}
-              title="Octoclairvoyant repository on GitHub"
+              href="https://github.com/HonkingGoose"
+              title="HonkingGoose's GitHub profile"
             >
-              GitHub
+              HonkingGoose
             </Link>
-          </HStack>
+          </Text>
           <Box>
-            <Center>
-              <Link
-                isExternal
-                href="https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss"
-                aria-label="Powered by Vercel"
-              >
-                <Image alt="" src={poweredByVercelLogo} />
-              </Link>
-            </Center>
+            <Link
+              href="https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss"
+              aria-label="Powered by Vercel"
+              isExternal
+            >
+              <Image alt="" src={poweredByVercelLogo} />
+            </Link>
           </Box>
-        </Stack>
+        </VStack>
       </Container>
     </Box>
   )
