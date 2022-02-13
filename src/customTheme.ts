@@ -84,6 +84,10 @@ const monochrome3: SemanticToken = {
   default: 'gray.800',
   _dark: 'gray.100',
 }
+const monochrome4: SemanticToken = {
+  default: 'gray.700',
+  _dark: 'gray.200',
+}
 
 function invertSemanticToken(token: SemanticToken): SemanticToken {
   const { default: defaultValue, _dark } = token
@@ -121,9 +125,11 @@ const customTheme = extendTheme(
         monochrome1,
         monochrome2,
         monochrome3,
+        monochrome4,
         monochromeInverted1: invertSemanticToken(monochrome1),
         monochromeInverted2: invertSemanticToken(monochrome2),
         monochromeInverted3: invertSemanticToken(monochrome3),
+        monochromeInverted4: invertSemanticToken(monochrome4),
         background1: invertSemanticToken(monochrome1),
         background2: invertSemanticToken(monochrome2),
         background3: invertSemanticToken(monochrome3),
