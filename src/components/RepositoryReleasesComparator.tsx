@@ -20,11 +20,13 @@ const RepositoryReleasesComparator = () => {
 
   return (
     <Flex direction="column" height="full">
-      <Container variant="fluid">
-        <RepositoriesComparatorFilters />
-      </Container>
-      <Divider mt={4} />
-      <Box bgColor="background3" pt={2} flex="1 0 auto">
+      <Box bgColor="background2" py={{ base: 4, md: 8 }}>
+        <Container variant="fluid">
+          <RepositoriesComparatorFilters />
+        </Container>
+      </Box>
+      <Divider />
+      <Box pt={2} flex="1 0 auto">
         {repository && (
           <>
             <RepositoryReleasesChangelogHeading

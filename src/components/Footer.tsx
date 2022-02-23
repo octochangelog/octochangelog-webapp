@@ -3,9 +3,13 @@ import Image from 'next/image'
 
 import poweredByVercelLogo from '@app-public/powered-by-vercel.svg'
 
-const Footer = () => {
+interface FooterProps {
+  bgColor?: 'background2' | 'background3'
+}
+
+const Footer = ({ bgColor = 'background2' }: FooterProps) => {
   return (
-    <Box as="footer" bgColor="background2">
+    <Box as="footer" bgColor={bgColor}>
       <Container
         centerContent
         maxWidth="full"
