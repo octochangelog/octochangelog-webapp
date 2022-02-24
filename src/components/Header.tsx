@@ -86,12 +86,15 @@ const Header = (props: BoxProps) => {
               href={REPO_URL}
               aria-label="Octoclairvoyant repository on GitHub"
               isExternal
+              rounded="full"
+              boxSize={LOGO_SIZES}
             >
               <Icon
                 as={DiGithubBadge}
                 boxSize={LOGO_SIZES}
                 color="monochrome1"
-                _hover={{ rounded: 'full', bgColor: 'monochromeInverted4' }}
+                rounded="full"
+                _hover={{ bgColor: 'monochromeInverted4' }}
               />
             </Link>
           </HStack>
