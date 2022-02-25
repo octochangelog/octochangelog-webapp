@@ -88,13 +88,13 @@ const Header = (props: BoxProps) => {
               isExternal
               rounded="full"
               boxSize={LOGO_SIZES}
+              _hover={{ bgColor: 'monochromeInverted4' }}
+              _active={{ bgColor: 'monochromeInverted5' }}
             >
               <Icon
                 as={DiGithubBadge}
                 boxSize={LOGO_SIZES}
                 color="monochrome1"
-                rounded="full"
-                _hover={{ bgColor: 'monochromeInverted4' }}
               />
             </Link>
           </HStack>
