@@ -41,7 +41,11 @@ const ReleaseVersionsRangeFormControl = (props: StackProps) => {
   const { repository, fromVersion, toVersion } = useComparatorState()
   const { setFromVersion, setToVersion } = useComparatorUpdater()
 
-  const { data: releases, isLoading } = useReleasesQuery({ repository })
+  const { data: releases, isLoading } = useReleasesQuery({
+    repository,
+    fromVersion,
+    toVersion,
+  })
 
   const [fromReleases, toReleases] = mapReleasesRange(releases)
 
