@@ -19,12 +19,14 @@ const RepositoryReleasesComparator = () => {
   const { repository, fromVersion, toVersion } = useComparatorState()
 
   return (
-    <>
-      <Container variant="fluid">
-        <RepositoriesComparatorFilters />
-      </Container>
-      <Divider mt={4} />
-      <Box bgColor="secondaryBg" pt={2} minHeight="full">
+    <Flex direction="column" height="full">
+      <Box bgColor="background2" py={{ base: 4, md: 8 }}>
+        <Container variant="fluid">
+          <RepositoriesComparatorFilters />
+        </Container>
+      </Box>
+      <Divider />
+      <Box pt={2} flex="1 0 auto">
         {repository && (
           <>
             <RepositoryReleasesChangelogHeading
@@ -55,7 +57,7 @@ const RepositoryReleasesComparator = () => {
           </Container>
         )}
       </Box>
-    </>
+    </Flex>
   )
 }
 

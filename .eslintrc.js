@@ -23,6 +23,7 @@ module.exports = {
     // React
     'react/self-closing-comp': 'error',
     'react/react-in-jsx-scope': 'off',
+    'react/jsx-boolean-value': 'error',
 
     // Import
     'import/newline-after-import': 'error',

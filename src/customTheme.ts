@@ -3,6 +3,11 @@ import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
 import type { Dict } from '@chakra-ui/utils'
 
+interface SemanticToken {
+  default: string
+  _dark: string
+}
+
 /**
  * The coolGray palette contains all the shades of gray we'll use in the app.
  * Example uses: body text, headings, changelog text, page background.
@@ -66,6 +71,36 @@ const primaryTextDarkMode = coolGray['50']
 const secondaryTextDarkMode = coolGray['300']
 const tertiaryTextDarkMode = coolGray['400']
 
+const monochrome1: SemanticToken = {
+  default: 'black',
+  _dark: 'white',
+}
+const monochrome2: SemanticToken = {
+  default: 'gray.900',
+  _dark: 'gray.50',
+}
+
+const monochrome3: SemanticToken = {
+  default: 'gray.800',
+  _dark: 'gray.100',
+}
+const monochrome4: SemanticToken = {
+  default: 'gray.700',
+  _dark: 'gray.200',
+}
+const monochrome5: SemanticToken = {
+  default: 'gray.600',
+  _dark: 'gray.300',
+}
+
+function invertSemanticToken(token: SemanticToken): SemanticToken {
+  const { default: defaultValue, _dark } = token
+  return {
+    default: _dark,
+    _dark: defaultValue,
+  }
+}
+
 const themeConfig: ThemeConfig = {
   useSystemColorMode: !!process.env.NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE,
 }
@@ -91,14 +126,19 @@ const customTheme = extendTheme(
           default: tertiaryTextLightMode,
           _dark: tertiaryTextDarkMode,
         },
-        primaryBg: {
-          default: 'gray.50',
-          _dark: 'gray.900',
-        },
-        secondaryBg: {
-          default: 'gray.100',
-          _dark: 'gray.800',
-        },
+        monochrome1,
+        monochrome2,
+        monochrome3,
+        monochrome4,
+        monochrome5,
+        monochromeInverted1: invertSemanticToken(monochrome1),
+        monochromeInverted2: invertSemanticToken(monochrome2),
+        monochromeInverted3: invertSemanticToken(monochrome3),
+        monochromeInverted4: invertSemanticToken(monochrome4),
+        monochromeInverted5: invertSemanticToken(monochrome5),
+        background1: invertSemanticToken(monochrome1),
+        background2: invertSemanticToken(monochrome2),
+        background3: invertSemanticToken(monochrome3),
       },
     },
     fonts: {
