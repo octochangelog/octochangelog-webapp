@@ -19,6 +19,13 @@ module.exports = {
     // Base
     'no-shadow': 'error',
     'no-warning-comments': 'off',
+    'no-restricted-imports': [
+      'error',
+      {
+        name: '@testing-library/react-hooks',
+        message: 'Please use `react-hooks-test-utils` instead.',
+      },
+    ],
 
     // React
     'react/self-closing-comp': 'error',

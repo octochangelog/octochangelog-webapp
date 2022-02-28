@@ -8,6 +8,7 @@ const createJestConfig = nextJest({
 /** @type {import('@jest/types').Config.InitialOptions} */
 const config = {
   clearMocks: true,
+  testEnvironment: 'jsdom',
   rootDir: './src',
   coverageDirectory: '<rootDir>/../coverage',
   moduleDirectories: ['node_modules', '<rootDir>/'],
