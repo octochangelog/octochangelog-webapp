@@ -71,7 +71,7 @@ const RemarkPre = (props: unknown) => (
   <Code
     as="pre"
     display="block"
-    bgColor="primaryBg"
+    bgColor="background2"
     mb="4"
     p="3"
     overflowX="auto"
@@ -80,7 +80,7 @@ const RemarkPre = (props: unknown) => (
 )
 
 const RemarkCode = (props: unknown) => (
-  <Code color="inherit" bgColor="primaryBg" {...props} />
+  <Code color="inherit" bgColor="background2" {...props} />
 )
 
 const RemarkBlockquote = (props: unknown) => <BlockQuote mb="2" {...props} />
