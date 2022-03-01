@@ -12,7 +12,7 @@ const STORAGE_KEY_PREFIX = IS_PRODUCTION_MODE ? '' : 'test-'
 export const GITHUB_STORAGE_KEY = `${STORAGE_KEY_PREFIX}octoclairvoyant-github-access-token`
 
 export function getGithubAccessToken(): string | undefined {
-  const cookies = parseCookies(null, { path: '/' })
+  const cookies = parseCookies(null)
   return cookies[GITHUB_STORAGE_KEY]
 }
 
