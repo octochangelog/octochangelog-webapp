@@ -15,6 +15,7 @@ const config = {
   moduleNameMapper: {
     '~/(.*)': '<rootDir>/$1',
   },
+  setupFilesAfterEnv: ['./setup-tests.ts'],
 }
 
 module.exports = createJestConfig(config)

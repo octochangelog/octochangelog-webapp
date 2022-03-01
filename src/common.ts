@@ -1,5 +1,7 @@
 export const IS_PRODUCTION_MODE = process.env.NODE_ENV === 'production'
 
+export const GITHUB_API_ROOT_ENDPOINT = 'https://api.github.com'
+
 export const REPO_URL =
   'https://github.com/octoclairvoyant/octoclairvoyant-webapp'
 

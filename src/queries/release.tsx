@@ -35,32 +35,36 @@ function useReleasesQuery(
   return useQuery<ReleasesQueryResults, Error>(
     [QUERY_KEY, finalParams],
     async () => {
+      const releases: Array<Release> = []
       let paginationCount = 0
-      return octokit.paginate(
+
+      for await (const response of octokit.paginate.iterator(
         'GET /repos/{owner}/{repo}/releases',
-        { ...finalParams, per_page: 100 },
-        (response, done) => {
-          paginationCount++
+        { ...finalParams, per_page: 100 }
+      )) {
+        paginationCount++
 
-          const isMaxAutoPagination = paginationCount === MAX_AUTO_PAGINATION
-          const lastReleaseFetched = response.data[response.data.length - 1]
-          const isFromReleaseFetched =
-            !hasFromVersion ||
-            semver.gte(fromVersion, lastReleaseFetched.tag_name)
-          const isToReleaseFetched =
-            !hasToVersion || semver.gte(toVersion, lastReleaseFetched.tag_name)
+        releases.push(...response.data.filter(isStableRelease))
 
-          if (
-            isMaxAutoPagination &&
-            isFromReleaseFetched &&
-            isToReleaseFetched
-          ) {
-            done()
-          }
+        const isMaxAutoPaginationReached =
+          paginationCount === MAX_AUTO_PAGINATION
+        const lastReleaseFetched = response.data[response.data.length - 1]
+        const isFromReleaseFetched =
+          !hasFromVersion ||
+          semver.gte(fromVersion, lastReleaseFetched.tag_name)
+        const isToReleaseFetched =
+          !hasToVersion || semver.gte(toVersion, lastReleaseFetched.tag_name)
 
-          return response.data.filter(isStableRelease)
+        if (
+          isMaxAutoPaginationReached &&
+          isFromReleaseFetched &&
+          isToReleaseFetched
+        ) {
+          break
         }
-      )
+      }
+
+      return releases
     },
     { enabled: Boolean(params.repository), ...config }
   )
