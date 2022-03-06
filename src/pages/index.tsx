@@ -46,7 +46,7 @@ const MainSection = () => (
         letterSpacing="tight"
         px={{ base: 12, lg: 0 }}
       >
-        {BRIEF_DESCRIPTION}
+        {BRIEF_DESCRIPTION}.
       </Heading>
       <Flex justify="center" align="center">
         <NextLink href="/comparator" passHref>
