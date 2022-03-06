@@ -11,6 +11,7 @@ import {
   VStack,
   Text,
   Container,
+  Center,
 } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
@@ -30,27 +31,24 @@ import Layout from '~/components/Layout'
 
 const MainSection = () => (
   <Stack
-    px="10"
-    align="center"
+    alignItems="center"
+    justifyContent="center"
     direction={{ base: 'column-reverse', lg: 'row' }}
+    spacing={{ base: 10, lg: 1 }}
   >
-    <Stack
-      shouldWrapChildren
-      alignItems={{ base: 'center', lg: 'start' }}
-      spacing="8"
-      flexGrow={1}
-    >
+    <Stack alignItems={{ base: 'center', lg: 'start' }} spacing="24">
       <Heading
         as="h2"
         color="primaryText"
-        fontSize="4xl"
+        fontSize={{ base: '3xl', md: '5xl' }}
         fontWeight="black"
         textAlign={{ base: 'center', lg: 'left' }}
         letterSpacing="tight"
+        px={{ base: 12, lg: 0 }}
       >
         {BRIEF_DESCRIPTION}
       </Heading>
-      <Flex py="6" justify="center" align="center">
+      <Flex justify="center" align="center">
         <NextLink href="/comparator" passHref>
           <Button as="a" variant="cta">
             Try me now!
@@ -58,7 +56,9 @@ const MainSection = () => (
         </NextLink>
       </Flex>
     </Stack>
-    <Image src={mascotLogo} alt="" quality={100} />
+    <Center width="full">
+      <Image src={mascotLogo} alt="" quality={100} />
+    </Center>
   </Stack>
 )
 
@@ -67,14 +67,14 @@ const HomePage = () => {
     <Layout>
       <NextSeo />
       <Box mt={-8} py={{ base: 8, lg: 16 }}>
-        <Container variant="fluid">
+        <Container maxWidth="container.lg">
           <MainSection />
         </Container>
       </Box>
 
       <Box>
-        <Container variant="fluid">
-          <VStack spacing={8} alignItems="left" py="20" px="10">
+        <Container maxWidth="container.lg">
+          <VStack spacing={8} alignItems="left" py="20">
             <Box>
               <Heading
                 as="h3"
