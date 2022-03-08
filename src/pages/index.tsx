@@ -131,12 +131,12 @@ const FeatureItem = ({ icon, title, children }: FeatureItemProps) => {
     <Box>
       <Flex
         boxSize={10}
-        bgColor="blue.200"
+        bgColor="secondary.200"
         borderRadius="full"
         alignItems="center"
         justifyContent="center"
       >
-        <Icon as={icon} boxSize="18px" color="blue.700" />
+        <Icon as={icon} boxSize="18px" color="secondary.700" />
       </Flex>
       <Heading as="h3" color="primaryText" fontSize="2xl" mt={2}>
         {title}
@@ -144,7 +144,7 @@ const FeatureItem = ({ icon, title, children }: FeatureItemProps) => {
       <Text
         fontSize="md"
         width={{ base: 'full', lg: '70%' }}
-        color="primaryText"
+        color="secondaryText"
       >
         {children}
       </Text>
