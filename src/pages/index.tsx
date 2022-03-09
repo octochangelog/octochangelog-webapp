@@ -10,6 +10,7 @@ import {
   SimpleGrid,
   Stack,
   Text,
+  useColorModeValue,
 } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
@@ -127,16 +128,18 @@ const FEATURES_DESCRIPTIONS: Array<FeatureItemProps> = [
 ]
 
 const FeatureItem = ({ icon, title, children }: FeatureItemProps) => {
+  const iconColor = useColorModeValue('secondary.700', 'secondary.200')
+  const iconBgColor = useColorModeValue('secondary.200', 'secondary.800')
   return (
     <Box>
       <Flex
         boxSize={10}
-        bgColor="secondary.200"
+        bgColor={iconBgColor}
         borderRadius="full"
         alignItems="center"
         justifyContent="center"
       >
-        <Icon as={icon} boxSize="18px" color="secondary.700" />
+        <Icon as={icon} boxSize="18px" color={iconColor} />
       </Flex>
       <Heading as="h3" color="primaryText" fontSize="2xl" mt={2}>
         {title}
