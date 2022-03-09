@@ -3,7 +3,7 @@ it('should display corresponding information', () => {
 
   cy.title().should(
     'equal',
-    'Octoclairvoyant: Compare GitHub changelogs across multiple releases'
+    'Octoclairvoyant: Compare GitHub changelogs in a single view'
   )
 
   cy.findByRole('heading', { level: 1, name: 'Octoclairvoyant' }).should(
@@ -12,7 +12,7 @@ it('should display corresponding information', () => {
 
   cy.findByRole('heading', {
     level: 2,
-    name: 'Compare GitHub changelogs across multiple releases',
+    name: 'Compare GitHub changelogs in a single view.',
   }).should('exist')
 
   cy.findByRole('main').within(() => {
@@ -23,7 +23,23 @@ it('should display corresponding information', () => {
 
   cy.findByRole('heading', {
     level: 3,
-    name: 'Features',
+    name: 'Compare releases easily',
+  }).should('exist')
+  cy.findByRole('heading', {
+    level: 3,
+    name: 'Share changelogs',
+  }).should('exist')
+  cy.findByRole('heading', {
+    level: 3,
+    name: "Don't miss breaking changes",
+  }).should('exist')
+  cy.findByRole('heading', {
+    level: 3,
+    name: 'No manual sorting',
+  }).should('exist')
+  cy.findByRole('heading', {
+    level: 3,
+    name: 'Changes per version',
   }).should('exist')
 
   cy.contains('footer', 'Created with')
