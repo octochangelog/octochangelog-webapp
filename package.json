@@ -76,7 +76,7 @@
     "eslint-config-next": "12.1.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-cypress": "2.12.1",
-    "eslint-plugin-jest": "26.1.1",
+    "eslint-plugin-jest": "26.1.2",
     "eslint-plugin-jest-formatting": "3.1.0",
     "eslint-plugin-unicorn": "41.0.1",
     "happo-cypress": "3.0.1",
