@@ -8,6 +8,10 @@ permissions:
   contents: read
   actions: write
 
+env:
+  # Skip Cypress installation in the whole workflow, not necessary here
+  CYPRESS_INSTALL_BINARY: 0
+
 jobs:
   lint:
     name: Code Linting
