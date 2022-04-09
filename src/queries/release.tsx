@@ -1,17 +1,25 @@
 import type { UseQueryOptions, UseQueryResult } from 'react-query'
 import { useQuery } from 'react-query'
+import * as semver from 'semver'
 
 import { octokit } from '~/github-client'
-import type { Release, Repository, RepositoryQueryParams } from '~/models'
+import type {
+  Release,
+  ReleaseVersion,
+  Repository,
+  RepositoryQueryParams,
+} from '~/models'
 import { isStableRelease, mapRepositoryToQueryParams } from '~/utils'
 
 type ReleasesQueryResults = Array<Release>
 type ReleasesQueryParams = {
   repository?: Repository | null
+  fromVersion?: ReleaseVersion | null
+  toVersion?: ReleaseVersion | null
 }
 
 const QUERY_KEY = 'releases'
-const MAX_AUTO_PAGINATION_ALLOWED = 10
+const MAX_AUTO_PAGINATION = 10
 
 function useReleasesQuery(
   params: ReleasesQueryParams,
@@ -20,24 +28,42 @@ function useReleasesQuery(
   const finalParams: RepositoryQueryParams = mapRepositoryToQueryParams(
     params.repository ?? undefined
   )
+  const { fromVersion, toVersion } = params
+  const hasFromVersion = !!fromVersion
+  const hasToVersion = !!toVersion
 
   return useQuery<ReleasesQueryResults, Error>(
     [QUERY_KEY, finalParams],
     async () => {
+      const releases: Array<Release> = []
       let paginationCount = 0
-      return octokit.paginate(
+
+      for await (const response of octokit.paginate.iterator(
         'GET /repos/{owner}/{repo}/releases',
-        { ...finalParams, per_page: 100 },
-        (response, done) => {
-          paginationCount++
+        { ...finalParams, per_page: 100 }
+      )) {
+        paginationCount++
+        releases.push(...response.data.filter(isStableRelease))
 
-          if (paginationCount === MAX_AUTO_PAGINATION_ALLOWED) {
-            done()
-          }
+        const isMaxAutoPaginationReached =
+          paginationCount === MAX_AUTO_PAGINATION
+        const lastReleaseFetched = response.data[response.data.length - 1]
+        const isFromReleaseFetched =
+          !hasFromVersion ||
+          semver.gte(fromVersion, lastReleaseFetched.tag_name)
+        const isToReleaseFetched =
+          !hasToVersion || semver.gte(toVersion, lastReleaseFetched.tag_name)
 
-          return response.data.filter(isStableRelease)
+        if (
+          isMaxAutoPaginationReached &&
+          isFromReleaseFetched &&
+          isToReleaseFetched
+        ) {
+          break
         }
-      )
+      }
+
+      return releases
     },
     { enabled: Boolean(params.repository), ...config }
   )
