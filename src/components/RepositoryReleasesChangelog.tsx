@@ -92,6 +92,8 @@ const RepositoryReleasesChangelog = ({
     isFetched,
   } = useReleasesQuery({
     repository,
+    fromVersion,
+    toVersion,
   })
 
   useEffect(() => {
