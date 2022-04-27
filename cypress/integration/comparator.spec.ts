@@ -26,7 +26,7 @@ it('should show expected results when using standard query string', () => {
     '/?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0'
   )
 
-  cy.wait(10000) // eslint-disable-line cypress/no-unnecessary-waiting
+  cy.wait(15000) // eslint-disable-line cypress/no-unnecessary-waiting
 
   // Confirm repository name is displayed
 
