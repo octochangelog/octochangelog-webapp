@@ -48,7 +48,7 @@ jobs:
 
       # Act
       - name: Run Cypress
-        uses: cypress-io/github-action@dddd6c2a23e82a301d9480fad175c21c29745d47
+        uses: cypress-io/github-action@220aa68f471d4cbbb06d81fbfe4d6a90c5f14f01
         with:
           install: false
           build: npm run build
