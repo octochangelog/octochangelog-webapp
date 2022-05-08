@@ -91,7 +91,7 @@ describe('filterReleasesByVersionRange util', () => {
     })
 
     expect(result).toEqual([
-      { tag_name: 'v2.9.7' },
+      { tag_name: 'v2.9.8' },
       { tag_name: 'v2.2.0' },
       { tag_name: 'v2.1.0' },
     ])
