@@ -9,6 +9,7 @@ const createJestConfig = nextJest({
 const config = {
   clearMocks: true,
   rootDir: './src',
+  reporters: ['default', 'github-actions'],
   coverageDirectory: '<rootDir>/../coverage',
   moduleDirectories: ['node_modules', '<rootDir>/'],
   moduleNameMapper: {
