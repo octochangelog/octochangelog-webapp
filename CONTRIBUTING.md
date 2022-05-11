@@ -16,7 +16,7 @@ It's even better if you know a bit of React and the basics of TypeScript.
 ## Software requirements
 
 - Git
-- Latest version of Node.js 14
+- Latest version of Node.js 16
 - npm v8 package manager (bundled with Node.js)
 
 This guide assumes you'll run the code on your workstation directly.
