@@ -83,7 +83,7 @@
     "happo-cypress": "3.0.1",
     "happo-e2e": "1.1.0",
     "happo.io": "7.2.1",
-    "husky": "8.0.0",
+    "husky": "8.0.1",
     "is-ci": "3.0.1",
     "jest": "28.1.0",
     "lint-staged": "12.4.1",
