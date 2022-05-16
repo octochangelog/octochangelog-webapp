@@ -48,7 +48,7 @@ const ReleaseVersionFormControl = ({
 
   return (
     <FormControl isRequired width="full" {...rest}>
-      <FormLabel htmlFor={id} isTruncated>
+      <FormLabel htmlFor={id} noOfLines={1}>
         {label}
       </FormLabel>
       <Select
