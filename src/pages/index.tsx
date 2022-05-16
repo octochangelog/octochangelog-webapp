@@ -74,55 +74,55 @@ const FEATURES_DESCRIPTIONS: Array<FeatureItemProps> = [
     icon: HiOutlineSwitchHorizontal,
     title: 'Compare releases easily',
     children: (
-      <Text as="span">
+      <Box>
         Sifting through changelogs on GitHub taking too much time?
         <br />
         Let Octoclairvoyant put the list of changes in a single view!
-      </Text>
+      </Box>
     ),
   },
   {
     icon: HiOutlineShare,
     title: 'Share changelogs',
     children: (
-      <Text as="span">
+      <Box>
         Want to let your team review the changes in a dependency?
         <br />
         Give them a link!
-      </Text>
+      </Box>
     ),
   },
   {
     icon: HiOutlineFire,
     title: "Don't miss breaking changes",
     children: (
-      <Text as="span">
+      <Box>
         Octoclairvoyant finds all breaking changes, and lists them at the top.
         <br />
         You can’t miss those pesky gotcha’s now!
-      </Text>
+      </Box>
     ),
   },
   {
     icon: HiOutlineFilter,
     title: 'No manual sorting',
     children: (
-      <Text as="span">
+      <Box>
         Want a list of major, minor and patch level changes?
         <br />
         Octoclairvoyant groups changes into categories for you!
-      </Text>
+      </Box>
     ),
   },
   {
     icon: HiOutlineTag,
     title: 'Changes per version',
     children: (
-      <Text as="span">
+      <Box>
         Want to know which version introduced a certain change?
         <br />
         Octoclairvoyant labels each change with the version number.
-      </Text>
+      </Box>
     ),
   },
 ]
