@@ -21,6 +21,12 @@
       "matchDepTypes": ["devDependencies"],
       "matchPackagePatterns": ["eslint", "prettier"],
       "automerge": true
+    },
+    {
+      "description": "Major updates for npm packages require Dependency Dashboard approval",
+      "matchUpdateTypes": ["major"],
+      "matchManagers": ["npm"],
+      "dependencyDashboardApproval": true
     }
   ]
 }
