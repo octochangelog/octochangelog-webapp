@@ -31,7 +31,7 @@
     "postinstall": "npm run gen:theme-typings"
   },
   "dependencies": {
-    "@chakra-ui/react": "1.8.8",
+    "@chakra-ui/react": "2.1.2",
     "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
     "@octokit/auth-callback": "2.0.1",
@@ -44,8 +44,8 @@
     "next": "12.1.6",
     "next-seo": "5.4.0",
     "nookies": "2.5.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
     "react-icons": "4.3.1",
     "react-query": "3.39.0",
     "rehype-highlight": "5.0.2",
@@ -59,14 +59,14 @@
     "unified": "10.1.2"
   },
   "devDependencies": {
-    "@chakra-ui/cli": "1.9.0",
+    "@chakra-ui/cli": "2.0.0",
     "@octokit/openapi-types": "11.2.0",
     "@testing-library/cypress": "8.0.2",
     "@types/happo-cypress": "3.0.0",
     "@types/lodash": "4.14.182",
     "@types/node": "16.11.36",
-    "@types/react": "17.0.45",
-    "@types/react-dom": "17.0.17",
+    "@types/react": "18.0.9",
+    "@types/react-dom": "18.0.5",
     "@types/semver": "7.3.9",
     "@types/unist": "2.0.6",
     "@typescript-eslint/eslint-plugin": "5.26.0",

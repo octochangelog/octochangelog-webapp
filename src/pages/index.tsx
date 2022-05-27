@@ -9,7 +9,6 @@ import {
   List,
   SimpleGrid,
   Stack,
-  Text,
   useColorModeValue,
 } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
@@ -144,13 +143,13 @@ const FeatureItem = ({ icon, title, children }: FeatureItemProps) => {
       <Heading as="h3" color="primaryText" fontSize="2xl" mt={2}>
         {title}
       </Heading>
-      <Text
+      <Box
         fontSize="md"
         width={{ base: 'full', lg: '70%' }}
         color="secondaryText"
       >
         {children}
-      </Text>
+      </Box>
     </Box>
   )
 }
