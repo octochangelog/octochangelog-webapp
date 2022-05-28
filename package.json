@@ -39,7 +39,7 @@
     "@sentry/nextjs": "6.19.7",
     "downshift": "6.1.7",
     "focus-visible": "5.2.0",
-    "framer-motion": "6.3.3",
+    "framer-motion": "6.3.4",
     "lodash-es": "4.17.21",
     "next": "12.1.6",
     "next-seo": "5.4.0",
