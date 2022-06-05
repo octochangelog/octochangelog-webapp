@@ -65,7 +65,7 @@
     "@types/happo-cypress": "3.0.0",
     "@types/lodash": "4.14.182",
     "@types/node": "16.11.36",
-    "@types/react": "18.0.9",
+    "@types/react": "18.0.10",
     "@types/react-dom": "18.0.5",
     "@types/semver": "7.3.9",
     "@types/unist": "2.0.6",
