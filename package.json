@@ -64,7 +64,7 @@
     "@testing-library/cypress": "8.0.3",
     "@types/happo-cypress": "3.0.0",
     "@types/lodash": "4.14.182",
-    "@types/node": "16.11.40",
+    "@types/node": "16.11.41",
     "@types/react": "18.0.12",
     "@types/react-dom": "18.0.5",
     "@types/semver": "7.3.9",
