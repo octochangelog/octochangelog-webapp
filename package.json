@@ -67,7 +67,7 @@
     "@types/node": "16.11.41",
     "@types/react": "18.0.12",
     "@types/react-dom": "18.0.5",
-    "@types/semver": "7.3.9",
+    "@types/semver": "7.3.10",
     "@types/unist": "2.0.6",
     "@typescript-eslint/eslint-plugin": "5.27.0",
     "@typescript-eslint/parser": "5.27.0",
