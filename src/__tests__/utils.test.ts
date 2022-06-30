@@ -15,29 +15,27 @@ import {
 } from '~/utils'
 
 describe('mapRepositoryToQueryParams util', () => {
-  it.each`
+  it.each<{
+    input: undefined | Repository
+    output: RepositoryQueryParams
+  }>`
     label               | input                                       | output
     ${'an empty repo'}  | ${undefined}                                | ${{ owner: '', repo: '' }}
     ${'a full repo'}    | ${{ owner: { login: 'foo' }, name: 'bar' }} | ${{ owner: 'foo', repo: 'bar' }}
     ${'a partial repo'} | ${{ owner: {}, name: 'bar' }}               | ${{ owner: '', repo: 'bar' }}
-  `(
-    'should map $label',
-    ({
-      input,
-      output,
-    }: {
-      input: undefined | Repository
-      output: RepositoryQueryParams
-    }) => {
-      const result = mapRepositoryToQueryParams(input)
+  `('should map $label', ({ input, output }) => {
+    const result = mapRepositoryToQueryParams(input)
 
-      expect(result).toEqual(output)
-    }
-  )
+    expect(result).toEqual(output)
+  })
 })
 
 describe('mapStringToRepositoryQueryParams util', () => {
-  it.each`
+  it.each<{
+    label: string
+    input: string
+    output: RepositoryQueryParams
+  }>`
     label                                                | input         | output
     ${'full repo details from splittable string'}        | ${'org/name'} | ${{ owner: 'org', repo: 'name' }}
     ${'partial repo details from non-splittable string'} | ${'foo'}      | ${{ owner: 'foo', repo: '' }}
@@ -146,7 +144,7 @@ describe('filterReleasesByVersionRange util', () => {
 })
 
 describe('isStableRelease util', () => {
-  it.each`
+  it.each<{ tagName: string; output: boolean }>`
     tagName                 | output
     ${'v0.7.0'}             | ${true}
     ${'v1.0.0'}             | ${true}
@@ -154,14 +152,11 @@ describe('isStableRelease util', () => {
     ${'v5.0.0-alpha.3'}     | ${false}
     ${'v4.0.0-beta.4'}      | ${false}
     ${'I am not a release'} | ${false}
-  `(
-    'should return "$output" for tag "$tagName"',
-    ({ tagName, output }: { tagName: string; output: boolean }) => {
-      const result = isStableRelease({ tag_name: tagName } as Release)
+  `('should return "$output" for tag "$tagName"', ({ tagName, output }) => {
+    const result = isStableRelease({ tag_name: tagName } as Release)
 
-      expect(result).toBe(output)
-    }
-  )
+    expect(result).toBe(output)
+  })
 })
 
 describe('getMdastContentNodeTitle util', () => {
@@ -189,7 +184,7 @@ describe('getMdastContentNodeTitle util', () => {
 })
 
 describe('getMdastContentReleaseGroup util', () => {
-  it.each`
+  it.each<{ input: string; output: string }>`
     input                 | output
     ${'Major Features'}   | ${'features'}
     ${'🐙 Features'}      | ${'features'}
@@ -206,7 +201,7 @@ describe('getMdastContentReleaseGroup util', () => {
     ${'Core changes:'}    | ${'core changes'}
   `(
     'should return the group "$output" for a node with the title "$input"',
-    ({ input, output }: { input: string; output: string }) => {
+    ({ input, output }) => {
       const result = getMdastContentReleaseGroup({
         children: [{ value: input }],
       } as Content)
