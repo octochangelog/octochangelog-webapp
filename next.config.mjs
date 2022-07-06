@@ -6,6 +6,10 @@ import { withSentryConfig } from '@sentry/nextjs'
  * @type {import('next').NextConfig}
  **/
 const config = {
+  experimental: {
+    browsersListForSwc: true,
+    legacyBrowsers: false,
+  },
   swcMinify: true,
   async redirects() {
     return [
