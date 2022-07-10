@@ -59,7 +59,7 @@
     "unified": "10.1.2"
   },
   "devDependencies": {
-    "@chakra-ui/cli": "2.1.0",
+    "@chakra-ui/cli": "2.1.1",
     "@octokit/openapi-types": "12.6.1",
     "@testing-library/cypress": "8.0.3",
     "@types/happo-cypress": "3.0.0",
