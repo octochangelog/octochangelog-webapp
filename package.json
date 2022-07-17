@@ -51,7 +51,7 @@
     "rehype-highlight": "5.0.2",
     "rehype-react": "7.1.1",
     "remark-gfm": "3.0.1",
-    "remark-github": "11.2.3",
+    "remark-github": "11.2.4",
     "remark-parse": "10.0.1",
     "remark-rehype": "10.1.0",
     "remark-stringify": "10.0.2",
