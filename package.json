@@ -60,7 +60,7 @@
   },
   "devDependencies": {
     "@chakra-ui/cli": "2.1.2",
-    "@octokit/openapi-types": "12.10.1",
+    "@octokit/openapi-types": "12.11.0",
     "@testing-library/cypress": "8.0.3",
     "@types/happo-cypress": "3.0.1",
     "@types/lodash": "4.14.182",
