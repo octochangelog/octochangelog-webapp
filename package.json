@@ -36,7 +36,7 @@
     "@emotion/styled": "11.10.0",
     "@octokit/auth-callback": "3.0.0",
     "@octokit/rest": "19.0.3",
-    "@sentry/nextjs": "7.8.0",
+    "@sentry/nextjs": "7.8.1",
     "downshift": "6.1.7",
     "focus-visible": "5.2.0",
     "framer-motion": "6.5.1",
