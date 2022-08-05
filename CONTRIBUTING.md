@@ -17,7 +17,7 @@ It's even better if you know a bit of React and the basics of TypeScript.
 
 - Git
 - Latest version of Node.js 16
-- npm v8 package manager (bundled with Node.js)
+- pnpm package manager (version specified in "engines" property within `package.json`)
 
 This guide assumes you'll run the code on your workstation directly.
 
@@ -27,11 +27,11 @@ The [git-scm.com](https://git-scm.com/) site has links to download Git for your 
 
 ### Where to get Node.js
 
-You can install Node.js + npm using a [Node.js version manager](https://docs.npmjs.com/cli/v7/configuring-npm/install#using-a-node-version-manager-to-install-nodejs-and-npm) (recommended).
+You can install Node.js [Node.js version manager](https://docs.npmjs.com/cli/v7/configuring-npm/install#using-a-node-version-manager-to-install-nodejs-and-npm) (recommended).
 
-### Where to get npm (optional)
+### Where to get pnpm (optional)
 
-In case you didn't get npm v8 automatically bundled with Node.js, [there are different ways of installing/updating it](https://docs.npmjs.com/cli/v7/configuring-npm/install).
+In case you didn't get pnpm setup in your environment, [there are different ways of installing/updating it](https://pnpm.io/installation).
 
 ## Make a fork
 
@@ -43,10 +43,10 @@ Create a new feature branch for each bit of work!
 ## Installing development dependencies
 
 We use Yarn v1 to manage our dependencies.
-Run the `npm install` command in your own Octoclairvoyant directory to install all dependencies:
+Run the `pnpm install` command in your own Octoclairvoyant directory to install all dependencies:
 
 ```bash
-$ npm install
+$ pnpm install
 ```
 
 ## Development process
@@ -55,12 +55,12 @@ You're ready to start work now.
 We recommend you follow this process:
 
 1. Create a feature branch
-1. Start the development server with `npm start`
+1. Start the development server with `pnpm start`
 1. Make improvements
 1. Put chunks of work in a commit (the Husky program will run some checks)
 1. Write/adjust tests to check the functionality of the new code
-1. Run `npm run e2e` to confirm you're not breaking anything critical
-1. Run `npm run smoketest` to confirm other code validations are still fine
+1. Run `pnpm run e2e` to confirm you're not breaking anything critical
+1. Run `pnpm run smoketest` to confirm other code validations are still fine
 1. Create pull request
 
 ## Query string to check comparator output
@@ -80,7 +80,7 @@ Do the following to get a ugly button to toggle between light/dark mode:
 
 1. Create a file named `.env.local` in the root of the project (this file is on the `.gitignore` list so it won't be committed accidentally)
 1. Put `NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE=true` inside the `.env.local` file.
-1. Stop the development server, and run `npm start` to restart the server
+1. Stop the development server, and run `pnpm start` to restart the server
 1. You can now use the button in the header to switch between light/dark mode
 
 ### Setting colors for light/dark mode
