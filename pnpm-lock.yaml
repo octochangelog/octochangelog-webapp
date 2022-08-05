@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@chakra-ui/cli': 2.1.4
   '@chakra-ui/react': 2.2.6
+  '@chakra-ui/styled-system': 2.2.5
   '@emotion/react': 11.10.0
   '@emotion/styled': 11.10.0
   '@octokit/auth-callback': 3.0.0
@@ -28,7 +29,6 @@ specifiers:
   eslint-plugin-jest: 26.7.0
   eslint-plugin-jest-formatting: 3.1.0
   eslint-plugin-unicorn: 43.0.2
-  focus-visible: 5.2.0
   framer-motion: 6.5.1
   happo-cypress: 3.0.1
   happo-e2e: 1.2.0
@@ -67,7 +67,6 @@ dependencies:
   '@octokit/rest': 19.0.3
   '@sentry/nextjs': 7.8.1_iww7jqwdzjb7s7lqqttjammpxu
   downshift: 6.1.7_react@18.2.0
-  focus-visible: 5.2.0
   framer-motion: 6.5.1_biqbaboplfbrettd7655fr4n2y
   lodash-es: 4.17.21
   next: 12.2.3_qugu52izettqdqqm5qcjcltcia
@@ -89,6 +88,7 @@ dependencies:
 
 devDependencies:
   '@chakra-ui/cli': 2.1.4_ow5yu25silzxcp7pmv7jv4j54m
+  '@chakra-ui/styled-system': 2.2.5
   '@octokit/openapi-types': 12.11.0
   '@testing-library/cypress': 8.0.3_cypress@9.7.0
   '@types/happo-cypress': 3.0.1
@@ -1425,7 +1425,6 @@ packages:
     dependencies:
       '@chakra-ui/utils': 2.0.6
       csstype: 3.1.0
-    dev: false
 
   /@chakra-ui/switch/2.0.8_ivnftbmhnz66yfw5oqasmzla7m:
     resolution:
@@ -6787,13 +6786,6 @@ packages:
     engines: { node: '>=10' }
     dependencies:
       tslib: 2.4.0
-    dev: false
-
-  /focus-visible/5.2.0:
-    resolution:
-      {
-        integrity: sha512-Rwix9pBtC1Nuy5wysTmKy+UjbDJpIfg8eHjw0rjZ1mX4GNLz1Bmd16uDpI3Gk1i70Fgcs8Csg2lPm8HULFg9DQ==,
-      }
     dev: false
 
   /follow-redirects/1.15.1_debug@4.3.2:

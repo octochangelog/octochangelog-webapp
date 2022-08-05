@@ -38,7 +38,6 @@
     "@octokit/rest": "19.0.3",
     "@sentry/nextjs": "7.8.1",
     "downshift": "6.1.7",
-    "focus-visible": "5.2.0",
     "framer-motion": "6.5.1",
     "lodash-es": "4.17.21",
     "next": "12.2.3",
@@ -60,6 +59,7 @@
   },
   "devDependencies": {
     "@chakra-ui/cli": "2.1.4",
+    "@chakra-ui/styled-system": "2.2.5",
     "@octokit/openapi-types": "12.11.0",
     "@testing-library/cypress": "8.0.3",
     "@types/happo-cypress": "3.0.1",
