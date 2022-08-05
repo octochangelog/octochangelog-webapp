@@ -81,7 +81,7 @@
     "eslint-plugin-unicorn": "43.0.2",
     "happo-cypress": "3.0.1",
     "happo-e2e": "1.2.0",
-    "happo.io": "7.2.1",
+    "happo.io": "7.3.0",
     "husky": "8.0.1",
     "is-ci": "3.0.1",
     "jest": "28.1.3",
