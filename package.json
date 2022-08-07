@@ -5,6 +5,7 @@
   "engines": {
     "pnpm": "^7.5.0"
   },
+  "packageManager": "pnpm@7.5.0",
   "scripts": {
     "start": "pnpm dev",
     "dev": "next",
