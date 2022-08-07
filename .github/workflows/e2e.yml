@@ -44,7 +44,6 @@ jobs:
         uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3.4.1
         with:
           node-version-file: '.nvmrc'
-          cache: 'pnpm'
 
       # Act
       - name: Run Cypress
