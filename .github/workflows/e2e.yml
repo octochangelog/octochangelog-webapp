@@ -45,14 +45,12 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
 
       # Act
       - name: Run Cypress
         uses: cypress-io/github-action@30008f1458a5a2c97054bfe118fe33d75976c482
         with:
-          install: false
+          install-command: pnpm install --frozen-lockfile
           build: pnpm build
           start: pnpm serve
           wait-on: 'http://localhost:3000'
