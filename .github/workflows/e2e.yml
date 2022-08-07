@@ -61,7 +61,7 @@ jobs:
           group: merge
           # tag will be either "push" or "pull_request"
           tag: ${{ github.event_name }}
-          command-prefix: npx happo-e2e -- npx
+          command-prefix: pnpm dlx happo-e2e -- pnpm dlx
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -97,4 +97,4 @@ jobs:
 
       # Act
       - name: Run Happo
-        run: npx happo-e2e finalize
+        run: pnpm dlx happo-e2e finalize
