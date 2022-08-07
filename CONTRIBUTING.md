@@ -16,8 +16,8 @@ It's even better if you know a bit of React and the basics of TypeScript.
 ## Software requirements
 
 - Git
-- Latest version of Node.js 16
 - pnpm package manager (version specified in "engines" property within `package.json`)
+- Latest version of Node.js 16 (optional)
 
 This guide assumes you'll run the code on your workstation directly.
 
@@ -25,13 +25,13 @@ This guide assumes you'll run the code on your workstation directly.
 
 The [git-scm.com](https://git-scm.com/) site has links to download Git for your operating system.
 
-### Where to get Node.js
-
-You can install Node.js [Node.js version manager](https://docs.npmjs.com/cli/v7/configuring-npm/install#using-a-node-version-manager-to-install-nodejs-and-npm) (recommended).
-
-### Where to get pnpm (optional)
+### Where to get pnpm
 
 In case you didn't get pnpm setup in your environment, [there are different ways of installing/updating it](https://pnpm.io/installation).
+
+### Where to get Node.js (optional)
+
+You can install Node.js through a [Node.js version manager](https://docs.npmjs.com/cli/v7/configuring-npm/install#using-a-node-version-manager-to-install-nodejs-and-npm). However, [pnpm can manage the Node.js version automatically for you](https://pnpm.io/blog/2021/12/29/yearly-update#managing-nodejs-versions-since-v6120), so you can run it even with no Node.js preinstalled on the system.
 
 ## Make a fork
 
