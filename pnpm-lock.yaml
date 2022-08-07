@@ -4,8 +4,11 @@ specifiers:
   '@chakra-ui/cli': 2.1.4
   '@chakra-ui/react': 2.2.6
   '@chakra-ui/styled-system': 2.2.5
+  '@chakra-ui/theme-tools': 2.0.7
+  '@chakra-ui/utils': 2.0.6
   '@emotion/react': 11.10.0
   '@emotion/styled': 11.10.0
+  '@jest/globals': 28.1.3
   '@octokit/auth-callback': 3.0.0
   '@octokit/openapi-types': 12.11.0
   '@octokit/rest': 19.0.3
@@ -13,6 +16,7 @@ specifiers:
   '@testing-library/cypress': 8.0.3
   '@types/happo-cypress': 3.0.1
   '@types/lodash': 4.14.182
+  '@types/mdast': 3.0.10
   '@types/node': 16.11.47
   '@types/react': 18.0.15
   '@types/react-dom': 18.0.6
@@ -89,10 +93,14 @@ dependencies:
 devDependencies:
   '@chakra-ui/cli': 2.1.4_ow5yu25silzxcp7pmv7jv4j54m
   '@chakra-ui/styled-system': 2.2.5
+  '@chakra-ui/theme-tools': 2.0.7_r56oxewql32lblvauqybun6z4e
+  '@chakra-ui/utils': 2.0.6
+  '@jest/globals': 28.1.3
   '@octokit/openapi-types': 12.11.0
   '@testing-library/cypress': 8.0.3_cypress@9.7.0
   '@types/happo-cypress': 3.0.1
   '@types/lodash': 4.14.182
+  '@types/mdast': 3.0.10
   '@types/node': 16.11.47
   '@types/react': 18.0.15
   '@types/react-dom': 18.0.6
@@ -701,7 +709,6 @@ packages:
       {
         integrity: sha512-3XiloxwYROE0c38SOJGEESBzYu/9MWFOp5Owi8mEYq+IpO8babtr1tMhDGqJQxa8K0/uVaCaiZz4iZLTJkX7eA==,
       }
-    dev: false
 
   /@chakra-ui/avatar/2.0.7_2ceav2ty4h5gkpnoesr62job6y:
     resolution:
@@ -1539,7 +1546,6 @@ packages:
       '@chakra-ui/styled-system': 2.2.5
       '@chakra-ui/utils': 2.0.6
       '@ctrl/tinycolor': 3.4.1
-    dev: false
 
   /@chakra-ui/theme/2.1.5_r56oxewql32lblvauqybun6z4e:
     resolution:
@@ -1670,7 +1676,6 @@ packages:
         integrity: sha512-ej5oVy6lykXsvieQtqZxCOaLT+xD4+QNarq78cIYISHmZXshCvROLudpQN3lfL8G0NL7plMSSK+zlyvCaIJ4Iw==,
       }
     engines: { node: '>=10' }
-    dev: false
 
   /@cypress/request/2.88.10:
     resolution:
@@ -3428,7 +3433,6 @@ packages:
       }
     dependencies:
       '@types/unist': 2.0.6
-    dev: false
 
   /@types/mdurl/1.0.2:
     resolution:
