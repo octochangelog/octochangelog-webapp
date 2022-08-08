@@ -74,4 +74,4 @@ RUN bash -c ". .nvm/nvm.sh \
     && nvm install \
     && nvm use"
 RUN echo "nvm use &>/dev/null" >> ~/.bashrc.d/51-nvm-fix
-RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
+RUN bash -c "npm install -g pnpm@${PNPM_VERSION}"
