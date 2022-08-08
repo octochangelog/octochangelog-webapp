@@ -72,7 +72,6 @@ RUN sudo apt-get update \
 COPY .nvmrc ./
 RUN bash -c ". .nvm/nvm.sh \
     && nvm install \
-    && nvm use \
-    && npm install -g npm@8"
+    && nvm use"
 RUN echo "nvm use &>/dev/null" >> ~/.bashrc.d/51-nvm-fix
 RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
