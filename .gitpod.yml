@@ -29,6 +29,7 @@ image:
 tasks:
   - init: |
       pnpm install
+      pnpm cypress install
       gp sync-done install
     command: pnpm dev
   - init: gp sync-await install
