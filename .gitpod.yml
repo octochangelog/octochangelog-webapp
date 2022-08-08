@@ -29,11 +29,12 @@ image:
 tasks:
   - init: |
       pnpm install
-      pnpm cypress install
       gp sync-done install
     command: pnpm dev
   - init: gp sync-await install
-    command: pnpm cypress:open
+    command: |
+      pnpm cypress install
+      pnpm cy:open
   - command: git branch
 ports:
   - port: 3000
