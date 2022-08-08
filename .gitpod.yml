@@ -32,7 +32,7 @@ tasks:
       gp sync-done install
     command: pnpm dev
   - init: gp sync-await install
-    command: pnpm cypress
+    command: pnpm cypress:open
   - command: git branch
 ports:
   - port: 3000
