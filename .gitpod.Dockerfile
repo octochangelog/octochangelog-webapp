@@ -75,4 +75,4 @@ RUN bash -c ". .nvm/nvm.sh \
     && nvm use \
     && npm install -g npm@8"
 RUN echo "nvm use &>/dev/null" >> ~/.bashrc.d/51-nvm-fix
-RUN
+RUN curl -fsSL https://get.pnpm.io/install.sh | sh -
