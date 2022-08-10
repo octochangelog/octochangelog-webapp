@@ -21,6 +21,11 @@
       "matchDepTypes": ["devDependencies"],
       "matchPackagePatterns": ["eslint", "prettier"],
       "automerge": true
-    }
+    },
+    {
+      "description": "Get pnpm updates once a month",
+      "matchPackageNames": ["pnpm"],
+      "extends": ["schedule:monthly"]
+    },
   ]
 }
