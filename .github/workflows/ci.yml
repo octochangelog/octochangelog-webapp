@@ -22,17 +22,19 @@ jobs:
         uses: styfle/cancel-workflow-action@bb6001c4ea612bf59c3abfc4756fbceee4f870c7 # tag=0.10.0
       - name: Checkout repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
       - name: Setup Node.js
         uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3.4.1
         with:
           node-version-file: '.nvmrc'
-          cache: 'npm'
+          cache: 'pnpm'
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
 
       # Act
       - name: ESLint
-        run: npm run lint
+        run: pnpm lint
 
   types_check:
     name: Types Check
@@ -43,19 +45,21 @@ jobs:
         uses: styfle/cancel-workflow-action@bb6001c4ea612bf59c3abfc4756fbceee4f870c7 # tag=0.10.0
       - name: Checkout repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
       - name: Setup Node.js
         uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3.4.1
         with:
           node-version-file: '.nvmrc'
-          cache: 'npm'
+          cache: 'pnpm'
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
 
       # Act
       - name: Check codebase types
-        run: npm run type-check
+        run: pnpm type-check
       - name: Check Cypress types
-        run: npm run type-check:cypress
+        run: pnpm type-check:cypress
 
   format_check:
     name: Format Check
@@ -66,17 +70,19 @@ jobs:
         uses: styfle/cancel-workflow-action@bb6001c4ea612bf59c3abfc4756fbceee4f870c7 # tag=0.10.0
       - name: Checkout repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
       - name: Setup Node.js
         uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3.4.1
         with:
           node-version-file: '.nvmrc'
-          cache: 'npm'
+          cache: 'pnpm'
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
 
       # Act
       - name: Prettier
-        run: npm run format:check
+        run: pnpm format:check
 
   tests:
     name: Unit & Integration tests
@@ -87,14 +93,16 @@ jobs:
         uses: styfle/cancel-workflow-action@bb6001c4ea612bf59c3abfc4756fbceee4f870c7 # tag=0.10.0
       - name: Checkout repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
       - name: Setup Node.js
         uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3.4.1
         with:
           node-version-file: '.nvmrc'
-          cache: 'npm'
+          cache: 'pnpm'
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
 
       # Act
       - name: Run jest
-        run: npm run test:ci
+        run: pnpm test:ci

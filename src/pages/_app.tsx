@@ -4,7 +4,6 @@ import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import 'focus-visible/dist/focus-visible'
 
 import { GithubAuthProvider } from '~/contexts/github-auth-provider'
 import customTheme from '~/customTheme'
