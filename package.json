@@ -16,7 +16,7 @@
     "type-check:cypress": "tsc --project cypress/tsconfig.json",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0 --report-unused-disable-directives",
     "lint:fix": "pnpm lint -- --fix",
-    "prettier-base": "prettier . --ignore-unknown",
+    "prettier-base": "prettier . --ignore-unknown --cache --loglevel warn",
     "format": "pnpm prettier-base --write",
     "format:check": "pnpm prettier-base --check",
     "test": "jest",
