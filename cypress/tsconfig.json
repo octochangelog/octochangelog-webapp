@@ -1,12 +1,12 @@
 // https://docs.cypress.io/guides/tooling/typescript-support#Types-for-plugins
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "noEmit": true,
-    "isolatedModules": false,
-    // be explicit about types included
-    // to avoid clashing with Jest types
-    "types": ["cypress", "@testing-library/cypress"]
-  },
-  "include": ["../node_modules/cypress", "./**/*.ts"]
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"noEmit": true,
+		"isolatedModules": false,
+		// be explicit about types included
+		// to avoid clashing with Jest types
+		"types": ["cypress", "@testing-library/cypress"]
+	},
+	"include": ["../node_modules/cypress", "./**/*.ts"]
 }

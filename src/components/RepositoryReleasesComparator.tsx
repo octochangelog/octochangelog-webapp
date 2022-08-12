@@ -10,55 +10,55 @@ import { useGithubAuth } from '~/contexts/github-auth-provider'
 import useIsClientSide from '~/hooks/useIsClientSide'
 
 const RepositoryReleasesChangelog = dynamic(
-  async () => import('~/components/RepositoryReleasesChangelog')
+	async () => import('~/components/RepositoryReleasesChangelog')
 )
 
 const RepositoryReleasesComparator = () => {
-  const isClientSide = useIsClientSide()
-  const { isAuth } = useGithubAuth()
-  const { repository, fromVersion, toVersion } = useComparatorState()
+	const isClientSide = useIsClientSide()
+	const { isAuth } = useGithubAuth()
+	const { repository, fromVersion, toVersion } = useComparatorState()
 
-  return (
-    <Flex direction="column" height="full">
-      <Box bgColor="background2" py={{ base: 4, md: 8 }}>
-        <Container variant="fluid">
-          <RepositoriesComparatorFilters />
-        </Container>
-      </Box>
-      <Divider />
-      <Box pt={2} flex="1 0 auto">
-        {repository && (
-          <>
-            <RepositoryReleasesChangelogHeading
-              repository={repository}
-              fromVersion={fromVersion ?? undefined}
-              toVersion={toVersion ?? undefined}
-            />
-            <Container variant="fluid">
-              <RepositoryReleasesChangelog
-                repository={repository}
-                fromVersion={fromVersion ?? undefined}
-                toVersion={toVersion ?? undefined}
-              />
-            </Container>
-          </>
-        )}
+	return (
+		<Flex direction="column" height="full">
+			<Box bgColor="background2" py={{ base: 4, md: 8 }}>
+				<Container variant="fluid">
+					<RepositoriesComparatorFilters />
+				</Container>
+			</Box>
+			<Divider />
+			<Box pt={2} flex="1 0 auto">
+				{repository && (
+					<>
+						<RepositoryReleasesChangelogHeading
+							repository={repository}
+							fromVersion={fromVersion ?? undefined}
+							toVersion={toVersion ?? undefined}
+						/>
+						<Container variant="fluid">
+							<RepositoryReleasesChangelog
+								repository={repository}
+								fromVersion={fromVersion ?? undefined}
+								toVersion={toVersion ?? undefined}
+							/>
+						</Container>
+					</>
+				)}
 
-        {/* This is rendered only in CS since SSR doesn't have info about auth user yet */}
-        {isClientSide && !repository && !isAuth && (
-          <Container variant="fluid">
-            <Flex alignItems="center" flexDirection="column">
-              <Text mb={4}>
-                You can increase the max number of allowed requests to GitHub by
-                authorizing the app
-              </Text>
-              <GitHubLoginButton />
-            </Flex>
-          </Container>
-        )}
-      </Box>
-    </Flex>
-  )
+				{/* This is rendered only in CS since SSR doesn't have info about auth user yet */}
+				{isClientSide && !repository && !isAuth && (
+					<Container variant="fluid">
+						<Flex alignItems="center" flexDirection="column">
+							<Text mb={4}>
+								You can increase the max number of allowed requests to GitHub by
+								authorizing the app
+							</Text>
+							<GitHubLoginButton />
+						</Flex>
+					</Container>
+				)}
+			</Box>
+		</Flex>
+	)
 }
 
 export default RepositoryReleasesComparator

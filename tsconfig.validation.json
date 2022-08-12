@@ -6,8 +6,8 @@ https://docs.cypress.io/guides/tooling/typescript-support#Clashing-types-with-Je
 */
 
 {
-  "extends": "./tsconfig.json",
+	"extends": "./tsconfig.json",
 
-  // Avoid excluding testing files for linting
-  "exclude": []
+	// Avoid excluding testing files for linting
+	"exclude": []
 }
