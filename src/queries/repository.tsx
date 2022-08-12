@@ -1,6 +1,6 @@
 import type { RestEndpointMethodTypes } from '@octokit/rest'
-import type { UseQueryOptions, UseQueryResult } from 'react-query'
-import { useQuery } from 'react-query'
+import type { UseQueryOptions, UseQueryResult } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { octokit } from '~/github-client'
 
