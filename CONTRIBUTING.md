@@ -105,13 +105,13 @@ Here's an example of how to colorize a component.
 
 ```typescript
 const Footer = () => {
-  const boxBgColor = useColorModeValue('gray.50', 'gray.900')
+	const boxBgColor = useColorModeValue('gray.50', 'gray.900')
 
-  return (
-    <Box as="footer" bg={boxBgColor}>
-      <Container></Container>
-    </Box>
-  )
+	return (
+		<Box as="footer" bg={boxBgColor}>
+			<Container></Container>
+		</Box>
+	)
 }
 
 export default Footer
@@ -130,6 +130,6 @@ If you want to add an access token to extend the API rate limit, follow these st
 
 ```json
 {
-  "GITHUB_TESTING_ACCESS_TOKEN": "token-created-in-step-1"
+	"GITHUB_TESTING_ACCESS_TOKEN": "token-created-in-step-1"
 }
 ```

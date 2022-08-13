@@ -4,48 +4,48 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { getGithubAccessToken, setGithubAccessToken } from '~/github-client'
 
 type GithubAuthContextValue = {
-  setAccessToken: (newAccessToken?: string | null) => void
-  isAuth: boolean
+	setAccessToken: (newAccessToken?: string | null) => void
+	isAuth: boolean
 }
 
 const GithubAuthContext = createContext<GithubAuthContextValue | null>(null)
 
 interface GithubAuthProviderProps {
-  children: ReactNode
+	children: ReactNode
 }
 
 const GithubAuthProvider = ({ children }: GithubAuthProviderProps) => {
-  const [accessToken, setAccessToken] = useState<string | null | undefined>(
-    getGithubAccessToken
-  )
+	const [accessToken, setAccessToken] = useState<string | null | undefined>(
+		getGithubAccessToken
+	)
 
-  useEffect(() => {
-    setGithubAccessToken(accessToken)
-  }, [accessToken])
+	useEffect(() => {
+		setGithubAccessToken(accessToken)
+	}, [accessToken])
 
-  const providerValue: GithubAuthContextValue = useMemo(
-    () => ({
-      setAccessToken,
-      isAuth: Boolean(accessToken),
-    }),
-    [accessToken]
-  )
+	const providerValue: GithubAuthContextValue = useMemo(
+		() => ({
+			setAccessToken,
+			isAuth: Boolean(accessToken),
+		}),
+		[accessToken]
+	)
 
-  return (
-    <GithubAuthContext.Provider value={providerValue}>
-      {children}
-    </GithubAuthContext.Provider>
-  )
+	return (
+		<GithubAuthContext.Provider value={providerValue}>
+			{children}
+		</GithubAuthContext.Provider>
+	)
 }
 
 function useGithubAuth() {
-  const context = useContext(GithubAuthContext)
+	const context = useContext(GithubAuthContext)
 
-  if (!context) {
-    throw new Error('useGithubAuth must be used within GithubAuthProvider')
-  }
+	if (!context) {
+		throw new Error('useGithubAuth must be used within GithubAuthProvider')
+	}
 
-  return context
+	return context
 }
 
 export { GithubAuthProvider, useGithubAuth }
