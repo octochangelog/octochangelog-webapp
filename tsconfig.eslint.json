@@ -3,13 +3,22 @@
 
 Inspired by official solution #1:
 https://docs.cypress.io/guides/tooling/typescript-support#Clashing-types-with-Jest
+
+Also suggested by TypeScript ESLint (the last option):
+https://typescript-eslint.io/docs/linting/typed-linting/#i-get-errors-telling-me-the-file-must-be-included-in-at-least-one-of-the-projects-provided
 */
 
 {
 	"extends": "./tsconfig.json",
 	// Include al TS files in the project, not just the ones inside src/
 	// so cypress/ ones are linted.
-	"include": ["next-env.d.ts", "additional.d.ts", "**/*.ts", "**/*.tsx"],
+	"include": [
+		".eslintrc.js",
+		"next-env.d.ts",
+		"additional.d.ts",
+		"**/*.ts",
+		"**/*.tsx"
+	],
 
 	// Avoid excluding testing files for linting
 	"exclude": []

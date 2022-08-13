@@ -2,10 +2,16 @@
 const jestVersion = require('jest/package.json').version
 
 module.exports = {
+	parserOptions: {
+		tsconfigRootDir: __dirname,
+		project: ['./tsconfig.eslint.json'],
+	},
 	extends: [
 		'eslint:recommended',
 		'next/core-web-vitals',
 		'plugin:@typescript-eslint/recommended',
+		'plugin:@typescript-eslint/recommended-requiring-type-checking',
+		'plugin:@typescript-eslint/strict',
 		'prettier',
 	],
 	plugins: ['unicorn'],
@@ -48,9 +54,6 @@ module.exports = {
 		// TypeScript
 		{
 			files: ['**/*.ts?(x)'],
-			parserOptions: {
-				project: ['./tsconfig.lint.json'],
-			},
 			rules: {
 				'@typescript-eslint/explicit-module-boundary-types': 'off',
 				'@typescript-eslint/array-type': [
