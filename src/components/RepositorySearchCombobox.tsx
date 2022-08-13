@@ -37,7 +37,7 @@ const RepositorySearchCombobox = ({
 	const {
 		data,
 		refetch,
-		isLoading: isQueryLoading,
+		isFetching: isQueryLoading,
 	} = useSearchRepositoriesQuery({ q: inputValue }, { enabled: false })
 
 	const {

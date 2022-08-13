@@ -1,9 +1,9 @@
 import { ChakraProvider } from '@chakra-ui/react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { resetIdCounter } from 'downshift'
 import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
 
 import { GithubAuthProvider } from '~/contexts/github-auth-provider'
 import customTheme from '~/customTheme'
