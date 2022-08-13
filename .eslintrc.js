@@ -55,17 +55,14 @@ module.exports = {
 		{
 			files: ['**/*.ts?(x)'],
 			rules: {
-				'@typescript-eslint/explicit-module-boundary-types': 'off',
 				'@typescript-eslint/array-type': [
-					'error',
+					'warn',
 					{
 						default: 'generic',
 					},
 				],
-				'@typescript-eslint/no-floating-promises': 'error',
 				'@typescript-eslint/consistent-type-exports': 'error',
 				'@typescript-eslint/consistent-type-imports': 'error',
-				'@typescript-eslint/no-explicit-any': 'error',
 			},
 		},
 		// Jest
