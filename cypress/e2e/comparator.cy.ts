@@ -97,3 +97,23 @@ it('should show expected results when using standard query string', () => {
 
 	cy.get('body').happoScreenshot({ component: 'Comparator page: full example' })
 })
+
+it('should show changelog results when loading the comparator preloaded with "latest"', () => {
+	cy.visit(
+		'/?repo=testing-library%2Fdom-testing-library&from=v8.11.0&to=latest'
+	)
+
+	cy.findByRole('link', { name: 'dom-testing-library' }).should(
+		'have.attr',
+		'href',
+		'https://github.com/testing-library/dom-testing-library'
+	)
+	cy.findByRole('heading', { name: 'Changes from v8.11.0 to latest' })
+
+	cy.findByRole('heading', { level: 2, name: /features/i })
+	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
+
+	cy.get('body').happoScreenshot({
+		component: 'Comparator page: preloaded with "latest"',
+	})
+})
