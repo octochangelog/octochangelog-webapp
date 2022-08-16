@@ -1,6 +1,6 @@
 import { Box, Container, Divider, Flex, Text } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
-import * as React from 'react'
+import { Suspense } from 'react'
 
 import GitHubLoginButton from '~/components/GitHubLoginButton'
 import RepositoriesComparatorFilters from '~/components/RepositoriesComparatorFilters'
@@ -10,7 +10,8 @@ import { useGithubAuth } from '~/contexts/github-auth-provider'
 import useIsClientSide from '~/hooks/useIsClientSide'
 
 const RepositoryReleasesChangelog = dynamic(
-	async () => import('~/components/RepositoryReleasesChangelog')
+	() => import('~/components/RepositoryReleasesChangelog'),
+	{ suspense: true }
 )
 
 const RepositoryReleasesComparator = () => {
@@ -35,11 +36,13 @@ const RepositoryReleasesComparator = () => {
 							toVersion={toVersion ?? undefined}
 						/>
 						<Container variant="fluid">
-							<RepositoryReleasesChangelog
-								repository={repository}
-								fromVersion={fromVersion ?? undefined}
-								toVersion={toVersion ?? undefined}
-							/>
+							<Suspense fallback={<div />}>
+								<RepositoryReleasesChangelog
+									repository={repository}
+									fromVersion={fromVersion ?? undefined}
+									toVersion={toVersion ?? undefined}
+								/>
+							</Suspense>
 						</Container>
 					</>
 				)}
