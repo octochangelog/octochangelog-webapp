@@ -113,6 +113,8 @@ it('should show changelog results when loading the comparator preloaded with "la
 	cy.findByRole('heading', { level: 2, name: /features/i })
 	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
 
+	cy.findByText(/Don't queue microtasks after condition is met/)
+
 	cy.get('body').happoScreenshot({
 		component: 'Comparator page: preloaded with "latest"',
 	})
