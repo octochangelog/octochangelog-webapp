@@ -23,7 +23,7 @@ it('should have a working form interface', () => {
 
 it('should show expected results when using standard query string', () => {
 	cy.visit(
-		'/?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0'
+		'/comparator?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0'
 	)
 
 	cy.wait(10000) // eslint-disable-line cypress/no-unnecessary-waiting
@@ -100,7 +100,7 @@ it('should show expected results when using standard query string', () => {
 
 it('should show changelog results when loading the comparator preloaded with "latest"', () => {
 	cy.visit(
-		'/?repo=testing-library%2Fdom-testing-library&from=v8.11.0&to=latest'
+		'/comparator?repo=testing-library%2Fdom-testing-library&from=v8.11.0&to=latest'
 	)
 
 	cy.findByRole('link', { name: 'dom-testing-library' }).should(
