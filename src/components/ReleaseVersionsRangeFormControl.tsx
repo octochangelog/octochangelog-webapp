@@ -41,7 +41,7 @@ const ReleaseVersionsRangeFormControl = (props: StackProps) => {
 	const { repository, fromVersion, toVersion } = useComparatorState()
 	const { setFromVersion, setToVersion } = useComparatorUpdater()
 
-	const { data: releases, isLoading } = useReleasesQuery({
+	const { data: releases, isFetching } = useReleasesQuery({
 		repository,
 		fromVersion,
 		toVersion,
@@ -59,8 +59,8 @@ const ReleaseVersionsRangeFormControl = (props: StackProps) => {
 			<ReleaseVersionFormControl
 				label="Select from release"
 				id="from-version"
-				isDisabled={!releases || isLoading}
-				isLoading={isLoading}
+				isDisabled={!releases || isFetching}
+				isLoading={isFetching}
 				placeholder={selectPlaceholder}
 				options={fromReleases}
 				value={fromVersion ?? undefined}
@@ -69,8 +69,8 @@ const ReleaseVersionsRangeFormControl = (props: StackProps) => {
 			<ReleaseVersionFormControl
 				label="Select to release"
 				id="to-version"
-				isDisabled={!releases || isLoading}
-				isLoading={isLoading}
+				isDisabled={!releases || isFetching}
+				isLoading={isFetching}
 				placeholder={selectPlaceholder}
 				options={toReleases}
 				value={toVersion ?? undefined}
