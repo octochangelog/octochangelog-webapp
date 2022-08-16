@@ -3,9 +3,6 @@
 
 Inspired by official solution #1:
 https://docs.cypress.io/guides/tooling/typescript-support#Clashing-types-with-Jest
-
-Also suggested by TypeScript ESLint (the last option):
-https://typescript-eslint.io/docs/linting/typed-linting/#i-get-errors-telling-me-the-file-must-be-included-in-at-least-one-of-the-projects-provided
 */
 
 {

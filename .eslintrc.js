@@ -2,16 +2,10 @@
 const jestVersion = require('jest/package.json').version
 
 module.exports = {
-	parserOptions: {
-		tsconfigRootDir: __dirname,
-		project: ['./tsconfig.eslint.json'],
-	},
 	extends: [
 		'eslint:recommended',
 		'next/core-web-vitals',
 		'plugin:@typescript-eslint/recommended',
-		'plugin:@typescript-eslint/recommended-requiring-type-checking',
-		'plugin:@typescript-eslint/strict',
 		'prettier',
 	],
 	plugins: ['unicorn'],
@@ -54,6 +48,19 @@ module.exports = {
 		// TypeScript
 		{
 			files: ['**/*.ts?(x)'],
+			parserOptions: {
+				tsconfigRootDir: __dirname,
+				project: ['./tsconfig.eslint.json'],
+			},
+
+			/*
+			 * Linting with Type Information only for TS files:
+			 * https://typescript-eslint.io/docs/linting/typed-linting/#i-get-errors-telling-me-the-file-must-be-included-in-at-least-one-of-the-projects-provided
+			 */
+			extends: [
+				'plugin:@typescript-eslint/recommended-requiring-type-checking',
+				'plugin:@typescript-eslint/strict',
+			],
 			rules: {
 				'@typescript-eslint/array-type': [
 					'warn',
@@ -63,6 +70,15 @@ module.exports = {
 				],
 				'@typescript-eslint/consistent-type-exports': 'error',
 				'@typescript-eslint/consistent-type-imports': 'error',
+
+				// Disabling because of index errors on interfaces,
+				// which works fine in type aliases:
+				// https://bobbyhadz.com/blog/typescript-index-signature-for-type-is-missing-in-type
+				'@typescript-eslint/consistent-type-definitions': 'off',
+
+				// Disabling because it's too strict:
+				// we are interested in using || operator multiple times to avoid empty strings.
+				'@typescript-eslint/prefer-nullish-coalescing': 'off',
 			},
 		},
 		// Jest
