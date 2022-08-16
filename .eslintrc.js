@@ -81,6 +81,12 @@ module.exports = {
 			},
 		},
 		// Cypress
-		{ files: ['cypress/**/*.[jt]s'], extends: ['plugin:cypress/recommended'] },
+		{
+			files: ['cypress/**/*.[jt]s'],
+			extends: ['plugin:cypress/recommended'],
+			rules: {
+				'jest/no-focused-tests': 'error',
+			},
+		},
 	],
 }
