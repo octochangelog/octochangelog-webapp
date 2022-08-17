@@ -49,20 +49,36 @@ module.exports = {
 		{
 			files: ['**/*.ts?(x)'],
 			parserOptions: {
-				project: ['./tsconfig.lint.json'],
+				tsconfigRootDir: __dirname,
+				project: ['./tsconfig.eslint.json'],
 			},
+
+			/*
+			 * Linting with Type Information only for TS files:
+			 * https://typescript-eslint.io/docs/linting/typed-linting/#i-get-errors-telling-me-the-file-must-be-included-in-at-least-one-of-the-projects-provided
+			 */
+			extends: [
+				'plugin:@typescript-eslint/recommended-requiring-type-checking',
+				'plugin:@typescript-eslint/strict',
+			],
 			rules: {
-				'@typescript-eslint/explicit-module-boundary-types': 'off',
 				'@typescript-eslint/array-type': [
-					'error',
+					'warn',
 					{
 						default: 'generic',
 					},
 				],
-				'@typescript-eslint/no-floating-promises': 'error',
 				'@typescript-eslint/consistent-type-exports': 'error',
 				'@typescript-eslint/consistent-type-imports': 'error',
-				'@typescript-eslint/no-explicit-any': 'error',
+
+				// Disabling because of index errors on interfaces,
+				// which works fine in type aliases:
+				// https://bobbyhadz.com/blog/typescript-index-signature-for-type-is-missing-in-type
+				'@typescript-eslint/consistent-type-definitions': 'off',
+
+				// Disabling because it's too strict:
+				// we are interested in using || operator multiple times to avoid empty strings.
+				'@typescript-eslint/prefer-nullish-coalescing': 'off',
 			},
 		},
 		// Jest

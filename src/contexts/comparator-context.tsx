@@ -109,7 +109,7 @@ const ComparatorProvider = ({ children }: { children: ReactNode }) => {
 
 				const repositoryQueryParams = mapStringToRepositoryQueryParams(repo)
 
-				if (repositoryQueryParams) {
+				if (repositoryQueryParams.repo && repositoryQueryParams.owner) {
 					const response = await octokit.repos.get(repositoryQueryParams)
 
 					setRepository(response.data)
