@@ -15,7 +15,7 @@ function insertReleaseInGroup(
 	groupedReleases: ProcessedReleasesCollection
 ): void {
 	const { title } = newProcessedRelease
-	if (groupedReleases[title]) {
+	if (Array.isArray(groupedReleases[title])) {
 		// Group already exists, then append new changes of same type
 		groupedReleases[title].push(newProcessedRelease)
 	} else {

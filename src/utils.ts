@@ -15,7 +15,7 @@ export function mapRepositoryToQueryParams(
 	repository?: Repository
 ): RepositoryQueryParams {
 	return {
-		owner: repository?.owner?.login ?? '',
+		owner: repository?.owner.login ?? '',
 		repo: repository?.name ?? '',
 	}
 }

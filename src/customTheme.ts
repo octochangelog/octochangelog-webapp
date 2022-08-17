@@ -1,4 +1,4 @@
-import type { ColorHues, ThemeConfig } from '@chakra-ui/react'
+import type { ColorHues, ThemeConfig, Theme } from '@chakra-ui/react'
 import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
 import type { Dict } from '@chakra-ui/utils'
@@ -197,6 +197,6 @@ const customTheme = extendTheme(
 		colorScheme: 'gray',
 		components: ['Code', 'BlockQuote'],
 	})
-)
+) as Theme
 
 export default customTheme

@@ -1,6 +1,4 @@
 import { defineConfig } from 'cypress'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import happoTask from 'happo-cypress/task'
 
 export default defineConfig({
