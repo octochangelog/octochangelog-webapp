@@ -2,6 +2,8 @@ import {
 	Alert,
 	AlertIcon,
 	Box,
+	CircularProgress,
+	Flex,
 	Heading,
 	Skeleton,
 	Stack,
@@ -86,11 +88,7 @@ const RepositoryReleasesChangelog = ({
 	const { processedReleases, isProcessing } =
 		useProcessReleases(filteredReleases)
 
-	const {
-		data: releases,
-		isLoading,
-		isFetched,
-	} = useReleasesQuery({
+	const { data: releases, isFetching } = useReleasesQuery({
 		repository,
 		fromVersion,
 		toVersion,
@@ -123,9 +121,18 @@ const RepositoryReleasesChangelog = ({
 		? Object.keys(processedReleases).sort(compareReleaseGroupsByPriority)
 		: []
 
-	// TODO: simplify conditional renders with state machine
 	return (
 		<>
+			{isFetching && (
+				<Flex align="center" justify="center" height="100%">
+					<CircularProgress
+						isIndeterminate
+						size="8"
+						color="primary.400"
+						aria-label="Loading releases"
+					/>
+				</Flex>
+			)}
 			{isProcessing && (
 				<>
 					<Skeleton width="20%" height={8} mb={4} />
@@ -133,7 +140,7 @@ const RepositoryReleasesChangelog = ({
 				</>
 			)}
 
-			{!isProcessing && !isLoading && processedReleases && (
+			{!isProcessing && !isFetching && processedReleases && (
 				<Stack spacing={6}>
 					{sortedGroupTitles.map((title) => (
 						<ReleaseChangelogGroup
@@ -151,7 +158,7 @@ const RepositoryReleasesChangelog = ({
 				toVersion &&
 				!processedReleases &&
 				!isProcessing &&
-				isFetched && (
+				!isFetching && (
 					<Alert status="error">
 						<AlertIcon />
 						No processed releases to show
