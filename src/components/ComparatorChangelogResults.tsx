@@ -1,4 +1,11 @@
-import { Box, Heading, Skeleton, Stack } from '@chakra-ui/react'
+import {
+	Alert,
+	AlertIcon,
+	Box,
+	Heading,
+	Skeleton,
+	Stack,
+} from '@chakra-ui/react'
 
 import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChangeDescription'
 import TextSkeleton from '~/components/TextSkeleton'
@@ -52,7 +59,7 @@ const ReleaseChangelogGroup = ({
 }
 
 interface ComparatorChangelogResultsProps {
-	releases: Array<Release>
+	releases: Array<Release> | null
 	repository: Repository
 }
 
@@ -76,28 +83,36 @@ const ComparatorChangelogResults = ({
 		? Object.keys(processedReleases).sort(compareReleaseGroupsByPriority)
 		: []
 
+	if (isProcessing) {
+		return (
+			<>
+				<Skeleton width="20%" height={8} mb={4} />
+				<TextSkeleton />
+			</>
+		)
+	}
+
+	if (!processedReleases || Object.keys(processedReleases).length === 0) {
+		return (
+			<Alert status="error">
+				<AlertIcon />
+				No processed releases to show
+			</Alert>
+		)
+	}
+
 	return (
-		<>
-			{isProcessing && (
-				<>
-					<Skeleton width="20%" height={8} mb={4} />
-					<TextSkeleton />
-				</>
-			)}
-			{!isProcessing && processedReleases && (
-				<Stack spacing={6}>
-					{sortedGroupTitles.map((title) => (
-						<ReleaseChangelogGroup
-							key={title}
-							title={title}
-							releaseGroup={processedReleases[title]}
-							repository={repository}
-							shouldShowTitle={shouldShowProcessedReleaseTitle}
-						/>
-					))}
-				</Stack>
-			)}
-		</>
+		<Stack spacing={6}>
+			{sortedGroupTitles.map((title) => (
+				<ReleaseChangelogGroup
+					key={title}
+					title={title}
+					releaseGroup={processedReleases[title]}
+					repository={repository}
+					shouldShowTitle={shouldShowProcessedReleaseTitle}
+				/>
+			))}
+		</Stack>
 	)
 }
 

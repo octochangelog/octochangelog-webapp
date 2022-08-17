@@ -1,4 +1,4 @@
-import { Alert, AlertIcon, CircularProgress, Flex } from '@chakra-ui/react'
+import { CircularProgress, Flex } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 
 import ComparatorChangelogResults from '~/components/ComparatorChangelogResults'
@@ -19,6 +19,7 @@ const RepositoryReleasesChangelog = ({
 }: RepositoryReleasesChangelogProps) => {
 	const [filteredReleases, setFilteredReleases] =
 		useState<Array<Release> | null>(null)
+	const [isFilteringReleases, setIsFilteringReleases] = useState<boolean>(false)
 
 	const { data: releases, isFetching } = useReleasesQuery({
 		repository,
@@ -27,21 +28,28 @@ const RepositoryReleasesChangelog = ({
 	})
 
 	useEffect(() => {
-		if (releases && fromVersion && toVersion) {
-			const newFilteredReleases = filterReleasesByVersionRange({
-				releases,
-				from: fromVersion,
-				to: toVersion,
-			}).sort((a, b) => compareReleasesByVersion(a, b, 'asc'))
+		setIsFilteringReleases(true)
+		void new Promise<Array<Release> | null>((resolve) => {
+			if (releases && fromVersion && toVersion) {
+				const newFilteredReleases = filterReleasesByVersionRange({
+					releases,
+					from: fromVersion,
+					to: toVersion,
+				}).sort((a, b) => compareReleasesByVersion(a, b, 'asc'))
+				resolve(newFilteredReleases)
+			} else {
+				resolve(null)
+			}
+		}).then((newFilteredReleases) => {
 			setFilteredReleases(newFilteredReleases)
-		} else {
-			setFilteredReleases(null)
-		}
+
+			setIsFilteringReleases(false)
+		})
 	}, [fromVersion, releases, toVersion])
 
 	return (
 		<>
-			{isFetching && (
+			{(isFetching || isFilteringReleases) && (
 				<Flex align="center" justify="center" height="100%">
 					<CircularProgress
 						isIndeterminate
@@ -52,18 +60,11 @@ const RepositoryReleasesChangelog = ({
 				</Flex>
 			)}
 
-			{!isFetching && filteredReleases && (
+			{!isFetching && !isFilteringReleases && (
 				<ComparatorChangelogResults
 					releases={filteredReleases}
 					repository={repository}
 				/>
-			)}
-
-			{fromVersion && toVersion && !filteredReleases && !isFetching && (
-				<Alert status="error">
-					<AlertIcon />
-					No processed releases to show
-				</Alert>
 			)}
 
 			<style global jsx>{`
