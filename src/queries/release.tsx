@@ -52,7 +52,9 @@ function useReleasesQuery(
 					!hasFromVersion ||
 					semver.gte(fromVersion, lastReleaseFetched.tag_name)
 				const isToReleaseFetched =
-					!hasToVersion || semver.gte(toVersion, lastReleaseFetched.tag_name)
+					!hasToVersion ||
+					toVersion === 'latest' ||
+					semver.gte(toVersion, lastReleaseFetched.tag_name)
 
 				if (
 					isMaxAutoPaginationReached &&

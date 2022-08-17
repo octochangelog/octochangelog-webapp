@@ -23,7 +23,7 @@ it('should have a working form interface', () => {
 
 it('should show expected results when using standard query string', () => {
 	cy.visit(
-		'/?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0'
+		'/comparator?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0'
 	)
 
 	cy.wait(10000) // eslint-disable-line cypress/no-unnecessary-waiting
@@ -96,4 +96,26 @@ it('should show expected results when using standard query string', () => {
 	cy.findByRole('heading', { level: 2, name: /chore/i })
 
 	cy.get('body').happoScreenshot({ component: 'Comparator page: full example' })
+})
+
+it('should show changelog results when loading the comparator preloaded with "latest"', () => {
+	cy.visit(
+		'/comparator?repo=testing-library%2Fdom-testing-library&from=v8.11.0&to=latest'
+	)
+
+	cy.findByRole('link', { name: 'dom-testing-library' }).should(
+		'have.attr',
+		'href',
+		'https://github.com/testing-library/dom-testing-library'
+	)
+	cy.findByRole('heading', { name: 'Changes from v8.11.0 to latest' })
+
+	cy.findByRole('heading', { level: 2, name: /features/i })
+	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
+
+	cy.findByText(/Don't queue microtasks after condition is met/)
+
+	cy.get('body').happoScreenshot({
+		component: 'Comparator page: preloaded with "latest"',
+	})
 })
