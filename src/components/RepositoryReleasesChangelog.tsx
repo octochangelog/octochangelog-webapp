@@ -28,7 +28,7 @@ const RepositoryReleasesChangelog = ({
 }: RepositoryReleasesChangelogProps) => {
 	const [filteredReleases, setFilteredReleases] =
 		useState<Array<Release> | null>(null)
-	const [isFilteringReleases, setIsFilteringReleases] = useState<boolean>(false)
+	const [isFilteringReleases, setIsFilteringReleases] = useState<boolean>(true)
 
 	const { data: releases, isFetching } = useReleasesQuery({
 		repository,
@@ -37,19 +37,18 @@ const RepositoryReleasesChangelog = ({
 	})
 
 	useEffect(() => {
-		void new Promise<Array<Release> | null>((resolve) => {
+		setIsFilteringReleases(true)
+		setTimeout(() => {
 			if (releases && fromVersion && toVersion) {
 				const newFilteredReleases = filterReleasesByVersionRange({
 					releases,
 					from: fromVersion,
 					to: toVersion,
 				}).sort((a, b) => compareReleasesByVersion(a, b, 'asc'))
-				resolve(newFilteredReleases)
+				setFilteredReleases(newFilteredReleases)
 			} else {
-				resolve(null)
+				setFilteredReleases(null)
 			}
-		}).then((newFilteredReleases) => {
-			setFilteredReleases(newFilteredReleases)
 
 			setIsFilteringReleases(false)
 		})
