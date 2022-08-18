@@ -38,7 +38,7 @@ const RepositoryReleasesChangelog = ({
 
 	useEffect(() => {
 		setIsFilteringReleases(true)
-		setTimeout(() => {
+		const timeoutId = setTimeout(() => {
 			if (releases && fromVersion && toVersion) {
 				const newFilteredReleases = filterReleasesByVersionRange({
 					releases,
@@ -51,7 +51,11 @@ const RepositoryReleasesChangelog = ({
 			}
 
 			setIsFilteringReleases(false)
-		})
+		}, 0)
+
+		return () => {
+			clearTimeout(timeoutId)
+		}
 	}, [fromVersion, releases, toVersion])
 
 	const hasFilteredReleases =

@@ -109,7 +109,7 @@ function useProcessReleases(
 	useEffect(() => {
 		setIsProcessing(true)
 
-		setTimeout(() => {
+		const timeoutId = setTimeout(() => {
 			if (!releases || releases.length === 0) {
 				setProcessedReleases(null)
 			} else {
@@ -119,6 +119,10 @@ function useProcessReleases(
 			}
 			setIsProcessing(false)
 		}, 0)
+
+		return () => {
+			clearTimeout(timeoutId)
+		}
 	}, [releases])
 
 	return { processedReleases, isProcessing }
