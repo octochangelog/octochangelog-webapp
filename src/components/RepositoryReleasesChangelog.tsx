@@ -1,4 +1,11 @@
-import { Alert, AlertIcon, Box, Skeleton } from '@chakra-ui/react'
+import {
+	Alert,
+	AlertIcon,
+	Box,
+	CircularProgress,
+	Flex,
+	Skeleton,
+} from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 
 import TextSkeleton from './TextSkeleton'
@@ -31,7 +38,6 @@ const RepositoryReleasesChangelog = ({
 
 	useEffect(() => {
 		void new Promise<Array<Release> | null>((resolve) => {
-			setIsFilteringReleases(true)
 			if (releases && fromVersion && toVersion) {
 				const newFilteredReleases = filterReleasesByVersionRange({
 					releases,
@@ -52,27 +58,39 @@ const RepositoryReleasesChangelog = ({
 	const hasFilteredReleases =
 		Array.isArray(filteredReleases) && filteredReleases.length > 0
 
+	const isLoading = isFetching || isFilteringReleases
+	const hasRequiredDataToFilter = !!fromVersion && !!toVersion
+
 	return (
 		<>
-			{(isFetching || isFilteringReleases) && (
+			{/* Changelog skeleton: fetching and processing releases from preloaded URL */}
+			{hasRequiredDataToFilter && isLoading && (
 				<Box aria-busy="true" aria-label="Calculating changelog">
 					<Skeleton width="20%" height={8} mb={4} />
 					<TextSkeleton />
 				</Box>
 			)}
 
-			{!!fromVersion &&
-				!!toVersion &&
-				!isFetching &&
-				!isFilteringReleases &&
-				!hasFilteredReleases && (
-					<Alert status="error">
-						<AlertIcon />
-						No processed releases to show
-					</Alert>
-				)}
+			{/* Changelog spinner: only fetching releases from repository input manually filled */}
+			{!hasRequiredDataToFilter && isLoading && (
+				<Flex align="center" justify="center" height="100%">
+					<CircularProgress
+						isIndeterminate
+						size="8"
+						color="primary.400"
+						aria-label="Loading releases"
+					/>
+				</Flex>
+			)}
 
-			{!isFetching && !isFilteringReleases && hasFilteredReleases && (
+			{!!fromVersion && !!toVersion && !isLoading && !hasFilteredReleases && (
+				<Alert status="error">
+					<AlertIcon />
+					No processed releases to show
+				</Alert>
+			)}
+
+			{!isLoading && hasFilteredReleases && (
 				<ComparatorChangelogResults
 					releases={filteredReleases}
 					repository={repository}
