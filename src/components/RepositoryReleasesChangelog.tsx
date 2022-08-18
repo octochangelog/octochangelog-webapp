@@ -1,5 +1,7 @@
-import { CircularProgress, Flex } from '@chakra-ui/react'
+import { Box, Skeleton } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
+
+import TextSkeleton from './TextSkeleton'
 
 import ComparatorChangelogResults from '~/components/ComparatorChangelogResults'
 import type { Release, ReleaseVersion, Repository } from '~/models'
@@ -50,14 +52,10 @@ const RepositoryReleasesChangelog = ({
 	return (
 		<>
 			{(isFetching || isFilteringReleases) && (
-				<Flex align="center" justify="center" height="100%">
-					<CircularProgress
-						isIndeterminate
-						size="8"
-						color="primary.400"
-						aria-label="Loading releases"
-					/>
-				</Flex>
+				<Box aria-busy="true" aria-label="Calculating changelog">
+					<Skeleton width="20%" height={8} mb={4} />
+					<TextSkeleton />
+				</Box>
 			)}
 
 			{!isFetching && !isFilteringReleases && (
