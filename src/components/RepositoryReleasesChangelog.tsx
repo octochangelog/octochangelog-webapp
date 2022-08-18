@@ -1,4 +1,4 @@
-import { Box, Skeleton } from '@chakra-ui/react'
+import { Alert, AlertIcon, Box, Skeleton } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 
 import TextSkeleton from './TextSkeleton'
@@ -30,8 +30,8 @@ const RepositoryReleasesChangelog = ({
 	})
 
 	useEffect(() => {
-		setIsFilteringReleases(true)
 		void new Promise<Array<Release> | null>((resolve) => {
+			setIsFilteringReleases(true)
 			if (releases && fromVersion && toVersion) {
 				const newFilteredReleases = filterReleasesByVersionRange({
 					releases,
@@ -49,6 +49,9 @@ const RepositoryReleasesChangelog = ({
 		})
 	}, [fromVersion, releases, toVersion])
 
+	const hasFilteredReleases =
+		Array.isArray(filteredReleases) && filteredReleases.length > 0
+
 	return (
 		<>
 			{(isFetching || isFilteringReleases) && (
@@ -58,7 +61,18 @@ const RepositoryReleasesChangelog = ({
 				</Box>
 			)}
 
-			{!isFetching && !isFilteringReleases && (
+			{!!fromVersion &&
+				!!toVersion &&
+				!isFetching &&
+				!isFilteringReleases &&
+				!hasFilteredReleases && (
+					<Alert status="error">
+						<AlertIcon />
+						No processed releases to show
+					</Alert>
+				)}
+
+			{!isFetching && !isFilteringReleases && hasFilteredReleases && (
 				<ComparatorChangelogResults
 					releases={filteredReleases}
 					repository={repository}

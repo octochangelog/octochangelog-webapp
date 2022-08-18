@@ -1,11 +1,4 @@
-import {
-	Alert,
-	AlertIcon,
-	Box,
-	Heading,
-	Skeleton,
-	Stack,
-} from '@chakra-ui/react'
+import { Box, Heading, Skeleton, Stack } from '@chakra-ui/react'
 
 import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChangeDescription'
 import TextSkeleton from '~/components/TextSkeleton'
@@ -59,7 +52,7 @@ const ReleaseChangelogGroup = ({
 }
 
 interface ComparatorChangelogResultsProps {
-	releases: Array<Release> | null
+	releases: Array<Release>
 	repository: Repository
 }
 
@@ -93,12 +86,7 @@ const ComparatorChangelogResults = ({
 	}
 
 	if (!processedReleases || Object.keys(processedReleases).length === 0) {
-		return (
-			<Alert status="error">
-				<AlertIcon />
-				No processed releases to show
-			</Alert>
-		)
+		return null
 	}
 
 	return (
