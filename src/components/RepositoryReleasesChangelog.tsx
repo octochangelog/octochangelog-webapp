@@ -6,12 +6,11 @@ import {
 	Flex,
 	Skeleton,
 } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
 
 import TextSkeleton from './TextSkeleton'
 
 import ComparatorChangelogResults from '~/components/ComparatorChangelogResults'
-import type { Release, ReleaseVersion, Repository } from '~/models'
+import type { ReleaseVersion, Repository } from '~/models'
 import { useReleasesQuery } from '~/queries/release'
 import { compareReleasesByVersion, filterReleasesByVersionRange } from '~/utils'
 
@@ -26,48 +25,32 @@ const RepositoryReleasesChangelog = ({
 	fromVersion,
 	toVersion,
 }: RepositoryReleasesChangelogProps) => {
-	const [filteredReleases, setFilteredReleases] =
-		useState<Array<Release> | null>(null)
-	const [isFilteringReleases, setIsFilteringReleases] = useState<boolean>(true)
-
-	const { data: releases, isFetching } = useReleasesQuery({
+	const { data, isFetching } = useReleasesQuery({
 		repository,
 		fromVersion,
 		toVersion,
 	})
 
-	useEffect(() => {
-		setIsFilteringReleases(true)
-		const timeoutId = setTimeout(() => {
-			if (releases && fromVersion && toVersion) {
-				const newFilteredReleases = filterReleasesByVersionRange({
-					releases,
-					from: fromVersion,
-					to: toVersion,
-				}).sort((a, b) => compareReleasesByVersion(a, b, 'asc'))
-				setFilteredReleases(newFilteredReleases)
-			} else {
-				setFilteredReleases(null)
-			}
-
-			setIsFilteringReleases(false)
-		}, 0)
-
-		return () => {
-			clearTimeout(timeoutId)
+	const filteredReleases = (() => {
+		if (data && fromVersion && toVersion) {
+			return filterReleasesByVersionRange({
+				releases: data,
+				from: fromVersion,
+				to: toVersion,
+			}).sort((a, b) => compareReleasesByVersion(a, b, 'asc'))
+		} else {
+			return null
 		}
-	}, [fromVersion, releases, toVersion])
+	})()
 
 	const hasFilteredReleases =
 		Array.isArray(filteredReleases) && filteredReleases.length > 0
-
-	const isLoading = isFetching || isFilteringReleases
 	const hasRequiredDataToFilter = !!fromVersion && !!toVersion
 
 	return (
 		<>
 			{/* Changelog skeleton: fetching and processing releases from preloaded URL */}
-			{hasRequiredDataToFilter && isLoading && (
+			{hasRequiredDataToFilter && isFetching && (
 				<Box aria-busy="true" aria-label="Calculating changelog">
 					<Skeleton width="20%" height={8} mb={4} />
 					<TextSkeleton />
@@ -75,7 +58,7 @@ const RepositoryReleasesChangelog = ({
 			)}
 
 			{/* Changelog spinner: only fetching releases from repository input manually filled */}
-			{!hasRequiredDataToFilter && isLoading && (
+			{!hasRequiredDataToFilter && isFetching && (
 				<Flex align="center" justify="center" height="100%">
 					<CircularProgress
 						isIndeterminate
@@ -86,14 +69,14 @@ const RepositoryReleasesChangelog = ({
 				</Flex>
 			)}
 
-			{!!fromVersion && !!toVersion && !isLoading && !hasFilteredReleases && (
+			{!!fromVersion && !!toVersion && !isFetching && !hasFilteredReleases && (
 				<Alert status="error">
 					<AlertIcon />
 					No processed releases to show
 				</Alert>
 			)}
 
-			{!isLoading && hasFilteredReleases && (
+			{!isFetching && hasFilteredReleases && (
 				<ComparatorChangelogResults
 					releases={filteredReleases}
 					repository={repository}
