@@ -2,28 +2,17 @@ import {
 	Alert,
 	AlertIcon,
 	Box,
-	Heading,
+	CircularProgress,
+	Flex,
 	Skeleton,
-	Stack,
 } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
 
-import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChangeDescription'
-import TextSkeleton from '~/components/TextSkeleton'
-import useProcessReleases from '~/hooks/useProcessReleases'
-import type {
-	ProcessedRelease,
-	Release,
-	ReleaseGroup,
-	ReleaseVersion,
-	Repository,
-} from '~/models'
+import TextSkeleton from './TextSkeleton'
+
+import ComparatorChangelogResults from '~/components/ComparatorChangelogResults'
+import type { ReleaseVersion, Repository } from '~/models'
 import { useReleasesQuery } from '~/queries/release'
-import {
-	compareReleaseGroupsByPriority,
-	filterReleasesByVersionRange,
-	compareReleasesByVersion,
-} from '~/utils'
+import { compareReleasesByVersion, filterReleasesByVersionRange } from '~/utils'
 
 interface RepositoryReleasesChangelogProps {
 	repository: Repository
@@ -31,132 +20,68 @@ interface RepositoryReleasesChangelogProps {
 	toVersion?: ReleaseVersion
 }
 
-const ReleaseChangelogGroup = ({
-	title,
-	releaseGroup,
-	repository,
-	shouldShowTitle,
-}: {
-	title: ReleaseGroup
-	releaseGroup: Array<ProcessedRelease>
-	repository: Repository
-	shouldShowTitle: boolean
-}) => {
-	const textTransform =
-		title === 'breaking changes' ? 'uppercase' : 'capitalize'
-
-	return (
-		<Box key={title}>
-			{shouldShowTitle && (
-				<Heading
-					as="h2"
-					size="xl"
-					bgColor="background3"
-					mb={4}
-					py={4}
-					textTransform={textTransform}
-					position="sticky"
-					top={0}
-				>
-					{title}
-				</Heading>
-			)}
-			<Box mb={4}>
-				{releaseGroup.map((processedReleaseChange: ProcessedRelease) => (
-					<ProcessedReleaseChangeDescription
-						key={`${title}-${processedReleaseChange.id}`}
-						repository={repository}
-						processedReleaseChange={processedReleaseChange}
-						mb={8}
-					/>
-				))}
-			</Box>
-		</Box>
-	)
-}
-
 const RepositoryReleasesChangelog = ({
 	repository,
 	fromVersion,
 	toVersion,
 }: RepositoryReleasesChangelogProps) => {
-	const [filteredReleases, setFilteredReleases] =
-		useState<Array<Release> | null>(null)
-
-	const { processedReleases, isProcessing } =
-		useProcessReleases(filteredReleases)
-
-	const {
-		data: releases,
-		isLoading,
-		isFetched,
-	} = useReleasesQuery({
+	const { data, isFetching } = useReleasesQuery({
 		repository,
 		fromVersion,
 		toVersion,
 	})
 
-	useEffect(() => {
-		if (releases && fromVersion && toVersion) {
-			const newFilteredReleases = filterReleasesByVersionRange({
-				releases,
+	const filteredReleases = (() => {
+		if (data && fromVersion && toVersion) {
+			return filterReleasesByVersionRange({
+				releases: data,
 				from: fromVersion,
 				to: toVersion,
 			}).sort((a, b) => compareReleasesByVersion(a, b, 'asc'))
-			setFilteredReleases(newFilteredReleases)
 		} else {
-			setFilteredReleases(null)
+			return null
 		}
-	}, [fromVersion, releases, toVersion])
-
-	const shouldShowProcessedReleaseTitle = (() => {
-		if (!processedReleases) {
-			return false
-		}
-
-		const groupsTitles = Object.keys(processedReleases)
-
-		return groupsTitles.length > 1 || !groupsTitles.includes('others')
 	})()
 
-	const sortedGroupTitles: Array<string> | null = processedReleases
-		? Object.keys(processedReleases).sort(compareReleaseGroupsByPriority)
-		: []
+	const hasFilteredReleases =
+		Array.isArray(filteredReleases) && filteredReleases.length > 0
+	const hasRequiredDataToFilter = !!fromVersion && !!toVersion
 
-	// TODO: simplify conditional renders with state machine
 	return (
 		<>
-			{isProcessing && (
-				<>
+			{/* Changelog skeleton: fetching and processing releases from preloaded URL */}
+			{hasRequiredDataToFilter && isFetching && (
+				<Box aria-busy="true" aria-label="Calculating changelog">
 					<Skeleton width="20%" height={8} mb={4} />
 					<TextSkeleton />
-				</>
+				</Box>
 			)}
 
-			{!isProcessing && !isLoading && processedReleases && (
-				<Stack spacing={6}>
-					{sortedGroupTitles.map((title) => (
-						<ReleaseChangelogGroup
-							key={title}
-							title={title}
-							releaseGroup={processedReleases[title]}
-							repository={repository}
-							shouldShowTitle={shouldShowProcessedReleaseTitle}
-						/>
-					))}
-				</Stack>
+			{/* Changelog spinner: only fetching releases from repository input manually filled */}
+			{!hasRequiredDataToFilter && isFetching && (
+				<Flex align="center" justify="center" height="100%">
+					<CircularProgress
+						isIndeterminate
+						size="8"
+						color="primary.400"
+						aria-label="Loading releases"
+					/>
+				</Flex>
 			)}
 
-			{fromVersion &&
-				toVersion &&
-				!processedReleases &&
-				!isProcessing &&
-				isFetched && (
-					<Alert status="error">
-						<AlertIcon />
-						No processed releases to show
-					</Alert>
-				)}
+			{!!fromVersion && !!toVersion && !isFetching && !hasFilteredReleases && (
+				<Alert status="error">
+					<AlertIcon />
+					No processed releases to show
+				</Alert>
+			)}
+
+			{!isFetching && hasFilteredReleases && (
+				<ComparatorChangelogResults
+					releases={filteredReleases}
+					repository={repository}
+				/>
+			)}
 
 			<style global jsx>{`
 				.hljs-comment,
