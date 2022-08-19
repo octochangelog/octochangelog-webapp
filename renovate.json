@@ -14,7 +14,7 @@
 	"packageRules": [
 		{
 			"description": [
-				"Group all non-major yarn development dependencies together, get updates once a month"
+				"Group all non-major pnpm development dependencies together, get updates once a month"
 			],
 			"matchManagers": ["npm"],
 			"matchDepTypes": ["devDependencies"],
