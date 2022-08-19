@@ -2,7 +2,8 @@
 	"extends": [
 		"config:base",
 		"helpers:pinGitHubActionDigests",
-		":automergeTypes"
+		":automergeTypes",
+		"npm:unpublishSafe"
 	],
 	"prCreation": "not-pending",
 	"lockFileMaintenance": {
@@ -12,21 +13,26 @@
 	"internalChecksFilter": "strict",
 	"packageRules": [
 		{
-			"description": "Wait 3 days before creating a npm update PR",
-			"matchDatasources": ["npm"],
-			"stabilityDays": 3
-		},
-		{
-			"description": "Automerge ESLint and Prettier updates",
+			"description": [
+				"Group all non-major pnpm development dependencies together, get updates once a month"
+			],
+			"matchManagers": ["npm"],
 			"matchDepTypes": ["devDependencies"],
-			"matchPackagePatterns": ["eslint", "prettier"],
-			"automerge": true
+			"matchUpdateTypes": ["minor", "patch"],
+			"groupName": "devDependencies (non-major)",
+			"extends": ["schedule:monthly"]
 		},
 		{
 			"description": "Get pnpm updates once a month",
 			"matchDepTypes": ["packageManager"],
 			"matchPackageNames": ["pnpm"],
 			"extends": ["schedule:monthly"]
+		},
+		{
+			"description": "Automerge ESLint and Prettier updates",
+			"matchDepTypes": ["devDependencies"],
+			"matchPackagePatterns": ["eslint", "prettier"],
+			"automerge": true
 		}
 	]
 }
