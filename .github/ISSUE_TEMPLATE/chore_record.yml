@@ -1,0 +1,41 @@
+name: Chore record
+description: Record an internal change
+labels: ['chore']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Changes that affect the build system, CI config or other changes that don't modify src/test files
+
+  - type: textarea
+    id: what-internal-change-would-you-like-to-have
+    attributes:
+      label: What internal change would you like to have?
+      placeholder: Describe the change.
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-problem-will-this-change-solve
+    attributes:
+      label: What problem will this change solve?
+      placeholder: Explain how the new change will make things better/easier.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: do-you-want-to-help-make-the-feature
+    attributes:
+      label: Do you want to help make the feature?
+      options:
+        - 'Yes'
+        - 'No'
+    validations:
+      required: true
+
+  - type: textarea
+    id: is-there-anything-else-we-need-to-know
+    attributes:
+      label: Is there anything else we need to know?
+    validations:
+      required: false
