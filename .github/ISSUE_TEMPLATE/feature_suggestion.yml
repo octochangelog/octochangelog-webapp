@@ -1,6 +1,6 @@
 name: Feature suggestion
 description: Suggest a new feature
-labels: ['enhancement', 'status:requirements']
+labels: ['enhancement']
 body:
   - type: markdown
     attributes:
