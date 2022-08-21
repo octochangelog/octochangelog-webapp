@@ -14,7 +14,7 @@ specifiers:
   '@octokit/rest': 19.0.4
   '@sentry/nextjs': 7.11.1
   '@tanstack/react-query': 4.2.1
-  '@tanstack/react-query-devtools': 4.0.10
+  '@tanstack/react-query-devtools': 4.2.1
   '@testing-library/cypress': 8.0.3
   '@types/happo-cypress': 3.0.1
   '@types/lodash': 4.14.182
@@ -72,7 +72,7 @@ dependencies:
   '@octokit/rest': 19.0.4
   '@sentry/nextjs': 7.11.1_opuzalm7bqy6lx7uvhtk6ci2fu
   '@tanstack/react-query': 4.2.1_biqbaboplfbrettd7655fr4n2y
-  '@tanstack/react-query-devtools': 4.0.10_react@18.2.0
+  '@tanstack/react-query-devtools': 4.2.1_32b63s5o6uo6n4n6pi5xgs6jfq
   downshift: 6.1.9_react@18.2.0
   framer-motion: 7.2.0_biqbaboplfbrettd7655fr4n2y
   lodash-es: 4.17.21
@@ -3524,14 +3524,19 @@ packages:
     resolution: {integrity: sha512-s9a4tkJOGrKyyX2iVjkyMxQJ+4mVro6YJBQV8NzgorUtjnwJRiFkTYbLJPLbHGLIoICTzsbMfplnI5KuFDfyzw==}
     dev: false
 
-  /@tanstack/react-query-devtools/4.0.10_react@18.2.0:
-    resolution: {integrity: sha512-3J7LLYQjfjTI0DbPo0bA+M3l4kdvYSWAqihpeG1u93WVyZj0OEFviUv+4cK7+k2AVgQJAPMZ5xvtewKxOOFVrw==}
+  /@tanstack/react-query-devtools/4.2.1_32b63s5o6uo6n4n6pi5xgs6jfq:
+    resolution: {integrity: sha512-k7Ch3qvs8U74aRMMRvNisxcxZFTzk8FDdvpQKXxSZ8fsD4ZwpM0MoUSqKsCXbfTvUI7MJiGxavy1YlvImPNO+Q==}
+    peerDependencies:
+      '@tanstack/react-query': ^4.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@tanstack/match-sorter-utils': 8.1.1
+      '@tanstack/react-query': 4.2.1_biqbaboplfbrettd7655fr4n2y
       '@types/use-sync-external-store': 0.0.3
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
       use-sync-external-store: 1.2.0_react@18.2.0
-    transitivePeerDependencies:
-      - react
     dev: false
 
   /@tanstack/react-query/4.2.1_biqbaboplfbrettd7655fr4n2y:
