@@ -101,7 +101,7 @@ it('should show changelog results when preloading from URL', () => {
 		{
 			fixture: 'releases/dom-testing-library/page1.json',
 			headers: {
-				link: '<https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=2>; rel="next", <https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=3>; rel="last"',
+				link: '<https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=2>; rel="next"',
 			},
 		}
 	).as('getReleasesPage1')
@@ -111,19 +111,14 @@ it('should show changelog results when preloading from URL', () => {
 		{
 			fixture: 'releases/dom-testing-library/page2.json',
 			headers: {
-				link: '<https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=1>; rel="prev", <https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=3>; rel="next", <https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=3>; rel="last", <https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=1>; rel="first"',
+				link: '<https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=3>; rel="next"',
 			},
 		}
 	).as('getReleasesPage2')
 	cy.intercept(
 		'GET',
 		'https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=3',
-		{
-			fixture: 'releases/dom-testing-library/page3.json',
-			headers: {
-				link: '<https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=2>; rel="prev", <https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=1>; rel="first"',
-			},
-		}
+		{ fixture: 'releases/dom-testing-library/page3.json' }
 	).as('getReleasesPage3')
 
 	cy.visit(
@@ -151,31 +146,25 @@ it('should show changelog results when preloading from URL', () => {
 	})
 
 	cy.findAllByText('v7.0.0', { ignore: 'option' }).should('have.length', 2)
-
 	cy.findByRole('heading', { level: 5, name: /drop node 8/i })
-
 	cy.findByText(
 		/node 10 or greater is required\. node 8 is \(\) \(\), closes/i
 	).should('have.length', 1)
-
 	cy.findByRole('link', { name: /out of lts/i }).should(
 		'have.attr',
 		'href',
 		'https://nodejs.org/en/about/releases/'
 	)
-
 	cy.findByRole('link', { name: /#459/i }).should(
 		'have.attr',
 		'href',
 		'https://github.com/testing-library/dom-testing-library/issues/459'
 	)
-
 	cy.findByRole('link', { name: /c3ab843/i }).should(
 		'have.attr',
 		'href',
 		'https://github.com/testing-library/dom-testing-library/commit/c3ab843c292484428f045671ea22cbb30eb70559'
 	)
-
 	cy.findByRole('link', { name: /#430/i }).should(
 		'have.attr',
 		'href',
@@ -188,6 +177,7 @@ it('should show changelog results when preloading from URL', () => {
 		/\+ "test": "react-scripts test --env=jest-environment-jsdom-sixteen"/i
 	)
 
+	cy.findByText(/waitForElement was still in use/) // text from v7.0.1 release
 	cy.findByRole('heading', { level: 2, name: /features/i })
 	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
 	cy.findByRole('heading', { level: 2, name: /reverts/i })
