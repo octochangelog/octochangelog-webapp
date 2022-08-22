@@ -1,4 +1,14 @@
-it('should show changelog results when filling the form manually', () => {
+/**
+ * This test is considered the happy and critical path of the app.
+ *
+ * We are not stubbing the GitHub API for it, so it works as an E2E,
+ * testing our webapp works fine against the actual server.
+ *
+ * Cypress recommends to have one test around the happy path of a feature
+ * connected to the real server:
+ * https://docs.cypress.io/guides/guides/network-requests#Use-Server-Responses
+ */
+it('should show changelog results when filling the form', () => {
 	cy.visit('/comparator')
 
 	cy.findByRole('textbox', { name: /enter repository name/i }).type(
@@ -78,13 +88,50 @@ it('should show changelog results when filling the form manually', () => {
 	})
 })
 
-it('should show changelog results when preloading the info from the URL', () => {
-	// TODO: stub this one
+it('should show changelog results when preloading from URL', () => {
+	cy.intercept(
+		'GET',
+		'https://api.github.com/repos/testing-library/dom-testing-library',
+		{ fixture: 'repositories/dom-testing-library.json' }
+	).as('getRepo')
+
+	cy.intercept(
+		'GET',
+		'https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100',
+		{
+			fixture: 'releases/dom-testing-library/page1.json',
+			headers: {
+				link: '<https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=2>; rel="next", <https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=3>; rel="last"',
+			},
+		}
+	).as('getReleasesPage1')
+	cy.intercept(
+		'GET',
+		'https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=2',
+		{
+			fixture: 'releases/dom-testing-library/page2.json',
+			headers: {
+				link: '<https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=1>; rel="prev", <https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=3>; rel="next", <https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=3>; rel="last", <https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=1>; rel="first"',
+			},
+		}
+	).as('getReleasesPage2')
+	cy.intercept(
+		'GET',
+		'https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=3',
+		{
+			fixture: 'releases/dom-testing-library/page3.json',
+			headers: {
+				link: '<https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=2>; rel="prev", <https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=1>; rel="first"',
+			},
+		}
+	).as('getReleasesPage3')
+
 	cy.visit(
 		'/comparator?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0'
 	)
 
-	cy.wait(10000) // eslint-disable-line cypress/no-unnecessary-waiting
+	cy.wait('@getRepo')
+	cy.wait('@getReleasesPage3')
 
 	// Confirm repository name is displayed
 	cy.findByRole('link', { name: 'dom-testing-library' }).should(
@@ -148,7 +195,7 @@ it('should show changelog results when preloading the info from the URL', () => 
 	cy.findByRole('heading', { level: 2, name: /chore/i })
 })
 
-it('should show changelog results when preloading the info from the URL with "latest"', () => {
+it('should show changelog results when preloading from URL with "latest"', () => {
 	// TODO: stub this one
 	cy.visit(
 		'/comparator?repo=testing-library%2Fdom-testing-library&from=v8.11.0&to=latest'
