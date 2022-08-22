@@ -1,25 +1,25 @@
-name: Feature suggestion
-description: Suggest a new feature
-labels: ['enhancement']
+name: Chore record
+description: Record an internal change
+labels: ['chore']
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for thinking about cool new things for our repo!
+        Changes that affect the build system, CI config or other changes that don't modify src/test files.
 
   - type: textarea
-    id: what-feature-would-you-like-to-have
+    id: what-internal-change-would-you-like-to-have
     attributes:
-      label: What feature would you like to have?
-      placeholder: Describe the feature.
+      label: What internal change would you like to have?
+      placeholder: Describe the change.
     validations:
       required: true
 
   - type: textarea
-    id: what-problem-will-this-feature-solve
+    id: what-problem-will-this-change-solve
     attributes:
-      label: What problem will this feature solve?
-      placeholder: Explain how the new feature will make things better/easier.
+      label: What problem will this change solve?
+      placeholder: Explain how the new change will make things better/easier.
     validations:
       required: true
 
