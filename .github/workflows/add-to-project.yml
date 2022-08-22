@@ -3,7 +3,6 @@ name: Add to project
 on:
   issues:
     types:
-      - opened
       - labeled
 
 jobs:
