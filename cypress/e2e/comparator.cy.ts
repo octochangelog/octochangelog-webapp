@@ -97,29 +97,27 @@ it('should show changelog results when preloading from URL', () => {
 
 	cy.intercept(
 		'GET',
-		'https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100',
-		{
-			fixture: 'releases/dom-testing-library/page1.json',
-			headers: {
-				link: '<https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=2>; rel="next"',
-			},
+		'https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100**',
+		(req) => {
+			const page = Number(req.query.page) || 1
+			const headers: { link: string } | undefined = (() => {
+				const isLastPageReached = page >= 3
+				if (!isLastPageReached) {
+					const nextPage = page + 1
+					return {
+						link: `<https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=${nextPage}>; rel="next"`,
+					}
+				}
+				return undefined
+			})()
+
+			req.alias = `getReleasesPage${page}`
+			req.reply({
+				fixture: `releases/dom-testing-library/page${page}.json`,
+				headers,
+			})
 		}
-	).as('getReleasesPage1')
-	cy.intercept(
-		'GET',
-		'https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=2',
-		{
-			fixture: 'releases/dom-testing-library/page2.json',
-			headers: {
-				link: '<https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=3>; rel="next"',
-			},
-		}
-	).as('getReleasesPage2')
-	cy.intercept(
-		'GET',
-		'https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=3',
-		{ fixture: 'releases/dom-testing-library/page3.json' }
-	).as('getReleasesPage3')
+	)
 
 	cy.visit(
 		'/comparator?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0'
