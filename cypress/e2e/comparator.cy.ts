@@ -308,8 +308,16 @@ it('should show changelog results when preloading from URL with more than 10 rel
 	cy.findByRole('heading', { level: 2, name: /reverts/i })
 	cy.findByRole('heading', { level: 2, name: /miscellaneous chores/i })
 
-	// description from 26.9.1 release (lowest one)
-	cy.findByText(/update dependency @actions\/core to v1\.5\.0/)
-	// description from 32.172.2 release (highest one)
-	cy.findByText(/update dependency @types\/jest to v28\.1\.7/)
+	// link for 26.9.1 release (lowest one)
+	cy.findByRole('link', { name: '26.9.1' }).should(
+		'have.attr',
+		'href',
+		'https://github.com/renovatebot/renovate/releases/tag/26.9.1'
+	)
+	// link for 32.172.2 release (highest one)
+	cy.findAllByRole('link', { name: '32.172.2' }).should(
+		'have.attr',
+		'href',
+		'https://github.com/renovatebot/renovate/releases/tag/32.172.2'
+	)
 })
