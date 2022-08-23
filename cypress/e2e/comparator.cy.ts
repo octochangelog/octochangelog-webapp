@@ -175,7 +175,7 @@ it('should show changelog results when preloading from URL', () => {
 		/\+ "test": "react-scripts test --env=jest-environment-jsdom-sixteen"/i
 	)
 
-	cy.findByText(/waitForElement was still in use/) // text from v7.0.1 release
+	cy.findByText(/waitForElement was still in use/) // description from v7.0.1 release
 	cy.findByRole('heading', { level: 2, name: /features/i })
 	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
 	cy.findByRole('heading', { level: 2, name: /reverts/i })
@@ -184,21 +184,56 @@ it('should show changelog results when preloading from URL', () => {
 })
 
 it('should show changelog results when preloading from URL with "latest"', () => {
-	// TODO: stub this one
+	cy.intercept(
+		'GET',
+		'https://api.github.com/repos/testing-library/dom-testing-library',
+		{ fixture: 'repositories/dom-testing-library.json' }
+	).as('getRepo')
+
+	cy.intercept(
+		'GET',
+		'https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100**',
+		(req) => {
+			const page = Number(req.query.page) || 1
+			const headers: { link: string } | undefined = (() => {
+				const isLastPageReached = page >= 3
+				if (!isLastPageReached) {
+					const nextPage = page + 1
+					return {
+						link: `<https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=${nextPage}>; rel="next"`,
+					}
+				}
+				return undefined
+			})()
+
+			req.alias = `getReleasesPage${page}`
+			req.reply({
+				fixture: `releases/dom-testing-library/page${page}.json`,
+				headers,
+			})
+		}
+	)
+
 	cy.visit(
 		'/comparator?repo=testing-library%2Fdom-testing-library&from=v8.11.0&to=latest'
 	)
+
+	cy.wait('@getRepo')
+	cy.wait('@getReleasesPage3')
 
 	cy.findByRole('link', { name: 'dom-testing-library' }).should(
 		'have.attr',
 		'href',
 		'https://github.com/testing-library/dom-testing-library'
 	)
+
 	cy.findByRole('heading', { name: 'Changes from v8.11.0 to latest' })
+	cy.findByText('Latest (v8.17.1)').should('be.selected')
 
 	cy.findByRole('heading', { level: 2, name: /features/i })
 	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
 
+	// description from v8.11.1 release
 	cy.findByText(/Don't queue microtasks after condition is met/)
 
 	cy.get('body').happoScreenshot({
