@@ -242,4 +242,80 @@ it('should show changelog results when preloading from URL with "latest"', () =>
 	})
 })
 
-// TODO: add test for renovate needing to fetch more than 10 pages of releases (test for issue #741)
+/**
+ * Relates to #741
+ *
+ * By default we only paginate releases up to 10. If any version preloaded from the URL
+ * is located after that, we need to keep paginating releases until found.
+ *
+ * When both versions are found, the fetching must be stopped, so we avoid unnecessary requests.
+ *
+ * In this test, to get all releases from v26.9.0 to v32.172.2 we need to fetch 11 pages. We have 12 available, but the
+ * last one must not be requested since all the info will be available by then.
+ */
+it('should show changelog results when preloading from URL with more than 10 release pages', () => {
+	cy.intercept('GET', 'https://api.github.com/repos/renovatebot/renovate', {
+		fixture: 'repositories/renovate.json',
+	}).as('getRepo')
+
+	cy.intercept(
+		'GET',
+		'https://api.github.com/repos/renovatebot/renovate/releases?per_page=100**',
+		(req) => {
+			const page = Number(req.query.page) || 1
+			const headers: { link: string } | undefined = (() => {
+				const isLastPageReached = page >= 12
+				if (!isLastPageReached) {
+					const nextPage = page + 1
+					return {
+						link: `<https://api.github.com/repos/renovatebot/renovate/releases?per_page=100&page=${nextPage}>; rel="next"`,
+					}
+				}
+				return undefined
+			})()
+
+			req.alias = `getReleasesPage${page}`
+
+			// FIXME: make sure it only paginates until needed
+			// Since all info is available when page 11 is retrieved, page 12 should not be requested.
+			// We are forcing an error on page 12 to make sure it's not requested.
+			// if (page === 12) {
+			// 	return req.reply({ statusCode: 500, forceNetworkError: true })
+			// }
+
+			console.log(req, {
+				fixture: `releases/renovate/page${page}.json`,
+				headers,
+			})
+
+			req.reply({
+				fixture: `releases/renovate/page${page}.json`,
+				headers,
+			})
+		}
+	)
+
+	cy.visit('/comparator?repo=renovatebot%2Frenovate&from=26.9.0&to=32.172.2')
+
+	cy.wait('@getRepo')
+	cy.wait('@getReleasesPage11')
+
+	cy.findByRole('heading', { name: 'renovate' }).within(() => {
+		cy.findByRole('link', { name: 'renovate' }).should(
+			'have.attr',
+			'href',
+			'https://github.com/renovatebot/renovate'
+		)
+	})
+	cy.findByRole('heading', { name: 'Changes from 26.9.0 to 32.172.2' })
+	cy.findByRole('heading', { level: 2, name: /breaking changes/i })
+	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
+	cy.findByRole('heading', { level: 2, name: /features/i })
+	cy.findByRole('heading', { level: 2, name: /reverts/i })
+	cy.findByRole('heading', { level: 2, name: /miscellaneous chores/i })
+
+	// description from 26.9.1 release (lowest one)
+	cy.findByText(/update dependency @actions\/core to v1\.5\.0/)
+	// description from 32.172.2 release (highest one)
+	cy.findByText(/update dependency @types\/jest to v28\.1\.7/)
+})
