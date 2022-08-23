@@ -1,3 +1,5 @@
+const LONGER_COMMAND_TIMEOUT = Cypress.config().defaultCommandTimeout * 2
+
 /**
  * This test is considered the happy and critical path of the app.
  *
@@ -33,6 +35,7 @@ it('should show changelog results when filling the form', () => {
 	// Confirm from and to version range is displayed
 	cy.findByRole('heading', {
 		name: /changes from v6\.16\.0 to v8\.1\.0/i,
+		timeout: LONGER_COMMAND_TIMEOUT,
 	})
 
 	cy.findByRole('heading', {
@@ -302,7 +305,11 @@ it('should show changelog results when preloading from URL with more than 10 rel
 		)
 	})
 	cy.findByRole('heading', { name: 'Changes from 26.9.0 to 32.172.2' })
-	cy.findByRole('heading', { level: 2, name: /breaking changes/i })
+	cy.findByRole('heading', {
+		level: 2,
+		name: /breaking changes/i,
+		timeout: LONGER_COMMAND_TIMEOUT,
+	})
 	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
 	cy.findByRole('heading', { level: 2, name: /features/i })
 	cy.findByRole('heading', { level: 2, name: /reverts/i })
