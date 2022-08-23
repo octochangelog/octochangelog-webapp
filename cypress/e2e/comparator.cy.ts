@@ -276,17 +276,11 @@ it('should show changelog results when preloading from URL with more than 10 rel
 
 			req.alias = `getReleasesPage${page}`
 
-			// FIXME: make sure it only paginates until needed
 			// Since all info is available when page 11 is retrieved, page 12 should not be requested.
 			// We are forcing an error on page 12 to make sure it's not requested.
-			// if (page === 12) {
-			// 	return req.reply({ statusCode: 500, forceNetworkError: true })
-			// }
-
-			console.log(req, {
-				fixture: `releases/renovate/page${page}.json`,
-				headers,
-			})
+			if (page === 12) {
+				return req.reply({ forceNetworkError: true })
+			}
 
 			req.reply({
 				fixture: `releases/renovate/page${page}.json`,

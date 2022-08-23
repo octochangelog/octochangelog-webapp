@@ -46,7 +46,7 @@ function useReleasesQuery(
 				releases.push(...response.data.filter(isStableRelease))
 
 				const isMaxAutoPaginationReached =
-					paginationCount === MAX_AUTO_PAGINATION
+					paginationCount >= MAX_AUTO_PAGINATION
 				const lastReleaseFetched = response.data[response.data.length - 1]
 				const isFromReleaseFetched =
 					!hasFromVersion ||
