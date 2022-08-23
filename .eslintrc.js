@@ -19,6 +19,7 @@ module.exports = {
 		// Base
 		'no-shadow': 'error',
 		'no-warning-comments': 'off',
+		'no-console': 'warn', // doesn't seem to be enabled in any preset
 
 		// React
 		'react/self-closing-comp': 'error',
