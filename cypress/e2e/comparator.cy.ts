@@ -1,4 +1,7 @@
-const LONGER_COMMAND_TIMEOUT = Cypress.config().defaultCommandTimeout * 2
+// Increase the command timeout since it takes a while for findBy queries
+// to find certain elements while the comparator is still processing the changelog.
+const LONGER_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout') * 2
+Cypress.config('defaultCommandTimeout', LONGER_COMMAND_TIMEOUT)
 
 /**
  * This test is considered the happy and critical path of the app.
@@ -16,7 +19,7 @@ it('should show changelog results when filling the form', () => {
 	cy.findByRole('textbox', { name: /enter repository name/i }).type(
 		'dom testing library'
 	)
-	cy.wait(4000) // eslint-disable-line cypress/no-unnecessary-waiting
+	cy.wait(6000) // eslint-disable-line cypress/no-unnecessary-waiting
 
 	cy.findByRole('listbox', { name: /enter repository name/i })
 		.findByText('testing-library/dom-testing-library')
@@ -33,10 +36,7 @@ it('should show changelog results when filling the form', () => {
 	)
 
 	// Confirm from and to version range is displayed
-	cy.findByRole('heading', {
-		name: /changes from v6\.16\.0 to v8\.1\.0/i,
-		timeout: LONGER_COMMAND_TIMEOUT,
-	})
+	cy.findByRole('heading', { name: /changes from v6\.16\.0 to v8\.1\.0/i })
 
 	cy.findByRole('heading', {
 		level: 2,
@@ -305,11 +305,7 @@ it('should show changelog results when preloading from URL with more than 10 rel
 		)
 	})
 	cy.findByRole('heading', { name: 'Changes from 26.9.0 to 32.172.2' })
-	cy.findByRole('heading', {
-		level: 2,
-		name: /breaking changes/i,
-		timeout: LONGER_COMMAND_TIMEOUT,
-	})
+	cy.findByRole('heading', { level: 2, name: /breaking changes/i })
 	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
 	cy.findByRole('heading', { level: 2, name: /features/i })
 	cy.findByRole('heading', { level: 2, name: /reverts/i })
