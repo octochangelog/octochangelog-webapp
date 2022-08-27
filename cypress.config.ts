@@ -13,5 +13,8 @@ export default defineConfig({
 			happoTask.register(on)
 		},
 		baseUrl: 'http://localhost:3000',
+		retries: {
+			runMode: 1,
+		},
 	},
 })
