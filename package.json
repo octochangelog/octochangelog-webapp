@@ -8,7 +8,7 @@
 	"packageManager": "pnpm@7.5.0",
 	"scripts": {
 		"start": "pnpm dev",
-		"dev": "next",
+		"dev": "next dev",
 		"build": "next build",
 		"serve": "next start",
 		"smoketest": "pnpm type-check && pnpm lint && pnpm format:check && pnpm build",
