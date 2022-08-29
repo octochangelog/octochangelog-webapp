@@ -1,8 +1,7 @@
 import type { components } from '@octokit/openapi-types'
 import { rest } from 'msw'
 
-import { renovateResults } from '~/fixtures/search/renovate-results'
-import { testingLibraryResults } from '~/fixtures/search/testing-library-results'
+import { renovateResults, testingLibraryResults } from '~/fixtures/search'
 
 const githubReposSearchHandlers = [
 	rest.get(
