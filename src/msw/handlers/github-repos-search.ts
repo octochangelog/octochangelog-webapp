@@ -10,14 +10,14 @@ const githubReposSearchHandlers = [
 		(req, res, context) => {
 			const searchQuery = req.url.searchParams.get('q') ?? ''
 			const cleanSearchQuery = searchQuery.replace(/[-_]/g, ' ')
-			let items: Array<components['schemas']['repo-search-result-item']> = []
+			const items: Array<components['schemas']['repo-search-result-item']> = []
 
 			if (cleanSearchQuery.includes('test')) {
-				items = testingLibraryResults
+				items.push(...testingLibraryResults)
 			}
 
 			if (cleanSearchQuery.includes('reno')) {
-				items = renovateResults
+				items.push(...renovateResults)
 			}
 
 			return res(
