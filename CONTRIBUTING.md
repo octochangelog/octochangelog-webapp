@@ -69,6 +69,8 @@ The project is set up with a mocked API by using [MSW](https://mswjs.io/). This 
 
 This mocked API can be toggled through the `NEXT_PUBLIC_API_MOCKING` environment variable. Use `enabled` to start it alongside the project, or `disabled` to stop it. You can put it in your `.env.local` (restarting the local server if already started).
 
+The endpoint to search repositories (used in the _Enter repository name_ input in the comparator) only returns a couple of results for "testing library" and "renovate", so it's only possible to search those terms.
+
 ## Query string to check comparator output
 
 Use the following query string to check the comparator output:

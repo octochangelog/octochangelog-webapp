@@ -19,6 +19,10 @@ const queryClient = new QueryClient({
 	},
 })
 
+if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
+	require('~/msw')
+}
+
 const App = ({ Component, pageProps }: AppProps) => {
 	resetIdCounter()
 
