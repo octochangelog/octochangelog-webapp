@@ -1,12 +1,11 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const nextJest = require('next/jest')
+import type { Config } from 'jest'
+import nextJest from 'next/jest'
 
 const createJestConfig = nextJest({
 	dir: './',
 })
 
-/** @type {import('@jest/types').Config.InitialOptions} */
-const config = {
+const config: Config = {
 	clearMocks: true,
 	rootDir: './src',
 	reporters: ['default', 'github-actions'],
@@ -17,4 +16,4 @@ const config = {
 	},
 }
 
-module.exports = createJestConfig(config)
+export default createJestConfig(config)
