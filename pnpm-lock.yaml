@@ -32,7 +32,7 @@ specifiers:
   eslint-config-next: 12.2.5
   eslint-config-prettier: 8.5.0
   eslint-plugin-cypress: 2.12.1
-  eslint-plugin-jest: 26.8.3
+  eslint-plugin-jest: 27.0.1
   eslint-plugin-jest-formatting: 3.1.0
   eslint-plugin-unicorn: 43.0.2
   framer-motion: 7.2.1
@@ -115,7 +115,7 @@ devDependencies:
   eslint-config-next: 12.2.5_4rv7y5c6xz3vfxwhbrcxxi73bq
   eslint-config-prettier: 8.5.0_eslint@8.22.0
   eslint-plugin-cypress: 2.12.1_eslint@8.22.0
-  eslint-plugin-jest: 26.8.3_6a2ng3hwt6ghrcpeyx2leikxhu
+  eslint-plugin-jest: 27.0.1_6a2ng3hwt6ghrcpeyx2leikxhu
   eslint-plugin-jest-formatting: 3.1.0_eslint@8.22.0
   eslint-plugin-unicorn: 43.0.2_eslint@8.22.0
   happo-cypress: 3.0.1
@@ -6057,12 +6057,12 @@ packages:
       eslint: 8.22.0
     dev: true
 
-  /eslint-plugin-jest/26.8.3_6a2ng3hwt6ghrcpeyx2leikxhu:
-    resolution: {integrity: sha512-2roWu1MkEiihQ/qEszPPoaoqVI1x2D8Jtadk5AmoXTdEeNVPMu01Dtz7jIuTOAmdW3L+tSkPZOtEtQroYJDt0A==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+  /eslint-plugin-jest/27.0.1_6a2ng3hwt6ghrcpeyx2leikxhu:
+    resolution: {integrity: sha512-LosUsrkwVSs/8Z/I8Hqn5vWgTEsHrfIquDEKOsV8/cl+gbFR4tiRCE1AimEotsHjSC0Rx1tYm6vPhw8C3ktmmg==}
+    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': ^5.0.0
-      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+      eslint: ^7.0.0 || ^8.0.0
       jest: '*'
     peerDependenciesMeta:
       '@typescript-eslint/eslint-plugin':
