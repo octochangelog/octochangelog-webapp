@@ -13,7 +13,8 @@ function unhandledRequestCallback(req: MockedRequest) {
 		return undefined
 	}
 
-	throw new Error('Unknown unhandled request')
+	// eslint-disable-next-line no-console
+	console.warn('Unknown unhandled request', req)
 }
 
 async function initMocks() {

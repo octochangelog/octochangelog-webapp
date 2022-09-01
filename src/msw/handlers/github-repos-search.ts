@@ -1,15 +1,19 @@
-import type { components } from '@octokit/openapi-types'
+import type { RequestHandler } from 'msw'
 import { rest } from 'msw'
 
-import { renovateResults, testingLibraryResults } from '~/fixtures/search'
+import {
+	renovateResults,
+	testingLibraryResults,
+} from '~/fixtures/github/search'
+import type { RepoSearchResultItem } from '~/models'
 
-const githubReposSearchHandlers = [
+const githubReposSearchHandlers: Array<RequestHandler> = [
 	rest.get(
 		'https://api.github.com/search/repositories',
 		(req, res, context) => {
 			const searchQuery = req.url.searchParams.get('q') ?? ''
 			const cleanSearchQuery = searchQuery.replace(/[-_]/g, ' ')
-			const items: Array<components['schemas']['repo-search-result-item']> = []
+			const items: Array<RepoSearchResultItem> = []
 
 			if (cleanSearchQuery.includes('test')) {
 				items.push(...testingLibraryResults)

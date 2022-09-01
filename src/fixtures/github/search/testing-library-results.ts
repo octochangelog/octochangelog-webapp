@@ -1,8 +1,6 @@
-import type { components } from '@octokit/openapi-types'
+import type { RepoSearchResultItem } from '~/models'
 
-const testingLibraryResults: Array<
-	components['schemas']['repo-search-result-item']
-> = [
+const testingLibraryResults: Array<RepoSearchResultItem> = [
 	{
 		id: 125863507,
 		node_id: 'MDEwOlJlcG9zaXRvcnkxMjU4NjM1MDc=',

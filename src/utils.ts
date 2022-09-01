@@ -173,3 +173,26 @@ export const compareReleasesByVersion = (
 
 	return 0
 }
+
+/**
+ *
+ * @param list - List to be paginated
+ * @param perPage - Items per page
+ * @param pageIndex - Page number (1-based index)
+ */
+export function paginateList<TListItem>(
+	list: Array<TListItem>,
+	perPage: number,
+	pageIndex: number
+): { data: Array<TListItem>; hasNext: boolean } {
+	if (pageIndex === 0) {
+		throw new Error('`pageIndex` is 1-based index so 0 is not a valid value')
+	}
+	const pageEnd = pageIndex * perPage
+	const pageStart = pageEnd - perPage
+
+	return {
+		data: list.slice(pageStart, pageEnd),
+		hasNext: pageEnd < list.length,
+	}
+}

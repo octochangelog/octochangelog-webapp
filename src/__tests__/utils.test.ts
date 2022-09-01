@@ -12,6 +12,7 @@ import {
 	isStableRelease,
 	mapRepositoryToQueryParams,
 	mapStringToRepositoryQueryParams,
+	paginateList,
 } from '~/utils'
 
 describe('mapRepositoryToQueryParams util', () => {
@@ -282,5 +283,13 @@ describe('compareReleasesByVersion', () => {
 			{ tag_name: 'v4.5.1' },
 			{ tag_name: 'v5.0.0' },
 		])
+	})
+})
+
+describe('paginateList util', () => {
+	it('should paginate the base X correctly', () => {
+		const result = paginateList([1, 2, 3, 4, 5], 2, 1)
+
+		expect(result).toEqual([1, 2])
 	})
 })
