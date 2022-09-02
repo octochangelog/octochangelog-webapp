@@ -1,4 +1,4 @@
-import lowerCase from 'lodash/lowerCase'
+import { lowerCase } from 'lodash-es'
 import type { Content } from 'mdast'
 import * as semver from 'semver'
 
