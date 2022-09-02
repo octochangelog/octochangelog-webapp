@@ -11,6 +11,7 @@ const config: Config = {
 	reporters: ['default', 'github-actions'],
 	moduleNameMapper: {
 		'~/(.*)': '<rootDir>/src/$1',
+		'^lodash-es$': 'lodash', // so lodash-es is not compiled
 	},
 }
 

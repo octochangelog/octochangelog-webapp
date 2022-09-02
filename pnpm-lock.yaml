@@ -17,7 +17,7 @@ specifiers:
   '@tanstack/react-query-devtools': 4.2.3
   '@testing-library/cypress': 8.0.3
   '@types/happo-cypress': 3.0.1
-  '@types/lodash': 4.14.182
+  '@types/lodash-es': 4.17.6
   '@types/mdast': 3.0.10
   '@types/node': 16.11.47
   '@types/react': 18.0.17
@@ -101,7 +101,7 @@ devDependencies:
   '@octokit/openapi-types': 13.0.1
   '@testing-library/cypress': 8.0.3_cypress@10.6.0
   '@types/happo-cypress': 3.0.1
-  '@types/lodash': 4.14.182
+  '@types/lodash-es': 4.17.6
   '@types/mdast': 3.0.10
   '@types/node': 16.11.47
   '@types/react': 18.0.17
@@ -3867,6 +3867,12 @@ packages:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
       '@types/node': 16.11.47
+    dev: true
+
+  /@types/lodash-es/4.17.6:
+    resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
+    dependencies:
+      '@types/lodash': 4.14.182
     dev: true
 
   /@types/lodash.mergewith/4.6.6:
