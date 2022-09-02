@@ -32,7 +32,7 @@
 		"postinstall": "pnpm gen:theme-typings"
 	},
 	"dependencies": {
-		"@chakra-ui/react": "2.2.9",
+		"@chakra-ui/react": "2.3.1",
 		"@emotion/react": "11.10.0",
 		"@emotion/styled": "11.10.0",
 		"@octokit/auth-callback": "3.0.0",
