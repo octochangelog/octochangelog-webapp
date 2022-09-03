@@ -295,11 +295,12 @@ describe('paginateList util', () => {
 		expectedList: Array<unknown>
 		expectedHasNext: boolean
 	}>`
-		caseTitle | inputList          | perPage | pageIndex | expectedList  | expectedHasNext
-		${'A'}    | ${[1, 2, 3, 4, 5]} | ${2}    | ${1}      | ${[1, 2]}     | ${true}
-		${'B'}    | ${[1, 2, 3, 4, 5]} | ${4}    | ${2}      | ${[5]}        | ${false}
-		${'C'}    | ${[1, 2, 3, 4, 5]} | ${4}    | ${3}      | ${[]}         | ${false}
-		${'D'}    | ${['a', 'b', 'c']} | ${2}    | ${1}      | ${['a', 'b']} | ${true}
+		caseTitle | inputList          | perPage | pageIndex | expectedList       | expectedHasNext
+		${'A'}    | ${[1, 2, 3, 4, 5]} | ${2}    | ${1}      | ${[1, 2]}          | ${true}
+		${'B'}    | ${[1, 2, 3, 4, 5]} | ${4}    | ${2}      | ${[5]}             | ${false}
+		${'C'}    | ${[1, 2, 3, 4, 5]} | ${4}    | ${3}      | ${[]}              | ${false}
+		${'D'}    | ${['a', 'b', 'c']} | ${2}    | ${1}      | ${['a', 'b']}      | ${true}
+		${'E'}    | ${['a', 'b', 'c']} | ${3}    | ${1}      | ${['a', 'b', 'c']} | ${false}
 	`(
 		'should paginate the case $caseTitle correctly',
 		({ inputList, perPage, pageIndex, expectedList, expectedHasNext }) => {
