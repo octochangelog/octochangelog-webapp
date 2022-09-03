@@ -287,9 +287,30 @@ describe('compareReleasesByVersion', () => {
 })
 
 describe('paginateList util', () => {
-	it('should paginate the base X correctly', () => {
-		const result = paginateList([1, 2, 3, 4, 5], 2, 1)
+	it.each<{
+		caseTitle: string
+		inputList: Array<unknown>
+		perPage: number
+		pageIndex: number
+		expectedList: Array<unknown>
+		expectedHasNext: boolean
+	}>`
+		caseTitle | inputList          | perPage | pageIndex | expectedList | expectedHasNext
+		${'A'}    | ${[1, 2, 3, 4, 5]} | ${2}    | ${1}      | ${[1, 2]}    | ${true}
+		${'B'}    | ${[1, 2, 3, 4, 5]} | ${4}    | ${2}      | ${[5]}       | ${false}
+		${'B'}    | ${[1, 2, 3, 4, 5]} | ${4}    | ${3}      | ${[]}        | ${false}
+	`(
+		'should paginate the case $caseTitle correctly',
+		({ inputList, perPage, pageIndex, expectedList, expectedHasNext }) => {
+			const result = paginateList(inputList, perPage, pageIndex)
 
-		expect(result).toEqual([1, 2])
+			expect(result).toEqual({ data: expectedList, hasNext: expectedHasNext })
+		}
+	)
+
+	it('should throw an error for a page index 0', () => {
+		expect(() => paginateList([1, 2, 3], 1, 0)).toThrow(
+			'`pageIndex` is 1-based index so 0 is not a valid value'
+		)
 	})
 })
