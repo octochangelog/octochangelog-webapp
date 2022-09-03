@@ -295,10 +295,11 @@ describe('paginateList util', () => {
 		expectedList: Array<unknown>
 		expectedHasNext: boolean
 	}>`
-		caseTitle | inputList          | perPage | pageIndex | expectedList | expectedHasNext
-		${'A'}    | ${[1, 2, 3, 4, 5]} | ${2}    | ${1}      | ${[1, 2]}    | ${true}
-		${'B'}    | ${[1, 2, 3, 4, 5]} | ${4}    | ${2}      | ${[5]}       | ${false}
-		${'B'}    | ${[1, 2, 3, 4, 5]} | ${4}    | ${3}      | ${[]}        | ${false}
+		caseTitle | inputList          | perPage | pageIndex | expectedList  | expectedHasNext
+		${'A'}    | ${[1, 2, 3, 4, 5]} | ${2}    | ${1}      | ${[1, 2]}     | ${true}
+		${'B'}    | ${[1, 2, 3, 4, 5]} | ${4}    | ${2}      | ${[5]}        | ${false}
+		${'C'}    | ${[1, 2, 3, 4, 5]} | ${4}    | ${3}      | ${[]}         | ${false}
+		${'D'}    | ${['a', 'b', 'c']} | ${2}    | ${1}      | ${['a', 'b']} | ${true}
 	`(
 		'should paginate the case $caseTitle correctly',
 		({ inputList, perPage, pageIndex, expectedList, expectedHasNext }) => {
@@ -308,7 +309,7 @@ describe('paginateList util', () => {
 		}
 	)
 
-	it('should throw an error for a page index 0', () => {
+	it('should throw an error if page index is 0', () => {
 		expect(() => paginateList([1, 2, 3], 1, 0)).toThrow(
 			'`pageIndex` is 1-based index so 0 is not a valid value'
 		)
