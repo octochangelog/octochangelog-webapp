@@ -2,11 +2,20 @@ import type { RequestHandler, DefaultBodyType } from 'msw'
 import { rest } from 'msw'
 
 import { domTestingLibraryRepoDetails } from '~/fixtures/github/repos/dom-testing-library'
+import { renovateRepoDetails } from '~/fixtures/github/repos/renovate'
 import type { Repository } from '~/models'
 
 interface RepoReleasesParams {
 	repoOwner: string
 	repoName: string
+}
+
+interface NotFoundResponse {
+	message: string
+}
+
+const NOT_FOUND_DATA: NotFoundResponse = {
+	message: 'Not Found',
 }
 
 const githubReposDetailsHandlers: Array<RequestHandler> = [
@@ -15,13 +24,19 @@ const githubReposDetailsHandlers: Array<RequestHandler> = [
 		(req, res, context) => {
 			const { repoName } = req.params
 
-			let data: Repository | undefined = undefined
+			const data: Repository | NotFoundResponse = (() => {
+				if (repoName === 'dom-testing-library') {
+					return domTestingLibraryRepoDetails
+				}
 
-			if (repoName === 'dom-testing-library') {
-				data = domTestingLibraryRepoDetails
-			}
+				if (repoName === 'renovate') {
+					return renovateRepoDetails
+				}
 
-			return res(context.json<Repository | undefined>(data))
+				return NOT_FOUND_DATA
+			})()
+
+			return res(context.json<Repository | NotFoundResponse>(data))
 		}
 	),
 ]

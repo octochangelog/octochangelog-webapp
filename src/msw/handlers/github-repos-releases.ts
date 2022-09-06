@@ -1,7 +1,10 @@
 import type { RequestHandler, DefaultBodyType } from 'msw'
 import { rest } from 'msw'
 
-import { domTestingLibraryReleases } from '~/fixtures/github/releases'
+import {
+	domTestingLibraryReleases,
+	renovateReleases,
+} from '~/fixtures/github/releases'
 import type { Release } from '~/models'
 import { paginateList } from '~/utils'
 
@@ -15,17 +18,33 @@ interface RepoReleasesParams {
 	repoName: string
 }
 
+const REPO_FIXTURES_MAPPING: Record<string, Array<Release> | undefined> = {
+	'dom-testing-library': domTestingLibraryReleases,
+	renovate: renovateReleases,
+}
+
 const githubReposReleasesHandlers: Array<RequestHandler> = [
 	rest.get<DefaultBodyType, RepoReleasesParams>(
 		'https://api.github.com/repos/:repoOwner/:repoName/releases',
 		(req, res, context) => {
+			const { repoOwner, repoName } = req.params
+			const releasesFixture = REPO_FIXTURES_MAPPING[repoName]
+
+			if (!releasesFixture) {
+				return res(
+					context.json({
+						message: 'Not Found',
+					})
+				)
+			}
+
 			const perPage = Number(
 				req.url.searchParams.get('per_page') ?? DEFAULT_ITEMS_PER_PAGE
 			)
 			const pageIndex = Number(req.url.searchParams.get('page') ?? 1)
 
 			const { data, hasNext } = paginateList(
-				domTestingLibraryReleases,
+				releasesFixture,
 				perPage,
 				pageIndex
 			)
@@ -36,7 +55,6 @@ const githubReposReleasesHandlers: Array<RequestHandler> = [
 
 			if (hasNext) {
 				const nextPage = pageIndex + 1
-				const { repoOwner, repoName } = req.params
 				const repoString = `${repoOwner}/${repoName}`
 				responseTransformers.push(
 					context.set(

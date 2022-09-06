@@ -1,7 +1,9 @@
 import type { Release } from '~/models'
 
 /**
- * 286 releases, from v8.17.1 to v1.1.0
+ * 286 releases: from v8.17.1 to v1.1.0
+ *
+ * This generates 3 pages of 100 items.
  */
 const domTestingLibraryReleases: Array<Release> = [
 	{
