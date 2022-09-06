@@ -67,7 +67,7 @@ We recommend you follow this process:
 
 The project is set up with a mocked API by using [MSW](https://mswjs.io/). This allows to run Jest tests, Cypress tests and the local environment against a mocked API, without needing a real connection or reaching GitHub API's limit.
 
-This mocked API can be toggled through the `NEXT_PUBLIC_API_MOCKING` environment variable. Use `enabled` to start it alongside the project, or `disabled` to stop it. You can put it in your `.env.local` (restarting the local server if already started).
+This mocked API can be toggled through the `NEXT_PUBLIC_API_MOCKING` environment variable, which is enabled by default. Use `enabled` to start it alongside the project, or `disabled` to stop it. You can put it in your `.env.local` (restarting the local server if already started).
 
 The endpoint to search repositories (used in the _Enter repository name_ input in the comparator) only returns a couple of results for "testing library" and "renovate", so it's only possible to search those terms.
 
