@@ -31,6 +31,4 @@ async function initMocks() {
 	}
 }
 
-void initMocks()
-
-export {}
+export { initMocks }

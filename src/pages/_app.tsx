@@ -7,6 +7,7 @@ import type { AppProps } from 'next/app'
 
 import { GithubAuthProvider } from '~/contexts/github-auth-provider'
 import customTheme from '~/customTheme'
+import { initMocks } from '~/mock-service-worker'
 import DefaultSEO from '~/next-seo.config'
 
 const queryClient = new QueryClient({
@@ -20,7 +21,7 @@ const queryClient = new QueryClient({
 })
 
 if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
-	require('~/msw')
+	void initMocks()
 }
 
 const App = ({ Component, pageProps }: AppProps) => {
