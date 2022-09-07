@@ -51,7 +51,8 @@ jobs:
         uses: cypress-io/github-action@30008f1458a5a2c97054bfe118fe33d75976c482
         with:
           install-command: pnpm install
-          build: pnpm build
+          # force API mocking for E2E with NEXT_PUBLIC_API_MOCKING=enabled
+          build: NEXT_PUBLIC_API_MOCKING=enabled pnpm build
           start: pnpm serve
           wait-on: 'http://localhost:3000'
           record: true
