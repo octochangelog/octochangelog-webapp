@@ -23,7 +23,7 @@ const config = {
 	},
 }
 
-const SentryWebpackPluginOptions = {
+export default withSentryConfig(config, {
 	// Additional config options for the Sentry Webpack plugin. Keep in mind that
 	// the following options are set automatically, and overriding them is not
 	// recommended:
@@ -36,11 +36,4 @@ const SentryWebpackPluginOptions = {
 	},
 	// For all available options, see:
 	// https://github.com/getsentry/sentry-webpack-plugin#options.
-}
-
-// wrap the bundle with Sentry only if built/deployed in Vercel
-const activeConfig = process.env.VERCEL
-	? withSentryConfig(config, SentryWebpackPluginOptions)
-	: config
-
-export default activeConfig
+})
