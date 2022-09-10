@@ -10,6 +10,9 @@ const config = {
 		browsersListForSwc: true,
 		legacyBrowsers: false,
 	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
 	swcMinify: true,
 	async redirects() {
 		return [
@@ -23,14 +26,18 @@ const config = {
 	},
 }
 
-const SentryWebpackPluginOptions = {
+/**
+ *
+ * @type {Partial<import('@sentry/nextjs').SentryWebpackPluginOptions>}
+ */
+const sentryWebpackPluginOptions = {
 	// Additional config options for the Sentry Webpack plugin. Keep in mind that
 	// the following options are set automatically, and overriding them is not
 	// recommended:
 	//   release, url, org, project, authToken, configFile, stripPrefix,
 	//   urlPrefix, include, ignore
 
-	silent: !process.env.VERCEL_ENV, // Suppresses all logs if not building the app at Vercel
+	silent: true, // Suppresses all logs
 	deploy: {
 		env: process.env.VERCEL_ENV,
 	},
@@ -38,9 +45,10 @@ const SentryWebpackPluginOptions = {
 	// https://github.com/getsentry/sentry-webpack-plugin#options.
 }
 
-// wrap the bundle with Sentry only if built/deployed in Vercel
+// Wrap the bundle with Sentry only if built/deployed in Vercel,
+// so Sentry is not enabled in local env.
 const activeConfig = process.env.VERCEL
-	? withSentryConfig(config, SentryWebpackPluginOptions)
+	? withSentryConfig(config, sentryWebpackPluginOptions)
 	: config
 
 export default activeConfig
