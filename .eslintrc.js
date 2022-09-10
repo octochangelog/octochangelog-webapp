@@ -25,6 +25,7 @@ module.exports = {
 		'react/self-closing-comp': 'error',
 		'react/react-in-jsx-scope': 'off',
 		'react/jsx-boolean-value': 'error',
+		'react/no-unknown-property': 'off', // started to report many weird errors recently
 
 		// Import
 		'import/newline-after-import': 'error',
