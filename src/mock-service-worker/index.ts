@@ -1,5 +1,7 @@
 import type { MockedRequest } from 'msw'
 
+const IGNORE_HOSTS = ['localhost', 'octoclairvoyant', 'fonts']
+
 function unhandledRequestCallback(req: MockedRequest) {
 	if (req.url.host === 'api.github.com') {
 		throw new Error(
@@ -7,11 +9,7 @@ function unhandledRequestCallback(req: MockedRequest) {
 		)
 	}
 
-	if (
-		req.url.host.includes('localhost') ||
-		req.url.host.includes('octoclairvoyant') ||
-		req.url.host.includes('fonts')
-	) {
+	if (IGNORE_HOSTS.some((ignoreHost) => req.url.host.includes(ignoreHost))) {
 		return undefined
 	}
 
