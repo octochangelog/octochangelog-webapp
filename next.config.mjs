@@ -21,19 +21,13 @@ const config = {
 			},
 		]
 	},
-
-	sentry: {
-		// Use `hidden-source-map` rather than `source-map` as the Webpack `devtool`
-		// for client-side builds. (This will be the default starting in
-		// `@sentry/nextjs` version 8.0.0.) See
-		// https://webpack.js.org/configuration/devtool/ and
-		// https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#use-hidden-source-map
-		// for more information.
-		hideSourceMaps: true,
-	},
 }
 
-export default withSentryConfig(config, {
+/**
+ *
+ * @type {Partial<import('@sentry/nextjs').SentryWebpackPluginOptions>}
+ */
+const sentryWebpackPluginOptions = {
 	// Additional config options for the Sentry Webpack plugin. Keep in mind that
 	// the following options are set automatically, and overriding them is not
 	// recommended:
@@ -46,4 +40,12 @@ export default withSentryConfig(config, {
 	},
 	// For all available options, see:
 	// https://github.com/getsentry/sentry-webpack-plugin#options.
-})
+}
+
+// Wrap the bundle with Sentry only if built/deployed in Vercel,
+// so Sentry is not enabled in local env.
+const activeConfig = process.env.VERCEL
+	? withSentryConfig(config, sentryWebpackPluginOptions)
+	: config
+
+export default activeConfig
