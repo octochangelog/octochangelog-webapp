@@ -1,3 +1,4 @@
+import { rest } from 'msw'
 import type { MockedRequest } from 'msw'
 
 const IGNORE_HOSTS = ['localhost', 'octoclairvoyant', 'fonts']
@@ -17,15 +18,24 @@ function unhandledRequestCallback(req: MockedRequest) {
 	console.warn('Unknown unhandled request', req)
 }
 
-async function initMocks() {
+async function initMocks(): Promise<ServiceWorkerRegistration | undefined> {
 	const isServerEnv = typeof window === 'undefined'
 
 	if (isServerEnv) {
 		const { server } = await import('./server')
 		server.listen({ onUnhandledRequest: unhandledRequestCallback })
+		return Promise.resolve(undefined)
 	} else {
 		const { worker } = await import('./browser')
-		void worker.start({ onUnhandledRequest: unhandledRequestCallback })
+
+		// Make the `worker` and `rest` references available globally,
+		// so they can be accessed in both runtime and test suites.
+		window.msw = {
+			worker,
+			rest,
+		}
+
+		return worker.start({ onUnhandledRequest: unhandledRequestCallback })
 	}
 }
 
