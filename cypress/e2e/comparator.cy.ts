@@ -180,8 +180,36 @@ it('should show changelog results when preloading from URL with "latest"', () =>
  * last one must not be requested since all the info will be available by then.
  */
 it('should show changelog results when preloading from URL with more than 10 release pages', () => {
-	// TODO: force error in MSW when release page 12 gets requested
 	cy.visit('/comparator?repo=renovatebot%2Frenovate&from=26.9.0&to=32.172.2')
+
+	// Wait for the app ready is only necessary when preloading from URL and
+	// add extra MSW handlers.
+	cy.window().should('have.property', 'appReady', true)
+
+	cy.window().then((appWindow) => {
+		if (appWindow.msw) {
+			const { worker, rest } = appWindow.msw
+
+			worker.use(
+				rest.get(
+					'https://api.github.com/repos/renovatebot/renovate/releases',
+					(req, res) => {
+						const pageIndex = Number(req.url.searchParams.get('page') || 1)
+
+						// Since all info is available when page 11 is retrieved, page 12 should not be requested.
+						// We are forcing an error on page 12 to make sure it's not requested.
+						if (pageIndex === 12) {
+							return res.networkError('Request page not available')
+						}
+
+						return undefined
+					}
+				)
+			)
+		} else if (appWindow.isApiMockingEnabled) {
+			throw new Error('API mocking should be enabled but msw was not found')
+		}
+	})
 
 	cy.findByRole('heading', { name: 'renovate' }).within(() => {
 		cy.findByRole('link', { name: 'renovate' }).should(
