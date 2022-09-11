@@ -10,6 +10,7 @@ export default defineConfig({
 		 * `config` is the resolved Cypress config
 		 */
 		setupNodeEvents(on) {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
 			happoTask.register(on)
 		},
 		baseUrl: 'http://localhost:3000',
