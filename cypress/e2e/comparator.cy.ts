@@ -184,7 +184,7 @@ it('should show changelog results when preloading from URL with more than 10 rel
 
 	// Wait for the app ready is only necessary when preloading from URL and
 	// add extra MSW handlers.
-	cy.window().should('have.property', 'appReady', true)
+	cy.window().should('have.property', 'isApiMockingReady', true)
 
 	cy.window().then((appWindow) => {
 		if (appWindow.msw) {

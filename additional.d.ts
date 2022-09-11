@@ -21,5 +21,6 @@ declare global {
 			rest: typeof rest
 		}
 		isApiMockingEnabled?: boolean
+		isApiMockingReady?: boolean
 	}
 }
