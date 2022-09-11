@@ -182,9 +182,8 @@ it('should show changelog results when preloading from URL with "latest"', () =>
 it('should show changelog results when preloading from URL with more than 10 release pages', () => {
 	cy.visit('/comparator?repo=renovatebot%2Frenovate&from=26.9.0&to=32.172.2')
 
-	// Wait for the app ready is only necessary when preloading from URL and
-	// add extra MSW handlers.
-	cy.window().should('have.property', 'isApiMockingReady', true)
+	// This is necessary because an early request is triggered from preloaded URL.
+	cy.waitForApiMocking()
 
 	cy.window().then((appWindow) => {
 		if (appWindow.msw) {
