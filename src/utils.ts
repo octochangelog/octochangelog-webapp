@@ -186,7 +186,7 @@ export function paginateList<TListItem>(
 	pageIndex: number
 ): { data: Array<TListItem>; hasNext: boolean } {
 	if (pageIndex === 0) {
-		throw new Error('`pageIndex` is 1-based index so 0 is not a valid value')
+		throw new Error('`pageIndex` is 1-based index so 0 is not a valid value.')
 	}
 	const pageEnd = pageIndex * perPage
 	const pageStart = pageEnd - perPage

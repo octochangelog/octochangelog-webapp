@@ -198,7 +198,7 @@ it('should show changelog results when preloading from URL with more than 10 rel
 						// Since all info is available when page 11 is retrieved, page 12 should not be requested.
 						// We are forcing an error on page 12 to make sure it's not requested.
 						if (pageIndex === 12) {
-							return res.networkError('Request page not available')
+							return res.networkError('Requested page not available.')
 						}
 
 						return undefined
@@ -206,7 +206,7 @@ it('should show changelog results when preloading from URL with more than 10 rel
 				)
 			)
 		} else if (appWindow.isApiMockingEnabled) {
-			throw new Error('API mocking should be enabled but msw was not found')
+			throw new Error('API mocking should be enabled but MSW was not found.')
 		}
 	})
 

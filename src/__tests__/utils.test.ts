@@ -312,7 +312,7 @@ describe('paginateList util', () => {
 
 	it('should throw an error if page index is 0', () => {
 		expect(() => paginateList([1, 2, 3], 1, 0)).toThrow(
-			'`pageIndex` is 1-based index so 0 is not a valid value'
+			'`pageIndex` is 1-based index so 0 is not a valid value.'
 		)
 	})
 })

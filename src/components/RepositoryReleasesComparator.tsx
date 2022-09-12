@@ -53,7 +53,7 @@ const RepositoryReleasesComparator = () => {
 							<Flex alignItems="center" flexDirection="column">
 								<Text mb={4}>
 									You can increase the max number of allowed requests to GitHub
-									by authorizing the app
+									by authorizing the app.
 								</Text>
 								<GitHubLoginButton />
 							</Flex>
