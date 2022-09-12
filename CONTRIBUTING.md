@@ -65,7 +65,7 @@ We recommend you follow this process:
 
 ## Mocked API
 
-The project is set up with a mocked API by using [MSW](https://mswjs.io/).
+We use [MSW](https://mswjs.io/) to mock API calls.
 Now you can run Jest tests, Cypress tests and the local environment against this mocked API, without needing a real connection or reaching GitHub API's limit.
 
 ### Toggling the mocked API
