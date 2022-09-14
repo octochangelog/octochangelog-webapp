@@ -1,7 +1,8 @@
+const DOUBLE_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout') * 2
+const TRIPLE_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout') * 3
 // Increase the command timeout since it takes a while for findBy queries
 // to find certain elements while the comparator is still processing the changelog.
-const LONGER_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout') * 2
-Cypress.config('defaultCommandTimeout', LONGER_COMMAND_TIMEOUT)
+Cypress.config('defaultCommandTimeout', DOUBLE_COMMAND_TIMEOUT)
 
 it('should show changelog results when filling the form', () => {
 	cy.visit('/comparator')
@@ -217,21 +218,53 @@ it('should show changelog results when preloading from URL with more than 10 rel
 			'https://github.com/renovatebot/renovate'
 		)
 	})
-	cy.findByRole('heading', { name: 'Changes from 26.9.0 to 32.172.2' })
-	cy.findByRole('heading', { level: 2, name: /breaking changes/i })
-	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
-	cy.findByRole('heading', { level: 2, name: /features/i })
-	cy.findByRole('heading', { level: 2, name: /reverts/i })
-	cy.findByRole('heading', { level: 2, name: /miscellaneous chores/i })
 
+	// The following elements may take a while to appear since the comparator
+	// has to fetch several pages and process a bunch of releases, so we increase
+	// the timeout.
+	cy.findByRole('heading', {
+		name: 'Changes from 26.9.0 to 32.172.2',
+		timeout: TRIPLE_COMMAND_TIMEOUT,
+	})
+	cy.findByRole('heading', {
+		level: 2,
+		name: /breaking changes/i,
+		timeout: TRIPLE_COMMAND_TIMEOUT,
+	})
+	cy.findByRole('heading', {
+		level: 2,
+		name: /bug fixes/i,
+		timeout: TRIPLE_COMMAND_TIMEOUT,
+	})
+	cy.findByRole('heading', {
+		level: 2,
+		name: /features/i,
+		timeout: TRIPLE_COMMAND_TIMEOUT,
+	})
+	cy.findByRole('heading', {
+		level: 2,
+		name: /reverts/i,
+		timeout: TRIPLE_COMMAND_TIMEOUT,
+	})
+	cy.findByRole('heading', {
+		level: 2,
+		name: /miscellaneous chores/i,
+		timeout: TRIPLE_COMMAND_TIMEOUT,
+	})
 	// link for 26.9.1 release (lowest one)
-	cy.findByRole('link', { name: '26.9.1' }).should(
+	cy.findByRole('link', {
+		name: '26.9.1',
+		timeout: TRIPLE_COMMAND_TIMEOUT,
+	}).should(
 		'have.attr',
 		'href',
 		'https://github.com/renovatebot/renovate/releases/tag/26.9.1'
 	)
 	// link for 32.172.2 release (highest one)
-	cy.findAllByRole('link', { name: '32.172.2' }).should(
+	cy.findAllByRole('link', {
+		name: '32.172.2',
+		timeout: TRIPLE_COMMAND_TIMEOUT,
+	}).should(
 		'have.attr',
 		'href',
 		'https://github.com/renovatebot/renovate/releases/tag/32.172.2'
