@@ -13,7 +13,6 @@ const config = {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
-	swcMinify: true,
 	async redirects() {
 		return [
 			{
