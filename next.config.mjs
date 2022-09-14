@@ -6,6 +6,7 @@ import { withSentryConfig } from '@sentry/nextjs'
  * @type {import('next').NextConfig}
  **/
 const config = {
+	reactStrictMode: true,
 	experimental: {
 		browsersListForSwc: true,
 		legacyBrowsers: false,
@@ -13,7 +14,6 @@ const config = {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
-	swcMinify: true,
 	async redirects() {
 		return [
 			{
