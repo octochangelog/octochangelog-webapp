@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 
-import { initMocks } from '~/mock-service-worker'
-
 const isApiMockingEnabled = process.env.NEXT_PUBLIC_API_MOCKING === 'enabled'
 
 if (typeof window !== 'undefined') {
@@ -12,12 +10,13 @@ function setCypressAppReady(): void {
 	window.isApiMockingReady = true
 }
 
-function prepare(): Promise<ServiceWorkerRegistration | undefined> {
+async function prepare(): Promise<ServiceWorkerRegistration | undefined> {
 	if (isApiMockingEnabled) {
+		const { initMocks } = await import('~/mock-service-worker')
 		return initMocks()
 	}
 
-	return Promise.resolve(undefined)
+	return undefined
 }
 
 function initIsReadyState() {
