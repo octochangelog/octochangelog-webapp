@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 const isApiMockingEnabled =
-	process.env.NEXT_PUBLIC_API_MOCKING === 'enabled' || !!process.env.VERCEL
+	process.env.NEXT_PUBLIC_API_MOCKING === 'enabled' && !process.env.VERCEL
 
 if (typeof window !== 'undefined') {
 	window.isApiMockingEnabled = isApiMockingEnabled
