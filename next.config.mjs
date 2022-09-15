@@ -12,6 +12,7 @@ const config = {
 		legacyBrowsers: false,
 	},
 	eslint: {
+		// Disable ESLint during builds since there is a lint job in CI.
 		ignoreDuringBuilds: true,
 	},
 	async redirects() {

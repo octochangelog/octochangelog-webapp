@@ -17,6 +17,9 @@ export type Repository = components['schemas']['full-repository']
 
 export type Release = components['schemas']['release']
 
+export type RepoSearchResultItem =
+	components['schemas']['repo-search-result-item']
+
 export interface ProcessedRelease extends Omit<Release, 'body'> {
 	title: string
 	originalTitle: string

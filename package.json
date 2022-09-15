@@ -8,10 +8,9 @@
 	"packageManager": "pnpm@7.5.0",
 	"scripts": {
 		"start": "pnpm dev",
-		"dev": "next",
+		"dev": "next dev",
 		"build": "next build",
 		"serve": "next start",
-		"smoketest": "pnpm type-check && pnpm lint && pnpm format:check && pnpm build",
 		"type-check": "tsc --project tsconfig.validation.json",
 		"type-check:cypress": "tsc --project cypress/tsconfig.json",
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0 --report-unused-disable-directives",
@@ -24,8 +23,8 @@
 		"test:ci": "pnpm test -- --ci",
 		"cy:open": "cypress open",
 		"cy:headless": "cypress run",
-		"e2e": "start-server-and-test 'pnpm build && pnpm serve' http://localhost:3000 'pnpm cy:open'",
-		"e2e:dev": "start-server-and-test 'pnpm dev' http://localhost:3000 'pnpm cy:open'",
+		"e2e": "start-server-and-test 'pnpm build && pnpm serve' http://localhost:3000 'pnpm cy:open --e2e'",
+		"e2e:dev": "start-server-and-test 'pnpm dev' http://localhost:3000 'pnpm cy:open --e2e'",
 		"e2e:headless": "start-server-and-test 'pnpm build && pnpm serve' http://localhost:3000 'pnpm cy:headless'",
 		"gen:theme-typings": "chakra-cli tokens src/customTheme.ts --strict-component-types",
 		"prepare": "is-ci || husky install",
@@ -77,8 +76,8 @@
 		"@types/unist": "2.0.6",
 		"@typescript-eslint/eslint-plugin": "5.36.0",
 		"@typescript-eslint/parser": "5.36.0",
-		"cypress": "10.6.0",
-		"eslint": "8.23.0",
+		"cypress": "10.8.0",
+		"eslint": "8.22.0",
 		"eslint-config-next": "12.2.5",
 		"eslint-config-prettier": "8.5.0",
 		"eslint-plugin-cypress": "2.12.1",
@@ -92,6 +91,7 @@
 		"is-ci": "3.0.1",
 		"jest": "29.0.1",
 		"lint-staged": "13.0.3",
+		"msw": "0.46.1",
 		"prettier": "2.7.1",
 		"start-server-and-test": "1.14.0",
 		"ts-jest": "29.0.0-next.1",
@@ -110,5 +110,8 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"msw": {
+		"workerDirectory": "public"
 	}
 }

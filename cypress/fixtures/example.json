@@ -1,6 +1,0 @@
-{
-	"TODO": "remove this file when we have the first fixture file",
-	"name": "Using fixtures to represent data",
-	"email": "hello@cypress.io",
-	"body": "Fixtures are a great way to mock data for responses to routes"
-}

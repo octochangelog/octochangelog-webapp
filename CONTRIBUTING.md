@@ -57,12 +57,26 @@ We recommend you follow this process:
 
 1. Create a feature branch
 1. Start the development server with `pnpm start`
-1. Make improvements
-1. Put chunks of work in a commit (the Husky program will run some checks)
+1. Make the necessary changes
+1. Put chunks of work in a commit (the Husky program will run some checks for modified files)
 1. Write/adjust tests to check the functionality of the new code
-1. Run `pnpm run e2e` to confirm you're not breaking anything critical
-1. Run `pnpm run smoketest` to confirm other code validations are still fine
 1. Create pull request
+1. Fix code validation problems reported and failed tests from CI
+
+## Mocked API
+
+We use [MSW](https://mswjs.io/) to mock API calls.
+Now you can run Jest tests, Cypress tests and the local environment against this mocked API, without needing a real connection or reaching GitHub API's limit.
+
+### Toggling the mocked API
+
+This mocked API can be toggled through the `NEXT_PUBLIC_API_MOCKING` environment variable, which is enabled by default.
+Use `enabled` to start it alongside the project, or `disabled` to stop it.
+You can put it in your `.env.local` (restarting the local server if already started).
+
+### Limitations
+
+The endpoint to search repositories (used in the _Enter repository name_ input field in the comparator) only returns a couple of results for "testing library" and "renovate", so it's only possible to search those terms.
 
 ## Query string to check comparator output
 
@@ -120,16 +134,6 @@ export default Footer
 ### Running E2E
 
 Our E2E tests are implemented with Cypress.
+They are ran against a mocked API with MSW.
 
-For now, they always perform real requests to GitHub API.
-If you want to add an access token to extend the API rate limit, follow these steps:
-
-1. [Create a personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
-2. Create a file named `cypress.env.json` in the root of the project (this file is on the `.gitignore` list, so it won't be committed accidentally)
-3. Create a key-value pair `GITHUB_TESTING_ACCESS_TOKEN` and copy/paste the personal access token into it, like this:
-
-```json
-{
-	"GITHUB_TESTING_ACCESS_TOKEN": "token-created-in-step-1"
-}
-```
+We run a weekly smoke test on the real GitHub API.

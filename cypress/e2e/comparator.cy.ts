@@ -1,25 +1,15 @@
+const DOUBLE_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout') * 2
+const TRIPLE_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout') * 3
 // Increase the command timeout since it takes a while for findBy queries
 // to find certain elements while the comparator is still processing the changelog.
-const LONGER_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout') * 2
-Cypress.config('defaultCommandTimeout', LONGER_COMMAND_TIMEOUT)
+Cypress.config('defaultCommandTimeout', DOUBLE_COMMAND_TIMEOUT)
 
-/**
- * This test is considered the happy and critical path of the app.
- *
- * We are not stubbing the GitHub API for it, so it works as an E2E,
- * testing our webapp works fine against the actual server.
- *
- * Cypress recommends to have one test around the happy path of a feature
- * connected to the real server:
- * https://docs.cypress.io/guides/guides/network-requests#Use-Server-Responses
- */
 it('should show changelog results when filling the form', () => {
 	cy.visit('/comparator')
 
 	cy.findByRole('textbox', { name: /enter repository name/i }).type(
 		'dom testing library'
 	)
-	cy.wait(6000) // eslint-disable-line cypress/no-unnecessary-waiting
 
 	cy.findByRole('listbox', { name: /enter repository name/i })
 		.findByText('testing-library/dom-testing-library')
@@ -92,42 +82,9 @@ it('should show changelog results when filling the form', () => {
 })
 
 it('should show changelog results when preloading from URL', () => {
-	cy.intercept(
-		'GET',
-		'https://api.github.com/repos/testing-library/dom-testing-library',
-		{ fixture: 'repositories/dom-testing-library.json' }
-	).as('getRepo')
-
-	cy.intercept(
-		'GET',
-		'https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100**',
-		(req) => {
-			const page = Number(req.query.page) || 1
-			const headers: { link: string } | undefined = (() => {
-				const isLastPageReached = page >= 3
-				if (!isLastPageReached) {
-					const nextPage = page + 1
-					return {
-						link: `<https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=${nextPage}>; rel="next"`,
-					}
-				}
-				return undefined
-			})()
-
-			req.alias = `getReleasesPage${page}`
-			req.reply({
-				fixture: `releases/dom-testing-library/page${page}.json`,
-				headers,
-			})
-		}
-	)
-
 	cy.visit(
 		'/comparator?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0'
 	)
-
-	cy.wait('@getRepo')
-	cy.wait('@getReleasesPage3')
 
 	// Confirm repository name is displayed
 	cy.findByRole('link', { name: 'dom-testing-library' }).should(
@@ -187,42 +144,9 @@ it('should show changelog results when preloading from URL', () => {
 })
 
 it('should show changelog results when preloading from URL with "latest"', () => {
-	cy.intercept(
-		'GET',
-		'https://api.github.com/repos/testing-library/dom-testing-library',
-		{ fixture: 'repositories/dom-testing-library.json' }
-	).as('getRepo')
-
-	cy.intercept(
-		'GET',
-		'https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100**',
-		(req) => {
-			const page = Number(req.query.page) || 1
-			const headers: { link: string } | undefined = (() => {
-				const isLastPageReached = page >= 3
-				if (!isLastPageReached) {
-					const nextPage = page + 1
-					return {
-						link: `<https://api.github.com/repos/testing-library/dom-testing-library/releases?per_page=100&page=${nextPage}>; rel="next"`,
-					}
-				}
-				return undefined
-			})()
-
-			req.alias = `getReleasesPage${page}`
-			req.reply({
-				fixture: `releases/dom-testing-library/page${page}.json`,
-				headers,
-			})
-		}
-	)
-
 	cy.visit(
 		'/comparator?repo=testing-library%2Fdom-testing-library&from=v8.11.0&to=latest'
 	)
-
-	cy.wait('@getRepo')
-	cy.wait('@getReleasesPage3')
 
 	cy.findByRole('link', { name: 'dom-testing-library' }).should(
 		'have.attr',
@@ -257,45 +181,35 @@ it('should show changelog results when preloading from URL with "latest"', () =>
  * last one must not be requested since all the info will be available by then.
  */
 it('should show changelog results when preloading from URL with more than 10 release pages', () => {
-	cy.intercept('GET', 'https://api.github.com/repos/renovatebot/renovate', {
-		fixture: 'repositories/renovate.json',
-	}).as('getRepo')
-
-	cy.intercept(
-		'GET',
-		'https://api.github.com/repos/renovatebot/renovate/releases?per_page=100**',
-		(req) => {
-			const page = Number(req.query.page) || 1
-			const headers: { link: string } | undefined = (() => {
-				const isLastPageReached = page >= 12
-				if (!isLastPageReached) {
-					const nextPage = page + 1
-					return {
-						link: `<https://api.github.com/repos/renovatebot/renovate/releases?per_page=100&page=${nextPage}>; rel="next"`,
-					}
-				}
-				return undefined
-			})()
-
-			req.alias = `getReleasesPage${page}`
-
-			// Since all info is available when page 11 is retrieved, page 12 should not be requested.
-			// We are forcing an error on page 12 to make sure it's not requested.
-			if (page === 12) {
-				return req.reply({ forceNetworkError: true })
-			}
-
-			req.reply({
-				fixture: `releases/renovate/page${page}.json`,
-				headers,
-			})
-		}
-	)
-
 	cy.visit('/comparator?repo=renovatebot%2Frenovate&from=26.9.0&to=32.172.2')
 
-	cy.wait('@getRepo')
-	cy.wait('@getReleasesPage11')
+	// This is necessary because an early request is triggered from preloaded URL.
+	cy.waitForApiMocking()
+
+	cy.window().then((appWindow) => {
+		if (appWindow.msw) {
+			const { worker, rest } = appWindow.msw
+
+			worker.use(
+				rest.get(
+					'https://api.github.com/repos/renovatebot/renovate/releases',
+					(req, res) => {
+						const pageIndex = Number(req.url.searchParams.get('page') || 1)
+
+						// Since all info is available when page 11 is retrieved, page 12 should not be requested.
+						// We are forcing an error on page 12 to make sure it's not requested.
+						if (pageIndex === 12) {
+							return res.networkError('Requested page not available.')
+						}
+
+						return undefined
+					}
+				)
+			)
+		} else if (appWindow.isApiMockingEnabled) {
+			throw new Error('API mocking should be enabled but MSW was not found.')
+		}
+	})
 
 	cy.findByRole('heading', { name: 'renovate' }).within(() => {
 		cy.findByRole('link', { name: 'renovate' }).should(
@@ -304,21 +218,53 @@ it('should show changelog results when preloading from URL with more than 10 rel
 			'https://github.com/renovatebot/renovate'
 		)
 	})
-	cy.findByRole('heading', { name: 'Changes from 26.9.0 to 32.172.2' })
-	cy.findByRole('heading', { level: 2, name: /breaking changes/i })
-	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
-	cy.findByRole('heading', { level: 2, name: /features/i })
-	cy.findByRole('heading', { level: 2, name: /reverts/i })
-	cy.findByRole('heading', { level: 2, name: /miscellaneous chores/i })
 
+	// The following elements may take a while to appear since the comparator
+	// has to fetch several pages and process a bunch of releases, so we increase
+	// the timeout.
+	cy.findByRole('heading', {
+		name: 'Changes from 26.9.0 to 32.172.2',
+		timeout: TRIPLE_COMMAND_TIMEOUT,
+	})
+	cy.findByRole('heading', {
+		level: 2,
+		name: /breaking changes/i,
+		timeout: TRIPLE_COMMAND_TIMEOUT,
+	})
+	cy.findByRole('heading', {
+		level: 2,
+		name: /bug fixes/i,
+		timeout: TRIPLE_COMMAND_TIMEOUT,
+	})
+	cy.findByRole('heading', {
+		level: 2,
+		name: /features/i,
+		timeout: TRIPLE_COMMAND_TIMEOUT,
+	})
+	cy.findByRole('heading', {
+		level: 2,
+		name: /reverts/i,
+		timeout: TRIPLE_COMMAND_TIMEOUT,
+	})
+	cy.findByRole('heading', {
+		level: 2,
+		name: /miscellaneous chores/i,
+		timeout: TRIPLE_COMMAND_TIMEOUT,
+	})
 	// link for 26.9.1 release (lowest one)
-	cy.findByRole('link', { name: '26.9.1' }).should(
+	cy.findByRole('link', {
+		name: '26.9.1',
+		timeout: TRIPLE_COMMAND_TIMEOUT,
+	}).should(
 		'have.attr',
 		'href',
 		'https://github.com/renovatebot/renovate/releases/tag/26.9.1'
 	)
 	// link for 32.172.2 release (highest one)
-	cy.findAllByRole('link', { name: '32.172.2' }).should(
+	cy.findAllByRole('link', {
+		name: '32.172.2',
+		timeout: TRIPLE_COMMAND_TIMEOUT,
+	}).should(
 		'have.attr',
 		'href',
 		'https://github.com/renovatebot/renovate/releases/tag/32.172.2'
