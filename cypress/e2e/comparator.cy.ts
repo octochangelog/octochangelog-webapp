@@ -1,5 +1,4 @@
 const DOUBLE_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout') * 2
-const TRIPLE_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout') * 3
 // Increase the command timeout since it takes a while for findBy queries
 // to find certain elements while the comparator is still processing the changelog.
 Cypress.config('defaultCommandTimeout', DOUBLE_COMMAND_TIMEOUT)
@@ -219,42 +218,24 @@ it('should show changelog results when preloading from URL with more than 10 rel
 		)
 	})
 
-	// The following elements may take a while to appear since the comparator
-	// has to fetch several pages and process a bunch of releases, so we increase
-	// the timeout.
+	// Wait a bit before checking the rendered release changelog details
+	// since this may take a while to appear.
+	// eslint-disable-next-line cypress/no-unnecessary-waiting
+	cy.wait(2000)
+
 	cy.findByRole('heading', {
 		name: 'Changes from 26.9.0 to 32.172.2',
-		timeout: TRIPLE_COMMAND_TIMEOUT,
 	})
-	cy.findByRole('heading', {
-		level: 2,
-		name: /breaking changes/i,
-		timeout: TRIPLE_COMMAND_TIMEOUT,
-	})
-	cy.findByRole('heading', {
-		level: 2,
-		name: /bug fixes/i,
-		timeout: TRIPLE_COMMAND_TIMEOUT,
-	})
-	cy.findByRole('heading', {
-		level: 2,
-		name: /features/i,
-		timeout: TRIPLE_COMMAND_TIMEOUT,
-	})
-	cy.findByRole('heading', {
-		level: 2,
-		name: /reverts/i,
-		timeout: TRIPLE_COMMAND_TIMEOUT,
-	})
-	cy.findByRole('heading', {
-		level: 2,
-		name: /miscellaneous chores/i,
-		timeout: TRIPLE_COMMAND_TIMEOUT,
-	})
+	cy.findByRole('heading', { level: 2, name: /breaking changes/i })
+	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
+	cy.findByRole('heading', { level: 2, name: /features/i })
+	cy.findByRole('heading', { level: 2, name: /reverts/i })
+	cy.findByRole('heading', { level: 2, name: /miscellaneous chores/i })
+	cy.findByRole('heading', { level: 2, name: /build system/i })
+
 	// link for 26.9.1 release (lowest one)
 	cy.findByRole('link', {
 		name: '26.9.1',
-		timeout: TRIPLE_COMMAND_TIMEOUT,
 	}).should(
 		'have.attr',
 		'href',
@@ -263,7 +244,6 @@ it('should show changelog results when preloading from URL with more than 10 rel
 	// link for 32.172.2 release (highest one)
 	cy.findAllByRole('link', {
 		name: '32.172.2',
-		timeout: TRIPLE_COMMAND_TIMEOUT,
 	}).should(
 		'have.attr',
 		'href',
