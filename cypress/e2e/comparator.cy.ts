@@ -221,7 +221,7 @@ it('should show changelog results when preloading from URL with more than 10 rel
 	// Wait a bit before checking the rendered release changelog details
 	// since this may take a while to appear.
 	// eslint-disable-next-line cypress/no-unnecessary-waiting
-	cy.wait(2000)
+	cy.wait(5000)
 
 	cy.findByRole('heading', {
 		name: 'Changes from 26.9.0 to 32.172.2',
