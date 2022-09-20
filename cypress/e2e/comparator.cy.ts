@@ -1,4 +1,5 @@
-const DOUBLE_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout') * 2
+const DEFAULT_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout') 
+const DOUBLE_COMMAND_TIMEOUT = DEFAULT_COMMAND_TIMEOUT * 2
 // Increase the command timeout since it takes a while for findBy queries
 // to find certain elements while the comparator is still processing the changelog.
 Cypress.config('defaultCommandTimeout', DOUBLE_COMMAND_TIMEOUT)
@@ -180,6 +181,10 @@ it('should show changelog results when preloading from URL with "latest"', () =>
  * last one must not be requested since all the info will be available by then.
  */
 it('should show changelog results when preloading from URL with more than 10 release pages', () => {
+	// There are tons of changelogs to process in this test,
+	// so it will take a while to render the result.
+	Cypress.config('defaultCommandTimeout', DEFAULT_COMMAND_TIMEOUT * 3)
+
 	cy.visit('/comparator?repo=renovatebot%2Frenovate&from=26.9.0&to=32.172.2')
 
 	// This is necessary because an early request is triggered from preloaded URL.
@@ -221,7 +226,7 @@ it('should show changelog results when preloading from URL with more than 10 rel
 	// Wait a bit before checking the rendered release changelog details
 	// since this may take a while to appear.
 	// eslint-disable-next-line cypress/no-unnecessary-waiting
-	cy.wait(5000)
+	cy.wait(DOUBLE_COMMAND_TIMEOUT)
 
 	cy.findByRole('heading', {
 		name: 'Changes from 26.9.0 to 32.172.2',
