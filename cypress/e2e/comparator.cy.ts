@@ -1,5 +1,5 @@
-const DOUBLE_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout') * 2
-const TRIPLE_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout') * 3
+const DEFAULT_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout')
+const DOUBLE_COMMAND_TIMEOUT = DEFAULT_COMMAND_TIMEOUT * 2
 // Increase the command timeout since it takes a while for findBy queries
 // to find certain elements while the comparator is still processing the changelog.
 Cypress.config('defaultCommandTimeout', DOUBLE_COMMAND_TIMEOUT)
@@ -181,6 +181,10 @@ it('should show changelog results when preloading from URL with "latest"', () =>
  * last one must not be requested since all the info will be available by then.
  */
 it('should show changelog results when preloading from URL with more than 10 release pages', () => {
+	// There are tons of changelogs to process in this test,
+	// so it will take a while to render the result.
+	Cypress.config('defaultCommandTimeout', DEFAULT_COMMAND_TIMEOUT * 3)
+
 	cy.visit('/comparator?repo=renovatebot%2Frenovate&from=26.9.0&to=32.172.2')
 
 	// This is necessary because an early request is triggered from preloaded URL.
@@ -219,42 +223,23 @@ it('should show changelog results when preloading from URL with more than 10 rel
 		)
 	})
 
-	// The following elements may take a while to appear since the comparator
-	// has to fetch several pages and process a bunch of releases, so we increase
-	// the timeout.
+	// Wait a bit before checking the rendered release changelog details
+	// since this may take a while to appear.
+	cy.wait(DOUBLE_COMMAND_TIMEOUT)
+
 	cy.findByRole('heading', {
 		name: 'Changes from 26.9.0 to 32.172.2',
-		timeout: TRIPLE_COMMAND_TIMEOUT,
 	})
-	cy.findByRole('heading', {
-		level: 2,
-		name: /breaking changes/i,
-		timeout: TRIPLE_COMMAND_TIMEOUT,
-	})
-	cy.findByRole('heading', {
-		level: 2,
-		name: /bug fixes/i,
-		timeout: TRIPLE_COMMAND_TIMEOUT,
-	})
-	cy.findByRole('heading', {
-		level: 2,
-		name: /features/i,
-		timeout: TRIPLE_COMMAND_TIMEOUT,
-	})
-	cy.findByRole('heading', {
-		level: 2,
-		name: /reverts/i,
-		timeout: TRIPLE_COMMAND_TIMEOUT,
-	})
-	cy.findByRole('heading', {
-		level: 2,
-		name: /miscellaneous chores/i,
-		timeout: TRIPLE_COMMAND_TIMEOUT,
-	})
+	cy.findByRole('heading', { level: 2, name: /breaking changes/i })
+	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
+	cy.findByRole('heading', { level: 2, name: /features/i })
+	cy.findByRole('heading', { level: 2, name: /reverts/i })
+	cy.findByRole('heading', { level: 2, name: /miscellaneous chores/i })
+	cy.findByRole('heading', { level: 2, name: /build system/i })
+
 	// link for 26.9.1 release (lowest one)
 	cy.findByRole('link', {
 		name: '26.9.1',
-		timeout: TRIPLE_COMMAND_TIMEOUT,
 	}).should(
 		'have.attr',
 		'href',
@@ -263,7 +248,6 @@ it('should show changelog results when preloading from URL with more than 10 rel
 	// link for 32.172.2 release (highest one)
 	cy.findAllByRole('link', {
 		name: '32.172.2',
-		timeout: TRIPLE_COMMAND_TIMEOUT,
 	}).should(
 		'have.attr',
 		'href',
