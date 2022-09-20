@@ -27,7 +27,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': 5.36.0
   '@typescript-eslint/parser': 5.36.0
   cypress: 10.8.0
-  downshift: 6.1.9
+  downshift: 6.1.11
   eslint: 8.22.0
   eslint-config-next: 12.2.5
   eslint-config-prettier: 8.5.0
@@ -75,7 +75,7 @@ dependencies:
   '@sentry/nextjs': 7.12.1_e5kluqigttx5sqvfhdifmrnx2m
   '@tanstack/react-query': 4.2.3_biqbaboplfbrettd7655fr4n2y
   '@tanstack/react-query-devtools': 4.2.3_7jugwuuqrrr4f74u7dtzjsintq
-  downshift: 6.1.9_react@18.2.0
+  downshift: 6.1.11_react@18.2.0
   framer-motion: 7.3.2_biqbaboplfbrettd7655fr4n2y
   lodash-es: 4.17.21
   next: 12.3.0_vyk55zyolcaieh7zfm7nf7uva4
@@ -5838,8 +5838,8 @@ packages:
       is-obj: 2.0.0
     dev: true
 
-  /downshift/6.1.9_react@18.2.0:
-    resolution: {integrity: sha512-mzvk61WOX4MEsYHMKCXEVwuz/zM84x/WrCbaCQw71hyNN0fmWXvV673uOQy2idgIA+yqDsjtkV5KPfAFWuQylg==}
+  /downshift/6.1.11_react@18.2.0:
+    resolution: {integrity: sha512-pBI5zYIv5o2zzjfcQZV8R2LDwOowopuRoNXrXfVMHP79l64JZQ3kCW4EDwaFk8abV6QnlZ9GwNnE3rDQ8d440Q==}
     peerDependencies:
       react: '>=16.12.0'
     dependencies:
