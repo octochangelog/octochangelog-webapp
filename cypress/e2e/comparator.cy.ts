@@ -1,4 +1,4 @@
-const DEFAULT_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout') 
+const DEFAULT_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout')
 const DOUBLE_COMMAND_TIMEOUT = DEFAULT_COMMAND_TIMEOUT * 2
 // Increase the command timeout since it takes a while for findBy queries
 // to find certain elements while the comparator is still processing the changelog.
@@ -225,7 +225,6 @@ it('should show changelog results when preloading from URL with more than 10 rel
 
 	// Wait a bit before checking the rendered release changelog details
 	// since this may take a while to appear.
-	// eslint-disable-next-line cypress/no-unnecessary-waiting
 	cy.wait(DOUBLE_COMMAND_TIMEOUT)
 
 	cy.findByRole('heading', {
