@@ -11,50 +11,28 @@
 		"automerge": true
 	},
 	"internalChecksFilter": "strict",
-	"ignoreDeps": [
-		"msw"
-	],
+	"ignoreDeps": ["msw"],
 	"packageRules": [
 		{
 			"description": [
 				"Group all non-major pnpm development dependencies together, get updates once a month"
 			],
-			"matchManagers": [
-				"npm"
-			],
-			"matchDepTypes": [
-				"devDependencies"
-			],
-			"matchUpdateTypes": [
-				"minor",
-				"patch"
-			],
+			"matchManagers": ["npm"],
+			"matchDepTypes": ["devDependencies"],
+			"matchUpdateTypes": ["minor", "patch"],
 			"groupName": "devDependencies (non-major)",
-			"extends": [
-				"schedule:monthly"
-			]
+			"extends": ["schedule:monthly"]
 		},
 		{
 			"description": "Get pnpm updates once a month",
-			"matchDepTypes": [
-				"packageManager"
-			],
-			"matchPackageNames": [
-				"pnpm"
-			],
-			"extends": [
-				"schedule:monthly"
-			]
+			"matchDepTypes": ["packageManager"],
+			"matchPackageNames": ["pnpm"],
+			"extends": ["schedule:monthly"]
 		},
 		{
 			"description": "Automerge ESLint and Prettier updates",
-			"matchDepTypes": [
-				"devDependencies"
-			],
-			"matchPackagePatterns": [
-				"eslint",
-				"prettier"
-			],
+			"matchDepTypes": ["devDependencies"],
+			"matchPackagePatterns": ["eslint", "prettier"],
 			"automerge": true
 		}
 	]
