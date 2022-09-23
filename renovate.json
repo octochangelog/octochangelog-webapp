@@ -11,6 +11,7 @@
 		"automerge": true
 	},
 	"internalChecksFilter": "strict",
+	"ignoreDeps": ["msw"],
 	"packageRules": [
 		{
 			"description": [
