@@ -11,7 +11,7 @@
 		"automerge": true
 	},
 	"internalChecksFilter": "strict",
-	"ignoreDeps": ["msw"],
+	"ignoreDeps": ["msw", "headers-polyfill"],
 	"packageRules": [
 		{
 			"description": [
