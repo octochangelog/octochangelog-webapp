@@ -17,10 +17,14 @@ const config: Config = {
 	clearMocks: true,
 	roots: ['<rootDir>/src/'],
 	reporters: ['default', 'github-actions'],
+	setupFilesAfterEnv: ['<rootDir>/src/jest.setup.ts'],
 	moduleNameMapper: {
 		...tsPathsToModules,
 		'^lodash-es$': 'lodash', // so lodash-es is not compiled
 	},
+
+	// Don't set "testEnvironment" to "jsdom" in here.
+	// Instead, use the @jest-environment docblock https://jestjs.io/docs/configuration#testenvironment-string
 }
 
 export default createJestConfig(config)

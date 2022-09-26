@@ -20,6 +20,13 @@ module.exports = {
 		'no-shadow': 'error',
 		'no-warning-comments': 'off',
 		'no-console': 'warn', // doesn't seem to be enabled in any preset
+		'no-restricted-imports': [
+			'error',
+			{
+				name: '@testing-library/react',
+				message: 'Please import from `test-utils` instead.',
+			},
+		],
 
 		// React
 		'react/self-closing-comp': 'error',
@@ -88,6 +95,7 @@ module.exports = {
 			files: [
 				'src/**/__tests__/**/*.[jt]s?(x)',
 				'src/**/?(*.)+(spec|test).[jt]s?(x)',
+				'src/setup-tests.ts',
 			],
 			extends: [
 				'plugin:jest/recommended',
