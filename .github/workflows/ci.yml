@@ -85,7 +85,7 @@ jobs:
         run: pnpm format:check
 
   tests:
-    name: Unit & Integration tests
+    name: JavaScript Tests
     runs-on: ubuntu-latest
     steps:
       # Arrange
