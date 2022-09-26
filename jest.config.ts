@@ -17,6 +17,7 @@ const config: Config = {
 	clearMocks: true,
 	roots: ['<rootDir>/src/'],
 	reporters: ['default', 'github-actions'],
+	setupFilesAfterEnv: ['<rootDir>/src/jest.setup.ts'],
 	moduleNameMapper: {
 		...tsPathsToModules,
 		'^lodash-es$': 'lodash', // so lodash-es is not compiled
