@@ -1,18 +1,14 @@
 import { useEffect, useState } from 'react'
 
-const isApiMockingEnabled =
+const getIsApiMockingEnabled = () =>
 	process.env.NEXT_PUBLIC_API_MOCKING === 'enabled' && !process.env.VERCEL
 
-if (typeof window !== 'undefined') {
-	window.isApiMockingEnabled = isApiMockingEnabled
-}
-
-function setCypressAppReady(): void {
+function setIsApiMockingReady(): void {
 	window.isApiMockingReady = true
 }
 
 async function prepare(): Promise<ServiceWorkerRegistration | undefined> {
-	if (isApiMockingEnabled) {
+	if (getIsApiMockingEnabled()) {
 		const { initMocks } = await import('~/mock-service-worker')
 		return initMocks()
 	}
@@ -21,10 +17,10 @@ async function prepare(): Promise<ServiceWorkerRegistration | undefined> {
 }
 
 function initIsReadyState() {
-	return !isApiMockingEnabled
+	return !getIsApiMockingEnabled
 }
 
-interface HookReturnValue {
+interface UseMswReturn {
 	isReady: boolean
 }
 
@@ -41,17 +37,21 @@ interface HookReturnValue {
  * This causes a small delay. However, this only happens on local development,
  * since MSW is disabled in review and production environments.
  */
-function useMsw(): HookReturnValue {
+function useMsw(): UseMswReturn {
 	const [isReady, setIsReady] = useState<boolean>(initIsReadyState)
 
 	useEffect(() => {
 		if (!isReady) {
+			if (typeof window !== 'undefined') {
+				window.isApiMockingEnabled = getIsApiMockingEnabled()
+			}
+
 			prepare().finally(() => {
 				setIsReady(true)
-				setCypressAppReady()
+				setIsApiMockingReady()
 			})
 		} else {
-			setCypressAppReady()
+			setIsApiMockingReady()
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
