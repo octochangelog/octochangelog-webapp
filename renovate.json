@@ -11,7 +11,6 @@
 		"automerge": true
 	},
 	"internalChecksFilter": "strict",
-	"ignoreDeps": ["msw", "headers-polyfill", "@mswjs/interceptors"],
 	"packageRules": [
 		{
 			"description": [
