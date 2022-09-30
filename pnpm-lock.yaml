@@ -14,7 +14,7 @@ specifiers:
   '@emotion/styled': 11.10.4
   '@jest/globals': 29.0.3
   '@octokit/auth-callback': 3.0.0
-  '@octokit/openapi-types': 13.4.0
+  '@octokit/openapi-types': 14.0.0
   '@octokit/rest': 19.0.4
   '@sentry/nextjs': 7.13.0
   '@tanstack/react-query': 4.3.9
@@ -106,7 +106,7 @@ devDependencies:
   '@chakra-ui/theme-tools': 2.0.11_ixdfg65nzjkaw36n6br7hh33cu
   '@chakra-ui/utils': 2.0.9
   '@jest/globals': 29.0.3
-  '@octokit/openapi-types': 13.4.0
+  '@octokit/openapi-types': 14.0.0
   '@testing-library/cypress': 8.0.3_cypress@10.8.0
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@types/happo-cypress': 3.0.1
@@ -2357,8 +2357,8 @@ packages:
     resolution: {integrity: sha512-1QYzZrwnn3rTQE7ZoSxXrO8lhu0aIbac1c+qIPOPEaVXBWSaUyLV1x9yt4uDQOwmu6u5ywVS8OJgs+ErDLf6vQ==}
     dev: false
 
-  /@octokit/openapi-types/13.4.0:
-    resolution: {integrity: sha512-2mVzW0X1+HDO3jF80/+QFZNzJiTefELKbhMu6yaBYbp/1gSMkVDm4rT472gJljTokWUlXaaE63m7WrWENhMDLw==}
+  /@octokit/openapi-types/14.0.0:
+    resolution: {integrity: sha512-HNWisMYlR8VCnNurDU6os2ikx0s0VyEjDYHNS/h4cgb8DeOxQ0n72HyinUtdDVxJhFy3FWLGl0DJhfEWk3P5Iw==}
     dev: true
 
   /@octokit/plugin-paginate-rest/4.3.1_@octokit+core@4.0.5:
