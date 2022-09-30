@@ -7,7 +7,7 @@ import {
 	Container,
 } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
-import Image from 'next/image'
+import Image from 'next/future/image'
 import NextLink from 'next/link'
 
 import mascotIcon from '@app-public/mascot-icon.png'
@@ -19,7 +19,7 @@ const Custom404 = () => (
 		<NextSeo title="404 - Not Found" />
 		<Container variant="fluid" pb={{ base: 8, lg: 16 }}>
 			<VStack px="10">
-				<Image src={mascotIcon} alt="" width={250} height={250} />
+				<Image src={mascotIcon} alt="" width={250} height={250} aria-hidden />
 				<Stack
 					shouldWrapChildren
 					alignItems="center"

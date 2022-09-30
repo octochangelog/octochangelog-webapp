@@ -12,7 +12,7 @@ import {
 	useColorModeValue,
 } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
-import Image from 'next/image'
+import Image from 'next/future/image'
 import NextLink from 'next/link'
 import type { ReactNode } from 'react'
 import * as React from 'react'
@@ -57,7 +57,7 @@ const MainSection = () => (
 			</Flex>
 		</Stack>
 		<Center width="full">
-			<Image src={mascotLogo} alt="" quality={100} />
+			<Image src={mascotLogo} alt="" quality={100} priority />
 		</Center>
 	</Stack>
 )

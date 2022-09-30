@@ -1,5 +1,5 @@
 import { Box, Container, Link, Text, VStack } from '@chakra-ui/react'
-import Image from 'next/image'
+import Image from 'next/future/image'
 
 import poweredByVercelLogo from '@app-public/powered-by-vercel.svg'
 
@@ -42,7 +42,7 @@ const Footer = ({ bgColor = 'background2' }: FooterProps) => {
 							aria-label="Powered by Vercel"
 							isExternal
 						>
-							<Image alt="" src={poweredByVercelLogo as string} />
+							<Image alt="" src={poweredByVercelLogo as string} aria-hidden />
 						</Link>
 					</Box>
 				</VStack>
