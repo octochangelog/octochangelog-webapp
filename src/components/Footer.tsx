@@ -42,7 +42,7 @@ const Footer = ({ bgColor = 'background2' }: FooterProps) => {
 							aria-label="Powered by Vercel"
 							isExternal
 						>
-							<Image alt="" src={poweredByVercelLogo as string} aria-hidden />
+							<Image alt="" src={poweredByVercelLogo as string} />
 						</Link>
 					</Box>
 				</VStack>
