@@ -1,5 +1,5 @@
 import { Box, Container, Link, Text, VStack } from '@chakra-ui/react'
-import Image from 'next/image'
+import Image from 'next/future/image'
 
 import poweredByVercelLogo from '@app-public/powered-by-vercel.svg'
 
