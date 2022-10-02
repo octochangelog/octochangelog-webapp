@@ -19,7 +19,7 @@ jobs:
     steps:
       # Arrange
       - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@bb6001c4ea612bf59c3abfc4756fbceee4f870c7 # tag=0.10.0
+        uses: styfle/cancel-workflow-action@9f10b1b9fa56e99e4c5d12c2a085c8a0c37ab0ac # tag=0.10.1
       - name: Checkout repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
       - name: Setup pnpm
@@ -42,7 +42,7 @@ jobs:
     steps:
       # Arrange
       - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@bb6001c4ea612bf59c3abfc4756fbceee4f870c7 # tag=0.10.0
+        uses: styfle/cancel-workflow-action@9f10b1b9fa56e99e4c5d12c2a085c8a0c37ab0ac # tag=0.10.1
       - name: Checkout repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
       - name: Setup pnpm
@@ -67,7 +67,7 @@ jobs:
     steps:
       # Arrange
       - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@bb6001c4ea612bf59c3abfc4756fbceee4f870c7 # tag=0.10.0
+        uses: styfle/cancel-workflow-action@9f10b1b9fa56e99e4c5d12c2a085c8a0c37ab0ac # tag=0.10.1
       - name: Checkout repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
       - name: Setup pnpm
@@ -90,7 +90,7 @@ jobs:
     steps:
       # Arrange
       - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@bb6001c4ea612bf59c3abfc4756fbceee4f870c7 # tag=0.10.0
+        uses: styfle/cancel-workflow-action@9f10b1b9fa56e99e4c5d12c2a085c8a0c37ab0ac # tag=0.10.1
       - name: Checkout repository
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3.0.2
       - name: Setup pnpm
