@@ -43,7 +43,7 @@ specifiers:
   framer-motion: 7.5.1
   happo-cypress: 3.0.1
   happo-e2e: 1.2.0
-  happo.io: 8.0.0
+  happo.io: 8.1.1
   husky: 8.0.1
   is-ci: 3.0.1
   jest: 29.0.3
@@ -129,7 +129,7 @@ devDependencies:
   eslint-plugin-unicorn: 44.0.0_eslint@8.24.0
   happo-cypress: 3.0.1
   happo-e2e: 1.2.0
-  happo.io: 8.0.0_7slq3oot4mge3zz5naflq75xnu
+  happo.io: 8.1.1_7slq3oot4mge3zz5naflq75xnu
   husky: 8.0.1
   is-ci: 3.0.1
   jest: 29.0.3_@types+node@16.11.56
@@ -5933,8 +5933,8 @@ packages:
       - supports-color
     dev: true
 
-  /happo.io/8.0.0_7slq3oot4mge3zz5naflq75xnu:
-    resolution: {integrity: sha512-jimixgqTgBszhveI4n7pKc0EeZmIbZVoLFSTb+JBKe4sweAsm4z6X8V0NJWrlZa5InT94bzWxqhbpKK2yRMJSg==}
+  /happo.io/8.1.1_7slq3oot4mge3zz5naflq75xnu:
+    resolution: {integrity: sha512-yVHvxreQaqAQgqqvjKf/jEKpWjc4j4vp92wze+UvZkVoV2U+McBS8liRr4ebZHs2qTbJYZ15nFE3v+wlO2Tfrg==}
     engines: {node: '>=12'}
     hasBin: true
     peerDependencies:
