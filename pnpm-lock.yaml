@@ -34,7 +34,7 @@ specifiers:
   cypress: 10.8.0
   downshift: 6.1.12
   eslint: 8.22.0
-  eslint-config-next: 12.2.5
+  eslint-config-next: 12.3.1
   eslint-config-prettier: 8.5.0
   eslint-plugin-cypress: 2.12.1
   eslint-plugin-jest: 27.0.4
@@ -121,7 +121,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.36.0_shit3uhl6a7megkzgoz6xssnfa
   cypress: 10.8.0
   eslint: 8.22.0
-  eslint-config-next: 12.2.5_shit3uhl6a7megkzgoz6xssnfa
+  eslint-config-next: 12.3.1_shit3uhl6a7megkzgoz6xssnfa
   eslint-config-prettier: 8.5.0_eslint@8.22.0
   eslint-plugin-cypress: 2.12.1_eslint@8.22.0
   eslint-plugin-jest: 27.0.4_r2qmqpbt55h4tk7ayhmevjmdzm
@@ -2163,8 +2163,8 @@ packages:
     resolution: {integrity: sha512-9P9THmRFVKGKt9DYqeC2aKIxm8rlvkK38V1P1sRE7qyoPBIs8l9oo79QoSdPtOWfzkbDAVUqvbQGgTMsb8BtJg==}
     dev: false
 
-  /@next/eslint-plugin-next/12.2.5:
-    resolution: {integrity: sha512-VBjVbmqEzGiOTBq4+wpeVXt/KgknnGB6ahvC/AxiIGnN93/RCSyXhFRI4uSfftM2Ba3w7ZO7076bfKasZsA0fw==}
+  /@next/eslint-plugin-next/12.3.1:
+    resolution: {integrity: sha512-sw+lTf6r6P0j+g/n9y4qdWWI2syPqZx+uc0+B/fRENqfR3KpSid6MIKqc9gNwGhJASazEQ5b3w8h4cAET213jw==}
     dependencies:
       glob: 7.1.7
     dev: true
@@ -4978,8 +4978,8 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /eslint-config-next/12.2.5_shit3uhl6a7megkzgoz6xssnfa:
-    resolution: {integrity: sha512-SOowilkqPzW6DxKp3a3SYlrfPi5Ajs9MIzp9gVfUDxxH9QFM5ElkR1hX5m/iICJuvCbWgQqFBiA3mCMozluniw==}
+  /eslint-config-next/12.3.1_shit3uhl6a7megkzgoz6xssnfa:
+    resolution: {integrity: sha512-EN/xwKPU6jz1G0Qi6Bd/BqMnHLyRAL0VsaQaWA7F3KkjAgZHi4f1uL1JKGWNxdQpHTW/sdGONBd0bzxUka/DJg==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -4987,7 +4987,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 12.2.5
+      '@next/eslint-plugin-next': 12.3.1
       '@rushstack/eslint-patch': 1.2.0
       '@typescript-eslint/parser': 5.36.0_shit3uhl6a7megkzgoz6xssnfa
       eslint: 8.22.0
