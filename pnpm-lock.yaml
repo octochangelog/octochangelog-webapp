@@ -17,8 +17,8 @@ specifiers:
   '@octokit/openapi-types': 14.0.0
   '@octokit/rest': 19.0.4
   '@sentry/nextjs': 7.14.1
-  '@tanstack/react-query': 4.9.0
-  '@tanstack/react-query-devtools': 4.9.0
+  '@tanstack/react-query': 4.10.1
+  '@tanstack/react-query-devtools': 4.10.1
   '@testing-library/cypress': 8.0.3
   '@testing-library/react': 13.4.0
   '@types/happo-cypress': 3.0.1
@@ -79,8 +79,8 @@ dependencies:
   '@octokit/auth-callback': 3.0.0
   '@octokit/rest': 19.0.4
   '@sentry/nextjs': 7.14.1_pcjhksnfiwukgtv6mo7boe2qra
-  '@tanstack/react-query': 4.9.0_biqbaboplfbrettd7655fr4n2y
-  '@tanstack/react-query-devtools': 4.9.0_deywjuordwfceo4ntvg532uqbq
+  '@tanstack/react-query': 4.10.1_biqbaboplfbrettd7655fr4n2y
+  '@tanstack/react-query-devtools': 4.10.1_u34amavde33a6d2g2dyykucmvy
   downshift: 6.1.12_react@18.2.0
   framer-motion: 7.5.2_biqbaboplfbrettd7655fr4n2y
   lodash-es: 4.17.21
@@ -2837,26 +2837,27 @@ packages:
       remove-accents: 0.4.2
     dev: false
 
-  /@tanstack/query-core/4.9.0:
-    resolution: {integrity: sha512-Vl0jAWJR3A1md0PoPMoEd6+H1dlRB5NqXDBNF+MZEgjQsR0Nly2kJgJj0Zh6eRDndnn7VlspxTWoOpt+dwDdAA==}
+  /@tanstack/query-core/4.10.1:
+    resolution: {integrity: sha512-UZRYzjgQSfYhQ+cJX0CspAbzutf8p93gR1xFjQuH3OYcb/7t3WnHkdb/qC9mbqrfWXN/JAbBTJlTU/XQHc5HbA==}
     dev: false
 
-  /@tanstack/react-query-devtools/4.9.0_deywjuordwfceo4ntvg532uqbq:
-    resolution: {integrity: sha512-VO8d23Hrjp4tub20OIGszsmYwSyal/7PhYP1Miv7GAVrdPQN38lqP9afhkhkXDW025x7oAXYUUl4LzUCxVwKBw==}
+  /@tanstack/react-query-devtools/4.10.1_u34amavde33a6d2g2dyykucmvy:
+    resolution: {integrity: sha512-aPsFBr9zbylnQxQoCNzPF1teN+NVGdeU1xQO515FM3gq6uISUWbqirVj/mE6HHJJpH/zi0j6HD1StD5h1XdNmg==}
     peerDependencies:
-      '@tanstack/react-query': 4.9.0
+      '@tanstack/react-query': 4.10.1
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@tanstack/match-sorter-utils': 8.1.1
-      '@tanstack/react-query': 4.9.0_biqbaboplfbrettd7655fr4n2y
+      '@tanstack/react-query': 4.10.1_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      superjson: 1.10.0
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
 
-  /@tanstack/react-query/4.9.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-M4utYjk9BRDUYbbprSsa0eExdC9NjqQ0deuHXYxQkT8l8BIVyw6yv02LQUGBdOnn/6w5xXFyQRG2slo+JhqeBg==}
+  /@tanstack/react-query/4.10.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-6GaLYAsAu/4aX6HR4krpOej9qbKWXe0X0eccikpv5hAw4CoAAPG29Pydql1nTl9cYF2zd21unVm4yApklFY0AA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -2867,7 +2868,7 @@ packages:
       react-native:
         optional: true
     dependencies:
-      '@tanstack/query-core': 4.9.0
+      '@tanstack/query-core': 4.10.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       use-sync-external-store: 1.2.0_react@18.2.0
@@ -4406,6 +4407,13 @@ packages:
   /cookie/0.4.2:
     resolution: {integrity: sha512-aSWTXFzaKWkvHO1Ny/s+ePFpvKsPnjc551iI41v3ny/ow6tBG5Vd+FuqGNhh1LxOmVzOlGUriIlOaokOvhaStA==}
     engines: {node: '>= 0.6'}
+
+  /copy-anything/3.0.2:
+    resolution: {integrity: sha512-CzATjGXzUQ0EvuvgOCI6A4BGOo2bcVx8B+eC2nF862iv9fopnPQwlrbACakNCHRIJbCSBj+J/9JeDf60k64MkA==}
+    engines: {node: '>=12.13'}
+    dependencies:
+      is-what: 4.1.7
+    dev: false
 
   /copy-to-clipboard/3.3.1:
     resolution: {integrity: sha512-i13qo6kIHTTpCm8/Wup+0b1mVWETvu2kIMzKoK8FpkLkFxlt0znUAHcMzox+T8sPlqtZXq3CulEjQHsYiGFJUw==}
@@ -6527,6 +6535,11 @@ packages:
     dependencies:
       call-bind: 1.0.2
     dev: true
+
+  /is-what/4.1.7:
+    resolution: {integrity: sha512-DBVOQNiPKnGMxRMLIYSwERAS5MVY1B7xYiGnpgctsOFvVDz9f9PFXXxMcTOHuoqYp4NK9qFYQaIC1NRRxLMpBQ==}
+    engines: {node: '>=12.13'}
+    dev: false
 
   /is-yarn-global/0.3.0:
     resolution: {integrity: sha512-VjSeb/lHmkoyd8ryPVIKvOCn4D1koMqY+vqyjjUfc3xyKtP4dYOxM44sZrnqQSzSds3xyOrUTLTC9LVCVgLngw==}
@@ -9581,6 +9594,13 @@ packages:
       mz: 2.7.0
       pirates: 4.0.5
       ts-interface-checker: 0.1.13
+    dev: false
+
+  /superjson/1.10.0:
+    resolution: {integrity: sha512-ks6I5fm5KXUbDqt4Epe1VwkKDaC9+kIj5HF7yhiHjChFne0EkFqsnTv1mdHE2IT6fq2CzLC3zeA/fw0BRIoNwA==}
+    engines: {node: '>=10'}
+    dependencies:
+      copy-anything: 3.0.2
     dev: false
 
   /supports-color/5.5.0:
