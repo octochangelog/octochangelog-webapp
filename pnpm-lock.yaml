@@ -1,9 +1,5 @@
 lockfileVersion: 5.4
 
-overrides:
-  '@mswjs/interceptors': 0.17.4
-  headers-polyfill: 3.0.10
-
 specifiers:
   '@chakra-ui/cli': 2.1.8
   '@chakra-ui/react': 2.3.5
@@ -2148,15 +2144,15 @@ packages:
       set-cookie-parser: 2.5.1
     dev: true
 
-  /@mswjs/interceptors/0.17.4:
-    resolution: {integrity: sha512-8oKWrOQ1P0Wj0kf3ak8WETuymknw2Tl2s1op8OzZctpNF3zSJSdEbcQs0pm347mwsM+95V6POBMv3W4812pEeg==}
+  /@mswjs/interceptors/0.17.5:
+    resolution: {integrity: sha512-/uZkyPUZMRExZs+DZQVnc+uoDwLfs1gFNvcRY5S3Gu78U+uhovaSEUW3tuyld1e7Oke5Qphfseb8v66V+H1zWQ==}
     engines: {node: '>=14'}
     dependencies:
       '@open-draft/until': 1.0.3
       '@types/debug': 4.1.7
       '@xmldom/xmldom': 0.7.5
       debug: 4.3.4
-      headers-polyfill: 3.0.10
+      headers-polyfill: 3.1.1
       outvariant: 1.3.0
       strict-event-emitter: 0.2.7
       web-encoding: 1.1.5
@@ -4945,7 +4941,7 @@ packages:
       eslint: 8.24.0
       eslint-import-resolver-node: 0.3.6
       eslint-import-resolver-typescript: 2.7.1_dg2pe6kqkrddxbf2funb723kue
-      eslint-plugin-import: 2.26.0_gcianqk2r5w7qn6wdun4jzyvom
+      eslint-plugin-import: 2.26.0_taj4374tq64ju3xgkdrtdwfble
       eslint-plugin-jsx-a11y: 6.6.1_eslint@8.24.0
       eslint-plugin-react: 7.31.8_eslint@8.24.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.24.0
@@ -4982,7 +4978,7 @@ packages:
     dependencies:
       debug: 4.3.4
       eslint: 8.24.0
-      eslint-plugin-import: 2.26.0_gcianqk2r5w7qn6wdun4jzyvom
+      eslint-plugin-import: 2.26.0_taj4374tq64ju3xgkdrtdwfble
       glob: 7.2.3
       is-glob: 4.0.3
       resolve: 1.22.1
@@ -4991,7 +4987,7 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-module-utils/2.7.4_u3o3cbxhjcofsya2eebinaptmi:
+  /eslint-module-utils/2.7.4_m2e7lyulntvhfgwrxt6mix4ol4:
     resolution: {integrity: sha512-j4GT+rqzCoRKHwURX7pddtIPGySnX9Si/cgMI5ztrcqOPtk5dDEeZ34CQVPphnqkJytlc97Vuk05Um2mJ3gEQA==}
     engines: {node: '>=4'}
     peerDependencies:
@@ -5016,7 +5012,6 @@ packages:
       debug: 3.2.7
       eslint: 8.24.0
       eslint-import-resolver-node: 0.3.6
-      eslint-import-resolver-typescript: 2.7.1_dg2pe6kqkrddxbf2funb723kue
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -5030,7 +5025,7 @@ packages:
       globals: 11.12.0
     dev: true
 
-  /eslint-plugin-import/2.26.0_gcianqk2r5w7qn6wdun4jzyvom:
+  /eslint-plugin-import/2.26.0_taj4374tq64ju3xgkdrtdwfble:
     resolution: {integrity: sha512-hYfi3FXaM8WPLf4S1cikh/r4IxnO6zrhZbEGz2b660EJRbuxgpDS5gkCuYgGWg2xxh2rBuIr4Pvhve/7c31koA==}
     engines: {node: '>=4'}
     peerDependencies:
@@ -5047,7 +5042,7 @@ packages:
       doctrine: 2.1.0
       eslint: 8.24.0
       eslint-import-resolver-node: 0.3.6
-      eslint-module-utils: 2.7.4_u3o3cbxhjcofsya2eebinaptmi
+      eslint-module-utils: 2.7.4_m2e7lyulntvhfgwrxt6mix4ol4
       has: 1.0.3
       is-core-module: 2.10.0
       is-glob: 4.0.3
@@ -5990,8 +5985,8 @@ packages:
     resolution: {integrity: sha512-Pkw+xBHuV6xFeJprJe2BBEoDV+AvQySaz3pPDRUs5PNZEMQjpXJJueqrpcHIXxnWTcAGi/UOCgVShlkY6kLoqg==}
     dev: false
 
-  /headers-polyfill/3.0.10:
-    resolution: {integrity: sha512-lOhQU7iG3AMcjmb8NIWCa+KwfJw5bY44BoWPtrj5A4iDbSD3ylGf5QcYr0ZyQnhkKQ2GgWNLdF2rfrXtXlF3nQ==}
+  /headers-polyfill/3.1.1:
+    resolution: {integrity: sha512-ifvvIC+VDeLTEkJDwxECSI7k9rJF7sJavCh/UfhGsgJ+LXMbGILRf+NXhc4znuf+JA5X2/leQdOXk6Lq6Y2/wQ==}
     dev: true
 
   /hey-listen/1.0.8:
@@ -8027,7 +8022,7 @@ packages:
         optional: true
     dependencies:
       '@mswjs/cookies': 0.2.2
-      '@mswjs/interceptors': 0.17.4
+      '@mswjs/interceptors': 0.17.5
       '@open-draft/until': 1.0.3
       '@types/cookie': 0.4.1
       '@types/js-levenshtein': 1.1.1
@@ -8035,7 +8030,7 @@ packages:
       chokidar: 3.5.3
       cookie: 0.4.2
       graphql: 16.6.0
-      headers-polyfill: 3.0.10
+      headers-polyfill: 3.1.1
       inquirer: 8.2.4
       is-node-process: 1.0.1
       js-levenshtein: 1.1.6

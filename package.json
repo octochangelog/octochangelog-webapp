@@ -115,11 +115,5 @@
 	},
 	"msw": {
 		"workerDirectory": "public"
-	},
-	"pnpm": {
-		"overrides": {
-			"@mswjs/interceptors": "0.17.4",
-			"headers-polyfill": "3.0.10"
-		}
 	}
 }
