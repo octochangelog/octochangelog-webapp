@@ -35,7 +35,7 @@ specifiers:
   eslint-plugin-cypress: 2.12.1
   eslint-plugin-jest: 27.1.1
   eslint-plugin-jest-formatting: 3.1.0
-  eslint-plugin-unicorn: 44.0.1
+  eslint-plugin-unicorn: 44.0.2
   framer-motion: 7.5.2
   happo-cypress: 3.0.1
   happo-e2e: 1.2.1
@@ -122,7 +122,7 @@ devDependencies:
   eslint-plugin-cypress: 2.12.1_eslint@8.24.0
   eslint-plugin-jest: 27.1.1_32g7utoefduvzotunjf3b6yaey
   eslint-plugin-jest-formatting: 3.1.0_eslint@8.24.0
-  eslint-plugin-unicorn: 44.0.1_eslint@8.24.0
+  eslint-plugin-unicorn: 44.0.2_eslint@8.24.0
   happo-cypress: 3.0.1
   happo-e2e: 1.2.1
   happo.io: 8.1.1_xvhmhkdho35ebqzvk63cneapsa
@@ -5152,8 +5152,8 @@ packages:
       string.prototype.matchall: 4.0.7
     dev: true
 
-  /eslint-plugin-unicorn/44.0.1_eslint@8.24.0:
-    resolution: {integrity: sha512-ly6Ye9OfgYBCw/FfsdycCzAztcRd+pOA0F6xZwtUsUkgOBjtNR0684xC7u+0RmE3SKr3y7z8MaIWunw36tbZdg==}
+  /eslint-plugin-unicorn/44.0.2_eslint@8.24.0:
+    resolution: {integrity: sha512-GLIDX1wmeEqpGaKcnMcqRvMVsoabeF0Ton0EX4Th5u6Kmf7RM9WBl705AXFEsns56ESkEs0uyelLuUTvz9Tr0w==}
     engines: {node: '>=14.18'}
     peerDependencies:
       eslint: '>=8.23.1'
