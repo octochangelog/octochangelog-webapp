@@ -13,8 +13,27 @@ env:
   CYPRESS_INSTALL_BINARY: 0
 
 jobs:
+  # Putting a first "install" job first, so it saves the pnpm cache for other jobs.
+  install:
+    name: Install dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@9f10b1b9fa56e99e4c5d12c2a085c8a0c37ab0ac # tag=0.10.1
+      - name: Checkout repository
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3.1.0
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@969bd2663942d722d85b6a8626225850c2f7be4b # tag=v3.5.0
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
   lint:
     name: Code Linting
+    needs: install
     runs-on: ubuntu-latest
     steps:
       # Arrange
@@ -38,6 +57,7 @@ jobs:
 
   types_check:
     name: Types Check
+    needs: install
     runs-on: ubuntu-latest
     steps:
       # Arrange
@@ -63,6 +83,7 @@ jobs:
 
   format_check:
     name: Format Check
+    needs: install
     runs-on: ubuntu-latest
     steps:
       # Arrange
@@ -86,6 +107,7 @@ jobs:
 
   tests:
     name: JavaScript Tests
+    needs: install
     runs-on: ubuntu-latest
     steps:
       # Arrange
