@@ -39,7 +39,7 @@ specifiers:
   framer-motion: 7.5.3
   happo-cypress: 3.0.1
   happo-e2e: 1.3.0
-  happo.io: 8.1.1
+  happo.io: 8.2.0
   husky: 8.0.1
   is-ci: 3.0.1
   jest: 29.1.2
@@ -125,7 +125,7 @@ devDependencies:
   eslint-plugin-unicorn: 44.0.2_eslint@8.25.0
   happo-cypress: 3.0.1
   happo-e2e: 1.3.0
-  happo.io: 8.1.1_xvhmhkdho35ebqzvk63cneapsa
+  happo.io: 8.2.0_xvhmhkdho35ebqzvk63cneapsa
   husky: 8.0.1
   is-ci: 3.0.1
   jest: 29.1.2_@types+node@16.11.56
@@ -3455,6 +3455,13 @@ packages:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
     dev: true
 
+  /abort-controller/3.0.0:
+    resolution: {integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==}
+    engines: {node: '>=6.5'}
+    dependencies:
+      event-target-shim: 5.0.1
+    dev: true
+
   /acorn-globals/6.0.0:
     resolution: {integrity: sha512-ZQl7LOWaF5ePqqcX4hLuv/bLXYQNfNWw2c0/yX/TsPRKamzHcTGQnlCjHT3TsmkOUVEPS3crCxiPfdzE/Trlhg==}
     dependencies:
@@ -5357,6 +5364,11 @@ packages:
       through: 2.3.8
     dev: true
 
+  /event-target-shim/5.0.1:
+    resolution: {integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==}
+    engines: {node: '>=6'}
+    dev: true
+
   /eventemitter2/6.4.7:
     resolution: {integrity: sha512-tYUSVOGeQPKt/eC1ABfhHy5Xd96N3oIijJvN3O9+TsC28T5V9yX9oEfEK5faP0EFSNVOG97qtAS68GBrQB2hDg==}
     dev: true
@@ -5924,8 +5936,8 @@ packages:
       - supports-color
     dev: true
 
-  /happo.io/8.1.1_xvhmhkdho35ebqzvk63cneapsa:
-    resolution: {integrity: sha512-yVHvxreQaqAQgqqvjKf/jEKpWjc4j4vp92wze+UvZkVoV2U+McBS8liRr4ebZHs2qTbJYZ15nFE3v+wlO2Tfrg==}
+  /happo.io/8.2.0_xvhmhkdho35ebqzvk63cneapsa:
+    resolution: {integrity: sha512-OrMRRYUwOzpVAntiz25/lYAqwVrKByXNbIddJ0v63BTcs9pN+ZQz11ZaHTwlYXvfTWRA1Zu5i0wBsGBGkR5fGA==}
     engines: {node: '>=12'}
     hasBin: true
     peerDependencies:
@@ -5933,6 +5945,7 @@ packages:
       webpack: ^3.5.5 || ^4.0.0 || ^5.0.0
     dependencies:
       '@babel/preset-react': 7.18.6_@babel+core@7.19.3
+      abort-controller: 3.0.0
       archiver: 5.3.1
       async-retry: 1.3.3
       babel-loader: 8.2.5_wfdvla2jorjoj23kkavho2upde
@@ -5947,7 +5960,6 @@ packages:
       node-fetch: 2.6.7
       parse-srcset: 1.0.2
       pngjs: 3.4.0
-      prettier: 2.7.1
       require-relative: 0.8.7
       rimraf: 3.0.2
       source-map-support: 0.5.21
