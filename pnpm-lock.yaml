@@ -53,7 +53,7 @@ specifiers:
   prettier: 2.7.1
   react: 18.2.0
   react-dom: 18.2.0
-  react-icons: 4.4.0
+  react-icons: 4.6.0
   rehype-highlight: 5.0.2
   rehype-react: 7.1.1
   remark-gfm: 3.0.1
@@ -85,7 +85,7 @@ dependencies:
   nookies: 2.5.2
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-icons: 4.4.0_react@18.2.0
+  react-icons: 4.6.0_react@18.2.0
   rehype-highlight: 5.0.2
   rehype-react: 7.1.1_@types+react@18.0.21
   remark-gfm: 3.0.1
@@ -8693,8 +8693,8 @@ packages:
       use-sidecar: 1.1.2_iapumuv4e6jcjznwuxpf4tt22e
     dev: false
 
-  /react-icons/4.4.0_react@18.2.0:
-    resolution: {integrity: sha512-fSbvHeVYo/B5/L4VhB7sBA1i2tS8MkT0Hb9t2H1AVPkwGfVHLJCqyr2Py9dKMxsyM63Eng1GkdZfbWj+Fmv8Rg==}
+  /react-icons/4.6.0_react@18.2.0:
+    resolution: {integrity: sha512-rR/L9m9340yO8yv1QT1QurxWQvWpbNHqVX0fzMln2HEb9TEIrQRGsqiNFQfiv9/JEUbyHmHPlNTB2LWm2Ttz0g==}
     peerDependencies:
       react: '*'
     dependencies:
