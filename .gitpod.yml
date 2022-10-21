@@ -31,15 +31,24 @@ tasks:
       pnpm install
       gp sync-done install
     command: pnpm dev
+    name: Dev server
   - init: gp sync-await install
     command: pnpm cy:open
-  - command: git branch
+    name: Cypress
 ports:
   - port: 3000
     onOpen: open-browser
+    name: Dev server
+    description: Localhost
   - port: 5900
     onOpen: ignore
   - port: 6080
     onOpen: open-browser
+    name: Cypress
+    description: Cypress UI for E2E tests
   - port: 10000
     onOpen: ignore
+github:
+  prebuilds:
+    # add a "Review in Gitpod" button to pull requests (defaults to false)
+    addBadge: true

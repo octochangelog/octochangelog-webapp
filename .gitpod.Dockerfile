@@ -26,7 +26,6 @@
 FROM gitpod/workspace-full-vnc
 
 ENV CYPRESS_CACHE_FOLDER=/workspace/.cypress-cache
-ENV PNPM_VERSION='7.5.0'
 
 # Install Cypress dependencies.
 RUN sudo apt-get update \
@@ -74,4 +73,9 @@ RUN bash -c ". .nvm/nvm.sh \
     && nvm install \
     && nvm use"
 RUN echo "nvm use &>/dev/null" >> ~/.bashrc.d/51-nvm-fix
-RUN bash -c "npm install --location=global pnpm@${PNPM_VERSION}"
+
+# Use corepack to setup our package manager
+COPY package.json ./
+RUN bash -c "corepack enable"
+RUN bash -c "corepack prepare --activate"
+RUN echo 'alias pn="pnpm"' >> ~/.bashrc
