@@ -32,6 +32,9 @@ tasks:
       gp sync-done install
     command: pnpm dev
     name: Dev server
+  - init: gp sync-await install
+    command: pnpm cy:open
+    name: Cypress
 ports:
   - port: 3000
     onOpen: open-browser
