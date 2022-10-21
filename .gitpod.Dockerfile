@@ -78,3 +78,4 @@ RUN echo "nvm use &>/dev/null" >> ~/.bashrc.d/51-nvm-fix
 COPY package.json ./
 RUN bash -c "corepack enable"
 RUN bash -c "corepack prepare --activate"
+RUN echo 'alias pn="pnpm"' >> ~/.bashrc
