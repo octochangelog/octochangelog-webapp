@@ -45,10 +45,6 @@ ports:
     description: Cypress UI for E2E tests
   - port: 10000
     onOpen: ignore
-jetbrains:
-  webstorm:
-    prebuilds:
-      version: stable
 github:
   prebuilds:
     # add a "Review in Gitpod" button to pull requests (defaults to false)
