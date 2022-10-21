@@ -31,6 +31,7 @@ tasks:
       pnpm install
       gp sync-done install
     command: pnpm dev
+    name: Dev server
 ports:
   - port: 3000
     onOpen: open-browser
