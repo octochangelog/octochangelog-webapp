@@ -16,6 +16,7 @@ node_modules
 .DS_Store
 .env*.local
 cypress.env.json
+.idea
 
 # package managers
 npm-debug.log*
