@@ -35,7 +35,15 @@ tasks:
 ports:
   - port: 3000
     onOpen: open-browser
+    name: Dev server
+    description: Localhost
   - port: 5900
+    onOpen: ignore
+  - port: 6080
+    onOpen: open-browser
+    name: Cypress
+    description: Cypress UI for E2E tests
+  - port: 10000
     onOpen: ignore
 jetbrains:
   webstorm:
