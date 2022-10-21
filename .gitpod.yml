@@ -40,3 +40,7 @@ ports:
     onOpen: open-browser
   - port: 10000
     onOpen: ignore
+jetbrains:
+  webstorm:
+    prebuilds:
+      version: stable
