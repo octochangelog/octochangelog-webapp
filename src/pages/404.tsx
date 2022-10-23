@@ -16,7 +16,7 @@ import RouteLink from '~/components/RouteLink'
 
 const Custom404 = () => (
 	<Layout>
-		<NextSeo title="404 - Not Found" />
+		<NextSeo title="Not Found" />
 		<Container variant="fluid" pb={{ base: 8, lg: 16 }}>
 			<VStack px="10">
 				<Image src={mascotIcon} alt="" width={250} height={250} />

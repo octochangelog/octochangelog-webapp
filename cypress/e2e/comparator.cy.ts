@@ -6,6 +6,10 @@ Cypress.config('defaultCommandTimeout', DOUBLE_COMMAND_TIMEOUT)
 
 it('should show changelog results when filling the form', () => {
 	cy.visit('/comparator')
+	cy.title().should('equal', 'Comparator | Octoclairvoyant')
+	cy.metaDescriptionShouldEqual(
+		'Compare GitHub changelogs across multiple releases in a single view'
+	)
 
 	cy.findByRole('textbox', { name: /enter repository name/i }).type(
 		'dom testing library'
@@ -85,6 +89,10 @@ it('should show changelog results when preloading from URL', () => {
 	cy.visit(
 		'/comparator?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0'
 	)
+	cy.title().should('equal', 'Comparator | Octoclairvoyant')
+	cy.metaDescriptionShouldEqual(
+		'Compare GitHub changelogs across multiple releases in a single view'
+	)
 
 	// Confirm repository name is displayed
 	cy.findByRole('link', { name: 'dom-testing-library' }).should(
@@ -147,6 +155,10 @@ it('should show changelog results when preloading from URL with "latest"', () =>
 	cy.visit(
 		'/comparator?repo=testing-library%2Fdom-testing-library&from=v8.11.0&to=latest'
 	)
+	cy.title().should('equal', 'Comparator | Octoclairvoyant')
+	cy.metaDescriptionShouldEqual(
+		'Compare GitHub changelogs across multiple releases in a single view'
+	)
 
 	cy.findByRole('link', { name: 'dom-testing-library' }).should(
 		'have.attr',
@@ -186,6 +198,10 @@ it('should show changelog results when preloading from URL with more than 10 rel
 	Cypress.config('defaultCommandTimeout', DEFAULT_COMMAND_TIMEOUT * 3)
 
 	cy.visit('/comparator?repo=renovatebot%2Frenovate&from=26.9.0&to=32.172.2')
+	cy.title().should('equal', 'Comparator | Octoclairvoyant')
+	cy.metaDescriptionShouldEqual(
+		'Compare GitHub changelogs across multiple releases in a single view'
+	)
 
 	// This is necessary because an early request is triggered from preloaded URL.
 	cy.waitForApiMocking()
