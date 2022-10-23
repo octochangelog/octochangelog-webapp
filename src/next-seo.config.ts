@@ -4,7 +4,7 @@ import { BRIEF_DESCRIPTION, FULL_DESCRIPTION, SITE_TITLE } from '~/common'
 
 const DefaultSEO: DefaultSeoProps = {
 	titleTemplate: `%s | ${SITE_TITLE}`,
-	description: `🔮 ${FULL_DESCRIPTION}`,
+	description: FULL_DESCRIPTION,
 	defaultTitle: `${SITE_TITLE}: ${BRIEF_DESCRIPTION}`,
 	openGraph: {
 		type: 'website',
