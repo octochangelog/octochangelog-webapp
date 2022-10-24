@@ -1,9 +1,11 @@
 it('should display corresponding information', () => {
 	cy.visit('/')
-
 	cy.title().should(
 		'equal',
 		'Octoclairvoyant: Compare GitHub changelogs in a single view'
+	)
+	cy.metaDescriptionShouldEqual(
+		'Compare GitHub changelogs across multiple releases in a single view'
 	)
 
 	cy.findByRole('heading', { level: 1, name: 'Octoclairvoyant' }).should(

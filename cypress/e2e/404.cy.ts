@@ -1,7 +1,9 @@
 it('should display custom 404 page when not found', () => {
 	cy.visit('/not-existing-page', { failOnStatusCode: false })
-
-	cy.title().should('equal', '404 - Not Found | Octoclairvoyant')
+	cy.metaDescriptionShouldEqual(
+		'Compare GitHub changelogs across multiple releases in a single view'
+	)
+	cy.title().should('equal', 'Not Found | Octoclairvoyant')
 
 	cy.findByRole('heading', {
 		name: 'This page could not be found.',
