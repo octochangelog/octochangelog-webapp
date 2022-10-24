@@ -54,7 +54,7 @@ specifiers:
   react: 18.2.0
   react-dom: 18.2.0
   react-icons: 4.6.0
-  rehype-highlight: 5.0.2
+  rehype-highlight: 6.0.0
   rehype-react: 7.1.1
   remark-gfm: 3.0.1
   remark-github: 11.2.4
@@ -86,7 +86,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.6.0_react@18.2.0
-  rehype-highlight: 5.0.2
+  rehype-highlight: 6.0.0
   rehype-react: 7.1.1_@types+react@18.0.21
   remark-gfm: 3.0.1
   remark-github: 11.2.4
@@ -8936,8 +8936,8 @@ packages:
       rc: 1.2.8
     dev: true
 
-  /rehype-highlight/5.0.2:
-    resolution: {integrity: sha512-ZNm8V8BQUDn05cJPzAu/PjiloaFFrh+Pt3bY+NCcdCggI7Uyl5mW0FGR7RATeIz5/ECUd1D8Kvjt4HaLPmnOMw==}
+  /rehype-highlight/6.0.0:
+    resolution: {integrity: sha512-q7UtlFicLhetp7K48ZgZiJgchYscMma7XjzX7t23bqEJF8m6/s+viXQEe4oHjrATTIZpX7RG8CKD7BlNZoh9gw==}
     dependencies:
       '@types/hast': 2.3.4
       hast-util-to-text: 3.1.1
