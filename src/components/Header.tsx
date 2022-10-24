@@ -8,7 +8,7 @@ import {
 	Icon,
 	Link,
 } from '@chakra-ui/react'
-import Image from 'next/future/image'
+import Image from 'next/image'
 import * as React from 'react'
 import { DiGithubBadge } from 'react-icons/di'
 
