@@ -3,9 +3,9 @@
 	"version": "1.0.0",
 	"private": true,
 	"engines": {
-		"pnpm": "^7.5.0"
+		"pnpm": "^7.14.0"
 	},
-	"packageManager": "pnpm@7.5.0",
+	"packageManager": "pnpm@7.14.0",
 	"scripts": {
 		"start": "pnpm dev",
 		"dev": "next dev",
