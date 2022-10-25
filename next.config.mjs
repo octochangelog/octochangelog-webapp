@@ -7,7 +7,6 @@ import { withSentryConfig } from '@sentry/nextjs'
  **/
 const config = {
 	reactStrictMode: true,
-	swcMinify: true,
 	eslint: {
 		// Disable ESLint during builds since there is a lint job in CI.
 		ignoreDuringBuilds: true,
