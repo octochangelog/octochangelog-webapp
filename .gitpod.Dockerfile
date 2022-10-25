@@ -19,10 +19,3 @@ RUN sudo apt-get update \
  && sudo rm -rf /var/lib/apt/lists/*
 
 
-# Use nvm to setup the version of node we want to use.
-COPY .nvmrc ./
-RUN bash -c ". .nvm/nvm.sh \
-    && nvm install \
-    && nvm use"
-RUN echo "nvm use &>/dev/null" >> ~/.bashrc.d/51-nvm-fix
-
