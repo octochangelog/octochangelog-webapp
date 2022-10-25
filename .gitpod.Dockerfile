@@ -26,8 +26,3 @@ RUN bash -c ". .nvm/nvm.sh \
     && nvm use"
 RUN echo "nvm use &>/dev/null" >> ~/.bashrc.d/51-nvm-fix
 
-# Use corepack to setup our package manager
-COPY package.json ./
-RUN bash -c "corepack enable"
-RUN bash -c "corepack prepare --activate"
-RUN echo 'alias pn="pnpm"' >> ~/.bashrc
