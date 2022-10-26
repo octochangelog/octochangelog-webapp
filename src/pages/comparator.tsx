@@ -24,11 +24,15 @@ const ComparatorPage = () => {
 	return (
 		<Layout pageBgColor="background3">
 			<NextSeo title="Comparator" />
-			<ComparatorProvider>
-				<Suspense fallback={loadingComponent}>
-					{isReady ? <RepositoryReleasesComparator /> : loadingComponent}
-				</Suspense>
-			</ComparatorProvider>
+			{isReady ? (
+				<ComparatorProvider>
+					<Suspense fallback={loadingComponent}>
+						<RepositoryReleasesComparator />
+					</Suspense>
+				</ComparatorProvider>
+			) : (
+				loadingComponent
+			)}
 		</Layout>
 	)
 }
