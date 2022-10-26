@@ -17,7 +17,7 @@ async function prepare(): Promise<ServiceWorkerRegistration | undefined> {
 }
 
 function initIsReadyState() {
-	return !getIsApiMockingEnabled
+	return !getIsApiMockingEnabled()
 }
 
 interface UseMswReturn {
