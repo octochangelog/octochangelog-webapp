@@ -28,7 +28,22 @@ const App = ({ Component, pageProps }: AppProps) => {
 
 	return (
 		<>
-			<Analytics />
+			<Analytics
+				beforeSend={(event) => {
+					const VA_DISABLE_KEY = 'va-disable'
+					const url = new URL(event.url)
+
+					if (url.searchParams.get(VA_DISABLE_KEY)) {
+						return null
+					}
+
+					if (localStorage.getItem(VA_DISABLE_KEY)) {
+						return null
+					}
+
+					return event
+				}}
+			/>
 			<QueryClientProvider client={queryClient}>
 				<ChakraProvider theme={customTheme}>
 					<GithubAuthProvider>
