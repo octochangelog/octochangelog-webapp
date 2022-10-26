@@ -1,6 +1,7 @@
 import { ChakraProvider, CircularProgress, Flex } from '@chakra-ui/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { Analytics } from '@vercel/analytics/react'
 import { resetIdCounter } from 'downshift'
 import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
@@ -26,21 +27,28 @@ const App = ({ Component, pageProps }: AppProps) => {
 	const { isReady } = useMsw()
 
 	return (
-		<QueryClientProvider client={queryClient}>
-			<ChakraProvider theme={customTheme}>
-				<GithubAuthProvider>
-					<DefaultSeo {...DefaultSEO} />
-					{isReady ? (
-						<Component {...pageProps} />
-					) : (
-						<Flex align="center" justify="center" height="100%">
-							<CircularProgress isIndeterminate size="8" color="primary.400" />
-						</Flex>
-					)}
-				</GithubAuthProvider>
-			</ChakraProvider>
-			<ReactQueryDevtools initialIsOpen={false} />
-		</QueryClientProvider>
+		<>
+			<Analytics />
+			<QueryClientProvider client={queryClient}>
+				<ChakraProvider theme={customTheme}>
+					<GithubAuthProvider>
+						<DefaultSeo {...DefaultSEO} />
+						{isReady ? (
+							<Component {...pageProps} />
+						) : (
+							<Flex align="center" justify="center" height="100%">
+								<CircularProgress
+									isIndeterminate
+									size="8"
+									color="primary.400"
+								/>
+							</Flex>
+						)}
+					</GithubAuthProvider>
+				</ChakraProvider>
+				<ReactQueryDevtools initialIsOpen={false} />
+			</QueryClientProvider>
+		</>
 	)
 }
 
