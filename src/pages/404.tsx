@@ -42,7 +42,7 @@ const Custom404 = () => (
 				</Stack>
 			</VStack>
 			<VStack mt={12} spacing={5}>
-				<NextLink href="/comparator" passHref>
+				<NextLink href="/comparator" passHref legacyBehavior>
 					<Button as="a" variant="cta">
 						Go to comparator
 					</Button>
