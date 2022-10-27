@@ -22,6 +22,9 @@ beforeEach(() => {
 
 afterEach(() => {
 	process.env = OLD_ENV
+	delete window.msw
+	delete window.isApiMockingReady
+	delete window.isApiMockingEnabled
 })
 
 test('should init API mocking by default', async () => {
@@ -48,7 +51,7 @@ test('should init API mocking only once', async () => {
 	expect(mockInitMocks).toHaveBeenCalledTimes(1)
 })
 
-test('should not init API mocking if disabled', async () => {
+test('should not init API mocking if disabled', () => {
 	// Make sure than the module is not even imported by throwing an error,
 	// since we don't want to import it on production.
 	jest.mock('~/mock-service-worker', () => {
@@ -58,32 +61,24 @@ test('should not init API mocking if disabled', async () => {
 
 	const { result } = renderHook(() => useMsw())
 
-	expect(mockInitMocks).not.toHaveBeenCalled()
-	expect(result.current.isReady).toBe(false)
-	expect(window.isApiMockingEnabled).toBe(false)
-
-	await waitFor(() => expect(result.current.isReady).toBe(true))
+	expect(result.current.isReady).toBe(true)
 	expect(mockInitMocks).not.toHaveBeenCalled()
 	expect(window.isApiMockingReady).toBe(true)
-	expect(window.isApiMockingEnabled).toBe(false)
+	expect(window.isApiMockingEnabled).toBeUndefined()
 })
 
-test('should not init API mocking if running on Vercel', async () => {
+test('should not init API mocking if running on Vercel', () => {
 	// Make sure than the module is not even imported by throwing an error,
 	// since we don't want to import it on production.
 	jest.mock('~/mock-service-worker', () => {
 		throw new Error('I should not be called!')
 	})
-	process.env.VERCEL = '1'
+	process.env.NEXT_PUBLIC_VERCEL_ENV = 'production'
 
 	const { result } = renderHook(() => useMsw())
 
-	expect(mockInitMocks).not.toHaveBeenCalled()
-	expect(result.current.isReady).toBe(false)
-	expect(window.isApiMockingEnabled).toBe(false)
-
-	await waitFor(() => expect(result.current.isReady).toBe(true))
+	expect(result.current.isReady).toBe(true)
 	expect(mockInitMocks).not.toHaveBeenCalled()
 	expect(window.isApiMockingReady).toBe(true)
-	expect(window.isApiMockingEnabled).toBe(false)
+	expect(window.isApiMockingEnabled).toBeUndefined()
 })
