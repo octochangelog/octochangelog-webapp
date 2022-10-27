@@ -1,14 +1,13 @@
-import { ChakraProvider, CircularProgress, Flex } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { Analytics } from '@vercel/analytics/react'
 import { resetIdCounter } from 'downshift'
 import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
 
+import VercelAnalytics from '~/components/VercelAnalytics'
 import { GithubAuthProvider } from '~/contexts/github-auth-provider'
 import customTheme from '~/customTheme'
-import { useMsw } from '~/hooks/useMsw'
 import DefaultSEO from '~/next-seo.config'
 
 const queryClient = new QueryClient({
@@ -24,41 +23,14 @@ const queryClient = new QueryClient({
 const App = ({ Component, pageProps }: AppProps) => {
 	resetIdCounter()
 
-	const { isReady } = useMsw()
-
 	return (
 		<>
-			<Analytics
-				beforeSend={(event) => {
-					const VA_DISABLE_KEY = 'va-disable'
-					const url = new URL(event.url)
-
-					if (url.searchParams.get(VA_DISABLE_KEY)) {
-						return null
-					}
-
-					if (localStorage.getItem(VA_DISABLE_KEY)) {
-						return null
-					}
-
-					return event
-				}}
-			/>
+			<VercelAnalytics />
+			<DefaultSeo {...DefaultSEO} />
 			<QueryClientProvider client={queryClient}>
 				<ChakraProvider theme={customTheme}>
 					<GithubAuthProvider>
-						<DefaultSeo {...DefaultSEO} />
-						{isReady ? (
-							<Component {...pageProps} />
-						) : (
-							<Flex align="center" justify="center" height="100%">
-								<CircularProgress
-									isIndeterminate
-									size="8"
-									color="primary.400"
-								/>
-							</Flex>
-						)}
+						<Component {...pageProps} />
 					</GithubAuthProvider>
 				</ChakraProvider>
 				<ReactQueryDevtools initialIsOpen={false} />
