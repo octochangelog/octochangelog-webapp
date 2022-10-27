@@ -30,7 +30,7 @@ specifiers:
   '@vercel/analytics': 0.1.1
   cypress: 10.10.0
   downshift: 6.1.12
-  eslint: 8.25.0
+  eslint: 8.26.0
   eslint-config-next: 13.0.0
   eslint-config-prettier: 8.5.0
   eslint-plugin-cypress: 2.12.1
@@ -76,8 +76,9 @@ dependencies:
   '@octokit/auth-callback': 3.0.0
   '@octokit/rest': 19.0.5
   '@sentry/nextjs': 7.16.0_gr5kjcsdkugruyap6irannimnm
-  '@tanstack/react-query': 4.12.0_biqbaboplfbrettd7655fr4n2y
-  '@tanstack/react-query-devtools': 4.12.0_pqnxmwujmmnpcx44ucekqkefny
+  '@tanstack/react-query': 4.13.0_biqbaboplfbrettd7655fr4n2y
+  '@tanstack/react-query-devtools': 4.13.0_vwr3yfyniquaygdm2roeczqxuu
+  '@vercel/analytics': 0.1.1_react@18.2.0
   downshift: 6.1.12_react@18.2.0
   framer-motion: 7.6.1_biqbaboplfbrettd7655fr4n2y
   lodash-es: 4.17.21
@@ -117,13 +118,13 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.41.0_huremdigmcnkianavgfk3x6iou
   '@typescript-eslint/parser': 5.41.0_wyqvi574yv7oiwfeinomdzmc3m
   cypress: 10.10.0
-  eslint: 8.25.0
-  eslint-config-next: 13.0.0_z4bbprzjrhnsfa24uvmcbu7f5q
-  eslint-config-prettier: 8.5.0_eslint@8.25.0
-  eslint-plugin-cypress: 2.12.1_eslint@8.25.0
-  eslint-plugin-jest: 27.1.3_ktuq5bhtjfperqqn2aknj5bg6m
-  eslint-plugin-jest-formatting: 3.1.0_eslint@8.25.0
-  eslint-plugin-unicorn: 44.0.2_eslint@8.25.0
+  eslint: 8.26.0
+  eslint-config-next: 13.0.0_wyqvi574yv7oiwfeinomdzmc3m
+  eslint-config-prettier: 8.5.0_eslint@8.26.0
+  eslint-plugin-cypress: 2.12.1_eslint@8.26.0
+  eslint-plugin-jest: 27.1.3_himunudilofiyaga3ja2a2jxlq
+  eslint-plugin-jest-formatting: 3.1.0_eslint@8.26.0
+  eslint-plugin-unicorn: 44.0.2_eslint@8.26.0
   happo-cypress: 4.0.0_happo-e2e@1.4.2
   happo-e2e: 1.4.2
   happo.io: 8.2.0_6styvmv7qsx5b2vsbdyuuygete
@@ -3505,7 +3506,7 @@ packages:
   /acorn-globals/7.0.1:
     resolution: {integrity: sha512-umOSDSDrfHbTNPuNpC2NSnnA3LUrqpevPb4T9jRx4MagXNS0rs+gwiTcAvqCRmsD6utzsrzNt+ebm00SNWiC3Q==}
     dependencies:
-      acorn: 8.8.0
+      acorn: 8.8.1
       acorn-walk: 8.2.0
     dev: true
 
@@ -3516,12 +3517,12 @@ packages:
     dependencies:
       acorn: 8.8.1
 
-  /acorn-jsx/5.3.2_acorn@8.8.0:
+  /acorn-jsx/5.3.2_acorn@8.8.1:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
       acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
     dependencies:
-      acorn: 8.8.0
+      acorn: 8.8.1
     dev: true
 
   /acorn-walk/7.2.0:
@@ -3536,12 +3537,6 @@ packages:
 
   /acorn/7.4.1:
     resolution: {integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
-    dev: true
-
-  /acorn/8.8.0:
-    resolution: {integrity: sha512-QOxyigPVrpZ2GXT+PFyZTl6TtOFc5egxHIP9IlQ+RbupQuX4RkT/Bee4/kQuC02Xkzg84JcT7oLYtDIQxp+v7w==}
     engines: {node: '>=0.4.0'}
     hasBin: true
     dev: true
@@ -5061,7 +5056,7 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /eslint-config-next/13.0.0_z4bbprzjrhnsfa24uvmcbu7f5q:
+  /eslint-config-next/13.0.0_wyqvi574yv7oiwfeinomdzmc3m:
     resolution: {integrity: sha512-y2nqWS2tycWySdVhb+rhp6CuDmDazGySqkzzQZf3UTyfHyC7og1m5m/AtMFwCo5mtvDqvw1BENin52kV9733lg==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
@@ -5386,8 +5381,8 @@ packages:
     resolution: {integrity: sha512-DQmnRpLj7f6TgN/NYb0MTzJXL+vJF9h3pHy4JhCIs3zwcgez8xmGg3sXHcEO97BrmO2OSvCwMdfdlyl+E9KjOw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
-      acorn: 8.8.0
-      acorn-jsx: 5.3.2_acorn@8.8.0
+      acorn: 8.8.1
+      acorn-jsx: 5.3.2_acorn@8.8.1
       eslint-visitor-keys: 3.3.0
     dev: true
 
@@ -7189,7 +7184,7 @@ packages:
         optional: true
     dependencies:
       abab: 2.0.6
-      acorn: 8.8.0
+      acorn: 8.8.1
       acorn-globals: 6.0.0
       cssom: 0.4.4
       cssstyle: 2.3.0
@@ -7231,7 +7226,7 @@ packages:
         optional: true
     dependencies:
       abab: 2.0.6
-      acorn: 8.8.0
+      acorn: 8.8.1
       acorn-globals: 7.0.1
       cssom: 0.5.0
       cssstyle: 2.3.0
@@ -9951,7 +9946,7 @@ packages:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
       '@types/node': 16.11.56
-      acorn: 8.8.0
+      acorn: 8.8.1
       acorn-walk: 8.2.0
       arg: 4.1.3
       create-require: 1.1.1
