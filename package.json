@@ -72,7 +72,7 @@
 		"@types/lodash-es": "4.17.6",
 		"@types/mdast": "3.0.10",
 		"@types/node": "16.11.56",
-		"@types/react": "18.0.22",
+		"@types/react": "18.0.23",
 		"@types/react-dom": "18.0.7",
 		"@types/semver": "7.3.12",
 		"@types/unist": "2.0.6",
