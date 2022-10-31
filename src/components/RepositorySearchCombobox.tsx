@@ -42,7 +42,6 @@ const RepositorySearchCombobox = ({
 
 	const {
 		isOpen,
-		getComboboxProps,
 		getInputProps,
 		getItemProps,
 		getLabelProps,
@@ -91,12 +90,7 @@ const RepositorySearchCombobox = ({
 	const isLoading = isTyping || isQueryLoading
 
 	return (
-		<FormControl
-			isRequired
-			width="full"
-			position="relative"
-			{...getComboboxProps()}
-		>
+		<FormControl isRequired width="full" position="relative">
 			<FormLabel {...getLabelProps()}>Enter repository name</FormLabel>
 			<HStack>
 				<InputGroup>
