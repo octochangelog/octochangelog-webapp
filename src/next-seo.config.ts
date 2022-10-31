@@ -1,11 +1,14 @@
 import type { DefaultSeoProps } from 'next-seo'
 
+import customTheme from './customTheme'
+
 import { BRIEF_DESCRIPTION, FULL_DESCRIPTION, SITE_TITLE } from '~/common'
 
 const DefaultSEO: DefaultSeoProps = {
 	titleTemplate: `%s | ${SITE_TITLE}`,
 	description: FULL_DESCRIPTION,
 	defaultTitle: `${SITE_TITLE}: ${BRIEF_DESCRIPTION}`,
+	themeColor: customTheme.colors.primary['700'],
 	openGraph: {
 		type: 'website',
 		url: 'https://octoclairvoyant.vercel.app/',
