@@ -11,7 +11,7 @@ it('should show changelog results when filling the form', () => {
 		'Compare GitHub changelogs across multiple releases in a single view'
 	)
 
-	cy.findByRole('textbox', { name: /enter repository name/i }).type(
+	cy.findByRole('combobox', { name: /enter repository name/i }).type(
 		'dom testing library'
 	)
 
