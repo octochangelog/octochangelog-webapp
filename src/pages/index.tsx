@@ -12,7 +12,7 @@ import {
 	useColorModeValue,
 } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
-import Image from 'next/future/image'
+import Image from 'next/image'
 import NextLink from 'next/link'
 import type { ReactNode } from 'react'
 import * as React from 'react'
@@ -49,7 +49,7 @@ const MainSection = () => (
 				{BRIEF_DESCRIPTION}.
 			</Heading>
 			<Flex justify="center" align="center">
-				<NextLink href="/comparator" passHref>
+				<NextLink href="/comparator" passHref legacyBehavior>
 					<Button as="a" variant="cta">
 						Try me now!
 					</Button>

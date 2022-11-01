@@ -7,7 +7,7 @@ import {
 	Container,
 } from '@chakra-ui/react'
 import { NextSeo } from 'next-seo'
-import Image from 'next/future/image'
+import Image from 'next/image'
 import NextLink from 'next/link'
 
 import mascotIcon from '@app-public/mascot-icon.png'
@@ -42,7 +42,7 @@ const Custom404 = () => (
 				</Stack>
 			</VStack>
 			<VStack mt={12} spacing={5}>
-				<NextLink href="/comparator" passHref>
+				<NextLink href="/comparator" passHref legacyBehavior>
 					<Button as="a" variant="cta">
 						Go to comparator
 					</Button>

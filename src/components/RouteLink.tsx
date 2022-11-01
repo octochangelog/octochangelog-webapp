@@ -7,7 +7,7 @@ interface RouteLinkProps extends LinkProps {
 }
 
 const RouteLink = ({ href, children, ...rest }: RouteLinkProps) => (
-	<NextLink passHref href={href}>
+	<NextLink passHref href={href} legacyBehavior>
 		<Link {...rest}>{children}</Link>
 	</NextLink>
 )
