@@ -73,7 +73,7 @@
 		"@types/mdast": "3.0.10",
 		"@types/node": "16.11.56",
 		"@types/react": "18.0.25",
-		"@types/react-dom": "18.0.8",
+		"@types/react-dom": "18.0.9",
 		"@types/semver": "7.3.13",
 		"@types/unist": "2.0.6",
 		"@typescript-eslint/eslint-plugin": "5.42.1",
