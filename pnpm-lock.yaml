@@ -12,7 +12,7 @@ specifiers:
   '@octokit/auth-callback': 3.0.0
   '@octokit/openapi-types': 14.0.0
   '@octokit/rest': 19.0.5
-  '@sentry/nextjs': 7.17.4
+  '@sentry/nextjs': 7.19.0
   '@tanstack/react-query': 4.15.0
   '@tanstack/react-query-devtools': 4.15.0
   '@testing-library/cypress': 8.0.3
@@ -75,7 +75,7 @@ dependencies:
   '@emotion/styled': 11.10.5_hmjty4frusbltjhl3xd7udcm2y
   '@octokit/auth-callback': 3.0.0
   '@octokit/rest': 19.0.5
-  '@sentry/nextjs': 7.17.4_jdltv2sm3foolcfwcszok4b4j4
+  '@sentry/nextjs': 7.19.0_jdltv2sm3foolcfwcszok4b4j4
   '@tanstack/react-query': 4.15.0_biqbaboplfbrettd7655fr4n2y
   '@tanstack/react-query-devtools': 4.15.0_zd5delcvxkitnnvhrbgzd5vypu
   '@vercel/analytics': 0.1.3_react@18.2.0
@@ -2481,13 +2481,13 @@ packages:
     resolution: {integrity: sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==}
     dev: true
 
-  /@sentry/browser/7.17.4:
-    resolution: {integrity: sha512-cNLQ/6ea0KOZyLKXGLTdgfqWYdg43+T/uF9D/hmc6kp/5qXm2dR3FcFRZX6OicaENM3dXvSoBIF6bSWmcszRtQ==}
+  /@sentry/browser/7.19.0:
+    resolution: {integrity: sha512-dWi5VjEwiLb4ofata0UCLdTbXLD1uDUebe9rNSBkHZ3fHF4eap4ZJlu3dYePKB0CKZhZrjzbydimMhaMUNdnug==}
     engines: {node: '>=8'}
     dependencies:
-      '@sentry/core': 7.17.4
-      '@sentry/types': 7.17.4
-      '@sentry/utils': 7.17.4
+      '@sentry/core': 7.19.0
+      '@sentry/types': 7.19.0
+      '@sentry/utils': 7.19.0
       tslib: 1.14.1
     dev: false
 
@@ -2509,27 +2509,27 @@ packages:
       - supports-color
     dev: false
 
-  /@sentry/core/7.17.4:
-    resolution: {integrity: sha512-U3ABSJBKGK8dJ01nEG2+qNOb6Wv7U3VqoajiZxfV4lpPWNFGCoEhiTytxBlFTOCmdUH8209zSZiWJZaDLy+TSA==}
+  /@sentry/core/7.19.0:
+    resolution: {integrity: sha512-YF9cTBcAnO4R44092BJi5Wa2/EO02xn2ziCtmNgAVTN2LD31a/YVGxGBt/FDr4Y6yeuVehaqijVVvtpSmXrGJw==}
     engines: {node: '>=8'}
     dependencies:
-      '@sentry/types': 7.17.4
-      '@sentry/utils': 7.17.4
+      '@sentry/types': 7.19.0
+      '@sentry/utils': 7.19.0
       tslib: 1.14.1
     dev: false
 
-  /@sentry/integrations/7.17.4:
-    resolution: {integrity: sha512-9vL0RRLuMnj0mj61THgRhDUCgTGYbRoCT6HmLGrErHjyTG3d7lUgUwTBQPgw9qYLss1uLKoEtRvcxgtW7ef0BA==}
+  /@sentry/integrations/7.19.0:
+    resolution: {integrity: sha512-0x5AGU7EBIzOTSqD7TFvD4S5eX6hbqbvb4YCzJt3SIZC3bO4FiBu2t0y+PIZUSsupnqafBIIWsCcGWeKrNHAyA==}
     engines: {node: '>=8'}
     dependencies:
-      '@sentry/types': 7.17.4
-      '@sentry/utils': 7.17.4
+      '@sentry/types': 7.19.0
+      '@sentry/utils': 7.19.0
       localforage: 1.10.0
       tslib: 1.14.1
     dev: false
 
-  /@sentry/nextjs/7.17.4_jdltv2sm3foolcfwcszok4b4j4:
-    resolution: {integrity: sha512-l4aHhkYjiC49yvvu/iG0CZGpAfmWdVQ4PlcnzqO9XY40So1LixY7idJEDefqx6LSZ1+VadpZT0o6iRwHfuOllQ==}
+  /@sentry/nextjs/7.19.0_jdltv2sm3foolcfwcszok4b4j4:
+    resolution: {integrity: sha512-zlOl9DhTylxXIKg9/QdTsPS09sr+3LV9knfl529eav8Fp19QqWwQHssihdzCN30ycZ1gvmH7nbdebSdWgc5HtQ==}
     engines: {node: '>=8'}
     peerDependencies:
       next: ^10.0.8 || ^11.0 || ^12.0 || ^13.0
@@ -2541,13 +2541,13 @@ packages:
     dependencies:
       '@rollup/plugin-sucrase': 4.0.4_rollup@2.78.0
       '@rollup/plugin-virtual': 3.0.0_rollup@2.78.0
-      '@sentry/core': 7.17.4
-      '@sentry/integrations': 7.17.4
-      '@sentry/node': 7.17.4
-      '@sentry/react': 7.17.4_react@18.2.0
-      '@sentry/tracing': 7.17.4
-      '@sentry/types': 7.17.4
-      '@sentry/utils': 7.17.4
+      '@sentry/core': 7.19.0
+      '@sentry/integrations': 7.19.0
+      '@sentry/node': 7.19.0
+      '@sentry/react': 7.19.0_react@18.2.0
+      '@sentry/tracing': 7.19.0
+      '@sentry/types': 7.19.0
+      '@sentry/utils': 7.19.0
       '@sentry/webpack-plugin': 1.20.0
       chalk: 3.0.0
       next: 13.0.2_mqvh5p7ejg4taogoj6tpk3gd5a
@@ -2560,13 +2560,13 @@ packages:
       - supports-color
     dev: false
 
-  /@sentry/node/7.17.4:
-    resolution: {integrity: sha512-cR+Gsir9c/tzFWxvk4zXkMQy6tNRHEYixHrb88XIjZVYDqDS9l2/bKs5nJusdmaUeLtmPp5Et2o7RJyS7gvKTQ==}
+  /@sentry/node/7.19.0:
+    resolution: {integrity: sha512-yG7Tx32WqOkEHVotFLrumCcT9qlaSDTkFNZ+yLSvZXx74ifsE781DzBA9W7K7bBdYO3op+p2YdsOKzf3nPpAyQ==}
     engines: {node: '>=8'}
     dependencies:
-      '@sentry/core': 7.17.4
-      '@sentry/types': 7.17.4
-      '@sentry/utils': 7.17.4
+      '@sentry/core': 7.19.0
+      '@sentry/types': 7.19.0
+      '@sentry/utils': 7.19.0
       cookie: 0.4.2
       https-proxy-agent: 5.0.1
       lru_map: 0.3.3
@@ -2575,40 +2575,40 @@ packages:
       - supports-color
     dev: false
 
-  /@sentry/react/7.17.4_react@18.2.0:
-    resolution: {integrity: sha512-Hw8lgeCgUthgVQ5OG24/iZWGNXnxodVfCmfngeIfqUWeFgQUae1V833GNkYZCiE5j2yjNVh3LL2bXA8PnvMCEg==}
+  /@sentry/react/7.19.0_react@18.2.0:
+    resolution: {integrity: sha512-ooF1TwdgkHkUo7u9Bx+kab51gpVNUW7b+5A2krfhk/Fx2eY8z5VilzUzHCRq2jbTE9yJTpfRL3KlEXROs0AUvg==}
     engines: {node: '>=8'}
     peerDependencies:
       react: 15.x || 16.x || 17.x || 18.x
     dependencies:
-      '@sentry/browser': 7.17.4
-      '@sentry/types': 7.17.4
-      '@sentry/utils': 7.17.4
+      '@sentry/browser': 7.19.0
+      '@sentry/types': 7.19.0
+      '@sentry/utils': 7.19.0
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
       tslib: 1.14.1
     dev: false
 
-  /@sentry/tracing/7.17.4:
-    resolution: {integrity: sha512-9Fz6DI16ddnd970mlB5MiCNRSmSXp4SVZ1Yv3L22oS3kQeNxjBTE+htYNwJzSPrQp9aL/LqTYwlnrCy24u9XQA==}
+  /@sentry/tracing/7.19.0:
+    resolution: {integrity: sha512-SWY17M3TsgBePaGowUcSqBwaT0TJQzuNexVnLojuU0k6F57L9hubvP9zaoosoCfARXQ/3NypAFWnlJyf570rFQ==}
     engines: {node: '>=8'}
     dependencies:
-      '@sentry/core': 7.17.4
-      '@sentry/types': 7.17.4
-      '@sentry/utils': 7.17.4
+      '@sentry/core': 7.19.0
+      '@sentry/types': 7.19.0
+      '@sentry/utils': 7.19.0
       tslib: 1.14.1
     dev: false
 
-  /@sentry/types/7.17.4:
-    resolution: {integrity: sha512-QJj8vO4AtxuzQfJIzDnECSmoxwnS+WJsm1Ta2Cwdy+TUCBJyWpW7aIJJGta76zb9gNPGb3UcAbeEjhMJBJeRMQ==}
+  /@sentry/types/7.19.0:
+    resolution: {integrity: sha512-oGRAT6lfzoKrxO1mvxiSj0XHxWPd6Gd1wpPGuu6iJo03xgWDS+MIlD1h2unqL4N5fAzLjzmbC2D2lUw50Kn2pA==}
     engines: {node: '>=8'}
     dev: false
 
-  /@sentry/utils/7.17.4:
-    resolution: {integrity: sha512-ioG0ANy8uiWzig82/e7cc+6C9UOxkyBzJDi1luoQVDH6P0/PvM8GzVU+1iUVUipf8+OL1Jh09GrWnd5wLm3XNQ==}
+  /@sentry/utils/7.19.0:
+    resolution: {integrity: sha512-2L6lq+c9Ol2uiRxQDdcgoapmHJp24MhMN0gIkn2alSfMJ+ls6bGXzQHx6JAIdoOiwFQXRZHKL9ecfAc8O+vItA==}
     engines: {node: '>=8'}
     dependencies:
-      '@sentry/types': 7.17.4
+      '@sentry/types': 7.19.0
       tslib: 1.14.1
     dev: false
 
@@ -3498,7 +3498,6 @@ packages:
   /ansi-regex/5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
     engines: {node: '>=8'}
-    dev: true
 
   /ansi-regex/6.0.1:
     resolution: {integrity: sha512-n5M855fKb2SsfMIiFFoVrABHJC8QtHwVx+mHWP3QcEqBHYienj5dHSgjbxtC0WEZXYt4wcD6zrQElDPhFuZgfA==}
@@ -4806,7 +4805,6 @@ packages:
 
   /emoji-regex/8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
-    dev: true
 
   /emoji-regex/9.2.2:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
@@ -6351,7 +6349,6 @@ packages:
   /is-fullwidth-code-point/3.0.0:
     resolution: {integrity: sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==}
     engines: {node: '>=8'}
-    dev: true
 
   /is-fullwidth-code-point/4.0.0:
     resolution: {integrity: sha512-O4L094N2/dZ7xqVdrXhh9r1KODPJpFms8B5sGdJLPy664AgvXsreZUyCQQNItZRDlYug4xStLjNp/sz3HvBowQ==}
@@ -9437,7 +9434,6 @@ packages:
       emoji-regex: 8.0.0
       is-fullwidth-code-point: 3.0.0
       strip-ansi: 6.0.1
-    dev: true
 
   /string-width/5.1.2:
     resolution: {integrity: sha512-HnLOCR3vjcY8beoNLtcjZ5/nxn2afmME6lhrDrebokqMap+XbeW8n9TXpPDOqdGK5qcI3oT0GKTW6wC7EMiVqA==}
@@ -9511,7 +9507,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       ansi-regex: 5.0.1
-    dev: true
 
   /strip-ansi/7.0.1:
     resolution: {integrity: sha512-cXNxvT8dFNRVfhVME3JAe98mkXDYN2O1l7jmcwMnOslDeESg1rF/OZMtK0nRAhiari1unG5cD4jG3rapUAkLbw==}
@@ -10469,7 +10464,7 @@ packages:
   /wide-align/1.1.5:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
     dev: false
 
   /widest-line/3.1.0:
