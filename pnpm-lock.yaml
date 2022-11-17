@@ -49,7 +49,7 @@ specifiers:
   lodash-es: 4.17.21
   msw: 0.47.4
   next: 13.0.2
-  next-seo: 5.13.0
+  next-seo: 5.14.1
   nookies: 2.5.2
   prettier: 2.7.1
   react: 18.2.0
@@ -83,7 +83,7 @@ dependencies:
   framer-motion: 7.6.6_biqbaboplfbrettd7655fr4n2y
   lodash-es: 4.17.21
   next: 13.0.2_mqvh5p7ejg4taogoj6tpk3gd5a
-  next-seo: 5.13.0_pknogjuzx4bv7zxtatcb2ahtsq
+  next-seo: 5.14.1_pknogjuzx4bv7zxtatcb2ahtsq
   nookies: 2.5.2
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -8135,8 +8135,8 @@ packages:
   /neo-async/2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
-  /next-seo/5.13.0_pknogjuzx4bv7zxtatcb2ahtsq:
-    resolution: {integrity: sha512-3n6cOjXydxXlrbMIWcU+D6TllKj72C2rg7IdgoxoKOnfC8ah3U0VUIGRApKXK0wi5ME1m+TBq9isAFFbFdbWXQ==}
+  /next-seo/5.14.1_pknogjuzx4bv7zxtatcb2ahtsq:
+    resolution: {integrity: sha512-NiJeQbxYP3z+EMp52q8k3Q+OfX2+Yv2WehERDj98r2wjXxL+woKpRBdsSVYolTD0Hm8IWs42SzaISE93RoQdOw==}
     peerDependencies:
       next: ^8.1.1-canary.54 || >=9.0.0
       react: '>=16.0.0'
