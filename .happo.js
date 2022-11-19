@@ -9,15 +9,19 @@ module.exports = {
 	targets: {
 		'Chrome - Desktop': new RemoteBrowserTarget('chrome', {
 			viewport: DESKTOP_VIEWPORT,
+			useFullPageFallbackForTallScreenshots: false,
 		}),
 		'Firefox - Desktop': new RemoteBrowserTarget('firefox', {
 			viewport: DESKTOP_VIEWPORT,
+			useFullPageFallbackForTallScreenshots: false,
 		}),
 		'Chrome - Mobile': new RemoteBrowserTarget('chrome', {
 			viewport: MOBILE_VIEWPORT,
+			useFullPageFallbackForTallScreenshots: false,
 		}),
 		'Safari - Mobile': new RemoteBrowserTarget('safari', {
 			viewport: MOBILE_VIEWPORT,
+			useFullPageFallbackForTallScreenshots: false,
 		}),
 	},
 }
