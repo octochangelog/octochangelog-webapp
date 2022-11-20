@@ -28,7 +28,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': 5.43.0
   '@typescript-eslint/parser': 5.43.0
   '@vercel/analytics': 0.1.5
-  cypress: 10.11.0
+  cypress: 11.1.0
   downshift: 7.0.1
   eslint: 8.27.0
   eslint-config-next: 13.0.2
@@ -105,7 +105,7 @@ devDependencies:
   '@chakra-ui/utils': 2.0.12
   '@jest/globals': 29.3.1
   '@octokit/openapi-types': 14.0.0
-  '@testing-library/cypress': 8.0.7_cypress@10.11.0
+  '@testing-library/cypress': 8.0.7_cypress@11.1.0
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@types/happo-cypress': 3.0.1
   '@types/lodash-es': 4.17.6
@@ -117,7 +117,7 @@ devDependencies:
   '@types/unist': 2.0.6
   '@typescript-eslint/eslint-plugin': 5.43.0_yy4vf4gcvxiubmg7fqa55dqe2i
   '@typescript-eslint/parser': 5.43.0_rmayb2veg2btbq6mbmnyivgasy
-  cypress: 10.11.0
+  cypress: 11.1.0
   eslint: 8.27.0
   eslint-config-next: 13.0.2_rmayb2veg2btbq6mbmnyivgasy
   eslint-config-prettier: 8.5.0_eslint@8.27.0
@@ -2836,7 +2836,7 @@ packages:
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
 
-  /@testing-library/cypress/8.0.7_cypress@10.11.0:
+  /@testing-library/cypress/8.0.7_cypress@11.1.0:
     resolution: {integrity: sha512-3HTV725rOS+YHve/gD9coZp/UcPK5xhr4H0GMnq/ni6USdtzVtSOG9WBFtd8rYnrXk8rrGD+0toRFYouJNIG0Q==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
@@ -2844,7 +2844,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.20.1
       '@testing-library/dom': 8.19.0
-      cypress: 10.11.0
+      cypress: 11.1.0
     dev: true
 
   /@testing-library/dom/8.19.0:
@@ -4506,6 +4506,56 @@ packages:
 
   /cypress/10.11.0:
     resolution: {integrity: sha512-lsaE7dprw5DoXM00skni6W5ElVVLGAdRUUdZjX2dYsGjbY/QnpzWZ95Zom1mkGg0hAaO/QVTZoFVS7Jgr/GUPA==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@cypress/request': 2.88.10
+      '@cypress/xvfb': 1.2.4_supports-color@8.1.1
+      '@types/node': 14.18.33
+      '@types/sinonjs__fake-timers': 8.1.1
+      '@types/sizzle': 2.3.3
+      arch: 2.2.0
+      blob-util: 2.0.2
+      bluebird: 3.7.2
+      buffer: 5.7.1
+      cachedir: 2.3.0
+      chalk: 4.1.2
+      check-more-types: 2.24.0
+      cli-cursor: 3.1.0
+      cli-table3: 0.6.3
+      commander: 5.1.0
+      common-tags: 1.8.2
+      dayjs: 1.11.6
+      debug: 4.3.4_supports-color@8.1.1
+      enquirer: 2.3.6
+      eventemitter2: 6.4.7
+      execa: 4.1.0
+      executable: 4.1.1
+      extract-zip: 2.0.1_supports-color@8.1.1
+      figures: 3.2.0
+      fs-extra: 9.1.0
+      getos: 3.2.1
+      is-ci: 3.0.1
+      is-installed-globally: 0.4.0
+      lazy-ass: 1.6.0
+      listr2: 3.14.0_enquirer@2.3.6
+      lodash: 4.17.21
+      log-symbols: 4.1.0
+      minimist: 1.2.7
+      ospath: 1.2.2
+      pretty-bytes: 5.6.0
+      proxy-from-env: 1.0.0
+      request-progress: 3.0.0
+      semver: 7.3.8
+      supports-color: 8.1.1
+      tmp: 0.2.1
+      untildify: 4.0.0
+      yauzl: 2.10.0
+    dev: true
+
+  /cypress/11.1.0:
+    resolution: {integrity: sha512-kzizbG9s3p3ahWqxUwG/21NqLWEGtScMevMyUPeYlcmMX9RzVxWM18MkA3B4Cb3jKx72hSyIE2mHgHymfCM1bg==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     requiresBuild: true
