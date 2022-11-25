@@ -28,7 +28,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': 5.44.0
   '@typescript-eslint/parser': 5.44.0
   '@vercel/analytics': 0.1.5
-  cypress: 11.1.0
+  cypress: 11.2.0
   downshift: 7.0.1
   eslint: 8.28.0
   eslint-config-next: 13.0.2
@@ -105,7 +105,7 @@ devDependencies:
   '@chakra-ui/utils': 2.0.12
   '@jest/globals': 29.3.1
   '@octokit/openapi-types': 14.0.0
-  '@testing-library/cypress': 8.0.7_cypress@11.1.0
+  '@testing-library/cypress': 8.0.7_cypress@11.2.0
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@types/happo-cypress': 3.0.1
   '@types/lodash-es': 4.17.6
@@ -117,7 +117,7 @@ devDependencies:
   '@types/unist': 2.0.6
   '@typescript-eslint/eslint-plugin': 5.44.0_xweyveqnfveccvpxdpbbnp7sza
   '@typescript-eslint/parser': 5.44.0_zksrc6ykdxhogxjbhb5axiabwi
-  cypress: 11.1.0
+  cypress: 11.2.0
   eslint: 8.28.0
   eslint-config-next: 13.0.2_zksrc6ykdxhogxjbhb5axiabwi
   eslint-config-prettier: 8.5.0_eslint@8.28.0
@@ -2836,7 +2836,7 @@ packages:
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
 
-  /@testing-library/cypress/8.0.7_cypress@11.1.0:
+  /@testing-library/cypress/8.0.7_cypress@11.2.0:
     resolution: {integrity: sha512-3HTV725rOS+YHve/gD9coZp/UcPK5xhr4H0GMnq/ni6USdtzVtSOG9WBFtd8rYnrXk8rrGD+0toRFYouJNIG0Q==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
@@ -2844,7 +2844,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.20.1
       '@testing-library/dom': 8.19.0
-      cypress: 11.1.0
+      cypress: 11.2.0
     dev: true
 
   /@testing-library/dom/8.19.0:
@@ -4559,8 +4559,8 @@ packages:
       yauzl: 2.10.0
     dev: true
 
-  /cypress/11.1.0:
-    resolution: {integrity: sha512-kzizbG9s3p3ahWqxUwG/21NqLWEGtScMevMyUPeYlcmMX9RzVxWM18MkA3B4Cb3jKx72hSyIE2mHgHymfCM1bg==}
+  /cypress/11.2.0:
+    resolution: {integrity: sha512-u61UGwtu7lpsNWLUma/FKNOsrjcI6wleNmda/TyKHe0dOBcVjbCPlp1N6uwFZ0doXev7f/91YDpU9bqDCFeBLA==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     requiresBuild: true
