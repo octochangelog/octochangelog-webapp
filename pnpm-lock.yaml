@@ -45,7 +45,7 @@ specifiers:
   is-ci: 3.0.1
   jest: 29.3.1
   jest-environment-jsdom: 29.3.1
-  lint-staged: 13.0.3
+  lint-staged: 13.0.4
   lodash-es: 4.17.21
   msw: 0.49.0
   next: 13.0.5
@@ -132,7 +132,7 @@ devDependencies:
   is-ci: 3.0.1
   jest: 29.3.1_@types+node@18.11.9
   jest-environment-jsdom: 29.3.1
-  lint-staged: 13.0.3
+  lint-staged: 13.0.4
   msw: 0.49.0_typescript@4.9.3
   prettier: 2.8.0
   start-server-and-test: 1.14.0
@@ -7474,16 +7474,16 @@ packages:
       immediate: 3.0.6
     dev: false
 
-  /lilconfig/2.0.5:
-    resolution: {integrity: sha512-xaYmXZtTHPAw5m+xLN8ab9C+3a8YmV3asNSPOATITbtwrfbwaLJj8h66H1WMIpALCkqsIzK3h7oQ+PdX+LQ9Eg==}
+  /lilconfig/2.0.6:
+    resolution: {integrity: sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==}
     engines: {node: '>=10'}
     dev: true
 
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  /lint-staged/13.0.3:
-    resolution: {integrity: sha512-9hmrwSCFroTSYLjflGI8Uk+GWAwMB4OlpU4bMJEAT5d/llQwtYKoim4bLOyLCuWFAhWEupE0vkIFqtw/WIsPug==}
+  /lint-staged/13.0.4:
+    resolution: {integrity: sha512-HxlHCXoYRsq9QCby5wFozmZW00hMs/9e3l+/dz6Qr8Kle4UH0kJTdABAbqhzG+3pcG6QjL9kz7NgGBfph+a5dw==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
@@ -7492,8 +7492,8 @@ packages:
       commander: 9.4.1
       debug: 4.3.4
       execa: 6.1.0
-      lilconfig: 2.0.5
-      listr2: 4.0.5
+      lilconfig: 2.0.6
+      listr2: 5.0.5
       micromatch: 4.0.5
       normalize-path: 3.0.0
       object-inspect: 1.12.2
@@ -7525,9 +7525,9 @@ packages:
       wrap-ansi: 7.0.0
     dev: true
 
-  /listr2/4.0.5:
-    resolution: {integrity: sha512-juGHV1doQdpNT3GSTs9IUN43QJb7KHdF9uqg7Vufs/tG9VTzpFphqF4pm/ICdAABGQxsyNn9CiYA3StkI6jpwA==}
-    engines: {node: '>=12'}
+  /listr2/5.0.5:
+    resolution: {integrity: sha512-DpBel6fczu7oQKTXMekeprc0o3XDgGMkD7JNYyX+X0xbwK+xgrx9dcyKoXKqpLSUvAWfmoePS7kavniOcq3r4w==}
+    engines: {node: ^14.13.1 || >=16.0.0}
     peerDependencies:
       enquirer: '>= 2.3.0 < 3'
     peerDependenciesMeta:
