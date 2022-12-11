@@ -11,7 +11,7 @@ import type {
 	RepositoryQueryParams,
 } from '~/models'
 
-export function mapRepositoryToQueryParams(
+function mapRepositoryToQueryParams(
 	repository?: Repository
 ): RepositoryQueryParams {
 	return {
@@ -20,14 +20,12 @@ export function mapRepositoryToQueryParams(
 	}
 }
 
-export function mapStringToRepositoryQueryParams(
-	str: string
-): RepositoryQueryParams {
+function mapStringToRepositoryQueryParams(str: string): RepositoryQueryParams {
 	const [owner = '', repo = ''] = str.split('/')
 	return { owner, repo }
 }
 
-export function getReleaseVersion(release: Release): string {
+function getReleaseVersion(release: Release): string {
 	if (release.tag_name === 'latest') {
 		return release.name || release.tag_name
 	}
@@ -44,7 +42,7 @@ type FilterReleasesNodes = {
 	to: ReleaseVersion
 }
 
-export function filterReleasesByVersionRange(
+function filterReleasesByVersionRange(
 	args: FilterReleasesNodes
 ): Array<Release> {
 	const { releases, from, to: originalTo } = args
@@ -60,13 +58,13 @@ export function filterReleasesByVersionRange(
 	)
 }
 
-export function isStableRelease(release: Release): boolean {
+function isStableRelease(release: Release): boolean {
 	const { tag_name } = release
 
 	return Boolean(semver.valid(tag_name)) && !semver.prerelease(tag_name)
 }
 
-export function getMdastContentNodeTitle(mdastNode: Content): string {
+function getMdastContentNodeTitle(mdastNode: Content): string {
 	const nodeChildren = 'children' in mdastNode ? mdastNode.children : null
 
 	if (nodeChildren && 'value' in nodeChildren[0]) {
@@ -76,7 +74,7 @@ export function getMdastContentNodeTitle(mdastNode: Content): string {
 	return 'unknown'
 }
 
-export function getMdastContentReleaseGroup(mdastNode: Content): ReleaseGroup {
+function getMdastContentReleaseGroup(mdastNode: Content): ReleaseGroup {
 	const nodeTitle = getMdastContentNodeTitle(mdastNode)
 	const mdastTitle = lowerCase(nodeTitle)
 
@@ -121,7 +119,7 @@ const getReleaseGroupPriority = (titleParam: ReleaseGroup): -1 | 0 | 1 => {
 	return 0
 }
 
-export function compareReleaseGroupsByPriority(a: string, b: string): number {
+function compareReleaseGroupsByPriority(a: string, b: string): number {
 	const aPriority = getReleaseGroupPriority(a)
 	const bPriority = getReleaseGroupPriority(b)
 
@@ -155,7 +153,7 @@ export function compareReleaseGroupsByPriority(a: string, b: string): number {
 	return 0
 }
 
-export const compareReleasesByVersion = (
+const compareReleasesByVersion = (
 	a: Release,
 	b: Release,
 	order: 'asc' | 'desc' = 'desc'
@@ -180,7 +178,7 @@ export const compareReleasesByVersion = (
  * @param perPage - Items per page
  * @param pageIndex - Page number (1-based index)
  */
-export function paginateList<TListItem>(
+function paginateList<TListItem>(
 	list: Array<TListItem>,
 	perPage: number,
 	pageIndex: number
@@ -195,4 +193,17 @@ export function paginateList<TListItem>(
 		data: list.slice(pageStart, pageEnd),
 		hasNext: pageEnd < list.length,
 	}
+}
+
+export {
+	mapRepositoryToQueryParams,
+	mapStringToRepositoryQueryParams,
+	filterReleasesByVersionRange,
+	isStableRelease,
+	getMdastContentNodeTitle,
+	getMdastContentReleaseGroup,
+	getReleaseVersion,
+	compareReleasesByVersion,
+	compareReleaseGroupsByPriority,
+	paginateList,
 }

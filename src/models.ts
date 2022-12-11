@@ -2,36 +2,32 @@ import type { components } from '@octokit/openapi-types'
 import type { Root } from 'mdast'
 import type { ReactElement } from 'react'
 
-export type SemVerGroup = 'breaking changes' | 'features' | 'bug fixes'
+type SemVerGroup = 'breaking changes' | 'features' | 'bug fixes'
 
-export type MiscGroup = 'others' | 'artifacts' | 'thanks' | 'credits'
+type MiscGroup = 'others' | 'artifacts' | 'thanks' | 'credits'
 
-export type ReleaseGroup = SemVerGroup | MiscGroup | string
+type ReleaseGroup = SemVerGroup | MiscGroup | string
 
-export type RepositoryQueryParams = {
+type RepositoryQueryParams = {
 	repo: string
 	owner: string
 }
 
-export type Repository = components['schemas']['full-repository']
+type Repository = components['schemas']['full-repository']
 
-export type Release = components['schemas']['release']
+type Release = components['schemas']['release']
 
-export type RepoSearchResultItem =
-	components['schemas']['repo-search-result-item']
+type RepoSearchResultItem = components['schemas']['repo-search-result-item']
 
-export interface ProcessedRelease extends Omit<Release, 'body'> {
+interface ProcessedRelease extends Omit<Release, 'body'> {
 	title: string
 	originalTitle: string
 	descriptionMdast: Root
 }
 
-export type ProcessedReleasesCollection = Record<
-	ReleaseGroup,
-	Array<ProcessedRelease>
->
+type ProcessedReleasesCollection = Record<ReleaseGroup, Array<ProcessedRelease>>
 
-export type ReleaseVersion = string
+type ReleaseVersion = string
 
 type ComponentPropsWithoutNode = Record<string, unknown>
 
@@ -40,4 +36,18 @@ type ComponentLike<
 	P extends ComponentPropsWithoutNode = ComponentPropsWithoutNode
 > = (props: P) => T | null
 
-export type ComponentsMapping = Record<string, ComponentLike<ReactElement>>
+type ComponentsMapping = Record<string, ComponentLike<ReactElement>>
+
+export type {
+	SemVerGroup,
+	MiscGroup,
+	ReleaseGroup,
+	RepositoryQueryParams,
+	Repository,
+	Release,
+	RepoSearchResultItem,
+	ProcessedRelease,
+	ProcessedReleasesCollection,
+	ReleaseVersion,
+	ComponentsMapping,
+}
