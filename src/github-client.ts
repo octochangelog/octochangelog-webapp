@@ -9,14 +9,14 @@ const userAgent = IS_PRODUCTION_MODE
 	: 'Test Octoclairvoyant'
 
 const STORAGE_KEY_PREFIX = IS_PRODUCTION_MODE ? '' : 'test-'
-export const GITHUB_STORAGE_KEY = `${STORAGE_KEY_PREFIX}octoclairvoyant-github-access-token`
+const GITHUB_STORAGE_KEY = `${STORAGE_KEY_PREFIX}octoclairvoyant-github-access-token`
 
-export function getGithubAccessToken(): string | undefined {
+function getGithubAccessToken(): string | undefined {
 	const cookies = parseCookies(null)
 	return cookies[GITHUB_STORAGE_KEY]
 }
 
-export function setGithubAccessToken(newAccessToken?: string | null): void {
+function setGithubAccessToken(newAccessToken?: string | null): void {
 	if (newAccessToken === getGithubAccessToken()) {
 		return
 	}
@@ -31,7 +31,7 @@ export function setGithubAccessToken(newAccessToken?: string | null): void {
 	}
 }
 
-export const octokit = new Octokit({
+const octokit = new Octokit({
 	authStrategy: createCallbackAuth,
 	auth: { callback: getGithubAccessToken },
 	userAgent,
@@ -45,9 +45,7 @@ export const octokit = new Octokit({
  *
  * @param code - The code received as a response to GitHub auth redirect
  */
-export async function obtainAccessToken(
-	code?: string
-): Promise<Error | string> {
+async function obtainAccessToken(code?: string): Promise<Error | string> {
 	if (!code) {
 		throw new Error('Empty code received back from GitHub')
 	}
@@ -73,10 +71,19 @@ export async function obtainAccessToken(
 	return responseJson.access_token
 }
 
-export const githubAuthUrl = new URL('https://github.com')
+const githubAuthUrl = new URL('https://github.com')
 githubAuthUrl.pathname = '/login/oauth/authorize'
 githubAuthUrl.searchParams.append(
 	'client_id',
 	String(process.env.NEXT_PUBLIC_GITHUB_APP_CLIENT_ID)
 )
 githubAuthUrl.searchParams.append('scope', '')
+
+export {
+	GITHUB_STORAGE_KEY,
+	getGithubAccessToken,
+	setGithubAccessToken,
+	obtainAccessToken,
+	octokit,
+	githubAuthUrl,
+}

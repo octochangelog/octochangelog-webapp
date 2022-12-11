@@ -46,6 +46,11 @@ module.exports = {
 				},
 			},
 		],
+		'import/exports-last': 'error',
+		'import/group-exports': 'error',
+
+		// TODO: Enable this one when gets released in `eslint-plugin-import`
+		// 'import/consistent-type-specifier-style': ['error', 'prefer-inline'],
 
 		// Unicorn
 		'unicorn/no-for-loop': 'error',
@@ -77,8 +82,18 @@ module.exports = {
 						default: 'generic',
 					},
 				],
-				'@typescript-eslint/consistent-type-exports': 'error',
-				'@typescript-eslint/consistent-type-imports': 'error',
+				'@typescript-eslint/consistent-type-exports': [
+					'error',
+					{
+						fixMixedExportsWithInlineTypeSpecifier: true,
+					},
+				],
+				'@typescript-eslint/consistent-type-imports': [
+					'error',
+					{
+						fixStyle: 'inline-type-imports',
+					},
+				],
 
 				// Disabling because of index errors on interfaces,
 				// which works fine in type aliases:
