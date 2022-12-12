@@ -63,7 +63,7 @@ specifiers:
   remark-rehype: 10.1.0
   remark-stringify: 10.0.2
   semver: 7.3.8
-  start-server-and-test: 1.15.1
+  start-server-and-test: 1.15.2
   ts-jest: 29.0.3
   type-fest: 3.3.0
   typescript: 4.9.4
@@ -135,7 +135,7 @@ devDependencies:
   lint-staged: 13.1.0
   msw: 0.49.1_typescript@4.9.4
   prettier: 2.8.1
-  start-server-and-test: 1.15.1
+  start-server-and-test: 1.15.2
   ts-jest: 29.0.3_ritnbaj5usesqvlmws2tp6jzcu
   type-fest: 3.3.0
   typescript: 4.9.4
@@ -3803,8 +3803,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /axios/0.21.4_debug@4.3.4:
-    resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
+  /axios/0.25.0_debug@4.3.4:
+    resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
     dependencies:
       follow-redirects: 1.15.2_debug@4.3.4
     transitivePeerDependencies:
@@ -9568,8 +9568,8 @@ packages:
       escape-string-regexp: 2.0.0
     dev: true
 
-  /start-server-and-test/1.15.1:
-    resolution: {integrity: sha512-ixhMbUAmym+7k3kqhjhTt6/0eUwE3dbNZPWgcfEUJ5uStaHbT0m8VB+049V5V9X0ueEyxAkwnkkR2SEhCKst5g==}
+  /start-server-and-test/1.15.2:
+    resolution: {integrity: sha512-t5xJX04Hg7hqxiKHMJBz/n4zIMsE6G7hpAcerFAH+4Vh9le/LeyFcJERJM7WLiPygWF9TOg33oroJF1XOzJtYQ==}
     engines: {node: '>=6'}
     hasBin: true
     dependencies:
@@ -9580,7 +9580,7 @@ packages:
       execa: 5.1.1
       lazy-ass: 1.6.0
       ps-tree: 1.2.0
-      wait-on: 6.0.0_debug@4.3.4
+      wait-on: 6.0.1_debug@4.3.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -10479,12 +10479,12 @@ packages:
       xml-name-validator: 4.0.0
     dev: true
 
-  /wait-on/6.0.0_debug@4.3.4:
-    resolution: {integrity: sha512-tnUJr9p5r+bEYXPUdRseolmz5XqJTTj98JgOsfBn7Oz2dxfE2g3zw1jE+Mo8lopM3j3et/Mq1yW7kKX6qw7RVw==}
+  /wait-on/6.0.1_debug@4.3.4:
+    resolution: {integrity: sha512-zht+KASY3usTY5u2LgaNqn/Cd8MukxLGjdcZxT2ns5QzDmTFc4XoWBgC+C/na+sMRZTuVygQoMYwdcVjHnYIVw==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     dependencies:
-      axios: 0.21.4_debug@4.3.4
+      axios: 0.25.0_debug@4.3.4
       joi: 17.7.0
       lodash: 4.17.21
       minimist: 1.2.7
