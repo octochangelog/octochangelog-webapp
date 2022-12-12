@@ -29,6 +29,10 @@ it('should show changelog results when filling the form', () => {
 		'https://github.com/testing-library/dom-testing-library'
 	)
 
+	// Wait a bit before checking the rendered release changelog details
+	// since this may take a while to appear.
+	cy.wait(DEFAULT_COMMAND_TIMEOUT * 2)
+
 	// Confirm from and to version range is displayed
 	cy.findByRole('heading', { name: /changes from v6\.16\.0 to v8\.1\.0/i })
 
@@ -238,6 +242,11 @@ it('should show changelog results when preloading from URL with more than 10 rel
 			'https://github.com/renovatebot/renovate'
 		)
 	})
+
+	// Wait a bit before checking the rendered release changelog details
+	// since this may take a while to appear due to the number of
+	// changelogs being rendered.
+	cy.wait(DEFAULT_COMMAND_TIMEOUT * 2)
 
 	cy.findByRole('heading', {
 		name: 'Changes from 26.9.0 to 32.172.2',
