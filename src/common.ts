@@ -1,24 +1,24 @@
-export const IS_PRODUCTION_MODE = process.env.NODE_ENV === 'production'
+const IS_PRODUCTION_MODE = process.env.NODE_ENV === 'production'
 
-export const REPO_URL =
-	'https://github.com/octoclairvoyant/octoclairvoyant-webapp'
+const REPO_URL = 'https://github.com/octoclairvoyant/octoclairvoyant-webapp'
 
-export const SITE_TITLE = 'Octoclairvoyant'
+const SITE_TITLE = 'Octoclairvoyant'
 
-export const BRIEF_DESCRIPTION = 'Compare GitHub changelogs in a single view'
+const BRIEF_DESCRIPTION = 'Compare GitHub changelogs in a single view'
 
-export const FULL_DESCRIPTION =
+const FULL_DESCRIPTION =
 	'Compare GitHub changelogs across multiple releases in a single view'
 
-export const HIGH_PRIORITY_GROUP_TITLES = [
-	'breaking changes',
-	'features',
-	'bug fixes',
-]
+const HIGH_PRIORITY_GROUP_TITLES = ['breaking changes', 'features', 'bug fixes']
 
-export const LOW_PRIORITY_GROUP_TITLES = [
-	'others',
-	'credits',
-	'thanks',
-	'artifacts',
-]
+const LOW_PRIORITY_GROUP_TITLES = ['others', 'credits', 'thanks', 'artifacts']
+
+export {
+	IS_PRODUCTION_MODE,
+	REPO_URL,
+	SITE_TITLE,
+	BRIEF_DESCRIPTION,
+	FULL_DESCRIPTION,
+	HIGH_PRIORITY_GROUP_TITLES,
+	LOW_PRIORITY_GROUP_TITLES,
+}
