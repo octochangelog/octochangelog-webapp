@@ -1,8 +1,8 @@
 const DEFAULT_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout')
-const DOUBLE_COMMAND_TIMEOUT = DEFAULT_COMMAND_TIMEOUT * 2
+const LONGER_COMMAND_TIMEOUT = DEFAULT_COMMAND_TIMEOUT * 5
 // Increase the command timeout since it takes a while for findBy queries
 // to find certain elements while the comparator is still processing the changelog.
-Cypress.config('defaultCommandTimeout', DOUBLE_COMMAND_TIMEOUT)
+Cypress.config('defaultCommandTimeout', LONGER_COMMAND_TIMEOUT)
 
 it('should show changelog results when filling the form', () => {
 	cy.visit('/comparator')
@@ -238,10 +238,6 @@ it('should show changelog results when preloading from URL with more than 10 rel
 			'https://github.com/renovatebot/renovate'
 		)
 	})
-
-	// Wait a bit before checking the rendered release changelog details
-	// since this may take a while to appear.
-	cy.wait(DOUBLE_COMMAND_TIMEOUT)
 
 	cy.findByRole('heading', {
 		name: 'Changes from 26.9.0 to 32.172.2',
