@@ -30,15 +30,15 @@ jobs:
       # https://github.com/cypress-io/github-action/issues/48
       fail-fast: false
       matrix:
-        # run 3 copies of the current job in parallel
-        containers: [1, 2, 3]
+        # run 2 copies of the current job in parallel
+        containers: [1, 2]
 
     steps:
       # Arrange
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@b173b6ec0100793626c2d9e6b90435061f4fc3e5 # tag=0.11.0
       - name: Checkout repository
-        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3.1.0
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
       - name: Setup Node.js
@@ -48,7 +48,7 @@ jobs:
 
       # Act
       - name: Run Cypress
-        uses: cypress-io/github-action@90399df0bdc2b3b3034a024518da69e01b723430
+        uses: cypress-io/github-action@7349f0735cb8369848f3546e416668828dc86f6f
         with:
           install-command: pnpm install
           build: pnpm build
@@ -82,7 +82,7 @@ jobs:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@b173b6ec0100793626c2d9e6b90435061f4fc3e5 # tag=0.11.0
       - name: Checkout repository
-        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
+        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3.1.0
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
       - name: Setup Node.js
