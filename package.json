@@ -116,5 +116,11 @@
 	},
 	"msw": {
 		"workerDirectory": "public"
+	},
+	"pnpm": {
+		"// overrides": "use Cypress v12 for happo types until this PR gets merged: https://github.com/DefinitelyTyped/DefinitelyTyped/pull/63521",
+		"overrides": {
+			"@types/happo-cypress>cypress": ">=12"
+		}
 	}
 }
