@@ -29,10 +29,6 @@ it('should show changelog results when filling the form', () => {
 		'https://github.com/testing-library/dom-testing-library'
 	)
 
-	// Wait a bit before checking the rendered release changelog details
-	// since this may take a while to appear.
-	cy.wait(DEFAULT_COMMAND_TIMEOUT * 2)
-
 	// Confirm from and to version range is displayed
 	cy.findByRole('heading', { name: /changes from v6\.16\.0 to v8\.1\.0/i })
 
@@ -197,10 +193,6 @@ it('should show changelog results when preloading from URL with "latest"', () =>
  * last one must not be requested since all the info will be available by then.
  */
 it('should show changelog results when preloading from URL with more than 10 release pages', () => {
-	// There are tons of changelogs to process in this test,
-	// so it will take a while to render the result.
-	Cypress.config('defaultCommandTimeout', DEFAULT_COMMAND_TIMEOUT * 3)
-
 	cy.visit('/comparator?repo=renovatebot%2Frenovate&from=26.9.0&to=32.172.2')
 	cy.title().should('equal', 'Comparator | Octoclairvoyant')
 	cy.metaDescriptionShouldEqual(
