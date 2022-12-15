@@ -38,19 +38,22 @@ jobs:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@b173b6ec0100793626c2d9e6b90435061f4fc3e5 # tag=0.11.0
       - name: Checkout repository
-        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3.1.0
+        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
       - name: Setup Node.js
         uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # tag=v3.5.1
         with:
           node-version-file: '.nvmrc'
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
 
       # Act
       - name: Run Cypress
         uses: cypress-io/github-action@78da0ecebc74b45a47b9f48bd2ecc8011471288a
         with:
-          install-command: pnpm install
+          install: false
           build: pnpm build
           start: pnpm serve
           wait-on: 'http://localhost:3000'
@@ -82,7 +85,7 @@ jobs:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@b173b6ec0100793626c2d9e6b90435061f4fc3e5 # tag=0.11.0
       - name: Checkout repository
-        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # tag=v3.1.0
+        uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
       - name: Setup Node.js

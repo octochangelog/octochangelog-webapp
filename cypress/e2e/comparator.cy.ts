@@ -29,6 +29,10 @@ it('should show changelog results when filling the form', () => {
 		'https://github.com/testing-library/dom-testing-library'
 	)
 
+	// Wait a bit before checking the rendered release changelog details
+	// since this may take a while to appear.
+	cy.wait(DEFAULT_COMMAND_TIMEOUT)
+
 	// Confirm from and to version range is displayed
 	cy.findByRole('heading', { name: /changes from v6\.16\.0 to v8\.1\.0/i })
 
