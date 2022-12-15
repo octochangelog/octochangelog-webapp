@@ -46,14 +46,12 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install
 
       # Act
       - name: Run Cypress
         uses: cypress-io/github-action@57031a37847dee19c9f86f3fc174d9ffde6cbb21
         with:
-          install: false
+          install-command: pnpm install
           build: pnpm build
           start: pnpm serve
           wait-on: 'http://localhost:3000'
