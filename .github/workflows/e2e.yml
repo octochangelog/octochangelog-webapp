@@ -49,7 +49,7 @@ jobs:
 
       # Act
       - name: Run Cypress
-        uses: cypress-io/github-action@78da0ecebc74b45a47b9f48bd2ecc8011471288a
+        uses: cypress-io/github-action@b23f22bd72e8c7fe1afab8e8989cec8431998f6f
         with:
           install-command: pnpm install
           build: pnpm build
