@@ -1,8 +1,5 @@
 const DEFAULT_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout')
 const LONGER_COMMAND_TIMEOUT = DEFAULT_COMMAND_TIMEOUT * 5
-// Increase the command timeout since it takes a while for findBy queries
-// to find certain elements while the comparator is still processing the changelog.
-Cypress.config('defaultCommandTimeout', LONGER_COMMAND_TIMEOUT)
 
 it('should show changelog results when filling the form', () => {
 	cy.visit('/comparator')
@@ -19,19 +16,18 @@ it('should show changelog results when filling the form', () => {
 		.findByText('testing-library/dom-testing-library')
 		.click()
 
-	cy.findByRole('combobox', { name: /select from release/i }).select('v6.16.0')
-
-	cy.findByRole('combobox', { name: /select to release/i }).select('v8.1.0')
+	cy.findByRole('combobox', { name: /select from release/i })
+		.select('v6.16.0')
+		.should('have.value', 'v6.16.0')
+	cy.findByRole('combobox', { name: /select to release/i })
+		.select('v8.1.0')
+		.should('have.value', 'v8.1.0')
 
 	cy.findByRole('link', { name: 'dom-testing-library' }).should(
 		'have.attr',
 		'href',
 		'https://github.com/testing-library/dom-testing-library'
 	)
-
-	// Wait a bit before checking the rendered release changelog details
-	// since this may take a while to appear.
-	cy.wait(DEFAULT_COMMAND_TIMEOUT)
 
 	// Confirm from and to version range is displayed
 	cy.findByRole('heading', { name: /changes from v6\.16\.0 to v8\.1\.0/i })
@@ -96,6 +92,15 @@ it('should show changelog results when preloading from URL', () => {
 	cy.title().should('equal', 'Comparator | Octoclairvoyant')
 	cy.metaDescriptionShouldEqual(
 		'Compare GitHub changelogs across multiple releases in a single view'
+	)
+
+	cy.findByRole('combobox', { name: /select from release/i }).should(
+		'have.value',
+		'v6.16.0'
+	)
+	cy.findByRole('combobox', { name: /select to release/i }).should(
+		'have.value',
+		'v8.1.0'
 	)
 
 	// Confirm repository name is displayed
@@ -164,6 +169,14 @@ it('should show changelog results when preloading from URL with "latest"', () =>
 		'Compare GitHub changelogs across multiple releases in a single view'
 	)
 
+	cy.findByRole('combobox', { name: /select from release/i }).should(
+		'have.value',
+		'v8.11.0'
+	)
+	cy.findByRole('combobox', { name: /select to release/i }).should(
+		'have.value',
+		'latest'
+	)
 	cy.findByRole('link', { name: 'dom-testing-library' }).should(
 		'have.attr',
 		'href',
@@ -197,6 +210,10 @@ it('should show changelog results when preloading from URL with "latest"', () =>
  * last one must not be requested since all the info will be available by then.
  */
 it('should show changelog results when preloading from URL with more than 10 release pages', () => {
+	// Increase the command timeout since it takes a while for findBy queries
+	// to find certain elements while the comparator is still processing the changelog.
+	Cypress.config('defaultCommandTimeout', LONGER_COMMAND_TIMEOUT)
+
 	cy.visit('/comparator?repo=renovatebot%2Frenovate&from=26.9.0&to=32.172.2')
 	cy.title().should('equal', 'Comparator | Octoclairvoyant')
 	cy.metaDescriptionShouldEqual(
@@ -230,6 +247,15 @@ it('should show changelog results when preloading from URL with more than 10 rel
 			throw new Error('API mocking should be enabled but MSW was not found.')
 		}
 	})
+
+	cy.findByRole('combobox', { name: /select from release/i }).should(
+		'have.value',
+		'26.9.0'
+	)
+	cy.findByRole('combobox', { name: /select to release/i }).should(
+		'have.value',
+		'32.172.2'
+	)
 
 	cy.findByRole('heading', { name: 'renovate' }).within(() => {
 		cy.findByRole('link', { name: 'renovate' }).should(
