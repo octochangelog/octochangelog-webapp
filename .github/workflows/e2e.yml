@@ -52,6 +52,7 @@ jobs:
         uses: cypress-io/github-action@326daf6ade3226f7225a17850d2d39e243ad0d8a
         with:
           install-command: pnpm install
+          browser: chrome
           build: pnpm build
           start: pnpm serve
           wait-on: 'http://localhost:3000'
