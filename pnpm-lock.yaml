@@ -32,7 +32,7 @@ specifiers:
   '@typescript-eslint/parser': 5.46.1
   '@vercel/analytics': 0.1.6
   cypress: 12.1.0
-  downshift: 7.0.4
+  downshift: 7.0.5
   eslint: 8.30.0
   eslint-config-next: 13.0.7
   eslint-config-prettier: 8.5.0
@@ -82,7 +82,7 @@ dependencies:
   '@tanstack/react-query': 4.20.4_biqbaboplfbrettd7655fr4n2y
   '@tanstack/react-query-devtools': 4.20.4_fu3ixcwltlssi3ozitelgaebme
   '@vercel/analytics': 0.1.6_react@18.2.0
-  downshift: 7.0.4_react@18.2.0
+  downshift: 7.0.5_react@18.2.0
   framer-motion: 7.10.2_biqbaboplfbrettd7655fr4n2y
   lodash-es: 4.17.21
   next: 13.0.7_672uxklweod7ene3nqtsh262ca
@@ -4824,8 +4824,8 @@ packages:
       is-obj: 2.0.0
     dev: true
 
-  /downshift/7.0.4_react@18.2.0:
-    resolution: {integrity: sha512-RUDh8vhgFQRfcjL0ovcN95sw+X6njzaNXi2LxIbvVfvxkxju8wwTl021DVeqZOUkf5sZuXg4m4n3Eaf3DoA88g==}
+  /downshift/7.0.5_react@18.2.0:
+    resolution: {integrity: sha512-q52vBjtRkt4PLD0xQDUf3lM+uaUOpc5m0L8YfE9oPtn4RJLu5YITB/G4mr9OyPYwWIBe/h9g3RX6mggMVaBIDw==}
     peerDependencies:
       react: '>=16.12.0'
     dependencies:

@@ -40,7 +40,7 @@
 		"@tanstack/react-query": "4.20.4",
 		"@tanstack/react-query-devtools": "4.20.4",
 		"@vercel/analytics": "0.1.6",
-		"downshift": "7.0.4",
+		"downshift": "7.0.5",
 		"framer-motion": "7.10.2",
 		"lodash-es": "4.17.21",
 		"next": "13.0.7",
