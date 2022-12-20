@@ -49,7 +49,7 @@ jobs:
 
       # Act
       - name: Run Cypress
-        uses: cypress-io/github-action@326daf6ade3226f7225a17850d2d39e243ad0d8a
+        uses: cypress-io/github-action@19ae4d7502bfdedf2a3c47961e02ea209aad367b
         with:
           install-command: pnpm install
           browser: chrome
