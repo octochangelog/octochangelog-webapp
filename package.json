@@ -31,7 +31,7 @@
 		"postinstall": "pnpm gen:theme-typings"
 	},
 	"dependencies": {
-		"@chakra-ui/react": "2.4.4",
+		"@chakra-ui/react": "2.4.6",
 		"@emotion/react": "11.10.5",
 		"@emotion/styled": "11.10.5",
 		"@octokit/auth-callback": "3.0.0",
@@ -60,10 +60,10 @@
 		"unified": "10.1.2"
 	},
 	"devDependencies": {
-		"@chakra-ui/cli": "2.2.1",
-		"@chakra-ui/styled-system": "2.5.0",
-		"@chakra-ui/theme-tools": "2.0.14",
-		"@chakra-ui/utils": "2.0.12",
+		"@chakra-ui/cli": "2.3.0",
+		"@chakra-ui/styled-system": "2.5.1",
+		"@chakra-ui/theme-tools": "2.0.16",
+		"@chakra-ui/utils": "2.0.14",
 		"@jest/globals": "29.3.1",
 		"@octokit/openapi-types": "14.0.0",
 		"@testing-library/cypress": "9.0.0",
