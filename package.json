@@ -68,7 +68,7 @@
 		"@octokit/openapi-types": "14.0.0",
 		"@testing-library/cypress": "9.0.0",
 		"@testing-library/react": "13.4.0",
-		"@types/happo-cypress": "3.0.1",
+		"@types/happo-cypress": "3.0.2",
 		"@types/lodash-es": "4.17.6",
 		"@types/mdast": "3.0.10",
 		"@types/node": "18.11.18",
