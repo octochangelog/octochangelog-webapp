@@ -1,8 +1,5 @@
 lockfileVersion: 5.4
 
-overrides:
-  '@types/happo-cypress>cypress': '>=12'
-
 specifiers:
   '@chakra-ui/cli': 2.3.0
   '@chakra-ui/react': 2.4.6
