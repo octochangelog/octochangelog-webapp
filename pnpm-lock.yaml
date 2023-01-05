@@ -1,8 +1,5 @@
 lockfileVersion: 5.4
 
-overrides:
-  '@types/happo-cypress>cypress': '>=12'
-
 specifiers:
   '@chakra-ui/cli': 2.3.0
   '@chakra-ui/react': 2.4.6
@@ -20,7 +17,7 @@ specifiers:
   '@tanstack/react-query-devtools': 4.20.4
   '@testing-library/cypress': 9.0.0
   '@testing-library/react': 13.4.0
-  '@types/happo-cypress': 3.0.1
+  '@types/happo-cypress': 3.0.2
   '@types/lodash-es': 4.17.6
   '@types/mdast': 3.0.10
   '@types/node': 18.11.18
@@ -110,7 +107,7 @@ devDependencies:
   '@octokit/openapi-types': 14.0.0
   '@testing-library/cypress': 9.0.0_cypress@12.2.0
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
-  '@types/happo-cypress': 3.0.1
+  '@types/happo-cypress': 3.0.2
   '@types/lodash-es': 4.17.6
   '@types/mdast': 3.0.10
   '@types/node': 18.11.18
@@ -3020,8 +3017,8 @@ packages:
       '@types/node': 18.11.18
     dev: true
 
-  /@types/happo-cypress/3.0.1:
-    resolution: {integrity: sha512-lqj3+9EiJUwvWjAUEbQqkbqN0OGvifb/X2kwV1qZmVZvIw2wIKAs+CMIVatC9kSHrgDVrRSzN3NETowZh4BHSg==}
+  /@types/happo-cypress/3.0.2:
+    resolution: {integrity: sha512-hLQiG/pH9678uzD9mNiasyCiNlk01KbVk5JJrsSNmXuq1Azx+tiaqIM9PUOCvVs+Wt21hxlhQkY+KiP2XZEhOA==}
     dependencies:
       cypress: 12.2.0
     dev: true
