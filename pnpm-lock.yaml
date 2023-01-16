@@ -64,7 +64,7 @@ specifiers:
   remark-stringify: 10.0.2
   semver: 7.3.8
   start-server-and-test: 1.15.2
-  ts-jest: 29.0.4
+  ts-jest: 29.0.5
   type-fest: 3.5.1
   typescript: 4.9.4
   unified: 10.1.2
@@ -136,7 +136,7 @@ devDependencies:
   msw: 0.49.2_typescript@4.9.4
   prettier: 2.8.2
   start-server-and-test: 1.15.2
-  ts-jest: 29.0.4_jgcrazg63n7mkdjrxsk5jv2npy
+  ts-jest: 29.0.5_jgcrazg63n7mkdjrxsk5jv2npy
   type-fest: 3.5.1
   typescript: 4.9.4
 
@@ -10031,8 +10031,8 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: false
 
-  /ts-jest/29.0.4_jgcrazg63n7mkdjrxsk5jv2npy:
-    resolution: {integrity: sha512-YdNofkoyzeinwjIqLSYQeAM+GTmFQ7xFNtWcR5OyitY5VLzzNINrNmfhP5H3daA/V+RGQR7O3g1K6ysRgu5xIQ==}
+  /ts-jest/29.0.5_jgcrazg63n7mkdjrxsk5jv2npy:
+    resolution: {integrity: sha512-PL3UciSgIpQ7f6XjVOmbi96vmDHUqAyqDr8YxzopDqX3kfgYtX1cuNeBjP+L9sFXi6nzsGGA6R3fP3DDDJyrxA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     hasBin: true
     peerDependencies:
