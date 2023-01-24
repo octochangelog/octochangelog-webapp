@@ -6,9 +6,9 @@ import {
 	Button,
 	Container,
 } from '@chakra-ui/react'
-import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import NextLink from 'next/link'
+import { NextSeo } from 'next-seo'
 
 import mascotIcon from '@app-public/mascot-icon.png'
 import Layout from '~/components/Layout'

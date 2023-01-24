@@ -11,9 +11,9 @@ import {
 	Stack,
 	useColorModeValue,
 } from '@chakra-ui/react'
-import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import NextLink from 'next/link'
+import { NextSeo } from 'next-seo'
 import type { ReactNode } from 'react'
 import * as React from 'react'
 import type { IconType } from 'react-icons'
