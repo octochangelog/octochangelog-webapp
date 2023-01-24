@@ -1,6 +1,6 @@
 import { CircularProgress, Flex } from '@chakra-ui/react'
-import { NextSeo } from 'next-seo'
 import dynamic from 'next/dynamic'
+import { NextSeo } from 'next-seo'
 import { Suspense } from 'react'
 
 const RepositoryReleasesComparator = dynamic(
