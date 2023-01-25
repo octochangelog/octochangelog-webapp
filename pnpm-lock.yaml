@@ -13,8 +13,8 @@ specifiers:
   '@octokit/openapi-types': 14.0.0
   '@octokit/rest': 19.0.7
   '@sentry/nextjs': 7.31.1
-  '@tanstack/react-query': 4.22.0
-  '@tanstack/react-query-devtools': 4.22.0
+  '@tanstack/react-query': 4.22.3
+  '@tanstack/react-query-devtools': 4.22.3
   '@testing-library/cypress': 9.0.0
   '@testing-library/react': 13.4.0
   '@types/happo-cypress': 3.0.2
@@ -76,8 +76,8 @@ dependencies:
   '@octokit/auth-callback': 3.0.0
   '@octokit/rest': 19.0.7
   '@sentry/nextjs': 7.31.1_i7yjn6taeku5oqtycup6wmhwga
-  '@tanstack/react-query': 4.22.0_biqbaboplfbrettd7655fr4n2y
-  '@tanstack/react-query-devtools': 4.22.0_gp275tdwez2a4eujt75dnnp754
+  '@tanstack/react-query': 4.22.3_biqbaboplfbrettd7655fr4n2y
+  '@tanstack/react-query-devtools': 4.22.3_hb3qqjxjqeebvpirr3zzge36ki
   '@vercel/analytics': 0.1.8_react@18.2.0
   downshift: 7.2.0_react@18.2.0
   framer-motion: 8.5.0_biqbaboplfbrettd7655fr4n2y
@@ -2894,23 +2894,23 @@ packages:
     resolution: {integrity: sha512-OeLyBKBQoT265f5G9biReijeP8mBxNFwY7ZUu1dKL+YzqpG5q5z7J/N1eT8aWyKuhyDTiUHuKm5l+oIVzbtrjw==}
     dev: false
 
-  /@tanstack/react-query-devtools/4.22.0_gp275tdwez2a4eujt75dnnp754:
-    resolution: {integrity: sha512-YeYFBnfqvb+ZlA0IiJqiHNNSzepNhI1p2o9i8NlhQli9+Zrn230M47OBaBUs8qr3DD1dC2zGB1Dis50Ktz8gAA==}
+  /@tanstack/react-query-devtools/4.22.3_hb3qqjxjqeebvpirr3zzge36ki:
+    resolution: {integrity: sha512-O+To5BYdPab7t8RvwUbdZB6BjxCldqCAju0PW7GSEii470YKVuBkOa+vHBbS87UNtMZ9oFF9zrW2WiL5Cw6Glw==}
     peerDependencies:
-      '@tanstack/react-query': 4.22.0
+      '@tanstack/react-query': 4.22.3
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@tanstack/match-sorter-utils': 8.7.6
-      '@tanstack/react-query': 4.22.0_biqbaboplfbrettd7655fr4n2y
+      '@tanstack/react-query': 4.22.3_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       superjson: 1.12.2
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
 
-  /@tanstack/react-query/4.22.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-P9o+HjG42uB/xHR6dMsJaPhtZydSe4v0xdG5G/cEj1oHZAXelMlm67/rYJNQGKgBamKElKogj+HYGF+NY2yHYg==}
+  /@tanstack/react-query/4.22.3_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-5yBsXn+ddlPvfxCHrklATOnz/y72uOinect69DyUcGkYcvjh2wfkUPWAO+s/e7wDW2At8QEeRmkuwjKLH4vO6g==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -3038,12 +3038,12 @@ packages:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
       '@types/eslint': 8.4.10
-      '@types/estree': 0.0.51
+      '@types/estree': 1.0.0
 
   /@types/eslint/8.4.10:
     resolution: {integrity: sha512-Sl/HOqN8NKPmhWo2VBEPm0nvHnu2LL3v9vKo8MEq0EtbJ4eVzGPl41VNPvn5E1i5poMk4/XD8UriLHpJvEP/Nw==}
     dependencies:
-      '@types/estree': 0.0.51
+      '@types/estree': 1.0.0
       '@types/json-schema': 7.0.11
 
   /@types/estree/0.0.51:
@@ -3051,7 +3051,6 @@ packages:
 
   /@types/estree/1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
-    dev: false
 
   /@types/graceful-fs/4.1.6:
     resolution: {integrity: sha512-Sig0SNORX9fdW+bQuTEovKj3uHcUL6LQKbCrrqb1X7J6/ReAbhCXRAhc+SMejhLELFj2QcyuxmUooZ4bt5ReSw==}
