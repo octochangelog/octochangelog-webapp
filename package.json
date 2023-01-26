@@ -65,7 +65,7 @@
 		"@chakra-ui/theme-tools": "2.0.16",
 		"@chakra-ui/utils": "2.0.14",
 		"@jest/globals": "29.3.1",
-		"@octokit/openapi-types": "14.0.0",
+		"@octokit/openapi-types": "16.0.0",
 		"@testing-library/cypress": "9.0.0",
 		"@testing-library/react": "13.4.0",
 		"@types/happo-cypress": "3.0.2",
