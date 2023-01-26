@@ -176,6 +176,7 @@ const renovateRepoDetails: Repository = {
 	},
 	network_count: 1258,
 	subscribers_count: 70,
+	has_discussions: true,
 }
 
 export { renovateRepoDetails }

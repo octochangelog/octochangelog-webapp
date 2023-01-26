@@ -179,6 +179,7 @@ const domTestingLibraryRepoDetails: Repository = {
 	},
 	network_count: 438,
 	subscribers_count: 37,
+	has_discussions: true,
 }
 
 export { domTestingLibraryRepoDetails }
