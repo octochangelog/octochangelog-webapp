@@ -39,7 +39,7 @@ specifiers:
   eslint-plugin-unicorn: 45.0.2
   framer-motion: 8.5.2
   happo-cypress: 4.0.1
-  happo-e2e: 2.1.0
+  happo-e2e: 2.1.1
   happo.io: 8.3.1
   husky: 8.0.3
   is-ci: 3.0.1
@@ -125,8 +125,8 @@ devDependencies:
   eslint-plugin-jest: 27.2.1_zcs5aryjwlqsbfhbanb4knkwyi
   eslint-plugin-jest-formatting: 3.1.0_eslint@8.32.0
   eslint-plugin-unicorn: 45.0.2_eslint@8.32.0
-  happo-cypress: 4.0.1_happo-e2e@2.1.0
-  happo-e2e: 2.1.0
+  happo-cypress: 4.0.1_happo-e2e@2.1.1
+  happo-e2e: 2.1.1
   happo.io: 8.3.1_uurwtjpjvxqw42acakfegu44be
   husky: 8.0.3
   is-ci: 3.0.1
@@ -6046,17 +6046,17 @@ packages:
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
     dev: true
 
-  /happo-cypress/4.0.1_happo-e2e@2.1.0:
+  /happo-cypress/4.0.1_happo-e2e@2.1.1:
     resolution: {integrity: sha512-4cXFwfaALDTTKH95FGbWN4V0zWnv30XTxxmBTJV/YkqXuozsWRBiZOR7eC0WT2wZ9hiaBhNiw5J/w00RZ0zbCw==}
     hasBin: true
     peerDependencies:
       happo-e2e: '>= 1.4.2'
     dependencies:
-      happo-e2e: 2.1.0
+      happo-e2e: 2.1.1
     dev: true
 
-  /happo-e2e/2.1.0:
-    resolution: {integrity: sha512-7yrse7skTTwaLDL47X4bhcYrk/nMXAmNAMImnaAel3KgR+DmjSGGLDFLi+gyQ3b0qB1dpNwOyqcIoJk++UNltQ==}
+  /happo-e2e/2.1.1:
+    resolution: {integrity: sha512-r6PyHLipxtbpLfI7CNmttOpNwSLGBFp5e4fZjkz7iZLeQHwpHwKLPi+TiheY1Amlf4WXqVZcywQ8ExSiR+Puug==}
     hasBin: true
     dependencies:
       archiver: 5.3.1
