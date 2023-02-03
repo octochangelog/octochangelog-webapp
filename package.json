@@ -41,7 +41,7 @@
 		"@tanstack/react-query-devtools": "4.23.0",
 		"@vercel/analytics": "0.1.8",
 		"downshift": "7.2.0",
-		"framer-motion": "8.5.4",
+		"framer-motion": "8.5.5",
 		"lodash-es": "4.17.21",
 		"next": "13.1.6",
 		"next-seo": "5.15.0",
