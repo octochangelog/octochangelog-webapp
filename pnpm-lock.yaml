@@ -65,7 +65,7 @@ specifiers:
   semver: 7.3.8
   start-server-and-test: 1.15.3
   ts-jest: 29.0.5
-  type-fest: 3.5.5
+  type-fest: 3.5.6
   typescript: 4.9.5
   unified: 10.1.2
 
@@ -137,7 +137,7 @@ devDependencies:
   prettier: 2.8.3
   start-server-and-test: 1.15.3
   ts-jest: 29.0.5_ecv55cdbauq6znr7ci2lzguwra
-  type-fest: 3.5.5
+  type-fest: 3.5.6
   typescript: 4.9.5
 
 packages:
@@ -10201,8 +10201,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  /type-fest/3.5.5:
-    resolution: {integrity: sha512-Nudle2CLcCaf9/1bVQunwzX1/ZH4Z6mvP8hkWWZCbKrxtnN52QwD5Xn/mo68aofQhGU4be1GlEC6LQCTKGXkRw==}
+  /type-fest/3.5.6:
+    resolution: {integrity: sha512-6bd2bflx8ed7c99tc6zSTIzHr1/QG29bQoK4Qh8MYGnlPbODUzGxklLShjwc/xWQQFHgIci+y5Arv7Rbb0LjXw==}
     engines: {node: '>=14.16'}
     dev: true
 
