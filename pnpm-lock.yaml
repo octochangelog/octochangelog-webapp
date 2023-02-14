@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@chakra-ui/cli': 2.3.0
   '@chakra-ui/react': 2.4.9
-  '@chakra-ui/styled-system': 2.5.1
+  '@chakra-ui/styled-system': 2.5.2
   '@chakra-ui/theme-tools': 2.0.16
   '@chakra-ui/utils': 2.0.14
   '@emotion/react': 11.10.5
@@ -100,8 +100,8 @@ dependencies:
 
 devDependencies:
   '@chakra-ui/cli': 2.3.0_4bewfcp2iebiwuold25d6rgcsy
-  '@chakra-ui/styled-system': 2.5.1
-  '@chakra-ui/theme-tools': 2.0.16_ak67p4fuwhwgy7hpxa6ejvcgoy
+  '@chakra-ui/styled-system': 2.5.2
+  '@chakra-ui/theme-tools': 2.0.16_m7jbdmx3mm6xt6t3gop7zi2pq4
   '@chakra-ui/utils': 2.0.14
   '@jest/globals': 29.4.2
   '@octokit/openapi-types': 16.0.0
@@ -1362,7 +1362,6 @@ packages:
 
   /@chakra-ui/shared-utils/2.0.5:
     resolution: {integrity: sha512-4/Wur0FqDov7Y0nCXl7HbHzCg4aq86h+SXdoUeuCMD3dSj7dpsVnStLYhng1vxvlbUnLpdF4oz5Myt3i/a7N3Q==}
-    dev: false
 
   /@chakra-ui/skeleton/2.0.23_ublygk26yvqigtycgan52uuiea:
     resolution: {integrity: sha512-iMK50PlC9kR52v8tZWSKnZTJsOpZrqXOXaR9r/0Ry3xhdMq5hGkcigA+zKy/ZEglbMZ2CG9Fdtvi2vQurE1VZw==}
@@ -1421,21 +1420,12 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@chakra-ui/styled-system/2.5.1:
-    resolution: {integrity: sha512-HhaXR/r5eGlC7vkoOWQ31yZEj+Aq+kFee7ZZb0fBRGKQichn06S9Ugr8CsFyzb+jNexHdtBlIcTBm0ufJ8HsFA==}
-    dependencies:
-      '@chakra-ui/shared-utils': 2.0.4
-      csstype: 3.1.1
-      lodash.mergewith: 4.6.2
-    dev: true
-
   /@chakra-ui/styled-system/2.5.2:
     resolution: {integrity: sha512-FVnSWcj28F2t0R6slslYnhdWL8L3+elzoNt9oXBosS9PS6u6Yh56Dqq2GH2yasOWSmuuXGCPbzOYuc0U+MlCqg==}
     dependencies:
       '@chakra-ui/shared-utils': 2.0.5
       csstype: 3.1.1
       lodash.mergewith: 4.6.2
-    dev: false
 
   /@chakra-ui/switch/2.0.22_wdveywmjhvwn7fgxkkzjeoy4ci:
     resolution: {integrity: sha512-+/Yy6y7VFD91uSPruF8ZvePi3tl5D8UNVATtWEQ+QBI92DLSM+PtgJ2F0Y9GMZ9NzMxpZ80DqwY7/kqcPCfLvw==}
@@ -1525,14 +1515,14 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@chakra-ui/theme-tools/2.0.16_ak67p4fuwhwgy7hpxa6ejvcgoy:
+  /@chakra-ui/theme-tools/2.0.16_m7jbdmx3mm6xt6t3gop7zi2pq4:
     resolution: {integrity: sha512-B/LD+2LNDeHYd/LVCHIJqckVZfhrycTUpNbhRVAiDRaS0AAcsPxKas7liTFkkMkM076YjiHlcla3KpVX+E9tzg==}
     peerDependencies:
       '@chakra-ui/styled-system': '>=2.0.0'
     dependencies:
       '@chakra-ui/anatomy': 2.1.1
       '@chakra-ui/shared-utils': 2.0.4
-      '@chakra-ui/styled-system': 2.5.1
+      '@chakra-ui/styled-system': 2.5.2
       color2k: 2.0.1
     dev: true
 
