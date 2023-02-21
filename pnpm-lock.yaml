@@ -27,7 +27,7 @@ specifiers:
   '@types/unist': 2.0.6
   '@typescript-eslint/eslint-plugin': 5.52.0
   '@typescript-eslint/parser': 5.52.0
-  '@vercel/analytics': 0.1.8
+  '@vercel/analytics': 0.1.10
   cypress: 12.6.0
   downshift: 7.2.0
   eslint: 8.34.0
@@ -78,7 +78,7 @@ dependencies:
   '@sentry/nextjs': 7.37.2_3hasew56yhfsk6ei4nos45iqie
   '@tanstack/react-query': 4.24.4_biqbaboplfbrettd7655fr4n2y
   '@tanstack/react-query-devtools': 4.24.4_pkeil6ml7pq7xvil3imldjs2sa
-  '@vercel/analytics': 0.1.8_react@18.2.0
+  '@vercel/analytics': 0.1.10_react@18.2.0
   downshift: 7.2.0_react@18.2.0
   framer-motion: 9.0.2_biqbaboplfbrettd7655fr4n2y
   lodash-es: 4.17.21
@@ -3413,8 +3413,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vercel/analytics/0.1.8_react@18.2.0:
-    resolution: {integrity: sha512-PQrOI8BJ9qUiVJuQfnKiJd15eDjDJH9TBKsNeMrtelT4NAk7d9mBVz1CoZkvoFnHQ0OW7Xnqmr1F2nScfAnznQ==}
+  /@vercel/analytics/0.1.10_react@18.2.0:
+    resolution: {integrity: sha512-jjJ8GzcPnQp0cMxpfYoUycMRBtDiaIeyVjZPiEPe99Dj1PdjMzAFYEASiV/hpNsXHkpcNYCveDFh6jnmh0YSDQ==}
     peerDependencies:
       react: ^16.8||^17||^18
     dependencies:
