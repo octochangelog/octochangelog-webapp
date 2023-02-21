@@ -67,7 +67,7 @@
 		"@jest/globals": "29.4.3",
 		"@octokit/openapi-types": "16.0.0",
 		"@testing-library/cypress": "9.0.0",
-		"@testing-library/react": "13.4.0",
+		"@testing-library/react": "14.0.0",
 		"@types/happo-cypress": "3.0.2",
 		"@types/lodash-es": "4.17.6",
 		"@types/mdast": "3.0.10",
