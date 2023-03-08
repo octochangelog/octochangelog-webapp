@@ -85,7 +85,7 @@
 		"eslint-plugin-cypress": "2.12.1",
 		"eslint-plugin-jest": "27.2.1",
 		"eslint-plugin-jest-formatting": "3.1.0",
-		"eslint-plugin-unicorn": "45.0.2",
+		"eslint-plugin-unicorn": "46.0.0",
 		"happo-cypress": "4.0.1",
 		"happo-e2e": "2.1.2",
 		"happo.io": "8.3.1",
