@@ -18,7 +18,7 @@ specifiers:
   '@testing-library/cypress': 9.0.0
   '@testing-library/react': 14.0.0
   '@types/happo-cypress': 3.0.2
-  '@types/lodash-es': 4.17.6
+  '@types/lodash-es': 4.17.7
   '@types/mdast': 3.0.10
   '@types/node': 18.15.0
   '@types/react': 18.0.28
@@ -108,7 +108,7 @@ devDependencies:
   '@testing-library/cypress': 9.0.0_cypress@12.7.0
   '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
   '@types/happo-cypress': 3.0.2
-  '@types/lodash-es': 4.17.6
+  '@types/lodash-es': 4.17.7
   '@types/mdast': 3.0.10
   '@types/node': 18.15.0
   '@types/react': 18.0.28
@@ -3075,8 +3075,8 @@ packages:
       '@types/node': 18.15.0
     dev: true
 
-  /@types/lodash-es/4.17.6:
-    resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
+  /@types/lodash-es/4.17.7:
+    resolution: {integrity: sha512-z0ptr6UI10VlU6l5MYhGwS4mC8DZyYer2mCoyysZtSF7p26zOX8UpbrV0YpNYLGS8K4PUFIyEr62IMFFjveSiQ==}
     dependencies:
       '@types/lodash': 4.14.191
     dev: true
