@@ -39,7 +39,7 @@ specifiers:
   eslint-plugin-unicorn: 46.0.0
   framer-motion: 10.0.1
   happo-cypress: 4.0.1
-  happo-e2e: 2.1.2
+  happo-e2e: 2.2.0
   happo.io: 8.3.1
   husky: 8.0.3
   is-ci: 3.0.1
@@ -125,8 +125,8 @@ devDependencies:
   eslint-plugin-jest: 27.2.1_lvqes7ikig6w47pc2p5afjjoqi
   eslint-plugin-jest-formatting: 3.1.0_eslint@8.36.0
   eslint-plugin-unicorn: 46.0.0_eslint@8.36.0
-  happo-cypress: 4.0.1_happo-e2e@2.1.2
-  happo-e2e: 2.1.2
+  happo-cypress: 4.0.1_happo-e2e@2.2.0
+  happo-e2e: 2.2.0
   happo.io: 8.3.1_7oh3slcy74ooj4zywrpicuz2h4
   husky: 8.0.3
   is-ci: 3.0.1
@@ -2992,12 +2992,12 @@ packages:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
       '@types/eslint': 8.21.3
-      '@types/estree': 0.0.51
+      '@types/estree': 1.0.0
 
   /@types/eslint/8.21.3:
     resolution: {integrity: sha512-fa7GkppZVEByMWGbTtE5MbmXWJTVbrjjaS8K6uQj+XtuuUv1fsuPAxhygfqLmsb/Ufb3CV8deFCpiMfAgi00Sw==}
     dependencies:
-      '@types/estree': 0.0.51
+      '@types/estree': 1.0.0
       '@types/json-schema': 7.0.11
 
   /@types/estree/0.0.51:
@@ -3005,7 +3005,6 @@ packages:
 
   /@types/estree/1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
-    dev: false
 
   /@types/graceful-fs/4.1.6:
     resolution: {integrity: sha512-Sig0SNORX9fdW+bQuTEovKj3uHcUL6LQKbCrrqb1X7J6/ReAbhCXRAhc+SMejhLELFj2QcyuxmUooZ4bt5ReSw==}
@@ -6027,17 +6026,17 @@ packages:
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
     dev: true
 
-  /happo-cypress/4.0.1_happo-e2e@2.1.2:
+  /happo-cypress/4.0.1_happo-e2e@2.2.0:
     resolution: {integrity: sha512-4cXFwfaALDTTKH95FGbWN4V0zWnv30XTxxmBTJV/YkqXuozsWRBiZOR7eC0WT2wZ9hiaBhNiw5J/w00RZ0zbCw==}
     hasBin: true
     peerDependencies:
       happo-e2e: '>= 1.4.2'
     dependencies:
-      happo-e2e: 2.1.2
+      happo-e2e: 2.2.0
     dev: true
 
-  /happo-e2e/2.1.2:
-    resolution: {integrity: sha512-x1nBOPKYeuX9OQHfPgPuiP63vzvxWW+gJzB+IB/+FD0o+oUACmfCAPNIHlkan1GIqCDdOpBGKwQwzlBSsv2O8A==}
+  /happo-e2e/2.2.0:
+    resolution: {integrity: sha512-R2RsStFT5DKz6nEayrH7fFM+7nKgbBe+Xycoy9WTHYbcbQVXSEIuS4PtkYD5itIKdnJ4B/s0jpznGzrMPbmD0A==}
     hasBin: true
     dependencies:
       archiver: 5.3.1
