@@ -51,7 +51,7 @@ specifiers:
   next: 13.2.4
   next-seo: 5.15.0
   nookies: 2.5.2
-  prettier: 2.8.5
+  prettier: 2.8.7
   react: 18.2.0
   react-dom: 18.2.0
   react-icons: 4.8.0
@@ -134,7 +134,7 @@ devDependencies:
   jest-environment-jsdom: 29.5.0
   lint-staged: 13.2.0
   msw: 0.49.2_typescript@4.9.5
-  prettier: 2.8.5
+  prettier: 2.8.7
   start-server-and-test: 2.0.0
   ts-jest: 29.0.5_q744lk64cx4tbpg7zn4yr5nesi
   type-fest: 3.6.1
@@ -666,7 +666,7 @@ packages:
       commander: 9.5.0
       lodash.throttle: 4.1.1
       ora: 5.4.1
-      prettier: 2.8.5
+      prettier: 2.8.7
       regenerator-runtime: 0.13.11
       ts-node: 10.9.1_c6ji2c4qjizyduibugypzpqig4
       tsconfig-paths: 4.1.2
@@ -4265,7 +4265,7 @@ packages:
     dependencies:
       chalk: 2.4.2
       clear-any-console: 1.16.2
-      prettier: 2.8.5
+      prettier: 2.8.7
     dev: true
 
   /cli-width/3.0.0:
@@ -8664,8 +8664,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /prettier/2.8.5:
-    resolution: {integrity: sha512-3gzuxrHbKUePRBB4ZeU08VNkUcqEHaUaouNt0m7LGP4Hti/NuB07C7PPTM/LkWqXoJYJn2McEo5+kxPNrtQkLQ==}
+  /prettier/2.8.7:
+    resolution: {integrity: sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
