@@ -28,7 +28,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': 5.57.0
   '@typescript-eslint/parser': 5.57.0
   '@vercel/analytics': 0.1.11
-  cypress: 12.8.1
+  cypress: 12.9.0
   downshift: 7.6.0
   eslint: 8.36.0
   eslint-config-next: 13.2.4
@@ -105,7 +105,7 @@ devDependencies:
   '@chakra-ui/utils': 2.0.14
   '@jest/globals': 29.5.0
   '@octokit/openapi-types': 16.0.0
-  '@testing-library/cypress': 9.0.0_cypress@12.8.1
+  '@testing-library/cypress': 9.0.0_cypress@12.9.0
   '@testing-library/react': 14.0.0_biqbaboplfbrettd7655fr4n2y
   '@types/happo-cypress': 4.1.0
   '@types/lodash-es': 4.17.7
@@ -117,7 +117,7 @@ devDependencies:
   '@types/unist': 2.0.6
   '@typescript-eslint/eslint-plugin': 5.57.0_5t5646cukn2kik5kiydglap3vi
   '@typescript-eslint/parser': 5.57.0_vgl77cfdswitgr47lm5swmv43m
-  cypress: 12.8.1
+  cypress: 12.9.0
   eslint: 8.36.0
   eslint-config-next: 13.2.4_vgl77cfdswitgr47lm5swmv43m
   eslint-config-prettier: 8.8.0_eslint@8.36.0
@@ -2868,7 +2868,7 @@ packages:
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false
 
-  /@testing-library/cypress/9.0.0_cypress@12.8.1:
+  /@testing-library/cypress/9.0.0_cypress@12.9.0:
     resolution: {integrity: sha512-c1XiCGeHGGTWn0LAU12sFUfoX3qfId5gcSE2yHode+vsyHDWraxDPALjVnHd4/Fa3j4KBcc5k++Ccy6A9qnkMA==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
@@ -2876,7 +2876,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.21.0
       '@testing-library/dom': 8.20.0
-      cypress: 12.8.1
+      cypress: 12.9.0
     dev: true
 
   /@testing-library/dom/8.20.0:
@@ -3016,7 +3016,7 @@ packages:
   /@types/happo-cypress/4.1.0:
     resolution: {integrity: sha512-RwY+ExkWtiItcCH10DIaTGQXwSt/z6r1Yh0XTd4/jtoFRT8ZKMt/Mgaxyoc3LooAIpm7mV1Dq2bpS0NtqsY+EQ==}
     dependencies:
-      cypress: 12.8.1
+      cypress: 12.9.0
     dev: true
 
   /@types/hast/2.3.4:
@@ -4569,8 +4569,8 @@ packages:
   /csstype/3.1.1:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
 
-  /cypress/12.8.1:
-    resolution: {integrity: sha512-lIFbKdaSYAOarNLHNFa2aPZu6YSF+8UY4VRXMxJrFUnk6RvfG0AWsZ7/qle/aIz30TNUD4aOihz2ZgS4vuQVSA==}
+  /cypress/12.9.0:
+    resolution: {integrity: sha512-Ofe09LbHKgSqX89Iy1xen2WvpgbvNxDzsWx3mgU1mfILouELeXYGwIib3ItCwoRrRifoQwcBFmY54Vs0zw7QCg==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     hasBin: true
     requiresBuild: true
