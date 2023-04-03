@@ -16,12 +16,16 @@ it('should show changelog results when filling the form', () => {
 		.findByText('testing-library/dom-testing-library')
 		.click()
 
-	cy.findByRole('combobox', { name: /select from release/i })
-		.select('v6.16.0')
-		.should('have.value', 'v6.16.0')
-	cy.findByRole('combobox', { name: /select to release/i })
-		.select('v8.1.0')
-		.should('have.value', 'v8.1.0')
+	cy.findByRole('combobox', { name: /select from release/i }).select('v6.16.0')
+	cy.findByRole('combobox', { name: /select from release/i }).should(
+		'have.value',
+		'v6.16.0'
+	)
+	cy.findByRole('combobox', { name: /select to release/i }).select('v8.1.0')
+	cy.findByRole('combobox', { name: /select to release/i }).should(
+		'have.value',
+		'v8.1.0'
+	)
 
 	cy.findByRole('link', { name: 'dom-testing-library' }).should(
 		'have.attr',
