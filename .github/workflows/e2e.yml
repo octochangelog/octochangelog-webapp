@@ -33,6 +33,10 @@ jobs:
         # run 2 copies of the current job in parallel
         containers: [1, 2]
 
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
     steps:
       # Arrange
       - name: Cancel Previous Runs
