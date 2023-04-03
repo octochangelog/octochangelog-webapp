@@ -2,7 +2,7 @@
  * @file Declare here any additional module with no types or global types.
  */
 
-import type { SetupWorkerApi, rest } from 'msw'
+import type { SetupWorker, rest } from 'msw'
 
 declare module 'happo-cypress/task' {
 	interface HappoTask {
@@ -17,7 +17,7 @@ declare global {
 	interface Window {
 		// msw utils passed through window to be reused in E2E or other parts.
 		msw?: {
-			worker: SetupWorkerApi
+			worker: SetupWorker
 			rest: typeof rest
 		}
 		isApiMockingEnabled?: boolean
