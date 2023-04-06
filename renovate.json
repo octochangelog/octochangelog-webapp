@@ -11,6 +11,7 @@
 		"automerge": true
 	},
 	"internalChecksFilter": "strict",
+	"platformAutomerge": true,
 	"packageRules": [
 		{
 			"description": "Automerge ESLint and Prettier updates",

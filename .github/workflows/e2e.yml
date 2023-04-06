@@ -8,6 +8,7 @@ on:
   pull_request:
     branches:
       - main
+  merge_group:
 
 permissions:
   contents: read
@@ -18,6 +19,12 @@ env:
   HAPPO_API_KEY: ${{ secrets.HAPPO_API_KEY }}
   HAPPO_API_SECRET: ${{ secrets.HAPPO_API_SECRET }}
   HAPPO_NONCE: '${{ github.run_id }}-${{ github.run_attempt }}'
+
+concurrency:
+  # Group name from GitHub workflow example so it doesn't cancel jobs in parallel with matrix
+  # (https://docs.github.com/en/actions/examples/using-concurrency-expressions-and-a-test-matrix#example-workflow)
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
   cypress:
@@ -35,8 +42,6 @@ jobs:
 
     steps:
       # Arrange
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@b173b6ec0100793626c2d9e6b90435061f4fc3e5 # tag=0.11.0
       - name: Checkout repository
         uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
       - name: Setup pnpm
@@ -81,8 +86,6 @@ jobs:
       - cypress
     steps:
       # Arrange
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@b173b6ec0100793626c2d9e6b90435061f4fc3e5 # tag=0.11.0
       - name: Checkout repository
         uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
       - name: Setup pnpm

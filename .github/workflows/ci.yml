@@ -3,6 +3,7 @@ name: CI
 on:
   pull_request:
     branches: [main]
+  merge_group:
 
 permissions:
   contents: read
@@ -12,14 +13,27 @@ env:
   # Skip Cypress installation in the whole workflow, not necessary here
   CYPRESS_INSTALL_BINARY: 0
 
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 jobs:
-  lint:
-    name: Code Linting
+  code_validation:
+    strategy:
+      fail-fast: false
+      matrix:
+        validation_script:
+          [
+            'lint',
+            'type-check',
+            'type-check:cypress',
+            'format:check',
+            'test:ci',
+          ]
+    name: 'Code Validation: ${{ matrix.validation_script }}'
     runs-on: ubuntu-latest
     steps:
       # Arrange
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@b173b6ec0100793626c2d9e6b90435061f4fc3e5 # tag=0.11.0
       - name: Checkout repository
         uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
       - name: Setup pnpm
@@ -33,76 +47,5 @@ jobs:
         run: pnpm install
 
       # Act
-      - name: ESLint
-        run: pnpm lint
-
-  types_check:
-    name: Types Check
-    runs-on: ubuntu-latest
-    steps:
-      # Arrange
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@b173b6ec0100793626c2d9e6b90435061f4fc3e5 # tag=0.11.0
-      - name: Checkout repository
-        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install
-
-      # Act
-      - name: Check codebase types
-        run: pnpm type-check
-      - name: Check Cypress types
-        run: pnpm type-check:cypress
-
-  format_check:
-    name: Format Check
-    runs-on: ubuntu-latest
-    steps:
-      # Arrange
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@b173b6ec0100793626c2d9e6b90435061f4fc3e5 # tag=0.11.0
-      - name: Checkout repository
-        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install
-
-      # Act
-      - name: Prettier
-        run: pnpm format:check
-
-  tests:
-    name: JavaScript Tests
-    runs-on: ubuntu-latest
-    steps:
-      # Arrange
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@b173b6ec0100793626c2d9e6b90435061f4fc3e5 # tag=0.11.0
-      - name: Checkout repository
-        uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-      - name: Setup Node.js
-        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install
-
-      # Act
-      - name: Run jest
-        run: pnpm test:ci
+      - name: Run script
+        run: pnpm ${{ matrix.validation_script }}
