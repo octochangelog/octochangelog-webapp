@@ -21,6 +21,8 @@ env:
   HAPPO_NONCE: '${{ github.run_id }}-${{ github.run_attempt }}'
 
 concurrency:
+  # Group name from GitHub workflow example so it doesn't cancel jobs in parallel with matrix
+  # (https://docs.github.com/en/actions/examples/using-concurrency-expressions-and-a-test-matrix#example-workflow)
   group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
