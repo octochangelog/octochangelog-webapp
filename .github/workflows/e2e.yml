@@ -20,6 +20,10 @@ env:
   HAPPO_API_SECRET: ${{ secrets.HAPPO_API_SECRET }}
   HAPPO_NONCE: '${{ github.run_id }}-${{ github.run_attempt }}'
 
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 jobs:
   cypress:
     name: Cypress with Happo
@@ -33,10 +37,6 @@ jobs:
       matrix:
         # run 2 copies of the current job in parallel
         containers: [1, 2]
-
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
     steps:
       # Arrange
