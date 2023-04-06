@@ -23,7 +23,13 @@ jobs:
       fail-fast: false
       matrix:
         validation_script:
-          [lint, type-check, type-check:cypress, format:check, test:ci]
+          [
+            'lint',
+            'type-check',
+            'type-check:cypress',
+            'format:check',
+            'test:ci',
+          ]
     name: 'Code Validation: ${{ matrix.validation_script }}'
     runs-on: ubuntu-latest
     steps:
