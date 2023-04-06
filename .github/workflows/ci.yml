@@ -47,5 +47,5 @@ jobs:
         run: pnpm install
 
       # Act
-      - name: ESLint
+      - name: Run script
         run: pnpm ${{ matrix.validation_script }}
