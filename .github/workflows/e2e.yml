@@ -39,8 +39,6 @@ jobs:
 
     steps:
       # Arrange
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@b173b6ec0100793626c2d9e6b90435061f4fc3e5 # tag=0.11.0
       - name: Checkout repository
         uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
       - name: Setup pnpm
@@ -85,8 +83,6 @@ jobs:
       - cypress
     steps:
       # Arrange
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@b173b6ec0100793626c2d9e6b90435061f4fc3e5 # tag=0.11.0
       - name: Checkout repository
         uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3 # v3.5.0
       - name: Setup pnpm
