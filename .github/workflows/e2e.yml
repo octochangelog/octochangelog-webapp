@@ -18,7 +18,7 @@ env:
   NEXT_PUBLIC_API_MOCKING: 'enabled'
   HAPPO_API_KEY: ${{ secrets.HAPPO_API_KEY }}
   HAPPO_API_SECRET: ${{ secrets.HAPPO_API_SECRET }}
-  HAPPO_NONCE: '${{ github.run_id }}-${{ github.run_attempt }}'
+  HAPPO_NONCE: '${{ github.run_id || github.event.pull_request.head.label || github.head_ref || github.ref }}'
 
 concurrency:
   # Group name from GitHub workflow example so it doesn't cancel jobs in parallel with matrix
