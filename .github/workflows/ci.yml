@@ -12,6 +12,10 @@ env:
   # Skip Cypress installation in the whole workflow, not necessary here
   CYPRESS_INSTALL_BINARY: 0
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
 jobs:
   lint:
     name: Code Linting
