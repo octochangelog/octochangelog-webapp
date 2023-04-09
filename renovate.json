@@ -3,7 +3,8 @@
 		"config:base",
 		"helpers:pinGitHubActionDigests",
 		":automergeTypes",
-		"npm:unpublishSafe"
+		"npm:unpublishSafe",
+		"helpers:disableTypesNodeMajor"
 	],
 	"prCreation": "not-pending",
 	"lockFileMaintenance": {
