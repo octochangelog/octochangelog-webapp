@@ -15,10 +15,11 @@
 	"platformAutomerge": true,
 	"packageRules": [
 		{
-			"description": "Automerge ESLint and Prettier updates",
+			"description": "Automerge ESLint and Prettier updates once a month",
 			"matchDepTypes": ["devDependencies"],
 			"matchPackagePatterns": ["eslint", "prettier"],
-			"automerge": true
+			"automerge": true,
+			"extends": ["schedule:monthly"]
 		},
 		{
 			"description": "Get pnpm updates once a month",
