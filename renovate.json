@@ -3,7 +3,8 @@
 		"config:base",
 		"helpers:pinGitHubActionDigests",
 		":automergeTypes",
-		"npm:unpublishSafe"
+		"npm:unpublishSafe",
+		"helpers:disableTypesNodeMajor"
 	],
 	"prCreation": "not-pending",
 	"lockFileMaintenance": {
@@ -14,15 +15,21 @@
 	"platformAutomerge": true,
 	"packageRules": [
 		{
-			"description": "Automerge ESLint and Prettier updates",
+			"description": "Automerge ESLint and Prettier updates once a month",
 			"matchDepTypes": ["devDependencies"],
 			"matchPackagePatterns": ["eslint", "prettier"],
-			"automerge": true
+			"automerge": true,
+			"extends": ["schedule:monthly"]
 		},
 		{
 			"description": "Get pnpm updates once a month",
 			"matchDepTypes": ["packageManager"],
 			"matchPackageNames": ["pnpm"],
+			"extends": ["schedule:monthly"]
+		},
+		{
+			"description": "Get GitHub Actions updates once a month",
+			"matchDepTypes": ["action"],
 			"extends": ["schedule:monthly"]
 		}
 	]
