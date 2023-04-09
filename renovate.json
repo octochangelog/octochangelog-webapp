@@ -25,6 +25,11 @@
 			"matchDepTypes": ["packageManager"],
 			"matchPackageNames": ["pnpm"],
 			"extends": ["schedule:monthly"]
+		},
+		{
+			"description": "Get GitHub Actions updates once a month",
+			"matchDepTypes": ["action"],
+			"extends": ["schedule:monthly"]
 		}
 	]
 }
