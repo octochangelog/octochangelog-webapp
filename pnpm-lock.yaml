@@ -100,8 +100,8 @@ devDependencies:
     specifier: 29.5.0
     version: 29.5.0
   '@octokit/openapi-types':
-    specifier: 16.0.0
-    version: 16.0.0
+    specifier: 16.1.0
+    version: 16.1.0
   '@testing-library/cypress':
     specifier: 9.0.0
     version: 9.0.0(cypress@12.10.0)
@@ -2577,8 +2577,8 @@ packages:
       - encoding
     dev: false
 
-  /@octokit/openapi-types@16.0.0:
-    resolution: {integrity: sha512-JbFWOqTJVLHZSUUoF4FzAZKYtqdxWu9Z5m2QQnOyEa04fOFljvyh7D3GYKbfuaSWisqehImiVIMG4eyJeP5VEA==}
+  /@octokit/openapi-types@16.1.0:
+    resolution: {integrity: sha512-+m6+376kp4gZAYtg64aXGHK2qM2LtIiZctqtbTnETdUaD7OSuX7zDV5kciqw1QIN13lg9jWz039OF7NZUdYEeQ==}
 
   /@octokit/plugin-paginate-rest@6.0.0(@octokit/core@4.2.0):
     resolution: {integrity: sha512-Sq5VU1PfT6/JyuXPyt04KZNVsFOSBaYOAq2QRZUwzVlI10KFvcbUo8lR258AAQL1Et60b0WuVik+zOWKLuDZxw==}
@@ -2647,7 +2647,7 @@ packages:
   /@octokit/types@9.0.0:
     resolution: {integrity: sha512-LUewfj94xCMH2rbD5YJ+6AQ4AVjFYTgpp6rboWM5T7N3IsIF65SBEOVcYMGAEzO/kKNiNaW4LoWtoThOhH06gw==}
     dependencies:
-      '@octokit/openapi-types': 16.0.0
+      '@octokit/openapi-types': 16.1.0
     dev: false
 
   /@open-draft/until@1.0.3:
