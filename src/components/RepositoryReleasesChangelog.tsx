@@ -6,6 +6,8 @@ import {
 	Flex,
 	Skeleton,
 } from '@chakra-ui/react'
+import va from '@vercel/analytics'
+import { useEffect } from 'react'
 
 import TextSkeleton from './TextSkeleton'
 
@@ -30,6 +32,16 @@ const RepositoryReleasesChangelog = ({
 		fromVersion,
 		toVersion,
 	})
+
+	useEffect(() => {
+		if (!!fromVersion && !!toVersion) {
+			va.track('Compare', {
+				repository: `${repository.owner.login}/${repository.name}`,
+				fromVersion,
+				toVersion,
+			})
+		}
+	}, [fromVersion, repository, toVersion])
 
 	const filteredReleases = (() => {
 		if (data && fromVersion && toVersion) {
