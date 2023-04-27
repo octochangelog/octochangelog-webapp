@@ -10,17 +10,7 @@ function logToggleVercelAnalyticsAction(action: 'disabled' | 'enabled') {
 	console.log(`Vercel Analytics has been ${action} for this browser`)
 }
 
-const NoopVercelAnalytics = (): null => {
-	useEffect(() => {
-		// eslint-disable-next-line no-console
-		console.warn(
-			'Vercel Analytics is set up, but detected a non-Vercel production env. Please note that no analytics events will be sent.'
-		)
-	}, [])
-	return null
-}
-
-const ProductionVercelAnalytics = () => {
+const VercelAnalytics = () => {
 	const { isReady, replace, asPath } = useRouter()
 
 	useEffect(() => {
@@ -59,14 +49,6 @@ const ProductionVercelAnalytics = () => {
 			}}
 		/>
 	)
-}
-
-const VercelAnalytics = () => {
-	if (process.env.NEXT_PUBLIC_VERCEL_ENV !== 'production') {
-		return <NoopVercelAnalytics />
-	}
-
-	return <ProductionVercelAnalytics />
 }
 
 export default VercelAnalytics
