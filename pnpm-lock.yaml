@@ -104,7 +104,7 @@ devDependencies:
     version: 17.0.0
   '@testing-library/cypress':
     specifier: 9.0.0
-    version: 9.0.0(cypress@12.10.0)
+    version: 9.0.0(cypress@12.11.0)
   '@testing-library/react':
     specifier: 14.0.0
     version: 14.0.0(react-dom@18.2.0)(react@18.2.0)
@@ -139,8 +139,8 @@ devDependencies:
     specifier: 5.57.1
     version: 5.57.1(eslint@8.37.0)(typescript@5.0.4)
   cypress:
-    specifier: 12.10.0
-    version: 12.10.0
+    specifier: 12.11.0
+    version: 12.11.0
   eslint:
     specifier: 8.37.0
     version: 8.37.0
@@ -2954,7 +2954,7 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  /@testing-library/cypress@9.0.0(cypress@12.10.0):
+  /@testing-library/cypress@9.0.0(cypress@12.11.0):
     resolution: {integrity: sha512-c1XiCGeHGGTWn0LAU12sFUfoX3qfId5gcSE2yHode+vsyHDWraxDPALjVnHd4/Fa3j4KBcc5k++Ccy6A9qnkMA==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
@@ -2962,7 +2962,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.21.0
       '@testing-library/dom': 8.20.0
-      cypress: 12.10.0
+      cypress: 12.11.0
     dev: true
 
   /@testing-library/dom@8.20.0:
@@ -3099,7 +3099,7 @@ packages:
   /@types/happo-cypress@4.1.0:
     resolution: {integrity: sha512-RwY+ExkWtiItcCH10DIaTGQXwSt/z6r1Yh0XTd4/jtoFRT8ZKMt/Mgaxyoc3LooAIpm7mV1Dq2bpS0NtqsY+EQ==}
     dependencies:
-      cypress: 12.10.0
+      cypress: 12.11.0
     dev: true
 
   /@types/hast@2.3.4:
@@ -4643,8 +4643,8 @@ packages:
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
 
-  /cypress@12.10.0:
-    resolution: {integrity: sha512-Y0wPc221xKKW1/4iAFCphkrG2jNR4MjOne3iGn4mcuCaE7Y5EtXL83N8BzRsAht7GYfWVjJ/UeTqEdDKHz39HQ==}
+  /cypress@12.11.0:
+    resolution: {integrity: sha512-TJE+CCWI26Hwr5Msb9GpQhFLubdYooW0fmlPwTsfiyxmngqc7+SZGLPeIkj2dTSSZSEtpQVzOzvcnzH0o8G7Vw==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     hasBin: true
     requiresBuild: true
