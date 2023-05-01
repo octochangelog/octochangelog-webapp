@@ -32,8 +32,8 @@
 	},
 	"dependencies": {
 		"@chakra-ui/react": "2.6.0",
-		"@emotion/react": "11.10.6",
-		"@emotion/styled": "11.10.6",
+		"@emotion/react": "11.10.8",
+		"@emotion/styled": "11.10.8",
 		"@octokit/auth-callback": "3.0.0",
 		"@octokit/rest": "19.0.7",
 		"@sentry/nextjs": "7.50.0",
