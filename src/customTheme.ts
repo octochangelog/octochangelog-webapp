@@ -146,9 +146,9 @@ const customTheme = extendTheme(
 			},
 		},
 		fonts: {
-			heading: '"Inter", sans-serif;',
-			body: '"Inter", sans-serif;',
-			mono: '"Roboto Mono", monospace;',
+			heading: 'var(--font-inter)',
+			body: 'var(--font-inter)',
+			mono: 'var(--font-roboto-mono)',
 		},
 		styles: {
 			global: {
