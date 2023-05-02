@@ -7,6 +7,7 @@ tasks:
       pnpm install
       gp sync-done install
     command: pnpm dev
+    before: corepack enable
     name: Dev server
   - init: gp sync-await install
     command: pnpm cy:open
