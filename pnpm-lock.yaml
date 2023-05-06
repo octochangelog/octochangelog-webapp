@@ -26,8 +26,8 @@ dependencies:
     specifier: 4.29.6
     version: 4.29.6(@tanstack/react-query@4.29.5)(react-dom@18.2.0)(react@18.2.0)
   '@vercel/analytics':
-    specifier: 1.0.0
-    version: 1.0.0(react@18.2.0)
+    specifier: 1.0.1
+    version: 1.0.1
   downshift:
     specifier: 7.6.0
     version: 7.6.0(react@18.2.0)
@@ -3461,12 +3461,8 @@ packages:
       eslint-visitor-keys: 3.4.0
     dev: true
 
-  /@vercel/analytics@1.0.0(react@18.2.0):
-    resolution: {integrity: sha512-RQmj7pv82JwGDHrnKeRc6TtSw2U7rWNubc2IH0ernTzWTj02yr9zvIYiYJeztsBzrJtWv7m8Nz6vxxb+cdEtJw==}
-    peerDependencies:
-      react: ^16.8||^17||^18
-    dependencies:
-      react: 18.2.0
+  /@vercel/analytics@1.0.1:
+    resolution: {integrity: sha512-Ux0c9qUfkcPqng3vrR0GTrlQdqNJ2JREn/2ydrVuKwM3RtMfF2mWX31Ijqo1opSjNAq6rK76PwtANw6kl6TAow==}
     dev: false
 
   /@webassemblyjs/ast@1.11.5:
