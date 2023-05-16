@@ -56,7 +56,7 @@
 		"remark-parse": "10.0.1",
 		"remark-rehype": "10.1.0",
 		"remark-stringify": "10.0.2",
-		"semver": "7.5.0",
+		"semver": "7.5.1",
 		"unified": "10.1.2"
 	},
 	"devDependencies": {
@@ -74,7 +74,7 @@
 		"@types/node": "18.16.3",
 		"@types/react": "18.2.6",
 		"@types/react-dom": "18.2.4",
-		"@types/semver": "7.3.13",
+		"@types/semver": "7.5.0",
 		"@types/unist": "2.0.6",
 		"@typescript-eslint/eslint-plugin": "5.57.1",
 		"@typescript-eslint/parser": "5.57.1",
