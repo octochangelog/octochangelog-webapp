@@ -169,8 +169,8 @@ devDependencies:
     specifier: 2.2.4
     version: 2.2.4
   happo.io:
-    specifier: 8.3.2
-    version: 8.3.2(@babel/core@7.22.1)(babel-loader@9.1.2)(webpack@5.85.0)
+    specifier: 8.3.3
+    version: 8.3.3(@babel/core@7.22.1)(babel-loader@9.1.2)(webpack@5.85.0)
   husky:
     specifier: 8.0.3
     version: 8.0.3
@@ -6139,8 +6139,8 @@ packages:
       - supports-color
     dev: true
 
-  /happo.io@8.3.2(@babel/core@7.22.1)(babel-loader@9.1.2)(webpack@5.85.0):
-    resolution: {integrity: sha512-MRKADNQBaSJafZ8cuC1D5euGa08bORBI9+S0tK0i/r4mvDKfAAxsreySX+QFHagt/Yk/9kIG0Clt9kBHDwLjtw==}
+  /happo.io@8.3.3(@babel/core@7.22.1)(babel-loader@9.1.2)(webpack@5.85.0):
+    resolution: {integrity: sha512-E9a9LrHXOQFbs+qlJCET59Q9HVHbzvCX/Wht5236SpP2d3NymlziuBb8uXvF3t9mvvLVx5Od4+EDNzeNrttB3g==}
     engines: {node: '>=12'}
     hasBin: true
     peerDependencies:
