@@ -100,8 +100,8 @@ devDependencies:
     specifier: 29.5.0
     version: 29.5.0
   '@octokit/openapi-types':
-    specifier: 17.1.2
-    version: 17.1.2
+    specifier: 17.2.0
+    version: 17.2.0
   '@testing-library/cypress':
     specifier: 9.0.0
     version: 9.0.0(cypress@12.13.0)
@@ -2468,13 +2468,8 @@ packages:
       - encoding
     dev: false
 
-  /@octokit/openapi-types@17.1.2:
-    resolution: {integrity: sha512-OaS7Ol4Y+U50PbejfzQflGWRMxO04nYWO5ZBv6JerqMKE2WS/tI9VoVDDPXHBlRMGG2fOdKwtVGlFfc7AVIstw==}
-    dev: true
-
   /@octokit/openapi-types@17.2.0:
     resolution: {integrity: sha512-MazrFNx4plbLsGl+LFesMo96eIXkFgEtaKbnNpdh4aQ0VM10aoylFsTYP1AEjkeoRNZiiPe3T6Gl2Hr8dJWdlQ==}
-    dev: false
 
   /@octokit/plugin-paginate-rest@6.1.2(@octokit/core@4.2.1):
     resolution: {integrity: sha512-qhrmtQeHU/IivxucOV1bbI/xZyC/iOBhclokv7Sut5vnejAIAEXVcGQeRpQlU39E0WwK9lNvJHphHri/DB6lbQ==}
