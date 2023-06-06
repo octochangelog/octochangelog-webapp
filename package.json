@@ -98,6 +98,7 @@
 		"prettier": "2.8.7",
 		"start-server-and-test": "2.0.0",
 		"ts-jest": "29.1.0",
+		"ts-node": "10.9.1",
 		"type-fest": "3.11.1",
 		"typescript": "5.1.3"
 	},
