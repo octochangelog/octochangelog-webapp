@@ -1,3 +1,4 @@
+import { Link } from '@chakra-ui/next-js'
 import {
 	Heading,
 	Stack,
@@ -12,7 +13,6 @@ import { NextSeo } from 'next-seo'
 
 import mascotIcon from '@app-public/mascot-icon.png'
 import Layout from '~/components/Layout'
-import RouteLink from '~/components/RouteLink'
 
 const Custom404 = () => (
 	<Layout>
@@ -48,9 +48,9 @@ const Custom404 = () => (
 					</Button>
 				</NextLink>
 
-				<RouteLink href="/" fontWeight="black">
+				<Link href="/" fontWeight="black">
 					Or go to homepage
-				</RouteLink>
+				</Link>
 			</VStack>
 		</Container>
 	</Layout>
