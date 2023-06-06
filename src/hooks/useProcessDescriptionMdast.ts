@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { createElement, useEffect, useMemo, useState } from 'react'
 import rehypeHighlight from 'rehype-highlight'
 import rehype2react from 'rehype-react'
+import emoji from 'remark-emoji'
 import gfm from 'remark-gfm'
 import parse from 'remark-parse'
 import remark2rehype from 'remark-rehype'
@@ -29,6 +30,7 @@ async function processDescriptionAsync(
 		unified()
 			.use(parse)
 			.use(gfm)
+			.use(emoji, { accessible: true })
 			.use(remark2rehype)
 			.use(rehypeHighlight, { ignoreMissing: true })
 			.use(rehype2react, {
