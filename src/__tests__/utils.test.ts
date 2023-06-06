@@ -13,6 +13,7 @@ import {
 	mapRepositoryToQueryParams,
 	mapStringToRepositoryQueryParams,
 	paginateList,
+	sanitizeReleaseGroupTitle,
 } from '~/utils'
 
 describe('mapRepositoryToQueryParams util', () => {
@@ -157,6 +158,22 @@ describe('isStableRelease util', () => {
 		const result = isStableRelease({ tag_name: tagName } as Release)
 
 		expect(result).toBe(output)
+	})
+})
+
+describe('sanitizeReleaseGroupTitle', () => {
+	it.each`
+		input                  | output
+		${'BREAKING CHANGES'}  | ${'breaking changes'}
+		${'Bug Fixes'}         | ${'bug fixes'}
+		${'minor'}             | ${'minor'}
+		${'minor-release'}     | ${'minor release'}
+		${'🐛 Bug fix'}        | ${'bug fix'}
+		${'    trim this    '} | ${'trim this'}
+	`('should return "$output" for input "$input"', ({ input, output }) => {
+		const result = sanitizeReleaseGroupTitle(input)
+
+		expect(result).toEqual(output)
 	})
 })
 
