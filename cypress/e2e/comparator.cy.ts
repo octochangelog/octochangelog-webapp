@@ -37,7 +37,7 @@ it('should show changelog results when filling the form', () => {
 	cy.findByRole('heading', { name: /changes from v6\.16\.0 to v8\.1\.0/i })
 
 	cy.findByRole('heading', {
-		level: 2,
+		level: 3,
 		name: /breaking changes/i,
 	})
 
@@ -79,11 +79,11 @@ it('should show changelog results when filling the form', () => {
 		/\+ "test": "react-scripts test --env=jest-environment-jsdom-sixteen"/i
 	)
 
-	cy.findByRole('heading', { level: 2, name: /features/i })
-	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
-	cy.findByRole('heading', { level: 2, name: /reverts/i })
-	cy.findByRole('heading', { level: 2, name: /recommendations/i })
-	cy.findByRole('heading', { level: 2, name: /chore/i })
+	cy.findByRole('heading', { level: 3, name: /features/i })
+	cy.findByRole('heading', { level: 3, name: /bug fixes/i })
+	cy.findByRole('heading', { level: 3, name: /reverts/i })
+	cy.findByRole('heading', { level: 3, name: /recommendations/i })
+	cy.findByRole('heading', { level: 3, name: /chore/i })
 	cy.get('body').happoScreenshot({
 		component: 'Comparator page: basic changelog from filled form',
 	})
@@ -120,7 +120,7 @@ it('should show changelog results when preloading from URL', () => {
 	})
 
 	cy.findByRole('heading', {
-		level: 2,
+		level: 3,
 		name: /breaking changes/i,
 	})
 
@@ -157,11 +157,11 @@ it('should show changelog results when preloading from URL', () => {
 	)
 
 	cy.findByText(/waitForElement was still in use/) // description from v7.0.1 release
-	cy.findByRole('heading', { level: 2, name: /features/i })
-	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
-	cy.findByRole('heading', { level: 2, name: /reverts/i })
-	cy.findByRole('heading', { level: 2, name: /recommendations/i })
-	cy.findByRole('heading', { level: 2, name: /chore/i })
+	cy.findByRole('heading', { level: 3, name: /features/i })
+	cy.findByRole('heading', { level: 3, name: /bug fixes/i })
+	cy.findByRole('heading', { level: 3, name: /reverts/i })
+	cy.findByRole('heading', { level: 3, name: /recommendations/i })
+	cy.findByRole('heading', { level: 3, name: /chore/i })
 })
 
 it('should show changelog results when preloading from URL with "latest"', () => {
@@ -190,8 +190,8 @@ it('should show changelog results when preloading from URL with "latest"', () =>
 	cy.findByRole('heading', { name: 'Changes from v8.11.0 to latest' })
 	cy.findByText('Latest (v8.17.1)').should('be.selected')
 
-	cy.findByRole('heading', { level: 2, name: /features/i })
-	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
+	cy.findByRole('heading', { level: 3, name: /features/i })
+	cy.findByRole('heading', { level: 3, name: /bug fixes/i })
 
 	// description from v8.11.1 release
 	cy.findByText(/Don't queue microtasks after condition is met/)
@@ -277,12 +277,12 @@ it('should show changelog results when preloading from URL with more than 10 rel
 	cy.findByRole('heading', {
 		name: 'Changes from 26.9.0 to 32.172.2',
 	})
-	cy.findByRole('heading', { level: 2, name: /breaking changes/i })
-	cy.findByRole('heading', { level: 2, name: /bug fixes/i })
-	cy.findByRole('heading', { level: 2, name: /features/i })
-	cy.findByRole('heading', { level: 2, name: /reverts/i })
-	cy.findByRole('heading', { level: 2, name: /miscellaneous chores/i })
-	cy.findByRole('heading', { level: 2, name: /build system/i })
+	cy.findByRole('heading', { level: 3, name: /breaking changes/i })
+	cy.findByRole('heading', { level: 3, name: /bug fixes/i })
+	cy.findByRole('heading', { level: 3, name: /features/i })
+	cy.findByRole('heading', { level: 3, name: /reverts/i })
+	cy.findByRole('heading', { level: 3, name: /miscellaneous chores/i })
+	cy.findByRole('heading', { level: 3, name: /build system/i })
 
 	// link for 26.9.1 release (lowest one)
 	cy.findByRole('link', {

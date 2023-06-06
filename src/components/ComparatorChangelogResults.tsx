@@ -25,7 +25,7 @@ const ReleaseChangelogGroup = ({
 		<Box key={title}>
 			{shouldShowTitle && (
 				<Heading
-					as="h2"
+					as="h3"
 					size="xl"
 					bgColor="background3"
 					mb={4}
