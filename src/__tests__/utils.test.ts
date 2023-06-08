@@ -215,7 +215,7 @@ describe('getMdastContentReleaseGroup util', () => {
 		${'Thanks to'}        | ${'thanks'}
 		${'Artifacts'}        | ${'artifacts'}
 		${'Credits to'}       | ${'credits'}
-		${'📑 Documentation'} | ${'📑 documentation'}
+		${'📑 Documentation'} | ${'documentation'}
 		${'Core changes:'}    | ${'core changes'}
 	`(
 		'should return the group "$output" for a node with the title "$input"',
