@@ -74,9 +74,20 @@ function getMdastContentNodeTitle(mdastNode: Content): string {
 	return 'unknown'
 }
 
+const emojisRegExp = /\p{Extended_Pictographic}/gu
+
+function stripEmojis(text: string): string {
+	return text.replaceAll(emojisRegExp, '')
+}
+
+function sanitizeReleaseGroupTitle(groupTitle: string): string {
+	const cleanGroupTitle = stripEmojis(groupTitle)
+	return lowerCase(cleanGroupTitle)
+}
+
 function getMdastContentReleaseGroup(mdastNode: Content): ReleaseGroup {
 	const nodeTitle = getMdastContentNodeTitle(mdastNode)
-	const mdastTitle = lowerCase(nodeTitle)
+	const mdastTitle = sanitizeReleaseGroupTitle(nodeTitle)
 
 	// Check features before than breaking changes to group here "Major Features"
 	// and avoid grouping them under breaking changes group
@@ -206,4 +217,5 @@ export {
 	compareReleasesByVersion,
 	compareReleaseGroupsByPriority,
 	paginateList,
+	sanitizeReleaseGroupTitle,
 }

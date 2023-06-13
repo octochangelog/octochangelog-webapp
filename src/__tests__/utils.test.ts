@@ -13,6 +13,7 @@ import {
 	mapRepositoryToQueryParams,
 	mapStringToRepositoryQueryParams,
 	paginateList,
+	sanitizeReleaseGroupTitle,
 } from '~/utils'
 
 describe('mapRepositoryToQueryParams util', () => {
@@ -160,6 +161,22 @@ describe('isStableRelease util', () => {
 	})
 })
 
+describe('sanitizeReleaseGroupTitle', () => {
+	it.each`
+		input                  | output
+		${'BREAKING CHANGES'}  | ${'breaking changes'}
+		${'Bug Fixes'}         | ${'bug fixes'}
+		${'minor'}             | ${'minor'}
+		${'minor-release'}     | ${'minor release'}
+		${'🐛 Bug fix'}        | ${'bug fix'}
+		${'    trim this    '} | ${'trim this'}
+	`('should return "$output" for input "$input"', ({ input, output }) => {
+		const result = sanitizeReleaseGroupTitle(input)
+
+		expect(result).toEqual(output)
+	})
+})
+
 describe('getMdastContentNodeTitle util', () => {
 	it('should return the title of the first child node found', () => {
 		const result = getMdastContentNodeTitle({
@@ -198,7 +215,7 @@ describe('getMdastContentReleaseGroup util', () => {
 		${'Thanks to'}        | ${'thanks'}
 		${'Artifacts'}        | ${'artifacts'}
 		${'Credits to'}       | ${'credits'}
-		${'📑 Documentation'} | ${'📑 documentation'}
+		${'📑 Documentation'} | ${'documentation'}
 		${'Core changes:'}    | ${'core changes'}
 	`(
 		'should return the group "$output" for a node with the title "$input"',
