@@ -6,6 +6,7 @@ import { withSentryConfig } from '@sentry/nextjs'
  * @type {import('next').NextConfig}
  **/
 const config = {
+	experimental: { appDir: true },
 	reactStrictMode: true,
 	eslint: {
 		// Disable ESLint during builds since there is a lint job in CI.
