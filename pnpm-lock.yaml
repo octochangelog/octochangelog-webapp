@@ -14,8 +14,8 @@ dependencies:
     specifier: 11.11.0
     version: 11.11.0(@emotion/react@11.11.0)(@types/react@18.2.11)(react@18.2.0)
   '@octokit/auth-callback':
-    specifier: 3.0.0
-    version: 3.0.0
+    specifier: 4.0.0
+    version: 4.0.0
   '@octokit/rest':
     specifier: 19.0.11
     version: 19.0.11
@@ -2607,9 +2607,9 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@octokit/auth-callback@3.0.0:
-    resolution: {integrity: sha512-jpL0DET9BvrfkZQvmUVMXAKn1+Fou06dkmgrG2KmBKnwPsXkYIqqwnyoecVWloZ5J+N125emDPaXoH/ZOPRbgA==}
-    engines: {node: '>= 14'}
+  /@octokit/auth-callback@4.0.0:
+    resolution: {integrity: sha512-V91L66eyTr1WL0YDtXhYHbQ2y+KwnDIDaZpT63t47pJe+GiTNeq4gH/LIHt+kYJL2016/eC9yI1bc9KXqFDe+w==}
+    engines: {node: '>= 18'}
     dev: false
 
   /@octokit/auth-token@3.0.3:
