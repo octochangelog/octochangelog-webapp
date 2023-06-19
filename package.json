@@ -36,7 +36,7 @@
 		"@emotion/react": "11.11.1",
 		"@emotion/styled": "11.11.0",
 		"@octokit/auth-callback": "4.0.0",
-		"@octokit/rest": "19.0.11",
+		"@octokit/rest": "19.0.13",
 		"@sentry/nextjs": "7.55.2",
 		"@tanstack/react-query": "4.29.13",
 		"@tanstack/react-query-devtools": "4.29.13",

@@ -17,8 +17,8 @@ dependencies:
     specifier: 4.0.0
     version: 4.0.0
   '@octokit/rest':
-    specifier: 19.0.11
-    version: 19.0.11
+    specifier: 19.0.13
+    version: 19.0.13
   '@sentry/nextjs':
     specifier: 7.55.2
     version: 7.55.2(next@13.2.4)(react@18.2.0)(webpack@5.85.0)
@@ -2715,8 +2715,8 @@ packages:
       - encoding
     dev: false
 
-  /@octokit/rest@19.0.11:
-    resolution: {integrity: sha512-m2a9VhaP5/tUw8FwfnW2ICXlXpLPIqxtg3XcAiGMLj/Xhw3RSBfZ8le/466ktO1Gcjr8oXudGnHhxV1TXJgFxw==}
+  /@octokit/rest@19.0.13:
+    resolution: {integrity: sha512-/EzVox5V9gYGdbAI+ovYj3nXQT1TtTHRT+0eZPcuC05UFSWO3mdO9UY1C0i2eLF9Un1ONJkAk+IEtYGAC+TahA==}
     engines: {node: '>= 14'}
     dependencies:
       '@octokit/core': 4.2.1
