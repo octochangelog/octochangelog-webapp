@@ -170,10 +170,10 @@ devDependencies:
     version: 46.0.0(eslint@8.37.0)
   happo-cypress:
     specifier: 4.1.1
-    version: 4.1.1(happo-e2e@2.2.4)
+    version: 4.1.1(happo-e2e@2.2.5)
   happo-e2e:
-    specifier: 2.2.4
-    version: 2.2.4
+    specifier: 2.2.5
+    version: 2.2.5
   happo.io:
     specifier: 8.3.3
     version: 8.3.3(@babel/core@7.22.1)(babel-loader@9.1.2)(webpack@5.85.0)
@@ -6073,17 +6073,17 @@ packages:
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
     dev: true
 
-  /happo-cypress@4.1.1(happo-e2e@2.2.4):
+  /happo-cypress@4.1.1(happo-e2e@2.2.5):
     resolution: {integrity: sha512-qMSjOOlCGjGis+i/VTzcL8/2te73I2jrNcQkx+rJgcbgYV7x13tiEVVo/MrR5lCg7kHtXiNNXAXgw7XUxNh3pQ==}
     hasBin: true
     peerDependencies:
       happo-e2e: '>= 1.4.2'
     dependencies:
-      happo-e2e: 2.2.4
+      happo-e2e: 2.2.5
     dev: true
 
-  /happo-e2e@2.2.4:
-    resolution: {integrity: sha512-7rG6qGksYv4Mc5bGynzMGlv72kZJKFtoQqEZCCN3C31vwQvrOza9ryYan+i7t6n19WM22hq//iFgpHuxxA75/A==}
+  /happo-e2e@2.2.5:
+    resolution: {integrity: sha512-AD8oy7/3Qt4VuHzySwT1yfq5N3uLUt5g5WAHCNgBOgDz2lifYY+y1osWtuqyM8E+TEDXWC40GHJmVqkPhgdr9A==}
     hasBin: true
     dependencies:
       archiver: 5.3.1
