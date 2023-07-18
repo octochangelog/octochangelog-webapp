@@ -32,8 +32,8 @@ dependencies:
     specifier: 1.0.1
     version: 1.0.1
   downshift:
-    specifier: 7.6.1
-    version: 7.6.1(react@18.2.0)
+    specifier: 7.6.2
+    version: 7.6.2(react@18.2.0)
   framer-motion:
     specifier: 10.12.18
     version: 10.12.18(react-dom@18.2.0)(react@18.2.0)
@@ -4966,8 +4966,8 @@ packages:
       webidl-conversions: 7.0.0
     dev: true
 
-  /downshift@7.6.1(react@18.2.0):
-    resolution: {integrity: sha512-XIqM6WtPRL2qpyRncleOVThV6rhknB3i9okRYRCxUmviNdVS4pJ1SUICt2XHya5SrRwzEShDaK5h+xB2xLdpZw==}
+  /downshift@7.6.2(react@18.2.0):
+    resolution: {integrity: sha512-iOv+E1Hyt3JDdL9yYcOgW7nZ7GQ2Uz6YbggwXvKUSleetYhU2nXD482Rz6CzvM4lvI1At34BYruKAL4swRGxaA==}
     peerDependencies:
       react: '>=16.12.0'
     dependencies:
