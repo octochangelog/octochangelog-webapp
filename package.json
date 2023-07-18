@@ -71,7 +71,7 @@
 		"@testing-library/cypress": "9.0.0",
 		"@testing-library/react": "14.0.0",
 		"@types/happo-cypress": "4.1.0",
-		"@types/lodash-es": "4.17.7",
+		"@types/lodash-es": "4.17.8",
 		"@types/mdast": "3.0.12",
 		"@types/node": "18.16.19",
 		"@types/react": "18.2.14",
