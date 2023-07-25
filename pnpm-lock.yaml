@@ -193,8 +193,8 @@ devDependencies:
     specifier: 13.2.3
     version: 13.2.3
   msw:
-    specifier: 1.2.2
-    version: 1.2.2(typescript@5.1.6)
+    specifier: 1.2.3
+    version: 1.2.3(typescript@5.1.6)
   prettier:
     specifier: 2.8.7
     version: 2.8.7
@@ -8238,8 +8238,8 @@ packages:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
     dev: true
 
-  /msw@1.2.2(typescript@5.1.6):
-    resolution: {integrity: sha512-GsW3PE/Es/a1tYThXcM8YHOZ1S1MtivcS3He/LQbbTCx3rbWJYCtWD5XXyJ53KlNPT7O1VI9sCW3xMtgFe8XpQ==}
+  /msw@1.2.3(typescript@5.1.6):
+    resolution: {integrity: sha512-Fqy/TaLKR32x4IkMwudJHJysBzVM/v/lSoMPS9f3QaHLOmb3xHN9YurSUnRt+2eEvNXLjVPij1wMBQtLmTbKsg==}
     engines: {node: '>=14'}
     hasBin: true
     requiresBuild: true
