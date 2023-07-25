@@ -98,6 +98,8 @@ it('should show changelog results when preloading from URL', () => {
 		'Compare GitHub changelogs across multiple releases in a single view'
 	)
 
+	cy.waitForApiMocking()
+
 	cy.findByRole('combobox', { name: /select from release/i }).should(
 		'have.value',
 		'v6.16.0'
@@ -172,6 +174,8 @@ it('should show changelog results when preloading from URL with "latest"', () =>
 	cy.metaDescriptionShouldEqual(
 		'Compare GitHub changelogs across multiple releases in a single view'
 	)
+
+	cy.waitForApiMocking()
 
 	cy.findByRole('combobox', { name: /select from release/i }).should(
 		'have.value',
