@@ -40,10 +40,12 @@ async function processDescriptionAsync(
 			.process(
 				unified().use(markdown).use(gfm).stringify(description),
 				(err, file) => {
-					if (err || !file) {
+					if (err) {
 						reject(err)
+					} else if (!file?.result) {
+						reject('Result not generated')
 					} else {
-						resolve(file.result)
+						resolve(file.result as Parameters<typeof resolve>[0])
 					}
 				}
 			)
