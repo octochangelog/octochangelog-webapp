@@ -1,7 +1,6 @@
 {
 	"extends": [
-		"config:base",
-		"helpers:pinGitHubActionDigests",
+		"config:best-practices",
 		":automergeTypes",
 		"npm:unpublishSafe",
 		"helpers:disableTypesNodeMajor"
