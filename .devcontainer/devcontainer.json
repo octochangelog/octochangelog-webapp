@@ -1,9 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/alpine
 {
-	"name": "Alpine",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:alpine-3.18",
+	"name": "Default",
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
 			"nodeGypDependencies": true,
@@ -11,15 +9,22 @@
 		}
 	},
 
+	// # Cypress in GitHub Codespaces https://devopstar.com/2022/01/03/cypress-testing-in-devcontainers-and-github-codespaces/
+	"service": "development",
+	"dockerComposeFile": "docker-compose.yml",
+	
+	
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
-
+	
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [8080],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": ". ${NVM_DIR}/nvm.sh && nvm install && nvm use",
-	"postStartCommand": "corepack enable"
+	"onCreateCommand": ". ${NVM_DIR}/nvm.sh && nvm install && nvm use",
+	"updateContentCommand": "corepack enable",
+	"postCreateCommand": "pnpm install"
+
 
 	// Configure tool-specific properties.
 	// "customizations": {},
