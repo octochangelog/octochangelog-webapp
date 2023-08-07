@@ -1,3 +1,5 @@
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/octoclairvoyant/octoclairvoyant-webapp?quickstart=1)
+
 <div align="center">
   <h1>Octoclairvoyant</h1>
   <img
