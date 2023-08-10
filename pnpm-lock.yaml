@@ -166,8 +166,8 @@ devDependencies:
     specifier: 3.1.0
     version: 3.1.0(eslint@8.46.0)
   eslint-plugin-unicorn:
-    specifier: 46.0.1
-    version: 46.0.1(eslint@8.46.0)
+    specifier: 48.0.1
+    version: 48.0.1(eslint@8.46.0)
   happo-cypress:
     specifier: 4.1.1
     version: 4.1.1(happo-e2e@2.2.5)
@@ -5381,11 +5381,11 @@ packages:
       string.prototype.matchall: 4.0.8
     dev: true
 
-  /eslint-plugin-unicorn@46.0.1(eslint@8.46.0):
-    resolution: {integrity: sha512-setGhMTiLAddg1asdwjZ3hekIN5zLznNa5zll7pBPwFOka6greCKDQydfqy4fqyUhndi74wpDzClSQMEcmOaew==}
-    engines: {node: '>=14.18'}
+  /eslint-plugin-unicorn@48.0.1(eslint@8.46.0):
+    resolution: {integrity: sha512-FW+4r20myG/DqFcCSzoumaddKBicIPeFnTrifon2mWIzlfyvzwyqZjqVP7m4Cqr/ZYisS2aiLghkUWaPg6vtCw==}
+    engines: {node: '>=16'}
     peerDependencies:
-      eslint: '>=8.28.0'
+      eslint: '>=8.44.0'
     dependencies:
       '@babel/helper-validator-identifier': 7.22.5
       '@eslint-community/eslint-utils': 4.4.0(eslint@8.46.0)
@@ -5400,8 +5400,7 @@ packages:
       pluralize: 8.0.0
       read-pkg-up: 7.0.1
       regexp-tree: 0.1.27
-      regjsparser: 0.9.1
-      safe-regex: 2.1.1
+      regjsparser: 0.10.0
       semver: 7.5.4
       strip-indent: 3.0.0
     dev: true
@@ -9002,8 +9001,8 @@ packages:
       functions-have-names: 1.2.3
     dev: true
 
-  /regjsparser@0.9.1:
-    resolution: {integrity: sha512-dQUtn90WanSNl+7mQKcXAgZxvUe7Z0SqXlgzv0za4LwiUhyzBC58yQO3liFoUgu8GiJVInAhJjkj1N0EtQ5nkQ==}
+  /regjsparser@0.10.0:
+    resolution: {integrity: sha512-qx+xQGZVsy55CH0a1hiVwHmqjLryfh7wQyF5HO07XJ9f7dQMY/gPQHhlyDkIzJKC+x2fUCpCcUODUUUFrm7SHA==}
     hasBin: true
     dependencies:
       jsesc: 0.5.0
@@ -9250,12 +9249,6 @@ packages:
       call-bind: 1.0.2
       get-intrinsic: 1.2.1
       is-regex: 1.1.4
-    dev: true
-
-  /safe-regex@2.1.1:
-    resolution: {integrity: sha512-rx+x8AMzKb5Q5lQ95Zoi6ZbJqwCLkqi3XuJXp5P3rT8OEc6sZCJG5AE5dU3lsgRr/F4Bs31jSlVN+j5KrsGu9A==}
-    dependencies:
-      regexp-tree: 0.1.27
     dev: true
 
   /safer-buffer@2.1.2:
