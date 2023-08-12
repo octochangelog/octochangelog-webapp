@@ -23,10 +23,10 @@ const MAX_AUTO_PAGINATION = 10
 
 function useReleasesQuery(
 	params: ReleasesQueryParams,
-	config?: UseQueryOptions<ReleasesQueryResults, Error>
+	config?: UseQueryOptions<ReleasesQueryResults, Error>,
 ): UseQueryResult<ReleasesQueryResults, Error> {
 	const finalParams: RepositoryQueryParams = mapRepositoryToQueryParams(
-		params.repository ?? undefined
+		params.repository ?? undefined,
 	)
 	const { fromVersion, toVersion } = params
 	const hasFromVersion = !!fromVersion
@@ -40,7 +40,7 @@ function useReleasesQuery(
 
 			for await (const response of octokit.paginate.iterator(
 				'GET /repos/{owner}/{repo}/releases',
-				{ ...finalParams, per_page: 100 }
+				{ ...finalParams, per_page: 100 },
 			)) {
 				paginationCount++
 				releases.push(...response.data.filter(isStableRelease))
@@ -67,7 +67,7 @@ function useReleasesQuery(
 
 			return releases
 		},
-		{ enabled: Boolean(params.repository), ...config }
+		{ enabled: Boolean(params.repository), ...config },
 	)
 }
 

@@ -6,7 +6,7 @@ const IGNORE_HOSTS = ['localhost', 'octoclairvoyant', 'fonts']
 function unhandledRequestCallback(req: MockedRequest) {
 	if (req.url.host === 'api.github.com') {
 		throw new Error(
-			`Unhandled request to GitHub API: ${req.method.toUpperCase()} ${req.url.toString()}`
+			`Unhandled request to GitHub API: ${req.method.toUpperCase()} ${req.url.toString()}`,
 		)
 	}
 

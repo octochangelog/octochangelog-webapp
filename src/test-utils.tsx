@@ -49,12 +49,12 @@ const AllTheProviders: FC<{ children: ReactNode }> = ({ children }) => {
 
 const customRender = (
 	ui: ReactElement,
-	options?: Omit<RenderOptions, 'wrapper'>
+	options?: Omit<RenderOptions, 'wrapper'>,
 ) => render(ui, { wrapper: AllTheProviders, ...options })
 
 const customRenderHook = <TResult, TProps>(
 	renderCallback: (initialProps: TProps) => TResult,
-	options?: Omit<RenderHookOptions<TProps>, 'wrapper'>
+	options?: Omit<RenderHookOptions<TProps>, 'wrapper'>,
 ): RenderHookResult<TResult, TProps> => {
 	return renderHook(renderCallback, { ...options, wrapper: AllTheProviders })
 }

@@ -19,7 +19,7 @@ type ReleaseVersionFormControlProps = CustomProps &
 	Except<FormControlProps, 'children' | 'onChange'>
 
 function renderReleasesOptions(
-	releases?: Array<Release>
+	releases?: Array<Release>,
 ): Array<ReactNode> | null {
 	if (!releases) {
 		return null

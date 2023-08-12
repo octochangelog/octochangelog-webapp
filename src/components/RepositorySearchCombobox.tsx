@@ -78,7 +78,7 @@ const RepositorySearchCombobox = ({
 				setIsTyping(false)
 				void refetch()
 			}, 500),
-		[refetch]
+		[refetch],
 	)
 
 	useEffect(() => {

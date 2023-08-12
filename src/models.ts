@@ -33,7 +33,7 @@ type ComponentPropsWithoutNode = Record<string, unknown>
 
 type ComponentLike<
 	T,
-	P extends ComponentPropsWithoutNode = ComponentPropsWithoutNode
+	P extends ComponentPropsWithoutNode = ComponentPropsWithoutNode,
 > = (props: P) => T | null
 
 type ComponentsMapping = Record<string, ComponentLike<ReactElement>>

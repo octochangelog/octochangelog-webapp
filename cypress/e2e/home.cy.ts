@@ -2,14 +2,14 @@ it('should display corresponding information', () => {
 	cy.visit('/')
 	cy.title().should(
 		'equal',
-		'Octoclairvoyant: Compare GitHub changelogs in a single view'
+		'Octoclairvoyant: Compare GitHub changelogs in a single view',
 	)
 	cy.metaDescriptionShouldEqual(
-		'Compare GitHub changelogs across multiple releases in a single view'
+		'Compare GitHub changelogs across multiple releases in a single view',
 	)
 
 	cy.findByRole('heading', { level: 1, name: 'Octoclairvoyant' }).should(
-		'exist'
+		'exist',
 	)
 
 	cy.findByRole('heading', {
@@ -50,7 +50,7 @@ it('should display corresponding information', () => {
 	cy.findByRole('link', { name: /mario/i }).should(
 		'have.attr',
 		'href',
-		'https://mario.dev/'
+		'https://mario.dev/',
 	)
 
 	cy.findByRole('link', {
@@ -58,7 +58,7 @@ it('should display corresponding information', () => {
 	}).should(
 		'have.attr',
 		'href',
-		'https://github.com/octoclairvoyant/octoclairvoyant-webapp'
+		'https://github.com/octoclairvoyant/octoclairvoyant-webapp',
 	)
 
 	// we first query the link
@@ -67,7 +67,7 @@ it('should display corresponding information', () => {
 		.should(
 			'have.attr',
 			'href',
-			'https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss'
+			'https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss',
 		)
 		// now, since `should` returns a Chainable, we can chain it with `within`, which allows us to query
 		// for something inside the previous element

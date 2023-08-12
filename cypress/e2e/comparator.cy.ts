@@ -5,11 +5,11 @@ it('should show changelog results when filling the form', () => {
 	cy.visit('/comparator')
 	cy.title().should('equal', 'Comparator | Octoclairvoyant')
 	cy.metaDescriptionShouldEqual(
-		'Compare GitHub changelogs across multiple releases in a single view'
+		'Compare GitHub changelogs across multiple releases in a single view',
 	)
 
 	cy.findByRole('combobox', { name: /enter repository name/i }).type(
-		'dom testing library'
+		'dom testing library',
 	)
 
 	cy.findByRole('listbox', { name: /enter repository name/i })
@@ -19,18 +19,18 @@ it('should show changelog results when filling the form', () => {
 	cy.findByRole('combobox', { name: /select from release/i }).select('v6.16.0')
 	cy.findByRole('combobox', { name: /select from release/i }).should(
 		'have.value',
-		'v6.16.0'
+		'v6.16.0',
 	)
 	cy.findByRole('combobox', { name: /select to release/i }).select('v8.1.0')
 	cy.findByRole('combobox', { name: /select to release/i }).should(
 		'have.value',
-		'v8.1.0'
+		'v8.1.0',
 	)
 
 	cy.findByRole('link', { name: 'dom-testing-library' }).should(
 		'have.attr',
 		'href',
-		'https://github.com/testing-library/dom-testing-library'
+		'https://github.com/testing-library/dom-testing-library',
 	)
 
 	// Confirm from and to version range is displayed
@@ -46,37 +46,37 @@ it('should show changelog results when filling the form', () => {
 	cy.findByRole('heading', { level: 5, name: /drop node 8/i })
 
 	cy.findByText(
-		/node 10 or greater is required\. node 8 is \(\) \(\), closes/i
+		/node 10 or greater is required\. node 8 is \(\) \(\), closes/i,
 	).should('have.length', 1)
 
 	cy.findByRole('link', { name: /out of lts/i }).should(
 		'have.attr',
 		'href',
-		'https://nodejs.org/en/about/releases/'
+		'https://nodejs.org/en/about/releases/',
 	)
 
 	cy.findByRole('link', { name: /#459/i }).should(
 		'have.attr',
 		'href',
-		'https://github.com/testing-library/dom-testing-library/issues/459'
+		'https://github.com/testing-library/dom-testing-library/issues/459',
 	)
 
 	cy.findByRole('link', { name: /c3ab843/i }).should(
 		'have.attr',
 		'href',
-		'https://github.com/testing-library/dom-testing-library/commit/c3ab843c292484428f045671ea22cbb30eb70559'
+		'https://github.com/testing-library/dom-testing-library/commit/c3ab843c292484428f045671ea22cbb30eb70559',
 	)
 
 	cy.findByRole('link', { name: /#430/i }).should(
 		'have.attr',
 		'href',
-		'https://github.com/testing-library/dom-testing-library/issues/430'
+		'https://github.com/testing-library/dom-testing-library/issues/430',
 	)
 
 	// Check if the code block renders with the diff display
 	cy.findByText(/- "test": "react-scripts test --env=dom"/i)
 	cy.findByText(
-		/\+ "test": "react-scripts test --env=jest-environment-jsdom-sixteen"/i
+		/\+ "test": "react-scripts test --env=jest-environment-jsdom-sixteen"/i,
 	)
 
 	cy.findByRole('heading', { level: 3, name: /features/i })
@@ -91,29 +91,29 @@ it('should show changelog results when filling the form', () => {
 
 it('should show changelog results when preloading from URL', () => {
 	cy.visit(
-		'/comparator?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0'
+		'/comparator?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0',
 	)
 	cy.title().should('equal', 'Comparator | Octoclairvoyant')
 	cy.metaDescriptionShouldEqual(
-		'Compare GitHub changelogs across multiple releases in a single view'
+		'Compare GitHub changelogs across multiple releases in a single view',
 	)
 
 	cy.waitForApiMocking()
 
 	cy.findByRole('combobox', { name: /select from release/i }).should(
 		'have.value',
-		'v6.16.0'
+		'v6.16.0',
 	)
 	cy.findByRole('combobox', { name: /select to release/i }).should(
 		'have.value',
-		'v8.1.0'
+		'v8.1.0',
 	)
 
 	// Confirm repository name is displayed
 	cy.findByRole('link', { name: 'dom-testing-library' }).should(
 		'have.attr',
 		'href',
-		'https://github.com/testing-library/dom-testing-library'
+		'https://github.com/testing-library/dom-testing-library',
 	)
 
 	// Confirm from and to version range is displayed
@@ -129,33 +129,33 @@ it('should show changelog results when preloading from URL', () => {
 	cy.findAllByText('v7.0.0', { ignore: 'option' }).should('have.length', 2)
 	cy.findByRole('heading', { level: 5, name: /drop node 8/i })
 	cy.findByText(
-		/node 10 or greater is required\. node 8 is \(\) \(\), closes/i
+		/node 10 or greater is required\. node 8 is \(\) \(\), closes/i,
 	).should('have.length', 1)
 	cy.findByRole('link', { name: /out of lts/i }).should(
 		'have.attr',
 		'href',
-		'https://nodejs.org/en/about/releases/'
+		'https://nodejs.org/en/about/releases/',
 	)
 	cy.findByRole('link', { name: /#459/i }).should(
 		'have.attr',
 		'href',
-		'https://github.com/testing-library/dom-testing-library/issues/459'
+		'https://github.com/testing-library/dom-testing-library/issues/459',
 	)
 	cy.findByRole('link', { name: /c3ab843/i }).should(
 		'have.attr',
 		'href',
-		'https://github.com/testing-library/dom-testing-library/commit/c3ab843c292484428f045671ea22cbb30eb70559'
+		'https://github.com/testing-library/dom-testing-library/commit/c3ab843c292484428f045671ea22cbb30eb70559',
 	)
 	cy.findByRole('link', { name: /#430/i }).should(
 		'have.attr',
 		'href',
-		'https://github.com/testing-library/dom-testing-library/issues/430'
+		'https://github.com/testing-library/dom-testing-library/issues/430',
 	)
 
 	// Check if the code block renders with the diff display
 	cy.findByText(/- "test": "react-scripts test --env=dom"/i)
 	cy.findByText(
-		/\+ "test": "react-scripts test --env=jest-environment-jsdom-sixteen"/i
+		/\+ "test": "react-scripts test --env=jest-environment-jsdom-sixteen"/i,
 	)
 
 	cy.findByText(/waitForElement was still in use/) // description from v7.0.1 release
@@ -168,27 +168,27 @@ it('should show changelog results when preloading from URL', () => {
 
 it('should show changelog results when preloading from URL with "latest"', () => {
 	cy.visit(
-		'/comparator?repo=testing-library%2Fdom-testing-library&from=v8.11.0&to=latest'
+		'/comparator?repo=testing-library%2Fdom-testing-library&from=v8.11.0&to=latest',
 	)
 	cy.title().should('equal', 'Comparator | Octoclairvoyant')
 	cy.metaDescriptionShouldEqual(
-		'Compare GitHub changelogs across multiple releases in a single view'
+		'Compare GitHub changelogs across multiple releases in a single view',
 	)
 
 	cy.waitForApiMocking()
 
 	cy.findByRole('combobox', { name: /select from release/i }).should(
 		'have.value',
-		'v8.11.0'
+		'v8.11.0',
 	)
 	cy.findByRole('combobox', { name: /select to release/i }).should(
 		'have.value',
-		'latest'
+		'latest',
 	)
 	cy.findByRole('link', { name: 'dom-testing-library' }).should(
 		'have.attr',
 		'href',
-		'https://github.com/testing-library/dom-testing-library'
+		'https://github.com/testing-library/dom-testing-library',
 	)
 
 	cy.findByRole('heading', { name: 'Changes from v8.11.0 to latest' })
@@ -225,7 +225,7 @@ it('should show changelog results when preloading from URL with more than 10 rel
 	cy.visit('/comparator?repo=renovatebot%2Frenovate&from=26.9.0&to=32.172.2')
 	cy.title().should('equal', 'Comparator | Octoclairvoyant')
 	cy.metaDescriptionShouldEqual(
-		'Compare GitHub changelogs across multiple releases in a single view'
+		'Compare GitHub changelogs across multiple releases in a single view',
 	)
 
 	// This is necessary because an early request is triggered from preloaded URL.
@@ -248,8 +248,8 @@ it('should show changelog results when preloading from URL with more than 10 rel
 						}
 
 						return undefined
-					}
-				)
+					},
+				),
 			)
 		} else if (appWindow.isApiMockingEnabled) {
 			throw new Error('API mocking should be enabled but MSW was not found.')
@@ -258,18 +258,18 @@ it('should show changelog results when preloading from URL with more than 10 rel
 
 	cy.findByRole('combobox', { name: /select from release/i }).should(
 		'have.value',
-		'26.9.0'
+		'26.9.0',
 	)
 	cy.findByRole('combobox', { name: /select to release/i }).should(
 		'have.value',
-		'32.172.2'
+		'32.172.2',
 	)
 
 	cy.findByRole('heading', { name: 'renovate' }).within(() => {
 		cy.findByRole('link', { name: 'renovate' }).should(
 			'have.attr',
 			'href',
-			'https://github.com/renovatebot/renovate'
+			'https://github.com/renovatebot/renovate',
 		)
 	})
 
@@ -294,7 +294,7 @@ it('should show changelog results when preloading from URL with more than 10 rel
 	}).should(
 		'have.attr',
 		'href',
-		'https://github.com/renovatebot/renovate/releases/tag/26.9.1'
+		'https://github.com/renovatebot/renovate/releases/tag/26.9.1',
 	)
 	// link for 32.172.2 release (highest one)
 	cy.findAllByRole('link', {
@@ -302,6 +302,6 @@ it('should show changelog results when preloading from URL with more than 10 rel
 	}).should(
 		'have.attr',
 		'href',
-		'https://github.com/renovatebot/renovate/releases/tag/32.172.2'
+		'https://github.com/renovatebot/renovate/releases/tag/32.172.2',
 	)
 })

@@ -62,7 +62,7 @@ const ComparatorProvider = ({ children }: { children: ReactNode }) => {
 				...newFilters,
 			}
 			const newQuery = Object.fromEntries(
-				Object.entries(mergedFilters).filter(([, value]) => Boolean(value))
+				Object.entries(mergedFilters).filter(([, value]) => Boolean(value)),
 			)
 
 			void router.replace(
@@ -70,10 +70,10 @@ const ComparatorProvider = ({ children }: { children: ReactNode }) => {
 				undefined,
 				{
 					shallow: true,
-				}
+				},
 			)
 		},
-		[router]
+		[router],
 	)
 
 	const setSelectedRepository = useCallback(
@@ -85,21 +85,21 @@ const ComparatorProvider = ({ children }: { children: ReactNode }) => {
 				to: null,
 			})
 		},
-		[setQuerystringParams]
+		[setQuerystringParams],
 	)
 
 	const setSelectedFromVersion = useCallback(
 		(newFrom?: string | null) => {
 			setQuerystringParams({ from: newFrom })
 		},
-		[setQuerystringParams]
+		[setQuerystringParams],
 	)
 
 	const setSelectedToVersion = useCallback(
 		(newTo?: string | null) => {
 			setQuerystringParams({ to: newTo })
 		},
-		[setQuerystringParams]
+		[setQuerystringParams],
 	)
 
 	useEffect(() => {
@@ -131,7 +131,7 @@ const ComparatorProvider = ({ children }: { children: ReactNode }) => {
 			fromVersion: from,
 			toVersion: to,
 		}),
-		[from, repository, to]
+		[from, repository, to],
 	)
 
 	const updaterValue = useMemo<ComparatorUpdaterContextValue>(
@@ -140,7 +140,7 @@ const ComparatorProvider = ({ children }: { children: ReactNode }) => {
 			setFromVersion: setSelectedFromVersion,
 			setToVersion: setSelectedToVersion,
 		}),
-		[setSelectedFromVersion, setSelectedRepository, setSelectedToVersion]
+		[setSelectedFromVersion, setSelectedRepository, setSelectedToVersion],
 	)
 
 	return (
@@ -157,7 +157,7 @@ function useComparatorState() {
 
 	if (context === undefined) {
 		throw new Error(
-			'useComparatorState must be used within a ComparatorProvider'
+			'useComparatorState must be used within a ComparatorProvider',
 		)
 	}
 
@@ -169,7 +169,7 @@ function useComparatorUpdater() {
 
 	if (context === undefined) {
 		throw new Error(
-			'useComparatorUpdater must be used within a ComparatorProvider'
+			'useComparatorUpdater must be used within a ComparatorProvider',
 		)
 	}
 

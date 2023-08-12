@@ -11,7 +11,7 @@ import { useReleasesQuery } from '~/queries/release'
 import { getReleaseVersion, compareReleasesByVersion } from '~/utils'
 
 function mapReleasesRange(
-	releases?: Array<Release>
+	releases?: Array<Release>,
 ): [Array<Release>, Array<Release>] {
 	if (!releases?.length) {
 		return [[], []]

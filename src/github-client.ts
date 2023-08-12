@@ -75,7 +75,7 @@ const githubAuthUrl = new URL('https://github.com')
 githubAuthUrl.pathname = '/login/oauth/authorize'
 githubAuthUrl.searchParams.append(
 	'client_id',
-	String(process.env.NEXT_PUBLIC_GITHUB_APP_CLIENT_ID)
+	String(process.env.NEXT_PUBLIC_GITHUB_APP_CLIENT_ID),
 )
 githubAuthUrl.searchParams.append('scope', '')
 

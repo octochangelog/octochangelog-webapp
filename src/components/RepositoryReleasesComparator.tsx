@@ -11,7 +11,7 @@ import { useGithubAuth } from '~/contexts/github-auth-provider'
 
 const RepositoryReleasesChangelog = dynamic(
 	() => import('~/components/RepositoryReleasesChangelog'),
-	{ suspense: true }
+	{ suspense: true },
 )
 
 const RepositoryReleasesComparator = () => {

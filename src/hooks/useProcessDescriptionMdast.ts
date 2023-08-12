@@ -24,7 +24,7 @@ interface HookReturnedValue {
 
 async function processDescriptionAsync(
 	description: ProcessedRelease['descriptionMdast'],
-	components: ComponentsMapping
+	components: ComponentsMapping,
 ): Promise<ReactNode> {
 	return new Promise((resolve, reject) => {
 		unified()
@@ -47,7 +47,7 @@ async function processDescriptionAsync(
 					} else {
 						resolve(file.result as Parameters<typeof resolve>[0])
 					}
-				}
+				},
 			)
 	})
 }
@@ -67,7 +67,7 @@ function useProcessDescriptionMdast({
 			setIsProcessing(true)
 			const result = await processDescriptionAsync(
 				description,
-				componentsMapping
+				componentsMapping,
 			)
 
 			setProcessedDescription(result)
@@ -82,7 +82,7 @@ function useProcessDescriptionMdast({
 			processedDescription,
 			isProcessing,
 		}),
-		[isProcessing, processedDescription]
+		[isProcessing, processedDescription],
 	)
 
 	return data

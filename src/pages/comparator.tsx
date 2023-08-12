@@ -5,7 +5,7 @@ import { Suspense } from 'react'
 
 const RepositoryReleasesComparator = dynamic(
 	() => import('~/components/RepositoryReleasesComparator'),
-	{ suspense: true }
+	{ suspense: true },
 )
 
 import Layout from '~/components/Layout'

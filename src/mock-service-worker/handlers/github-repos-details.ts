@@ -19,7 +19,7 @@ const NOT_FOUND_DATA: NotFoundResponse = {
 }
 
 function getRepoDetailsFixture(
-	repoName: string
+	repoName: string,
 ): Repository | NotFoundResponse {
 	if (repoName === 'dom-testing-library') {
 		return domTestingLibraryRepoDetails
@@ -41,7 +41,7 @@ const githubReposDetailsHandlers: Array<RequestHandler> = [
 			const data = getRepoDetailsFixture(repoName)
 
 			return res(context.json<Repository | NotFoundResponse>(data))
-		}
+		},
 	),
 ]
 
