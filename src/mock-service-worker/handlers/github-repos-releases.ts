@@ -34,19 +34,19 @@ const githubReposReleasesHandlers: Array<RequestHandler> = [
 				return res(
 					context.json({
 						message: 'Not Found',
-					})
+					}),
 				)
 			}
 
 			const perPage = Number(
-				req.url.searchParams.get('per_page') ?? DEFAULT_ITEMS_PER_PAGE
+				req.url.searchParams.get('per_page') ?? DEFAULT_ITEMS_PER_PAGE,
 			)
 			const pageIndex = Number(req.url.searchParams.get('page') ?? 1)
 
 			const { data, hasNext } = paginateList(
 				releasesFixture,
 				perPage,
-				pageIndex
+				pageIndex,
 			)
 
 			// Keep response transformers in an array, so it can be extended later
@@ -59,13 +59,13 @@ const githubReposReleasesHandlers: Array<RequestHandler> = [
 				responseTransformers.push(
 					context.set(
 						'link',
-						`<https://api.github.com/repos/${repoString}/releases?per_page=${perPage}&page=${nextPage}>; rel="next"`
-					)
+						`<https://api.github.com/repos/${repoString}/releases?per_page=${perPage}&page=${nextPage}>; rel="next"`,
+					),
 				)
 			}
 
 			return res(...responseTransformers)
-		}
+		},
 	),
 ]
 

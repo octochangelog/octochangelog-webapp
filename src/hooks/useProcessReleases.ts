@@ -12,7 +12,7 @@ import { getMdastContentNodeTitle, getMdastContentReleaseGroup } from '~/utils'
 
 function insertReleaseInGroup(
 	newProcessedRelease: ProcessedRelease,
-	groupedReleases: ProcessedReleasesCollection
+	groupedReleases: ProcessedReleasesCollection,
 ): void {
 	const { title } = newProcessedRelease
 	if (Array.isArray(groupedReleases[title])) {
@@ -31,7 +31,7 @@ function processedReleaseIsEmpty(processedRelease: ProcessedRelease): boolean {
 const processor = unified().use(parse).use(gfm)
 
 function processReleases(
-	releases: Array<Release>
+	releases: Array<Release>,
 ): ProcessedReleasesCollection {
 	const processedReleasesCollection: ProcessedReleasesCollection = {}
 
@@ -100,7 +100,7 @@ interface UseProcessReleasesReturn {
 }
 
 function useProcessReleases(
-	releases: Array<Release> | null
+	releases: Array<Release> | null,
 ): UseProcessReleasesReturn {
 	const [processedReleases, setProcessedReleases] =
 		useState<ProcessedReleasesCollection | null>(null)

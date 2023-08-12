@@ -28,9 +28,9 @@ const githubReposSearchHandlers: Array<RequestHandler> = [
 					total_count: items.length,
 					incomplete_results: false,
 					items,
-				})
+				}),
 			)
-		}
+		},
 	),
 ]
 

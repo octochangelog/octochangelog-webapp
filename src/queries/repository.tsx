@@ -10,7 +10,7 @@ type ReposQueryParams = RestEndpointMethodTypes['search']['repos']['parameters']
 
 function useSearchRepositoriesQuery(
 	params: ReposQueryParams,
-	config?: UseQueryOptions<ReposQueryResponse, Error, ReposQueryResults>
+	config?: UseQueryOptions<ReposQueryResponse, Error, ReposQueryResults>,
 ): UseQueryResult<ReposQueryResults, Error> {
 	const finalParams = { per_page: 100, ...params }
 	return useQuery<ReposQueryResponse, Error, ReposQueryResults>(
@@ -19,7 +19,7 @@ function useSearchRepositoriesQuery(
 		{
 			...config,
 			select: (response) => response.data,
-		}
+		},
 	)
 }
 

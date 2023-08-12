@@ -64,7 +64,7 @@ describe('getReleaseVersion util', () => {
 			} as Release)
 
 			expect(result).toEqual(output)
-		}
+		},
 	)
 })
 
@@ -140,7 +140,7 @@ describe('filterReleasesByVersionRange util', () => {
 				releases: getFakeReleases(),
 				from: '1',
 				to: '2',
-			})
+			}),
 		).toThrow(TypeError('Invalid Version: 1'))
 	})
 })
@@ -225,7 +225,7 @@ describe('getMdastContentReleaseGroup util', () => {
 			} as Content)
 
 			expect(result).toBe(output)
-		}
+		},
 	)
 })
 
@@ -324,12 +324,12 @@ describe('paginateList util', () => {
 			const result = paginateList(inputList, perPage, pageIndex)
 
 			expect(result).toEqual({ data: expectedList, hasNext: expectedHasNext })
-		}
+		},
 	)
 
 	it('should throw an error if page index is 0', () => {
 		expect(() => paginateList([1, 2, 3], 1, 0)).toThrow(
-			'`pageIndex` is 1-based index so 0 is not a valid value.'
+			'`pageIndex` is 1-based index so 0 is not a valid value.',
 		)
 	})
 })

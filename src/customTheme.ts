@@ -200,7 +200,7 @@ const customTheme = extendTheme(
 	withDefaultColorScheme({
 		colorScheme: 'gray',
 		components: ['Code', 'BlockQuote'],
-	})
+	}),
 ) as CustomTheme
 
 export default customTheme

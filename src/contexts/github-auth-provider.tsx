@@ -16,7 +16,7 @@ interface GithubAuthProviderProps {
 
 const GithubAuthProvider = ({ children }: GithubAuthProviderProps) => {
 	const [accessToken, setAccessToken] = useState<string | null | undefined>(
-		getGithubAccessToken
+		getGithubAccessToken,
 	)
 
 	useEffect(() => {
@@ -28,7 +28,7 @@ const GithubAuthProvider = ({ children }: GithubAuthProviderProps) => {
 			setAccessToken,
 			isAuth: Boolean(accessToken),
 		}),
-		[accessToken]
+		[accessToken],
 	)
 
 	return (

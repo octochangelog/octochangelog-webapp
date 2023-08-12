@@ -12,7 +12,7 @@ import type {
 } from '~/models'
 
 function mapRepositoryToQueryParams(
-	repository?: Repository
+	repository?: Repository,
 ): RepositoryQueryParams {
 	return {
 		owner: repository?.owner.login ?? '',
@@ -43,7 +43,7 @@ type FilterReleasesNodes = {
 }
 
 function filterReleasesByVersionRange(
-	args: FilterReleasesNodes
+	args: FilterReleasesNodes,
 ): Array<Release> {
 	const { releases, from, to: originalTo } = args
 
@@ -54,7 +54,7 @@ function filterReleasesByVersionRange(
 
 	// Filter version range as (from, to]
 	return releases.filter(
-		({ tag_name }) => semver.gt(tag_name, from) && semver.lte(tag_name, to)
+		({ tag_name }) => semver.gt(tag_name, from) && semver.lte(tag_name, to),
 	)
 }
 
@@ -167,7 +167,7 @@ function compareReleaseGroupsByPriority(a: string, b: string): number {
 const compareReleasesByVersion = (
 	a: Release,
 	b: Release,
-	order: 'asc' | 'desc' = 'desc'
+	order: 'asc' | 'desc' = 'desc',
 ): number => {
 	const { tag_name: verA } = a
 	const { tag_name: verB } = b
@@ -192,7 +192,7 @@ const compareReleasesByVersion = (
 function paginateList<TListItem>(
 	list: Array<TListItem>,
 	perPage: number,
-	pageIndex: number
+	pageIndex: number,
 ): { data: Array<TListItem>; hasNext: boolean } {
 	if (pageIndex === 0) {
 		throw new Error('`pageIndex` is 1-based index so 0 is not a valid value.')
