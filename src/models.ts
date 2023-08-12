@@ -6,6 +6,7 @@ type SemVerGroup = 'breaking changes' | 'features' | 'bug fixes'
 
 type MiscGroup = 'others' | 'artifacts' | 'thanks' | 'credits'
 
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 type ReleaseGroup = SemVerGroup | MiscGroup | string
 
 type RepositoryQueryParams = {

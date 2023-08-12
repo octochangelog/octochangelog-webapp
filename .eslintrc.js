@@ -72,8 +72,8 @@ module.exports = {
 			 * https://typescript-eslint.io/docs/linting/typed-linting/#i-get-errors-telling-me-the-file-must-be-included-in-at-least-one-of-the-projects-provided
 			 */
 			extends: [
-				'plugin:@typescript-eslint/recommended-requiring-type-checking',
-				'plugin:@typescript-eslint/strict',
+				'plugin:@typescript-eslint/recommended-type-checked',
+				'plugin:@typescript-eslint/stylistic-type-checked',
 			],
 			rules: {
 				'@typescript-eslint/array-type': [
