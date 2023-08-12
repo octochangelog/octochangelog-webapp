@@ -50,7 +50,7 @@ function useMsw(): UseMswReturn {
 				window.isApiMockingEnabled = getIsApiMockingEnabled()
 			}
 
-			prepare().finally(() => {
+			void prepare().finally(() => {
 				setIsReady(true)
 				setIsApiMockingReady()
 			})
