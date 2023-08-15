@@ -97,7 +97,7 @@
 		"jest-environment-jsdom": "29.6.2",
 		"lint-staged": "13.2.3",
 		"msw": "1.2.3",
-		"prettier": "3.0.1",
+		"prettier": "3.0.2",
 		"start-server-and-test": "2.0.0",
 		"ts-jest": "29.1.1",
 		"ts-node": "10.9.1",
