@@ -187,8 +187,8 @@ devDependencies:
     specifier: 29.6.3
     version: 29.6.3(@types/node@18.17.6)(ts-node@10.9.1)
   jest-environment-jsdom:
-    specifier: 29.6.2
-    version: 29.6.2
+    specifier: 29.6.3
+    version: 29.6.3
   lint-staged:
     specifier: 14.0.0
     version: 14.0.0
@@ -2245,10 +2245,10 @@ packages:
     resolution: {integrity: sha512-AEcW43C7huGd/vogTddNNTDRpO6vQ2zaQNrttvWV18ArBx9Z56h7BIsXkNFJVOO4/kblWEQz30ckw0+L3izc+Q==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
-      '@jest/fake-timers': 29.6.2
+      '@jest/fake-timers': 29.6.4
       '@jest/types': 29.6.3
       '@types/node': 18.17.6
-      jest-mock: 29.6.2
+      jest-mock: 29.6.3
     dev: true
 
   /@jest/environment@29.6.4:
@@ -2293,18 +2293,6 @@ packages:
       jest-snapshot: 29.6.4
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /@jest/fake-timers@29.6.2:
-    resolution: {integrity: sha512-euZDmIlWjm1Z0lJ1D0f7a0/y5Kh/koLFMUBE5SUYWrmy8oNhJpbTBDAP6CxKnadcMLDoDf4waRYCe35cH6G6PA==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    dependencies:
-      '@jest/types': 29.6.3
-      '@sinonjs/fake-timers': 10.3.0
-      '@types/node': 18.17.6
-      jest-message-util: 29.6.2
-      jest-mock: 29.6.2
-      jest-util: 29.6.2
     dev: true
 
   /@jest/fake-timers@29.6.4:
@@ -5750,7 +5738,7 @@ packages:
       jest-get-type: 29.4.3
       jest-matcher-utils: 29.6.2
       jest-message-util: 29.6.2
-      jest-util: 29.6.2
+      jest-util: 29.6.3
     dev: true
 
   /expect@29.6.4:
@@ -7036,8 +7024,8 @@ packages:
       pretty-format: 29.6.3
     dev: true
 
-  /jest-environment-jsdom@29.6.2:
-    resolution: {integrity: sha512-7oa/+266AAEgkzae8i1awNEfTfjwawWKLpiw2XesZmaoVVj9u9t8JOYx18cG29rbPNtkUlZ8V4b5Jb36y/VxoQ==}
+  /jest-environment-jsdom@29.6.3:
+    resolution: {integrity: sha512-nMJz/i27Moit9bv8Z323/13Melj4FEQH93yRu7GnilvBmPBMH4EGEkEfBTJXYuubyzhMO7w/VHzljIDV+Q/SeQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     peerDependencies:
       canvas: ^2.5.0
@@ -7045,13 +7033,13 @@ packages:
       canvas:
         optional: true
     dependencies:
-      '@jest/environment': 29.6.2
-      '@jest/fake-timers': 29.6.2
-      '@jest/types': 29.6.1
+      '@jest/environment': 29.6.4
+      '@jest/fake-timers': 29.6.4
+      '@jest/types': 29.6.3
       '@types/jsdom': 20.0.1
       '@types/node': 18.17.6
-      jest-mock: 29.6.2
-      jest-util: 29.6.2
+      jest-mock: 29.6.3
+      jest-util: 29.6.3
       jsdom: 20.0.3
     transitivePeerDependencies:
       - bufferutil
@@ -7164,7 +7152,7 @@ packages:
     dependencies:
       '@jest/types': 29.6.3
       '@types/node': 18.17.6
-      jest-util: 29.6.2
+      jest-util: 29.6.3
     dev: true
 
   /jest-mock@29.6.3:
@@ -7297,7 +7285,7 @@ packages:
       jest-get-type: 29.4.3
       jest-matcher-utils: 29.6.2
       jest-message-util: 29.6.2
-      jest-util: 29.6.2
+      jest-util: 29.6.3
       natural-compare: 1.4.0
       pretty-format: 29.6.2
       semver: 7.5.4
