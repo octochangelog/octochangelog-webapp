@@ -16,7 +16,7 @@ const config: Config = {
 	preset: 'ts-jest',
 	clearMocks: true,
 	roots: ['<rootDir>/src/'],
-	reporters: [['github-actions', {silent: false}], 'summary'],
+	reporters: [['github-actions', { silent: false }], 'summary'],
 	setupFilesAfterEnv: ['<rootDir>/src/jest.setup.ts'],
 	moduleNameMapper: {
 		...tsPathsToModules,
