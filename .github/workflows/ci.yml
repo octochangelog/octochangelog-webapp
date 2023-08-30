@@ -8,6 +8,7 @@ on:
 permissions:
   contents: read
   actions: write
+  checks: write
 
 env:
   # Skip Cypress installation in the whole workflow, not necessary here
