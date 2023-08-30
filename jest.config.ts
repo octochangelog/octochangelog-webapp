@@ -13,7 +13,6 @@ const tsPathsToModules = pathsToModuleNameMapper(compilerOptions.paths, {
 })
 
 const config: Config = {
-	preset: 'ts-jest',
 	clearMocks: true,
 	roots: ['<rootDir>/src/'],
 	reporters: [['github-actions', { silent: false }], 'summary'],
