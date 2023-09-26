@@ -71,8 +71,8 @@ dependencies:
     specifier: 3.0.1
     version: 3.0.1
   remark-github:
-    specifier: 11.2.4
-    version: 11.2.4
+    specifier: 12.0.0
+    version: 12.0.0
   remark-parse:
     specifier: 10.0.2
     version: 10.0.2
@@ -8023,6 +8023,12 @@ packages:
       '@types/mdast': 3.0.12
     dev: false
 
+  /mdast-util-to-string@4.0.0:
+    resolution: {integrity: sha512-0H44vDimn51F0YwvxSJSm0eCDOJTRlmN0R1yBh4HLj9wiV1Dn0QoXGbvFAWj2hSItVTlCmBF1hqKlIyUBVFLPg==}
+    dependencies:
+      '@types/mdast': 4.0.0
+    dev: false
+
   /merge-stream@2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
 
@@ -9261,14 +9267,15 @@ packages:
       - supports-color
     dev: false
 
-  /remark-github@11.2.4:
-    resolution: {integrity: sha512-GJjWFpwqdrHHhPWqMbb8+lqFLiHQ9pCzUmXmRrhMFXGpYov5n2ljsZzuWgXlfzArfQYkiKIZczA2I8IHYMHqCA==}
+  /remark-github@12.0.0:
+    resolution: {integrity: sha512-ByefQKFN184LeiGRCabfl7zUJsdlMYWEhiLX1gpmQ11yFg6xSuOTW7LVCv0oc1x+YvUMJW23NU36sJX2RWGgvg==}
     dependencies:
-      '@types/mdast': 3.0.12
-      mdast-util-find-and-replace: 2.2.2
-      mdast-util-to-string: 3.2.0
-      unified: 10.1.2
-      unist-util-visit: 4.1.2
+      '@types/mdast': 4.0.0
+      mdast-util-find-and-replace: 3.0.0
+      mdast-util-to-string: 4.0.0
+      to-vfile: 8.0.0
+      unist-util-visit: 5.0.0
+      vfile: 6.0.1
     dev: false
 
   /remark-parse@10.0.2:
@@ -10026,6 +10033,12 @@ packages:
     dependencies:
       is-number: 7.0.0
     dev: true
+
+  /to-vfile@8.0.0:
+    resolution: {integrity: sha512-IcmH1xB5576MJc9qcfEC/m/nQCFt3fzMHz45sSlgJyTWjRbKW1HAkJpuf3DgE57YzIlZcwcBZA5ENQbBo4aLkg==}
+    dependencies:
+      vfile: 6.0.1
+    dev: false
 
   /toggle-selection@1.0.6:
     resolution: {integrity: sha512-BiZS+C1OS8g/q2RRbJmy59xpyghNBqrr6k5L/uKBGRsTfxmu3ffiRnd8mlGPUVayg8pvfi5urfnu8TU7DVOkLQ==}
