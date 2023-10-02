@@ -11,6 +11,7 @@ const config = {
 		// Disable ESLint during builds since there is a lint job in CI.
 		ignoreDuringBuilds: true,
 	},
+	transpilePackages: ['lodash-es'],
 	async redirects() {
 		return [
 			{
