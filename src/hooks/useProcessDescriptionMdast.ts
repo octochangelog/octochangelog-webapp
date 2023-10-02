@@ -22,7 +22,7 @@ interface HookReturnedValue {
 	isProcessing: boolean
 }
 
-async function processDescriptionAsync(
+function processDescriptionAsync(
 	description: ProcessedRelease['descriptionMdast'],
 	components: ComponentsMapping,
 ): Promise<ReactNode> {
