@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react'
-import { createElement, useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import * as prod from 'react/jsx-runtime'
 import rehypeHighlight from 'rehype-highlight'
-import rehype2react from 'rehype-react'
+import rehype2react, { type Options as RehypeReactOptions } from 'rehype-react'
 import emoji from 'remark-emoji'
 import gfm from 'remark-gfm'
 import parse from 'remark-parse'
@@ -22,21 +23,23 @@ interface HookReturnedValue {
 	isProcessing: boolean
 }
 
+// @ts-expect-error: the react types are missing.
+const rehypeReactOptions: RehypeReactOptions = prod
+
 function processDescriptionAsync(
 	description: ProcessedRelease['descriptionMdast'],
 	components: ComponentsMapping,
 ): Promise<ReactNode> {
+	rehypeReactOptions.components = components
+
 	return new Promise((resolve, reject) => {
 		unified()
 			.use(parse)
 			.use(gfm)
 			.use(emoji, { accessible: true })
 			.use(remark2rehype)
-			.use(rehypeHighlight, { ignoreMissing: true })
-			.use(rehype2react, {
-				createElement,
-				components,
-			})
+			.use(rehypeHighlight)
+			.use(rehype2react, rehypeReactOptions)
 			.process(
 				unified().use(markdown).use(gfm).stringify(description),
 				(err, file) => {
