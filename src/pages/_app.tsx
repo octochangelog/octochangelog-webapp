@@ -1,7 +1,6 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { resetIdCounter } from 'downshift'
 import type { AppProps } from 'next/app'
 import { Inter, Roboto_Mono } from 'next/font/google'
 import { DefaultSeo } from 'next-seo'
@@ -30,8 +29,6 @@ const robotoMonoFont = Roboto_Mono({
 })
 
 const App = ({ Component, pageProps }: AppProps) => {
-	resetIdCounter()
-
 	return (
 		<>
 			<style jsx global>{`
