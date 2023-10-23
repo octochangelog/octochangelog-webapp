@@ -17,13 +17,16 @@ type ReleasesQueryParams = {
 	fromVersion?: ReleaseVersion | null
 	toVersion?: ReleaseVersion | null
 }
+type ConfigArg =
+	| Omit<UseQueryOptions<ReleasesQueryResults, Error>, 'queryKey' | 'queryFn'>
+	| undefined
 
 const QUERY_KEY = 'releases'
 const MAX_AUTO_PAGINATION = 10
 
 function useReleasesQuery(
 	params: ReleasesQueryParams,
-	config?: UseQueryOptions<ReleasesQueryResults, Error>,
+	config?: ConfigArg,
 ): UseQueryResult<ReleasesQueryResults, Error> {
 	const finalParams: RepositoryQueryParams = mapRepositoryToQueryParams(
 		params.repository ?? undefined,
@@ -32,9 +35,9 @@ function useReleasesQuery(
 	const hasFromVersion = !!fromVersion
 	const hasToVersion = !!toVersion
 
-	return useQuery<ReleasesQueryResults, Error>(
-		[QUERY_KEY, finalParams],
-		async () => {
+	return useQuery<ReleasesQueryResults, Error>({
+		queryKey: [QUERY_KEY, finalParams],
+		queryFn: async () => {
 			const releases: Array<Release> = []
 			let paginationCount = 0
 
@@ -67,8 +70,9 @@ function useReleasesQuery(
 
 			return releases
 		},
-		{ enabled: Boolean(params.repository), ...config },
-	)
+		enabled: Boolean(params.repository),
+		...config,
+	})
 }
 
 export { useReleasesQuery }

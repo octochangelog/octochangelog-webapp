@@ -6,6 +6,7 @@ module.exports = {
 		'eslint:recommended',
 		'next/core-web-vitals',
 		'plugin:@typescript-eslint/recommended',
+		'plugin:@tanstack/eslint-plugin-query/recommended',
 		'prettier',
 	],
 	plugins: ['unicorn'],
