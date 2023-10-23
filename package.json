@@ -68,6 +68,7 @@
 		"@chakra-ui/utils": "2.0.14",
 		"@jest/globals": "29.7.0",
 		"@octokit/openapi-types": "19.0.0",
+		"@tanstack/eslint-plugin-query": "5.0.5",
 		"@testing-library/cypress": "10.0.1",
 		"@testing-library/react": "14.0.0",
 		"@types/happo-cypress": "4.1.2",

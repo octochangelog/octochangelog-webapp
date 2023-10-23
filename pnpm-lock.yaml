@@ -112,6 +112,9 @@ devDependencies:
   '@octokit/openapi-types':
     specifier: 19.0.0
     version: 19.0.0
+  '@tanstack/eslint-plugin-query':
+    specifier: 5.0.5
+    version: 5.0.5(eslint@8.51.0)(typescript@5.2.2)
   '@testing-library/cypress':
     specifier: 10.0.1
     version: 10.0.1(cypress@13.3.1)
@@ -2954,6 +2957,18 @@ packages:
     dependencies:
       tslib: 2.6.2
     dev: false
+
+  /@tanstack/eslint-plugin-query@5.0.5(eslint@8.51.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-kYbh5Cboz1BzN6LeUWnI1B0BCikXMYQjxaEO7cV+0rycllU0qZqSEkd2LdgWIZhuLTc4WBt0li1s+O6RhM5Cog==}
+    peerDependencies:
+      eslint: ^8.0.0
+    dependencies:
+      '@typescript-eslint/utils': 5.62.0(eslint@8.51.0)(typescript@5.2.2)
+      eslint: 8.51.0
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+    dev: true
 
   /@tanstack/query-core@5.0.0:
     resolution: {integrity: sha512-Y1BpiA6BblJd/UlVqxEVeAG7IACn568YJuTTItAiecBI7En+33g780kg+/8lhgl+BzcUPN7o+NjBrSRGJoemyQ==}
