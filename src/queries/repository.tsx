@@ -7,20 +7,22 @@ import { octokit } from '~/github-client'
 type ReposQueryResponse = RestEndpointMethodTypes['search']['repos']['response']
 type ReposQueryResults = ReposQueryResponse['data']
 type ReposQueryParams = RestEndpointMethodTypes['search']['repos']['parameters']
+type ConfigArg = Omit<
+	UseQueryOptions<ReposQueryResponse, Error, ReposQueryResults>,
+	'queryKey' | 'queryFn'
+>
 
 function useSearchRepositoriesQuery(
 	params: ReposQueryParams,
-	config?: UseQueryOptions<ReposQueryResponse, Error, ReposQueryResults>,
+	config?: ConfigArg,
 ): UseQueryResult<ReposQueryResults, Error> {
 	const finalParams = { per_page: 100, ...params }
-	return useQuery<ReposQueryResponse, Error, ReposQueryResults>(
-		['repos', finalParams],
-		async () => octokit.search.repos(finalParams),
-		{
-			...config,
-			select: (response) => response.data,
-		},
-	)
+	return useQuery<ReposQueryResponse, Error, ReposQueryResults>({
+		...config,
+		queryKey: ['repos', finalParams],
+		queryFn: async () => octokit.search.repos(finalParams),
+		select: (response) => response.data,
+	})
 }
 
 export { useSearchRepositoriesQuery }

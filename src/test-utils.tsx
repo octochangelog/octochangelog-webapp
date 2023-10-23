@@ -1,4 +1,4 @@
-/* eslint-disable no-console,no-restricted-imports */
+/* eslint-disable no-restricted-imports */
 import { ChakraProvider } from '@chakra-ui/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type {
@@ -15,7 +15,7 @@ import { GithubAuthProvider } from '~/contexts/github-auth-provider'
 
 /**
  * Testing recommendations by TanStack Query
- * https://tanstack.com/query/v4/docs/guides/testing
+ * https://tanstack.com/query/v5/docs/react/guides/testing
  */
 const testingQueryClient = new QueryClient({
 	defaultOptions: {
@@ -23,13 +23,6 @@ const testingQueryClient = new QueryClient({
 			// ✅ turns retries off
 			retry: false,
 		},
-	},
-	logger: {
-		log: console.log,
-		warn: console.warn,
-		// ✅ no more errors on the console for tests
-		// eslint-disable-next-line @typescript-eslint/no-empty-function
-		error: () => {},
 	},
 })
 
