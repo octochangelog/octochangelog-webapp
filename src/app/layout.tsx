@@ -1,6 +1,8 @@
 import { Inter, Roboto_Mono } from 'next/font/google'
 import { type FC, type ReactNode } from 'react'
 
+import Providers from '~/app/Providers'
+
 const interFont = Inter({
 	subsets: ['latin'],
 	variable: '--font-inter',
@@ -21,7 +23,10 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
 		lang="en"
 		className={`${interFont.variable} ${robotoMonoFont.variable}`}
 	>
-		<body>{children}</body>
+		<body>
+			{/* ColorModeScript */}
+			<Providers>{children}</Providers>
+		</body>
 	</html>
 )
 
