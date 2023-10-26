@@ -47,7 +47,6 @@ module.exports = {
 				},
 			},
 		],
-		'import/exports-last': 'error',
 		'import/group-exports': 'error',
 
 		// TODO: Enable this one when gets released in `eslint-plugin-import`
