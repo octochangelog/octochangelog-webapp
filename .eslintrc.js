@@ -103,6 +103,8 @@ module.exports = {
 				// Disabling because it's too strict:
 				// we are interested in using || operator multiple times to avoid empty strings.
 				'@typescript-eslint/prefer-nullish-coalescing': 'off',
+
+				'@typescript-eslint/unbound-method': 'off',
 			},
 		},
 		// Jest

@@ -2,6 +2,8 @@ import { ColorModeScript } from '@chakra-ui/react'
 import { Inter, Roboto_Mono } from 'next/font/google'
 import { type FC, type ReactNode } from 'react'
 
+import VercelAnalytics from './VercelAnalytics'
+
 import Providers from '~/app/Providers'
 import customTheme from '~/customTheme'
 
@@ -27,6 +29,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
 	>
 		<body>
 			<ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
+			<VercelAnalytics />
 			<Providers>{children}</Providers>
 		</body>
 	</html>
