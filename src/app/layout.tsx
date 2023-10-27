@@ -1,7 +1,9 @@
+import { ColorModeScript } from '@chakra-ui/react'
 import { Inter, Roboto_Mono } from 'next/font/google'
 import { type FC, type ReactNode } from 'react'
 
 import Providers from '~/app/Providers'
+import customTheme from '~/customTheme'
 
 const interFont = Inter({
 	subsets: ['latin'],
@@ -24,7 +26,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
 		className={`${interFont.variable} ${robotoMonoFont.variable}`}
 	>
 		<body>
-			{/* ColorModeScript */}
+			<ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
 			<Providers>{children}</Providers>
 		</body>
 	</html>
