@@ -1,5 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import type { AppProps } from 'next/app'
 import { Inter, Roboto_Mono } from 'next/font/google'
@@ -9,16 +9,7 @@ import VercelAnalytics from '~/components/VercelAnalytics'
 import { GithubAuthProvider } from '~/contexts/github-auth-provider'
 import customTheme from '~/customTheme'
 import DefaultSEO from '~/next-seo.config'
-
-const queryClient = new QueryClient({
-	defaultOptions: {
-		queries: {
-			refetchOnWindowFocus: false,
-			retry: 1,
-			staleTime: 5 * 60 * 1000, // 5min
-		},
-	},
-})
+import { queryClient } from '~/query-client'
 
 const interFont = Inter({
 	subsets: ['latin'],
