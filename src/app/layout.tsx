@@ -6,6 +6,7 @@ import Providers from './Providers'
 import VercelAnalytics from './VercelAnalytics'
 import { openGraph } from './shared-metadata'
 
+import UILayout from '~/app/UILayout'
 import { BRIEF_DESCRIPTION, FULL_DESCRIPTION, SITE_TITLE } from '~/common'
 import customTheme from '~/customTheme'
 
@@ -40,7 +41,9 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
 		<body>
 			<ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
 			<VercelAnalytics />
-			<Providers>{children}</Providers>
+			<Providers>
+				<UILayout>{children}</UILayout>
+			</Providers>
 		</body>
 	</html>
 )

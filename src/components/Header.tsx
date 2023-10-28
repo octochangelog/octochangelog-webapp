@@ -1,3 +1,5 @@
+'use client'
+
 import { Link as RouteLink } from '@chakra-ui/next-js'
 import type { BoxProps } from '@chakra-ui/react'
 import {
