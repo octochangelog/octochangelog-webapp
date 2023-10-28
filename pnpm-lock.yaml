@@ -117,7 +117,7 @@ devDependencies:
     version: 5.0.5(eslint@8.52.0)(typescript@5.2.2)
   '@testing-library/cypress':
     specifier: 10.0.1
-    version: 10.0.1(cypress@13.3.2)
+    version: 10.0.1(cypress@13.3.3)
   '@testing-library/react':
     specifier: 14.0.0
     version: 14.0.0(react-dom@18.2.0)(react@18.2.0)
@@ -152,8 +152,8 @@ devDependencies:
     specifier: 6.9.0
     version: 6.9.0(eslint@8.52.0)(typescript@5.2.2)
   cypress:
-    specifier: 13.3.2
-    version: 13.3.2
+    specifier: 13.3.3
+    version: 13.3.3
   eslint:
     specifier: 8.52.0
     version: 8.52.0
@@ -3074,7 +3074,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@testing-library/cypress@10.0.1(cypress@13.3.2):
+  /@testing-library/cypress@10.0.1(cypress@13.3.3):
     resolution: {integrity: sha512-e8uswjTZIBhaIXjzEcrQQ8nHRWHgZH7XBxKuIWxZ/T7FxfWhCR48nFhUX5nfPizjVOKSThEfOSv67jquc1ASkw==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
@@ -3082,7 +3082,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.1
       '@testing-library/dom': 9.3.1
-      cypress: 13.3.2
+      cypress: 13.3.3
     dev: true
 
   /@testing-library/dom@9.3.1:
@@ -3212,7 +3212,7 @@ packages:
   /@types/happo-cypress@4.1.2:
     resolution: {integrity: sha512-ObgSsqi+SvUSfs8/9p8a8pF1GUA4QUYm7BClD4WvhwpmqB37mkQpO+05zsbGkgbL5c4klfp/jUypweGV8WvkRw==}
     dependencies:
-      cypress: 13.3.2
+      cypress: 13.3.3
     dev: true
 
   /@types/hast@3.0.1:
@@ -4766,8 +4766,8 @@ packages:
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
 
-  /cypress@13.3.2:
-    resolution: {integrity: sha512-ArLmZObcLC+xxCp7zJZZbhby9FUf5CueLej9dUM4+5j37FTS4iMSgHxQLDu01PydFUvDXcNoIVRCYrHHxD7Ybg==}
+  /cypress@13.3.3:
+    resolution: {integrity: sha512-mbdkojHhKB1xbrj7CrKWHi22uFx9P9vQFiR0sYDZZoK99OMp9/ZYN55TO5pjbXmV7xvCJ4JwBoADXjOJK8aCJw==}
     engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
     requiresBuild: true
