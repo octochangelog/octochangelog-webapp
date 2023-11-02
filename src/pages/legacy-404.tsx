@@ -1,4 +1,3 @@
-import { Link } from '@chakra-ui/next-js'
 import {
 	Heading,
 	Stack,
@@ -12,6 +11,7 @@ import NextLink from 'next/link'
 import { NextSeo } from 'next-seo'
 
 import mascotIcon from '@app-public/mascot-icon.png'
+import { Link } from '~/components/ChakraNextLink'
 import Layout from '~/components/Layout'
 
 const Custom404 = () => (

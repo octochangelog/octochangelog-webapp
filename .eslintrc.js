@@ -27,6 +27,11 @@ module.exports = {
 				name: '@testing-library/react',
 				message: 'Please import from `test-utils` instead.',
 			},
+			{
+				name: '@chakra-ui/next-js',
+				importNames: ['Link'],
+				message: 'Please import from `ChakraNextLink` instead.',
+			},
 		],
 
 		// React

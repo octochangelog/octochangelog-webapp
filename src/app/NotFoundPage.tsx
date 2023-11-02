@@ -1,6 +1,3 @@
-'use client'
-
-import { Link } from '@chakra-ui/next-js'
 import {
 	Button,
 	Container,
@@ -14,6 +11,7 @@ import NextLink from 'next/link'
 import { type FC } from 'react'
 
 import mascotIcon from '@app-public/mascot-icon.png'
+import { Link } from '~/components/ChakraNextLink'
 
 const NotFoundPage: FC = () => {
 	return (
