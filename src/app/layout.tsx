@@ -37,8 +37,9 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
 	<html
 		lang="en"
 		className={`${interFont.variable} ${robotoMonoFont.variable}`}
+		suppressHydrationWarning
 	>
-		<body>
+		<body suppressHydrationWarning>
 			<ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
 			<Suspense>
 				{/* Avoid entire page deopted into client-side rendering */}

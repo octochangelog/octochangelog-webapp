@@ -1,3 +1,5 @@
+'use client'
+
 import {
 	Box,
 	Button,
@@ -13,7 +15,6 @@ import {
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
-import { NextSeo } from 'next-seo'
 import type { ReactNode } from 'react'
 import * as React from 'react'
 import type { IconType } from 'react-icons'
@@ -27,7 +28,6 @@ import {
 
 import mascotLogo from '@app-public/mascot-logo.png'
 import { BRIEF_DESCRIPTION } from '~/common'
-import Layout from '~/components/Layout'
 
 const MainSection = () => (
 	<Stack
@@ -156,29 +156,26 @@ const FeatureItem = ({ icon, title, children }: FeatureItemProps) => {
 
 const HomePage = () => {
 	return (
-		<Layout>
-			<NextSeo />
-			<Box py={{ base: 8, lg: 16 }} mb={10}>
-				<Container maxWidth="container.lg">
-					<MainSection />
+		<Box py={{ base: 8, lg: 16 }} mb={10}>
+			<Container maxWidth="container.lg">
+				<MainSection />
 
-					<Box mt={40} />
+				<Box mt={40} />
 
-					<List fontSize="" color="secondaryText">
-						<SimpleGrid
-							columns={{ base: 1, md: 2 }}
-							spacing={{ base: 10, md: 32 }}
-						>
-							{FEATURES_DESCRIPTIONS.map(({ title, icon, children }) => (
-								<FeatureItem key={title} icon={icon} title={title}>
-									{children}
-								</FeatureItem>
-							))}
-						</SimpleGrid>
-					</List>
-				</Container>
-			</Box>
-		</Layout>
+				<List fontSize="" color="secondaryText">
+					<SimpleGrid
+						columns={{ base: 1, md: 2 }}
+						spacing={{ base: 10, md: 32 }}
+					>
+						{FEATURES_DESCRIPTIONS.map(({ title, icon, children }) => (
+							<FeatureItem key={title} icon={icon} title={title}>
+								{children}
+							</FeatureItem>
+						))}
+					</SimpleGrid>
+				</List>
+			</Container>
+		</Box>
 	)
 }
 
