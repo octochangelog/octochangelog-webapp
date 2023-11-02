@@ -27,6 +27,11 @@ module.exports = {
 				name: '@testing-library/react',
 				message: 'Please import from `test-utils` instead.',
 			},
+			{
+				name: '@chakra-ui/next-js',
+				importNames: ['Link'],
+				message: 'Please import from `ChakraNextLink` instead.',
+			},
 		],
 
 		// React
@@ -47,7 +52,6 @@ module.exports = {
 				},
 			},
 		],
-		'import/exports-last': 'error',
 		'import/group-exports': 'error',
 
 		// TODO: Enable this one when gets released in `eslint-plugin-import`
@@ -104,6 +108,8 @@ module.exports = {
 				// Disabling because it's too strict:
 				// we are interested in using || operator multiple times to avoid empty strings.
 				'@typescript-eslint/prefer-nullish-coalescing': 'off',
+
+				'@typescript-eslint/unbound-method': 'off',
 			},
 		},
 		// Jest

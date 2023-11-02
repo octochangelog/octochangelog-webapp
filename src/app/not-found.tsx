@@ -1,22 +1,27 @@
-import { Link } from '@chakra-ui/next-js'
 import {
-	Heading,
-	Stack,
-	VStack,
-	Text,
 	Button,
 	Container,
+	Heading,
+	Stack,
+	Text,
+	VStack,
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
-import { NextSeo } from 'next-seo'
+import { type FC } from 'react'
+
+import { openGraph } from './shared-metadata'
 
 import mascotIcon from '@app-public/mascot-icon.png'
-import Layout from '~/components/Layout'
+import { Link } from '~/components/ChakraNextLink'
 
-const Custom404 = () => (
-	<Layout>
-		<NextSeo title="Not Found" />
+export const metadata = {
+	title: 'Not Found',
+	openGraph: { ...openGraph, title: 'Not Found' },
+}
+
+const NotFound: FC = () => {
+	return (
 		<Container variant="fluid" pb={{ base: 8, lg: 16 }}>
 			<VStack px="10">
 				<Image src={mascotIcon} alt="" width={250} height={250} />
@@ -53,7 +58,7 @@ const Custom404 = () => (
 				</Link>
 			</VStack>
 		</Container>
-	</Layout>
-)
+	)
+}
 
-export default Custom404
+export default NotFound

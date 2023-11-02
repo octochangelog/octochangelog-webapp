@@ -1,4 +1,5 @@
-import { Link as RouteLink } from '@chakra-ui/next-js'
+'use client'
+
 import type { BoxProps } from '@chakra-ui/react'
 import {
 	Box,
@@ -15,6 +16,7 @@ import { DiGithubBadge } from 'react-icons/di'
 
 import mascotIcon from '@app-public/mascot-icon.png'
 import { REPO_URL } from '~/common'
+import { Link as RouteLink } from '~/components/ChakraNextLink'
 import ToggleColorModeButton from '~/components/ToggleColorModeButton'
 
 const LOGO_SIZES = { base: 8, md: 16 }
