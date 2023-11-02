@@ -17,7 +17,6 @@ import { Link } from '~/components/ChakraNextLink'
 
 export const metadata = {
 	title: 'Not Found',
-	description: 'This page could not be found',
 	openGraph: { ...openGraph, title: 'Not Found' },
 }
 
