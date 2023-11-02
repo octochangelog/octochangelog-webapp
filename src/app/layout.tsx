@@ -1,6 +1,6 @@
 import { ColorModeScript } from '@chakra-ui/react'
 import { Inter, Roboto_Mono } from 'next/font/google'
-import { type FC, type ReactNode } from 'react'
+import { type FC, type ReactNode, Suspense } from 'react'
 
 import Providers from './Providers'
 import VercelAnalytics from './VercelAnalytics'
@@ -40,7 +40,11 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
 	>
 		<body>
 			<ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
-			<VercelAnalytics />
+			<Suspense>
+				{/* Avoid entire page deopted into client-side rendering */}
+				{/* https://nextjs.org/docs/messages/deopted-into-client-rendering */}
+				<VercelAnalytics />
+			</Suspense>
 			<Providers>
 				<UILayout>{children}</UILayout>
 			</Providers>
