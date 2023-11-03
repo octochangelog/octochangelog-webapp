@@ -4,9 +4,14 @@ import { destroyCookie, parseCookies, setCookie } from 'nookies'
 
 import { IS_PRODUCTION_MODE } from '~/common'
 
-const userAgent = IS_PRODUCTION_MODE
-	? 'Octoclairvoyant'
-	: 'Test Octoclairvoyant'
+function getUserAgent(): string {
+	const userAgent = 'Octoclairvoyant'
+	if (process.env.VERCEL_ENV === 'production') {
+		return userAgent
+	}
+
+	return `Test ${userAgent}`
+}
 
 const STORAGE_KEY_PREFIX = IS_PRODUCTION_MODE ? '' : 'test-'
 const GITHUB_STORAGE_KEY = `${STORAGE_KEY_PREFIX}octoclairvoyant-github-access-token`
@@ -34,7 +39,7 @@ function setGithubAccessToken(newAccessToken?: string | null): void {
 const octokit = new Octokit({
 	authStrategy: createCallbackAuth,
 	auth: { callback: getGithubAccessToken },
-	userAgent,
+	userAgent: getUserAgent(),
 })
 
 /**
