@@ -2,8 +2,6 @@ import { createCallbackAuth } from '@octokit/auth-callback'
 import { Octokit } from '@octokit/rest'
 import { destroyCookie, parseCookies, setCookie } from 'nookies'
 
-import { IS_PRODUCTION_MODE } from '~/common'
-
 function getUserAgent(): string {
 	const userAgent = 'Octoclairvoyant'
 	if (process.env.VERCEL_ENV === 'production') {
@@ -13,8 +11,7 @@ function getUserAgent(): string {
 	return `Test ${userAgent}`
 }
 
-const STORAGE_KEY_PREFIX = IS_PRODUCTION_MODE ? '' : 'test-'
-const GITHUB_STORAGE_KEY = `${STORAGE_KEY_PREFIX}octoclairvoyant-github-access-token`
+const GITHUB_STORAGE_KEY = 'octoclairvoyant-github-access-token' as const
 
 function getGithubAccessToken(): string | undefined {
 	const cookies = parseCookies(null)
