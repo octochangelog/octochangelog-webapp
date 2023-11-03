@@ -90,8 +90,8 @@ dependencies:
     specifier: 7.5.4
     version: 7.5.4
   unified:
-    specifier: 11.0.3
-    version: 11.0.3
+    specifier: 11.0.4
+    version: 11.0.4
 
 devDependencies:
   '@chakra-ui/cli':
@@ -9203,7 +9203,7 @@ packages:
     dependencies:
       '@types/hast': 3.0.2
       hast-util-to-jsx-runtime: 2.2.0
-      unified: 11.0.3
+      unified: 11.0.4
     dev: false
 
   /remark-emoji@4.0.0:
@@ -9223,7 +9223,7 @@ packages:
       micromark-extension-gfm: 3.0.0
       remark-parse: 11.0.0
       remark-stringify: 11.0.0
-      unified: 11.0.3
+      unified: 11.0.4
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -9245,7 +9245,7 @@ packages:
       '@types/mdast': 4.0.2
       mdast-util-from-markdown: 2.0.0
       micromark-util-types: 2.0.0
-      unified: 11.0.3
+      unified: 11.0.4
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -9256,7 +9256,7 @@ packages:
       '@types/hast': 3.0.1
       '@types/mdast': 4.0.2
       mdast-util-to-hast: 13.0.2
-      unified: 11.0.3
+      unified: 11.0.4
       vfile: 6.0.1
     dev: false
 
@@ -9265,7 +9265,7 @@ packages:
     dependencies:
       '@types/mdast': 4.0.2
       mdast-util-to-markdown: 2.1.0
-      unified: 11.0.3
+      unified: 11.0.4
     dev: false
 
   /request-progress@3.0.0:
@@ -10273,8 +10273,8 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /unified@11.0.3:
-    resolution: {integrity: sha512-jlCV402P+YDcFcB2VcN/n8JasOddqIiaxv118wNBoZXEhOn+lYG7BR4Bfg2BwxvlK58dwbuH2w7GX2esAjL6Mg==}
+  /unified@11.0.4:
+    resolution: {integrity: sha512-apMPnyLjAX+ty4OrNap7yumyVAMlKx5IWU2wlzzUdYJO9A8f1p9m/gywF/GM2ZDFcjQPrx59Mc90KwmxsoklxQ==}
     dependencies:
       '@types/unist': 3.0.1
       bail: 2.0.2
