@@ -59,7 +59,7 @@
 		"remark-rehype": "11.0.0",
 		"remark-stringify": "11.0.0",
 		"semver": "7.5.4",
-		"unified": "11.0.3"
+		"unified": "11.0.4"
 	},
 	"devDependencies": {
 		"@chakra-ui/cli": "2.4.1",
