@@ -42,7 +42,7 @@ const octokit = new Octokit({
 /**
  * Exchanges temporary `code` for an access token.
  *
- * Should be used only in SSR since it's the only side where
+ * Should be used only in the server since it's the only side where
  * `client_secret` is available.
  *
  * @param code - The code received as a response to GitHub auth redirect
@@ -59,9 +59,10 @@ async function obtainAccessToken(code?: string): Promise<Error | string> {
 			Accept: 'application/json',
 		},
 		body: JSON.stringify({
+			code,
+			redirect_uri: process.env.VERCEL_BRANCH_URL,
 			client_id: process.env.NEXT_PUBLIC_GITHUB_APP_CLIENT_ID,
 			client_secret: process.env.GITHUB_APP_CLIENT_SECRET,
-			code,
 		}),
 	})
 
