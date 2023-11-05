@@ -1,4 +1,5 @@
 import { ColorModeScript } from '@chakra-ui/react'
+import { type Viewport } from 'next'
 import { Inter, Roboto_Mono } from 'next/font/google'
 import { type FC, type ReactNode, Suspense } from 'react'
 
@@ -31,6 +32,10 @@ export const metadata = {
 	// TODO: Move this to `generateViewport` in Next.js v14
 	//  https://nextjs.org/docs/app/api-reference/functions/generate-viewport
 	themeColor: customTheme.colors.primary['700'],
+}
+
+export const viewport: Viewport = {
+	colorScheme: 'light dark',
 }
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
