@@ -112,6 +112,13 @@ module.exports = {
 				'@typescript-eslint/unbound-method': 'off',
 			},
 		},
+		// Next.js
+		{
+			files: ['src/app/**/*.[jt]s?(x)'],
+			rules: {
+				'import/group-exports': 'off',
+			},
+		},
 		// Jest
 		{
 			files: [
