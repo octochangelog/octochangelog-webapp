@@ -11,6 +11,16 @@ function getUserAgent(): string {
 	return `Test ${userAgent}`
 }
 
+function getRedirectUri(): string | undefined {
+	const vercelBranchUrl = process.env.VERCEL_BRANCH_URL
+
+	if (vercelBranchUrl) {
+		return `${vercelBranchUrl}/auth/callback`
+	}
+
+	return undefined
+}
+
 const GITHUB_STORAGE_KEY = 'octoclairvoyant-github-access-token' as const
 
 function getGithubAccessToken(): string | undefined {
@@ -60,7 +70,7 @@ async function obtainAccessToken(code?: string): Promise<Error | string> {
 		},
 		body: JSON.stringify({
 			code,
-			redirect_uri: process.env.VERCEL_BRANCH_URL,
+			redirect_uri: getRedirectUri(),
 			client_id: process.env.NEXT_PUBLIC_GITHUB_APP_CLIENT_ID,
 			client_secret: process.env.GITHUB_APP_CLIENT_SECRET,
 		}),
