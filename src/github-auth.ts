@@ -61,10 +61,10 @@ async function exchangeCodeByAccessToken(code: string): Promise<string> {
 }
 
 function getRedirectUri(): string | undefined {
-	const vercelBranchUrl = process.env.VERCEL_BRANCH_URL
+	const vercelBranchUrl = process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL
 
 	if (vercelBranchUrl) {
-		return `${vercelBranchUrl}/auth/callback`
+		return `https://${vercelBranchUrl}/auth/callback`
 	}
 
 	return undefined
