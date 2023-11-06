@@ -1,12 +1,9 @@
 import { type FC } from 'react'
 
+import { AutCallbackLoading } from './UIComponents'
+
 const Loading: FC = () => {
-	return (
-		<div>
-			<h2>Authenticating...</h2>
-			<p>We will redirect you in a few seconds</p>
-		</div>
-	)
+	return <AutCallbackLoading />
 }
 
 export default Loading

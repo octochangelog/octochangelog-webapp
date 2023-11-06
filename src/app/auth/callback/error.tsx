@@ -2,19 +2,15 @@
 
 import { type FC } from 'react'
 
+import { AuthCallbackError } from './UIComponents'
+
 type ErrorAuthPageProps = {
 	error: Error & { digest?: string }
 	reset: () => void
 }
 
 const ErrorAuthPage: FC<ErrorAuthPageProps> = ({ error }) => {
-	return (
-		<div>
-			<h1>Something went wrong!</h1>
-
-			<p>Description: {error.message}</p>
-		</div>
-	)
+	return <AuthCallbackError errorMessage={error.message} />
 }
 
 export default ErrorAuthPage
