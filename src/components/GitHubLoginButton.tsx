@@ -6,7 +6,7 @@ import type { ReactNode, MouseEvent } from 'react'
 import { DiGithubBadge } from 'react-icons/di'
 
 import { AUTH_REDIRECT_STORAGE_KEY } from '~/common'
-import { githubAuthUrl } from '~/github-auth'
+import { getGitHubAuthUrl } from '~/github-auth'
 
 interface GitHubLoginButtonProps {
 	children?: ReactNode
@@ -25,7 +25,7 @@ const GitHubLoginButton = ({
 			searchParams?.toString() ?? '',
 		)
 
-		window.location.href = githubAuthUrl.toString()
+		window.location.href = getGitHubAuthUrl().toString()
 	}
 
 	return (

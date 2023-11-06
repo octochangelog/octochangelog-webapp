@@ -60,14 +60,6 @@ async function exchangeCodeByAccessToken(code: string): Promise<string> {
 	return responseJson.access_token
 }
 
-const githubAuthUrl = new URL('https://github.com')
-githubAuthUrl.pathname = '/login/oauth/authorize'
-githubAuthUrl.searchParams.append(
-	'client_id',
-	String(process.env.NEXT_PUBLIC_GITHUB_APP_CLIENT_ID),
-)
-githubAuthUrl.searchParams.append('scope', '')
-
 function getRedirectUri(): string | undefined {
 	const vercelBranchUrl = process.env.VERCEL_BRANCH_URL
 
@@ -78,13 +70,25 @@ function getRedirectUri(): string | undefined {
 	return undefined
 }
 
-const redirectUri = getRedirectUri()
-if (redirectUri) {
-	githubAuthUrl.searchParams.append('redirect_uri', redirectUri)
+function getGitHubAuthUrl(): URL {
+	const githubAuthUrl = new URL('https://github.com')
+	githubAuthUrl.pathname = '/login/oauth/authorize'
+	githubAuthUrl.searchParams.append(
+		'client_id',
+		String(process.env.NEXT_PUBLIC_GITHUB_APP_CLIENT_ID),
+	)
+	githubAuthUrl.searchParams.append('scope', '')
+
+	const redirectUri = getRedirectUri()
+	if (redirectUri) {
+		githubAuthUrl.searchParams.append('redirect_uri', redirectUri)
+	}
+
+	return githubAuthUrl
 }
 
 export {
-	githubAuthUrl,
+	getGitHubAuthUrl,
 	exchangeCodeByAccessToken,
 	setGithubAccessToken,
 	getIsAuth,
