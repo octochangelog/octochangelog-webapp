@@ -1,20 +1,22 @@
 'use client'
 
 import {
-	Box,
-	Container,
-	Heading,
-	VStack,
-	Text,
-	Spinner,
-	Center,
 	Alert,
+	AlertDescription,
 	AlertIcon,
 	AlertTitle,
-	AlertDescription,
+	Button,
+	Center,
+	Container,
+	Heading,
+	Spinner,
+	Text,
+	VStack,
 } from '@chakra-ui/react'
-import { redirect } from 'next/navigation'
-import React, { type FC, type ReactNode } from 'react'
+import NextLink from 'next/link'
+import React, { type FC, type ReactNode, useEffect } from 'react'
+
+import { useGithubAuth } from '~/contexts/github-auth-provider'
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 	return (
@@ -24,9 +26,9 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 			height="full"
 			width="full"
 		>
-			<VStack gap={{ base: 4, md: 16 }} alignItems="start">
-				<Heading>Authorizing on GitHub</Heading>
-				<Box width="full">{children}</Box>
+			<VStack width="full" gap={{ base: 4, md: 16 }}>
+				<Heading alignSelf="start">Authorizing on GitHub</Heading>
+				{children}
 			</VStack>
 		</Container>
 	)
@@ -51,23 +53,27 @@ export const AutCallbackLoading: FC = () => {
 	)
 }
 
-export const AuthCallbackSuccess: FC<{ accessToken: string }> = () => {
-	// TODO: set token
+export const AuthCallbackSuccess: FC<{ accessToken: string }> = ({
+	accessToken,
+}) => {
+	const { setAccessToken } = useGithubAuth()
 
-	// Redirect after 3 seconds, so the user can read the success confirmation.
-	setTimeout(() => {
-		redirect('/comparator')
-	}, 3000)
+	useEffect(() => {
+		setAccessToken(accessToken)
+	}, [accessToken, setAccessToken])
 
 	return (
 		<Layout>
 			<Alert status="success">
 				<AlertIcon />
 				<AlertTitle>Authorized successfully!</AlertTitle>
-				<AlertDescription>
-					You will be redirected in a few moments.
-				</AlertDescription>
 			</Alert>
+
+			<NextLink href="/comparator" passHref legacyBehavior replace>
+				<Button as="a" variant="cta">
+					Go to comparator
+				</Button>
+			</NextLink>
 		</Layout>
 	)
 }
