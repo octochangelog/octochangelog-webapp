@@ -1,10 +1,9 @@
-import { destroyCookie, parseCookies, setCookie } from 'nookies'
+import Cookies from 'js-cookie'
 
 const GITHUB_STORAGE_KEY = 'octoclairvoyant-github-access-token' as const
 
 function getGithubAccessToken(): string | undefined {
-	const cookies = parseCookies(null)
-	return cookies[GITHUB_STORAGE_KEY]
+	return Cookies.get(GITHUB_STORAGE_KEY)
 }
 
 function getIsAuth(): boolean {
@@ -17,12 +16,13 @@ function setGithubAccessToken(newAccessToken?: string | null): void {
 	}
 
 	if (newAccessToken) {
-		setCookie(null, GITHUB_STORAGE_KEY, newAccessToken, {
-			maxAge: 31536000, // 1 year
-			path: '/',
+		// Expires in 1 year from time of creation
+		Cookies.set(GITHUB_STORAGE_KEY, newAccessToken, {
+			expires: 365,
+			sameSite: 'Strict',
 		})
 	} else {
-		destroyCookie(null, GITHUB_STORAGE_KEY)
+		Cookies.remove(GITHUB_STORAGE_KEY)
 	}
 }
 
