@@ -6,7 +6,6 @@ import { Inter, Roboto_Mono } from 'next/font/google'
 import { DefaultSeo } from 'next-seo'
 
 import VercelAnalytics from '~/components/VercelAnalytics'
-import { GithubAuthProvider } from '~/contexts/github-auth-provider'
 import customTheme from '~/customTheme'
 import DefaultSEO from '~/next-seo.config'
 import { queryClient } from '~/query-client'
@@ -32,9 +31,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 			<DefaultSeo {...DefaultSEO} />
 			<QueryClientProvider client={queryClient}>
 				<ChakraProvider theme={customTheme}>
-					<GithubAuthProvider>
-						<Component {...pageProps} />
-					</GithubAuthProvider>
+					<Component {...pageProps} />
 				</ChakraProvider>
 				<ReactQueryDevtools initialIsOpen={false} />
 			</QueryClientProvider>
