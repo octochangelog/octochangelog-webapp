@@ -52,17 +52,12 @@ const octokit = new Octokit({
 /**
  * Exchanges temporary `code` for an access token.
  *
+ * https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#2-users-are-redirected-back-to-your-site-by-github
+ *
  * Should be used only in the server since it's the only side where
  * `client_secret` is available.
- *
- * @param code - The code received as a response to GitHub auth redirect
  */
-async function obtainAccessToken(code?: string): Promise<string> {
-	if (!code) {
-		// TODO: move this check outside
-		throw new Error('Empty code received back from GitHub')
-	}
-
+async function exchangeCodeByAccessToken(code: string): Promise<string> {
 	const response = await fetch('https://github.com/login/oauth/access_token', {
 		method: 'POST',
 		headers: {
@@ -78,10 +73,14 @@ async function obtainAccessToken(code?: string): Promise<string> {
 	})
 
 	if (!response.ok) {
-		throw new Error('Something went wrong obtaining access token')
+		throw new Error('Something went wrong exchanging the code.')
 	}
 
-	const responseJson = (await response.json()) as { access_token: string }
+	const responseJson = (await response.json()) as {
+		access_token: string
+		scope: string
+		token_type: string
+	}
 	return responseJson.access_token
 }
 
@@ -97,7 +96,7 @@ export {
 	GITHUB_STORAGE_KEY,
 	getGithubAccessToken,
 	setGithubAccessToken,
-	obtainAccessToken,
+	exchangeCodeByAccessToken,
 	octokit,
 	githubAuthUrl,
 }

@@ -12,7 +12,7 @@ import { useEffect } from 'react'
 
 import Layout from '~/components/Layout'
 import { useGithubAuth } from '~/contexts/github-auth-provider'
-import { obtainAccessToken } from '~/github-client'
+import { exchangeCodeByAccessToken } from '~/github-client'
 
 interface Props {
 	accessToken?: string
@@ -62,7 +62,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 	try {
 		const { code } = context.query
-		accessToken = await obtainAccessToken(code as string | undefined)
+		accessToken = await exchangeCodeByAccessToken(code as string | undefined)
 	} catch (e: unknown) {
 		errorMessage = String(e)
 	}

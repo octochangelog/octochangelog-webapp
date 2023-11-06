@@ -2,6 +2,8 @@ import type { components } from '@octokit/openapi-types'
 import type { Root } from 'mdast'
 import type { ReactElement } from 'react'
 
+type NextSearchParams = Record<string, string | Array<string> | undefined>
+
 type SemVerGroup = 'breaking changes' | 'features' | 'bug fixes'
 
 type MiscGroup = 'others' | 'artifacts' | 'thanks' | 'credits'
@@ -40,6 +42,7 @@ type ComponentLike<
 type ComponentsMapping = Record<string, ComponentLike<ReactElement>>
 
 export type {
+	NextSearchParams,
 	SemVerGroup,
 	MiscGroup,
 	ReleaseGroup,

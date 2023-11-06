@@ -1,21 +1,23 @@
-import { unstable_noStore as noStore } from 'next/cache'
 import { type FC } from 'react'
 
-import { obtainAccessToken } from '~/github-client'
+import { exchangeCodeByAccessToken } from '~/github-client'
+import { type NextSearchParams } from '~/models'
 
 export const metadata = {
 	title: 'Authorizing on GitHub',
 }
 
-async function getAccessToken(): Promise<string> {
-	const accessToken = await obtainAccessToken()
+const Page: FC<{ searchParams: NextSearchParams }> = async ({
+	searchParams,
+}) => {
+	const { code } = searchParams
 
-	return accessToken
-}
+	if (typeof code !== 'string') {
+		throw new Error('Missing GitHub code.')
+	}
 
-const Page: FC = async () => {
-	noStore()
-	const accessToken = await getAccessToken()
+	const accessToken = await exchangeCodeByAccessToken(code)
+
 	return (
 		<div>
 			<h2>Auth success!</h2>
