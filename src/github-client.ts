@@ -66,7 +66,6 @@ async function exchangeCodeByAccessToken(code: string): Promise<string> {
 		},
 		body: JSON.stringify({
 			code,
-			redirect_uri: getRedirectUri(),
 			client_id: process.env.NEXT_PUBLIC_GITHUB_APP_CLIENT_ID,
 			client_secret: process.env.GITHUB_APP_CLIENT_SECRET,
 		}),
@@ -91,6 +90,11 @@ githubAuthUrl.searchParams.append(
 	String(process.env.NEXT_PUBLIC_GITHUB_APP_CLIENT_ID),
 )
 githubAuthUrl.searchParams.append('scope', '')
+
+const redirectUri = getRedirectUri()
+if (redirectUri) {
+	githubAuthUrl.searchParams.append('redirect_uri', redirectUri)
+}
 
 export {
 	GITHUB_STORAGE_KEY,
