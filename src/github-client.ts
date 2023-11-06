@@ -28,6 +28,10 @@ function getGithubAccessToken(): string | undefined {
 	return cookies[GITHUB_STORAGE_KEY]
 }
 
+function getIsAuth(): boolean {
+	return !!getGithubAccessToken()
+}
+
 function setGithubAccessToken(newAccessToken?: string | null): void {
 	if (newAccessToken === getGithubAccessToken()) {
 		return
@@ -100,6 +104,7 @@ export {
 	GITHUB_STORAGE_KEY,
 	getGithubAccessToken,
 	setGithubAccessToken,
+	getIsAuth,
 	exchangeCodeByAccessToken,
 	octokit,
 	githubAuthUrl,

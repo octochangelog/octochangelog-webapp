@@ -17,7 +17,7 @@ import { useRouter } from 'next/navigation'
 import React, { type FC, type ReactNode, useEffect } from 'react'
 
 import { AUTH_REDIRECT_STORAGE_KEY } from '~/common'
-import { useGithubAuth } from '~/contexts/github-auth-provider'
+import { setGithubAccessToken } from '~/github-client'
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 	return (
@@ -58,11 +58,10 @@ export const AuthCallbackSuccess: FC<{ accessToken: string }> = ({
 	accessToken,
 }) => {
 	const router = useRouter()
-	const { setAccessToken } = useGithubAuth()
 
 	useEffect(() => {
-		setAccessToken(accessToken)
-	}, [accessToken, setAccessToken])
+		setGithubAccessToken(accessToken)
+	}, [accessToken])
 
 	const handleClick = () => {
 		const redirectSearchParams = sessionStorage.getItem(

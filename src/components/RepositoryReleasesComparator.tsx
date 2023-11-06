@@ -7,7 +7,7 @@ import GitHubLoginButton from '~/components/GitHubLoginButton'
 import RepositoriesComparatorFilters from '~/components/RepositoriesComparatorFilters'
 import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesChangelogHeading'
 import { useComparatorState } from '~/contexts/comparator-context'
-import { useGithubAuth } from '~/contexts/github-auth-provider'
+import { getIsAuth } from '~/github-client'
 
 const RepositoryReleasesChangelog = dynamic(
 	() => import('~/components/RepositoryReleasesChangelog'),
@@ -15,8 +15,8 @@ const RepositoryReleasesChangelog = dynamic(
 )
 
 const RepositoryReleasesComparator = () => {
-	const { isAuth } = useGithubAuth()
 	const { repository, fromVersion, toVersion } = useComparatorState()
+	const isAuth = getIsAuth()
 
 	return (
 		<Flex direction="column" height="full">
