@@ -1,7 +1,7 @@
 import { type FC } from 'react'
 
 import { AuthCallbackSuccess } from '~/app/auth/callback/UIComponents'
-import { exchangeCodeByAccessToken } from '~/github-client'
+import { exchangeCodeByAccessToken } from '~/github-auth'
 import { type NextSearchParams } from '~/models'
 
 export const metadata = {

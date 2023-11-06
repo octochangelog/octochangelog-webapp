@@ -6,7 +6,7 @@ import type { ReactNode, MouseEvent } from 'react'
 import { DiGithubBadge } from 'react-icons/di'
 
 import { AUTH_REDIRECT_STORAGE_KEY } from '~/common'
-import { githubAuthUrl } from '~/github-client'
+import { githubAuthUrl } from '~/github-auth'
 
 interface GitHubLoginButtonProps {
 	children?: ReactNode

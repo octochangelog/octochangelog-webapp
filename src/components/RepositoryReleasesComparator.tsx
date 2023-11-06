@@ -7,7 +7,7 @@ import GitHubLoginButton from '~/components/GitHubLoginButton'
 import RepositoriesComparatorFilters from '~/components/RepositoriesComparatorFilters'
 import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesChangelogHeading'
 import { useComparatorState } from '~/contexts/comparator-context'
-import { getIsAuth } from '~/github-client'
+import { getIsAuth } from '~/github-auth'
 
 const RepositoryReleasesChangelog = dynamic(
 	() => import('~/components/RepositoryReleasesChangelog'),

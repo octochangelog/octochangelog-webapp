@@ -17,7 +17,7 @@ import { useRouter } from 'next/navigation'
 import React, { type FC, type ReactNode, useEffect } from 'react'
 
 import { AUTH_REDIRECT_STORAGE_KEY } from '~/common'
-import { setGithubAccessToken } from '~/github-client'
+import { setGithubAccessToken } from '~/github-auth'
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
 	return (
