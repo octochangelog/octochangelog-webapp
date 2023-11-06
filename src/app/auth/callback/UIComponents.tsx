@@ -13,6 +13,7 @@ import {
 	AlertTitle,
 	AlertDescription,
 } from '@chakra-ui/react'
+import { redirect } from 'next/navigation'
 import React, { type FC, type ReactNode } from 'react'
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
@@ -52,7 +53,11 @@ export const AutCallbackLoading: FC = () => {
 
 export const AuthCallbackSuccess: FC<{ accessToken: string }> = () => {
 	// TODO: set token
-	// TODO: redirect delayed 5 seconds
+
+	// Redirect after 3 seconds, so the user can read the success confirmation.
+	setTimeout(() => {
+		redirect('/comparator')
+	}, 3000)
 
 	return (
 		<Layout>
