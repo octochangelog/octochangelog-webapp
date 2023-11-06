@@ -13,9 +13,10 @@ import {
 	Text,
 	VStack,
 } from '@chakra-ui/react'
-import NextLink from 'next/link'
+import { useRouter } from 'next/navigation'
 import React, { type FC, type ReactNode, useEffect } from 'react'
 
+import { AUTH_REDIRECT_STORAGE_KEY } from '~/common'
 import { useGithubAuth } from '~/contexts/github-auth-provider'
 
 const Layout: FC<{ children: ReactNode }> = ({ children }) => {
@@ -56,11 +57,23 @@ export const AutCallbackLoading: FC = () => {
 export const AuthCallbackSuccess: FC<{ accessToken: string }> = ({
 	accessToken,
 }) => {
+	const router = useRouter()
 	const { setAccessToken } = useGithubAuth()
 
 	useEffect(() => {
 		setAccessToken(accessToken)
 	}, [accessToken, setAccessToken])
+
+	const handleClick = () => {
+		const redirectSearchParams = sessionStorage.getItem(
+			AUTH_REDIRECT_STORAGE_KEY,
+		)
+		const redirectUrl = redirectSearchParams
+			? `/comparator?${redirectSearchParams}`
+			: '/comparator'
+
+		router.replace(redirectUrl)
+	}
 
 	return (
 		<Layout>
@@ -69,11 +82,9 @@ export const AuthCallbackSuccess: FC<{ accessToken: string }> = ({
 				<AlertTitle>Authorized successfully!</AlertTitle>
 			</Alert>
 
-			<NextLink href="/comparator" passHref legacyBehavior replace>
-				<Button as="a" variant="cta">
-					Go to comparator
-				</Button>
-			</NextLink>
+			<Button variant="cta" onClick={handleClick}>
+				Back to comparator
+			</Button>
 		</Layout>
 	)
 }

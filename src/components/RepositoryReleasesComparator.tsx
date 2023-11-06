@@ -48,8 +48,8 @@ const RepositoryReleasesComparator = () => {
 
 				{/* This is rendered only in CS since SSR doesn't have info about auth user yet */}
 				<ConditionallyRender isOnlyClient>
-					{!repository && !isAuth && (
-						<Container variant="fluid">
+					{!isAuth && (
+						<Container variant="fluid" pb={2}>
 							<Flex alignItems="center" flexDirection="column">
 								<Text mb={4}>
 									You can increase the max number of allowed requests to GitHub
