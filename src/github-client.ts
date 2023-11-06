@@ -57,7 +57,12 @@ const octokit = new Octokit({
  *
  * @param code - The code received as a response to GitHub auth redirect
  */
-async function obtainAccessToken(code: string): Promise<string> {
+async function obtainAccessToken(code?: string): Promise<string> {
+	if (!code) {
+		// TODO: move this check outside
+		throw new Error('Empty code received back from GitHub')
+	}
+
 	const response = await fetch('https://github.com/login/oauth/access_token', {
 		method: 'POST',
 		headers: {
