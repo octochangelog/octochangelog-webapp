@@ -7,7 +7,7 @@ import { getIsAuth } from '~/github-auth'
 const AuthMessageSection = () => {
 	const isAuth = getIsAuth()
 
-	if (!isAuth) {
+	if (isAuth) {
 		return undefined
 	}
 
