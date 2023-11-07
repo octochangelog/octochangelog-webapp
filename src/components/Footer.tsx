@@ -9,7 +9,13 @@ interface FooterProps {
 
 const Footer = ({ bgColor = 'background2' }: FooterProps) => {
 	return (
-		<Box as="footer" bgColor={bgColor} pb={{ base: 8, lg: 12 }}>
+		<Box
+			as="footer"
+			bgColor={bgColor}
+			pb={{ base: 8, lg: 12 }}
+			borderTop="solid 1px"
+			borderTopColor="gray.200"
+		>
 			<Container
 				centerContent
 				maxWidth="full"

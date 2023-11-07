@@ -1,4 +1,4 @@
-it('should display custom 404 page when not found', () => {
+it('should display custom "not found" page for non-existing page', () => {
 	cy.visit('/not-existing-page', { failOnStatusCode: false })
 	cy.metaDescriptionShouldEqual(
 		'Compare GitHub changelogs across multiple releases in a single view',

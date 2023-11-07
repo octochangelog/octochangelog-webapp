@@ -11,8 +11,6 @@ import type { FC, ReactElement, ReactNode } from 'react'
 
 import customTheme from './customTheme'
 
-import { GithubAuthProvider } from '~/contexts/github-auth-provider'
-
 /**
  * Testing recommendations by TanStack Query
  * https://tanstack.com/query/v5/docs/react/guides/testing
@@ -33,9 +31,7 @@ const testingQueryClient = new QueryClient({
 const AllTheProviders: FC<{ children: ReactNode }> = ({ children }) => {
 	return (
 		<QueryClientProvider client={testingQueryClient}>
-			<ChakraProvider theme={customTheme}>
-				<GithubAuthProvider>{children}</GithubAuthProvider>
-			</ChakraProvider>
+			<ChakraProvider theme={customTheme}>{children}</ChakraProvider>
 		</QueryClientProvider>
 	)
 }
