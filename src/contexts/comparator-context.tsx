@@ -1,5 +1,5 @@
 import { Flex, CircularProgress } from '@chakra-ui/react'
-import { useRouter } from 'next/router'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import type { ReactNode } from 'react'
 import {
 	createContext,
@@ -53,27 +53,29 @@ const ComparatorProvider = ({ children }: { children: ReactNode }) => {
 	const [isReady, setIsReady] = useState<boolean>(false)
 	const [repository, setRepository] = useState<Repository | null>(null)
 	const router = useRouter()
-	const { repo, from, to } = router.query as FiltersQuerystring
+	const searchParams = useSearchParams()
+	const pathname = usePathname()
+
+	const searchParamsObject = useMemo(() => {
+		return searchParams ? Object.fromEntries(searchParams.entries()) : {}
+	}, [searchParams])
+
+	const { repo, from, to } = searchParamsObject
 
 	const setQuerystringParams = useCallback(
 		(newFilters: FiltersQuerystring) => {
 			const mergedFilters: FiltersQuerystring = {
-				...router.query,
+				...searchParamsObject,
 				...newFilters,
 			}
 			const newQuery = Object.fromEntries(
 				Object.entries(mergedFilters).filter(([, value]) => Boolean(value)),
 			)
+			const newSearchParams = new URLSearchParams(newQuery)
 
-			void router.replace(
-				{ pathname: router.pathname, query: newQuery },
-				undefined,
-				{
-					shallow: true,
-				},
-			)
+			router.replace(`${pathname}?${newSearchParams.toString()}`)
 		},
-		[router],
+		[pathname, router, searchParamsObject],
 	)
 
 	const setSelectedRepository = useCallback(
@@ -102,6 +104,7 @@ const ComparatorProvider = ({ children }: { children: ReactNode }) => {
 		[setQuerystringParams],
 	)
 
+	// TODO: move this to the /comparator React Server Component
 	useEffect(() => {
 		const getInitialRepository = async () => {
 			if (repo) {
@@ -120,10 +123,10 @@ const ComparatorProvider = ({ children }: { children: ReactNode }) => {
 			setIsReady(true)
 		}
 
-		if (statusRef.current === 'mount' && router.isReady) {
+		if (statusRef.current === 'mount') {
 			void getInitialRepository()
 		}
-	}, [repo, router.isReady, router.query])
+	}, [repo])
 
 	const stateValue = useMemo<ComparatorStateContextValue>(
 		() => ({
