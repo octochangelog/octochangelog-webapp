@@ -25,7 +25,10 @@ const GitHubLoginButton = ({
 			searchParams?.toString() ?? '',
 		)
 
-		window.location.href = getGitHubAuthUrl().toString()
+		const githubAuthUrl = getGitHubAuthUrl({
+			redirectUrl: window.location.origin,
+		}).toString()
+		window.location.href = githubAuthUrl
 	}
 
 	return (

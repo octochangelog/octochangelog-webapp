@@ -60,17 +60,7 @@ async function exchangeCodeByAccessToken(code: string): Promise<string> {
 	return responseJson.access_token
 }
 
-function getRedirectUri(): string | undefined {
-	const vercelBranchUrl = process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL
-
-	if (vercelBranchUrl) {
-		return `https://${vercelBranchUrl}/auth/callback`
-	}
-
-	return undefined
-}
-
-function getGitHubAuthUrl(): URL {
+function getGitHubAuthUrl({ redirectUrl }: { redirectUrl: string }): URL {
 	const githubAuthUrl = new URL('https://github.com')
 	githubAuthUrl.pathname = '/login/oauth/authorize'
 	githubAuthUrl.searchParams.append(
@@ -78,11 +68,10 @@ function getGitHubAuthUrl(): URL {
 		String(process.env.NEXT_PUBLIC_GITHUB_APP_CLIENT_ID),
 	)
 	githubAuthUrl.searchParams.append('scope', '')
-
-	const redirectUri = getRedirectUri()
-	if (redirectUri) {
-		githubAuthUrl.searchParams.append('redirect_uri', redirectUri)
-	}
+	githubAuthUrl.searchParams.append(
+		'redirect_uri',
+		`${redirectUrl}/auth/callback`,
+	)
 
 	return githubAuthUrl
 }
