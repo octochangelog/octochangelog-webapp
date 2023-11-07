@@ -1,6 +1,5 @@
 import { Box, Container, Divider, Flex } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
-import { Suspense } from 'react'
 
 import AuthMessageSection from './AuthMessageSection'
 import RepositoriesComparatorFilters from './RepositoriesComparatorFilters'
@@ -9,7 +8,6 @@ import { useComparatorState } from './comparator-context'
 
 const RepositoryReleasesChangelog = dynamic(
 	() => import('./RepositoryReleasesChangelog'),
-	{ suspense: true },
 )
 
 const RepositoryReleasesComparator = () => {
@@ -32,13 +30,11 @@ const RepositoryReleasesComparator = () => {
 							toVersion={toVersion ?? undefined}
 						/>
 						<Container variant="fluid">
-							<Suspense fallback={<div />}>
-								<RepositoryReleasesChangelog
-									repository={repository}
-									fromVersion={fromVersion ?? undefined}
-									toVersion={toVersion ?? undefined}
-								/>
-							</Suspense>
+							<RepositoryReleasesChangelog
+								repository={repository}
+								fromVersion={fromVersion ?? undefined}
+								toVersion={toVersion ?? undefined}
+							/>
 						</Container>
 					</>
 				)}
