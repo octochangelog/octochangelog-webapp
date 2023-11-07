@@ -14,7 +14,7 @@ const Footer = ({ bgColor = 'background2' }: FooterProps) => {
 			bgColor={bgColor}
 			pb={{ base: 8, lg: 12 }}
 			borderTop="solid 1px"
-			borderTopColor="gray.200"
+			borderTopColor="monochromeInverted3"
 		>
 			<Container
 				centerContent

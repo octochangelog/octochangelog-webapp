@@ -1,6 +1,6 @@
 'use client'
 
-import { CircularProgress, Flex } from '@chakra-ui/react'
+import { Box, CircularProgress, Flex } from '@chakra-ui/react'
 
 import RepositoryReleasesComparator from '~/components/RepositoryReleasesComparator'
 import { ComparatorProvider } from '~/contexts/comparator-context'
@@ -10,7 +10,7 @@ const ComparatorClientView = () => {
 	const { isReady } = useMsw()
 
 	return (
-		<>
+		<Box height="full" width="full" bgColor="background3">
 			{isReady ? (
 				<ComparatorProvider>
 					<RepositoryReleasesComparator />
@@ -20,7 +20,7 @@ const ComparatorClientView = () => {
 					<CircularProgress isIndeterminate size="8" color="primary.400" />
 				</Flex>
 			)}
-		</>
+		</Box>
 	)
 }
 
