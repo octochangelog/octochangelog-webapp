@@ -1,11 +1,8 @@
-import { Box, Container, Divider, Flex, Text } from '@chakra-ui/react'
+import { Box, Container, Divider, Flex } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 
-import ConditionallyRender from '~/components/ConditionallyRender'
-import GitHubLoginButton from '~/components/GitHubLoginButton'
-import { getIsAuth } from '~/github-auth'
-
+import AuthMessageSection from './AuthMessageSection'
 import RepositoriesComparatorFilters from './RepositoriesComparatorFilters'
 import RepositoryReleasesChangelogHeading from './RepositoryReleasesChangelogHeading'
 import { useComparatorState } from './comparator-context'
@@ -17,7 +14,6 @@ const RepositoryReleasesChangelog = dynamic(
 
 const RepositoryReleasesComparator = () => {
 	const { repository, fromVersion, toVersion } = useComparatorState()
-	const isAuth = getIsAuth()
 
 	return (
 		<Flex direction="column" height="full">
@@ -47,20 +43,7 @@ const RepositoryReleasesComparator = () => {
 					</>
 				)}
 
-				{/* This is rendered only in CS since SSR doesn't have info about auth user yet */}
-				<ConditionallyRender isOnlyClient>
-					{!isAuth && (
-						<Container variant="fluid" pb={2}>
-							<Flex alignItems="center" flexDirection="column">
-								<Text mb={4}>
-									You can increase the max number of allowed requests to GitHub
-									by authorizing the app.
-								</Text>
-								<GitHubLoginButton />
-							</Flex>
-						</Container>
-					)}
-				</ConditionallyRender>
+				<AuthMessageSection />
 			</Box>
 		</Flex>
 	)
