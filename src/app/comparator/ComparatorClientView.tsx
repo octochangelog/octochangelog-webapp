@@ -6,7 +6,7 @@ import RepositoryReleasesComparator from '~/components/RepositoryReleasesCompara
 import { ComparatorProvider } from '~/contexts/comparator-context'
 import { useMsw } from '~/hooks/useMsw'
 
-const ComparatorPageClient = () => {
+const ComparatorClientView = () => {
 	const { isReady } = useMsw()
 
 	return (
@@ -24,4 +24,4 @@ const ComparatorPageClient = () => {
 	)
 }
 
-export default ComparatorPageClient
+export default ComparatorClientView

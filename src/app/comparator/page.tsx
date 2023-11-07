@@ -1,4 +1,4 @@
-import ComparatorPageClient from './ComparatorPageClient'
+import ComparatorClientView from './ComparatorClientView'
 
 import { openGraph } from '~/app/shared-metadata'
 
@@ -8,7 +8,7 @@ export const metadata = {
 }
 
 const ComparatorPage = () => {
-	return <ComparatorPageClient />
+	return <ComparatorClientView />
 }
 
 export default ComparatorPage
