@@ -4,12 +4,12 @@ import { NextSeo } from 'next-seo'
 import { Suspense } from 'react'
 
 const RepositoryReleasesComparator = dynamic(
-	() => import('~/components/RepositoryReleasesComparator'),
+	() => import('~/app/comparator/RepositoryReleasesComparator'),
 	{ suspense: true },
 )
 
+import { ComparatorProvider } from '~/app/comparator/comparator-context'
 import Layout from '~/components/Layout'
-import { ComparatorProvider } from '~/contexts/comparator-context'
 import { useMsw } from '~/hooks/useMsw'
 
 const loadingComponent = (

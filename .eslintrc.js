@@ -54,6 +54,13 @@ module.exports = {
 					order: 'asc',
 					caseInsensitive: false,
 				},
+				pathGroups: [
+					{
+						pattern: '~/**',
+						group: 'external',
+						position: 'after',
+					},
+				],
 			},
 		],
 		'import/group-exports': 'error',

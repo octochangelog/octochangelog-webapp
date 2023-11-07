@@ -2,9 +2,10 @@
 
 import { Box, CircularProgress, Flex } from '@chakra-ui/react'
 
-import RepositoryReleasesComparator from '~/components/RepositoryReleasesComparator'
-import { ComparatorProvider } from '~/contexts/comparator-context'
+import RepositoryReleasesComparator from '~/app/comparator/RepositoryReleasesComparator'
 import { useMsw } from '~/hooks/useMsw'
+
+import { ComparatorProvider } from './comparator-context'
 
 const ComparatorClientView = () => {
 	const { isReady } = useMsw()

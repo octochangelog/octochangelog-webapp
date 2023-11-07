@@ -1,6 +1,6 @@
-import ComparatorClientView from './ComparatorClientView'
-
 import { openGraph } from '~/app/shared-metadata'
+
+import ComparatorClientView from './ComparatorClientView'
 
 export const metadata = {
 	title: 'Comparator',

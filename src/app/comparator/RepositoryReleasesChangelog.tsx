@@ -9,12 +9,12 @@ import {
 import va from '@vercel/analytics'
 import { useEffect } from 'react'
 
-import TextSkeleton from './TextSkeleton'
-
-import ComparatorChangelogResults from '~/components/ComparatorChangelogResults'
+import TextSkeleton from '~/components/TextSkeleton'
 import type { ReleaseVersion, Repository } from '~/models'
 import { useReleasesQuery } from '~/queries/release'
 import { compareReleasesByVersion, filterReleasesByVersionRange } from '~/utils'
+
+import ComparatorChangelogResults from './ComparatorChangelogResults'
 
 interface RepositoryReleasesChangelogProps {
 	repository: Repository

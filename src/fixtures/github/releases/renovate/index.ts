@@ -1,3 +1,5 @@
+import type { Release } from '~/models'
+
 import { renovateReleasesPage1 } from './page1'
 import { renovateReleasesPage10 } from './page10'
 import { renovateReleasesPage11 } from './page11'
@@ -10,8 +12,6 @@ import { renovateReleasesPage6 } from './page6'
 import { renovateReleasesPage7 } from './page7'
 import { renovateReleasesPage8 } from './page8'
 import { renovateReleasesPage9 } from './page9'
-
-import type { Release } from '~/models'
 
 /**
  * 1,200 releases: from "32.172.2" to "25.26.3"

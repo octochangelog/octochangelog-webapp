@@ -4,13 +4,14 @@ import { Suspense } from 'react'
 
 import ConditionallyRender from '~/components/ConditionallyRender'
 import GitHubLoginButton from '~/components/GitHubLoginButton'
-import RepositoriesComparatorFilters from '~/components/RepositoriesComparatorFilters'
-import RepositoryReleasesChangelogHeading from '~/components/RepositoryReleasesChangelogHeading'
-import { useComparatorState } from '~/contexts/comparator-context'
 import { getIsAuth } from '~/github-auth'
 
+import RepositoriesComparatorFilters from './RepositoriesComparatorFilters'
+import RepositoryReleasesChangelogHeading from './RepositoryReleasesChangelogHeading'
+import { useComparatorState } from './comparator-context'
+
 const RepositoryReleasesChangelog = dynamic(
-	() => import('~/components/RepositoryReleasesChangelog'),
+	() => import('./RepositoryReleasesChangelog'),
 	{ suspense: true },
 )
 
