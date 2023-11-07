@@ -3,13 +3,13 @@ import { type Viewport } from 'next'
 import { Inter, Roboto_Mono } from 'next/font/google'
 import { type FC, type ReactNode, Suspense } from 'react'
 
-import Providers from './Providers'
-import VercelAnalytics from './VercelAnalytics'
-import { openGraph } from './shared-metadata'
-
 import UILayout from '~/app/UILayout'
 import { BRIEF_DESCRIPTION, FULL_DESCRIPTION, SITE_TITLE } from '~/common'
 import customTheme from '~/customTheme'
+
+import Providers from './Providers'
+import VercelAnalytics from './VercelAnalytics'
+import { openGraph } from './shared-metadata'
 
 const interFont = Inter({
 	subsets: ['latin'],

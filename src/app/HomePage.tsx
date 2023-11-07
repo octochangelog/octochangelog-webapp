@@ -26,8 +26,9 @@ import {
 	HiOutlineTag,
 } from 'react-icons/hi'
 
-import mascotLogo from '@app-public/mascot-logo.png'
 import { BRIEF_DESCRIPTION } from '~/common'
+
+import mascotLogo from '@app-public/mascot-logo.png'
 
 const MainSection = () => (
 	<Stack

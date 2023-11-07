@@ -1,8 +1,8 @@
 import type { DefaultSeoProps } from 'next-seo'
 
-import customTheme from './customTheme'
-
 import { BRIEF_DESCRIPTION, FULL_DESCRIPTION, SITE_TITLE } from '~/common'
+
+import customTheme from './customTheme'
 
 const DefaultSEO: DefaultSeoProps = {
 	titleTemplate: `%s | ${SITE_TITLE}`,

@@ -1,14 +1,12 @@
 import type { StackProps } from '@chakra-ui/react'
 import { Stack } from '@chakra-ui/react'
 
-import ReleaseVersionFormControl from '~/components/ReleaseVersionFormControl'
-import {
-	useComparatorState,
-	useComparatorUpdater,
-} from '~/contexts/comparator-context'
 import type { Release } from '~/models'
 import { useReleasesQuery } from '~/queries/release'
 import { getReleaseVersion, compareReleasesByVersion } from '~/utils'
+
+import ReleaseVersionFormControl from './ReleaseVersionFormControl'
+import { useComparatorState, useComparatorUpdater } from './comparator-context'
 
 function mapReleasesRange(
 	releases?: Array<Release>,

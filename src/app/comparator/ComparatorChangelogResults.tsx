@@ -1,6 +1,6 @@
 import { Box, Heading, Skeleton, Stack } from '@chakra-ui/react'
 
-import ProcessedReleaseChangeDescription from '~/components/ProcessedReleaseChangeDescription'
+import ProcessedReleaseChangeDescription from '~/app/comparator/ProcessedReleaseChangeDescription'
 import TextSkeleton from '~/components/TextSkeleton'
 import useProcessReleases from '~/hooks/useProcessReleases'
 import type { Release } from '~/models'
