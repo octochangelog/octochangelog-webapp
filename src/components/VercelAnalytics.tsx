@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/react'
+// eslint-disable-next-line no-restricted-imports
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
