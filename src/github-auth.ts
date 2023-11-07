@@ -19,7 +19,7 @@ function setGithubAccessToken(newAccessToken?: string | null): void {
 		// Expires in 1 year from time of creation
 		Cookies.set(GITHUB_STORAGE_KEY, newAccessToken, {
 			expires: 365,
-			sameSite: 'Strict',
+			sameSite: 'Lax',
 		})
 	} else {
 		Cookies.remove(GITHUB_STORAGE_KEY)
