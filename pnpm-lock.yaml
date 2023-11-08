@@ -209,8 +209,8 @@ devDependencies:
     specifier: 3.0.3
     version: 3.0.3
   start-server-and-test:
-    specifier: 2.0.1
-    version: 2.0.1
+    specifier: 2.0.2
+    version: 2.0.2
   ts-jest:
     specifier: 29.1.1
     version: 29.1.1(@babel/core@7.23.2)(jest@29.7.0)(typescript@5.2.2)
@@ -7350,8 +7350,8 @@ packages:
       - ts-node
     dev: true
 
-  /joi@17.10.1:
-    resolution: {integrity: sha512-vIiDxQKmRidUVp8KngT8MZSOcmRVm2zV7jbMjNYWuHcJWI0bUck3nRTGQjhpPlQenIQIBC5Vp9AhcnHbWQqafw==}
+  /joi@17.11.0:
+    resolution: {integrity: sha512-NgB+lZLNoqISVy1rZocE9PZI36bL/77ie924Ri43yEvi9GUUMPeyVIr8KdFTMUlby1p0PBYMk9spIxEUQYqrJQ==}
     dependencies:
       '@hapi/hoek': 9.3.0
       '@hapi/topo': 5.1.0
@@ -9670,8 +9670,8 @@ packages:
       type-fest: 0.7.1
     dev: false
 
-  /start-server-and-test@2.0.1:
-    resolution: {integrity: sha512-8PFo4DLLLCDMuS51/BEEtE1m9CAXw1LNVtZSS1PzkYQh6Qf9JUwM4huYeSoUumaaoAyuwYBwCa9OsrcpMqcOdQ==}
+  /start-server-and-test@2.0.2:
+    resolution: {integrity: sha512-4sGS2QmETUwqeBUqtTLP7OqXp3PdDnevaWlPlrFQgn8+7uCgVg4Do7/H/ZhAAVyvnL3DqKyANhnLgcgxrjhrMA==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
@@ -9682,7 +9682,7 @@ packages:
       execa: 5.1.1
       lazy-ass: 1.6.0
       ps-tree: 1.2.0
-      wait-on: 7.0.1(debug@4.3.4)
+      wait-on: 7.1.0(debug@4.3.4)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -10488,13 +10488,13 @@ packages:
       xml-name-validator: 4.0.0
     dev: true
 
-  /wait-on@7.0.1(debug@4.3.4):
-    resolution: {integrity: sha512-9AnJE9qTjRQOlTZIldAaf/da2eW0eSRSgcqq85mXQja/DW3MriHxkpODDSUEg+Gri/rKEcXUZHe+cevvYItaog==}
+  /wait-on@7.1.0(debug@4.3.4):
+    resolution: {integrity: sha512-U7TF/OYYzAg+OoiT/B8opvN48UHt0QYMi4aD3PjRFpybQ+o6czQF8Ig3SKCCMJdxpBrCalIJ4O00FBof27Fu9Q==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
       axios: 0.27.2(debug@4.3.4)
-      joi: 17.10.1
+      joi: 17.11.0
       lodash: 4.17.21
       minimist: 1.2.8
       rxjs: 7.8.1
