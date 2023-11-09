@@ -1,25 +1,15 @@
 import { ColorModeScript } from '@chakra-ui/react'
 import { type Viewport } from 'next'
-import { Inter, Roboto_Mono } from 'next/font/google'
 import { type FC, type ReactNode, Suspense } from 'react'
 
 import UILayout from '~/app/UILayout'
 import { BRIEF_DESCRIPTION, FULL_DESCRIPTION, SITE_TITLE } from '~/common'
 import customTheme from '~/customTheme'
+import { interFont, robotoMonoFont } from '~/fonts'
 
 import Providers from './Providers'
 import VercelAnalytics from './VercelAnalytics'
 import { openGraph } from './shared-metadata'
-
-const interFont = Inter({
-	subsets: ['latin'],
-	variable: '--font-inter',
-})
-
-const robotoMonoFont = Roboto_Mono({
-	subsets: ['latin'],
-	variable: '--font-roboto-mono',
-})
 
 export const metadata = {
 	title: {

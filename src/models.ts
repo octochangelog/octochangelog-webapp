@@ -2,6 +2,11 @@ import type { components } from '@octokit/openapi-types'
 import type { Root } from 'mdast'
 import type { ReactElement } from 'react'
 
+type NextErrorPageProps = {
+	error: Error & { digest?: string }
+	reset: () => void
+}
+
 type NextSearchParams = Record<string, string | Array<string> | undefined>
 
 type SemVerGroup = 'breaking changes' | 'features' | 'bug fixes'
@@ -42,6 +47,7 @@ type ComponentLike<
 type ComponentsMapping = Record<string, ComponentLike<ReactElement>>
 
 export type {
+	NextErrorPageProps,
 	NextSearchParams,
 	SemVerGroup,
 	MiscGroup,
