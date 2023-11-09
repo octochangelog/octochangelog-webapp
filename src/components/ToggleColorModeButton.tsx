@@ -1,3 +1,5 @@
+'use client'
+
 import type { IconButtonProps } from '@chakra-ui/react'
 import { Icon, IconButton, useColorMode } from '@chakra-ui/react'
 import * as React from 'react'
