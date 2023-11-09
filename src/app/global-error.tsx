@@ -3,7 +3,7 @@
 import { ColorModeScript } from '@chakra-ui/react'
 import { type FC } from 'react'
 
-import customTheme from '~/customTheme'
+import customTheme from '~/custom-theme'
 import { interFont, robotoMonoFont } from '~/fonts'
 import { type NextErrorPageProps } from '~/models'
 

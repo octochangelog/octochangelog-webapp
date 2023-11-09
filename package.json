@@ -26,7 +26,7 @@
 		"e2e": "start-server-and-test 'pnpm build && pnpm serve' http://localhost:3000 'pnpm cy:open --e2e'",
 		"e2e:dev": "start-server-and-test 'pnpm dev' http://localhost:3000 'pnpm cy:open --e2e'",
 		"e2e:headless": "start-server-and-test 'pnpm build && pnpm serve' http://localhost:3000 'pnpm cy:headless'",
-		"gen:theme-typings": "chakra-cli tokens src/customTheme.ts --strict-component-types --strict-token-types",
+		"gen:theme-typings": "chakra-cli tokens src/custom-theme.ts --strict-component-types --strict-token-types",
 		"prepare": "is-ci || husky install",
 		"postinstall": "pnpm gen:theme-typings"
 	},

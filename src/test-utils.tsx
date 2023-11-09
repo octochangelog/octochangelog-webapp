@@ -9,7 +9,7 @@ import type {
 import { render, renderHook } from '@testing-library/react'
 import type { FC, ReactElement, ReactNode } from 'react'
 
-import customTheme from './customTheme'
+import customTheme from './custom-theme'
 
 /**
  * Testing recommendations by TanStack Query
