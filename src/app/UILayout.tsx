@@ -6,19 +6,15 @@ import Header from '~/components/Header'
 
 interface Props {
 	children: ReactNode
-	pageBgColor?: 'background2' | 'background3'
 }
 
-const UILayout: FC<Props> = ({
-	children,
-	pageBgColor = 'background2',
-}: Props) => (
+const UILayout: FC<Props> = ({ children }: Props) => (
 	<Flex height="100%" direction="column">
 		<Header />
-		<Box as="main" flex="1 0 auto" bgColor={pageBgColor}>
+		<Box as="main" flex="1 0 auto" bgColor="background2">
 			{children}
 		</Box>
-		<Footer bgColor={pageBgColor} />
+		<Footer />
 	</Flex>
 )
 
