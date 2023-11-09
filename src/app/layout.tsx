@@ -4,7 +4,7 @@ import { type FC, type ReactNode, Suspense } from 'react'
 
 import UILayout from '~/app/UILayout'
 import { BRIEF_DESCRIPTION, FULL_DESCRIPTION, SITE_TITLE } from '~/common'
-import customTheme from '~/customTheme'
+import customTheme from '~/custom-theme'
 import { interFont, robotoMonoFont } from '~/fonts'
 
 import Providers from './Providers'

@@ -1,7 +1,7 @@
 import { type MetadataRoute } from 'next'
 
 import { FULL_DESCRIPTION, SITE_TITLE } from '~/common'
-import customTheme from '~/customTheme'
+import customTheme from '~/custom-theme'
 
 export default function manifest(): MetadataRoute.Manifest {
 	return {

@@ -3,15 +3,11 @@ import Image from 'next/image'
 
 import poweredByVercelLogo from '@app-public/powered-by-vercel.svg'
 
-interface FooterProps {
-	bgColor?: 'background2' | 'background3'
-}
-
-const Footer = ({ bgColor = 'background2' }: FooterProps) => {
+const Footer = () => {
 	return (
 		<Box
 			as="footer"
-			bgColor={bgColor}
+			bgColor="background2"
 			pb={{ base: 8, lg: 12 }}
 			borderTop="solid 1px"
 			borderTopColor="monochromeInverted3"
