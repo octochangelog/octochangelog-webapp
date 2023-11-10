@@ -119,8 +119,8 @@ devDependencies:
     specifier: 14.0.0
     version: 14.0.0(react-dom@18.2.0)(react@18.2.0)
   '@types/happo-cypress':
-    specifier: 4.1.2
-    version: 4.1.2
+    specifier: 4.1.3
+    version: 4.1.3
   '@types/js-cookie':
     specifier: 3.0.5
     version: 3.0.5
@@ -3209,8 +3209,8 @@ packages:
       '@types/node': 18.18.8
     dev: true
 
-  /@types/happo-cypress@4.1.2:
-    resolution: {integrity: sha512-ObgSsqi+SvUSfs8/9p8a8pF1GUA4QUYm7BClD4WvhwpmqB37mkQpO+05zsbGkgbL5c4klfp/jUypweGV8WvkRw==}
+  /@types/happo-cypress@4.1.3:
+    resolution: {integrity: sha512-PjeEOQ4v3UR+De3Ej1oazrbjtliqFfB1rcNlgprRcLjJ/bl0dGPDpwbdsrCZW5pSTchsllerLN5LxVBvq21ZpA==}
     dependencies:
       cypress: 13.4.0
     dev: true
