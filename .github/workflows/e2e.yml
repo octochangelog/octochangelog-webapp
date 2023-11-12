@@ -28,7 +28,7 @@ concurrency:
 
 jobs:
   cypress:
-    name: Cypress with Happo
+    name: Cypress
     runs-on: ubuntu-latest
     container: cypress/browsers:node-18.14.1-chrome-110.0.5481.96-1-ff-109.0-edge-110.0.1587.41-1@sha256:58a0ab8e7ec13931f11746e9f708baacf12c1fabf14cc5173e5ba2acbe5248f3
     strategy:
@@ -65,9 +65,9 @@ jobs:
           record: true
           parallel: true
           group: merge
-          # tag will be either "push" or "pull_request"
+          # tag will be "push", "pull_request", or "merge_group"
           tag: ${{ github.event_name }}
-          command-prefix: pnpm exec happo-e2e -- pnpm exec
+          command-prefix: ${{ github.event_name != 'merge_group' && 'pnpm exec happo-e2e -- pnpm exec' || '' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
@@ -75,16 +75,16 @@ jobs:
           # - if the event is push, the title will be undefined
           # and Cypress will get the commit message from Git information
           # - if the event is pull_request, then we set the commit
+          # - if the event is merge_group, then we set the commit
           # message to the pull request title
           # https://github.com/cypress-io/github-action/issues/124#issuecomment-653180260
-          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title }}
+          COMMIT_INFO_MESSAGE: ${{ github.event.pull_request.title || github.event.merge_group.head_commit.message }}
 
   finalize-happo:
     name: Finalize Happo
     runs-on: ubuntu-latest
-    if: ${{ always() }}
-    needs:
-      - cypress
+    if: ${{ !cancelled() && github.event_name != 'merge_group' }}
+    needs: [cypress]
     steps:
       # Arrange
       - name: Checkout repository
@@ -102,3 +102,11 @@ jobs:
       # Act
       - name: Run Happo
         run: pnpm exec happo-e2e finalize
+
+  dummy-happo:
+    name: Happo
+    runs-on: ubuntu-latest
+    if: ${{ !cancelled() && github.event_name == 'merge_group' }}
+    steps:
+      - name: Dummy Happo
+        run: echo "Dummy Happo in the queue"
