@@ -83,7 +83,7 @@ jobs:
   finalize-happo:
     name: Finalize Happo
     runs-on: ubuntu-latest
-    if: ${{ !cancelled() }}
+    if: ${{ !cancelled() && github.event_name != 'merge_group' }}
     needs: [cypress]
     steps:
       # Arrange
@@ -102,3 +102,11 @@ jobs:
       # Act
       - name: Run Happo
         run: pnpm exec happo-e2e finalize
+
+  dummy-happo:
+    name: Happo
+    runs-on: ubuntu-latest
+    if: ${{ !cancelled() && github.event_name == 'merge_group' }}
+    steps:
+      - name: Dummy Happo
+        run: echo "Dummy Happo in the queue"
