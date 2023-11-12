@@ -65,7 +65,7 @@ jobs:
           record: true
           parallel: true
           group: merge
-          # tag will be either "push" or "pull_request"
+          # tag will be either "push", "pull_request", or "merge_group"
           tag: ${{ github.event_name }}
           command-prefix: pnpm exec happo-e2e -- pnpm exec
         env:
@@ -82,9 +82,8 @@ jobs:
   finalize-happo:
     name: Finalize Happo
     runs-on: ubuntu-latest
-    if: ${{ always() }}
-    needs:
-      - cypress
+    if: ${{ !cancelled() && github.event_name != 'merge_group' }}
+    needs: [cypress]
     steps:
       # Arrange
       - name: Checkout repository
@@ -102,3 +101,11 @@ jobs:
       # Act
       - name: Run Happo
         run: pnpm exec happo-e2e finalize
+
+  dummy-happo:
+    name: Happo
+    runs-on: ubuntu-latest
+    if: ${{ !cancelled() && github.event_name == 'merge_group' }}
+    steps:
+      - name: Dummy Happo
+        run: echo "Dummy Happo in the queue"
