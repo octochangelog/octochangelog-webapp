@@ -67,7 +67,7 @@ jobs:
           group: merge
           # tag will be "push", "pull_request", or "merge_group"
           tag: ${{ github.event_name }}
-          command-prefix: ${{ github.event_name != 'merge_group' && pnpm exec happo-e2e -- pnpm exec || '' }}
+          command-prefix: ${{ github.event_name != 'merge_group' && 'pnpm exec happo-e2e -- pnpm exec' || '' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
