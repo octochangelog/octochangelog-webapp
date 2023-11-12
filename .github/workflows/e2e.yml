@@ -28,7 +28,7 @@ concurrency:
 
 jobs:
   cypress:
-    name: Cypress with Happo
+    name: Cypress
     runs-on: ubuntu-latest
     container: cypress/browsers:node-18.14.1-chrome-110.0.5481.96-1-ff-109.0-edge-110.0.1587.41-1@sha256:58a0ab8e7ec13931f11746e9f708baacf12c1fabf14cc5173e5ba2acbe5248f3
     strategy:
@@ -65,9 +65,9 @@ jobs:
           record: true
           parallel: true
           group: merge
-          # tag will be either "push", "pull_request", or "merge_group"
+          # tag will be "push", "pull_request", or "merge_group"
           tag: ${{ github.event_name }}
-          command-prefix: pnpm exec happo-e2e -- pnpm exec
+          command-prefix: ${{ github.event_name != 'merge_group' && pnpm exec happo-e2e -- pnpm exec || '' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
