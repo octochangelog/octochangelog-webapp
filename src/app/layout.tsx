@@ -7,6 +7,7 @@ import { BRIEF_DESCRIPTION, FULL_DESCRIPTION, SITE_TITLE } from '~/common'
 import customTheme from '~/custom-theme'
 import { interFont, robotoMonoFont } from '~/fonts'
 
+import Mocks from './Mocks'
 import Providers from './Providers'
 import VercelAnalytics from './VercelAnalytics'
 import { openGraph } from './shared-metadata'
@@ -47,6 +48,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
 				{/* https://nextjs.org/docs/messages/deopted-into-client-rendering */}
 				<VercelAnalytics />
 			</Suspense>
+			<Mocks />
 			<Providers>
 				<UILayout>{children}</UILayout>
 			</Providers>
