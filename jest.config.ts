@@ -15,11 +15,19 @@ const tsPathsToModules = pathsToModuleNameMapper(compilerOptions.paths, {
 const config: Config = {
 	clearMocks: true,
 	roots: ['<rootDir>/src/'],
-	reporters: [['github-actions', { silent: false }], 'summary'],
+	reporters: process.env.CI
+		? [['github-actions', { silent: false }], 'summary']
+		: undefined,
 	setupFilesAfterEnv: ['<rootDir>/src/jest.setup.ts'],
 	moduleNameMapper: {
 		...tsPathsToModules,
 		'^lodash-es$': 'lodash', // so lodash-es is not compiled
+	},
+	setupFiles: ['./jest.polyfills.js'],
+
+	// Avoid JSDOM changing msw imports from msw/node to msw/browser
+	testEnvironmentOptions: {
+		customExportConditions: [''],
 	},
 
 	// Don't set "testEnvironment" to "jsdom" in here.
