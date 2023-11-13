@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from 'react'
 
 function getIsApiMockingEnabled() {
@@ -13,7 +15,7 @@ function setIsApiMockingReady(): void {
 
 async function prepare(): Promise<ServiceWorkerRegistration | undefined> {
 	if (getIsApiMockingEnabled()) {
-		const { initMocks } = await import('~/mock-service-worker')
+		const { initMocks } = await import('src/mocks')
 		return initMocks()
 	}
 
@@ -42,6 +44,7 @@ interface UseMswReturn {
  * since MSW is disabled in review and production environments.
  */
 function useMsw(): UseMswReturn {
+	// TODO: REMOVE THIS
 	const [isReady, setIsReady] = useState<boolean>(initIsReadyState)
 
 	useEffect(() => {
