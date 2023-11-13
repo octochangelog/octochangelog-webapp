@@ -1,3 +1,5 @@
+import { HttpResponse } from 'msw'
+
 const DEFAULT_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout')
 const LONGER_COMMAND_TIMEOUT = DEFAULT_COMMAND_TIMEOUT * 5
 
@@ -233,18 +235,21 @@ it('should show changelog results when preloading from URL with more than 10 rel
 
 	cy.window().then((appWindow) => {
 		if (appWindow.msw) {
-			const { worker, rest } = appWindow.msw
+			const { worker, http } = appWindow.msw
 
 			worker.use(
-				rest.get(
+				http.get(
 					'https://api.github.com/repos/renovatebot/renovate/releases',
-					(req, res) => {
-						const pageIndex = Number(req.url.searchParams.get('page') || 1)
+					({ request }) => {
+						const url = new URL(request.url)
+						const pageIndex = Number(url.searchParams.get('page') || 1)
 
 						// Since all info is available when page 11 is retrieved, page 12 should not be requested.
 						// We are forcing an error on page 12 to make sure it's not requested.
 						if (pageIndex === 12) {
-							return res.networkError('Requested page not available.')
+							return HttpResponse.json({
+								errors: [{ message: 'Requested page not available.' }],
+							})
 						}
 
 						return undefined

@@ -1,5 +1,4 @@
-import type { RequestHandler, DefaultBodyType } from 'msw'
-import { rest } from 'msw'
+import { http, HttpResponse, type RequestHandler } from 'msw'
 
 import { domTestingLibraryRepoDetails } from '~/fixtures/github/repos/dom-testing-library'
 import { renovateRepoDetails } from '~/fixtures/github/repos/renovate'
@@ -33,14 +32,14 @@ function getRepoDetailsFixture(
 }
 
 const githubReposDetailsHandlers: Array<RequestHandler> = [
-	rest.get<DefaultBodyType, RepoReleasesParams>(
+	http.get<RepoReleasesParams>(
 		'https://api.github.com/repos/:repoOwner/:repoName',
-		(req, res, context) => {
-			const { repoName } = req.params
+		({ params }) => {
+			const { repoName } = params
 
 			const data = getRepoDetailsFixture(repoName)
 
-			return res(context.json<Repository | NotFoundResponse>(data))
+			return HttpResponse.json(data)
 		},
 	),
 ]

@@ -1,21 +1,26 @@
-import { rest } from 'msw'
-import type { MockedRequest } from 'msw'
+import { http } from 'msw'
+import { type StartOptions } from 'msw/browser'
 
 const IGNORE_HOSTS = ['localhost', 'octoclairvoyant', 'fonts']
 
-function unhandledRequestCallback(req: MockedRequest) {
-	if (req.url.host === 'api.github.com') {
+type OnUnhandledRequestCallback = StartOptions['onUnhandledRequest']
+
+const unhandledRequestCallback: OnUnhandledRequestCallback = (
+	request,
+	print,
+) => {
+	const url = new URL(request.url)
+	if (url.host === 'api.github.com') {
 		throw new Error(
-			`Unhandled request to GitHub API: ${req.method.toUpperCase()} ${req.url.toString()}`,
+			`Unhandled request to GitHub API: ${request.method.toUpperCase()} ${url.toString()}`,
 		)
 	}
 
-	if (IGNORE_HOSTS.some((ignoreHost) => req.url.host.includes(ignoreHost))) {
+	if (IGNORE_HOSTS.some((ignoreHost) => url.host.includes(ignoreHost))) {
 		return undefined
 	}
 
-	// eslint-disable-next-line no-console
-	console.warn('Unknown unhandled request', req)
+	print.warning()
 }
 
 async function initMocks(): Promise<ServiceWorkerRegistration | undefined> {
@@ -23,7 +28,22 @@ async function initMocks(): Promise<ServiceWorkerRegistration | undefined> {
 
 	if (isServerEnv) {
 		const { server } = await import('./server')
-		server.listen({ onUnhandledRequest: unhandledRequestCallback })
+		server.listen({
+			onUnhandledRequest: (request, print) => {
+				const url = new URL(request.url)
+				if (url.host === 'api.github.com') {
+					throw new Error(
+						`Unhandled request to GitHub API: ${request.method.toUpperCase()} ${url.toString()}`,
+					)
+				}
+
+				if (IGNORE_HOSTS.some((ignoreHost) => url.host.includes(ignoreHost))) {
+					return undefined
+				}
+
+				print.warning()
+			},
+		})
 		return Promise.resolve(undefined)
 	} else {
 		const { worker } = await import('./browser')
@@ -32,7 +52,7 @@ async function initMocks(): Promise<ServiceWorkerRegistration | undefined> {
 		// so they can be accessed in both runtime and test suites.
 		window.msw = {
 			worker,
-			rest,
+			http,
 		}
 
 		return worker.start({ onUnhandledRequest: unhandledRequestCallback })
