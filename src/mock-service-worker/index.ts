@@ -28,22 +28,7 @@ async function initMocks(): Promise<ServiceWorkerRegistration | undefined> {
 
 	if (isServerEnv) {
 		const { server } = await import('./server')
-		server.listen({
-			onUnhandledRequest: (request, print) => {
-				const url = new URL(request.url)
-				if (url.host === 'api.github.com') {
-					throw new Error(
-						`Unhandled request to GitHub API: ${request.method.toUpperCase()} ${url.toString()}`,
-					)
-				}
-
-				if (IGNORE_HOSTS.some((ignoreHost) => url.host.includes(ignoreHost))) {
-					return undefined
-				}
-
-				print.warning()
-			},
-		})
+		server.listen({ onUnhandledRequest: unhandledRequestCallback })
 		return Promise.resolve(undefined)
 	} else {
 		const { worker } = await import('./browser')
