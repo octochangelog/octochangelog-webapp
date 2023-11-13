@@ -31,8 +31,8 @@
 		"postinstall": "pnpm gen:theme-typings"
 	},
 	"dependencies": {
-		"@chakra-ui/next-js": "2.1.5",
-		"@chakra-ui/react": "2.8.1",
+		"@chakra-ui/next-js": "2.2.0",
+		"@chakra-ui/react": "2.8.2",
 		"@emotion/react": "11.11.1",
 		"@emotion/styled": "11.11.0",
 		"@octokit/auth-callback": "4.0.0",
@@ -62,8 +62,8 @@
 	},
 	"devDependencies": {
 		"@chakra-ui/cli": "2.4.1",
-		"@chakra-ui/styled-system": "2.9.1",
-		"@chakra-ui/theme-tools": "2.1.1",
+		"@chakra-ui/styled-system": "2.9.2",
+		"@chakra-ui/theme-tools": "2.1.2",
 		"@chakra-ui/utils": "2.0.14",
 		"@jest/globals": "29.7.0",
 		"@octokit/openapi-types": "19.0.2",
