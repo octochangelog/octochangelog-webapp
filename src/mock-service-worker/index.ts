@@ -33,7 +33,7 @@ async function initMocks(): Promise<ServiceWorkerRegistration | undefined> {
 	} else {
 		const { worker } = await import('./browser')
 
-		// Make the `worker` and `rest` references available globally,
+		// Make the `worker` and `http` references available globally,
 		// so they can be accessed in both runtime and test suites.
 		window.msw = {
 			worker,
