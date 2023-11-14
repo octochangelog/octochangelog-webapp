@@ -14,7 +14,7 @@ const port = 9090
 
 app.use(
 	cors({
-		origin: '/./',
+		origin: /./,
 		optionsSuccessStatus: 200,
 		credentials: true,
 	}),
