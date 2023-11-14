@@ -1,3 +1,5 @@
+import { getApiBaseUrl } from '~/github-client'
+
 const DEFAULT_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout')
 const LONGER_COMMAND_TIMEOUT = DEFAULT_COMMAND_TIMEOUT * 5
 
@@ -237,7 +239,7 @@ it('should show changelog results when preloading from URL with more than 10 rel
 
 			worker.use(
 				rest.get(
-					'https://api.github.com/repos/renovatebot/renovate/releases',
+					`${getApiBaseUrl()}/repos/renovatebot/renovate/releases`,
 					(req, res) => {
 						const pageIndex = Number(req.url.searchParams.get('page') || 1)
 

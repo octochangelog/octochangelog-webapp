@@ -5,7 +5,8 @@ import {
 	domTestingLibraryReleases,
 	renovateReleases,
 } from '@/fixtures/github/releases'
-import { type Release } from '@/models'
+import { getApiBaseUrl } from '@/github-client'
+import type { Release } from '@/models'
 import { paginateList } from '@/utils'
 
 /**
@@ -25,7 +26,7 @@ const REPO_FIXTURES_MAPPING: Record<string, Array<Release> | undefined> = {
 
 const githubReposReleasesHandlers: Array<RequestHandler> = [
 	rest.get<DefaultBodyType, RepoReleasesParams>(
-		'https://api.github.com/repos/:repoOwner/:repoName/releases',
+		`${getApiBaseUrl()}/repos/:repoOwner/:repoName/releases`,
 		(req, res, context) => {
 			const { repoOwner, repoName } = req.params
 			const releasesFixture = REPO_FIXTURES_MAPPING[repoName]
@@ -59,7 +60,7 @@ const githubReposReleasesHandlers: Array<RequestHandler> = [
 				responseTransformers.push(
 					context.set(
 						'link',
-						`<https://api.github.com/repos/${repoString}/releases?per_page=${perPage}&page=${nextPage}>; rel="next"`,
+						`<${getApiBaseUrl()}/repos/${repoString}/releases?per_page=${perPage}&page=${nextPage}>; rel="next"`,
 					),
 				)
 			}

@@ -3,7 +3,8 @@ import { rest } from 'msw'
 
 import { domTestingLibraryRepoDetails } from '@/fixtures/github/repos/dom-testing-library'
 import { renovateRepoDetails } from '@/fixtures/github/repos/renovate'
-import { type Repository } from '@/models'
+import { getApiBaseUrl } from '@/github-client'
+import type { Repository } from '@/models'
 
 interface RepoReleasesParams {
 	repoOwner: string
@@ -34,7 +35,7 @@ function getRepoDetailsFixture(
 
 const githubReposDetailsHandlers: Array<RequestHandler> = [
 	rest.get<DefaultBodyType, RepoReleasesParams>(
-		'https://api.github.com/repos/:repoOwner/:repoName',
+		`${getApiBaseUrl()}/repos/:repoOwner/:repoName`,
 		(req, res, context) => {
 			const { repoName } = req.params
 
