@@ -4,6 +4,7 @@ import {
 	domTestingLibraryReleases,
 	renovateReleases,
 } from '~/fixtures/github/releases'
+import { getApiBaseUrl } from '~/github-client'
 import type { Release } from '~/models'
 import { paginateList } from '~/utils'
 
@@ -24,7 +25,7 @@ const REPO_FIXTURES_MAPPING: Record<string, Array<Release> | undefined> = {
 
 const githubReposReleasesHandlers: Array<RequestHandler> = [
 	http.get<RepoReleasesParams>(
-		'https://api.github.com/repos/:repoOwner/:repoName/releases',
+		`${getApiBaseUrl()}/repos/:repoOwner/:repoName/releases`,
 		({ request, params }) => {
 			const { repoOwner, repoName } = params
 			const releasesFixture = REPO_FIXTURES_MAPPING[repoName]
@@ -53,7 +54,7 @@ const githubReposReleasesHandlers: Array<RequestHandler> = [
 				const nextPage = pageIndex + 1
 				const repoString = `${repoOwner}/${repoName}`
 				// @ts-expect-error "link" is a custom header
-				responseJson.headers.link = `<https://api.github.com/repos/${repoString}/releases?per_page=${perPage}&page=${nextPage}>; rel="next"`
+				responseJson.headers.link = `<${getApiBaseUrl()}/repos/${repoString}/releases?per_page=${perPage}&page=${nextPage}>; rel="next"`
 			}
 
 			return responseJson

@@ -4,10 +4,11 @@ import {
 	renovateResults,
 	testingLibraryResults,
 } from '~/fixtures/github/search'
+import { getApiBaseUrl } from '~/github-client'
 import type { RepoSearchResultItem } from '~/models'
 
 const githubReposSearchHandlers: Array<RequestHandler> = [
-	http.get('https://api.github.com/search/repositories', ({ request }) => {
+	http.get(`${getApiBaseUrl()}/search/repositories`, ({ request }) => {
 		const url = new URL(request.url)
 		const searchQuery = url.searchParams.get('q') ?? ''
 		const cleanSearchQuery = searchQuery.replace(/[-_]/g, ' ')
