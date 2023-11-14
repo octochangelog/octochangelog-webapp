@@ -72,7 +72,9 @@ Now you can run Jest tests, Cypress tests and the local environment against this
 
 This mocked API can be toggled through the `NEXT_PUBLIC_API_MOCKING` environment variable, which is enabled by default.
 Use `enabled` to start it alongside the project, or `disabled` to stop it.
-You can put it in your `.env.local` (restarting the local server if already started).
+You can put it in your `.env.local`.
+
+Additionally, in another terminal you need to start the mock API server with `pnpm mock-api`. This is a temporary workaround until MSW is fully compatible with the Next.js App router.
 
 ### Limitations
 
