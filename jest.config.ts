@@ -15,7 +15,9 @@ const tsPathsToModules = pathsToModuleNameMapper(compilerOptions.paths, {
 const config: Config = {
 	clearMocks: true,
 	roots: ['<rootDir>/src/'],
-	reporters: [['github-actions', { silent: false }], 'summary'],
+	reporters: process.env.CI
+		? [['github-actions', { silent: false }], 'summary']
+		: undefined,
 	setupFilesAfterEnv: ['<rootDir>/src/jest.setup.ts'],
 	moduleNameMapper: {
 		...tsPathsToModules,
