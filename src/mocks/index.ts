@@ -1,9 +1,10 @@
-import { rest } from 'msw'
-import { type MockedRequest } from 'msw'
+import { rest, type StartOptions } from 'msw'
 
 const IGNORE_HOSTS = ['localhost', 'octoclairvoyant', 'fonts']
 
-function unhandledRequestCallback(req: MockedRequest) {
+type OnUnhandledRequestCallback = StartOptions['onUnhandledRequest']
+
+const unhandledRequestCallback: OnUnhandledRequestCallback = (req, print) => {
 	if (req.url.host === 'api.github.com') {
 		throw new Error(
 			`Unhandled request to GitHub API: ${req.method.toUpperCase()} ${req.url.toString()}`,
@@ -14,8 +15,7 @@ function unhandledRequestCallback(req: MockedRequest) {
 		return undefined
 	}
 
-	// eslint-disable-next-line no-console
-	console.warn('Unknown unhandled request', req)
+	print.warning()
 }
 
 async function initMocks(): Promise<ServiceWorkerRegistration | undefined> {
