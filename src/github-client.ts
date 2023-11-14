@@ -31,4 +31,4 @@ const octokit = new Octokit({
 	baseUrl: getApiBaseUrl(),
 })
 
-export { octokit, getApiBaseUrl }
+export { octokit }

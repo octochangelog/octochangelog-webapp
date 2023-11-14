@@ -1,9 +1,9 @@
-import { type RequestHandler, type DefaultBodyType } from 'msw'
+import { type DefaultBodyType, type RequestHandler } from 'msw'
 import { rest } from 'msw'
 
 import { domTestingLibraryRepoDetails } from '@/fixtures/github/repos/dom-testing-library'
 import { renovateRepoDetails } from '@/fixtures/github/repos/renovate'
-import { getApiBaseUrl } from '@/github-client'
+import { getMockApiPath } from '@/mocks/utils'
 import type { Repository } from '@/models'
 
 interface RepoReleasesParams {
@@ -35,7 +35,7 @@ function getRepoDetailsFixture(
 
 const githubReposDetailsHandlers: Array<RequestHandler> = [
 	rest.get<DefaultBodyType, RepoReleasesParams>(
-		`${getApiBaseUrl()}/repos/:repoOwner/:repoName`,
+		`${getMockApiPath()}/repos/:repoOwner/:repoName`,
 		(req, res, context) => {
 			const { repoName } = req.params
 

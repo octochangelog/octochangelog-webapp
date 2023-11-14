@@ -5,11 +5,11 @@ import {
 	renovateResults,
 	testingLibraryResults,
 } from '@/fixtures/github/search'
-import { getApiBaseUrl } from '@/github-client'
+import { getMockApiPath } from '@/mocks/utils'
 import type { RepoSearchResultItem } from '@/models'
 
 const githubReposSearchHandlers: Array<RequestHandler> = [
-	rest.get(`${getApiBaseUrl()}/search/repositories`, (req, res, context) => {
+	rest.get(`${getMockApiPath()}/search/repositories`, (req, res, context) => {
 		const searchQuery = req.url.searchParams.get('q') ?? ''
 		const cleanSearchQuery = searchQuery.replace(/[-_]/g, ' ')
 		const items: Array<RepoSearchResultItem> = []
