@@ -25,9 +25,9 @@
 		"test:ci": "pnpm test -- --ci --coverage",
 		"cy:open": "cypress open",
 		"cy:headless": "cypress run",
-		"e2e": "start-server-and-test 'pnpm build && pnpm serve' http://localhost:3000 'pnpm cy:open --e2e'",
-		"e2e:dev": "start-server-and-test 'pnpm dev' http://localhost:3000 'pnpm cy:open --e2e'",
-		"e2e:headless": "start-server-and-test 'pnpm build && pnpm serve' http://localhost:3000 'pnpm cy:headless'",
+		"e2e": "start-test mock-api http://localhost:9090 'pnpm build && pnpm serve' http://localhost:3000 'pnpm cy:open --e2e'",
+		"e2e:dev": "start-test mock-api http://localhost:9090 'pnpm dev' http://localhost:3000 'pnpm cy:open --e2e'",
+		"e2e:headless": "start-test mock-api http://localhost:9090 'pnpm build && pnpm serve' http://localhost:3000 'pnpm cy:headless'",
 		"gen:theme-typings": "chakra-cli tokens src/custom-theme.ts --strict-component-types --strict-token-types",
 		"prepare": "is-ci || husky install",
 		"postinstall": "pnpm gen:theme-typings"

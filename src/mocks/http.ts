@@ -14,13 +14,16 @@ const port = 9090
 
 app.use(
 	cors({
-		origin: 'http://localhost:3000',
+		origin: '*',
 		optionsSuccessStatus: 200,
 		credentials: true,
 	}),
 )
 app.use(express.json())
 app.use(createMiddleware(...handlers))
+app.get('/', (_, res) => {
+	res.status(200).send('All good')
+})
 app.listen(port, () => {
 	// eslint-disable-next-line no-console
 	console.log(`Mock server is running on port "${port}"`)
