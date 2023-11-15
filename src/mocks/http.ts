@@ -19,10 +19,13 @@ app.use(
 		credentials: true,
 	}),
 )
-app.use(express.json())
 app.use(createMiddleware(...handlers))
+app.use((_, res, next) => {
+	res.header('content-type', 'application/json')
+	next()
+})
 app.get('/', (_, res) => {
-	res.status(200).send('All good')
+	res.status(200).send({ status: 'ok' })
 })
 app.listen(port, () => {
 	// eslint-disable-next-line no-console
