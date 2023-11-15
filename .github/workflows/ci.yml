@@ -50,3 +50,9 @@ jobs:
       # Act
       - name: Run script
         run: pnpm ${{ matrix.validation_script }}
+
+      - name: Upload coverage reports
+        if: matrix.validation_script == 'test:ci'
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
