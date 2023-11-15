@@ -20,7 +20,7 @@
 		"format:check": "pnpm prettier-base --check",
 		"test": "jest",
 		"test:watch": "pnpm test -- --watch",
-		"test:ci": "pnpm test -- --ci",
+		"test:ci": "pnpm test -- --ci --coverage",
 		"cy:open": "cypress open",
 		"cy:headless": "cypress run",
 		"e2e": "start-server-and-test 'pnpm build && pnpm serve' http://localhost:3000 'pnpm cy:open --e2e'",
