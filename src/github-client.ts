@@ -2,7 +2,6 @@ import { createCallbackAuth } from '@octokit/auth-callback'
 import { Octokit } from '@octokit/rest'
 
 import { getGithubAccessToken } from '@/github-auth'
-import { getIsApiMocked } from '@/utils'
 
 function getUserAgent(): string {
 	const userAgent = 'Octoclairvoyant'
@@ -16,19 +15,11 @@ function getUserAgent(): string {
 	return `Test ${userAgent}`
 }
 
-function getApiBaseUrl(): string {
-	if (getIsApiMocked()) {
-		return 'http://localhost:9090'
-	}
-
-	return 'https://api.github.com'
-}
-
 const octokit = new Octokit({
 	authStrategy: createCallbackAuth,
 	auth: { callback: getGithubAccessToken },
 	userAgent: getUserAgent(),
-	baseUrl: getApiBaseUrl(),
+	baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || undefined,
 })
 
 export { octokit }

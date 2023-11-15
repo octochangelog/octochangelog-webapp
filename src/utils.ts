@@ -14,12 +14,6 @@ import {
 /**
  * Consider API should be mocked if the mechanism is enabled, and it's not deployed to Vercel env.
  */
-function getIsApiMocked() {
-	return (
-		process.env.NEXT_PUBLIC_API_MOCKING === 'enabled' &&
-		!process.env.NEXT_PUBLIC_VERCEL_ENV
-	)
-}
 
 function mapRepositoryToQueryParams(
 	repository?: Repository,
@@ -217,7 +211,6 @@ function paginateList<TListItem>(
 }
 
 export {
-	getIsApiMocked,
 	mapRepositoryToQueryParams,
 	mapStringToRepositoryQueryParams,
 	filterReleasesByVersionRange,
