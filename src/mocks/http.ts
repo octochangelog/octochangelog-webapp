@@ -14,7 +14,7 @@ const port = 9090
 
 app.use(
 	cors({
-		origin: /./,
+		origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
 		optionsSuccessStatus: 200,
 		credentials: true,
 	}),
