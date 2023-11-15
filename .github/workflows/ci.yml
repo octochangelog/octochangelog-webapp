@@ -16,7 +16,7 @@ env:
 
 concurrency:
   group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
-  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   code_validation:
@@ -50,3 +50,9 @@ jobs:
       # Act
       - name: Run script
         run: pnpm ${{ matrix.validation_script }}
+
+      - name: Upload coverage reports
+        if: matrix.validation_script == 'test:ci'
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
