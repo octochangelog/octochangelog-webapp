@@ -114,7 +114,7 @@ devDependencies:
     version: 5.8.4(eslint@8.54.0)(typescript@5.2.2)
   '@testing-library/cypress':
     specifier: 10.0.1
-    version: 10.0.1(cypress@13.5.1)
+    version: 10.0.1(cypress@13.6.0)
   '@testing-library/react':
     specifier: 14.1.2
     version: 14.1.2(react-dom@18.2.0)(react@18.2.0)
@@ -152,8 +152,8 @@ devDependencies:
     specifier: 6.12.0
     version: 6.12.0(eslint@8.54.0)(typescript@5.2.2)
   cypress:
-    specifier: 13.5.1
-    version: 13.5.1
+    specifier: 13.6.0
+    version: 13.6.0
   eslint:
     specifier: 8.54.0
     version: 8.54.0
@@ -3074,7 +3074,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@testing-library/cypress@10.0.1(cypress@13.5.1):
+  /@testing-library/cypress@10.0.1(cypress@13.6.0):
     resolution: {integrity: sha512-e8uswjTZIBhaIXjzEcrQQ8nHRWHgZH7XBxKuIWxZ/T7FxfWhCR48nFhUX5nfPizjVOKSThEfOSv67jquc1ASkw==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
@@ -3082,7 +3082,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.1
       '@testing-library/dom': 9.3.1
-      cypress: 13.5.1
+      cypress: 13.6.0
     dev: true
 
   /@testing-library/dom@9.3.1:
@@ -3212,7 +3212,7 @@ packages:
   /@types/happo-cypress@4.1.4:
     resolution: {integrity: sha512-zjT128W9h8rIOvlx5bt3pqn0+3iNABlff7nDSYe0a2P2UDttVa3DqZ60ghQkoPKnTdRhvilBBSerMOXyDoTrBA==}
     dependencies:
-      cypress: 13.5.1
+      cypress: 13.6.0
     dev: true
 
   /@types/hast@3.0.1:
@@ -4774,8 +4774,8 @@ packages:
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
 
-  /cypress@13.5.1:
-    resolution: {integrity: sha512-yqLViT0D/lPI8Kkm7ciF/x/DCK/H/DnogdGyiTnQgX4OVR2aM30PtK+kvklTOD1u3TuItiD9wUQAF8EYWtyZug==}
+  /cypress@13.6.0:
+    resolution: {integrity: sha512-quIsnFmtj4dBUEJYU4OH0H12bABJpSujvWexC24Ju1gTlKMJbeT6tTO0vh7WNfiBPPjoIXLN+OUqVtiKFs6SGw==}
     engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
     requiresBuild: true
