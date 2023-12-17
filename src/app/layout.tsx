@@ -1,4 +1,5 @@
 import { ColorModeScript } from '@chakra-ui/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { type Viewport } from 'next'
 import { type FC, type ReactNode, Suspense } from 'react'
 
@@ -41,6 +42,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
 		suppressHydrationWarning
 	>
 		<body suppressHydrationWarning>
+			<SpeedInsights />
 			<ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
 			<Suspense>
 				{/* Avoid entire page deopted into client-side rendering */}
