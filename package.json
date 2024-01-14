@@ -56,7 +56,7 @@
 		"remark-gfm": "4.0.0",
 		"remark-github": "12.0.0",
 		"remark-parse": "11.0.0",
-		"remark-rehype": "11.0.0",
+		"remark-rehype": "11.1.0",
 		"remark-stringify": "11.0.0",
 		"semver": "7.5.4",
 		"unified": "11.0.4"
