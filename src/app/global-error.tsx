@@ -1,7 +1,8 @@
 'use client'
 
 import { ColorModeScript } from '@chakra-ui/react'
-import { type FC } from 'react'
+import * as Sentry from '@sentry/nextjs'
+import { type FC, useEffect } from 'react'
 
 import customTheme from '~/custom-theme'
 import { interFont, robotoMonoFont } from '~/fonts'
@@ -11,6 +12,10 @@ import Providers from './Providers'
 import UIError from './UIError'
 
 const GlobalError: FC<NextErrorPageProps> = ({ error, reset }) => {
+	useEffect(() => {
+		Sentry.captureException(error)
+	}, [error])
+
 	return (
 		<html
 			lang="en"
