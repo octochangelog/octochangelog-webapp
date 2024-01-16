@@ -36,8 +36,8 @@ dependencies:
     specifier: 1.1.1
     version: 1.1.1
   '@vercel/speed-insights':
-    specifier: 1.0.2
-    version: 1.0.2
+    specifier: 1.0.3
+    version: 1.0.3
   downshift:
     specifier: 8.3.1
     version: 8.3.1(react@18.2.0)
@@ -3591,8 +3591,8 @@ packages:
       server-only: 0.0.1
     dev: false
 
-  /@vercel/speed-insights@1.0.2:
-    resolution: {integrity: sha512-y5HWeB6RmlyVYxJAMrjiDEz8qAIy2cit0fhBq+MD78WaUwQvuBnQlX4+5MuwVTWi46bV3klaRMq83u9zUy1KOg==}
+  /@vercel/speed-insights@1.0.3:
+    resolution: {integrity: sha512-bKIt0HDdF6hP2bJZyS+za3k6sKeAXNRLSIUbwVwvyvKdsHBWS6ILBvmD1wXHZZyTqjU1TP7dTE/F6lHM6rBdKA==}
     requiresBuild: true
     dev: false
 
