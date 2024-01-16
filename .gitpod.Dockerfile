@@ -1,5 +1,5 @@
 # Based on a file from https://github.com/mikenikles/cypress-on-gitpod
-FROM gitpod/workspace-full-vnc@sha256:f9fac38c0641769b4fca3d0ad9234d5ec96dd6014f6346a2b22e9c8c87370ab3
+FROM gitpod/workspace-full-vnc@sha256:c126976b2169d22290dfca63b7a982bf90937e9158e057060027d6f52e476598
 
 ENV CYPRESS_CACHE_FOLDER=/workspace/.cypress-cache
 
