@@ -14,6 +14,7 @@
 		"automerge": true
 	},
 	"internalChecksFilter": "strict",
+	"ignoreDeps": ["msw", "@mswjs/http-middleware", "@mswjs/interceptors"],
 	"platformAutomerge": true,
 	"packageRules": [
 		{
