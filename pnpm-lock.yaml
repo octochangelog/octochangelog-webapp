@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  headers-polyfill: 3.2.5
+
 dependencies:
   '@chakra-ui/next-js':
     specifier: 2.2.0
@@ -2457,8 +2460,8 @@ packages:
       set-cookie-parser: 2.6.0
     dev: true
 
-  /@mswjs/interceptors@0.17.10:
-    resolution: {integrity: sha512-N8x7eSLGcmUFNWZRxT1vsHvypzIRgQYdG0rJey/rZCy6zT/30qDt8Joj7FxzGNLSwXbeZqJOMqDurp7ra4hgbw==}
+  /@mswjs/interceptors@0.17.9:
+    resolution: {integrity: sha512-4LVGt03RobMH/7ZrbHqRxQrS9cc2uh+iNKSj8UWr8M26A2i793ju+csaB5zaqYltqJmA2jUq4VeYfKmVqvsXQg==}
     engines: {node: '>=14'}
     dependencies:
       '@open-draft/until': 1.0.3
@@ -6392,10 +6395,6 @@ packages:
     resolution: {integrity: sha512-tUCGvt191vNSQgttSyJoibR+VO+I6+iCHIUdhzEMJKE+EAL8BwCN7fUOZlY4ofOelNHsK+gEjxB/B+9N3EWtdA==}
     dev: true
 
-  /headers-polyfill@3.3.0:
-    resolution: {integrity: sha512-5e57etwBpNcDc0b6KCVWEh/Ro063OxPvzVimUdM0/tsYM/T7Hfy3kknIGj78SFTOhNd8AZY41U8mOHoO4LzmIQ==}
-    dev: true
-
   /highlight.js@11.9.0:
     resolution: {integrity: sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==}
     engines: {node: '>=12.0.0'}
@@ -8483,7 +8482,7 @@ packages:
         optional: true
     dependencies:
       '@mswjs/cookies': 0.2.2
-      '@mswjs/interceptors': 0.17.10
+      '@mswjs/interceptors': 0.17.9
       '@open-draft/until': 1.0.3
       '@types/cookie': 0.4.1
       '@types/js-levenshtein': 1.1.3
@@ -8491,7 +8490,7 @@ packages:
       chokidar: 3.5.3
       cookie: 0.4.2
       graphql: 16.8.1
-      headers-polyfill: 3.3.0
+      headers-polyfill: 3.2.5
       inquirer: 8.2.6
       is-node-process: 1.2.0
       js-levenshtein: 1.1.6
