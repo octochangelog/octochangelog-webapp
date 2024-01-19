@@ -1,5 +1,5 @@
 import { rest } from 'msw'
-import type { MockedRequest } from 'msw'
+import { type MockedRequest } from 'msw'
 
 const IGNORE_HOSTS = ['localhost', 'octoclairvoyant', 'fonts']
 

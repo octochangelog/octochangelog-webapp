@@ -3,12 +3,12 @@ import gfm from 'remark-gfm'
 import parse from 'remark-parse'
 import { unified } from 'unified'
 
-import type {
-	ProcessedRelease,
-	ProcessedReleasesCollection,
-	Release,
-} from '~/models'
-import { getMdastContentNodeTitle, getMdastContentReleaseGroup } from '~/utils'
+import {
+	type ProcessedRelease,
+	type ProcessedReleasesCollection,
+	type Release,
+} from '@/models'
+import { getMdastContentNodeTitle, getMdastContentReleaseGroup } from '@/utils'
 
 function insertReleaseInGroup(
 	newProcessedRelease: ProcessedRelease,

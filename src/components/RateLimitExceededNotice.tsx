@@ -1,6 +1,6 @@
 import { Flex, Heading, Link } from '@chakra-ui/react'
 
-import GitHubLoginButton from '~/components/GitHubLoginButton'
+import GitHubLoginButton from '@/components/GitHubLoginButton'
 
 interface Props {
 	waitingMinutes?: number

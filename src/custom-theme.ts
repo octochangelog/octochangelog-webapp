@@ -1,7 +1,7 @@
-import type { ColorHues, ThemeConfig, Theme } from '@chakra-ui/react'
+import { type ColorHues, type ThemeConfig, type Theme } from '@chakra-ui/react'
 import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
-import type { Dict } from '@chakra-ui/utils'
+import { type Dict } from '@chakra-ui/utils'
 
 interface SemanticToken {
 	default: string

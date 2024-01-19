@@ -1,8 +1,11 @@
-import type { RestEndpointMethodTypes } from '@octokit/rest'
-import type { UseQueryOptions, UseQueryResult } from '@tanstack/react-query'
+import { type RestEndpointMethodTypes } from '@octokit/rest'
+import {
+	type UseQueryOptions,
+	type UseQueryResult,
+} from '@tanstack/react-query'
 import { useQuery } from '@tanstack/react-query'
 
-import { octokit } from '~/github-client'
+import { octokit } from '@/github-client'
 
 type ReposQueryResponse = RestEndpointMethodTypes['search']['repos']['response']
 type ReposQueryResults = ReposQueryResponse['data']

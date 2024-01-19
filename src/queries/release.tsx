@@ -1,15 +1,18 @@
-import type { UseQueryOptions, UseQueryResult } from '@tanstack/react-query'
+import {
+	type UseQueryOptions,
+	type UseQueryResult,
+} from '@tanstack/react-query'
 import { useQuery } from '@tanstack/react-query'
 import * as semver from 'semver'
 
-import { octokit } from '~/github-client'
-import type {
-	Release,
-	ReleaseVersion,
-	Repository,
-	RepositoryQueryParams,
-} from '~/models'
-import { isStableRelease, mapRepositoryToQueryParams } from '~/utils'
+import { octokit } from '@/github-client'
+import {
+	type Release,
+	type ReleaseVersion,
+	type Repository,
+	type RepositoryQueryParams,
+} from '@/models'
+import { isStableRelease, mapRepositoryToQueryParams } from '@/utils'
 
 type ReleasesQueryResults = Array<Release>
 type ReleasesQueryParams = {

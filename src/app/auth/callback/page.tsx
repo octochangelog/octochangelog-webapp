@@ -1,8 +1,8 @@
 import { type FC } from 'react'
 
-import { AuthCallbackSuccess } from '~/app/auth/callback/UIComponents'
-import { exchangeCodeByAccessToken } from '~/github-auth'
-import { type NextSearchParams } from '~/models'
+import { AuthCallbackSuccess } from '@/app/auth/callback/UIComponents'
+import { exchangeCodeByAccessToken } from '@/github-auth'
+import { type NextSearchParams } from '@/models'
 
 export const metadata = {
 	title: 'Authorizing on GitHub',

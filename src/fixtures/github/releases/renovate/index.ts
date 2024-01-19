@@ -1,4 +1,4 @@
-import type { Release } from '~/models'
+import { type Release } from '@/models'
 
 import { renovateReleasesPage1 } from './page1'
 import { renovateReleasesPage10 } from './page10'

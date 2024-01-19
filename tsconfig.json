@@ -2,8 +2,8 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"~/*": ["src/*"],
-			"@app-public/*": ["./public/*"]
+			"@/*": ["./src/*"],
+			"@/public/*": ["./public/*"]
 		},
 		"allowJs": true,
 		"alwaysStrict": true,

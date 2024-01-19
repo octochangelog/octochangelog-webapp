@@ -15,9 +15,8 @@ import {
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import NextLink from 'next/link'
-import type { ReactNode } from 'react'
-import * as React from 'react'
-import type { IconType } from 'react-icons'
+import { type ReactNode } from 'react'
+import { type IconType } from 'react-icons'
 import {
 	HiOutlineFilter,
 	HiOutlineFire,
@@ -26,9 +25,8 @@ import {
 	HiOutlineTag,
 } from 'react-icons/hi'
 
-import { BRIEF_DESCRIPTION } from '~/common'
-
-import mascotLogo from '@app-public/mascot-logo.png'
+import { BRIEF_DESCRIPTION } from '@/common'
+import mascotLogo from '@/public/mascot-logo.png'
 
 const MainSection = () => (
 	<Stack

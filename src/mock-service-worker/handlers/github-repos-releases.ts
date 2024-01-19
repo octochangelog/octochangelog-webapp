@@ -1,12 +1,12 @@
-import type { RequestHandler, DefaultBodyType } from 'msw'
+import { type RequestHandler, type DefaultBodyType } from 'msw'
 import { rest } from 'msw'
 
 import {
 	domTestingLibraryReleases,
 	renovateReleases,
-} from '~/fixtures/github/releases'
-import type { Release } from '~/models'
-import { paginateList } from '~/utils'
+} from '@/fixtures/github/releases'
+import { type Release } from '@/models'
+import { paginateList } from '@/utils'
 
 /**
  * https://docs.github.com/en/rest/overview/resources-in-the-rest-api#pagination

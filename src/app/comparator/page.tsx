@@ -1,4 +1,4 @@
-import { openGraph } from '~/app/shared-metadata'
+import { openGraph } from '@/app/shared-metadata'
 
 import ComparatorClientView from './ComparatorClientView'
 

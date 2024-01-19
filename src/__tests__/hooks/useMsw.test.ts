@@ -3,11 +3,11 @@
  */
 import { expect, test, jest, afterEach, beforeEach } from '@jest/globals'
 
-import { useMsw } from '~/hooks/useMsw'
-import { renderHook, waitFor } from '~/test-utils'
+import { useMsw } from '@/hooks/useMsw'
+import { renderHook, waitFor } from '@/test-utils'
 
 const mockInitMocks = jest.fn()
-jest.mock('~/mock-service-worker', () => {
+jest.mock('@/mock-service-worker', () => {
 	return {
 		initMocks: mockInitMocks,
 	}
@@ -54,7 +54,7 @@ test('should init API mocking only once', async () => {
 test('should not init API mocking if disabled', () => {
 	// Make sure than the module is not even imported by throwing an error,
 	// since we don't want to import it on production.
-	jest.mock('~/mock-service-worker', () => {
+	jest.mock('@/mock-service-worker', () => {
 		throw new Error('I should not be called!')
 	})
 	process.env.NEXT_PUBLIC_API_MOCKING = 'disabled'
@@ -70,7 +70,7 @@ test('should not init API mocking if disabled', () => {
 test('should not init API mocking if running on Vercel', () => {
 	// Make sure than the module is not even imported by throwing an error,
 	// since we don't want to import it on production.
-	jest.mock('~/mock-service-worker', () => {
+	jest.mock('@/mock-service-worker', () => {
 		throw new Error('I should not be called!')
 	})
 	process.env.NEXT_PUBLIC_VERCEL_ENV = 'production'

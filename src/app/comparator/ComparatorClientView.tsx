@@ -2,8 +2,8 @@
 
 import { Box, CircularProgress, Flex } from '@chakra-ui/react'
 
-import RepositoryReleasesComparator from '~/app/comparator/RepositoryReleasesComparator'
-import { useMsw } from '~/hooks/useMsw'
+import RepositoryReleasesComparator from '@/app/comparator/RepositoryReleasesComparator'
+import { useMsw } from '@/hooks/useMsw'
 
 import { ComparatorProvider } from './comparator-context'
 

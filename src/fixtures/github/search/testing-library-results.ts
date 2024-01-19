@@ -1,4 +1,4 @@
-import type { RepoSearchResultItem } from '~/models'
+import { type RepoSearchResultItem } from '@/models'
 
 const testingLibraryResults: Array<RepoSearchResultItem> = [
 	{

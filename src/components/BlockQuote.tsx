@@ -1,4 +1,4 @@
-import type { BoxProps } from '@chakra-ui/react'
+import { type BoxProps } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
 
 const BlockQuote = (props: BoxProps) => (
