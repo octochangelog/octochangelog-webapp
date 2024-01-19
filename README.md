@@ -5,10 +5,10 @@
     width="500"
     alt="Octoclairvoyant logo: a purple octopus reading a crystal ball"
   >
-  <p>Compare GitHub changelogs across multiple releases in a single view.</p>
   <p>
     <span role="img" aria-label="Crystall ball">🔮</span> https://octoclairvoyant.vercel.app/
   </p>
+  <p>Compare GitHub changelogs across multiple releases in a single view.</p>
 
 </div>
 
