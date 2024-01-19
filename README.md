@@ -1,10 +1,9 @@
 <div align="center">
-  <p><strong>Octoclairvoyant</strong></p>
   <img
     src="https://github.com/octoclairvoyant/octoclairvoyant-webapp/blob/main/public/mascot-logo.png?raw=true"
-    height="200"
-    width="200"
-    alt="A purple octopus reading a crystal ball"
+    height="500"
+    width="500"
+    alt="Octoclairvoyant logo: a purple octopus reading a crystal ball"
   >
   <p>Compare GitHub changelogs across multiple releases in a single view.</p>
   <p>
