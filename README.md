@@ -10,7 +10,6 @@
     <span role="img" aria-label="Crystall ball">🔮</span> https://octoclairvoyant.vercel.app/
   </p>
 
-  <img src="https://github.com/octoclairvoyant/octoclairvoyant-webapp/blob/main/public/browser-preview.png?raw=true" alt="Octoclairvoyant showing a comparison of releases for the eslint-plugin-testing-library repo" >
 </div>
 
 <hr>
@@ -19,6 +18,8 @@
 [![Octoclairvoyant Webapp Cypress tests](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/u8grd8&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/u8grd8/runs)
 
 ## What is Octoclairvoyant?
+
+<img src="https://github.com/octoclairvoyant/octoclairvoyant-webapp/blob/main/public/browser-preview.png?raw=true" alt="Octoclairvoyant showing a comparison of releases for the eslint-plugin-testing-library repo" >
 
 [Octoclairvoyant](https://octoclairvoyant.vercel.app/) is a webapp that allows you to Compare GitHub changelogs across multiple releases in a single view. You only have to pick a repo, and two versions to compare the changes between them.
 
