@@ -1,4 +1,4 @@
-import type { Release } from '@/models'
+import { type Release } from '@/models'
 
 const renovateReleasesPage6: Array<Release> = [
 	{

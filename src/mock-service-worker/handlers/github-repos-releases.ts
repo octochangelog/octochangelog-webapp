@@ -1,11 +1,11 @@
-import type { RequestHandler, DefaultBodyType } from 'msw'
+import { type RequestHandler, type DefaultBodyType } from 'msw'
 import { rest } from 'msw'
 
 import {
 	domTestingLibraryReleases,
 	renovateReleases,
 } from '@/fixtures/github/releases'
-import type { Release } from '@/models'
+import { type Release } from '@/models'
 import { paginateList } from '@/utils'
 
 /**

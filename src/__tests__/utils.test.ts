@@ -1,7 +1,11 @@
 import { describe, expect, it } from '@jest/globals'
-import type { Content } from 'mdast'
+import { type Content } from 'mdast'
 
-import type { Release, Repository, RepositoryQueryParams } from '@/models'
+import {
+	type Release,
+	type Repository,
+	type RepositoryQueryParams,
+} from '@/models'
 import {
 	compareReleaseGroupsByPriority,
 	compareReleasesByVersion,

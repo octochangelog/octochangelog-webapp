@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react'
-import { useEffect, useMemo, useState } from 'react'
+import { type ReactNode, useEffect, useMemo, useState } from 'react'
 import * as prod from 'react/jsx-runtime'
 import rehypeHighlight from 'rehype-highlight'
 import rehype2react, { type Options as RehypeReactOptions } from 'rehype-react'
@@ -10,7 +9,11 @@ import remark2rehype from 'remark-rehype'
 import markdown from 'remark-stringify'
 import { unified } from 'unified'
 
-import type { ComponentsMapping, ProcessedRelease, Repository } from '@/models'
+import {
+	type ComponentsMapping,
+	type ProcessedRelease,
+	type Repository,
+} from '@/models'
 
 interface HookArgs {
 	repository: Repository

@@ -1,11 +1,11 @@
-import type { RequestHandler } from 'msw'
+import { type RequestHandler } from 'msw'
 import { rest } from 'msw'
 
 import {
 	renovateResults,
 	testingLibraryResults,
 } from '@/fixtures/github/search'
-import type { RepoSearchResultItem } from '@/models'
+import { type RepoSearchResultItem } from '@/models'
 
 const githubReposSearchHandlers: Array<RequestHandler> = [
 	rest.get(

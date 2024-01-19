@@ -1,8 +1,8 @@
-import { Flex, CircularProgress } from '@chakra-ui/react'
+import { CircularProgress, Flex } from '@chakra-ui/react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import type { ReactNode } from 'react'
 import {
 	createContext,
+	type ReactNode,
 	useCallback,
 	useContext,
 	useEffect,
@@ -12,7 +12,7 @@ import {
 } from 'react'
 
 import { octokit } from '@/github-client'
-import type { ReleaseVersion, Repository } from '@/models'
+import { type ReleaseVersion, type Repository } from '@/models'
 import { mapStringToRepositoryQueryParams } from '@/utils'
 
 interface ComparatorStateContextValue {

@@ -19,7 +19,7 @@ import * as React from 'react'
 import { useEffect, useMemo, useState } from 'react'
 import { HiArrowDown, HiArrowUp } from 'react-icons/hi'
 
-import type { Repository } from '@/models'
+import { type Repository } from '@/models'
 import { useSearchRepositoriesQuery } from '@/queries/repository'
 
 interface Props {

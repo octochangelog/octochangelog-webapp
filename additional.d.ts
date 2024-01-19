@@ -2,7 +2,7 @@
  * @file Declare here any additional module with no types or global types.
  */
 
-import type { SetupWorker, rest } from 'msw'
+import { type SetupWorker, type rest } from 'msw'
 
 declare module 'happo-cypress/task' {
 	interface HappoTask {

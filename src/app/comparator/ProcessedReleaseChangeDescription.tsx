@@ -1,12 +1,14 @@
-import type { BoxProps, LinkProps, ListItemProps } from '@chakra-ui/react'
 import {
 	Box,
+	type BoxProps,
 	Code,
 	Heading,
 	Icon,
 	Link,
+	type LinkProps,
 	List,
 	ListItem,
+	type ListItemProps,
 	Tag,
 	TagLabel,
 	Text,
@@ -16,7 +18,7 @@ import { HiOutlineExternalLink } from 'react-icons/hi'
 import BlockQuote from '@/components/BlockQuote'
 import TextSkeleton from '@/components/TextSkeleton'
 import useProcessDescriptionMdast from '@/hooks/useProcessDescriptionMdast'
-import type { ProcessedRelease, Repository } from '@/models'
+import { type ProcessedRelease, type Repository } from '@/models'
 import { getReleaseVersion } from '@/utils'
 
 type RemarkComponentProps = Record<string, unknown>

@@ -64,9 +64,7 @@ module.exports = {
 			},
 		],
 		'import/group-exports': 'error',
-
-		// TODO: Enable this one when gets released in `eslint-plugin-import`
-		// 'import/consistent-type-specifier-style': ['error', 'prefer-inline'],
+		'import/consistent-type-specifier-style': ['error', 'prefer-inline'],
 
 		// Unicorn
 		'unicorn/no-for-loop': 'error',

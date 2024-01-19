@@ -1,4 +1,4 @@
-import type { Repository } from '@/models'
+import { type Repository } from '@/models'
 
 const renovateRepoDetails: Repository = {
 	id: 76734068,

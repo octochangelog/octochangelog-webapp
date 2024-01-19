@@ -2,7 +2,7 @@
 
 import { Button, Icon } from '@chakra-ui/react'
 import { useSearchParams } from 'next/navigation'
-import type { ReactNode, MouseEvent } from 'react'
+import { type ReactNode, type MouseEvent } from 'react'
 import { DiGithubBadge } from 'react-icons/di'
 
 import { AUTH_REDIRECT_STORAGE_KEY } from '@/common'

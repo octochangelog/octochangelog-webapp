@@ -1,7 +1,7 @@
-import type { StackProps } from '@chakra-ui/react'
+import { type StackProps } from '@chakra-ui/react'
 import { Stack } from '@chakra-ui/react'
 
-import type { Release } from '@/models'
+import { type Release } from '@/models'
 import { useReleasesQuery } from '@/queries/release'
 import { getReleaseVersion, compareReleasesByVersion } from '@/utils'
 

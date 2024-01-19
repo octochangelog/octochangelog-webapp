@@ -1,4 +1,4 @@
-import type { RequestHandler } from 'msw'
+import { type RequestHandler } from 'msw'
 
 import { githubReposDetailsHandlers } from './github-repos-details'
 import { githubReposReleasesHandlers } from './github-repos-releases'
