@@ -13,7 +13,7 @@ function setIsApiMockingReady(): void {
 
 async function prepare(): Promise<ServiceWorkerRegistration | undefined> {
 	if (getIsApiMockingEnabled()) {
-		const { initMocks } = await import('~/mock-service-worker')
+		const { initMocks } = await import('@/mock-service-worker')
 		return initMocks()
 	}
 

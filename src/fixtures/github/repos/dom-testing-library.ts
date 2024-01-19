@@ -1,4 +1,4 @@
-import type { Repository } from '~/models'
+import type { Repository } from '@/models'
 
 const domTestingLibraryRepoDetails: Repository = {
 	id: 128396076,

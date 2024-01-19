@@ -4,8 +4,8 @@ import { rest } from 'msw'
 import {
 	renovateResults,
 	testingLibraryResults,
-} from '~/fixtures/github/search'
-import type { RepoSearchResultItem } from '~/models'
+} from '@/fixtures/github/search'
+import type { RepoSearchResultItem } from '@/models'
 
 const githubReposSearchHandlers: Array<RequestHandler> = [
 	rest.get(

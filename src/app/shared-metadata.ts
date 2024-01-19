@@ -1,6 +1,6 @@
 import { type Metadata } from 'next'
 
-import { BRIEF_DESCRIPTION, SITE_TITLE } from '~/common'
+import { BRIEF_DESCRIPTION, SITE_TITLE } from '@/common'
 
 export const openGraph: NonNullable<Metadata['openGraph']> = {
 	type: 'website',

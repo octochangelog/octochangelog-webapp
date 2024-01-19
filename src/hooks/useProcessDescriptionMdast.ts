@@ -10,7 +10,7 @@ import remark2rehype from 'remark-rehype'
 import markdown from 'remark-stringify'
 import { unified } from 'unified'
 
-import type { ComponentsMapping, ProcessedRelease, Repository } from '~/models'
+import type { ComponentsMapping, ProcessedRelease, Repository } from '@/models'
 
 interface HookArgs {
 	repository: Repository

@@ -10,7 +10,7 @@ import Image from 'next/image'
 import NextLink from 'next/link'
 import { type FC } from 'react'
 
-import { Link } from '~/components/ChakraNextLink'
+import { Link } from '@/components/ChakraNextLink'
 
 import { openGraph } from './shared-metadata'
 

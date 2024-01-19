@@ -7,8 +7,8 @@ import type {
 	ProcessedRelease,
 	ProcessedReleasesCollection,
 	Release,
-} from '~/models'
-import { getMdastContentNodeTitle, getMdastContentReleaseGroup } from '~/utils'
+} from '@/models'
+import { getMdastContentNodeTitle, getMdastContentReleaseGroup } from '@/utils'
 
 function insertReleaseInGroup(
 	newProcessedRelease: ProcessedRelease,

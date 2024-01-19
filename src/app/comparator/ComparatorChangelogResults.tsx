@@ -1,11 +1,11 @@
 import { Box, Heading, Skeleton, Stack } from '@chakra-ui/react'
 
-import ProcessedReleaseChangeDescription from '~/app/comparator/ProcessedReleaseChangeDescription'
-import TextSkeleton from '~/components/TextSkeleton'
-import useProcessReleases from '~/hooks/useProcessReleases'
-import type { Release } from '~/models'
-import type { ProcessedRelease, ReleaseGroup, Repository } from '~/models'
-import { compareReleaseGroupsByPriority } from '~/utils'
+import ProcessedReleaseChangeDescription from '@/app/comparator/ProcessedReleaseChangeDescription'
+import TextSkeleton from '@/components/TextSkeleton'
+import useProcessReleases from '@/hooks/useProcessReleases'
+import type { Release } from '@/models'
+import type { ProcessedRelease, ReleaseGroup, Repository } from '@/models'
+import { compareReleaseGroupsByPriority } from '@/utils'
 
 const ReleaseChangelogGroup = ({
 	title,

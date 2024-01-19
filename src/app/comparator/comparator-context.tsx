@@ -11,9 +11,9 @@ import {
 	useState,
 } from 'react'
 
-import { octokit } from '~/github-client'
-import type { ReleaseVersion, Repository } from '~/models'
-import { mapStringToRepositoryQueryParams } from '~/utils'
+import { octokit } from '@/github-client'
+import type { ReleaseVersion, Repository } from '@/models'
+import { mapStringToRepositoryQueryParams } from '@/utils'
 
 interface ComparatorStateContextValue {
 	repository?: Repository | null

@@ -26,7 +26,7 @@ import {
 	HiOutlineTag,
 } from 'react-icons/hi'
 
-import { BRIEF_DESCRIPTION } from '~/common'
+import { BRIEF_DESCRIPTION } from '@/common'
 
 import mascotLogo from '@app-public/mascot-logo.png'
 

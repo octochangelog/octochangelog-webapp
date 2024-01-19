@@ -2,14 +2,14 @@ import { lowerCase } from 'lodash-es'
 import type { Content } from 'mdast'
 import * as semver from 'semver'
 
-import { HIGH_PRIORITY_GROUP_TITLES, LOW_PRIORITY_GROUP_TITLES } from '~/common'
+import { HIGH_PRIORITY_GROUP_TITLES, LOW_PRIORITY_GROUP_TITLES } from '@/common'
 import type {
 	Release,
 	ReleaseGroup,
 	ReleaseVersion,
 	Repository,
 	RepositoryQueryParams,
-} from '~/models'
+} from '@/models'
 
 function mapRepositoryToQueryParams(
 	repository?: Repository,
