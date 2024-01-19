@@ -1,7 +1,7 @@
 <div align="center">
   <h1>Octoclairvoyant</h1>
   <img
-    src="https://raw.githubusercontent.com/belco90/octoclairvoyant/main/public/mascot-logo.png"
+    src="https://github.com/octoclairvoyant/octoclairvoyant-webapp/blob/main/public/mascot-logo.png?raw=true"
     height="200"
     width="200"
     alt="A purple octopus reading a crystal ball"
@@ -11,7 +11,7 @@
     <span role="img" aria-label="Crystall ball">🔮</span> https://octoclairvoyant.vercel.app/
   </p>
 
-  <img src="https://i.imgur.com/y98G27j.png" alt="Octoclairvoyant preview comparing releases for eslint-plugin-testing-library" >
+  <img src="https://github.com/octoclairvoyant/octoclairvoyant-webapp/blob/main/public/browser-preview.png?raw=true" alt="Octoclairvoyant showing a comparison of releases for the eslint-plugin-testing-library repo" >
 </div>
 
 <hr>
