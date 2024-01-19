@@ -17,8 +17,7 @@ import { DiGithubBadge } from 'react-icons/di'
 import { REPO_URL } from '@/common'
 import { Link as RouteLink } from '@/components/ChakraNextLink'
 import ToggleColorModeButton from '@/components/ToggleColorModeButton'
-
-import mascotIcon from '@app-public/mascot-icon.png'
+import mascotIcon from '@/public/mascot-icon.png'
 
 const LOGO_SIZES = { base: 8, md: 16 }
 

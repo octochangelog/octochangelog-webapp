@@ -27,8 +27,7 @@ import {
 } from 'react-icons/hi'
 
 import { BRIEF_DESCRIPTION } from '@/common'
-
-import mascotLogo from '@app-public/mascot-logo.png'
+import mascotLogo from '@/public/mascot-logo.png'
 
 const MainSection = () => (
 	<Stack

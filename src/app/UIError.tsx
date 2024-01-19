@@ -11,8 +11,7 @@ import Image from 'next/image'
 import { type FC, useEffect } from 'react'
 
 import { type NextErrorPageProps } from '@/models'
-
-import mascotIcon from '@app-public/mascot-icon.png'
+import mascotIcon from '@/public/mascot-icon.png'
 
 const UIError: FC<NextErrorPageProps> = ({ error, reset }) => {
 	useEffect(() => {

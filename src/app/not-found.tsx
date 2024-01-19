@@ -11,10 +11,9 @@ import NextLink from 'next/link'
 import { type FC } from 'react'
 
 import { Link } from '@/components/ChakraNextLink'
+import mascotIcon from '@/public/mascot-icon.png'
 
 import { openGraph } from './shared-metadata'
-
-import mascotIcon from '@app-public/mascot-icon.png'
 
 export const metadata = {
 	title: 'Not Found',
