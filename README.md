@@ -19,16 +19,17 @@
 [![CI](https://github.com/octoclairvoyant/octoclairvoyant-webapp/actions/workflows/ci.yml/badge.svg)](https://github.com/octoclairvoyant/octoclairvoyant-webapp/actions/workflows/ci.yml)
 [![Octoclairvoyant Webapp Cypress tests](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/u8grd8&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/u8grd8/runs)
 
-### Main Features:
+## What is Octoclairvoyant?
 
-- Search repositories and pick a version range
-- Sort and group a releases' changelogs following [Semantic Versioning](https://semver.org/)
-- Share changelogs comparison with others by giving them a link
-- Normalize changes categories (e.g. put _bug fixes_ and _minor changes_ in the same category)
-- Highlight code blocks syntax and GitHub references
-- Makes it easy to spot which version introduced specific changes
+[Octoclairvoyant](https://octoclairvoyant.vercel.app/) is a webapp that allows you to Compare GitHub changelogs across multiple releases in a single view. You only have to pick a repo, and two versions to compare the changes between them.
 
-### Motivation
+- Sifting through changelogs on GitHub taking too much time? Let Octoclairvoyant put the list of changes in a single view!
+- Want to let your team review the changes in a dependency? Give them a link!
+- Octoclairvoyant finds all breaking changes, and lists them at the top. You can’t miss those pesky gotcha’s now!
+- Want a list of major, minor and patch level changes? Octoclairvoyant groups changes into categories for you!
+- Want to know which version introduced a certain change? Octoclairvoyant labels each change with the version number.
+
+## Motivation
 
 In January 2020 [GitHub announced a shortcut to compare across two releases](https://github.blog/changelog/2020-01-13-shortcut-to-compare-across-two-releases/).
 This shortcut basically leaves you to [pick a release version to compare with from another release version working as base](https://help.github.com/en/github/administering-a-repository/comparing-releases).
@@ -48,11 +49,11 @@ That's what Octoclairvoyant does for you with their ability to gain information 
 It retrieves all the releases description available from a repo, and leaves you to filter them by base and target versions.
 Then, it will **parse, normalize, group and sort** those changes for you.
 
-But how?
-Well, there is no mystery on retrieving those descriptions from GitHub right?
-So let's see those previous points in detail:
+## How it works?
 
-##### Parsing
+Octoclairvoyant needs to do some extra work for showing you the changelogs across multiple releases in a simple way.
+
+### Parsing
 
 This is the most complex process of the app.
 Even if there is a big parsing step at first, after some other processes there are also some additional parsings too.
@@ -70,7 +71,7 @@ The idea behind this is:
 3. When descriptions are grouped, convert them to HTML and apply some improvements (highlight GitHub references and code blocks).
 4. Finally, convert to React to avoid rendering the HTML through `dangerouslySetInnerHTML`.
 
-##### Normalizing
+### Normalizing
 
 Semantic Versioning is nice.
 It's easy to differentiate between changes level just looking at the number position at the version.
@@ -84,14 +85,14 @@ The 3 changes levels in SemVer are:
 This is one of the reasons Octoclairvoyant will normalize the different levels of changes, so it makes sure all the changes under the same level can be grouped properly.
 Obviously, it needs to normalize different cases, spacing or wording, as one repo could refer to patch level as "bugfix" and another one as "BUG FIXES".
 
-##### Grouping
+### Grouping
 
 At the parsing step where the Markdown is converted into Markdown AST, it's best opportunity to group changes after being normalized.
 This implies put all Breaking Changes together, Features together and so on.
 What if the group doesn't belong to SemVer though?
 Well, the app will do its best and keep every single category of changes received, and group them if several are found.
 
-##### Sorting
+### Sorting
 
 Last but not least: sort the groups by priority.
 As mentioned in the intro, the group of changes we should worry about the most is **breaking changes**.
