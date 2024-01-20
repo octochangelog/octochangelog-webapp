@@ -3,7 +3,7 @@
 		"baseUrl": ".",
 		"paths": {
 			"@/*": ["./src/*"],
-			"@/public/*": ["./public/*"]
+			"@/public/*": ["./public/*"],
 		},
 		"allowJs": true,
 		"alwaysStrict": true,
@@ -26,9 +26,9 @@
 		"incremental": true,
 		"plugins": [
 			{
-				"name": "next"
-			}
-		]
+				"name": "next",
+			},
+		],
 	},
 	"exclude": ["node_modules", "src/**/*.test.ts", "src/**/*.test.tsx"],
 	"include": [
@@ -36,6 +36,6 @@
 		"additional.d.ts",
 		"src/**/*.ts",
 		"src/**/*.tsx",
-		".next/types/**/*.ts"
-	]
+		".next/types/**/*.ts",
+	],
 }
