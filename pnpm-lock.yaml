@@ -36,8 +36,8 @@ dependencies:
     specifier: 5.17.18
     version: 5.17.18(@tanstack/react-query@5.17.15)(react@18.2.0)
   '@vercel/analytics':
-    specifier: 1.1.1
-    version: 1.1.1
+    specifier: 1.1.2
+    version: 1.1.2
   '@vercel/speed-insights':
     specifier: 1.0.5
     version: 1.0.5(@babel/core@7.23.7)(react-dom@18.2.0)(typescript@5.3.3)(vite@4.5.2)
@@ -3838,8 +3838,8 @@ packages:
   /@ungap/structured-clone@1.2.0:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
 
-  /@vercel/analytics@1.1.1:
-    resolution: {integrity: sha512-+NqgNmSabg3IFfxYhrWCfB/H+RCUOCR5ExRudNG2+pcRehq628DJB5e1u1xqwpLtn4pAYii4D98w7kofORAGQA==}
+  /@vercel/analytics@1.1.2:
+    resolution: {integrity: sha512-CodhkLCQ/EHzjX8k+Qg+OzTBY0UadykrcfolfSOJVZZY/ZJM5nbhztm9KdbYvMfqKlasAr1+OYy0ThZnDA/MYA==}
     dependencies:
       server-only: 0.0.1
     dev: false
@@ -11290,7 +11290,7 @@ packages:
     dependencies:
       '@types/node': 20.11.5
       esbuild: 0.18.20
-      postcss: 8.4.31
+      postcss: 8.4.33
       rollup: 3.29.4
     optionalDependencies:
       fsevents: 2.3.3
