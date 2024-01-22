@@ -6,7 +6,7 @@ import {
 	testingLibraryResults,
 } from '@/fixtures/github/search'
 import { getMockApiPath } from '@/mocks/utils'
-import type { RepoSearchResultItem } from '@/models'
+import { type RepoSearchResultItem } from '@/models'
 
 const githubReposSearchHandlers: Array<RequestHandler> = [
 	rest.get(`${getMockApiPath()}/search/repositories`, (req, res, context) => {

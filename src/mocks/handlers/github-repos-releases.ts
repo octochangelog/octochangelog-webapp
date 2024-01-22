@@ -6,7 +6,7 @@ import {
 	renovateReleases,
 } from '@/fixtures/github/releases'
 import { getMockApiPath } from '@/mocks/utils'
-import type { Release } from '@/models'
+import { type Release } from '@/models'
 import { paginateList } from '@/utils'
 
 /**

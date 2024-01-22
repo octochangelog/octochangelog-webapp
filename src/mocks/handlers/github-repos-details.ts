@@ -4,7 +4,7 @@ import { rest } from 'msw'
 import { domTestingLibraryRepoDetails } from '@/fixtures/github/repos/dom-testing-library'
 import { renovateRepoDetails } from '@/fixtures/github/repos/renovate'
 import { getMockApiPath } from '@/mocks/utils'
-import type { Repository } from '@/models'
+import { type Repository } from '@/models'
 
 interface RepoReleasesParams {
 	repoOwner: string
