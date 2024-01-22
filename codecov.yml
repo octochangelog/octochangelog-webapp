@@ -1,0 +1,3 @@
+ignore:
+  - 'src/fixtures'
+  - 'src/mocks'
