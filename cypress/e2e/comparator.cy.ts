@@ -1,7 +1,7 @@
 const DEFAULT_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout')
 const LONGER_COMMAND_TIMEOUT = DEFAULT_COMMAND_TIMEOUT * 5
 
-it.only('should show changelog results when filling the form', () => {
+it('should show changelog results when filling the form', () => {
 	cy.visit('/comparator')
 	cy.title().should('equal', 'Comparator | Octoclairvoyant')
 	cy.metaDescriptionShouldEqual(
