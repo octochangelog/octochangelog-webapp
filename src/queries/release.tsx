@@ -1,8 +1,8 @@
 import {
+	useQuery,
 	type UseQueryOptions,
 	type UseQueryResult,
 } from '@tanstack/react-query'
-import { useQuery } from '@tanstack/react-query'
 import * as semver from 'semver'
 
 import { octokit } from '@/github-client'
@@ -27,6 +27,10 @@ type ConfigArg =
 const QUERY_KEY = 'releases'
 const MAX_AUTO_PAGINATION = 10
 
+function getHasNextPage(link: string): boolean {
+	return link.includes('rel="next"')
+}
+
 function useReleasesQuery(
 	params: ReleasesQueryParams,
 	config?: ConfigArg,
@@ -41,19 +45,25 @@ function useReleasesQuery(
 	return useQuery<ReleasesQueryResults, Error>({
 		queryKey: [QUERY_KEY, finalParams],
 		queryFn: async () => {
+			const { owner, repo } = finalParams
 			const releases: Array<Release> = []
-			let paginationCount = 0
+			let shouldKeepPaginating = true
+			let pagination = 1
 
-			for await (const response of octokit.paginate.iterator(
-				'GET /repos/{owner}/{repo}/releases',
-				{ ...finalParams, per_page: 100 },
-			)) {
-				paginationCount++
-				releases.push(...response.data.filter(isStableRelease))
+			while (shouldKeepPaginating) {
+				const response = await octokit.rest.repos.listReleases({
+					owner,
+					repo,
+					per_page: 100,
+					page: pagination,
+				})
+				const { data: releasesBatch, headers } = response
+				releases.push(...releasesBatch.filter(isStableRelease))
 
-				const isMaxAutoPaginationReached =
-					paginationCount >= MAX_AUTO_PAGINATION
-				const lastReleaseFetched = response.data[response.data.length - 1]
+				pagination++
+				const hasNextPage = !!headers.link && getHasNextPage(headers.link)
+				const isMaxAutoPaginationReached = pagination > MAX_AUTO_PAGINATION
+				const lastReleaseFetched = releasesBatch[releasesBatch.length - 1]
 				const isFromReleaseFetched =
 					!hasFromVersion ||
 					semver.gte(fromVersion, lastReleaseFetched.tag_name)
@@ -62,13 +72,11 @@ function useReleasesQuery(
 					toVersion === 'latest' ||
 					semver.gte(toVersion, lastReleaseFetched.tag_name)
 
-				if (
-					isMaxAutoPaginationReached &&
-					isFromReleaseFetched &&
-					isToReleaseFetched
-				) {
-					break
-				}
+				shouldKeepPaginating =
+					hasNextPage &&
+					(!isMaxAutoPaginationReached ||
+						!isFromReleaseFetched ||
+						!isToReleaseFetched)
 			}
 
 			return releases
