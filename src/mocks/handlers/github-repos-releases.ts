@@ -60,9 +60,11 @@ const githubReposReleasesHandlers: Array<RequestHandler> = [
 				responseTransformers.push(
 					context.set(
 						'link',
-						// FIXME: This is not working fine with the express API mock, so it doesn't paginate properly after page 1.
-						//  To fix it properly, we need to address #1127 here.
 						`<${getMockApiPath()}/repos/${repoString}/releases?per_page=${perPage}&page=${nextPage}>; rel="next"`,
+					),
+					context.set(
+						'access-control-expose-headers',
+						'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset',
 					),
 				)
 			}
