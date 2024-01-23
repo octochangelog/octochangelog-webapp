@@ -98,8 +98,6 @@ it('should show changelog results when preloading from URL', () => {
 		'Compare GitHub changelogs across multiple releases in a single view',
 	)
 
-	cy.waitForApiMocking()
-
 	cy.findByRole('combobox', { name: /select from release/i }).should(
 		'have.value',
 		'v6.16.0',
@@ -175,8 +173,6 @@ it('should show changelog results when preloading from URL with "latest"', () =>
 		'Compare GitHub changelogs across multiple releases in a single view',
 	)
 
-	cy.waitForApiMocking()
-
 	cy.findByRole('combobox', { name: /select from release/i }).should(
 		'have.value',
 		'v8.11.0',
@@ -228,33 +224,30 @@ it('should show changelog results when preloading from URL with more than 10 rel
 		'Compare GitHub changelogs across multiple releases in a single view',
 	)
 
-	// This is necessary because an early request is triggered from preloaded URL.
-	cy.waitForApiMocking()
-
-	cy.window().then((appWindow) => {
-		if (appWindow.msw) {
-			const { worker, rest } = appWindow.msw
-
-			worker.use(
-				rest.get(
-					'https://api.github.com/repos/renovatebot/renovate/releases',
-					(req, res) => {
-						const pageIndex = Number(req.url.searchParams.get('page') || 1)
-
-						// Since all info is available when page 11 is retrieved, page 12 should not be requested.
-						// We are forcing an error on page 12 to make sure it's not requested.
-						if (pageIndex === 12) {
-							return res.networkError('Requested page not available.')
-						}
-
-						return undefined
-					},
-				),
-			)
-		} else if (appWindow.isApiMockingEnabled) {
-			throw new Error('API mocking should be enabled but MSW was not found.')
-		}
-	})
+	// cy.window().then((appWindow) => {
+	// 	if (appWindow.msw) {
+	// 		const { worker, rest } = appWindow.msw
+	//
+	// 		worker.use(
+	// 			rest.get(
+	// 				`${getMockApiPath()}/repos/renovatebot/renovate/releases`,
+	// 				(req, res) => {
+	// 					const pageIndex = Number(req.url.searchParams.get('page') || 1)
+	//
+	// 					// Since all info is available when page 11 is retrieved, page 12 should not be requested.
+	// 					// We are forcing an error on page 12 to make sure it's not requested.
+	// 					if (pageIndex === 12) {
+	// 						return res.networkError('Requested page not available.')
+	// 					}
+	//
+	// 					return undefined
+	// 				},
+	// 			),
+	// 		)
+	// 	} else if (appWindow.isApiMockingEnabled) {
+	// 		throw new Error('API mocking should be enabled but MSW was not found.')
+	// 	}
+	// })
 
 	cy.findByRole('combobox', { name: /select from release/i }).should(
 		'have.value',

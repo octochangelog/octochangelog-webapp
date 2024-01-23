@@ -16,24 +16,12 @@ declare global {
 	namespace Cypress {
 		interface Chainable {
 			/**
-			 * Wait until API mocking with MSW is ready.
-			 *
-			 * Useful when testing early requests (like comparator-context), or
-			 * before overriding an existing mocked request.
-			 */
-			waitForApiMocking(): Chainable
-
-			/**
 			 * Get the description located at head's meta tag.
 			 */
 			metaDescriptionShouldEqual(expectedContent: string): Chainable
 		}
 	}
 }
-
-Cypress.Commands.add('waitForApiMocking', () => {
-	return cy.window().should('have.property', 'isApiMockingReady', true)
-})
 
 Cypress.Commands.add('metaDescriptionShouldEqual', (expectedContent) => {
 	cy.get('head')

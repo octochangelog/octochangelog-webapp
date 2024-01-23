@@ -15,7 +15,7 @@ permissions:
   actions: write
 
 env:
-  NEXT_PUBLIC_API_MOCKING: 'enabled'
+  NEXT_PUBLIC_API_BASE_URL: 'http://localhost:9090'
   HAPPO_API_KEY: ${{ secrets.HAPPO_API_KEY }}
   HAPPO_API_SECRET: ${{ secrets.HAPPO_API_SECRET }}
   HAPPO_NONCE: '${{ github.run_id || github.event.pull_request.head.label || github.head_ref || github.ref }}'
@@ -60,8 +60,10 @@ jobs:
           install-command: pnpm install
           browser: chrome
           build: pnpm build
-          start: pnpm serve
-          wait-on: 'http://localhost:3000'
+          start: |
+            pnpm serve
+            pnpm mock-api
+          wait-on: 'http://localhost:3000, ${{ env.NEXT_PUBLIC_API_BASE_URL }}'
           record: true
           parallel: true
           group: merge

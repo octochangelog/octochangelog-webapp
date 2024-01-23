@@ -11,6 +11,10 @@ import {
 	type RepositoryQueryParams,
 } from '@/models'
 
+/**
+ * Consider API should be mocked if the mechanism is enabled, and it's not deployed to Vercel env.
+ */
+
 function mapRepositoryToQueryParams(
 	repository?: Repository,
 ): RepositoryQueryParams {

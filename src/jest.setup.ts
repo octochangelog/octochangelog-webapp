@@ -1,6 +1,6 @@
 import { beforeAll, afterEach, afterAll } from '@jest/globals'
 
-import { server } from './mock-service-worker/server'
+import { server } from '@/mocks/server'
 
 beforeAll(() => {
 	server.listen()

@@ -5,9 +5,10 @@ import { getGithubAccessToken } from '@/github-auth'
 
 function getUserAgent(): string {
 	const userAgent = 'Octoclairvoyant'
-	const isVercelEnv =
-		process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' ||
-		process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview'
+	const isVercelEnv = ['production', 'preview'].includes(
+		String(process.env.NEXT_PUBLIC_VERCEL_ENV),
+	)
+
 	if (isVercelEnv) {
 		return userAgent
 	}
@@ -18,7 +19,9 @@ function getUserAgent(): string {
 const octokit = new Octokit({
 	authStrategy: createCallbackAuth,
 	auth: { callback: getGithubAccessToken },
+	retry: { enabled: false }, // React Query already retries
 	userAgent: getUserAgent(),
+	baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || undefined,
 })
 
 export { octokit }

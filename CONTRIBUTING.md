@@ -70,9 +70,9 @@ Now you can run Jest tests, Cypress tests and the local environment against this
 
 ### Toggling the mocked API
 
-This mocked API can be toggled through the `NEXT_PUBLIC_API_MOCKING` environment variable, which is enabled by default.
-Use `enabled` to start it alongside the project, or `disabled` to stop it.
-You can put it in your `.env.local` (restarting the local server if already started).
+This mocked API can be toggled through the `NEXT_PUBLIC_API_BASE_URL` environment variable, which points to the official GitHub API by default (https://api.github.com). Set that env var to `http://localhost:9090` in your `.env.local`.
+
+Additionally, in another terminal you need to start the mock API server with `pnpm mock-api`. This is a temporary workaround until MSW is fully compatible with the Next.js App router.
 
 ### Limitations
 
@@ -95,7 +95,6 @@ Do the following to get a ugly button to toggle between light/dark mode:
 
 1. Create a file named `.env.local` in the root of the project (this file is on the `.gitignore` list so it won't be committed accidentally)
 1. Put `NEXT_PUBLIC_FEATURE_FLAG_COLOR_MODE=true` inside the `.env.local` file.
-1. Stop the development server, and run `pnpm start` to restart the server
 1. You can now use the button in the header to switch between light/dark mode
 
 ### Setting colors for light/dark mode
