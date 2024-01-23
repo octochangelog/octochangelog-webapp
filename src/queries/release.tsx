@@ -1,8 +1,8 @@
 import {
+	useQuery,
 	type UseQueryOptions,
 	type UseQueryResult,
 } from '@tanstack/react-query'
-import { useQuery } from '@tanstack/react-query'
 import * as semver from 'semver'
 
 import { octokit } from '@/github-client'
@@ -13,6 +13,8 @@ import {
 	type RepositoryQueryParams,
 } from '@/models'
 import { isStableRelease, mapRepositoryToQueryParams } from '@/utils'
+
+type FetchReleasesArgs = RepositoryQueryParams & { page?: number | undefined }
 
 type ReleasesQueryResults = Array<Release>
 type ReleasesQueryParams = {
@@ -27,6 +29,17 @@ type ConfigArg =
 const QUERY_KEY = 'releases'
 const MAX_AUTO_PAGINATION = 10
 
+async function fetchReleases({ owner, repo, page }: FetchReleasesArgs) {
+	const response = await octokit.rest.repos.listReleases({
+		owner,
+		repo,
+		per_page: 100,
+		page,
+	})
+
+	return response.data.filter(isStableRelease)
+}
+
 function useReleasesQuery(
 	params: ReleasesQueryParams,
 	config?: ConfigArg,
@@ -35,41 +48,13 @@ function useReleasesQuery(
 		params.repository ?? undefined,
 	)
 	const { fromVersion, toVersion } = params
-	const hasFromVersion = !!fromVersion
-	const hasToVersion = !!toVersion
 
 	return useQuery<ReleasesQueryResults, Error>({
 		queryKey: [QUERY_KEY, finalParams],
 		queryFn: async () => {
-			const releases: Array<Release> = []
-			let paginationCount = 0
+			const { owner, repo } = finalParams
 
-			for await (const response of octokit.paginate.iterator(
-				'GET /repos/{owner}/{repo}/releases',
-				{ ...finalParams, per_page: 100 },
-			)) {
-				paginationCount++
-				releases.push(...response.data.filter(isStableRelease))
-
-				const isMaxAutoPaginationReached =
-					paginationCount >= MAX_AUTO_PAGINATION
-				const lastReleaseFetched = response.data[response.data.length - 1]
-				const isFromReleaseFetched =
-					!hasFromVersion ||
-					semver.gte(fromVersion, lastReleaseFetched.tag_name)
-				const isToReleaseFetched =
-					!hasToVersion ||
-					toVersion === 'latest' ||
-					semver.gte(toVersion, lastReleaseFetched.tag_name)
-
-				if (
-					isMaxAutoPaginationReached &&
-					isFromReleaseFetched &&
-					isToReleaseFetched
-				) {
-					break
-				}
-			}
+			const releases = await fetchReleases({ owner, repo })
 
 			return releases
 		},
