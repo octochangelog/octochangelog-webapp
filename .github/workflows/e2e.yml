@@ -60,8 +60,10 @@ jobs:
           install-command: pnpm install
           browser: chrome
           build: pnpm build
-          start: pnpm serve
-          wait-on: 'http://localhost:3000'
+          start: |
+            pnpm serve
+            pnpm mock-api
+          wait-on: 'http://localhost:3000, ${{ env.NEXT_PUBLIC_API_BASE_URL }}'
           record: true
           parallel: true
           group: merge
