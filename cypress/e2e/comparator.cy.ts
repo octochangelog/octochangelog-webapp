@@ -1,5 +1,6 @@
 const DEFAULT_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout')
 const LONGER_COMMAND_TIMEOUT = DEFAULT_COMMAND_TIMEOUT * 5
+const API_BASE_URL = 'http://localhost:9090' // FIXME: move this to Cy env
 
 it('should show changelog results when filling the form', () => {
 	cy.visit('/comparator')
@@ -218,36 +219,24 @@ it('should show changelog results when preloading from URL with more than 10 rel
 	// to find certain elements while the comparator is still processing the changelog.
 	Cypress.config('defaultCommandTimeout', LONGER_COMMAND_TIMEOUT)
 
+	cy.intercept(
+		'GET',
+		`${API_BASE_URL}/repos/renovatebot/renovate/releases?per_page=100**`,
+	).as('getReleases')
+
 	cy.visit('/comparator?repo=renovatebot%2Frenovate&from=26.9.0&to=32.172.2')
+
+	cy.wait('@getReleases')
+
+	// Since all info is available when page 11 is retrieved, page 12 should not be requested.
+	// We check this by 1) waiting for 11 requests, 2) then make sure there are no more requests.
+	cy.get('@getReleases.all').should('have.length', 11)
+	cy.get('@getReleases.all').should('not.have.length.gt', 11)
+
 	cy.title().should('equal', 'Comparator | Octoclairvoyant')
 	cy.metaDescriptionShouldEqual(
 		'Compare GitHub changelogs across multiple releases in a single view',
 	)
-
-	// cy.window().then((appWindow) => {
-	// 	if (appWindow.msw) {
-	// 		const { worker, rest } = appWindow.msw
-	//
-	// 		worker.use(
-	// 			rest.get(
-	// 				`${getMockApiPath()}/repos/renovatebot/renovate/releases`,
-	// 				(req, res) => {
-	// 					const pageIndex = Number(req.url.searchParams.get('page') || 1)
-	//
-	// 					// Since all info is available when page 11 is retrieved, page 12 should not be requested.
-	// 					// We are forcing an error on page 12 to make sure it's not requested.
-	// 					if (pageIndex === 12) {
-	// 						return res.networkError('Requested page not available.')
-	// 					}
-	//
-	// 					return undefined
-	// 				},
-	// 			),
-	// 		)
-	// 	} else if (appWindow.isApiMockingEnabled) {
-	// 		throw new Error('API mocking should be enabled but MSW was not found.')
-	// 	}
-	// })
 
 	cy.findByRole('combobox', { name: /select from release/i }).should(
 		'have.value',
