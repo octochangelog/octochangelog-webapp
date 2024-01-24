@@ -71,7 +71,7 @@
 		"@jest/globals": "29.7.0",
 		"@mswjs/http-middleware": "0.8.0",
 		"@octokit/openapi-types": "19.1.0",
-		"@tanstack/eslint-plugin-query": "5.17.7",
+		"@tanstack/eslint-plugin-query": "5.17.20",
 		"@testing-library/cypress": "10.0.1",
 		"@testing-library/react": "14.1.2",
 		"@types/cors": "2.8.17",
