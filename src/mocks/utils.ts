@@ -1,17 +1,20 @@
-import { type StartOptions } from 'msw'
+import { type StartOptions } from 'msw/browser'
 
 const IGNORE_HOSTS = ['localhost', 'octoclairvoyant', 'fonts']
 
 type OnUnhandledRequestCallback = StartOptions['onUnhandledRequest']
 
 const unhandledRequestCallback: OnUnhandledRequestCallback = (req, print) => {
-	if (req.url.host === 'api.github.com') {
-		throw new Error(
+	const url = new URL(req.url)
+	if (url.host === 'api.github.com') {
+		// eslint-disable-next-line no-console
+		console.log(
 			`Unhandled request to GitHub API: ${req.method.toUpperCase()} ${req.url.toString()}`,
 		)
+		print.error()
 	}
 
-	if (IGNORE_HOSTS.some((ignoreHost) => req.url.host.includes(ignoreHost))) {
+	if (IGNORE_HOSTS.some((ignoreHost) => url.host.includes(ignoreHost))) {
 		return undefined
 	}
 
