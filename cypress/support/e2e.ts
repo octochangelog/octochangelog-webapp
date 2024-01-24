@@ -14,3 +14,17 @@
 // ***********************************************************
 
 import './commands'
+
+Cypress.on('uncaught:exception', (error) => {
+	// Ignore hydration errors
+	// https://reactjs.org/docs/error-decoder.html?invariant=418
+	if (error.message.includes('Minified React error #418')) {
+		// eslint-disable-next-line no-console
+		console.warn(
+			'Hydration failed because the initial UI does not match what was rendered on the server.',
+		)
+		return false
+	}
+
+	// We still want to ensure there are no other unexpected errors, so we let them fail the test.
+})
