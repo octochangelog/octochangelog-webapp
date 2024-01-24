@@ -3,7 +3,7 @@ import { beforeAll, afterEach, afterAll } from '@jest/globals'
 import { server } from '@/mocks/server'
 
 beforeAll(() => {
-	server.listen()
+	server.listen({ onUnhandledRequest: 'error' })
 })
 
 afterEach(() => {

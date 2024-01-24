@@ -22,6 +22,17 @@ const config: Config = {
 	moduleNameMapper: {
 		...tsPathsToModules,
 		'^lodash-es$': 'lodash', // so lodash-es is not compiled
+
+		// Compatibility issues between MSW and Jest
+		// https://mswjs.io/docs/migrations/1.x-to-2.x#requestresponsetextencoder-is-not-defined-jest
+		setupFiles: ['./jest.polyfills.js'],
+
+		// Avoid JSDOM changing msw imports from msw/node to msw/browser
+		// https://mswjs.io/docs/migrations/1.x-to-2.x#cannot-find-module-mswnode-jsdom
+		testEnvironmentOptions: {
+			// @ts-expect-error This is probably not defined in Jest types.
+			customExportConditions: [''],
+		},
 	},
 
 	// Don't set "testEnvironment" to "jsdom" in here.

@@ -1,16 +1,17 @@
-import { type RequestHandler } from 'msw'
-import { rest } from 'msw'
+import { http, HttpResponse, type RequestHandler } from 'msw'
 
 import {
 	renovateResults,
 	testingLibraryResults,
 } from '@/fixtures/github/search'
-import { getMockApiPath } from '@/mocks/utils'
 import { type RepoSearchResultItem } from '@/models'
 
+import { getMockApiPath } from '../utils'
+
 const githubReposSearchHandlers: Array<RequestHandler> = [
-	rest.get(`${getMockApiPath()}/search/repositories`, (req, res, context) => {
-		const searchQuery = req.url.searchParams.get('q') ?? ''
+	http.get(`${getMockApiPath()}/search/repositories`, ({ request }) => {
+		const url = new URL(request.url)
+		const searchQuery = url.searchParams.get('q') ?? ''
 		const cleanSearchQuery = searchQuery.replace(/[-_]/g, ' ')
 		const items: Array<RepoSearchResultItem> = []
 
@@ -22,13 +23,11 @@ const githubReposSearchHandlers: Array<RequestHandler> = [
 			items.push(...renovateResults)
 		}
 
-		return res(
-			context.json({
-				total_count: items.length,
-				incomplete_results: false,
-				items,
-			}),
-		)
+		return HttpResponse.json({
+			total_count: items.length,
+			incomplete_results: false,
+			items,
+		})
 	}),
 ]
 
