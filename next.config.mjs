@@ -27,11 +27,18 @@ const nextConfig = {
 export default withSentryConfig(
 	nextConfig,
 	{
+
 		// For all available options, see:
 		// https://github.com/getsentry/sentry-webpack-plugin#options
 
 		// Suppresses source map uploading logs during build
 		silent: true,
+
+		deploy: {
+			// If deployed to Vercel, it will be tagged as production or review.
+			// Otherwise, we don't know what environment is being run on (e.g. local, cypress, CI).
+			env: process.env.VERCEL_ENV || 'unknown',
+		},
 	},
 	{
 		// For all available options, see:
