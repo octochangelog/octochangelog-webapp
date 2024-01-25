@@ -1,6 +1,5 @@
 const DEFAULT_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout')
 const LONGER_COMMAND_TIMEOUT = DEFAULT_COMMAND_TIMEOUT * 5
-const API_BASE_URL = 'http://localhost:9090' // FIXME: move this to Cy env
 
 it('should show changelog results when filling the form', () => {
 	cy.visit('/comparator')
@@ -221,7 +220,7 @@ it('should show changelog results when preloading from URL with more than 10 rel
 
 	cy.intercept(
 		'GET',
-		`${API_BASE_URL}/repos/renovatebot/renovate/releases?per_page=100**`,
+		`${Cypress.env('apiBaseUrl')}/repos/renovatebot/renovate/releases?per_page=100**`,
 	).as('getReleases')
 
 	cy.visit('/comparator?repo=renovatebot%2Frenovate&from=26.9.0&to=32.172.2')

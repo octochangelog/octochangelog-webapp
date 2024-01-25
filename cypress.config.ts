@@ -3,6 +3,9 @@ import happoTask from 'happo-cypress/task'
 
 export default defineConfig({
 	projectId: 'u8grd8',
+	env: {
+		apiBaseUrl: 'http://localhost:9090',
+	},
 	e2e: {
 		/**
 		 * `on` is used to hook into various events Cypress emits
