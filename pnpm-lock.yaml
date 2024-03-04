@@ -224,8 +224,8 @@ devDependencies:
     specifier: 2.1.4
     version: 2.1.4(typescript@5.3.3)
   prettier:
-    specifier: 3.2.2
-    version: 3.2.2
+    specifier: 3.2.5
+    version: 3.2.5
   start-server-and-test:
     specifier: 2.0.3
     version: 2.0.3
@@ -9528,8 +9528,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier@3.2.2:
-    resolution: {integrity: sha512-HTByuKZzw7utPiDO523Tt2pLtEyK7OibUD9suEJQrPUCYQqrHr74GGX6VidMrovbf/I50mPqr8j/II6oBAuc5A==}
+  /prettier@3.2.5:
+    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
