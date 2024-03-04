@@ -88,7 +88,7 @@
 		"@typescript-eslint/eslint-plugin": "6.19.1",
 		"@typescript-eslint/parser": "6.19.1",
 		"cors": "2.8.5",
-		"cypress": "13.6.4",
+		"cypress": "13.6.6",
 		"eslint": "8.56.0",
 		"eslint-config-next": "14.0.4",
 		"eslint-config-prettier": "9.1.0",
