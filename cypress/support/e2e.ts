@@ -13,7 +13,7 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-import './commands'
+import './commands';
 
 Cypress.on('uncaught:exception', (error) => {
 	// Ignore hydration errors
@@ -21,10 +21,20 @@ Cypress.on('uncaught:exception', (error) => {
 	if (error.message.includes('Minified React error #418')) {
 		// eslint-disable-next-line no-console
 		console.warn(
-			'Hydration failed because the initial UI does not match what was rendered on the server.',
-		)
-		return false
+			'Hydration failed because the initial UI does not match what was rendered on the server.'
+		);
+		return false;
+	}
+
+	// Ignore hydration errors
+	// https://reactjs.org/docs/error-decoder.html?invariant=423
+	if (error.message.includes('Minified React error #423')) {
+		// eslint-disable-next-line no-console
+		console.warn(
+			'There was an error while hydrating. Because the error happened outside of a Suspense boundary, the entire root will switch to client rendering.'
+		);
+		return false;
 	}
 
 	// We still want to ensure there are no other unexpected errors, so we let them fail the test.
-})
+});
