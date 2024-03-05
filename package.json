@@ -29,7 +29,7 @@
 		"e2e:dev": "start-test mock-api http://localhost:9090 'pnpm dev' http://localhost:3000 'pnpm cy:open --e2e'",
 		"e2e:headless": "start-test mock-api http://localhost:9090 'pnpm build && pnpm serve' http://localhost:3000 'pnpm cy:headless'",
 		"gen:theme-typings": "chakra-cli tokens src/custom-theme.ts --strict-component-types --strict-token-types",
-		"prepare": "is-ci || husky install",
+		"prepare": "is-ci || husky",
 		"postinstall": "pnpm gen:theme-typings"
 	},
 	"dependencies": {
