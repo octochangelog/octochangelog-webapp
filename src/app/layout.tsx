@@ -4,7 +4,7 @@ import { type Viewport } from 'next'
 import { type FC, type ReactNode, Suspense } from 'react'
 
 import UILayout from '@/app/UILayout'
-import { BRIEF_DESCRIPTION, FULL_DESCRIPTION, SITE_TITLE } from '@/common'
+import { FULL_DESCRIPTION, SITE_TITLE } from '@/common'
 import customTheme from '@/custom-theme'
 import { interFont, robotoMonoFont } from '@/fonts'
 
@@ -15,7 +15,7 @@ import { openGraph } from './shared-metadata'
 export const metadata = {
 	title: {
 		template: `%s | ${SITE_TITLE}`,
-		default: `${SITE_TITLE}: ${BRIEF_DESCRIPTION}`,
+		default: SITE_TITLE,
 	},
 	description: FULL_DESCRIPTION,
 	openGraph: { ...openGraph },

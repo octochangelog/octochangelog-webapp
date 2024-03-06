@@ -1,9 +1,6 @@
 it('should display corresponding information', () => {
 	cy.visit('/')
-	cy.title().should(
-		'equal',
-		'Octochangelog: Compare GitHub changelogs in a single view',
-	)
+	cy.title().should('equal', 'Octochangelog')
 	cy.metaDescriptionShouldEqual(
 		'Compare GitHub changelogs across multiple releases in a single view',
 	)
