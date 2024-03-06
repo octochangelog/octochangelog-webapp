@@ -1,6 +1,6 @@
 import { type StartOptions } from 'msw/browser'
 
-const IGNORE_HOSTS = ['localhost', 'octoclairvoyant', 'fonts']
+const IGNORE_HOSTS = ['localhost', 'octochangelog', 'fonts']
 
 type OnUnhandledRequestCallback = StartOptions['onUnhandledRequest']
 

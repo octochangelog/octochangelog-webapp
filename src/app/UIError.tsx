@@ -39,7 +39,7 @@ const UIError: FC<NextErrorPageProps> = ({ error, reset }) => {
 						Something went wrong!
 					</Heading>
 					<Text as="p" color="secondaryText" fontSize="2xl" fontWeight="black">
-						Octoclairvoyant could not handle the workload properly.
+						Octochangelog could not handle the workload properly.
 					</Text>
 				</Stack>
 			</VStack>

@@ -1,6 +1,6 @@
-const REPO_URL = 'https://github.com/octoclairvoyant/octoclairvoyant-webapp'
+const REPO_URL = 'https://github.com/octochangelog/octochangelog-webapp'
 
-const SITE_TITLE = 'Octoclairvoyant'
+const SITE_TITLE = 'Octochangelog'
 
 const BRIEF_DESCRIPTION = 'Compare GitHub changelogs in a single view'
 

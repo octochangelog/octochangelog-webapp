@@ -36,7 +36,7 @@ However, [pnpm can manage the Node.js version automatically for you](https://pnp
 
 ## Make a fork
 
-Use the GitHub web interface to create your own fork of the Octoclairvoyant repository.
+Use the GitHub web interface to create your own fork of the Octochangelog repository.
 
 Do not put your own work on your forks `main` branch.
 Create a new feature branch for each bit of work!
@@ -44,7 +44,7 @@ Create a new feature branch for each bit of work!
 ## Installing development dependencies
 
 We use Yarn v1 to manage our dependencies.
-Run the `pnpm install` command in your own Octoclairvoyant directory to install all dependencies:
+Run the `pnpm install` command in your own Octochangelog directory to install all dependencies:
 
 ```bash
 $ pnpm install

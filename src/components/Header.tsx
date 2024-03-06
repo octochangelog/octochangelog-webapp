@@ -66,7 +66,7 @@ const Header = (props: BoxProps) => {
 									fontWeight="black"
 									fontSize={{ base: '16px', md: '36px' }}
 								>
-									Octoclairvoyant
+									Octochangelog
 								</Heading>
 							</HStack>
 						</RouteLink>
@@ -80,7 +80,7 @@ const Header = (props: BoxProps) => {
 						)}
 						<Link
 							href={REPO_URL}
-							aria-label="Octoclairvoyant repository on GitHub"
+							aria-label="Octochangelog repository on GitHub"
 							isExternal
 							rounded="full"
 							boxSize={LOGO_SIZES}

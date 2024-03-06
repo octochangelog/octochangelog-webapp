@@ -4,7 +4,7 @@ import { Octokit } from '@octokit/rest'
 import { getGithubAccessToken } from '@/github-auth'
 
 function getUserAgent(): string {
-	const userAgent = 'Octoclairvoyant'
+	const userAgent = 'Octochangelog'
 	const isVercelEnv = ['production', 'preview'].includes(
 		String(process.env.NEXT_PUBLIC_VERCEL_ENV),
 	)

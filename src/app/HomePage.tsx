@@ -26,7 +26,7 @@ import {
 } from 'react-icons/hi'
 
 import { BRIEF_DESCRIPTION } from '@/common'
-import mascotLogo from '@/public/mascot-logo.png'
+import mascotIcon from '@/public/mascot-icon.png'
 
 const MainSection = () => (
 	<Stack
@@ -56,7 +56,7 @@ const MainSection = () => (
 			</Flex>
 		</Stack>
 		<Center width="full">
-			<Image src={mascotLogo} alt="" quality={100} priority />
+			<Image src={mascotIcon} alt="" quality={100} priority />
 		</Center>
 	</Stack>
 )
@@ -75,7 +75,7 @@ const FEATURES_DESCRIPTIONS: Array<FeatureItemProps> = [
 			<Box>
 				Sifting through changelogs on GitHub taking too much time?
 				<br />
-				Let Octoclairvoyant put the list of changes in a single view!
+				Let Octochangelog put the list of changes in a single view!
 			</Box>
 		),
 	},
@@ -95,7 +95,7 @@ const FEATURES_DESCRIPTIONS: Array<FeatureItemProps> = [
 		title: "Don't miss breaking changes",
 		children: (
 			<Box>
-				Octoclairvoyant finds all breaking changes, and lists them at the top.
+				Octochangelog finds all breaking changes, and lists them at the top.
 				<br />
 				You can’t miss those pesky gotcha’s now!
 			</Box>
@@ -108,7 +108,7 @@ const FEATURES_DESCRIPTIONS: Array<FeatureItemProps> = [
 			<Box>
 				Want a list of major, minor and patch level changes?
 				<br />
-				Octoclairvoyant groups changes into categories for you!
+				Octochangelog groups changes into categories for you!
 			</Box>
 		),
 	},
@@ -119,7 +119,7 @@ const FEATURES_DESCRIPTIONS: Array<FeatureItemProps> = [
 			<Box>
 				Want to know which version introduced a certain change?
 				<br />
-				Octoclairvoyant labels each change with the version number.
+				Octochangelog labels each change with the version number.
 			</Box>
 		),
 	},

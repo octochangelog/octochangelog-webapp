@@ -2,15 +2,13 @@ it('should display corresponding information', () => {
 	cy.visit('/')
 	cy.title().should(
 		'equal',
-		'Octoclairvoyant: Compare GitHub changelogs in a single view',
+		'Octochangelog: Compare GitHub changelogs in a single view',
 	)
 	cy.metaDescriptionShouldEqual(
 		'Compare GitHub changelogs across multiple releases in a single view',
 	)
 
-	cy.findByRole('heading', { level: 1, name: 'Octoclairvoyant' }).should(
-		'exist',
-	)
+	cy.findByRole('heading', { level: 1, name: 'Octochangelog' }).should('exist')
 
 	cy.findByRole('heading', {
 		level: 2,
@@ -20,7 +18,7 @@ it('should display corresponding information', () => {
 	cy.findByRole('main').within(() => {
 		cy.findByRole('img')
 			.should('have.attr', 'src')
-			.and('contain', 'mascot-logo')
+			.and('contain', 'mascot-icon')
 	})
 
 	cy.findByRole('heading', {
@@ -54,11 +52,11 @@ it('should display corresponding information', () => {
 	)
 
 	cy.findByRole('link', {
-		name: /octoclairvoyant repository on github/i,
+		name: /octochangelog repository on github/i,
 	}).should(
 		'have.attr',
 		'href',
-		'https://github.com/octoclairvoyant/octoclairvoyant-webapp',
+		'https://github.com/octochangelog/octochangelog-webapp',
 	)
 
 	// we first query the link
@@ -67,7 +65,7 @@ it('should display corresponding information', () => {
 		.should(
 			'have.attr',
 			'href',
-			'https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss',
+			'https://vercel.com/?utm_source=octochangelog-team&utm_campaign=oss',
 		)
 		// now, since `should` returns a Chainable, we can chain it with `within`, which allows us to query
 		// for something inside the previous element

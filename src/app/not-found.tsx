@@ -42,7 +42,7 @@ const NotFound: FC = () => {
 						This page could not be found.
 					</Heading>
 					<Text as="p" color="secondaryText" fontSize="2xl" fontWeight="black">
-						Octoclairvoyant cannot divine the page you wanted.
+						Octochangelog cannot divine the page you wanted.
 					</Text>
 				</Stack>
 			</VStack>
