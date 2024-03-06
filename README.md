@@ -1,6 +1,6 @@
 <div align="center">
   <img
-    src="https://github.com/octoclairvoyant/octoclairvoyant-webapp/blob/main/public/mascot-logo.png?raw=true"
+    src="https://github.com/octoclairvoyant/octoclairvoyant-webapp/blob/main/public/mascot-icon.png?raw=true"
     height="500"
     width="500"
     alt="Octoclairvoyant logo: a purple octopus reading a crystal ball"

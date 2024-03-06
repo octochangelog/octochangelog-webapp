@@ -20,7 +20,7 @@ it('should display corresponding information', () => {
 	cy.findByRole('main').within(() => {
 		cy.findByRole('img')
 			.should('have.attr', 'src')
-			.and('contain', 'mascot-logo')
+			.and('contain', 'mascot-icon')
 	})
 
 	cy.findByRole('heading', {

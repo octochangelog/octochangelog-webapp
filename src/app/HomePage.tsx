@@ -26,7 +26,7 @@ import {
 } from 'react-icons/hi'
 
 import { BRIEF_DESCRIPTION } from '@/common'
-import mascotLogo from '@/public/mascot-logo.png'
+import mascotIcon from '@/public/mascot-icon.png'
 
 const MainSection = () => (
 	<Stack
@@ -56,7 +56,7 @@ const MainSection = () => (
 			</Flex>
 		</Stack>
 		<Center width="full">
-			<Image src={mascotLogo} alt="" quality={100} priority />
+			<Image src={mascotIcon} alt="" quality={100} priority />
 		</Center>
 	</Stack>
 )

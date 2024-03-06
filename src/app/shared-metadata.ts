@@ -8,7 +8,7 @@ export const openGraph: NonNullable<Metadata['openGraph']> = {
 	title: `${SITE_TITLE}: ${BRIEF_DESCRIPTION}`,
 	images: [
 		{
-			url: '/mascot-logo.png',
+			url: '/mascot-icon.png',
 			height: 600,
 			width: 600,
 			type: 'image/png',
