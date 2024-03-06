@@ -1,12 +1,12 @@
 <div align="center">
   <img
-    src="https://github.com/octoclairvoyant/octoclairvoyant-webapp/blob/main/public/mascot-icon.png?raw=true"
+    src="https://github.com/octochangelog/octochangelog-webapp/blob/main/public/mascot-icon.png?raw=true"
     height="500"
     width="500"
-    alt="Octoclairvoyant logo: a purple octopus reading a crystal ball"
+    alt="Octochangelog mascot (a purple octopus-cat) reading a crystal ball"
   >
   <p>
-    <span role="img" aria-label="Crystall ball">🔮</span> https://octoclairvoyant.vercel.app/
+    <span role="img" aria-label="Crystall ball">🔮</span> https://www.octochangelog.com/
   </p>
   <p>Compare GitHub changelogs across multiple releases in a single view.</p>
 
@@ -14,20 +14,20 @@
 
 <hr>
 
-[![CI](https://github.com/octoclairvoyant/octoclairvoyant-webapp/actions/workflows/ci.yml/badge.svg)](https://github.com/octoclairvoyant/octoclairvoyant-webapp/actions/workflows/ci.yml)
-[![Octoclairvoyant Webapp Cypress tests](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/u8grd8&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/u8grd8/runs)
+[![CI](https://github.com/octochangelog/octochangelog-webapp/actions/workflows/ci.yml/badge.svg)](https://github.com/octochangelog/octochangelog-webapp/actions/workflows/ci.yml)
+[![Octochangelog Webapp Cypress tests](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/u8grd8&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/u8grd8/runs)
 
-## What is Octoclairvoyant?
+## What is Octochangelog?
 
-<img src="https://github.com/octoclairvoyant/octoclairvoyant-webapp/blob/main/public/browser-preview.png?raw=true" alt="Octoclairvoyant showing a comparison of releases for the eslint-plugin-testing-library repo" >
+<img src="https://github.com/octochangelog/octochangelog-webapp/blob/main/public/browser-preview.png?raw=true" alt="Octochangelog showing a comparison of releases for the eslint-plugin-testing-library repo" >
 
-[Octoclairvoyant](https://octoclairvoyant.vercel.app/) is a webapp that allows you to Compare GitHub changelogs across multiple releases in a single view. You only have to pick a repo, and two versions to compare the changes between them.
+[Octochangelog](https://www.octochangelog.com/) is a webapp that allows you to compare GitHub changelogs across multiple releases in a single view. You only have to pick a repo, and two versions to compare the changes between them.
 
-- Sifting through changelogs on GitHub taking too much time? Let Octoclairvoyant put the list of changes in a single view!
+- Sifting through changelogs on GitHub taking too much time? Let Octochangelog put the list of changes in a single view!
 - Want to let your team review the changes in a dependency? Give them a link!
-- Octoclairvoyant finds all breaking changes, and lists them at the top. You can’t miss those pesky gotcha’s now!
-- Want a list of major, minor and patch level changes? Octoclairvoyant groups changes into categories for you!
-- Want to know which version introduced a certain change? Octoclairvoyant labels each change with the version number.
+- Octochangelog finds all breaking changes, and lists them at the top. You can’t miss those pesky gotcha’s now!
+- Want a list of major, minor and patch level changes? Octochangelog groups changes into categories for you!
+- Want to know which version introduced a certain change? Octochangelog labels each change with the version number.
 
 ## Motivation
 
@@ -45,13 +45,13 @@ I usually do this process over GitHub releases tab or going through the `CHANGEL
 Usually I'm interested in looking for breaking changes more than any other kind of changes.
 **So why not compare changelogs through releases descriptions filtering, grouping and sorting what really matters?**
 
-That's what Octoclairvoyant does for you with their ability to gain information through extrasensory perception!
+That's what Octochangelog does for you with their ability to gain information through extrasensory perception!
 It retrieves all the releases description available from a repo, and leaves you to filter them by base and target versions.
 Then, it will **parse, normalize, group and sort** those changes for you.
 
 ## How it works?
 
-Octoclairvoyant needs to do some extra work for showing you the changelogs across multiple releases in a simple way.
+Octochangelog needs to do some extra work for showing you the changelogs across multiple releases in a simple way.
 
 ### Parsing
 
@@ -82,7 +82,7 @@ The 3 changes levels in SemVer are:
 - Minor <--> Features
 - Patch <--> Bug Fixes
 
-This is one of the reasons Octoclairvoyant will normalize the different levels of changes, so it makes sure all the changes under the same level can be grouped properly.
+This is one of the reasons Octochangelog will normalize the different levels of changes, so it makes sure all the changes under the same level can be grouped properly.
 Obviously, it needs to normalize different cases, spacing or wording, as one repo could refer to patch level as "bugfix" and another one as "BUG FIXES".
 
 ### Grouping
@@ -110,8 +110,8 @@ So the final sorting will be:
 
 <hr>
 <div align="center">
-  <a href="https://gitpod.io/#https://github.com/octoclairvoyant/octoclairvoyant-webapp"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod"/></a>
-  <a href="https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss">
+  <a href="https://gitpod.io/#https://github.com/octochangelog/octochangelog-webapp"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod"/></a>
+  <a href="https://vercel.com/?utm_source=octochangelog-team&utm_campaign=oss">
     <img
       src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg"
       alt="Powered by Vercel"

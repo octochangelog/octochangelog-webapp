@@ -18,7 +18,7 @@ const RateLimitExceededNotice = ({ waitingMinutes, isAuth = false }: Props) => (
 			justify="center"
 		>
 			<Heading fontSize="md" textAlign="center" mb={4}>
-				Octoclairvoyant has exceed the{' '}
+				Octochangelog has exceed the{' '}
 				<Link isExternal href="https://developer.github.com/v3/#rate-limiting">
 					GitHub API hourly limit
 				</Link>{' '}

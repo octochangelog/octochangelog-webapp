@@ -12,7 +12,7 @@ export const openGraph: NonNullable<Metadata['openGraph']> = {
 			height: 600,
 			width: 600,
 			type: 'image/png',
-			alt: 'Octoclairvoyant mascot reading a crystal ball',
+			alt: 'Octochangelog mascot (a purple octopus-cat) reading a crystal ball',
 		},
 	],
 }

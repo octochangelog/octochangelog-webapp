@@ -40,7 +40,7 @@ const Footer = () => {
 					</Text>
 					<Box>
 						<Link
-							href="https://vercel.com/?utm_source=octoclairvoyant-team&utm_campaign=oss"
+							href="https://vercel.com/?utm_source=octochangelog-team&utm_campaign=oss"
 							aria-label="Powered by Vercel"
 							isExternal
 						>

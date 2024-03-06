@@ -23,7 +23,7 @@ const ComparatorErrorPage: FC<NextErrorPageProps> = ({ error, reset }) => {
 				>
 					<Heading>Something went wrong!</Heading>
 					<Text as="p">
-						Octoclairvoyant could not process the releases changelogs to be
+						Octochangelog could not process the releases changelogs to be
 						compared.
 					</Text>
 					<Button onClick={() => reset()}>Try again</Button>
