@@ -44,7 +44,7 @@
 		"@tanstack/react-query-devtools": "5.17.19",
 		"@vercel/analytics": "1.1.2",
 		"@vercel/speed-insights": "1.0.10",
-		"downshift": "8.3.1",
+		"downshift": "8.4.0",
 		"framer-motion": "10.18.0",
 		"js-cookie": "3.0.5",
 		"lodash-es": "4.17.21",
