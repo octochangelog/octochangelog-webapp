@@ -7,13 +7,15 @@ export const openGraph: NonNullable<Metadata['openGraph']> = {
 	url: '/',
 	title: SITE_TITLE,
 	description: BRIEF_DESCRIPTION,
-	images: [
-		{
-			url: '/mascot-icon.png',
-			height: 600,
-			width: 600,
-			type: 'image/png',
-			alt: 'Octochangelog mascot (a purple octopus-cat) reading a crystal ball',
-		},
-	],
+	images: ['/mascot-icon.png'],
+}
+
+export const getMetadataBase: () => URL = () => {
+	const vercelUrl = process.env.VERCEL_URL
+
+	if (vercelUrl) {
+		return new URL(`https://${process.env.VERCEL_URL}`)
+	}
+
+	return new URL(`http://localhost:${process.env.PORT || 3000}`)
 }
