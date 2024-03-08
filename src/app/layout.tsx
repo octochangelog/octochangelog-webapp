@@ -10,7 +10,7 @@ import { interFont, robotoMonoFont } from '@/fonts'
 
 import Providers from './Providers'
 import VercelAnalytics from './VercelAnalytics'
-import { openGraph } from './shared-metadata'
+import { getMetadataBase, openGraph } from './shared-metadata'
 
 export const metadata = {
 	title: {
@@ -18,6 +18,7 @@ export const metadata = {
 		default: SITE_TITLE,
 	},
 	description: FULL_DESCRIPTION,
+	metadataBase: getMetadataBase(),
 	openGraph: { ...openGraph },
 }
 

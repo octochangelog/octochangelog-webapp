@@ -11,6 +11,11 @@ const nextConfig = {
 		// Disable ESLint during builds since there is a lint job in CI.
 		ignoreDuringBuilds: true,
 	},
+	logging: {
+		fetches: {
+			fullUrl: true,
+		},
+	},
 	transpilePackages: ['lodash-es'],
 	async redirects() {
 		return [

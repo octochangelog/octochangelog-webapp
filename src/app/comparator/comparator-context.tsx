@@ -1,3 +1,5 @@
+'use client'
+
 import { CircularProgress, Flex } from '@chakra-ui/react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import {
