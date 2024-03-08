@@ -2,8 +2,8 @@ const DEFAULT_COMMAND_TIMEOUT = Cypress.config('defaultCommandTimeout')
 const LONGER_COMMAND_TIMEOUT = DEFAULT_COMMAND_TIMEOUT * 5
 
 it('should show changelog results when filling the form', () => {
-	cy.visit('/comparator')
-	cy.title().should('equal', 'Comparator | Octochangelog')
+	cy.visit('/compare')
+	cy.title().should('equal', 'Compare | Octochangelog')
 	cy.metaDescriptionShouldEqual(
 		'Compare GitHub changelogs across multiple releases in a single view',
 	)
@@ -91,9 +91,9 @@ it('should show changelog results when filling the form', () => {
 
 it('should show changelog results when preloading from URL', () => {
 	cy.visit(
-		'/comparator?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0',
+		'/compare?repo=testing-library%2Fdom-testing-library&from=v6.16.0&to=v8.1.0',
 	)
-	cy.title().should('equal', 'Comparator | Octochangelog')
+	cy.title().should('equal', 'Compare | Octochangelog')
 	cy.metaDescriptionShouldEqual(
 		'Compare GitHub changelogs across multiple releases in a single view',
 	)
@@ -166,9 +166,9 @@ it('should show changelog results when preloading from URL', () => {
 
 it('should show changelog results when preloading from URL with "latest"', () => {
 	cy.visit(
-		'/comparator?repo=testing-library%2Fdom-testing-library&from=v8.11.0&to=latest',
+		'/compare?repo=testing-library%2Fdom-testing-library&from=v8.11.0&to=latest',
 	)
-	cy.title().should('equal', 'Comparator | Octochangelog')
+	cy.title().should('equal', 'Compare | Octochangelog')
 	cy.metaDescriptionShouldEqual(
 		'Compare GitHub changelogs across multiple releases in a single view',
 	)
@@ -218,8 +218,8 @@ it('should show changelog results when preloading from URL with more than 10 rel
 	// to find certain elements while the comparator is still processing the changelog.
 	Cypress.config('defaultCommandTimeout', LONGER_COMMAND_TIMEOUT)
 
-	cy.visit('/comparator?repo=renovatebot%2Frenovate&from=26.9.0&to=32.172.2')
-	cy.title().should('equal', 'Comparator | Octochangelog')
+	cy.visit('/compare?repo=renovatebot%2Frenovate&from=26.9.0&to=32.172.2')
+	cy.title().should('equal', 'Compare | Octochangelog')
 	cy.metaDescriptionShouldEqual(
 		'Compare GitHub changelogs across multiple releases in a single view',
 	)

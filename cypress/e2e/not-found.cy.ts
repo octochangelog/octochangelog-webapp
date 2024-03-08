@@ -22,7 +22,7 @@ it('should display custom "not found" page for non-existing page', () => {
 	cy.findByRole('link', { name: /go to comparator/i }).should(
 		'have.attr',
 		'href',
-		'/comparator',
+		'/compare',
 	)
 
 	cy.findByRole('link', { name: 'Or go to homepage' }).should(

@@ -3,8 +3,8 @@ import { openGraph } from '@/app/shared-metadata'
 import ComparatorClientView from './ComparatorClientView'
 
 export const metadata = {
-	title: 'Comparator',
-	openGraph: { ...openGraph, title: 'Comparator', url: '/comparator' },
+	title: 'Compare',
+	openGraph: { ...openGraph, title: 'Compare', url: '/compare' },
 }
 
 const ComparatorPage = () => {
