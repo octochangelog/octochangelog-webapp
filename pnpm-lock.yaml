@@ -116,8 +116,8 @@ devDependencies:
     specifier: 0.9.2
     version: 0.9.2(msw@2.2.2)
   '@octokit/openapi-types':
-    specifier: 19.1.0
-    version: 19.1.0
+    specifier: 20.0.0
+    version: 20.0.0
   '@tanstack/eslint-plugin-query':
     specifier: 5.20.1
     version: 5.20.1(eslint@8.57.0)(typescript@5.3.3)
@@ -2918,6 +2918,11 @@ packages:
 
   /@octokit/openapi-types@19.1.0:
     resolution: {integrity: sha512-6G+ywGClliGQwRsjvqVYpklIfa7oRPA0vyhPQG/1Feh+B+wU0vGH1JiJ5T25d3g1JZYBHzR2qefLi9x8Gt+cpw==}
+    dev: false
+
+  /@octokit/openapi-types@20.0.0:
+    resolution: {integrity: sha512-EtqRBEjp1dL/15V7WiX5LJMIxxkdiGJnabzYx5Apx4FkQIFgAfKumXeYAqqJCj1s+BMX4cPFIFC4OLCR6stlnA==}
+    dev: true
 
   /@octokit/plugin-paginate-rest@9.1.5(@octokit/core@5.1.0):
     resolution: {integrity: sha512-WKTQXxK+bu49qzwv4qKbMMRXej1DU2gq017euWyKVudA6MldaSSQuxtz+vGbhxV4CjxpUxjZu6rM2wfc1FiWVg==}
