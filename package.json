@@ -9,6 +9,7 @@
 	"scripts": {
 		"start": "pnpm dev",
 		"dev": "next dev",
+		"dev:turbo": "pnpm dev --turbo",
 		"build": "next build",
 		"serve": "next start",
 		"mock-api": "tsx ./src/mocks/http.ts",
