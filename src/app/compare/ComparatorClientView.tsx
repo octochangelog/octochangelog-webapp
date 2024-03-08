@@ -3,7 +3,7 @@
 import { Box } from '@chakra-ui/react'
 import { Suspense } from 'react'
 
-import RepositoryReleasesComparator from '@/app/comparator/RepositoryReleasesComparator'
+import RepositoryReleasesComparator from '@/app/compare/RepositoryReleasesComparator'
 
 import { ComparatorProvider } from './comparator-context'
 
