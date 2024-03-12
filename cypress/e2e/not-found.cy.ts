@@ -19,7 +19,7 @@ it('should display custom "not found" page for non-existing page', () => {
 			.and('contain', 'mascot-icon')
 	})
 
-	cy.findByRole('link', { name: /go to comparator/i }).should(
+	cy.findByRole('link', { name: /go to compare/i }).should(
 		'have.attr',
 		'href',
 		'/compare',
