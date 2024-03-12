@@ -79,5 +79,5 @@ it('should have a working link to comparator page', () => {
 
 	cy.findByRole('link', { name: 'Try me now!' }).click()
 
-	cy.url().should('equal', `${Cypress.config().baseUrl || ''}/comparator`)
+	cy.url().should('equal', `${Cypress.config().baseUrl || ''}/compare`)
 })

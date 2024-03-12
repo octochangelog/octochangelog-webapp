@@ -68,8 +68,8 @@ export const AuthCallbackSuccess: FC<{ accessToken: string }> = ({
 			AUTH_REDIRECT_STORAGE_KEY,
 		)
 		const redirectUrl = redirectSearchParams
-			? `/comparator?${redirectSearchParams}`
-			: '/comparator'
+			? `/compare?${redirectSearchParams}`
+			: '/compare'
 
 		router.replace(redirectUrl)
 	}
@@ -82,7 +82,7 @@ export const AuthCallbackSuccess: FC<{ accessToken: string }> = ({
 			</Alert>
 
 			<Button variant="cta" onClick={handleClick}>
-				Back to comparator
+				Back to compare
 			</Button>
 		</Layout>
 	)

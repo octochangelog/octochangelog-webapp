@@ -106,7 +106,7 @@ const ComparatorProvider = ({ children }: { children: ReactNode }) => {
 		[setQuerystringParams],
 	)
 
-	// TODO: move this to the /comparator React Server Component
+	// TODO: move this to the /compare React Server Component
 	useEffect(() => {
 		const getInitialRepository = async () => {
 			if (repo) {

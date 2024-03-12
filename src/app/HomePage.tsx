@@ -48,7 +48,7 @@ const MainSection = () => (
 				{BRIEF_DESCRIPTION}.
 			</Heading>
 			<Flex justify="center" align="center">
-				<NextLink href="/comparator" passHref legacyBehavior>
+				<NextLink href="/compare" passHref legacyBehavior>
 					<Button as="a" variant="cta">
 						Try me now!
 					</Button>

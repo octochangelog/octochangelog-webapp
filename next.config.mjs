@@ -20,8 +20,14 @@ const nextConfig = {
 	async redirects() {
 		return [
 			{
+				source: '/comparator',
+				destination: '/compare',
+				permanent: true,
+			},
+			{
+				// Old redirect from root to /compare. Should be removed when params are moved to dynamic route.
 				source: '/',
-				destination: '/comparator',
+				destination: '/compare',
 				has: [{ type: 'query', key: 'repo' }],
 				permanent: true,
 			},
