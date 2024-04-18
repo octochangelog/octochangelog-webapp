@@ -71,7 +71,7 @@
 		"@chakra-ui/utils": "2.0.14",
 		"@jest/globals": "29.7.0",
 		"@mswjs/http-middleware": "0.10.0",
-		"@octokit/openapi-types": "22.0.1",
+		"@octokit/openapi-types": "22.1.0",
 		"@tanstack/eslint-plugin-query": "5.28.11",
 		"@testing-library/cypress": "10.0.1",
 		"@testing-library/react": "15.0.2",
