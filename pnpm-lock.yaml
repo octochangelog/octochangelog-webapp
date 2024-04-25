@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  headers-polyfill: 3.2.5
+  headers-polyfill: 3.3.0
 
 dependencies:
   '@chakra-ui/next-js':
@@ -7012,8 +7012,8 @@ packages:
       '@types/hast': 3.0.4
     dev: false
 
-  /headers-polyfill@3.2.5:
-    resolution: {integrity: sha512-tUCGvt191vNSQgttSyJoibR+VO+I6+iCHIUdhzEMJKE+EAL8BwCN7fUOZlY4ofOelNHsK+gEjxB/B+9N3EWtdA==}
+  /headers-polyfill@3.3.0:
+    resolution: {integrity: sha512-5e57etwBpNcDc0b6KCVWEh/Ro063OxPvzVimUdM0/tsYM/T7Hfy3kknIGj78SFTOhNd8AZY41U8mOHoO4LzmIQ==}
     dev: true
 
   /highlight.js@11.9.0:
@@ -9165,7 +9165,7 @@ packages:
       '@types/statuses': 2.0.5
       chalk: 4.1.2
       graphql: 16.8.1
-      headers-polyfill: 3.2.5
+      headers-polyfill: 3.3.0
       is-node-process: 1.2.0
       outvariant: 1.4.2
       path-to-regexp: 6.2.2
