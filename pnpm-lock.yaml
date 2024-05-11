@@ -113,8 +113,8 @@ devDependencies:
     specifier: 29.7.0
     version: 29.7.0
   '@mswjs/http-middleware':
-    specifier: 0.10.0
-    version: 0.10.0(msw@2.2.2)
+    specifier: 0.10.1
+    version: 0.10.1(msw@2.2.2)
   '@octokit/openapi-types':
     specifier: 22.1.0
     version: 22.1.0
@@ -2725,8 +2725,8 @@ packages:
     engines: {node: '>=18'}
     dev: true
 
-  /@mswjs/http-middleware@0.10.0(msw@2.2.2):
-    resolution: {integrity: sha512-iNn7Pojfc9VTGPBz4GGQ5ZEyKp6R/mEzJISpjkL+DJHivxl3BmHWeNRLNP8d8NtZKwMs5T+tIi3eQ6tAldcSEQ==}
+  /@mswjs/http-middleware@0.10.1(msw@2.2.2):
+    resolution: {integrity: sha512-I58RDHXzwKjMjaSO7aV7X0zUzbAvUEEDYsL9+I6Ro0zF5LgjnNdpZoMufG/WoYEenhDCgv7K+HMpLxGuhlfjKA==}
     engines: {node: '>=18'}
     peerDependencies:
       msw: '>=2.0.0'
