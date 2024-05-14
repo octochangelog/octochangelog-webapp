@@ -24,8 +24,8 @@ dependencies:
     specifier: 4.0.0
     version: 4.0.0
   '@octokit/rest':
-    specifier: 20.1.0
-    version: 20.1.0
+    specifier: 20.1.1
+    version: 20.1.1
   '@sentry/nextjs':
     specifier: 7.114.0
     version: 7.114.0(next@14.2.3)(react@18.2.0)(webpack@5.91.0)
@@ -116,8 +116,8 @@ devDependencies:
     specifier: 0.10.1
     version: 0.10.1(msw@2.2.2)
   '@octokit/openapi-types':
-    specifier: 22.1.0
-    version: 22.1.0
+    specifier: 22.2.0
+    version: 22.2.0
   '@tanstack/eslint-plugin-query':
     specifier: 5.32.1
     version: 5.32.1(eslint@8.57.0)(typescript@5.4.5)
@@ -2902,21 +2902,17 @@ packages:
       universal-user-agent: 6.0.1
     dev: false
 
-  /@octokit/openapi-types@20.0.0:
-    resolution: {integrity: sha512-EtqRBEjp1dL/15V7WiX5LJMIxxkdiGJnabzYx5Apx4FkQIFgAfKumXeYAqqJCj1s+BMX4cPFIFC4OLCR6stlnA==}
-    dev: false
+  /@octokit/openapi-types@22.2.0:
+    resolution: {integrity: sha512-QBhVjcUa9W7Wwhm6DBFu6ZZ+1/t/oYxqc2tp81Pi41YNuJinbFRx8B133qVOrAaBbF7D/m0Et6f9/pZt9Rc+tg==}
 
-  /@octokit/openapi-types@22.1.0:
-    resolution: {integrity: sha512-pGUdSP+eEPfZiQHNkZI0U01HLipxncisdJQB4G//OAmfeO8sqTQ9KRa0KF03TUPCziNsoXUrTg4B2Q1EX++T0Q==}
-
-  /@octokit/plugin-paginate-rest@9.2.1(@octokit/core@5.2.0):
-    resolution: {integrity: sha512-wfGhE/TAkXZRLjksFXuDZdmGnJQHvtU/joFQdweXUgzo1XwvBCD4o4+75NtFfjfLK5IwLf9vHTfSiU3sLRYpRw==}
+  /@octokit/plugin-paginate-rest@11.3.1(@octokit/core@5.2.0):
+    resolution: {integrity: sha512-ryqobs26cLtM1kQxqeZui4v8FeznirUsksiA+RYemMPJ7Micju0WSkv50dBksTuZks9O5cg4wp+t8fZ/cLY56g==}
     engines: {node: '>= 18'}
     peerDependencies:
       '@octokit/core': '5'
     dependencies:
       '@octokit/core': 5.2.0
-      '@octokit/types': 12.6.0
+      '@octokit/types': 13.5.0
     dev: false
 
   /@octokit/plugin-request-log@4.0.1(@octokit/core@5.2.0):
@@ -2928,14 +2924,14 @@ packages:
       '@octokit/core': 5.2.0
     dev: false
 
-  /@octokit/plugin-rest-endpoint-methods@10.4.1(@octokit/core@5.2.0):
-    resolution: {integrity: sha512-xV1b+ceKV9KytQe3zCVqjg+8GTGfDYwaT1ATU5isiUyVtlVAO3HNdzpS4sr4GBx4hxQ46s7ITtZrAsxG22+rVg==}
+  /@octokit/plugin-rest-endpoint-methods@13.2.2(@octokit/core@5.2.0):
+    resolution: {integrity: sha512-EI7kXWidkt3Xlok5uN43suK99VWqc8OaIMktY9d9+RNKl69juoTyxmLoWPIZgJYzi41qj/9zU7G/ljnNOJ5AFA==}
     engines: {node: '>= 18'}
     peerDependencies:
-      '@octokit/core': '5'
+      '@octokit/core': ^5
     dependencies:
       '@octokit/core': 5.2.0
-      '@octokit/types': 12.6.0
+      '@octokit/types': 13.5.0
     dev: false
 
   /@octokit/request-error@5.1.0:
@@ -2957,26 +2953,26 @@ packages:
       universal-user-agent: 6.0.1
     dev: false
 
-  /@octokit/rest@20.1.0:
-    resolution: {integrity: sha512-STVO3itHQLrp80lvcYB2UIKoeil5Ctsgd2s1AM+du3HqZIR35ZH7WE9HLwUOLXH0myA0y3AGNPo8gZtcgIbw0g==}
+  /@octokit/rest@20.1.1:
+    resolution: {integrity: sha512-MB4AYDsM5jhIHro/dq4ix1iWTLGToIGk6cWF5L6vanFaMble5jTX/UBQyiv05HsWnwUtY8JrfHy2LWfKwihqMw==}
     engines: {node: '>= 18'}
     dependencies:
       '@octokit/core': 5.2.0
-      '@octokit/plugin-paginate-rest': 9.2.1(@octokit/core@5.2.0)
+      '@octokit/plugin-paginate-rest': 11.3.1(@octokit/core@5.2.0)
       '@octokit/plugin-request-log': 4.0.1(@octokit/core@5.2.0)
-      '@octokit/plugin-rest-endpoint-methods': 10.4.1(@octokit/core@5.2.0)
-    dev: false
-
-  /@octokit/types@12.6.0:
-    resolution: {integrity: sha512-1rhSOfRa6H9w4YwK0yrf5faDaDTb+yLyBUKOCV4xtCDB5VmIPqd/v9yr9o6SAzOAlRxMiRiCic6JVM1/kunVkw==}
-    dependencies:
-      '@octokit/openapi-types': 20.0.0
+      '@octokit/plugin-rest-endpoint-methods': 13.2.2(@octokit/core@5.2.0)
     dev: false
 
   /@octokit/types@13.4.1:
     resolution: {integrity: sha512-Y73oOAzRBAUzR/iRAbGULzpNkX8vaxKCqEtg6K74Ff3w9f5apFnWtE/2nade7dMWWW3bS5Kkd6DJS4HF04xreg==}
     dependencies:
-      '@octokit/openapi-types': 22.1.0
+      '@octokit/openapi-types': 22.2.0
+    dev: false
+
+  /@octokit/types@13.5.0:
+    resolution: {integrity: sha512-HdqWTf5Z3qwDVlzCrP8UJquMwunpDiMPt5er+QjGzL4hqr/vBVY/MauQgS1xWxCDT1oMx1EULyqxncdCY/NVSQ==}
+    dependencies:
+      '@octokit/openapi-types': 22.2.0
     dev: false
 
   /@open-draft/deferred-promise@2.2.0:
