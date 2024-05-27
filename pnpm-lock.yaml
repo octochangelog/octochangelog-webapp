@@ -123,7 +123,7 @@ devDependencies:
     version: 5.32.1(eslint@8.57.0)(typescript@5.4.5)
   '@testing-library/cypress':
     specifier: 10.0.1
-    version: 10.0.1(cypress@13.9.0)
+    version: 10.0.1(cypress@13.10.0)
   '@testing-library/react':
     specifier: 15.0.7
     version: 15.0.7(@types/react@18.3.2)(react-dom@18.3.1)(react@18.3.1)
@@ -170,8 +170,8 @@ devDependencies:
     specifier: 2.8.5
     version: 2.8.5
   cypress:
-    specifier: 13.9.0
-    version: 13.9.0
+    specifier: 13.10.0
+    version: 13.10.0
   eslint:
     specifier: 8.57.0
     version: 8.57.0
@@ -3310,7 +3310,7 @@ packages:
       react: 18.3.1
     dev: false
 
-  /@testing-library/cypress@10.0.1(cypress@13.9.0):
+  /@testing-library/cypress@10.0.1(cypress@13.10.0):
     resolution: {integrity: sha512-e8uswjTZIBhaIXjzEcrQQ8nHRWHgZH7XBxKuIWxZ/T7FxfWhCR48nFhUX5nfPizjVOKSThEfOSv67jquc1ASkw==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
@@ -3318,7 +3318,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.24.6
       '@testing-library/dom': 9.3.4
-      cypress: 13.9.0
+      cypress: 13.10.0
     dev: true
 
   /@testing-library/dom@10.1.0:
@@ -3504,7 +3504,7 @@ packages:
   /@types/happo-cypress@4.1.4:
     resolution: {integrity: sha512-zjT128W9h8rIOvlx5bt3pqn0+3iNABlff7nDSYe0a2P2UDttVa3DqZ60ghQkoPKnTdRhvilBBSerMOXyDoTrBA==}
     dependencies:
-      cypress: 13.9.0
+      cypress: 13.10.0
     dev: true
 
   /@types/hast@3.0.4:
@@ -4746,13 +4746,6 @@ packages:
       fill-range: 7.1.1
     dev: true
 
-  /braces@3.0.3:
-    resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
-    engines: {node: '>=8'}
-    dependencies:
-      fill-range: 7.1.1
-    dev: true
-
   /browser-process-hrtime@1.0.0:
     resolution: {integrity: sha512-9o5UecI3GhkpM6DrXr69PblIuWxPKk9Y0jHBRhdocZ2y7YECBFCsHm79Pr3OyR2AvjhDkabFJaDJMYRazHgsow==}
     dev: true
@@ -4762,7 +4755,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001621
+      caniuse-lite: 1.0.30001623
       electron-to-chromium: 1.4.783
       node-releases: 2.0.14
       update-browserslist-db: 1.0.16(browserslist@4.23.0)
@@ -4845,8 +4838,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /caniuse-lite@1.0.30001621:
-    resolution: {integrity: sha512-+NLXZiviFFKX0fk8Piwv3PfLPGtRqJeq2TiNoUff/qB5KJgwecJTvCXDpmlyP/eCI/GUEmp/h/y5j0yckiiZrA==}
+  /caniuse-lite@1.0.30001623:
+    resolution: {integrity: sha512-X/XhAVKlpIxWPpgRTnlgZssJrF0m6YtRA0QDWgsBNT12uZM6LPRydR7ip405Y3t1LamD8cP2TZFEDZFBf5ApcA==}
 
   /caseless@0.12.0:
     resolution: {integrity: sha512-4tYFyifaFfGacoiObjJegolkwSU4xQNGbVgUiNYVUxbQ2x2lUsFvY4hVgVzGiIe6WLOPqycWXA40l+PWsxthUw==}
@@ -5293,8 +5286,8 @@ packages:
   /csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
-  /cypress@13.9.0:
-    resolution: {integrity: sha512-atNjmYfHsvTuCaxTxLZr9xGoHz53LLui3266WWxXJHY7+N6OdwJdg/feEa3T+buez9dmUXHT1izCOklqG82uCQ==}
+  /cypress@13.10.0:
+    resolution: {integrity: sha512-tOhwRlurVOQbMduX+KonoMeQILs2cwR3yHGGENoFvvSoLUBHmJ8b9/n21gFSDqjlOJ+SRVcwuh+fG/JDsHsT6Q==}
     engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
     requiresBuild: true
@@ -6547,13 +6540,6 @@ packages:
     engines: {node: ^10.12.0 || >=12.0.0}
     dependencies:
       flat-cache: 3.2.0
-    dev: true
-
-  /fill-range@7.1.1:
-    resolution: {integrity: sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==}
-    engines: {node: '>=8'}
-    dependencies:
-      to-regex-range: 5.0.1
     dev: true
 
   /fill-range@7.1.1:
@@ -9143,12 +9129,12 @@ packages:
       - supports-color
     dev: false
 
-  /micromatch@4.0.5:
-    resolution: {integrity: sha512-DMy+ERcEW2q8Z2Po+WNXuw3c5YaUSFjAO5GsJqfEl7UjvtIuFKO6ZrKvcItdy98dwFI2N1tg3zNIdKaQT+aNdA==}
+  /micromatch@4.0.6:
+    resolution: {integrity: sha512-Y4Ypn3oujJYxJcMacVgcs92wofTHxp9FzfDpQON4msDefoC0lb3ETvQLOdLcbhSwU1bz8HrL/1sygfBIHudrkQ==}
     engines: {node: '>=8.6'}
     dependencies:
       braces: 3.0.3
-      picomatch: 2.3.1
+      picomatch: 4.0.2
     dev: true
 
   /micromatch@4.0.7:
@@ -9157,14 +9143,6 @@ packages:
     dependencies:
       braces: 3.0.3
       picomatch: 2.3.1
-    dev: true
-
-  /micromatch@4.0.6:
-    resolution: {integrity: sha512-Y4Ypn3oujJYxJcMacVgcs92wofTHxp9FzfDpQON4msDefoC0lb3ETvQLOdLcbhSwU1bz8HrL/1sygfBIHudrkQ==}
-    engines: {node: '>=8.6'}
-    dependencies:
-      braces: 3.0.3
-      picomatch: 4.0.2
     dev: true
 
   /mime-db@1.52.0:
@@ -9331,7 +9309,7 @@ packages:
       '@next/env': 14.2.3
       '@swc/helpers': 0.5.5
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001621
+      caniuse-lite: 1.0.30001623
       graceful-fs: 4.2.11
       postcss: 8.4.31
       react: 18.3.1
