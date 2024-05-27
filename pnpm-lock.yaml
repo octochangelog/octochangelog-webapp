@@ -203,8 +203,8 @@ devDependencies:
     specifier: 2.6.0
     version: 2.6.0
   happo.io:
-    specifier: 9.1.4
-    version: 9.1.4(@babel/core@7.24.6)(babel-loader@9.1.3)(webpack@5.91.0)
+    specifier: 9.1.5
+    version: 9.1.5(@babel/core@7.24.6)(babel-loader@9.1.3)(webpack@5.91.0)
   husky:
     specifier: 9.0.11
     version: 9.0.11
@@ -6977,8 +6977,8 @@ packages:
       - supports-color
     dev: true
 
-  /happo.io@9.1.4(@babel/core@7.24.6)(babel-loader@9.1.3)(webpack@5.91.0):
-    resolution: {integrity: sha512-yBnQ4lOgAcKh47WnmlLny3Oq5MAeb1nFFDRsvyC5FLvi9qvsgN78YH5ETbhjV26zzj+ZF/9EnLw97GlZa9V/Vw==}
+  /happo.io@9.1.5(@babel/core@7.24.6)(babel-loader@9.1.3)(webpack@5.91.0):
+    resolution: {integrity: sha512-3yI9GrL06IH0hICCLEQK5IswCkHwnXllwe1AFlKZPvc5rYC2fXkf5X7+7Ivv+lRyJLyktYjolDy684DpIdmwkw==}
     engines: {node: '>=12'}
     hasBin: true
     peerDependencies:
