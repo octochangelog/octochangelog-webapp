@@ -239,8 +239,8 @@ devDependencies:
     specifier: 4.11.0
     version: 4.11.0
   type-fest:
-    specifier: 4.18.2
-    version: 4.18.2
+    specifier: 4.18.3
+    version: 4.18.3
   typescript:
     specifier: 5.4.5
     version: 5.4.5
@@ -9260,7 +9260,7 @@ packages:
       outvariant: 1.4.2
       path-to-regexp: 6.2.2
       strict-event-emitter: 0.5.1
-      type-fest: 4.18.2
+      type-fest: 4.18.3
       typescript: 5.4.5
       yargs: 17.7.2
     dev: true
@@ -11203,8 +11203,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /type-fest@4.18.2:
-    resolution: {integrity: sha512-+suCYpfJLAe4OXS6+PPXjW3urOS4IoP9waSiLuXfLgqZODKw/aWwASvzqE886wA0kQgGy0mIWyhd87VpqIy6Xg==}
+  /type-fest@4.18.3:
+    resolution: {integrity: sha512-Q08/0IrpvM+NMY9PA2rti9Jb+JejTddwmwmVQGskAlhtcrw1wsRzoR6ode6mR+OAabNa75w/dxedSUY2mlphaQ==}
     engines: {node: '>=16'}
     dev: true
 
