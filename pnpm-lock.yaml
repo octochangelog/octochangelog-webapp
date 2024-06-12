@@ -236,8 +236,8 @@ devDependencies:
     specifier: 10.9.2
     version: 10.9.2(@types/node@20.14.2)(typescript@5.4.5)
   tsx:
-    specifier: 4.11.0
-    version: 4.11.0
+    specifier: 4.14.1
+    version: 4.14.1
   type-fest:
     specifier: 4.18.3
     version: 4.18.3
@@ -11148,8 +11148,8 @@ packages:
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  /tsx@4.11.0:
-    resolution: {integrity: sha512-vzGGELOgAupsNVssAmZjbUDfdm/pWP4R+Kg8TVdsonxbXk0bEpE1qh0yV6/QxUVXaVlNemgcPajGdJJ82n3stg==}
+  /tsx@4.14.1:
+    resolution: {integrity: sha512-GU8pPJq8DdxcJDSK6Bc64c2jW8zBK2hb0jzwHZDfjapbwu6AqvFnAElnzZ17Xb9TH5a/j6/sicTCVYF+eO/cmA==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     dependencies:
