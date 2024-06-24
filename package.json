@@ -111,7 +111,7 @@
 		"start-server-and-test": "2.0.4",
 		"ts-jest": "29.1.4",
 		"ts-node": "10.9.2",
-		"tsx": "4.14.1",
+		"tsx": "4.15.7",
 		"type-fest": "4.18.3",
 		"typescript": "5.4.5"
 	},
