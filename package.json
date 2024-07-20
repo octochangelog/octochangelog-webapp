@@ -5,7 +5,7 @@
 	"engines": {
 		"pnpm": "^8.9.0"
 	},
-	"packageManager": "pnpm@8.9.2",
+	"packageManager": "pnpm@8.15.9",
 	"scripts": {
 		"start": "pnpm dev",
 		"dev": "next dev",
