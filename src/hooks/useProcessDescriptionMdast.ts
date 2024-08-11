@@ -49,7 +49,7 @@ function processDescriptionAsync(
 					if (err) {
 						reject(err)
 					} else if (!file?.result) {
-						reject('Result not generated')
+						reject(new Error('Result not generated'))
 					} else {
 						resolve(file.result as Parameters<typeof resolve>[0])
 					}
