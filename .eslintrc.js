@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const jestVersion = require('jest/package.json').version
 
 module.exports = {
@@ -79,7 +79,10 @@ module.exports = {
 			files: ['**/*.ts?(x)'],
 			parserOptions: {
 				tsconfigRootDir: __dirname,
-				project: ['./tsconfig.eslint.json'],
+				projectService: {
+					allowDefaultProject: ['*.js'],
+					defaultProject: './tsconfig.json',
+				},
 			},
 
 			/*
