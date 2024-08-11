@@ -1,9 +1,10 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const jestVersion = require('jest/package.json').version
 
 module.exports = {
 	extends: [
 		'eslint:recommended',
+		'plugin:@typescript-eslint/eslint-recommended',
 		'next/core-web-vitals',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@tanstack/eslint-plugin-query/recommended',
@@ -78,7 +79,10 @@ module.exports = {
 			files: ['**/*.ts?(x)'],
 			parserOptions: {
 				tsconfigRootDir: __dirname,
-				project: ['./tsconfig.eslint.json'],
+				projectService: {
+					allowDefaultProject: ['*.js'],
+					defaultProject: './tsconfig.json',
+				},
 			},
 
 			/*
