@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 
-const GITHUB_STORAGE_KEY = 'octochangelog-github-access-token' as const
+const GITHUB_STORAGE_KEY = 'octochangelog-github-access-token'
 
 function getGithubAccessToken(): string | undefined {
 	return Cookies.get(GITHUB_STORAGE_KEY)
