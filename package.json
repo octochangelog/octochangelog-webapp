@@ -30,7 +30,7 @@
 		"e2e:dev": "start-test mock-api http://localhost:9090 'pnpm dev' http://localhost:3000 'pnpm cy:open --e2e'",
 		"e2e:headless": "start-test mock-api http://localhost:9090 'pnpm build && pnpm serve' http://localhost:3000 'pnpm cy:headless'",
 		"gen:theme-typings": "chakra-cli tokens src/custom-theme.ts --strict-component-types --strict-token-types",
-		"prepare": "is-ci || husky",
+		"prepare": "husky",
 		"postinstall": "pnpm gen:theme-typings"
 	},
 	"dependencies": {
@@ -101,8 +101,7 @@
 		"happo-cypress": "4.2.0",
 		"happo-e2e": "2.6.0",
 		"happo.io": "9.1.6",
-		"husky": "9.0.11",
-		"is-ci": "3.0.1",
+		"husky": "9.1.4",
 		"jest": "29.7.0",
 		"jest-environment-jsdom": "29.7.0",
 		"lint-staged": "15.2.7",
