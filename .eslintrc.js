@@ -4,6 +4,7 @@ const jestVersion = require('jest/package.json').version
 module.exports = {
 	extends: [
 		'eslint:recommended',
+		'plugin:@typescript-eslint/eslint-recommended',
 		'next/core-web-vitals',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@tanstack/eslint-plugin-query/recommended',
