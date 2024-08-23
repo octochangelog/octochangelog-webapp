@@ -13,7 +13,7 @@ it('should display corresponding information', () => {
 	}).should('exist')
 
 	cy.findByRole('main').within(() => {
-		cy.findByRole('img')
+		cy.findByRole('presentation')
 			.should('have.attr', 'src')
 			.and('contain', 'mascot-icon')
 	})
@@ -68,7 +68,7 @@ it('should display corresponding information', () => {
 		// for something inside the previous element
 		.within(() => {
 			// the image is gonna be searched within the link, so we can make sure the logo is part of the link!
-			cy.findByRole('img', { name: '' }).should('have.attr', 'src')
+			cy.findByRole('presentation', { name: '' }).should('have.attr', 'src')
 		})
 
 	cy.get('body').happoScreenshot({ component: 'Home page' })

@@ -14,7 +14,7 @@ it('should display custom "not found" page for non-existing page', () => {
 	)
 
 	cy.findByRole('main').within(() => {
-		cy.findByRole('img')
+		cy.findByRole('presentation')
 			.should('have.attr', 'src')
 			.and('contain', 'mascot-icon')
 	})
