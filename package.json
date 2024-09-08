@@ -94,7 +94,7 @@
 		"eslint-config-next": "14.2.7",
 		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-cypress": "3.5.0",
-		"eslint-plugin-jest": "28.8.2",
+		"eslint-plugin-jest": "28.8.3",
 		"eslint-plugin-jest-formatting": "3.1.0",
 		"eslint-plugin-unicorn": "55.0.0",
 		"express": "4.19.2",
