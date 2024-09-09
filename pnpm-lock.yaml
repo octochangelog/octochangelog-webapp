@@ -200,10 +200,10 @@ importers:
         version: 4.19.2
       happo-cypress:
         specifier: 4.2.0
-        version: 4.2.0(happo-e2e@2.6.1)
+        version: 4.2.0(happo-e2e@2.6.2)
       happo-e2e:
-        specifier: 2.6.1
-        version: 2.6.1
+        specifier: 2.6.2
+        version: 2.6.2
       happo.io:
         specifier: 10.1.2
         version: 10.1.2(@babel/core@7.25.2)(babel-loader@9.1.3(@babel/core@7.25.2)(webpack@5.94.0))(webpack@5.94.0)
@@ -3609,8 +3609,8 @@ packages:
     peerDependencies:
       happo-e2e: '>= 1.4.2'
 
-  happo-e2e@2.6.1:
-    resolution: {integrity: sha512-mSWtVuYOycr/vclp574XJ6mo44+FVlmizBhczfioLt8zRm/sS7PpLXulCUJL8YF4/BDdW4KwIT1npyg6/PxQ9Q==}
+  happo-e2e@2.6.2:
+    resolution: {integrity: sha512-JxIlz2RO5+zqSWBOyTRT3DOg7D0yB1995QMF/8J3XXWpUGN9nqCfY8xSRDjzKudFpI7oNiLWu7r8XqvlMEvnAA==}
     hasBin: true
 
   happo.io@10.1.2:
@@ -10254,11 +10254,11 @@ snapshots:
 
   graphql@16.9.0: {}
 
-  happo-cypress@4.2.0(happo-e2e@2.6.1):
+  happo-cypress@4.2.0(happo-e2e@2.6.2):
     dependencies:
-      happo-e2e: 2.6.1
+      happo-e2e: 2.6.2
 
-  happo-e2e@2.6.1:
+  happo-e2e@2.6.2:
     dependencies:
       archiver: 7.0.1
       async-retry: 1.3.3
