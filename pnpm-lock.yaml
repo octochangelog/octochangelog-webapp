@@ -238,8 +238,8 @@ importers:
         specifier: 4.19.1
         version: 4.19.1
       type-fest:
-        specifier: 4.25.0
-        version: 4.25.0
+        specifier: 4.26.1
+        version: 4.26.1
       typescript:
         specifier: 5.5.4
         version: 5.5.4
@@ -3305,6 +3305,7 @@ packages:
   eslint@8.57.1:
     resolution: {integrity: sha512-ypowyDxpVSYpkXr9WPv2PAZCtNip1Mv5KTW0SCurXv/9iOpcrH9PaqUElksqEB6pChqHGDRCFTyrZlGhnLNGiA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   espree@9.6.1:
@@ -5841,8 +5842,8 @@ packages:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
 
-  type-fest@4.25.0:
-    resolution: {integrity: sha512-bRkIGlXsnGBRBQRAY56UXBm//9qH4bmJfFvq83gSz41N282df+fjy8ofcEgc1sM8geNt5cl6mC2g9Fht1cs8Aw==}
+  type-fest@4.26.1:
+    resolution: {integrity: sha512-yOGpmOAL7CkKe/91I5O3gPICmJNLJ1G4zFYVAsRHg7M64biSnPtRj0WNQt++bRkjYOqjWXrhnUw1utzmVErAdg==}
     engines: {node: '>=16'}
 
   type-is@1.6.18:
@@ -11932,7 +11933,7 @@ snapshots:
       outvariant: 1.4.3
       path-to-regexp: 6.3.0
       strict-event-emitter: 0.5.1
-      type-fest: 4.25.0
+      type-fest: 4.26.1
       yargs: 17.7.2
     optionalDependencies:
       typescript: 5.5.4
@@ -13121,7 +13122,7 @@ snapshots:
 
   type-fest@0.8.1: {}
 
-  type-fest@4.25.0: {}
+  type-fest@4.26.1: {}
 
   type-is@1.6.18:
     dependencies:
