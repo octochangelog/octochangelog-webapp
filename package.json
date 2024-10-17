@@ -96,7 +96,7 @@
 		"eslint-plugin-cypress": "4.0.0",
 		"eslint-plugin-jest": "28.8.3",
 		"eslint-plugin-jest-formatting": "3.1.0",
-		"eslint-plugin-unicorn": "55.0.0",
+		"eslint-plugin-unicorn": "56.0.0",
 		"express": "4.21.1",
 		"happo-cypress": "4.2.0",
 		"happo-e2e": "3.1.0",
