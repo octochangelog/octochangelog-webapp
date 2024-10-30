@@ -23,7 +23,7 @@ import { type Repository } from '@/models'
 import { useSearchRepositoriesQuery } from '@/queries/repository'
 
 interface Props {
-	onSelect: (repo?: Repository | undefined) => void
+	onSelect: (repo?: Repository) => void
 	initialInputValue?: string
 }
 
