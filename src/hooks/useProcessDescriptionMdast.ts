@@ -26,7 +26,6 @@ interface HookReturnedValue {
 	isProcessing: boolean
 }
 
-// @ts-expect-error: the react types are missing.
 const rehypeReactOptions: RehypeReactOptions = prod
 
 function processDescriptionAsync(
