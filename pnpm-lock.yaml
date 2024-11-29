@@ -33,11 +33,11 @@ importers:
         specifier: 7.120.0
         version: 7.120.0(next@14.2.18(@babel/core@7.26.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(webpack@5.96.1)
       '@tanstack/react-query':
-        specifier: 5.61.0
-        version: 5.61.0(react@18.3.1)
+        specifier: 5.61.4
+        version: 5.61.4(react@18.3.1)
       '@tanstack/react-query-devtools':
-        specifier: 5.61.0
-        version: 5.61.0(@tanstack/react-query@5.61.0(react@18.3.1))(react@18.3.1)
+        specifier: 5.61.4
+        version: 5.61.4(@tanstack/react-query@5.61.4(react@18.3.1))(react@18.3.1)
       '@vercel/analytics':
         specifier: 1.4.1
         version: 1.4.1(next@14.2.18(@babel/core@7.26.0)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
@@ -121,8 +121,8 @@ importers:
         specifier: 22.2.0
         version: 22.2.0
       '@tanstack/eslint-plugin-query':
-        specifier: 5.60.1
-        version: 5.60.1(eslint@8.57.1)(typescript@5.7.2)
+        specifier: 5.61.4
+        version: 5.61.4(eslint@8.57.1)(typescript@5.7.2)
       '@testing-library/cypress':
         specifier: 10.0.2
         version: 10.0.2(cypress@13.16.0)
@@ -1730,25 +1730,25 @@ packages:
   '@swc/helpers@0.5.5':
     resolution: {integrity: sha512-KGYxvIOXcceOAbEk4bi/dVLEK9z8sZ0uBB3Il5b1rhfClSpcX0yfRO0KmTkqR2cnQDymwLB+25ZyMzICg/cm/A==}
 
-  '@tanstack/eslint-plugin-query@5.60.1':
-    resolution: {integrity: sha512-oCaWtFKa6WwX14fm/Sp486eTFXXgadiDzEYxhM/tiAlM+xzvPwp6ZHgR6sndmvYK+s/jbksDCTLIPS0PCH8L2g==}
+  '@tanstack/eslint-plugin-query@5.61.4':
+    resolution: {integrity: sha512-QVVsY8hwrX9r6c8lLV48oY682SU2GeVlo0hWMSaOKkI05Yi4bXhw5jv7E2qkbjGrgA6DcVl3o/F0dT4wpT+/SQ==}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
 
-  '@tanstack/query-core@5.60.6':
-    resolution: {integrity: sha512-tI+k0KyCo1EBJ54vxK1kY24LWj673ujTydCZmzEZKAew4NqZzTaVQJEuaG1qKj2M03kUHN46rchLRd+TxVq/zQ==}
+  '@tanstack/query-core@5.61.4':
+    resolution: {integrity: sha512-rsnemyhPvEG4ViZe0R2UQDM8NgQS/BNC5/Gf9RTs0TKN5thUhPUwnL2anWG4jxAGKFyDfvG7PXbx6MRq3hxi1w==}
 
-  '@tanstack/query-devtools@5.59.20':
-    resolution: {integrity: sha512-vxhuQ+8VV4YWQSFxQLsuM+dnEKRY7VeRzpNabFXdhEwsBYLrjXlF1pM38A8WyKNLqZy8JjyRO8oP4Wd/oKHwuQ==}
+  '@tanstack/query-devtools@5.61.4':
+    resolution: {integrity: sha512-21Tw+u8E3IJJj4A/Bct4H0uBaDTEu7zBrR79FeSyY+mS2gx5/m316oDtJiKkILc819VSTYt+sFzODoJNcpPqZQ==}
 
-  '@tanstack/react-query-devtools@5.61.0':
-    resolution: {integrity: sha512-hd3yXl+KV+OGQmAw946qHAFp6DygcXcYN+1ai9idYddx6uEQyCwYk3jyIBOQEUw9uzN5DOGJLBsgd/QcimDQsA==}
+  '@tanstack/react-query-devtools@5.61.4':
+    resolution: {integrity: sha512-A4lqdK5cpskk+WPu17Nv7X3uEIsB4MQ5/Mdz12CQFuUVvmLHjBz1Ghc3QbQVwmHiXo4JM6Y00udTaEKtJSVAkA==}
     peerDependencies:
-      '@tanstack/react-query': ^5.61.0
+      '@tanstack/react-query': ^5.61.4
       react: ^18 || ^19
 
-  '@tanstack/react-query@5.61.0':
-    resolution: {integrity: sha512-SBzV27XAeCRBOQ8QcC94w2H1Md0+LI0gTWwc3qRJoaGuewKn5FNW4LSqwPFJZVEItfhMfGT7RpZuSFXjTi12pQ==}
+  '@tanstack/react-query@5.61.4':
+    resolution: {integrity: sha512-Nh5+0V4fRVShSeDHFTVvzJrvwTdafIvqxyZUrad71kJWL7J+J5Wrd/xcHTWfSL1mR/9eoufd2roXOpL3F16ECA==}
     peerDependencies:
       react: ^18 || ^19
 
@@ -7941,27 +7941,27 @@ snapshots:
       '@swc/counter': 0.1.3
       tslib: 2.8.1
 
-  '@tanstack/eslint-plugin-query@5.60.1(eslint@8.57.1)(typescript@5.7.2)':
+  '@tanstack/eslint-plugin-query@5.61.4(eslint@8.57.1)(typescript@5.7.2)':
     dependencies:
-      '@typescript-eslint/utils': 8.15.0(eslint@8.57.1)(typescript@5.7.2)
+      '@typescript-eslint/utils': 8.16.0(eslint@8.57.1)(typescript@5.7.2)
       eslint: 8.57.1
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  '@tanstack/query-core@5.60.6': {}
+  '@tanstack/query-core@5.61.4': {}
 
-  '@tanstack/query-devtools@5.59.20': {}
+  '@tanstack/query-devtools@5.61.4': {}
 
-  '@tanstack/react-query-devtools@5.61.0(@tanstack/react-query@5.61.0(react@18.3.1))(react@18.3.1)':
+  '@tanstack/react-query-devtools@5.61.4(@tanstack/react-query@5.61.4(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@tanstack/query-devtools': 5.59.20
-      '@tanstack/react-query': 5.61.0(react@18.3.1)
+      '@tanstack/query-devtools': 5.61.4
+      '@tanstack/react-query': 5.61.4(react@18.3.1)
       react: 18.3.1
 
-  '@tanstack/react-query@5.61.0(react@18.3.1)':
+  '@tanstack/react-query@5.61.4(react@18.3.1)':
     dependencies:
-      '@tanstack/query-core': 5.60.6
+      '@tanstack/query-core': 5.61.4
       react: 18.3.1
 
   '@testing-library/cypress@10.0.2(cypress@13.16.0)':
