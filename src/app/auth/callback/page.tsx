@@ -8,10 +8,10 @@ export const metadata = {
 	title: 'Authorizing on GitHub',
 }
 
-const AuthCallbackPage: FC<{ searchParams: NextSearchParams }> = async ({
-	searchParams,
-}) => {
-	const { code } = searchParams
+const AuthCallbackPage: FC<{ searchParams: NextSearchParams }> = async (
+	props,
+) => {
+	const { code } = await props.searchParams
 
 	if (typeof code !== 'string') {
 		throw new Error('Missing GitHub code')
