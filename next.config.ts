@@ -1,11 +1,7 @@
 import { withSentryConfig } from '@sentry/nextjs'
+import { type NextConfig } from 'next'
 
-// @ts-check
-
-/**
- * @type {import('next').NextConfig}
- **/
-const nextConfig = {
+const nextConfig: NextConfig = {
 	reactStrictMode: true,
 	eslint: {
 		// Disable ESLint during builds since there is a lint job in CI.
@@ -17,6 +13,7 @@ const nextConfig = {
 		},
 	},
 	transpilePackages: ['lodash-es'],
+	// eslint-disable-next-line @typescript-eslint/require-await
 	async redirects() {
 		return [
 			{
