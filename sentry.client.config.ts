@@ -12,7 +12,6 @@ Sentry.init({
 	// Add optional integrations for additional features
 	integrations: [
 		Sentry.replayIntegration({ maskAllText: false, blockAllMedia: false }),
-		Sentry.anrIntegration({ captureStackTrace: true }),
 	],
 
 	// Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
