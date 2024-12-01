@@ -7,7 +7,9 @@ type NextErrorPageProps = {
 	reset: () => void
 }
 
-type NextSearchParams = Record<string, string | Array<string> | undefined>
+type NextSearchParams = Promise<
+	Record<string, string | Array<string> | undefined>
+>
 
 type SemVerGroup = 'breaking changes' | 'features' | 'bug fixes'
 
