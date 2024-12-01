@@ -48,7 +48,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
       - name: Setup Node.js
-        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
@@ -94,7 +94,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
       - name: Setup Node.js
-        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
