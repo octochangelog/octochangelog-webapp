@@ -35,25 +35,25 @@ function processDescriptionAsync(
 	rehypeReactOptions.components = components
 
 	return new Promise((resolve, reject) => {
-		unified()
+		const processor = unified()
 			.use(parse)
 			.use(gfm)
 			.use(emoji, { accessible: true })
 			.use(remark2rehype)
 			.use(rehypeHighlight)
 			.use(rehype2react, rehypeReactOptions)
-			.process(
-				unified().use(markdown).use(gfm).stringify(description),
-				(err, file) => {
-					if (err) {
-						reject(err)
-					} else if (!file?.result) {
-						reject(new Error('Result not generated'))
-					} else {
-						resolve(file.result as Parameters<typeof resolve>[0])
-					}
-				},
-			)
+
+		const markdownProcessor = unified().use(markdown).use(gfm)
+
+		processor.process(markdownProcessor.stringify(description), (err, file) => {
+			if (err) {
+				reject(err)
+			} else if (!file?.result) {
+				reject(new Error('Result not generated'))
+			} else {
+				resolve(file.result as Parameters<typeof resolve>[0])
+			}
+		})
 	})
 }
 

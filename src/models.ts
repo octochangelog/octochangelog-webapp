@@ -1,5 +1,6 @@
 import { type components } from '@octokit/openapi-types'
 import { type Root } from 'mdast'
+import type Error from 'next/error'
 import { type ReactElement } from 'react'
 
 type NextErrorPageProps = {
@@ -7,7 +8,9 @@ type NextErrorPageProps = {
 	reset: () => void
 }
 
-type NextSearchParams = Record<string, string | Array<string> | undefined>
+type NextSearchParams = Promise<
+	Record<string, string | Array<string> | undefined>
+>
 
 type SemVerGroup = 'breaking changes' | 'features' | 'bug fixes'
 

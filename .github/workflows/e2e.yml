@@ -61,7 +61,7 @@ jobs:
           browser: chrome
           build: pnpm build
           start: |
-            pnpm serve
+            pnpm start
             pnpm mock-api
           wait-on: 'http://localhost:3000, ${{ env.NEXT_PUBLIC_API_BASE_URL }}'
           record: true

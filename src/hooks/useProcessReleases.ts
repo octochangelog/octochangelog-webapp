@@ -1,7 +1,8 @@
+import { type Root } from 'mdast'
 import { useState, useEffect } from 'react'
 import gfm from 'remark-gfm'
 import parse from 'remark-parse'
-import { unified } from 'unified'
+import { type Processor, unified } from 'unified'
 
 import {
 	type ProcessedRelease,
@@ -28,7 +29,7 @@ function processedReleaseIsEmpty(processedRelease: ProcessedRelease): boolean {
 	return processedRelease.descriptionMdast.children.length === 0
 }
 
-const processor = unified().use(parse).use(gfm)
+const processor = unified().use(parse).use(gfm) as Processor<Root>
 
 function processReleases(
 	releases: Array<Release>,
