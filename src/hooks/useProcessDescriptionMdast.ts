@@ -7,7 +7,7 @@ import gfm from 'remark-gfm'
 import parse from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 import markdown from 'remark-stringify'
-import { unified, type Processor } from 'unified'
+import { unified } from 'unified'
 
 import {
 	type ComponentsMapping,
@@ -35,21 +35,15 @@ function processDescriptionAsync(
 	rehypeReactOptions.components = components
 
 	return new Promise((resolve, reject) => {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment
-		const processor: Processor = unified()
+		const processor = unified()
 			.use(parse)
 			.use(gfm)
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 			.use(emoji, { accessible: true })
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 			.use(remark2rehype)
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 			.use(rehypeHighlight)
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 			.use(rehype2react, rehypeReactOptions)
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment
-		const markdownProcessor: Processor = unified().use(markdown).use(gfm)
+		const markdownProcessor = unified().use(markdown).use(gfm)
 
 		processor.process(markdownProcessor.stringify(description), (err, file) => {
 			if (err) {
