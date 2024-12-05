@@ -110,7 +110,7 @@
 		"ts-jest": "29.2.5",
 		"ts-node": "10.9.2",
 		"tsx": "4.19.2",
-		"type-fest": "4.29.1",
+		"type-fest": "4.30.0",
 		"typescript": "5.7.2"
 	},
 	"pnpm": {
