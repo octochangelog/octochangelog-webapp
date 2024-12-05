@@ -1,4 +1,4 @@
-import { beforeAll, afterEach, afterAll } from '@jest/globals'
+import { beforeAll, afterEach, afterAll } from 'vitest'
 
 import { server } from '@/mocks/server'
 

@@ -1,5 +1,5 @@
-import { describe, expect, it } from '@jest/globals'
-import { type Content } from 'mdast'
+import { type RootContent } from 'mdast'
+import { describe, expect, it } from 'vitest'
 
 import {
 	type Release,
@@ -185,7 +185,7 @@ describe('getMdastContentNodeTitle util', () => {
 	it('should return the title of the first child node found', () => {
 		const result = getMdastContentNodeTitle({
 			children: [{ value: 'foo' }, { value: 'bar' }],
-		} as Content)
+		} as RootContent)
 
 		expect(result).toBe('foo')
 	})
@@ -193,13 +193,13 @@ describe('getMdastContentNodeTitle util', () => {
 	it('should return "unknown" if the first child node found has no title', () => {
 		const result = getMdastContentNodeTitle({
 			children: [{}, { value: 'bar' }],
-		} as Content)
+		} as RootContent)
 
 		expect(result).toBe('unknown')
 	})
 
 	it('should return "unknown" if there are no children', () => {
-		const result = getMdastContentNodeTitle({} as Content)
+		const result = getMdastContentNodeTitle({} as RootContent)
 
 		expect(result).toBe('unknown')
 	})
