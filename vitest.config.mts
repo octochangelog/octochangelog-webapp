@@ -6,8 +6,6 @@ export default defineConfig({
 	plugins: [tsconfigPaths(), react()],
 	test: {
 		clearMocks: true,
-		environment: 'jsdom',
 		setupFiles: ['src/vitest.setup.ts'],
-		// TODO: make sure lodash-es is not compiled
 	},
 })
