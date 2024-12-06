@@ -21,36 +21,48 @@ import {
 } from '@/utils'
 
 describe('mapRepositoryToQueryParams util', () => {
-	it.each<{
-		input: undefined | Repository
-		output: RepositoryQueryParams
-	}>`
+	it.each`
 		label               | input                                       | output
 		${'an empty repo'}  | ${undefined}                                | ${{ owner: '', repo: '' }}
 		${'a full repo'}    | ${{ owner: { login: 'foo' }, name: 'bar' }} | ${{ owner: 'foo', repo: 'bar' }}
 		${'a partial repo'} | ${{ owner: {}, name: 'bar' }}               | ${{ owner: '', repo: 'bar' }}
-	`('should map $label', ({ input, output }) => {
-		const result = mapRepositoryToQueryParams(input)
+	`(
+		'should map $label',
+		({
+			input,
+			output,
+		}: {
+			input: undefined | Repository
+			output: RepositoryQueryParams
+		}) => {
+			const result = mapRepositoryToQueryParams(input)
 
-		expect(result).toEqual(output)
-	})
+			expect(result).toEqual(output)
+		},
+	)
 })
 
 describe('mapStringToRepositoryQueryParams util', () => {
-	it.each<{
-		label: string
-		input: string
-		output: RepositoryQueryParams
-	}>`
+	it.each`
 		label                                                | input         | output
 		${'full repo details from splittable string'}        | ${'org/name'} | ${{ owner: 'org', repo: 'name' }}
 		${'partial repo details from non-splittable string'} | ${'foo'}      | ${{ owner: 'foo', repo: '' }}
 		${'empty details from empty string'}                 | ${''}         | ${{ owner: '', repo: '' }}
-	`('should return $label', ({ input, output }) => {
-		const result = mapStringToRepositoryQueryParams(input)
+	`(
+		'should return $label',
+		({
+			input,
+			output,
+		}: {
+			label: string
+			input: string
+			output: RepositoryQueryParams
+		}) => {
+			const result = mapStringToRepositoryQueryParams(input)
 
-		expect(result).toEqual(output)
-	})
+			expect(result).toEqual(output)
+		},
+	)
 })
 
 describe('getReleaseVersion util', () => {
@@ -61,7 +73,15 @@ describe('getReleaseVersion util', () => {
 		${'v1.2.3'} | ${'ignore me'} | ${'v1.2.3'}
 	`(
 		'should return the correct version for a release with tag "$tagName" and name "$releaseName"',
-		({ tagName, releaseName, output }) => {
+		({
+			tagName,
+			releaseName,
+			output,
+		}: {
+			tagName: string
+			releaseName: string
+			output: string
+		}) => {
 			const result = getReleaseVersion({
 				tag_name: tagName,
 				name: releaseName,
@@ -150,7 +170,7 @@ describe('filterReleasesByVersionRange util', () => {
 })
 
 describe('isStableRelease util', () => {
-	it.each<{ tagName: string; output: boolean }>`
+	it.each`
 		tagName                 | output
 		${'v0.7.0'}             | ${true}
 		${'v1.0.0'}             | ${true}
@@ -158,11 +178,14 @@ describe('isStableRelease util', () => {
 		${'v5.0.0-alpha.3'}     | ${false}
 		${'v4.0.0-beta.4'}      | ${false}
 		${'I am not a release'} | ${false}
-	`('should return "$output" for tag "$tagName"', ({ tagName, output }) => {
-		const result = isStableRelease({ tag_name: tagName } as Release)
+	`(
+		'should return "$output" for tag "$tagName"',
+		({ tagName, output }: { tagName: string; output: boolean }) => {
+			const result = isStableRelease({ tag_name: tagName } as Release)
 
-		expect(result).toBe(output)
-	})
+			expect(result).toBe(output)
+		},
+	)
 })
 
 describe('sanitizeReleaseGroupTitle', () => {
@@ -174,11 +197,14 @@ describe('sanitizeReleaseGroupTitle', () => {
 		${'minor-release'}     | ${'minor release'}
 		${'🐛 Bug fix'}        | ${'bug fix'}
 		${'    trim this    '} | ${'trim this'}
-	`('should return "$output" for input "$input"', ({ input, output }) => {
-		const result = sanitizeReleaseGroupTitle(input)
+	`(
+		'should return "$output" for input "$input"',
+		({ input, output }: { input: string; output: boolean }) => {
+			const result = sanitizeReleaseGroupTitle(input)
 
-		expect(result).toEqual(output)
-	})
+			expect(result).toEqual(output)
+		},
+	)
 })
 
 describe('getMdastContentNodeTitle util', () => {
@@ -206,7 +232,7 @@ describe('getMdastContentNodeTitle util', () => {
 })
 
 describe('getMdastContentReleaseGroup util', () => {
-	it.each<{ input: string; output: string }>`
+	it.each`
 		input                 | output
 		${'Major Features'}   | ${'features'}
 		${'🐙 Features'}      | ${'features'}
@@ -223,10 +249,10 @@ describe('getMdastContentReleaseGroup util', () => {
 		${'Core changes:'}    | ${'core changes'}
 	`(
 		'should return the group "$output" for a node with the title "$input"',
-		({ input, output }) => {
+		({ input, output }: { input: string; output: string }) => {
 			const result = getMdastContentReleaseGroup({
 				children: [{ value: input }],
-			} as Content)
+			} as RootContent)
 
 			expect(result).toBe(output)
 		},
@@ -308,14 +334,7 @@ describe('compareReleasesByVersion', () => {
 })
 
 describe('paginateList util', () => {
-	it.each<{
-		caseTitle: string
-		inputList: Array<unknown>
-		perPage: number
-		pageIndex: number
-		expectedList: Array<unknown>
-		expectedHasNext: boolean
-	}>`
+	it.each`
 		caseTitle | inputList          | perPage | pageIndex | expectedList       | expectedHasNext
 		${'A'}    | ${[1, 2, 3, 4, 5]} | ${2}    | ${1}      | ${[1, 2]}          | ${true}
 		${'B'}    | ${[1, 2, 3, 4, 5]} | ${4}    | ${2}      | ${[5]}             | ${false}
@@ -324,7 +343,20 @@ describe('paginateList util', () => {
 		${'E'}    | ${['a', 'b', 'c']} | ${3}    | ${1}      | ${['a', 'b', 'c']} | ${false}
 	`(
 		'should paginate the case $caseTitle correctly',
-		({ inputList, perPage, pageIndex, expectedList, expectedHasNext }) => {
+		({
+			inputList,
+			perPage,
+			pageIndex,
+			expectedList,
+			expectedHasNext,
+		}: {
+			caseTitle: string
+			inputList: Array<unknown>
+			perPage: number
+			pageIndex: number
+			expectedList: Array<unknown>
+			expectedHasNext: boolean
+		}) => {
 			const result = paginateList(inputList, perPage, pageIndex)
 
 			expect(result).toEqual({ data: expectedList, hasNext: expectedHasNext })

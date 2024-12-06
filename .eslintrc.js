@@ -142,9 +142,6 @@ module.exports = {
 		{
 			files: ['cypress/**/*.[jt]s'],
 			extends: ['plugin:cypress/recommended'],
-			rules: {
-				'vitest/no-focused-tests': 'error',
-			},
 		},
 	],
 }
