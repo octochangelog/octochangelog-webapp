@@ -72,7 +72,7 @@ describe('getReleaseVersion util', () => {
 		${'latest'} | ${''}          | ${'latest'}
 		${'v1.2.3'} | ${'ignore me'} | ${'v1.2.3'}
 	`(
-		'should return the correct version for a release with tag "$tagName" and name "$releaseName"',
+		'should return the correct version for a release with tag $tagName and name $releaseName',
 		({
 			tagName,
 			releaseName,
@@ -179,7 +179,7 @@ describe('isStableRelease util', () => {
 		${'v4.0.0-beta.4'}      | ${false}
 		${'I am not a release'} | ${false}
 	`(
-		'should return "$output" for tag "$tagName"',
+		'should return $output for tag $tagName',
 		({ tagName, output }: { tagName: string; output: boolean }) => {
 			const result = isStableRelease({ tag_name: tagName } as Release)
 
@@ -198,7 +198,7 @@ describe('sanitizeReleaseGroupTitle', () => {
 		${'🐛 Bug fix'}        | ${'bug fix'}
 		${'    trim this    '} | ${'trim this'}
 	`(
-		'should return "$output" for input "$input"',
+		'should return $output for input $input',
 		({ input, output }: { input: string; output: boolean }) => {
 			const result = sanitizeReleaseGroupTitle(input)
 
@@ -248,7 +248,7 @@ describe('getMdastContentReleaseGroup util', () => {
 		${'📑 Documentation'} | ${'documentation'}
 		${'Core changes:'}    | ${'core changes'}
 	`(
-		'should return the group "$output" for a node with the title "$input"',
+		'should return the group $output for a node with the title $input',
 		({ input, output }: { input: string; output: string }) => {
 			const result = getMdastContentReleaseGroup({
 				children: [{ value: input }],
@@ -342,7 +342,7 @@ describe('paginateList util', () => {
 		${'D'}    | ${['a', 'b', 'c']} | ${2}    | ${1}      | ${['a', 'b']}      | ${true}
 		${'E'}    | ${['a', 'b', 'c']} | ${3}    | ${1}      | ${['a', 'b', 'c']} | ${false}
 	`(
-		'should paginate the case $caseTitle correctly',
+		'should paginate the input list $inputList correctly with $perPage elements per page, and index $pageIndex',
 		({
 			inputList,
 			perPage,
