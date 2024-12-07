@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-const jestVersion = require('jest/package.json').version
-
 module.exports = {
 	extends: [
 		'eslint:recommended',
@@ -13,9 +10,6 @@ module.exports = {
 	plugins: ['unicorn'],
 	settings: {
 		'import/internal-regex': '^(@app-|~)',
-		jest: {
-			version: jestVersion,
-		},
 	},
 	rules: {
 		// Base
@@ -125,6 +119,7 @@ module.exports = {
 				'@typescript-eslint/unbound-method': 'off',
 			},
 		},
+
 		// Next.js
 		{
 			files: ['src/app/**/*.[jt]s?(x)'],
@@ -132,29 +127,21 @@ module.exports = {
 				'import/group-exports': 'off',
 			},
 		},
-		// Jest
+
+		// Vitest
 		{
 			files: [
 				'src/**/__tests__/**/*.[jt]s?(x)',
 				'src/**/?(*.)+(spec|test).[jt]s?(x)',
 				'src/setup-tests.ts',
 			],
-			extends: [
-				'plugin:jest/recommended',
-				'plugin:jest/style',
-				'plugin:jest-formatting/recommended',
-			],
-			rules: {
-				'jest/consistent-test-it': 'warn',
-			},
+			extends: ['plugin:@vitest/legacy-recommended'],
 		},
+
 		// Cypress
 		{
 			files: ['cypress/**/*.[jt]s'],
 			extends: ['plugin:cypress/recommended'],
-			rules: {
-				'jest/no-focused-tests': 'error',
-			},
 		},
 	],
 }
