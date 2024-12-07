@@ -1,7 +1,0 @@
-node_modules
-/coverage
-.next
-.now
-.env*
-lint-staged.config.js
-.percy.js

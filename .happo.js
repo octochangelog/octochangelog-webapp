@@ -1,9 +1,10 @@
-const { RemoteBrowserTarget } = require('happo.io')
+// Docs: https://docs.happo.io/docs/configuration
+import { RemoteBrowserTarget } from 'happo.io'
 
 const DESKTOP_VIEWPORT = '1024x768'
 const MOBILE_VIEWPORT = '320x640'
 
-module.exports = {
+const happoConfig = {
 	apiKey: process.env.HAPPO_API_KEY,
 	apiSecret: process.env.HAPPO_API_SECRET,
 	targets: {
@@ -25,3 +26,5 @@ module.exports = {
 		}),
 	},
 }
+
+export default happoConfig
