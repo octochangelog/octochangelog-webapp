@@ -96,7 +96,7 @@
 		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-cypress": "4.1.0",
 		"eslint-plugin-unicorn": "56.0.1",
-		"express": "4.21.1",
+		"express": "4.21.2",
 		"happo-cypress": "4.2.0",
 		"happo-e2e": "3.1.2",
 		"happo.io": "11.0.0",
