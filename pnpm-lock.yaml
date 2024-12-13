@@ -172,8 +172,8 @@ importers:
         specifier: 2.1.8
         version: 2.1.8(vitest@2.1.8(@types/node@22.10.1)(jsdom@16.7.0)(msw@2.5.2(@types/node@22.10.1)(typescript@5.7.2))(terser@5.37.0))
       '@vitest/eslint-plugin':
-        specifier: 1.1.14
-        version: 1.1.14(@typescript-eslint/utils@8.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1)(typescript@5.7.2)(vitest@2.1.8(@types/node@22.10.1)(jsdom@16.7.0)(msw@2.5.2(@types/node@22.10.1)(typescript@5.7.2))(terser@5.37.0))
+        specifier: 1.1.15
+        version: 1.1.15(@typescript-eslint/utils@8.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1)(typescript@5.7.2)(vitest@2.1.8(@types/node@22.10.1)(jsdom@16.7.0)(msw@2.5.2(@types/node@22.10.1)(typescript@5.7.2))(terser@5.37.0))
       cors:
         specifier: 2.8.5
         version: 2.8.5
@@ -2550,8 +2550,8 @@ packages:
       '@vitest/browser':
         optional: true
 
-  '@vitest/eslint-plugin@1.1.14':
-    resolution: {integrity: sha512-ej0cT5rUt7uvwxuu7Qxkm7fI+eaOq8vD34qGpuRoXCdvOybOlE5GDqtgvVCYbxLANkcRJfm5VDU1TnJmQRHi9g==}
+  '@vitest/eslint-plugin@1.1.15':
+    resolution: {integrity: sha512-vvi8UPNrDiqC/IrtV2QZn43WoO/Da9q4rYiyfhcyd3hT4rDE/wuvGxCzUEtVejocwAwKDvKk7CzWOKXGkQo50A==}
     peerDependencies:
       '@typescript-eslint/utils': '>= 8.0'
       eslint: '>= 8.57.0'
@@ -8934,7 +8934,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitest/eslint-plugin@1.1.14(@typescript-eslint/utils@8.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1)(typescript@5.7.2)(vitest@2.1.8(@types/node@22.10.1)(jsdom@16.7.0)(msw@2.5.2(@types/node@22.10.1)(typescript@5.7.2))(terser@5.37.0))':
+  '@vitest/eslint-plugin@1.1.15(@typescript-eslint/utils@8.18.0(eslint@8.57.1)(typescript@5.7.2))(eslint@8.57.1)(typescript@5.7.2)(vitest@2.1.8(@types/node@22.10.1)(jsdom@16.7.0)(msw@2.5.2(@types/node@22.10.1)(typescript@5.7.2))(terser@5.37.0))':
     dependencies:
       '@typescript-eslint/utils': 8.18.0(eslint@8.57.1)(typescript@5.7.2)
       eslint: 8.57.1
