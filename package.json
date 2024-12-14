@@ -45,7 +45,7 @@
 		"@vercel/analytics": "1.4.1",
 		"@vercel/speed-insights": "1.1.0",
 		"downshift": "9.0.8",
-		"framer-motion": "11.13.1",
+		"framer-motion": "11.13.5",
 		"js-cookie": "3.0.5",
 		"lodash-es": "4.17.21",
 		"next": "15.1.0",
