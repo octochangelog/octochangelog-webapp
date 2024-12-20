@@ -90,7 +90,7 @@
 		"@vitest/coverage-v8": "2.1.8",
 		"@vitest/eslint-plugin": "1.1.17",
 		"cors": "2.8.5",
-		"cypress": "13.16.1",
+		"cypress": "13.17.0",
 		"eslint": "8.57.1",
 		"eslint-config-next": "15.1.0",
 		"eslint-config-prettier": "9.1.0",
