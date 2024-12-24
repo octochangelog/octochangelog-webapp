@@ -205,8 +205,8 @@ importers:
         specifier: 3.2.0
         version: 3.2.0
       happo.io:
-        specifier: 11.0.0
-        version: 11.0.0(@babel/core@7.26.0)(babel-loader@9.2.1(@babel/core@7.26.0)(webpack@5.97.1))(webpack@5.97.1)
+        specifier: 11.0.1
+        version: 11.0.1(@babel/core@7.26.0)(babel-loader@9.2.1(@babel/core@7.26.0)(webpack@5.97.1))(webpack@5.97.1)
       husky:
         specifier: 9.1.7
         version: 9.1.7
@@ -3992,8 +3992,8 @@ packages:
     resolution: {integrity: sha512-OGeSnPccvSrEPnzFN0bwL1lxU9ziY2fx+VUPUsMDM9/9+aM+T8sdq/1bheU0FTpaTIIkwQeh7hE6sj7co1XKEg==}
     hasBin: true
 
-  happo.io@11.0.0:
-    resolution: {integrity: sha512-zyCeHuLxzqhE0s0X07qzvsNDZQadt9q7sAutP2G7jyG52tYYx9dol6gngFvJ6N49aQRQp9Cm/2HwsOqU5RyApA==}
+  happo.io@11.0.1:
+    resolution: {integrity: sha512-PhrTFoVyf0Cb4W9jhbtAKK+QWjkzp0fw9FZOyUPjh2gHgqetP7qPLfizEp6osAPqdGeqmMNr01ftOoki67g5Jw==}
     engines: {node: '>=16'}
     hasBin: true
     peerDependencies:
@@ -10703,7 +10703,7 @@ snapshots:
       - encoding
       - supports-color
 
-  happo.io@11.0.0(@babel/core@7.26.0)(babel-loader@9.2.1(@babel/core@7.26.0)(webpack@5.97.1))(webpack@5.97.1):
+  happo.io@11.0.1(@babel/core@7.26.0)(babel-loader@9.2.1(@babel/core@7.26.0)(webpack@5.97.1))(webpack@5.97.1):
     dependencies:
       '@babel/preset-react': 7.26.3(@babel/core@7.26.0)(supports-color@7.2.0)
       abort-controller: 3.0.0
