@@ -115,8 +115,8 @@ importers:
         specifier: 0.10.3
         version: 0.10.3(msw@2.5.2(@types/node@22.10.10)(typescript@5.7.2))
       '@octokit/openapi-types':
-        specifier: 22.2.0
-        version: 22.2.0
+        specifier: 23.0.1
+        version: 23.0.1
       '@tanstack/eslint-plugin-query':
         specifier: 5.64.2
         version: 5.64.2(eslint@8.57.1)(typescript@5.7.2)
@@ -1649,9 +1649,6 @@ packages:
   '@octokit/graphql@8.1.2':
     resolution: {integrity: sha512-bdlj/CJVjpaz06NBpfHhp4kGJaRZfz7AzC+6EwUImRtrwIw8dIgJ63Xg0OzV9pRn3rIzrt5c2sa++BL0JJ8GLw==}
     engines: {node: '>= 18'}
-
-  '@octokit/openapi-types@22.2.0':
-    resolution: {integrity: sha512-QBhVjcUa9W7Wwhm6DBFu6ZZ+1/t/oYxqc2tp81Pi41YNuJinbFRx8B133qVOrAaBbF7D/m0Et6f9/pZt9Rc+tg==}
 
   '@octokit/openapi-types@23.0.1':
     resolution: {integrity: sha512-izFjMJ1sir0jn0ldEKhZ7xegCTj/ObmEDlEfpFrx4k/JyZSMRHbO3/rBwgE7f3m2DHt+RrNGIVw4wSmwnm3t/g==}
@@ -7924,8 +7921,6 @@ snapshots:
       '@octokit/request': 9.2.0
       '@octokit/types': 13.7.0
       universal-user-agent: 7.0.2
-
-  '@octokit/openapi-types@22.2.0': {}
 
   '@octokit/openapi-types@23.0.1': {}
 
