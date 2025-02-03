@@ -50,11 +50,7 @@ it('should display corresponding information', () => {
 
 	cy.findByRole('link', {
 		name: /octochangelog repository on github/i,
-	}).should(
-		'have.attr',
-		'href',
-		'https://github.com/Belco90/octochangelog',
-	)
+	}).should('have.attr', 'href', 'https://github.com/Belco90/octochangelog')
 
 	// we first query the link
 	cy.findByRole('link', { name: /powered by vercel/i })

@@ -107,4 +107,3 @@ So the final sorting will be:
 5. Credits
 6. Thanks
 7. Artifacts
-
