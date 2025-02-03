@@ -1,6 +1,6 @@
 <div align="center">
   <img
-    src="https://github.com/octochangelog/octochangelog-webapp/blob/main/public/mascot-icon.png?raw=true"
+    src="https://github.com/Belco90/octochangelog/blob/main/public/mascot-icon.png?raw=true"
     height="500"
     width="500"
     alt="Octochangelog mascot (a purple octopus-cat) reading a crystal ball"
@@ -14,12 +14,12 @@
 
 <hr>
 
-[![CI](https://github.com/octochangelog/octochangelog-webapp/actions/workflows/ci.yml/badge.svg)](https://github.com/octochangelog/octochangelog-webapp/actions/workflows/ci.yml)
+[![CI](https://github.com/Belco90/octochangelog/actions/workflows/ci.yml/badge.svg)](https://github.com/octochangelog/octochangelog-webapp/actions/workflows/ci.yml)
 [![Octochangelog Webapp Cypress tests](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/u8grd8&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/u8grd8/runs)
 
 ## What is Octochangelog?
 
-<img src="https://github.com/octochangelog/octochangelog-webapp/blob/main/public/browser-preview.png?raw=true" alt="Octochangelog showing a comparison of releases for the eslint-plugin-testing-library repo" >
+<img src="https://github.com/Belco90/octochangelog/blob/main/public/browser-preview.png?raw=true" alt="Octochangelog showing a comparison of releases for the eslint-plugin-testing-library repo" >
 
 [Octochangelog](https://www.octochangelog.com/) is a webapp that allows you to compare GitHub changelogs across multiple releases in a single view. You only have to pick a repo, and two versions to compare the changes between them.
 
@@ -108,13 +108,3 @@ So the final sorting will be:
 6. Thanks
 7. Artifacts
 
-<hr>
-<div align="center">
-  <a href="https://gitpod.io/#https://github.com/octochangelog/octochangelog-webapp"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod"/></a>
-  <a href="https://vercel.com/?utm_source=octochangelog-team&utm_campaign=oss">
-    <img
-      src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg"
-      alt="Powered by Vercel"
-    >
-  </a>
-</div>

@@ -53,7 +53,7 @@ it('should display corresponding information', () => {
 	}).should(
 		'have.attr',
 		'href',
-		'https://github.com/octochangelog/octochangelog-webapp',
+		'https://github.com/Belco90/octochangelog',
 	)
 
 	// we first query the link
