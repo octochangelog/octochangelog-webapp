@@ -1,4 +1,4 @@
-const REPO_URL = 'https://github.com/octochangelog/octochangelog-webapp'
+const REPO_URL = 'https://github.com/Belco90/octochangelog'
 
 const SITE_TITLE = 'Octochangelog'
 
