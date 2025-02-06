@@ -69,8 +69,8 @@ importers:
         specifier: 5.4.0
         version: 5.4.0(react@18.3.1)
       rehype-highlight:
-        specifier: 7.0.1
-        version: 7.0.1
+        specifier: 7.0.2
+        version: 7.0.2
       rehype-react:
         specifier: 8.0.0
         version: 8.0.0
@@ -5362,8 +5362,8 @@ packages:
     resolution: {integrity: sha512-qx+xQGZVsy55CH0a1hiVwHmqjLryfh7wQyF5HO07XJ9f7dQMY/gPQHhlyDkIzJKC+x2fUCpCcUODUUUFrm7SHA==}
     hasBin: true
 
-  rehype-highlight@7.0.1:
-    resolution: {integrity: sha512-dB/vVGFsbm7xPglqnYbg0ABg6rAuIWKycTvuXaOO27SgLoOFNoTlniTBtAxp3n5ZyMioW1a3KwiNqgjkb6Skjg==}
+  rehype-highlight@7.0.2:
+    resolution: {integrity: sha512-k158pK7wdC2qL3M5NcZROZ2tR/l7zOzjxXd5VGdcfIyoijjQqpHd3JKtYSBDpDZ38UI2WJWuFAtkMDxmx5kstA==}
 
   rehype-react@8.0.0:
     resolution: {integrity: sha512-vzo0YxYbB2HE+36+9HWXVdxNoNDubx63r5LBzpxBGVWM8s9mdnMdbmuJBAX6TTyuGdZjZix6qU3GcSuKCIWivw==}
@@ -12351,7 +12351,7 @@ snapshots:
     dependencies:
       jsesc: 0.5.0
 
-  rehype-highlight@7.0.1:
+  rehype-highlight@7.0.2:
     dependencies:
       '@types/hast': 3.0.4
       hast-util-to-text: 4.0.2
