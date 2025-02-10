@@ -3,6 +3,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { type Viewport } from 'next'
 import { type FC, type ReactNode, Suspense } from 'react'
 
+import { PirschAnalytics } from '@/app/PirschAnalytics'
 import UILayout from '@/app/UILayout'
 import { FULL_DESCRIPTION, SITE_TITLE } from '@/common'
 import customTheme from '@/custom-theme'
@@ -43,6 +44,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
 		suppressHydrationWarning
 	>
 		<body suppressHydrationWarning>
+			<PirschAnalytics />
 			<SpeedInsights />
 			<ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
 			<Suspense>
