@@ -1,15 +1,14 @@
 import { ColorModeScript } from '@chakra-ui/react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 import { type Viewport } from 'next'
-import { type FC, type ReactNode, Suspense } from 'react'
+import { type FC, type ReactNode } from 'react'
 
+import { PirschAnalytics } from '@/app/PirschAnalytics'
 import UILayout from '@/app/UILayout'
 import { FULL_DESCRIPTION, SITE_TITLE } from '@/common'
 import customTheme from '@/custom-theme'
 import { interFont, robotoMonoFont } from '@/fonts'
 
 import Providers from './Providers'
-import VercelAnalytics from './VercelAnalytics'
 import { getMetadataBase, openGraph } from './shared-metadata'
 
 export const metadata = {
@@ -43,13 +42,8 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => (
 		suppressHydrationWarning
 	>
 		<body suppressHydrationWarning>
-			<SpeedInsights />
+			<PirschAnalytics />
 			<ColorModeScript initialColorMode={customTheme.config.initialColorMode} />
-			<Suspense>
-				{/* Avoid entire page deopted into client-side rendering */}
-				{/* https://nextjs.org/docs/messages/deopted-into-client-rendering */}
-				<VercelAnalytics />
-			</Suspense>
 			<Providers>
 				<UILayout>{children}</UILayout>
 			</Providers>
